@@ -3,14 +3,19 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage[left=2.00cm, right=4.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\setlength{\marginparwidth}{4cm}
 
 \usepackage[T1]{fontenc}
 \usepackage[francais]{babel}
 
 \usepackage{mdframed}
-\usepackage{xcolor}
-%\usepackage{graphicx}
+
+\usepackage{xargs} % Use more than one optional parameter in a new commands
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\usepackage{graphicx}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes.misc}
@@ -65,3 +70,9 @@ name=BLOB
 % Appeler en fin de manuscrit avec
 %  \listofmyencadres
 % ------------------------------------- %
+
+% ###### TODO INLINE ###### %
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
