@@ -1,0 +1,67 @@
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+
+\usepackage{mdframed}
+\usepackage{xcolor}
+%\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+
+\usepackage{newfloat}
+\usepackage{caption}
+
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% ------------------------------------- %
+% ---------- COMMANDES PERSO ---------- %
+% ------------------------------------- %
+
+% ###### CREATION D'ENCADRES ###### %
+
+\DeclareFloatingEnvironment[fileext=frm,
+placement={!ht},
+listname=Liste des encadrés,
+within=chapter,
+name=BLOB
+]{myencadre}
+
+
+\newcounter{encadre}[chapter]
+
+
+\newenvironment{encadre}[1]{%
+	\stepcounter{encadre}
+	\mdfsetup{%
+		frametitle={
+			\tikz[baseline=(current bounding box.east),outer sep=0pt]
+			\node[anchor=east,rounded rectangle,
+			rounded rectangle west arc = 0pt,
+			fill=black!20]
+			{\strut Encadré \thechapter.\arabic{encadre}: \captionlistentry{#1}{#1}};},
+		innertopmargin=10pt,linecolor=black!20,
+		linewidth=2pt,topline=true,
+		innerrightmargin=10pt,innerleftmargin=20pt,
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{myencadre}[tb]\begin{mdframed}[]\relax%
+		}{\end{mdframed}\end{myencadre}}
+
+\crefname{myencadre}{encadré}{encadrés}
+\Crefname{myencadre}{Encadré}{Encadrés}
+
+% Exemple d'encadré
+% \begin{encadre}{Test\label{enc:bar}}
+% ATTENTION : Le label ne peut être mis que là
+% \end{encadre}
+% Appeler en fin de manuscrit avec
+%  \listofmyencadres
+% ------------------------------------- %
