@@ -6,8 +6,6 @@ Postures :
 
 Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles 
 
-
-
 ## Chapitre 1 : Modélisation et visualisation comme interfaces disciplinaires
 
 # Partie 1 : Accompagner la modélisation d'une transformation dans le système de peuplement de l'Europe Médiévale
@@ -32,7 +30,7 @@ Accompagner la modélisation des systèmes de peuplement par l’exploration int
 
 # Partie 2 : L'analyse visuelle exploratoire au service de la compréhension de phénomènes spatiaux
 
-## Chapitre 4 : Explorer visuellement des données de simulation massives pour analyser le comportement d'un modèle.
+## Chapitre 4 : Explorer visuellement des données de simulation massives pour analyser le comportement d'un modèle.  
 
   1. Explo manuelle
   2. Explo systématique
@@ -43,8 +41,6 @@ Accompagner la modélisation des systèmes de peuplement par l’exploration int
   - M&G : Exploration systématique du modèle
   - M : Résultats de l'explo. systématique
 
-
-
 ## Chapitre 5 : Les apports de la visualisation dans l'exploration d'un modèle
   - G : Comment intégrer les données ? Allers-retours entre modèle et sorties
   - A&G : Choix des modes d'interaction entre les utilisateurs et les données : pousser à la sérendipité
@@ -53,17 +49,18 @@ Accompagner la modélisation des systèmes de peuplement par l’exploration int
   - A : Comment évaluer/valider le modèle ? -> cross-validation via scénarios
 
 # Partie 3 : Du cas d'étude à un retour sur les pratiques disciplinaires collectives de modélisation et d'exploration de données.
-
   
-## Chapitre 6 : Retours sur la co-construction et l'exploration d'un modèle en situation d'inter-disciplinarité.
-  - A : Accompagnement modélisation & companion modelling : quelles diffs.
-  - A : Construction du modèle vs utilisation du modèle
-  - A : Comment se positionner ds une modélisation interdisciplinaire
-  - A&G : A quoi a servi l'explo visuelle ?
-
-## Chapitre 7 : Explorer interactivement des données : de la simulation à l'empirique
+## Chapitre 6 : Explorer interactivement des données : de la simulation à l'empirique (scénarios)
   - G : Positionnement des cadres géomatiques mobilisés : geovis. analytics sur temps long
   - G : Quelles spécificités des données de simulation ?  (Sim vs Big Data)
   - G : Comment comparer ces données à des données empiriques ? (Confrontation, en piste)
   - G : Une démarche d'explo. reproductible et applicable à d'autres données (lesquelles)
   - G : Vers une utilisation des GeoVis Ana. plus fréquente en GTQ : besoin d'outils *ad-hoc* dédiés à de l'explo
+
+## Chapitre 7 : Retours sur la co-construction et l'exploration d'un modèle en situation d'inter-disciplinarité.
+  - A : Accompagnement modélisation & companion modelling : quelles diffs.
+  - A : Construction du modèle vs utilisation du modèle
+  - A : Comment se positionner ds une modélisation interdisciplinaire
+  - A&G : A quoi a servi l'explo visuelle ?
+
+
