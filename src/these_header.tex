@@ -3,10 +3,11 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[left=2.00cm, right=4.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage[left=2.00cm, right=5.00cm, bottom = 2.00cm, top = 2.00cm]{geometry}
 \setlength{\marginparwidth}{4cm}
 
 \usepackage[T1]{fontenc}
+
 \usepackage[francais]{babel}
 
 \usepackage{mdframed}
@@ -23,8 +24,27 @@
 \usepackage{newfloat}
 \usepackage{caption}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{Chapitre \thechapter}
+\fancyhead[C]{}
+\fancyhead[R]{\rightmark}
+
+
+\usepackage{enumitem}
+
 \usepackage{hyperref}
 \usepackage{cleveref}
+
+
+
+
+
+
+
 
 % ------------------------------------- %
 % ---------- COMMANDES PERSO ---------- %
@@ -33,7 +53,7 @@
 % ###### CREATION D'ENCADRES ###### %
 
 \DeclareFloatingEnvironment[fileext=frm,
-placement={!ht},
+placement={htb},
 listname=Liste des encadrés,
 within=chapter,
 name=BLOB
@@ -57,7 +77,7 @@ name=BLOB
 		innerrightmargin=10pt,innerleftmargin=20pt,
 		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 	}
-	\begin{myencadre}[tb]\begin{mdframed}[]\relax%
+	\begin{myencadre}[!h]\begin{mdframed}[]\relax%
 		}{\end{mdframed}\end{myencadre}}
 
 \crefname{myencadre}{encadré}{encadrés}
@@ -73,6 +93,26 @@ name=BLOB
 
 % ###### TODO INLINE ###### %
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+
+\newcommandx{\unsurec}[2][1=]{%
+	\colorbox{red!25}{#2}\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]%
+}
+
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\changec}[2][1=]{%
+	\colorbox{blue!25}{#2}\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]%
+}
+
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\infoc}[2][1=]{%
+	\colorbox{OliveGreen!25}{#2}\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1%
+}
+
+
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\improvementc}[2][1=]{%
+	\colorbox{Plum!25}{#2}\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]%
+}
+
+% ###### FIXME INLINE ###### %
+\newcommandx{\fixref}[1]{#1}
