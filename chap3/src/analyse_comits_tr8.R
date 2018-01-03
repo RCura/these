@@ -11,7 +11,7 @@ comits <- read_excel("comits.xlsx",
   mutate(SommeNb = `NbMécanisme` + NbParams + NbRefactoring + NbAjustRegles) %>%
   filter(SommeNb > 0) %>%
   mutate(comitNb = n():1) %>%
-  mutate_each(funs(ratio =  ./SommeNb), `NbMécanisme`, NbParams, NbRefactoring, NbAjustRegles) %>%
+  mutate_at(funs(ratio =  ./SommeNb), .vars = vars(`NbMécanisme`, NbParams, NbRefactoring, NbAjustRegles)) %>%
   gather(key = Type, value = Nb, `NbMécanisme_ratio`, NbParams_ratio, NbRefactoring_ratio, NbAjustRegles_ratio)
 
 library(pBrackets) 
