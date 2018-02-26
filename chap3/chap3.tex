@@ -427,10 +427,12 @@
 			\colorbox{pink}{\parbox{0.9\textwidth}{%
 		\vskip5pt
 		\leftskip5pt\rightskip5pt
-		Ajuster le chapeau introductif pour prendre en compte tout ce qui vient après, par exemple avec : 
-		1 - Indices empiriques
-		2 - Indicateurs
-		3 - Hiérarchie des indicateurs
+		Ajuster le chapeau introductif pour prendre en compte tout ce qui vient après, par exemple avec :
+		\begin{enumerate}
+			\item Indices empiriques
+			\item Indicateurs
+			\item Hiérarchie des indicateurs
+		\end{enumerate}
 		
 		\vskip5pt
 	}
@@ -507,14 +509,14 @@
 	\subsubsection{Évaluer la polarisation des foyers paysans \label{subsub:polarisation}}
 	
 	La polarisation des foyers paysans dans l'espace du modèle est sans doute le fait stylisé principal parmi ceux que l'on cherche à reproduire. Rappelons ici que l'on estime, à partir des connaissances d'experts, que les foyers paysans sont très majoritairement dispersés en 800, et concentrés au sein de villages et petites villes en 1100.
-	Le modèle cherche à reproduire cette polarisation, par le biais d'une concentration des foyers paysans, initialement localisés aléatoirement dans l'espace mais n'en couvrant qu'une faible part, en des agrégats répartis dans une large partie de l'espace modélisé.
+	Le modèle cherche à reproduire cette polarisation, par le biais d'une concentration des foyers paysans, initialement localisés aléatoirement dans l'espace mais n'en parsemant qu'une faible part, en des agrégats de foyers paysans répartis dans dans une plus large partie de l'espace modélisé.
 	
-	Pour analyser ce fait stylisé que constitue la polarisation, il est nécessaire de définir des indicateurs permettant de caractériser cette dynamique. Ces indicateurs doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais aussi être observables dans le modèle de simulation, où l'on parlera alors d'indicateurs de sortie.
-	En analysant les valeurs que ces indicateurs prennent en sortie de simulation, on pourra alors juger de la capacité du modèle à reproduire le phénomène de polarisation.
+	Pour analyser la polarisation du système de peuplement, il est nécessaire de définir des indices permettant de caractériser ce phénomène. Ces indices doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais doivent  pouvoir être produits et enregistrés dans le modèle de simulation, formant des indicateurs.
+	En analysant les valeurs que ces indicateurs prennent en sortie de simulation, on pourra alors juger de lak capacité du modèle à reproduire le phénomène de polarisation.
 	
-	Pour l'étude de la polarisation, on a choisi de faire appel à plusieurs indicateurs fournissant des indices hétérogènes et de précision variable.
+	Pour l'étude de la polarisation, il est nécessaire de faire appel à des indices hétérogènes, chacun devant être en mesure de décrire les différents aspects du phénomène de polarisation. En conséquence, on a choisi de faire appel à plusieurs indicateurs qui doivent permettre d'étudier aussi bien l'aspect structurel du système simulé en son état final que la forme et la tendance que prennent les changements qu'il subit.
 	
-	L'indicateur principal est le taux de dispersion des foyers paysans. Si celui-ci est trop important (c'est-à-dire très supérieur aux valeurs estimées empiriquement), cela signifie que la polarisation générée par le modèle est insuffisante, et dès lors, obligatoirement insatisfaisante.
+	L'indicateur principal est le taux de dispersion des foyers paysans. Si celui-ci est trop important (c'est-à-dire très supérieur aux valeurs estimées empiriquement), cela signifie que la polarisation générée par le modèle est insuffisante, et dès lors, obligatoirement insatisfaisante. A contrario, une valeur trop faible serait symptomatique d'un emballement des mécanismes simulés, figeant la situation dans une concentration absolue des foyers paysans, ne laissant dès lors plus de place à la diversification des situations locales et de la hiérarchisation d'ensemble.
 	
 	Pour affiner ce constat, on fait appel à d'autres indicateurs : le nombre d'agrégats, de pôles, ou encore la dispersion spatiale de ces deux types d'entités.
 	Ces indicateurs ne permettent pas, à eux seuls, de caractériser le succès de la dynamique de polarisation modélisée, mais ils aident à affiner l'analyse de cette dynamique telle que produite par le modèle de simulation.
