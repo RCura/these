@@ -10,17 +10,16 @@
 \begin{document}
 	\setcounter{part}{0}
 	\setcounter{chapter}{2}
-	
 	%\part{Accompagner la modélisation d'une transformation dans le système de peuplement de l'Europe Médiévale}
-	
+		
 	\chapter{Paramétrer un modèle dans un contexte de co-construction interdisciplinaire}
 	\begin{center}
-		{\large Version 2018-01-15}
+		{\large Version 2018-02-26}
 	\end{center}
-	
+
 	Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
 	Dans ce chapitre, nous nous attacherons à présenter le travail de paramétrage réalisé à la suite, ayant abouti à une version plus adaptée aux questions des thématiciens. Le descriptif technique de cette version \og finale\fg{} se trouve dans l'annexe $n$ (\hl{Ref à l'annexe contenant le descriptif technique de la dernière version du modèle.})
-	Par paramétrage, nous entendons ici le processus visant à doter le modèle de paramètres (empiriques, \og commensurables\fg{} et techniques (\ref{enc:types-parametres})) lui permettant de mieux répondre aux objectifs fixé en termes de comportements attendus ou d'objectifs quantitatifs. Nous nous attacherons dans un premier temps à expliciter et spécifier ce sens.
+	Par paramétrage, nous entendons ici le processus visant à doter le modèle de paramètres (empiriques, \og commensurables\fg{} et techniques (\cref{enc:types-parametres})) lui permettant de mieux répondre aux objectifs fixé en termes de comportements attendus ou d'objectifs quantitatifs. Nous nous attacherons dans un premier temps à expliciter et spécifier ce sens.
 	
 	\section{Paramétrer ? Quoi et quand ?}
 	
@@ -102,6 +101,8 @@
 	
 	\subsection{Les paramètres dans les modèles agents}
 	
+	\subsubsection{L'approche classique}
+	
 	Un premier point est à noter : nous n'avons trouvé que très peu de définitions spécifiques de ce qu'est un paramètre dans le champs de la simuation à base d'agents. C'est pourtant un terme employé dans la quasi-totalité de la littérature existante. Cela ne relèverait que d'un problème de jargon non explicité s'il y avait consensus que le sens donné à ce mot, mais au contraire, les acceptations, qui doivent être comprises par le contexte en l'absence de définitions formelles, varient fortement selon les auteurs.
 	Par exemple, la définition que l'on peut extraire de l'un des manuels de référence en modélisation agent \autocite{treuil_modelisation_2008} s'éloigne fortement de ce que l'on a pu décrire ci-dessus :
 	\begin{quote}
@@ -117,7 +118,7 @@
 	Dans le présent ouvrage, nous donnerons donc à ces termes des sens différents, voire opposés, qui nous semblent plus fréquents dans le champ de la modélisation en sciences humaines et se retrouvent partiellement dans le schéma de Balci (\cref{fig:parametres-Balci}).
 	\begin{figure}[!h]
 		\includegraphics[width=.4\linewidth]{img/Balci1994a_Figure_Parametres.png}
-		\caption{Les variables d'un modèle de simulation selon Balci \autocite[122]{balci_validation_1994}.\\
+		\caption{Les variables d'un modèle de simulation selon Balci \autocite[122]{balci_validation_1994-2}.\\
 		\textit{Nota bene} : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en mirroir à une partie \og système\fg{} représentant l'empirique.}
 		\label{fig:parametres-Balci} 
 	\end{figure}
@@ -133,6 +134,9 @@
 	}
 	
 	
+	\subsubsection{Paramètres, variables, indicateurs : un essai de définition}
+	\label{subsubsec:mes_definitions_params}
+	
 	Nous considèrerons donc plutôt les paramètres comme le sous-ensemble des entrées, qui peuvent s'exprimer sous forme numérique (excluant donc de fait certaines entrée telles que les configurations spatiales initiales), et que l'on fera varier, aussi bien dans la calibration du modèle que pour l'exploration de scénarios.
 	
 	
@@ -143,6 +147,8 @@
 			\vskip5pt
 		}
 	}
+
+
 
 	\begin{figure}[!h]
 	\includegraphics[width=\linewidth]{img/schemas_params_simple.pdf}
@@ -165,6 +171,7 @@
 	\label{fig:parametres-these-complet} 
 	\end{figure}
 	
+	\newpage
 	\subsubsection{Paramètres et variables}
 	
 	\begin{encadre}{Variables, entrées, paramètres\ldots}{termes-variables}
@@ -182,7 +189,7 @@
 	\subsubsection{Différents types de paramètres}
 	
 	
-	Les paramètres sont donc un sous-ensemble des entrées d'un modèle qui ont vocation à varier dans les différentes exécutions de ce modèle. Pour autant, c'est un sous-ensemble assez divers, et tous les paramètres n'apportent pas les mêmes connaissances, que ce soit par leur valeur ou par la manière dont ils varient. Il convient donc d'identifier différents types de paramètres, non selon leur caractéristique propre (c'est-à-dire leurs propriétés, qui permettent de les différencier des sorties par exemple), mais selon leur usage et donc la manière dont on pourra les mobiliser. A ce titre, quand la littérature en sciences humaines et sociales\footnote{En physique ou en mathématiques par exemple, une telle distinction n'existe pas, la définition d'un paramètre prenant une considération plus simple d'élément rendu constant dans une exécution d'un modèle. \hl{pas clair, prendre une définition quelconque reprenant cette idée.}} distingue souvent (\hl{refs}) deux types de paramètres : les paramètres empiriques, dont la valeur a une correspondance directe dans le domaine empirique (on peut donc l'observer), et les paramètres techniques\footnote{Mathian et Tannier \autocite{mathian_formalisation_2015} utilisent le terme de paramètre mécanique pour définir ce type de paramètres. Nous trouvons l'usage du mot technique plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait. De plus, chaque paramètre, empirique, technique ou autre, a un impact sur les mécanismes du modèle, de par la définition que nous empruntons des paramètres \ref{enc:termes-variables}. Nous préférerons donc ce terme de \og technique\fg{} pour éviter les confusions.}, pour lesquels cette correspondance n'existe pas. Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes. Nous en proposons donc une troisième, que nous avons choisi de nommer \og paramètres commensurables\fg{}\footnote{
+	Les paramètres sont donc un sous-ensemble des entrées d'un modèle qui ont vocation à varier dans les différentes exécutions de ce modèle. Pour autant, c'est un sous-ensemble assez divers, et tous les paramètres n'apportent pas les mêmes connaissances, que ce soit par leur valeur ou par la manière dont ils varient. Il convient donc d'identifier différents types de paramètres, non selon leur caractéristique propre (c'est-à-dire leurs propriétés, qui permettent de les différencier des sorties par exemple), mais selon leur usage et donc la manière dont on pourra les mobiliser. A ce titre, quand la littérature en sciences humaines et sociales\footnote{En physique ou en mathématiques par exemple, une telle distinction n'existe pas, la définition d'un paramètre prenant une considération plus simple d'élément rendu constant dans une exécution d'un modèle. \hl{pas clair, prendre une définition quelconque reprenant cette idée.}} distingue souvent (\hl{refs}) deux types de paramètres : les paramètres empiriques, dont la valeur a une correspondance directe dans le domaine empirique (on peut donc l'observer), et les paramètres techniques\footnote{Mathian et Tannier \autocite{mathian_formalisation_2015} utilisent le terme de paramètre mécanique pour définir ce type de paramètres. Nous trouvons l'usage du mot technique plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait. De plus, chaque paramètre, empirique, technique ou autre, a un impact sur les mécanismes du modèle, de par la définition que nous empruntons des paramètres \cref{enc:termes-variables}. Nous préférerons donc ce terme de \og technique\fg{} pour éviter les confusions.}, pour lesquels cette correspondance n'existe pas. Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes. Nous en proposons donc une troisième, que nous avons choisi de nommer \og paramètres commensurables\fg{}\footnote{
 		La définition du dictionnaire \og Le Petit Robert\fg{} pour ce terme est celle-ci :  \og  Se dit d'une grandeur qui a, avec une autre grandeur, une commune mesure.\fg{}\autocite{robert_nouveau_1993}. \\Cf. aussi :			
 		\og Les mondes n'apparaissent commensurables ou incommensurables qu'à ceux qui s'attachent aux mesures mesurées. Or, toutes les mesures, en science dure comme en science souple, sont aussi des mesures mesurantes et celles-là construisent une commensurabilité qui n'existait pas avant leur mise au point.\fg{}\autocite[153]{latour_nous_2013}},
 	qui nous semble à même caractériser des paramètres partiellement inscrits dans l'empirie, c'est-à-dire sans valeur empirique propre, mais permettant tout de même d'être mobilisés comme les paramètres empiriques, c'est-à-dire à même d'être comparés, que ce soit par les fluctuations de leurs propres valeurs ou en comparant des paramètres commensurables les uns avec les autres. Avec cette typologie des paramètres basées non sur la nature de ceux-ci mais sur leur utilisation dans un modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de Minsky\footnote{\hl{Cf. sans doute le chapitre 1, à faire.}} \autocite{minsky_matter_1965}. Pour différents modélisateurs, un même paramètre pourra donc être considéré comme empirique ou commensurable, ou encore comme commensurable ou technique.
@@ -208,7 +215,7 @@
 		\begin{description}
 			\item[Paramètres empiriques] Les paramètres empiriques sont les paramètres qui peuvent être fixés à l'aide d'une ou de valeur(s) empiriquement connue(s), ou à défaut, dont la valeur se réfère à une quantité directement identifiable par une personne ayant des connaissances thématiques sur ce qui est modélisé.
 			\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-				Dans le modèle de Schelling (\cref{desc:schelling}), le paramètre \fixref{\texttt{S}} est un paramètre empirique : la valeur qui lui est donnée peut être interprétée empiriquement, quand bien même il serait difficile d'obtenir, par exemple d'un enquêté, une valeur exacte à utiliser.
+				Dans le modèle de Schelling (\ref{desc:schelling}), le paramètre \fixref{\texttt{S}} est un paramètre empirique : la valeur qui lui est donnée peut être interprétée empiriquement, quand bien même il serait difficile d'obtenir, par exemple d'un enquêté, une valeur exacte à utiliser.
 			\end{mdframed}
 			\item[Paramètres techniques] Il s'agit des paramètres dont la valeur, ou même son ordre de grandeur, n'apportent aucune connaissance thématique au modélisateur. Ces paramètres ont pour raison d'être de permettre à d'autres types de paramètres de s'exprimer en valeurs compréhensibles et exploitables. Dès lors, leurs valeurs sont propres à chaque modèle formalisé, et une comparaison de ces valeurs entre les différents modèles n'apporte pas de connaissance.
 			
@@ -240,7 +247,7 @@
 	
 	%%%% Pas adapté  %%%%
 	Gilbert et Troitzsch \autocite{gilbert_simulation_2005} restent très flous en utilisant les termes de \textit{checking} et de \textit{debugging}, qu'ils inscrivent dans une démarche plus large de \textit{verification} correspondant à la \hl{validation interne}\footnote{\hl{Définir !}}.
-	Osman Balci \autocite{balci_validation_1994} crée et emploie l'acronyme \og \textit{VV\&T}\fg{}\footnote{\textit{Validation, Verification and Testing}}, à portée plus large puisqu'il s'applique à chacune des étapes de la modélisation
+	Osman Balci \autocite{balci_validation_1994-2} crée et emploie l'acronyme \og \textit{VV\&T}\fg{}\footnote{\textit{Validation, Verification and Testing}}, à portée plus large puisqu'il s'applique à chacune des étapes de la modélisation
 	%%%%  %%%%
 	
 	Le plus souvent (\fixref{ref Seb, Clem...}), une fois le modèle construit, le modélisateur s'attache à son \og calibrage\fg{}, en cherchant pour chaque paramètre la ou les valeurs qui permettront au modèle de s'approcher des données empiriques devant être reproduites.
@@ -264,10 +271,10 @@
 	On tend à distinguer le paramétrage -- passage obligé ne nécessitant pas d'être évoqué -- de la calibration, processus systématique qui inscrirait le modèle comme un outil scientifique et incontestable.
 	Nous choisissons ici de confondre ces approches, non pas en considérant le paramétrage comme un outil d'évaluation du modèle, mais comme une composante inhérente à la construction d'un modèle, quelque soient les formes et les temporalités que le paramétrage adopte.
 	Le paramétrage est en effet une pratique utile dans la construction du modèle, car les résultats auxquels il aboutit, c'est-à-dire les valeurs de paramètres qui semblent mieux adaptés, renseignent aussi bien sur les biais des mécanismes adoptés que sur leur efficacité réelle.
-	Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que des variations dans les valeurs de paramètres ne changent pas réellement les sorties du modèle, cela peut être l'occasion de repenser le mécanisme dans son ensemble, ou plus souvent, la manière dont le paramètre est mobilisé dans ce mécanisme. On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant sa calibration plus complexe et instable :
+	Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que des variations dans les valeurs de paramètres ne changent pas réellement les sorties du modèle, cela peut être l'occasion de repenser le mécanisme dans son ensemble, ou plus souvent, la manière dont le paramètre est mobilisé dans ce mécanisme. On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014-1}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant sa calibration plus complexe et instable :
 	\begin{quote}
 		Au dessous du seuil des 150 pas de simulation pour le paramétrage de InnovationLife, le calibrage du modèle est très difficile voire impossible. Au dessus de ce seuil, le mécanisme associé au paramètre InnovationLife n’a plus d’effet sur le calibrage du modèle. Dans un soucis de parcimonie du nombre et de la complexité des mécanismes simulés dans le modèle SimpopLocal, il est justifiable de retirer du modèle ce mécanisme qui n’est pas nécessaire à la simulation de la dynamique de croissance recherchée.\\
-		\mbox{}~ \hfill \autocite[224]{schmitt_modelisation_2014}
+		\mbox{}~ \hfill \autocite[224]{schmitt_modelisation_2014-1}
 	\end{quote}
 	
 	\paragraph{}Afin d'illustrer ces propos, on peut s'appuyer sur des modèles bien connus de la littérature, issus de deux champs disciplinaires différents.
@@ -377,7 +384,7 @@
 	\subsubsection{L'importance de la réplication}
 	
 	
-	\section{Paramétrage et ajustement du modèle SimFeodal}
+	\section[Paramétrage et ajustement]{Paramétrage et ajustement du modèle SimFeodal}
 	
 	\colorbox{pink}{\parbox{0.9\textwidth}{%
 			\vskip5pt
@@ -387,12 +394,21 @@
 		}
 	}
 	
-	Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction. Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté cette évolution. L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation. Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes. La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
+	Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction. Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté ces modifications du modèle. L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation. Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes. La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
 	
-	Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent. Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que la précision de chacune permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
+	\colorbox{pink}{\parbox{0.9\textwidth}{%
+			\vskip5pt
+			\leftskip5pt\rightskip5pt
+			Les deux § suivants ne fonctionnent plus, vu qu'ils ne sont plus suivis du tableau récapitulatif des étapes.
+			\vskip5pt
+		}
+	}
 	
-	Notons tout de même que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014}. Nous ne détaillerons donc pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, afin d'illustrer nos propos, dans les chapitres 6 et 7 \hl{(Partie 3)}.
+	Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent. Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que l'explicitation de chacune de ces étapes permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
 	
+	Notons que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014-2}. Nous ne détaillerons pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, en guise d'exemples illustratifs, dans les chapitres 6 et 7 \hl{(Partie 3)}.
+	
+	\pagebreak
 	\subsection{SimFeodal : pourquoi et quoi paramétrer ?}
 	
 			\colorbox{pink}{\parbox{0.9\textwidth}{%
@@ -405,6 +421,293 @@
 			\vskip5pt
 		}
 	}
+
+\bigskip
+
+			\colorbox{pink}{\parbox{0.9\textwidth}{%
+		\vskip5pt
+		\leftskip5pt\rightskip5pt
+		Ajuster le chapeau introductif pour prendre en compte tout ce qui vient après, par exemple avec : 
+		1 - Indices empiriques
+		2 - Indicateurs
+		3 - Hiérarchie des indicateurs
+		
+		\vskip5pt
+	}
+}
+
+	Le modèle SimFeodal présenté dans le chapitre 2 correspond à une \og version 0\fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version -- implémentant l'ensemble des mécanismes décidés dans le modèle conceptuel --, mais pas encore stabilisée dans les liens, interactions et valeurs de paramètres de ceux-ci.
+	Il ne répond donc pas nécessairement aux attentes que l'on peut en avoir.
+	
+	On peut caractériser ces dernière, de manière très générale, comme permettant de reproduire les grands traits de cette transition.
+	La reproduction d'un fait stylisé peut s'entendre de multiples manières, tout au long du gradient qualitatif-quantitatif.
+	Dans notre cas, en l'absence d'une connaissance quantitative totale des phénomènes mobilisés et observés, on peut s'appuyer sur deux grands ensembles d'\og indices\fg{}.
+	
+	\subsubsection{Ordres de grandeur}
+	Le premier est constitué d'\textbf{ordres de grandeurs} empiriques estimés -- avec une précision plus ou moins importante (\hl{cf. tableau 3 p. 317 du chap. TMD, à reproduire dans chap 2}). Certaines valeurs sont ainsi connues, que ce soit d'après des sources primaires ou secondaires, et peuvent ainsi constituer des \og indicateurs\fg{}. Par exemple, on connaît avec quasi-certitude le nombre d'églises paroissiales de la région Touraine en 1100. Certaines de ces valeurs sont toutefois plus proches de l'estimation, comme le taux de foyers paysans isolés en fin de période, que l'on ne peut qu'estimer à partir de sources secondaires et en menant des extrapolations. Ces différents indicateurs observés ou estimés peuvent cependant tous trouver une correspondance presque exacte dans le modèle de simulation, et dès lors, mener à comparaison entre données observées/estimées et données simulées. Ils peuvent ainsi jouer le rôle d'éléments d'évaluation du comportement du modèle simulé.
+	
+	\subsubsection{Faits et formes stylisés}
+	Le second type d'indice est moins précis, ne reposant pas sur une valeur estimable, mais plutôt sur la connaissance experte d'un phénomène. Il s'agit des \og \textbf{faits stylisés}\fg{}\footnotemark{}, plus tendanciels que les indicateurs. On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand on estime que les systèmes de peuplement tendent à se hiérarchiser, la pente de leur rang-taille tendant vers $1$ à mesure que le système perdure (\hl{Trouver ref, sans doute Pumain/Saint-Julien}). De la même manière, le modèle de transition démographique d'Adolphe Landry est un fait stylisé, énoncé à partir de l'observation de nombreuses récurrences de l'évolution des populations d'un pays en fonction des taux de natalité et de mortalité. Ces exemples montrent qu'au sein des faits stylisés, on retrouve aussi une diversité quant à la précision de leurs énoncés. Dans notre cas d'étude, on retiendra cette logique de faits stylisés concernant des allures de courbes (par exemple l'évolution dans le temps d'un indicateur) ou de répartition spatiale. On pourra dès lors parler de \og \textbf{formes stylisées}\fg{}, aussi bien temporelles -- courbe logistique estimée pour la polarisation des foyers paysans --, spatiales -- différence dans l'occupation de l'espace par les agrégats entre le début et la fin de la période --, que correspondant à une agrégation à l'échelle du système, comme dans l'observation des hiérarchies grâce aux courbes rangs-tailles.
+	
+	\footnotetext{
+		Définis ainsi par \autocite{livet2014diversite}: \og 
+		Un ``fait stylisé'' est une présentation simplifiée (i.e. taux, ratio ou écart, structure spatiale) d’une régularité empirique sur l’observation de laquelle il y a un large accord. Le terme a été popularisé en économie par Nicholas Kaldor (1961).[Les] faits stylisés peuvent être construits de la manière suivante : 1) en partant du domaine empirique, on identifie des relations saillantes ; 2) on opère quelques simplifications qui permettent d’inclure formellement ces relations dans des modèles ; 3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
+	}
+
+	\subsubsection{Indicateurs en sortie}
+	Les ordres de grandeur et formes stylisées évoquées relèvent du domaine empirique. Afin de pouvoir les mobiliser, il est nécessaire de définir des \textbf{indicateurs en sortie} dans le modèle de simulation, c'est-à-dire des variables informatiques que l'on enregistrera durant l'exécution du modèle et que l'on pourra alors comparer aux indices empiriques définis. On pourrait définir une typologie différenciant les indicateurs en sortie, de formes numériques simples (des nombres), et des indicateurs plus complexes, multidimensionnels, à même de permettre la confrontation du modèle de simulation avec les formes stylisées identifiées. Ici, on se contentera de regrouper ces différents types de production informatiques du modèles sous la dénomination d'\og indicateurs en sortie\fg{}, ou, plus simplement, d'\textbf{indicateurs}.
+	
+	
+	\subsubsection{Hiérarchiser les indicateurs}
+	SimFeodal s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels. Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, le même niveau de précision sur les phénomènes modélisés. A chaque changement dans le modèle, pour une évaluation complète de la capacité de cette version à reproduire les indices empiriques, il faudrait donc observer et analyser chacun de ces nombreux et divers indicateurs. Dans le contexte du paramétrage d'un modèle s'appuyant sur une logique itérative et incrémentielle (voir \cref{enc:construction-indicateurs}), on imagine bien que cela n'est pas possible : le nombre d'indicateurs est bien trop élevé pour avoir rapidement une vision globale de la qualité de représentation du modèle. Il faut dès lors, comme pour toute analyse synthétique, concevoir une hiérarchie d'observation et d'utilisation des indicateurs : il ne sera pas nécessaire d'analyser chacun des indicateurs dans la plupart des cas, seuls les indicateurs jugés plus importants pourront être analysés. Les indicateurs de moindre importance ne seront mobilisés que pour départager des situations dont la différence ne serait pas suffisament explicitée par l'usage des indicateurs principaux.
+	
+	\paragraph{Incertitude}
+	Dans le modèle de simulation, les indicateurs sont à analyser en tenant compte de la précision du fait stylisé qu'ils représentent. Il ne faudra ainsi pas étudier la croissance  du nombre d'agrégats au cours de la simulation de manière fine, par exemple en étudiant le coefficient directeur de la courbe, quand l'empirie ne donne quasiment aucune information à ce sujet si ce n'est qu'il y a bien plus d'agrégats (cette quantité étant elle-même analysable avec plus de précision) en fin de période qu'au début.
+	On peut vouloir quantifier la précision de ces données, par exemple à l'aide des méthodes développées dans le champ des observations floues et/ou incertaines (voir par exemple le travail de Cyril de Runz sur les données \og imparfaites\fg{} \autocite{de2008imperfection}).
+	Cette quantification de l'incertitude pourrait alors servir de base à l'établissement d'une hiérarchie des indicateurs : on analyserait en premier lieu l'écart entre les ordres de grandeurs et les indicateurs qui les représentent, avant d'étudier les indicateurs plus incertains (augmentation de la charge fiscale entre 800 et 1100 par exemple) et de finir par les formes stylisées et leur représentations dans le modèle.
+	Toutefois, SimFeodal se caractérise d'une part par une très forte hétérogénéité dans les niveaux de connaissance des ordres de grandeurs et faits stylisés modélisés, et d'autre part, se voulant un modèle théorique (\hl{A dire spécifiquement dans le chapitre 2; y faire une ref ici}), il n'y a pas de volonté de \og coller aux données\fg{} : la vraisemblance d'ensemble du modèle compte bien plus que la précision de chacune de ses composantes.
+	
+	\paragraph{Indicateur synthétique}
+	Une autre piste, fréquemment utilisée dans les modèles théoriques, consiste à créer un indicateur synthétique -- ou un faible nombre d'entre eux --,  par exemple une moyenne de plusieurs indicateurs.
+	Ces indicateurs synthétiques résultent d'une quantification des autres indicateurs (excluant donc les formes stylisées qui sont plus libres d'interprétation), et permettent en particulier de mener des explorations rapides et simples du comportement d'un modèle selon les valeurs de paramètres.
+	SimFeodal n'est pas adapté à de tels indicateurs : une large partie des faits stylisés et ordres de grandeur mobilisés proviennent de connaissances expertes, et les thématiciens qui les ont consolidées rechignent à créer de tels indicateurs composites, en ce que cela demande de pondérer précisement l'importance de chacun des indicateurs par rapport aux autres. Si l'on pourrait créer quelques indicateurs synthétiques, ceux-là ne prendraient en compte qu'une faible proportion du comportement attendu du modèle, résultant en une forte perte de pouvoir explicatif ou descriptif du modèle.
+	
+	\paragraph{Définir des dimensions d'analyse}
+	En présence de plus d'une quarantaine d'indicateurs, il est toutefois nécessaire, a minima, d'organiser leur analyse. On a vu qu'il n'était pas justifié de mener cet ordonnancement à partir des propriétés intrinsèques des indicateurs du modèle.
+	Au contraire, et cela porte bien plus de sens vis-à-vis du rôle d'un modèle, la hiérarchisation des sortie du modèle doit suivre la hiérarchie implicite qui structure les hypothèses et objectifs du modèle en lui-même.
+	Ces hypothèses et objectifs sont multiples dans SimFeodal, et dès lors, une hiérarchie ne pourra être établie qu'en leur sein. Il convient donc d'identifier des ensembles d'indices permettant de caractériser les différentes dimensions à analyser, avant de définir, dans chacune de ces dimensions, une hiérarchie d'indicateurs.
+	Dans le chapitre précédent (\hl{ref chap 2}), nous présentions les principales dynamiques  du modèle : (1) polarisation, (2) hiérarchisation et (3) fixation des foyers paysans. En postulant que ces dynamiques sont caractéristiques du modèle, on peut s'appuyer sur cette triade pour caractériser les sorties du modèle,c'est-à-dire mener la confrontation entre indices et indicateurs. Ces trois ensembles, et les indicateurs qui les caractérisent dans le modèle, sont dès lors considérés comme les trois dimensions d'analyse des sorties de SimFeodal.
+	
+	\paragraph{Hiérarchiser dans les dimensions}
+	Chacune de ces dimensions s'appliquent à plusieurs types d'agents du modèle. Pour définir notre hiérarchie, on retiendra les agents les plus impactés par les dynamiques correspondant à ces dimensions : la polarisation, par exemple, peut être observé depuis le point de vue de ce qui polarise (les attracteurs) tout autant que de ce qui est polarisé (les foyers paysans).
+	On aura alors tendance à examiner d'abord un résultat agrégé, représentatif de la structure dans son ensemble, avant d'observer les indicateurs représentatifs des dynamiques ayant mené à cette structure.
+	Dans cet exemple, on analysera donc d'abord le résultat effectif de la polarisation, c'est-à-dire la concentration des foyers paysans en agrégats, avant d'observer la répartition et les diversité des attracteurs ayant entrainé ce phénomène. On peut dès lors définir des \og indicateurs principaux\fg{} pour chaque dimension, représentatifs des grands traits des structures auxquelles on souhaite aboutir en sortie de simulation, et des \og indicateurs secondaires\fg{}, permettant d'affiner l'évaluation de chacune de ces dimensions.
+	
+	\paragraph{Une hiérarchie mouvante}
+	Notons que l'analyse des indicateurs de sortie suit une hiérarchie parfois mouvante, et en tous les cas, assez peu quantifiable : si l'ordre d'observation est plutôt stable, l'importance que l'on portera à chacun des indicateurs peut varier.
+	Les indicateurs principaux de chaque dynamique sont ainsi \og incontournables\fg{}, c'est-à-dire qu'un résultat trop loin de celui des indices empiriques est disqualifiant.
+	Parmi les indicateurs secondaires, il n'est pas toujours possible, d'après les connaissances des experts sur le sujet, d'établir une priorité ou une pondération de chaque indicateur. L'évaluation de la polarisation par exemple (\cpageref{subsub:polarisation}), se définit principalement par rapport à un indicateur principal -- le taux de foyers paysans dispersés --, mais selon les résultats des autres indicateurs de sortie, on leur attribuera une importance variable. L'étude de la dispersion des agrégats et pôles peut ainsi se révéler plus importante que celle de l'évolution du nombre d'agrégats selon les paramètres que l'on souhaite ajuster, ou se montrer tout au moins plus différenciante selon l'état du paramétrage.
+	
+	
+	\begin{encadre}{Incrémentalité des indicateurs}{construction-indicateurs}
+		De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnotemark{} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
+		
+		Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique. Par exemple, quand on observe le phénomène de polarisation dans les sorties de SimFeodal, l'indicateur du nombre d'agrégats est extrêmement synthétique et informatif jusqu'à ce que l'objectif soit atteint ou que les modifications ne parviennent plus à le faire évoluer. À partir de ce moment, afin d'améliorer la vraisemblance de la situation simulée par le modèle, on peut se focaliser sur la distribution spatiale de ces agrégats, par exemple pour vérifier qu'ils sont bien répartis de manière homogène dans l'espace, et non trop concentrés.
+
+		L'observation de la répartition spatiale requiert certes de nouvelles analyses, mais surtout, par exemple, d'enregistrer les positions des agrégats au cours du temps. Si cet indicateur de sortie n'était pas utile avant cela, il n'y avait aucun interêt à l'enregistrer. Il faut donc adapter l'implémentation du modèle pour enregistrer ce nouvel indicateur. Dès lors, on pourra composer un nouvel indicateur synthétique, qui, dans cet exemple, pourrait prendre la forme d'un indice de concentration spatiale).
+		
+		Ce procédé incrémental dans la construction des indicateurs est très fréquent, mais pose toutefois un problème majeur : sauf à adapter chacune des anciennes versions du modèle implémenté pour y ajouter l'enregistrement des nouveaux indicateurs nécessaires, on ne pourra rendre strictement comparable les sorties de toutes les itérations du modèles informatique. Et même alors, il faudrait ré-executer des réplications de chaque version du modèle implementé à chaque ajout d'indicateur, quand bien même les indicateurs présent initialement étaient jugés suffisants. Un dernier obstacle est plus gênant : certains indicateurs sont spécifiques à des mécanismes, et en cas de changement de ces derniers, ils peuvent ne plus être calculables ou simplement comparables. Par exemple, des versions antérieures du modèle enregistraient les comportements individuels des foyers paysans quant à leur \og choix\fg{} de déplacement, selon qu'ils étaient à l'origine localisés dans un agrégat ou dispersés. Une simplification du modèle a abouti à la modification des règles différenciant les possibilités de déplacement : on n'observe plus si le foyer paysan est dans un agrégat, mais plutôt s'il est dans un agrégat doté d'un pôle d'attraction. Dès lors, les analyses basées sur les choix de déplacement des foyers paysans selon leur origine ne sont plus comparables avec celles des versions antérieures au changement dans le modèle, quels que soient les détails d'implémentation de ce dernier.
+		
+		Ces éléments expliquent que dans les résultats de chaque étape du paramétrage du modèle, on ne présente pas systématiquement l'ensemble des indicateurs, y compris quand ceux-ci pourraient être plus pertinents que les indicateurs présentés.
+	\end{encadre}
+\footnotetext{De manière incrémentielle et itérative, voir \hl{dans le chapitre x?} et http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}
+	
+	
+	\pagebreak
+	\subsubsection{Évaluer la polarisation des foyers paysans \label{subsub:polarisation}}
+	
+	La polarisation des foyers paysans dans l'espace du modèle est sans doute le fait stylisé principal parmi ceux que l'on cherche à reproduire. Rappelons ici que l'on estime, à partir des connaissances d'experts, que les foyers paysans sont très majoritairement dispersés en 800, et concentrés au sein de villages et petites villes en 1100.
+	Le modèle cherche à reproduire cette polarisation, par le biais d'une concentration des foyers paysans, initialement localisés aléatoirement dans l'espace mais n'en couvrant qu'une faible part, en des agrégats répartis dans une large partie de l'espace modélisé.
+	
+	Pour analyser ce fait stylisé que constitue la polarisation, il est nécessaire de définir des indicateurs permettant de caractériser cette dynamique. Ces indicateurs doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais aussi être observables dans le modèle de simulation, où l'on parlera alors d'indicateurs de sortie.
+	En analysant les valeurs que ces indicateurs prennent en sortie de simulation, on pourra alors juger de la capacité du modèle à reproduire le phénomène de polarisation.
+	
+	Pour l'étude de la polarisation, on a choisi de faire appel à plusieurs indicateurs fournissant des indices hétérogènes et de précision variable.
+	
+	L'indicateur principal est le taux de dispersion des foyers paysans. Si celui-ci est trop important (c'est-à-dire très supérieur aux valeurs estimées empiriquement), cela signifie que la polarisation générée par le modèle est insuffisante, et dès lors, obligatoirement insatisfaisante.
+	
+	Pour affiner ce constat, on fait appel à d'autres indicateurs : le nombre d'agrégats, de pôles, ou encore la dispersion spatiale de ces deux types d'entités.
+	Ces indicateurs ne permettent pas, à eux seuls, de caractériser le succès de la dynamique de polarisation modélisée, mais ils aident à affiner l'analyse de cette dynamique telle que produite par le modèle de simulation.
+	Ils éclairent ainsi le phénomène de polarisation sous des angles légèrement différents, ayant plus pour objet de diagnostiquer les problèmes potentiels qui mèneraient à une mauvaise polarisation plutôt que de qualifier celle-ci.
+	Par exemple, la dispersion des agrégats et pôles peut renseigner, une fois le taux de foyers paysans dispersé jugé trop important, sur une des raisons probables de ce résultat non satisfaisant.
+	Il s'agit donc d'indicateurs secondaires, permettant de préciser la capacité du modèle à reproduire les faits stylisés, alors que l'évaluation de cette capacité est surtout le rôle de l'indicateur principal.
+	
+	\paragraph{Taux de foyers paysans dispersés}
+	
+	Cet indicateur, et sa déclinaison temporelle, sont vraisemblablement les plus évidents : plus le taux de foyers paysans dispersés en fin de simulation est faible, plus le système de peuplement est polarisé. On a vu \footnote{\hl{Ne pas oublier de présenter les objectifs dans chapitre 2. Ou alors, on les présente ici au fur et à mesure qu'on mentionne les indicateurs}} qu'empiriquement, autour de 1160, on observe environ $20\%$ de foyers paysans encore dispersés, alors qu'ils sont près de $95\%$ au départ.
+	Le modèle sera donc d'autant plus satisfaisant que cet indicateur s'approchera de $20\%$ en fin de simulation.
+	
+	La \og déclinaison temporelle\fg{} mentionnée juste au dessus permet d'affiner légèrement la précision de l'information communiquée par cet indicateur : il faut certes atteindre un objectif quantifié ($20\%$), mais les hypothèses empiriques permettent aussi de penser qu'il faut que l'évolution de cet indicateur au cours du temps présente une tendance stable à la diminution, diminuant ainsi plus ou moins, avec de faibles fluctuations à chaque pas de temps.
+	Une configuration de paramètres atteignant l'objectif en fin de simulation mais fluctuant fortement ne sera ainsi pas valide, faisant apparaître un phénomène trop aléatoire dont on ne peux penser qu'il s'est déroulé historiquement.
+	
+	\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	Dans la version 0 de SimFeodal, on atteint en moyenne (moyenne des réplications) $\textbf{57\%}$ de foyers paysans isolés en fin de simulation.
+	C'est un taux bien trop important, illustrant dès lors une polarisation trop faible. Qui plus est, alors que cet indicateur est en diminution constante (\cref{fig:taux-isoles-v0}) pendant la première moitié de la période, on le voit se stabiliser puis augmenter, résultant ainsi en ce taux très éloigné de l'objectif.
+	\end{mdframed}
+	
+	\begin{figure}[H]
+		\captionsetup{width=\linewidth}
+		\includegraphics[width=\linewidth]{img/resultats/v0_taux_FP_isoles.pdf}
+		\caption{Évolution de la part des foyers paysans isolés.} 
+		\label{fig:taux-isoles-v0} 
+	\end{figure}
+	
+	\paragraph{Nombre d'agrégats}
+	
+	Puisque les foyers paysans se concentrent au sein d'agrégats, il est logique d'observer l'évolution de ces derniers. Là aussi, (\hl{objectif à définir}), on peut considérer qu'un nombre d'agrégats en fin de simulation proche de l'objectif, $200$, permet de caractériser une polarisation réussie. Cet indicateur ne peut être lu seul, et c'est pour cela qu'il vient dans un second temps : en effet, un faible nombre d'agrégats peut aussi bien être révélateur d'une très faible polarisation des foyers paysans (ceux-ci restant dispersés) que d'une trop importante (un unique agrégat concentrant l'ensemble des foyers paysans par exemple).
+	Une fois le taux de foyers paysans dispersés connu et ces potentiels biais pris en compte, le nombre d'agrégats et son évolution nous renseigne cependant sur les dynamiques de polarisation. 
+	On s'attend ainsi à ce que le nombre d'agrégats, très faible au départ (24 dans la version 0), suive trois phases : une première phase de croissante lente, le temps que les mécanismes agissent sur la polarisation, suivie d'une période de croissance plus rapide, une fois que tous les foyers paysans commenceront à être suffisament attirés par les pôles pour y former des agrégats, et enfin, une nouvelle phase de croissante plus lente, une fois les foyers paysans répartis dans les agrégats existants et qui se déplaceront vers des agrégats plus importants, hiérarchisant le système de peuplement. Cette allure d'évolution rappelle les fonctions logistiques connues par exemple pour les cycles de diffusion/adoption des innovations \hl{ref Pumain ou MN Comin}, et résulte des connaissances expertes des archéologues spécialistes de la période.
+	
+	\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+		Le nombre d'agrégats est assez satisfaisant dans la version 0 du modèle. Il s'élève ainsi à $\textbf{187}$ en moyenne, cette dernière étant d'ailleurs stable au regard des réplications. L'écart à l'objectif ($200$) est donc assez minime. On a toutefois vu que le taux de foyers paysans isolé était bien trop important, et dès lors, ces agrégats sont logiquement composés de trop peu de foyers paysans.
+		
+		L'observation de cet indicateur au cours du temps (\cref{fig:nombre-agregats-v0}) est quant à elle assez satisfaisante : on retrouve bien les trois phases attendues, quand bien même le début de la croissance plus importante (vers 1000 ici) est un peu trop tardive. Ce moment coïncide de plus avec la stagnation puis l'inversion de la courbe d'évolution de la part de foyers paysans isolés.
+		
+		On peut quand même considérer que si la polarisation n'est pas assez importante, les structures qui en résultent semblent correspondre à l'empirie.
+	\end{mdframed}
+
+	\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_agregats.pdf}
+	\caption{Évolution du nombre d'agrégats.} 
+	\label{fig:nombre-agregats-v0} 
+\end{figure}
+
+		\colorbox{pink}{\parbox{0.9\textwidth}{%
+		\vskip5pt
+		\leftskip5pt\rightskip5pt
+		Il y a un problème ici par rapport à ce qui a été mis dans le chapitre : dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'analyse de Base, il y en a 187...
+		\vskip5pt
+		}
+	}	
+		
+	\paragraph{Nombre de pôles}
+	
+	Dans le modèle SimFeodal, les foyers paysans sont polarisés par des pôles d'attraction. Pour une polarisation efficace, il est donc nécessaire que les pôles soient suffisamment nombreux, c'est-à-dire, \textit{a minima}, autant que d'agrégats attendus ($200$). Contrairement aux agrégats, un nombre trop important de pôles ne constitue pas un problème : en considérant que $20\%$ des foyers paysans doivent demeurer isolés en fin de simulation, il est vraisemblable qu'une partie des pôles, par exemple composés d'une église paroissiale, n'aient pas vocation à voir la constitution d'un agrégat autour d'eux.
+	
+	Par ailleurs, afin de renforcer la polarisation par l'action de l'attraction différenciée -- selon le nombre de foyers paysans contenus dans chaque agrégat\footnote{L'attraction qu'exercent les pôles contenant des agrégats de population est ainsi plus forte lorsque ces derniers sont constitués d'un nombre de foyers paysans important, et moindre quand ce nombre est faible. Cela place ce mécanisme dans une logique proche de celle de l'attachement préférentiel identifié par \autocite{yule1925ii} et  \autocite{simon1955class}, cités par \autocite[93]{schmitt_modelisation_2014-1}) \label{ftn:attachement-preferentiel}} --, il faut que le taux de pôles contenant un agrégat soit important, et surtout croissant au cours du temps : comme dans l'empirie, cela est alors le marqueur que de petits pôles d'attractions, comme les églises paroissiales, parviennent à polariser suffisament de foyers paysans de leur voisinage pour aboutir à la création d'un petit agrégat, un village par exemple.
+	
+	Pour un résultat satisfaisant, il faut donc que le nombre de pôles augmente régulièrement au cours de la durée de la simulation, et que le taux de pôles contenant un agrégat augmente lui aussi de manière continue.
+
+	\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+		L'évolution du nombre de pôles est assez représentative de l'empirie dans la version 0 de SimFeodal. On aboutit ainsi sur $\textbf{190}$ pôles en moyenne en fin de simulation, ce qui est dans le bon ordre de grandeur, quoi qu'un peu trop faible. Ce nombre est en croissance constante à partir de 940 (\cref{fig:nombre-poles-v0}). Ce départ quelque peu tardif peut expliquer le relatif manque de pôles en fin de simulation.
+
+		L'analyse de la constitution de ces pôles en matière d'agrégat est toutefois plus décevante : la croissance n'est pas linéaire, stagnant entre 940 et 1000, puis à partir de 1040. On constate ici un mauvais comportement du modèle par rapport à l'empirie : il y a création de nombreux pôles, mais ceux-ci ne suffisent pas à polariser les foyers paysans. On peut donc penser qu'il s'agit de nombreux pôles ruraux, par exemple composés d'une unique église paroissiale, ne suffisant dès lors pas à concentrer les foyers paysans alentours.
+	
+		Dans cette dimension, comme pour l'indicateur principal qu'en est le taux de foyers paysans dispersé, l'effet de la polarisation apparaît nettement trop faible.
+	\end{mdframed}
+
+
+	\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_poles.pdf}
+	\caption{Évolution du nombre de pôles et du taux de pôles contenant un agrégat.} 
+	\label{fig:nombre-poles-v0} 
+	\end{figure}
+	
+	\paragraph{Dispersion des agrégats et pôles}
+	
+	Les indicateurs présentés ci-dessus avaient en commun d'être des indicateurs de sortie, générés automatiquement, et présentés sous forme d'agrégations des réplications. Pour préciser l'analyse de la polarisation, il est toutefois nécessaire d'aborder une dimension qui n'est fondamentalement pas agrégeable dans les indicateurs de sortie : l'espace du modèle. Comme celui-ci est théorique et aléatoire, il n'y a aucun sens à agréger des entités différentes, par exemple des agrégats, sachant que ceux-ci occupent des localisation aléatoires et ne sont pas identifiables en tant que tels.
+	
+	On ne peut cependant pas se passer d'une analyse spatiale de la répartition des pôles et agrégats afin de comprendre les dynamiques effectivement simulées par le modèle. La distribution spatiale des agrégats et des pôles est en effet un facteur majeur de la polarisation : s'ils sont très concentrés, les foyers paysans non présents alentours ne trouveront pas d'attracteurs à proximité, et ne seront de plus pas particulièrement affectés par l'augmentation des droits (banaux etc.) et des contraintes spatiales (proximité à une église, à un château etc.). A l'inverse, des agrégats entièrement dispersés ne favoriseraient pas la structure spatiale hiérarchisée que l'on chercher à faire émerger.
+	
+	Afin que le comportement du modèle soit satisfaisant, il faut donc que les pôles et agrégats occupent l'ensemble de l'espace du modèle, tout en présentant des zones de concentration relatives plus importantes. Comme on ne peut agréger les représentations spatiales, il convient, pour cette analyse, de regarder individuellement un échantillon de configurations spatiales générées.
+	
+	\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+		La lecture des cartes de répartition des agrégats et des pôles de deux réplications de la version 0 (\cref{fig:cartes-agregats-v0}) va, dans l'ensemble, dans le sens de l'empirie. On peut ainsi remarquer que ces entités ont bien tendance, au cours du temps, à se disperser dans l'espace modélisé. En fin de simulation, tout l'espace est occupé, et on remarque même que certaines zones voient une forte concentration en agrégats, reproduisant les faits stylisés connus. La répartition spatiale des agrégats -- et des pôles -- est donc bonne, et ne semble pas opposer d'obstacle à la polarisation attendue du système de peuplement.
+		
+		Ce résultat peut cependant être nuancé par l'observation de la dynamique de cette dispersion : on constate ainsi que la dispersion s'effectue rapidement (entre 800 et 940), et n'évolue plus vraiment après. Ce phénomène est donc plus rapide dans cette version 0 du modèle que dans les connaissances empiriques de la région Touraine.
+		
+		On peut enfin remarquer, en préalable aux dynamiques de hiérarchisation du système que l'on s'apprête à étudier, que ces sorties illustrent un manque criant de hiérarchie quant à la composition des agrégats : on ne remarque, visuellement, que peu de différence entre les agrégats, et surtout, cette hiérarchie semble faiblir entre 1040 et 1160 (les agrégats les plus importants ont vu leur nombre de foyers paysans diminuer).
+	\end{mdframed}
+	
+	\begin{figure}[H]
+		\captionsetup{width=\linewidth}
+		\includegraphics[width=.47\linewidth]{img/resultats/v0_cartes_agregats.pdf}
+		\includegraphics[width=.47\linewidth]{img/resultats/v0_cartes_poles.pdf}
+		\caption{Évolution de la répartition spatiale des agrégats et pôles, pour deux réplications.} 
+		\label{fig:cartes-agregats-v0} 
+	\end{figure}
+	
+	\subsubsection{Évaluer la hiérarchisation du système de peuplement}
+	
+	Le second grand fait stylisé que l'on cherche à reproduire dans SimFeodal correspond à une forte hiérarchisation du système de peuplement et plus généralement, des entités présentes. On passe ainsi, en 800, d'un habitat dispersé dans lequel coexistent quelques agrégats de taille uniforme, à un habitat concentré dans des agrégats de taille très hétérogènes. La distribution des tailles des agrégats est estimée par les connaissances expertes, toutes proportions gardées, comme assez proche des distributions observées aujourd'hui dans les systèmes de peuplement.
+	On souhaite ainsi que les agrégats modélisés suivent une distribution approchant la distribution log-normale.
+	
+	Par extension, et là encore d'après les connaissances thématiques, l'ensemble des entités doit aussi suivre le même type de forme. Par exemple, les pôles, tant en terme d'attractivité que de composition, doivent aussi montrer une hiérarchie du même ordre, ainsi que les seigneurs -- à travers leur puissance, au moins pour les petits seigneurs --, ou encore les paroisses, par le nombre de paroissiens qu'elles desservent.
+	
+	Comme pour l'étude de la polarisation, on peut définir un indicateur principal de cette hiérarchisation du système de peuplement : la forme de la distribution de la composition en foyers paysans des agrégats.
+	
+	De la même manière que pour la polarisation, les indicateurs secondaires ont aussi pour but de préciser cet indicateur principal, et en particulier d'analyser les moteurs de cette hiérarchisation du peuplement.
+	On a en effet choisi d'observer plutôt la hiérarchisation des autres types d'entités -- pôles, seigneurs, paroisses --, pour vérifier qu'elles accompagnent et/ou entraînent bien la hiérarchisation des agrégats. La hiérarchie des pôles, par exemple, a une influence directe sur l'attraction effectuée sur les foyers paysans (polarisation) et sur la hiérarchisation des agrégats : par effet d'attraction différenciée (voir la note de bas de page \ref{ftn:attachement-preferentiel} \cpageref{ftn:attachement-preferentiel}), des agrégats plus importants se constituent autour des pôles les plus importants.
+	
+	Comme pour la polarisation, l'analyse de la capacité du modèle a reproduire la hiérarchisation du système de peuplement se fait donc en deux temps : en premier lieu, on évalue cette capacité à l'aide de l'indicateur principal, puis on précise cette qualification et on essaie de l'expliquer à l'aide des indicateurs secondaires.
+	
+	
+	\paragraph{Hiérarchie des agrégats}
+	
+	L'indicateur principal est un indicateur agrégé, correspondant à la forme de la distribution des agrégats mesurés par le nombre de foyers paysans qui les composent. Cet indicateur est classique dans l'analyse des systèmes de peuplement, et il est courant de l'observer par le biais d'un indicateur agrégé simple, correspondant à la loi rang-taille. On observe pour cela le modèle statistique, ou sa représentation graphique tout du moins, mettant en relation le logarithme de la taille des individus (le nombre de foyers paysans composant chaque agrégat ici) et le logarithme du rang de cet individu. Comme pour toute régression linéaire, on peut alors quantifier l'ajustement du modèle grâce au coefficient de détermination ($R^2$), et spécifier la pente de la courbe, représentant le degré de hiérarchie, à travers le coefficient directeur ($a$ dans la formule $y = ax + b$).
+	
+	Dans le cas de SimFeodal, le faible nombre d'agrégats ainsi que la variabilité de leurs tailles rend difficile cette analyse quantifiée, le coefficient directeur, par exemple, étant très sensible aux faibles effectifs. On utilise toutefois la représentation graphique décrite comme un indicateur majeur de la hiérarchie des agrégats.
+	
+	Du point de vue des connaissances empiriques, la courbe doit ainsi voir sa pente augmenter avec le temps, tout en devenant plus convexe, ce qui représente la \og longue traine\fg{} des petits agrégats, empiriquement observée dans toutes les distributions de systèmes de peuplement.
+	
+	Avec une autre représentation graphique du même phénomène, en discrétisant les agrégats selon leur taille et en dénombrant le nombre d'agrégats de chaque classe, on peut aussi avoir une vision plus synthétique (car moins exhaustive) de la forme de la distribution. On doit alors obtenir un nombre décroissant d'agrégats à mesure que la classe représente un nombre élevé de foyers paysans.
+	
+	\colorbox{pink}{\parbox{0.9\textwidth}{%
+		\vskip5pt
+		\leftskip5pt\rightskip5pt
+			Ça vaudrait peut-être le coup, pour chaque indicateur présenté sous forme graphique (évolution ou forme), de faire un graphique théorique (une sorte de courbe parfaite) de ce que l'on souhaite observer.
+			\vskip5pt
+		}
+	}
+	
+	\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+		La version 0 de SimFeodal présente une hiérarchisation des agrégats nettement trop faible. La courbe rang-taille (\cref{fig:rt-agregats-v0}) est ainsi trop faiblement pentue, et présente une forme trop linéaire : la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs  en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
+		Ce résultat de simulation est d'autant plus perturbant que son évolution est éloignée de l'empirie : on remarque en effet que la distribution se hiérarchise bien entre 800 et 1020, présentant à cette date une allure très satisfaisante. Pourtant, après cette période, les agrégats voient leur hiérarchie diminuer nettement et les agrégats les plus peuplés diminuer en taille.
+		
+		On constate le même décrochage dans la discrétisation des agrégats (\cref{fig:compo-agregats-v0}), où on remarque de plus que la hiérarchie la plus proche de l'attendu, où la position des classes suivrait une ligne droite, semble se dessiner entre 940 et 1040. En 1040, et plus encore en 1160, la proportion d'agrégats de taille moyenne et haute (de 30 à 100, et de plus de 100 foyers paysans) est trop faible, et pas assez hiérarchisée.
+		
+	\end{mdframed}
+	
+		\begin{figure}[H]
+			\captionsetup{width=\linewidth}
+			\includegraphics[width=.8\linewidth]{img/resultats/v0_rt_agregats.pdf}
+			\caption{Évolution de la courbe rang-taille des agrégats.} 
+			\label{fig:rt-agregats-v0} 
+		\end{figure}
+	
+		\begin{figure}[H]
+		\captionsetup{width=\linewidth}
+		\includegraphics[width=.8\linewidth]{img/resultats/v0_compo_agregats.pdf}
+		\caption{Évolution de la composition des agrégats.} 
+		\label{fig:compo-agregats-v0} 
+	\end{figure}
+	
+	\paragraph{Hiérarchie des pôles}
+	
+		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+			(\cref{fig:compo-poles-v0})
+		\end{mdframed}
+	
+	\begin{figure}[H]
+		\captionsetup{width=\linewidth}
+		\includegraphics[width=\linewidth]{img/resultats/v0_compo_poles.pdf}
+		\caption{Évolution de la composition et de l'attractivité des pôles.} 
+		\label{fig:compo-poles-v0} 
+	\end{figure}
+	
+	\paragraph{Hiérarchie des paroisses}
+	
+	\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+		(\cref{fig:compo-paroisses-v0})
+	\end{mdframed}
+	
+	\begin{figure}[H]
+		\captionsetup{width=\linewidth}
+		\includegraphics[width=\linewidth]{img/resultats/v0_compo_paroisses.pdf}
+		\caption{Évolution de la composition des paroisses.} 
+		\label{fig:compo-paroisses-v0} 
+	\end{figure}
+	
+	
+	
+	\subsubsection{Évaluer la fixation et la dissémination du peuplement}
+	
+	\paragraph{Stabilité}
+	
+%	\paragraph{title}
+	
 
 	On se focalise sur les agrégats :
 	\begin{itemize}
@@ -450,15 +753,6 @@
 	\subsubsection{De manière générale}
 	
 	\subsection{Les étapes du paramètrage de SimFeodal}
-	
-	\subsubsection{Schéma d'ensemble des étapes de paramétrage}
-	
-	\begin{figure}[H]
-	\includegraphics[width = \linewidth]{img/schema_etapes_complexe.pdf}
-	\caption{Les étapes du paramétrage de SimFeodal.}
-	\label{fig:etapes-parametrage-simfeodal}
-\end{figure}
-	
 	
 	\pagebreak
 	\begin{footnotesize}
@@ -516,7 +810,7 @@
 	
 	\paragraph{Indicateurs généraux}
 	
-	\begin{table}[]
+	\begin{table}[H]
 		\centering
 		\caption{Indicateurs synthétiques de l'étape 1}
 		\label{my-label}
@@ -531,17 +825,79 @@
 			Ratio Charge Fisc. & 3.00     & 5.15   
 		\end{tabular}
 	\end{table}
-	
+
+\pagebreak
 	\subsubsection{Étape 1}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 1]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 1 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 2}
+		\begin{figure}[H]
+				\centering
+				\includegraphics[width = \linewidth, page = 2]{img/schemas_etapes_individuelles.pdf}
+				\caption{Étape 2 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 3}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 3]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 3 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 4}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 4]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 4 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 5}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 5]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 5 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 6}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 6]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 6 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 7}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 7]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 7 du paramétrage et résultats.}
+		\end{figure}
+
+\pagebreak
 	\subsubsection{Étape 8}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \linewidth, page = 8]{img/schemas_etapes_individuelles.pdf}
+			\caption{Étape 8 du paramétrage et résultats.}
+		\end{figure}
 	
+	\pagebreak
 	\subsection{Un bilan des changements majeurs à l'issu du paramétrage}
+	
+	\begin{figure}[H]
+		\includegraphics[width = \linewidth, page = 1]{img/schema_etapes_complet.pdf}
+		\caption{Schéma récapitulatif et synthétique des étapes du paramétrage de SimFeodal.}
+		\label{fig:etapes-parametrage-simfeodal}
+	\end{figure}
 	
 	\section{Comment traiter les sorties du modèle ?}
 	\subsection{Variabilité}
