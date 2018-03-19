@@ -119,13 +119,9 @@ Une configuration de paramètres présentant des valeurs d'indicateurs en sortie
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
 	
-	\colorbox{pink}{\parbox{0.9\textwidth}{%
-			\vskip5pt
-			\leftskip5pt\rightskip5pt
+	\todobox{
 			Expliciter/développer un peu plus les résultats de la v0
-			\vskip5pt
-		}
-	}	
+			}
 	
 	Dans la version 0 de SimFeodal, on atteint en moyenne (moyenne des réplications) $\textbf{57\%}$ de foyers paysans isolés en fin de simulation.
 	C'est un taux bien trop important, illustrant dès lors une polarisation trop faible. Qui plus est, alors que cet indicateur est en diminution constante (\cref{fig:taux-isoles-v0}) pendant la première moitié de la période, on le voit se stabiliser puis augmenter, résultant ainsi en ce taux très éloigné de l'objectif.
@@ -159,12 +155,8 @@ D'après les connaissances expertes, on s'attend à ce que le nombre d'agrégats
 	\label{fig:nombre-agregats-v0} 
 \end{figure}
 
-\colorbox{pink}{\parbox{0.9\textwidth}{%
-		\vskip5pt
-		\leftskip5pt\rightskip5pt
+\todobox{
 		Il y a un problème ici par rapport à ce qui a été mis dans le chapitre : dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'analyse de Base, il y en a 187...
-		\vskip5pt
-	}
 }	
 
 \paragraph{Nombre de pôles}
@@ -240,13 +232,9 @@ Du point de vue des connaissances empiriques, la courbe doit ainsi voir sa pente
 
 Avec une autre représentation graphique du même phénomène, en discrétisant les agrégats selon leur taille et en dénombrant le nombre d'agrégats de chaque classe, on peut aussi avoir une vision plus synthétique (car moins exhaustive) de la forme de la distribution. On doit alors obtenir un nombre décroissant d'agrégats à mesure que la classe représente un nombre élevé de foyers paysans.
 
-\colorbox{pink}{\parbox{0.9\textwidth}{%
-		\vskip5pt
-		\leftskip5pt\rightskip5pt
+\todobox{
 		Ça vaudrait peut-être le coup, pour chaque indicateur présenté sous forme graphique (évolution ou forme), de faire un graphique théorique (une sorte de courbe parfaite) de ce que l'on souhaite observer.
-		\vskip5pt
-	}
-}
+		}
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
 	La version 0 de SimFeodal présente une hiérarchisation des agrégats nettement trop faible. La courbe rang-taille (\cref{fig:rt-agregats-v0}) est ainsi trop faiblement pentue, et présente une forme trop linéaire : la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs  en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
@@ -303,10 +291,7 @@ Avec une autre représentation graphique du même phénomène, en discrétisant 
 %\paragraph{Stabilité}
 
 
-\colorbox{pink}{\parbox{0.9\textwidth}{%
-		\vskip5pt
-		\leftskip5pt\rightskip5pt
-		
+\todobox{		
 		\begin{itemize}
 			\item \textbf{Polarisation} : il faut qu'ils rassemblent les FP (taux isolés faible),
 			\item \textbf{Hiérarchisation} : qu'ils soient hiérarchisés (composition des agrégats en FP doit tendre vers log-normale),
@@ -335,7 +320,4 @@ Avec une autre représentation graphique du même phénomène, en discrétisant 
 			\end{itemize}
 			
 		\end{itemize}
-		
-		\vskip5pt
-	}
 }	

@@ -38,7 +38,7 @@
 \usepackage{enumitem}
 
 \usepackage[hyperfootnotes=false]{hyperref}
-\usepackage{cleveref}
+\usepackage[noabbrev, nameinlink]{cleveref}
 
 \usepackage{longtable}
 \usepackage{array}
@@ -84,3 +84,23 @@ date=year]{biblatex}
 }
 % Highlight
 \newcommandx{\fixref}[1]{\hl{#1}}
+
+% ToDoBox
+%\newcommandx{\todobox}[2][1=]{%
+%	\colorbox{pink}{\parbox{0.9\textwidth}{\vskip5pt
+%			\leftskip5pt
+%			\rightskip5pt
+%			#2
+%			\vskip5pt
+%	}\bigskip
+%}
+%}
+\newcommandx{\todobox}[2][1=]{%
+	~\\	\colorbox{pink}{\parbox{0.9\textwidth}{%
+		\vskip5pt
+		\leftskip5pt\rightskip5pt
+		#2
+		\vskip5pt
+	}~\\
+}
+}
