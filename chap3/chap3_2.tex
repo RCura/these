@@ -139,8 +139,9 @@ Parmi les indicateurs secondaires, il n'est pas toujours possible, d'après les 
 
 \subsubsection{Évaluer la polarisation des foyers paysans \label{subsub:polarisation}}
 
-La polarisation des foyers paysans dans l'espace du modèle est sans doute le fait stylisé principal parmi ceux que l'on cherche à reproduire. Rappelons ici que l'on estime, à partir des connaissances d'experts, que les foyers paysans sont très majoritairement dispersés en 800, et concentrés au sein de villages et petites villes en 1100.
+La polarisation des foyers paysans dans l'espace du modèle est sans doute la dimension principale des dynamiques spatiales que l'on cherche à reproduire. Rappelons ici que l'on estime, à partir des connaissances d'experts, que les foyers paysans sont très majoritairement dispersés en 800, et concentrés au sein de villages et petites villes en 1100.
 Le modèle cherche à reproduire cette polarisation, par le biais d'une concentration des foyers paysans, initialement localisés aléatoirement dans l'espace mais n'en parsemant qu'une faible part, en des agrégats de foyers paysans répartis dans dans une plus large partie de l'espace modélisé.
+\todobox{Mettre un schéma pour rendre compréhensible cette contradiction apparente.}
 
 Pour analyser la polarisation du système de peuplement, il est nécessaire de définir des indices permettant de caractériser ce phénomène. Ces indices doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais doivent  pouvoir être produits et enregistrés dans le modèle de simulation, formant des indicateurs.
 
@@ -164,12 +165,11 @@ Une configuration de paramètres présentant des valeurs d'indicateurs en sortie
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
 	
-	\todobox{
-			Expliciter/développer un peu plus les résultats de la v0
-			}
-	
 	Dans la version 0 de SimFeodal, on atteint en moyenne (moyenne des réplications) $\textbf{57\%}$ de foyers paysans isolés en fin de simulation.
-	C'est un taux bien trop important, illustrant dès lors une polarisation trop faible. Qui plus est, alors que cet indicateur est en diminution constante (\cref{fig:taux-isoles-v0}) pendant la première moitié de la période, on le voit se stabiliser puis augmenter, résultant ainsi en ce taux très éloigné de l'objectif.
+	C'est un taux bien plus important que les $20\%$ attendus, illustrant dès lors une polarisation trop faible.
+	Dans la première moitiée de la période (jusqu'en 1000, (\cref{fig:taux-isoles-v0})), le taux est en diminution constante et linéaire, ce qui est une bonne tendance, et ne présente de plus presque pas de variabilité, ce qui l'est aussi.
+	Pourtant, à partir de 1000, la variabilité augmente, et le la diminution du taux au cours du temps s'interrompt, avant de prendre une allure croissante.
+	L'allure de la courbe sur la seconde moitié de la simulation est donc très éloignée de ce qui est attendu au regard des connaissances empiriques, aussi bien en matière de tendance qu'à la vue du taux décevant atteint au final.
 \end{mdframed}
 
 \begin{figure}[H]
@@ -230,7 +230,7 @@ Pour un résultat satisfaisant, il faut donc que le nombre de pôles augmente r�
 	\label{fig:nombre-poles-v0} 
 \end{figure}
 
-\paragraph{Dispersion des agrégats et pôles}
+\paragraph{Dispersion des agrégats et pôles}\label{par:polarisation-dispersion}
 
 Les indicateurs présentés ci-dessus avaient en commun d'être des indicateurs de sortie, générés automatiquement, et présentés sous forme d'agrégations des réplications. Pour préciser l'analyse de la polarisation, il est toutefois nécessaire d'aborder une dimension qui n'est fondamentalement pas agrégeable dans les indicateurs de sortie : l'espace du modèle. Comme celui-ci est théorique et aléatoire, il n'y a aucun sens à agréger des entités différentes, par exemple des agrégats, sachant que ceux-ci occupent des localisation aléatoires et ne sont pas identifiables en tant que tels.
 
@@ -256,7 +256,8 @@ Afin que le comportement du modèle soit satisfaisant, il faut donc que les pôl
 
 \subsubsection{Évaluer la hiérarchisation du système de peuplement}
 
-Le second grand fait stylisé que l'on cherche à reproduire dans SimFeodal correspond à une forte hiérarchisation du système de peuplement et plus généralement, des entités présentes. On passe ainsi, en 800, d'un habitat dispersé dans lequel coexistent quelques agrégats de taille uniforme, à un habitat concentré dans des agrégats de taille très hétérogènes. La distribution des tailles des agrégats est estimée par les connaissances expertes, toutes proportions gardées, comme assez proche des distributions observées aujourd'hui dans les systèmes de peuplement.
+La seconde dimension de l'évaluation du modèle SimFeodal correspond à l'étude de la hiérarchisation du système de peuplement.
+On déduit en effet des connaissances empiriques une forte hiérarchisation du système de peuplement sur la période, et plus généralement, des entités présentes. On passe ainsi, en 800, d'un habitat dispersé dans lequel coexistent quelques agrégats de taille uniforme, à un habitat concentré dans des agrégats de taille très hétérogènes à la fin du XIIème siècle. La distribution des tailles des agrégats est estimée par les connaissances expertes, toutes proportions gardées, comme assez proche des distributions observées aujourd'hui dans les systèmes de peuplement.
 On souhaite ainsi que les agrégats modélisés suivent une distribution approchant la distribution log-normale.
 
 Par extension, et là encore d'après les connaissances thématiques, l'ensemble des entités doit aussi suivre le même type de forme. Par exemple, les pôles, tant en terme d'attractivité que de composition, doivent aussi montrer une hiérarchie du même ordre, ainsi que les seigneurs -- à travers leur puissance, au moins pour les petits seigneurs --, ou encore les paroisses, par le nombre de paroissiens qu'elles desservent.
@@ -307,7 +308,7 @@ Avec une autre représentation graphique du même phénomène, en discrétisant 
 
 \paragraph{Hiérarchie des pôles}
 
-La hiérarchie des agrégats donne une bonne vision agrégée de la hiérarchisation du système de peuplement dans son ensemble. Pour autant, afin d'appréhender la dynamique de cette dimension, il est là encore nécessaire d'observer le comportement des composantes qui provoquent cette hiérarchisation. En effet, une forte hiérarchie des pôles entraînera une attractivité des foyers paysans très inégale \footnote{En raison des logiques d'attachement préférentiel, voir la note de bas de page \ref{ftn:preferential-attachment} page \pageref{ftn:preferential-attachment}.} De plus, comme indiqué plus haut, on cherche à obtenir une forte hiérarchie pour les différents types d'agents du modèle. L'observation de la hiérarchie des pôles est donc importante pour évaluer le modèle SimFeodal.
+La hiérarchie des agrégats donne une bonne vision agrégée de la hiérarchisation du système de peuplement dans son ensemble. Pour autant, afin d'appréhender la dynamique de cette dimension, il est là encore nécessaire d'observer le comportement des composantes qui provoquent cette hiérarchisation. En effet, une forte hiérarchie des pôles entraînera une attractivité des foyers paysans très inégale \footnote{En raison des logiques d'attachement préférentiel, voir la note de bas de page \ref{ftn:preferential-attachment} page \pageref{ftn:preferential-attachment}.} De plus, comme indiqué plus haut, on cherche à obtenir une forte hiérarchi)e pour les différents types d'agents du modèle. L'observation de la hiérarchie des pôles est donc importante pour évaluer le modèle SimFeodal.
 Pour déterminer cette hiérarchie, on peut se fier à deux indicateurs complémentaires : le nombre d'attracteurs composant chaque pôle et l'attractivité de ces derniers. Ces indicateurs de sortie sont proches, mais apportent pourtant une vision légèrement différente : étant donné que chaque attracteur influe différemment, selon son type, sur l'attractivité globale d'un pôle, l'information sur l'attractivité et sur la composition ne sont pas redondantes, bien que fortement corrélées. On aurait pu présenter une information plus détaillée quant à cette composition, par exemple en différenciant le nombre de chacun des types d'attracteurs de chaque pôle, mais le nombre de combinaisons possible aurait rendu cette information confuse.
 
 À partir des connaissances expertes qui guident l'évaluation de SimFeodal, on cherche à obtenir, pour ces deux indicateurs, une courbe d'allure similaire, c'est-à-dire une courbe décroissante, avec bien plus de pôles mineurs (faible attractivité ou nombre d'attracteurs) que de pôles plus importants. On cherche de plus à ce que cette courbe présente une allure log-normale, et donc que la proportion de pôles décroisse fortement à mesure que leur importance augmente.
@@ -335,13 +336,16 @@ Pour déterminer cette hiérarchie, on peut se fier à deux indicateurs complém
 
 A l'instar des pôles, on attend aussi des ressorts paroissiaux d'être hiérarchisés. La période modélisée voit ainsi apparaître ces paroisses qui auront un rôle majeur dans la fixation du peuplement, et, pré-figurant le maillage communal, ont un double rôle de desserte efficace\footnote{C'est-à-dire desservir de manière optimale le plus gros de la population.} et équitable\footnote{C'est-à-dire faire en sorte que même les populations les plus isolées aient un accès aussi rapide que possible à une église paroissiale.}.
 En effet, avec la volonté d'encadrement et de prélèvement de l'Église sur la population, de nouvelles paroisses apparaissent pour desservir au mieux leurs potentielles ouailles.
-Une structure double en résulte: dans les zones les moins denses, le maillage est régulier mais lâche, de manière à minimiser le nombre d'églises paroissiales tout en s'assurant que chacun puisse y accéder dans un temps raisonnable\footnote{Cette distance-temps évolue au cours du temps, en fonction de l'accroissement de la fréquence de l'obligation de fréquentation des églises paroissiales.}. Il y a donc un certain nombre d'églises paroissiales desservant peu de paroissiens.
-Au contraire, dans les zones les plus denses, et en particulier au sein des petites villes naissantes, l'objectif est d'être au plus près des résidents tout en garantissant à chacun de pouvoir assister aux différents offices : il y donc une croissance du nombre d'églises paroissiales proches les unes des autres, visant à accompagner un encadrement maximum de la population, ainsi, avec une logique concurrentielle de ce clergé féodal, qu'à capter l'importante source de revenus qu'assure la collecte de la dîme.
+Une structure double en résulte : dans les zones les moins denses, le maillage est régulier mais lâche, de manière à minimiser le nombre d'églises paroissiales tout en s'assurant que chacun puisse y accéder dans un temps raisonnable\footnote{Cette distance-temps évolue au cours du temps, en fonction de l'accroissement de la fréquence de l'obligation de fréquentation des églises paroissiales.}. Il y a donc un certain nombre d'églises paroissiales desservant peu de paroissiens.
+Au contraire, dans les zones les plus denses, et en particulier au sein des petites villes naissantes, l'objectif est d'être au plus près des résidents tout en garantissant à chacun de pouvoir assister aux différents offices : il y donc une croissance du nombre d'églises paroissiales proches les unes des autres, visant à accompagner un encadrement maximum de la population, ainsi, avec une logique concurrentielle de ce clergé féodal, qu'à capter l'importante source de revenus qu'assure la collecte de la dîme. Cette logique concurrentielle doit aussi permettre de restreindre le nombre de foyers paysans desservis par une unique paroisse. 
 
+On s'attend donc à avoir une courbe hiérarchisée dans la lignée d'une courbe log-normale, mais avec toutefois un double seuil minimal (l'effet de \og longue traîne\fg{}), autour des paroisses \og rurales\fg{} peu peuplées (moins de 10 foyers paysans désservis) et des paroisses du bas de la hiérarchie classique, peuplées de 10 à 40 foyers paysans\footnote{D'après les valeurs des paramètres \texttt{nb\_min\_paroissiens} et \texttt{nb\_max\_paroissiens}}).
 
+\todobox{ici, impérativement, il faudra mettre un graphique schématique de ce qu'on attend.}
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	Description du résultat dans SimFeodal
+	En fin de simulation de cette version 0, la hiérarchie des paroisses est plutôt satisfaisante. On y retrouve en effet une forte hiérarchie, peut-être même légèrement trop importante. Il ne devrait ainsi par y avoir de paroisse composée de plus de $100$ foyers paysans en fin de simulation, et la courbe présente une pente trop importante (celles de 940 ou 1040 sont ainsi plus conformes aux attentes).
+	Pour autant, on remarque bien un effet de hiérarchisation au cours du temps, ainsi qu'un accroissement du nombre de petites paroisses, montrant que la dynamique, bien que non ajustée, s'inscrit bien dans la dynamique observée empiriquement.
 	(\cref{fig:compo-paroisses-v0})
 \end{mdframed}
 
@@ -353,38 +357,56 @@ Au contraire, dans les zones les plus denses, et en particulier au sein des peti
 \end{figure}
 
 
-
 \subsubsection{Évaluer la fixation et la dissémination du peuplement}
+
+\todobox{Intro : bien indiquer le fait que cette dernière dimension est bien plus qualitative et subjective que les autres. Par exemple, étude des cartes (pas de réplication donc). Ouverture en expliquant qu'on touche dans cette dimension bien plus à une étude des dynamiques internes, au niveau de l'agent, qu'à un niveau réellement agrégé.
+\begin{itemize}
+	\item Pas trop de déplacements des FP
+	\item Privilégier déplacements locaux
+	\item Régularité du maillage paroissial
+\end{itemize}}
+
+\paragraph{Déplacement des foyers paysans}
+
+
+\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	(\cref{fig:nb-deplacements-v0} et \cref{fig:type-deplacements-v0}).
+\end{mdframed}
+
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_deplacements.pdf}
+	\caption{Évolution du nombre de déplacement des foyers paysans.} 
+	\label{fig:nb-deplacements-v0} 
+\end{figure}
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_types_deplacements.pdf}
+	\caption{Évolution des types de déplacement des foyers paysans.} 
+	\label{fig:type-deplacements-v0} 
+\end{figure}
+
+\paragraph{Satisfaction des FP}
+
+Impact directemnt la fixation : quand FP trop mécontents, ne se fixent jamais à un endroit et l'apparente stabilité des agrégats n'est due qu'à un effet pendulaire qui se compense à peu près.
+
+\paragraph{Dispersion}
+Voir \autoref{par:polarisation-dispersion}, p. \pageref{par:polarisation-dispersion} : 
+
+
+\paragraph{Dispersion des FP/agrégats}
 
 %\paragraph{Stabilité}
 
 
 \todobox{		
 		\begin{itemize}
-			\item \textbf{Polarisation} : il faut qu'ils rassemblent les FP (taux isolés faible),
-			\item \textbf{Hiérarchisation} : qu'ils soient hiérarchisés (composition des agrégats en FP doit tendre vers log-normale),
-			\item \textbf{Fixation et dispersion} : et qu'ils soient dispersés dans l'espace de manière stable (fixation par paroisses).
-		\end{itemize}
-		
-		3 leviers différents pour jouer sur ces dimensions :
-		\begin{itemize}
 			\item \textbf{Polarisation} : Améliorer le déplacement des FP (Agent concerné : FP) :
 			\begin{itemize}
-				\item ils doivent se déplacer vers un petit agrégat/pôle et ne pas rester isolés
 				\item une fois dans un agrégat, ils doivent y rester ou aller vers un agrégat plus \og important\fg{} : en terme de nb de FP, d'attractivité du pôle ou de présence de CA
 				\item Ils ne doivent pas faire des allers-retours incessants entre les agrégats.
-			\end{itemize}
-			
-			\item \textbf{Hiérarchisation} : Améliorer la hiérarchisation des attracteurs (Agent concerné : Attracteurs) :
-			\begin{itemize}
-				\item La différence entre les pôles d'attraction doit être franche,
-				\item pour que les petits (1 église par ex.) attirent de petits agrégats,
-				\item et que les gros (châteaux, multi-pôles etc.) polarisent des agrégats importants et stables
-			\end{itemize}
-			\item \textbf{Fixation et dispersion} : Améliorer la desserte des églises paroissiales (Agent concerné : Paroisse) :
-			\begin{itemize}
-				\item Les paroisses doivent couvrir tout le territoire de manière à peu près régulière (logique d'équité),
-				\item Mais aussi avec des zones de plus forte densité proche des gros pôles/agrégats (petites villes) (logique d'efficacité),
 			\end{itemize}
 			
 		\end{itemize}
