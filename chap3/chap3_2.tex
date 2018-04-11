@@ -359,55 +359,186 @@ On s'attend donc à avoir une courbe hiérarchisée dans la lignée d'une courbe
 
 \subsubsection{Évaluer la fixation et la dissémination du peuplement}
 
-\todobox{Intro : bien indiquer le fait que cette dernière dimension est bien plus qualitative et subjective que les autres. Par exemple, étude des cartes (pas de réplication donc). Ouverture en expliquant qu'on touche dans cette dimension bien plus à une étude des dynamiques internes, au niveau de l'agent, qu'à un niveau réellement agrégé.
-\begin{itemize}
-	\item Pas trop de déplacements des FP
-	\item Privilégier déplacements locaux
-	\item Régularité du maillage paroissial
-\end{itemize}}
+
+La dernière dimension étudiée par SimFeodal est moins définie que les précédentes.
+On y observe ainsi la fixation du système de peuplement au sein du maillage naissant que constituent les paroisses.
+Cette notion de fixation pose problème par rapport à l'ensemble des indicateurs de sortie déployés jusqu'ici.
+En effet, SimFeodal est un modèle fondé sur un temps discret :
+on y observe, à chaque itération, le résultat des processus modélisés.
+On peut y observer une fixation d'un pas de temps par rapport à l'autre, par exemple en constatant qu'un agrégat constitué en 820 semble être toujours présent en 840.
+On peut de plus considérer que cet agrégat présente les mêmes caractéristiques au deux dates, en matière de localisation et de population.
+L'agrégat est donc stable dans le temps.
+L'échelle d'analyse mobilisée dans les indicateurs précédents -- au niveau agrégé des agrégats, voir du système d'agrégats -- pourrait donc s'appliquer ici aussi.
+Pourtant, quand on parle de fixation des foyers paysans, ce qui est observé empiriquement, il n'est pas question d'agrégats, mais des entités les composant, c'est-à-dire les foyers paysans.
+Ceux-ci ne sont pas observés directement quand on remarque que les agrégats semblent stable :
+on approche là à la différence entre un état stable et un état stationnaire.
+La relative stationnarité des agrégats dans le temps n'est ainsi pas garante de stabilité de leurs composantes :
+deux foyers paysans oscillant d'un agrégat à un autre, dans un mouvement opposé, produiraient ainsi une stationnarité de ces agrégats, mais, en se déplaçant, ils ne satisferaient pas au critère de fixation.
+Il y a donc un problème de changement d'échelle pour observer la fixation des foyers paysans :
+il n'est plus possible de raisonner à l'échelle des agrégats, et il faut se concentrer sur celle des foyers paysans.
+
+Cette échelle pose un autre problème :
+les foyers paysans sont très nombreux ($4000$ dans la version 0) et se déplacent.
+Ils se déplacent de plus selon des modalités très différentes (\hl{Faire ref aux mécanismes de déplacement du chapitre 2}), rendant complexe la caractérisation des mouvements de chacun et plus encore celle d'une agrégation de ces catégories.
+
+Pour ces raisons, la production d'indicateurs synthétiques spatiaux -- une ou plusieurs cartes -- ne suffirait pas à communiquer une information intelligible sur l'éventuelle fixation des foyers paysans.
+Il nous faut donc faire appel à des \og proxys\fg{}, non spatiaux, pour évaluer la fixation des foyers paysans.
+
+A cet effet, on a retenu des indicateurs relatifs aux déplacements des foyers paysans et à leur raison :
+combien de foyers paysans se déplacent à chaque pas de temps (moins il y a de déplacement, plus la fixation est importante) ? Quelles sont les modalités de ces déplacements (un déplacement entre deux agrégats lointains n'a pas les mêmes conséquences en terme de stabilité qu'un déplacement minime au sein d'un même agrégat) ? Ou encore, comment évolue la satisfaction des foyers paysans, et avec celle-ci, la probabilité de se déplacer ?
+
+Ces indicateurs permettent d'évaluer la capacité du modèle à reproduire la fixation des foyers paysans.
+Pour autant, la contrainte est ici double :
+on recherche une fixation, mais celle-ci est, empiriquement, supposée se dérouler et se voir renforcer par la mise en place du maillage paroissiale qui doit servir de support à la nouvelle configuration spatiale émergente.
+
+On s'appuiera donc aussi sur des indicateurs relatifs à cet espace support constitué par les paroisses :
+leur nombre, leur dispersion dans l'espace et l'efficacité de la desserte qu'elles assurent.
 
 \paragraph{Déplacement des foyers paysans}
 
+Le déplacement des foyers paysans est l'élément moteur de SimFeodal :
+c'est par le déplacement individuel de chacun des foyers paysans que la configuration spatiale évolue.
+Les déplacements affectent donc chacune des dimensions d'analyse -- polarisation, hiérarchisation et fixation --, mais c'est au sein de cette dernière qu'il est le plus intéressant de les observer.
+Il est en effet attendu que de nombreux déplacement surviennent, afin que le système de peuplement puisse se structurer, mais pour autant, il est aussi nécessaire que ces déplacements tendent à diminuer au cours du temps, une fois le système en voie de stabilisation.
+
+On pourrait donc attendre que les déplacements suivent une courbe négative (linéaire ou non) tendant vers 0, impliquant une absence de déplacements en fin de période.
+Pour autant, le mécanisme de déplacement est sans doute l'un des plus complexes du modèle, et on ne peut l'appréhender aussi simplement.
+
+En premier lieu, les mécanismes de SimFeodal différencient deux types de déplacements (\hl{Faire ref à chap2}) :
+les déplacements locaux (dans un rayon de $2500$m dans la version 0) et les déplacements lointains.
+
+\begin{itemize}
+	\item Les déplacements locaux visent à faire s'agréger des foyers paysans dispersés autour de pôles présents à proximités.
+	Ce mécanisme peut être présent sur toute la durée de la simulation, sur un effectif faible.
+	En effet, cet effet d'agrégation locale permet \og d'optimiser\fg{} la répartition spatiale des agrégats, en renforçant leur hiérarchie et en faisant fusionner des agrégats qui seraient très proches les uns des autres.
+	Pour autant, dans un objectif de fixation du peuplement, il est nécessaire de veiller à ce que les foyers paysans ne soient pas amenés à se déplacer localement de manière continuelle, par exemple en faisant des allers-retours entre des pôles ou agrégats spatialement proches.
+	
+	\item Les déplacements lointains servent un autre rôle :
+un foyer paysan qui ne serait pas en mesure d'augmenter sa satisfaction localement -- faute de pôles suffisamment attractifs dans le voisinage -- a une probabilité de se déplacer vers un agrégat situé n'importe où dans l'espace modélisé.
+	Le modèle est très sensible à ce mécanisme qui agit comme une perturbation forte dans la structure spatiale du peuplement.
+	Ce mécanisme \og de dernier recours\fg{} ne doit être employé que rarement, en cas de situations où des foyers paysans seraient trop isolés pour pouvoir s'agréger localement.
+	C'est notamment le cas pour les foyers paysans nouveaux arrivants, via le mécanisme de renouvellement (\hl{ref dans chap 2}), qui peuvent se voir localisés n'importe où dans l'espace du modèle.
+\end{itemize}
+
+Pour ajouter à la complexité du mécanisme, et donc de l'évaluation de cet indicateur qu'est le nombre de déplacements au cours du temps, rappelons que différentes contraintes temporelles viennent bouleverser, à dessein, le comportement des foyers paysans.
+En particulier, entre 950 et 1050, les modalités d'évaluation de la satisfaction deviennent plus strictes (\hl{Voir dans chap2, frise}).
+Cela engendre nécessairement une plus forte propension des foyers à se déplacer.
+
+Si les connaissances empiriques d'un tel niveau de finesse ne sont pas disponibles, on peut tout de même avoir des attentes quant au comportement attendu du modèle.
+Au regard des éléments décrits plus haut, on peut ainsi chercher à ce que l'évolution des déplacements suive plusieurs rythmes au cours du temps :
+\begin{enumerate}
+	\item Dans une première phase, du début de la simulation jusqu'aux perturbations débutant en 950 :
+quelques déplacements lointains marginaux ($\approx 5$\% à $10$\%), stables au cours du temps ; et de plus nombreux (au moins $\approx 30$\%) déplacements locaux menant à la constitution de petits agrégats locaux.
+		Les déplacements locaux doivent diminuer au cours du temps, une fois les agrégats constitués.
+	\item Pendant la deuxième phase, entre 950 et 1050, les nombreuses perturbations devraient voir une nette augmentation des déplacements locaux, et dans une moindre mesure lointains, prémices à la constitution d'agrégats plus hiérarchisés.
+	\item Après ces perturbations, on devrait retrouver le niveau de déplacement de la seconde période, et là aussi, tendre vers une diminution des déplacements locaux, le système se stabilisant à l'approche de la fin de la période.
+\end{enumerate}
+
+Tout au long de cette période, on cherche de plus à ce que les foyers paysans soient polarisés, c'est-à-dire ici, qu'ils se regroupent dans des agrégats de population.
+Parmi les modalités de déplacement, un autre indicateur utile est ainsi l'observation des provenances et destinations des foyers paysans qui se déplacent :
+plus les foyers paysans originellement dispersés auront tendance à rejoindre des agrégats, plus la simulation sera satisfaisante au regard des hypothèses empiriquement émises.
+
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	(\cref{fig:nb-deplacements-v0} et \cref{fig:type-deplacements-v0}).
+Dans cette version 0 de SimFeodal, il apparaît en premier lieu que les déplacements sont trop peu nombreux (\cref{fig:nb-deplacements-v0}).
+Les déplacements lointains sont à peu près dans les proportions attendues, mais les déplacements locaux sont trop peu nombreux.
+Surtout, les trois phases attendues ne se retrouvent pas sur ces sorties.
+On y remarque bien l'impact des perturbations, mais celles-ci ne font qu'augmenter la part de déplacements, laquelle reste stable avant et après ces perturbations.
+La version 0 de SimFeodal n'est donc pas satisfaisante en termes de stabilisation et de fixation des foyers paysans.
+	
+	L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) montre certes une part croissante de déplacements \og Isolé -> Agrégé\fg{}, mais dans des proportions là aussi trop faibles passé le tout début de la simulation.
 \end{mdframed}
 
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
 	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_deplacements.pdf}
-	\caption{Évolution du nombre de déplacement des foyers paysans.} 
+	\caption{Évolution du nombre de déplacement des foyers paysans.\\
+	\todobox{Mettre le graphique en relatif}} 
 	\label{fig:nb-deplacements-v0} 
 \end{figure}
+
+
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
 	\includegraphics[width=\linewidth]{img/resultats/v0_types_deplacements.pdf}
-	\caption{Évolution des types de déplacement des foyers paysans.} 
+	\caption{Évolution des types de déplacement des foyers paysans.\\
+		Inter : Déplacement depuis le pas de temps précédent vs Intra :
+déplacement au sein d'un même pas de temps.
+		\todobox{Ne garder que l'inter et mettre le graphique en relatif}\\
+%	- InIn : Le FP était dans un agrégat au pas de temps précédent, et est dans un agrégat à ce tour (quel qu'il  soit, ça peut être le même ou un autre).\\
+%	- InOut : Le FP était dans un agrégat au pas de temps précédent, et est isolé à ce tour\\
+%	- OutIn : Le FP était isolé, et est maintenant dans un agrégat\\
+%	- OutOut : Le FP était isolé, et l'est toujours\\
+%On constate donc que les déplacements au sein d'un tour tendent à isoler les FP, grosso modo dans le même temps et les mêmes proportions que la stabilisation du taux de FP isolés.	
+} 
 	\label{fig:type-deplacements-v0} 
 \end{figure}
 
+
+
 \paragraph{Satisfaction des FP}
 
-Impact directemnt la fixation : quand FP trop mécontents, ne se fixent jamais à un endroit et l'apparente stabilité des agrégats n'est due qu'à un effet pendulaire qui se compense à peu près.
+Impact directement la fixation :
+quand FP trop mécontents, ne se fixent jamais à un endroit et l'apparente stabilité des agrégats n'est due qu'à un effet pendulaire qui se compense à peu près.
 
-\paragraph{Dispersion}
-Voir \autoref{par:polarisation-dispersion}, p. \pageref{par:polarisation-dispersion} : 
+\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	(\cref{fig:satisfaction-fp-v0}).
+\end{mdframed}
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_satisfaction_fp.pdf}
+	\caption{Satisfaction des foyers paysans} 
+	\label{fig:satisfaction-fp-v0} 
+\end{figure}
 
 
-\paragraph{Dispersion des FP/agrégats}
+\paragraph{Nombre de paroisses}
 
-%\paragraph{Stabilité}
+\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	(\cref{fig:nb-paroisses-v0} ).
+\end{mdframed}
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_paroisses.pdf}
+	\caption{Évolution du nombre de paroisses} 
+	\label{fig:nb-paroisses-v0} 
+\end{figure}
 
 
-\todobox{		
-		\begin{itemize}
-			\item \textbf{Polarisation} : Améliorer le déplacement des FP (Agent concerné : FP) :
-			\begin{itemize}
-				\item une fois dans un agrégat, ils doivent y rester ou aller vers un agrégat plus \og important\fg{} : en terme de nb de FP, d'attractivité du pôle ou de présence de CA
-				\item Ils ne doivent pas faire des allers-retours incessants entre les agrégats.
-			\end{itemize}
-			
-		\end{itemize}
-}	
+\paragraph{Dispersion des paroisses}
+Voir aussi la dispersion des agrégats et pôles (\autoref{par:polarisation-dispersion}, p. \pageref{par:polarisation-dispersion}) 
+
+\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	(\cref{fig:densite-paroisses-v0;fig:couverture-paroisses-v0} ).
+\end{mdframed}
+
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_paroisses_densite.pdf}
+	\caption{Densité des paroisses} 
+	\label{fig:densite-paroisses-v0} 
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/resultats/v0_paroisses_occupation.pdf}
+	\caption{Évolution de la couverture du territoire par les églises paroissiales} 
+	\label{fig:couverture-paroisses-v0} 
+\end{figure}
+Carte + indice type nb mailles occupées
+
+\paragraph{Efficacité de la desserte}
+
+\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	???
+\end{mdframed}
+
+Distance des 10\% de FP les plus éloignés à une église paroissiale ?
+
