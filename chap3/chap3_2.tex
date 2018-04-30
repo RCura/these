@@ -9,7 +9,7 @@ Dans cette partie, on explicitera donc d'abord le sens que l'on prête à ces at
 On présentera alors les méthodes visant à réduire la complexité de ces indicateurs de sortie, proches de ce que se fait en statistiques :
 réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
 En mobilisant les méthodes choisies, on pourra décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa version 0, dans le chapitre précédent (\hl{ref à chap 2}).
-
+s
 \subsection{Indices et indicateurs}
 
 On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique qu'il cherche à simplifier.
@@ -44,7 +44,7 @@ Leur point commun est qu'ils doivent pouvoir être mesurés, au sens le plus lar
 Dans cette étude, on a décidé de regrouper ces \textbf{indices empiriques} en deux catégories, basées la précision avec laquelle ils peuvent être décrits\footnote{Et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}}.
 La \cref{fig:schema_indices} montre cette catégorisation entre la première catégorie -- les ordres de grandeur -- et la seconde -- les formes stylisées --.
 
-\paragraph{Ordres de grandeur}
+\paragraph*{Ordres de grandeur}
 La première catégorie est constituée d'\textbf{ordres de grandeurs} empiriques estimés -- avec une précision plus ou moins importante (\hl{cf. tableau 3 p. 317 du chap. TMD, à reproduire dans chap 2}).
 Certaines valeurs empiriques sont ainsi connues, que ce soit d'après des sources primaires ou secondaires, et peuvent ainsi constituer des indices.
 Par exemple, on connaît avec quasi-certitude le nombre d'églises paroissiales de la région Touraine en 1100.
@@ -52,7 +52,7 @@ Certaines de ces valeurs sont toutefois plus proches de l'estimation, comme le t
 Ces différents indices observés ou estimés peuvent cependant tous trouver une correspondance presque exacte (cf. \cref{para:correspondance}) dans le modèle de simulation, et dès lors, mener à comparaison entre données observées/estimées et données simulées.
 Ils peuvent ainsi jouer le rôle d'éléments d'évaluation du comportement du modèle simulé.
 
-\paragraph{Faits et formes stylisés}
+\paragraph*{Faits et formes stylisés}
 Le second type d'indice est moins précis, ne reposant pas sur une valeur estimable, mais plutôt sur la connaissance experte d'un phénomène.
 Il s'agit des \og \textbf{faits stylisés}\fg{}\footnotemark{}, plus tendanciels que les indicateurs.
 On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand observe que les systèmes de peuplement tendent à se hiérarchiser.
@@ -81,11 +81,11 @@ Les ordres de grandeur et formes stylisées évoquées relèvent du domaine empi
 Afin de pouvoir les mobiliser, il est nécessaire de définir des \textbf{indicateurs en sortie} dans le modèle de simulation, c'est-à-dire des variables informatiques que l'on enregistrera durant l'exécution du modèle et que l'on pourra ensuite comparer aux indices empiriques définis.
 
 
-\paragraph{Définition}
+\paragraph*{Définition}
 Comme pour les indices empiriques qui sont leurs équivalents, on peut définir une typologie différenciant les indicateurs en sortie \og numériques\fg{}, en distinguant les formes numériques simples (des scalaires), et des indicateurs plus complexes, multidimensionnels, à même de permettre la confrontation du modèle de simulation avec les formes stylisées identifiées.
 Chaque indice empirique doit ainsi se voir correspondre, respectivement, un indicateur de sortie.
 
-\paragraph{Correspondance entre indicateurs et indices}\label{para:correspondance}
+\paragraph*{Correspondance entre indicateurs et indices}\label{para:correspondance}
 
 Cette correspondance n'est pour autant pas une équivalence exacte.
 En effet, si certains indices empiriques peuvent trouver un équivalent strict -- le nombre de châteaux connus à chaque date est strictement équivalent au nombre de châteaux produits par le modèle --, d'autres indices trouveront une correspondance plus faible.
@@ -106,7 +106,7 @@ De cette manière, on reproduit une hiérarchie implicite entre les seigneurs et
 
 La création d'indicateurs de sortie correspondant aux indices empirique permet donc de quantifier une information qui n'est pas forcément aisément quantifiable dans le domaine empirique.
 
-\paragraph{Indicateur composite}
+\paragraph*{Indicateur composite}
 
 La forme numérique (scalaire ou vectorielle) des indicateurs de sortie permet de trouver des manières plus simples d'évaluer le modèle que d'observer l'ensemble des indicateurs.
 Chaque indicateur étant numérique, il devient en effet possible des les combiner au sein d'indicateurs composites, résultant en quelques indicateurs synthétiques permettant une évaluation plus rapide des résultats d'une simulation.
@@ -114,7 +114,7 @@ Ces indicateurs composites sont très fréquemment utilisés en statistiques, pe
 L'Indice de Développement Humain (IDH), par exemple, est un indicateur composite dépendant de l'espérance de vie à la naissance, du niveau d'éducation et du niveau de revenu de chacun des pays caractérisés.
 On le trouve très souvent utilisé, parce qu'il permet de résumer le niveau de développement d'un pays en agrégeant trois dimensions majeures, l'aspect sanitaire, culturel et économique.
 
-\paragraph{Indicateur synthétique}
+\paragraph*{Indicateur synthétique}
 
 En renforçant cette logique de synthèse de plusieurs dimensions, on peut aller plus loin dans la définition d'un unique indicateur, synthétique, permettant d'évaluer la qualité de représentation d'un modèle.
 Là aussi, c'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (\hl{ref. à chap 2 là ou ce sera abordé}).
@@ -123,7 +123,7 @@ Il s'agit alors de définir une \og fonction objectif\fg{}, ou \og fonction de \
 
 Ces indicateurs composites et synthétiques résultent d'une quantification des autres indicateurs (excluant donc les formes stylisées qui sont plus libres d'interprétation), et apportent un grand confort dans le paramétrage d'un modèle de simulation.
 
-\paragraph{Quels types d'indicateurs pour SimFeodal ?}
+\paragraph*{Quels types d'indicateurs pour SimFeodal ?}
 
 SimFeodal n'est pourtant pas adapté à de tels indicateurs :
 une large partie des faits stylisés et ordres de grandeur mobilisés proviennent de connaissances expertes, et les thématiciens qui les ont consolidées rechignent à créer de tels indicateurs composites, en ce que cela demande de pondérer précisement l'importance de chacun des indicateurs par rapport aux autres.
@@ -251,7 +251,8 @@ Ils éclairent ainsi le phénomène de polarisation sous des angles légèrement
 Par exemple, la dispersion des agrégats et pôles peut renseigner, une fois le taux de foyers paysans dispersé jugé trop important, sur une des raisons probables de ce résultat non satisfaisant.
 Il s'agit donc d'indicateurs secondaires, permettant de préciser la capacité du modèle à reproduire les faits stylisés, alors que l'évaluation de cette capacité est surtout le rôle de l'indicateur principal.
 
-\paragraph{Taux de foyers paysans dispersés}
+
+\paragraph*{Taux de foyers paysans dispersés}
 
 Cet indicateur, et sa déclinaison temporelle, sont vraisemblablement les plus évidents :
 plus le taux de foyers paysans dispersés en fin de simulation est faible, plus le système de peuplement est polarisé.
@@ -279,7 +280,9 @@ Elle montrerait en effet  un phénomène trop aléatoire au cours du temps, dont
 	\label{fig:taux-isoles-v0} 
 \end{figure}
 
-\paragraph{Nombre d'agrégats}
+\clearpage
+
+\paragraph*{Nombre d'agrégats}
 
 Puisque les foyers paysans se concentrent au sein d'agrégats, il est logique d'observer l'évolution de ces derniers.
 Là aussi, (\hl{objectif à définir}), on peut considérer qu'un nombre d'agrégats en fin de simulation proche de l'objectif, $200$, permet de caractériser une polarisation réussie.
@@ -305,8 +308,8 @@ Ce moment coïncide de plus avec la stagnation puis l'inversion de la courbe d'�
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_agregats.pdf}
-	\caption{Évolution du nombre d'agrégamouvementts.} 
+	\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_agregats.pdf}
+	\caption{Évolution du nombre d'agrégats.} 
 	\label{fig:nombre-agregats-v0} 
 \end{figure}
 
@@ -315,7 +318,9 @@ Ce moment coïncide de plus avec la stagnation puis l'inversion de la courbe d'�
 dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'analyse de Base, il y en a 187...
 }	
 
-\paragraph{Nombre de pôles}\label{para:nb-poles}
+\clearpage
+
+\paragraph*{Nombre de pôles}\label{para:nb-poles}
 
 Dans le modèle SimFeodal, les foyers paysans sont polarisés par des pôles d'attraction.
 Pour une polarisation efficace, il est donc nécessaire que les pôles soient suffisamment nombreux, c'est-à-dire, \textit{a minima}, autant que d'agrégats attendus ($200$).
@@ -348,12 +353,14 @@ On peut donc penser qu'il s'agit de nombreux pôles ruraux, par exemple composé
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_poles.pdf}
+	\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_poles.pdf}
 	\caption{Évolution du nombre de pôles et du taux de pôles contenant un agrégat.} 
 	\label{fig:nombre-poles-v0} 
 \end{figure}
 
-\paragraph{Dispersion des agrégats et pôles}\label{par:polarisation-dispersion}
+\clearpage
+
+\paragraph*{Dispersion des agrégats et pôles}\label{par:polarisation-dispersion}
 
 Les indicateurs présentés ci-dessus avaient en commun d'être des indicateurs de sortie, générés automatiquement, et présentés sous forme d'agrégations des réplications.
 Pour préciser l'analyse de la polarisation, il est toutefois nécessaire d'aborder une dimension qui n'est fondamentalement pas agrégeable dans les indicateurs de sortie :
@@ -390,6 +397,8 @@ on ne remarque, visuellement, que peu de différence entre les agrégats, et sur
 	\label{fig:cartes-agregats-v0} 
 \end{figure}
 
+\clearpage
+
 \subsubsection{Évaluer la hiérarchisation du système de peuplement}
 
 La seconde dimension de l'évaluation du modèle SimFeodal correspond à l'étude de la hiérarchisation du système de peuplement.
@@ -413,7 +422,7 @@ Comme pour la polarisation, l'analyse de la capacité du modèle a reproduire la
 en premier lieu, on évalue cette capacité à l'aide de l'indicateur principal, puis on précise cette qualification et on essaie de l'expliquer à l'aide des indicateurs secondaires.
 
 
-\paragraph{Hiérarchie des agrégats}
+\paragraph*{Hiérarchie des agrégats}
 
 L'indicateur principal est un indicateur agrégé, correspondant à la forme de la distribution des agrégats mesurés par le nombre de foyers paysans qui les composent.
 Cet indicateur est classique dans l'analyse des systèmes de peuplement, et il est courant de l'observer par le biais d'un indicateur agrégé simple, correspondant à la loi rang-taille.
@@ -459,7 +468,9 @@ En 1040, et plus encore en 1160, la proportion d'agrégats de taille moyenne et 
 	\label{fig:compo-agregats-v0} 
 \end{figure}
 
-\paragraph{Hiérarchie des pôles}
+\clearpage
+
+\paragraph*{Hiérarchie des pôles}
 
 La hiérarchie des agrégats donne une bonne vision agrégée de la hiérarchisation du système de peuplement dans son ensemble.
 Pour autant, afin d'appréhender la dynamique de cette dimension, il est là encore nécessaire d'observer le comportement des composantes qui provoquent cette hiérarchisation.
@@ -501,10 +512,12 @@ Cette macrocéphalie ne correspond pas aux observations empiriques, d'autant que
 \footnotetext{\hl{Les figures ne sont pas en log-log (ou log-lin) et on ne voit donc pas vraiment le haut de la hiérarchie.
 Peut-être faudrait-il changer ces axes, mais ça complexifiera la lecture pour les archéos/lecteurs non habitués aux axes log}}
 
-\paragraph{Hiérarchie des paroisses}
+\clearpage
+
+\paragraph*{Hiérarchie des paroisses}\label{par:hierarchie-paroisses}
 
 A l'instar des pôles, on attend aussi des ressorts paroissiaux d'être hiérarchisés.
-La période modélisée voit ainsi apparaître ces paroisses qui auront un rôle majeur dans la fixation du peuplement, et, pré-figurant le maillage communal, ont un double rôle de desserte efficace\footnote{C'est-à-dire desservir de manière optimale le plus gros de la population.} et équitable\footnote{C'est-à-dire faire en sorte que même les populations les plus isolées aient un accès aussi rapide que possible à une église paroissiale.}.
+La période modélisée voit ainsi apparaître ces paroisses qui auront un rôle majeur dans la fixation du peuplement, et, pré-figurant le maillage communal, ont un double rôle de desserte efficace\footnote{C'est-à-dire desservir de manière optimale la plupart de la population.} et équitable\footnote{C'est-à-dire faire en sorte que même les populations les plus isolées aient un accès aussi rapide que possible à une église paroissiale.}.
 En effet, avec la volonté d'encadrement et de prélèvement de l'Église sur la population, de nouvelles paroisses apparaissent pour desservir au mieux leurs potentielles ouailles.
 Une structure double en résulte :
 dans les zones les moins denses, le maillage est régulier mais lâche, de manière à minimiser le nombre d'églises paroissiales tout en s'assurant que chacun puisse y accéder dans un temps raisonnable\footnote{Cette distance-temps évolue au cours du temps, en fonction de l'accroissement de la fréquence de l'obligation de fréquentation des églises paroissiales.}.
@@ -532,6 +545,7 @@ Il ne devrait ainsi par y avoir de paroisse composée de plus de $100$ foyers pa
 	\label{fig:compo-paroisses-v0} 
 \end{figure}
 
+\clearpage
 
 \subsubsection{Évaluer la fixation et la dissémination du peuplement}
 
@@ -570,7 +584,14 @@ on recherche une fixation, mais celle-ci est, empiriquement, supposée se dérou
 On s'appuiera donc aussi sur des indicateurs relatifs à cet espace support constitué par les paroisses :
 leur nombre, leur dispersion dans l'espace et l'efficacité de la desserte qu'elles assurent.
 
-\paragraph{Déplacement des foyers paysans}
+\paragraph*{}Notons que contrairement aux deux précédents dimensions d'analyse, nous n'établissons ici pas de hiérarchie nette entre les indicateurs.
+Cette étude de la fixation est moins facilement appréhendable que celle de la polarisation ou de la hiérarchisation et les indicateurs qui la caractérisent apportent une complémentarité de points de vue plus qu'un affinement de l'évaluation de cette dynamique.
+Dès lors, les indicateurs présentés ci-après ne peuvent être catégorisés en indicateurs principaux et secondaires.
+On retrouvera cependant cette hiérarchie d'évaluation au sein des indicateurs, par exemple en suivant l'ordre des graphiques présentés.
+Par exemple, pour évaluer la fixation des foyers paysans, on observera d'abord le résultat produit (nombre de déplacements) avant d'entrer dans le détail de sa composition (types des déplacements).
+
+
+\paragraph*{Déplacement des foyers paysans}
 
 Le déplacement des foyers paysans est l'élément moteur de SimFeodal :
 c'est par le déplacement individuel de chacun des foyers paysans que la configuration spatiale évolue.
@@ -604,8 +625,8 @@ Si les connaissances empiriques d'un tel niveau de finesse ne sont pas disponibl
 Au regard des éléments décrits plus haut, on peut ainsi chercher à ce que l'évolution des déplacements suive plusieurs rythmes au cours du temps :
 \begin{enumerate}
 	\item Dans une première phase, du début de la simulation jusqu'aux perturbations débutant en 950 :
-quelques déplacements lointains marginaux ($\approx 5$\% à $10$\%), stables au cours du temps ; et de plus nombreux (au moins $\approx 30$\%) déplacements locaux menant à la constitution de petits agrégats locaux.
-		Les déplacements locaux doivent diminuer au cours du temps, une fois les agrégats constitués.
+	quelques déplacements lointains marginaux ($\approx 5$\% à $10$\%), stables au cours du temps ; et de plus nombreux (au moins $\approx 30$\%) déplacements locaux menant à la constitution de petits agrégats locaux.
+	Les déplacements locaux doivent diminuer au cours du temps, une fois les agrégats constitués.
 	\item Pendant la deuxième phase, entre 950 et 1050, les nombreuses perturbations devraient voir une nette augmentation des déplacements locaux, et dans une moindre mesure lointains, prémices à la constitution d'agrégats plus hiérarchisés.
 	\item Après ces perturbations, on devrait retrouver le niveau de déplacement de la seconde période, et là aussi, tendre vers une diminution des déplacements locaux, le système se stabilisant à l'approche de la fin de la période.
 \end{enumerate}
@@ -621,10 +642,8 @@ Les déplacements lointains sont à peu près dans les proportions attendues, ma
 Surtout, les trois phases attendues ne se retrouvent pas sur ces sorties.
 On y remarque bien l'impact des perturbations, mais celles-ci ne font qu'augmenter la part de déplacements, laquelle reste stable avant et après ces perturbations.
 La version 0 de SimFeodal n'est donc pas satisfaisante en termes de stabilisation et de fixation des foyers paysans.
-	
-	L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) montre certes une part croissante de déplacements \og Isolé -> Agrégé\fg{}, mais dans des proportions là aussi trop faibles passé le tout début de la simulation.
+L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) montre certes une part croissante de déplacements \og Isolé -> Agrégé\fg{}, mais dans des proportions là aussi trop faibles passé le tout début de la simulation.
 \end{mdframed}
-
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
@@ -652,69 +671,140 @@ déplacement au sein d'un même pas de temps.
 	\label{fig:type-deplacements-v0} 
 \end{figure}
 
+\clearpage
 
+\paragraph*{Satisfaction des foyers paysans}
 
-\paragraph{Satisfaction des FP}
+On a vu dans les deux indicateurs précédents que les déplacements des foyers paysans sont très affectés par leur niveau de satisfaction.
+Pour comprendre ces déplacements, il est donc utile d'observer en détail l'évolution de la satisfaction qui les provoquent.
 
-Impact directement la fixation :
-quand FP trop mécontents, ne se fixent jamais à un endroit et l'apparente stabilité des agrégats n'est due qu'à un effet pendulaire qui se compense à peu près.
+La satisfaction ne saurait être résumée en un simple indicateur de fixation, tant son rôle est prépondérant dans une large partie des mécanismes du modèle.
+Pourtant, mobilisé ici, cet indicateur apporte un éclairage différent.
+Il permet ainsi de préciser les indicateurs précédents en donnant une explication à leur éventuelle mauvaise réponse aux attentes.
+
+Ainsi, une satisfaction globalement trop élevée ne serait pas assez motrice à des déplacements, résultant en une polarisation faible.
+Au contraire, une satisfaction globalement faible engendrerait une très forte mobilité, par exemple sous forme de mouvements pendulaires, d'où une absence de fixation du peuplement.
+Comme pour les déplacements, on attend, depuis les connaissances empiriques, qu'il y ait trois phases dans l'évolution de cette satisfaction :
+(1) une première phase, jusqu'en 950, où les foyers paysans sont globalement satisfaits, et le sont de plus en plus à mesure qu'ils s'agrègent ;
+(2) une seconde phase, entre 950 et 1050, où les restrictions fortes (distance à un château, à une église paroissiale) auront pour effet de violemment abaisser le niveau de satisfaction ;
+et enfin, (3) une dernière phase où, passées les perturbations, le niveau de satisfaction tend à remonter doucement, sous l'effet de l'agrégation et de la constitution généralisées de communautés paysannes et de la construction de châteaux et de nouvelles églises paroissiales.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	(\cref{fig:satisfaction-fp-v0}).
+	Au vu des résultats de la version 0 de SimFeodal illsutrés dans la \cref{fig:satisfaction-fp-v0}, on constate que les trois phases attendues sont bien présentes.
+	La perturbation en milieu de période est très forte, mais pourtant, le niveau de satisfaction général reste très élevé (à toute date, plus de $80$\% des foyers paysans ont une satisfaction supérieure à $0.5$).
+	Avec ce niveau de satisfaction et les mécanismes de déplacement de cette version 0, seuls les foyers paysans à proximité de très gros pôles (au moins un gros château et plusieurs églises paroissiales) pourront se déplacer localement.
+	Et pour peu qu'il y ait plusieurs pôles importants à proximité, ils oscilleront entre les deux, gonflant artificiellement le nombre de déplacements locaux.
+	L'observation de cet indicateur confirme que le niveau de déplacement est trop faible et ne présente pas l'allure attendue, tout en donnant une explication à la mauvaise fixation du peuplement observée.
 \end{mdframed}
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_satisfaction_fp.pdf}
+	\includegraphics[width=0.95\linewidth]{img/resultats/v0_satisfaction_fp.pdf}
 	\caption{Satisfaction des foyers paysans} 
 	\label{fig:satisfaction-fp-v0} 
 \end{figure}
 
+\clearpage
 
-\paragraph{Nombre de paroisses}
+\paragraph*{Nombre et dispersion des paroisses}
+
+Tout au long de la période, de nouvelles églises paroissiales sont créées (\hl{cf. mécanisme dans chap. 2}) et viennent renforcer l'encadrement des foyers paysans.
+L'évolution du maillage constitué par les ressorts paroissiaux représente donc l'évolution de la structure spatiale des foyers paysans.
+Pour que les foyers paysans soient satisfaits, il faut, à partir de 950, qu'ils soient suffisament proches d'une église paroissiale
+Celles-ci constituent donc, à mesure de l'avancement de la période, des pôles qui vont aider à la fixation des foyers paysans.
+Il est donc légitime d'observer la croissance du nombre et la répartition des paroisses telles que simulées dans le modèle SimFeodal.
+
+Sur un plan purement numéraire, plus les paroisses seront nombreuses, mieux la population sera desservie, et moins les foyers paysans se déplaceront : la fixation sera donc plus forte à mesure que le nombre de paroisses augmente.
+Sur un plan spatial, l'accumulation de paroisses en zones denses (dans des agrégats de populations) doit renforcer la polarisation de ces zones, et avec elle, accroître les chances de fixation des foyers paysans.
+
+D'après les mécanismes mis en places dans cette version 0 de SimFeodal, on s'attend donc à ce que le nombre de paroisses augmente régulièrement au cours du temps, depuis un nombre initial évalué à $50$ en $800$, jusqu'à atteindre un objectif numérique fixé à $200$ d'après les connaissances empiriques de la région modélisée.
+
+Concernant la répartition spatiale, on cherche à atteindre le double phénomène décrit dans le paragraphe \cnameref{par:hierarchie-paroisses} (p. \pageref{par:hierarchie-paroisses}).
+Spatialement, cela devrait mener à une diminution de la superficie des paroisses les plus larges dans les zones peu denses. Dans les zones plus denses, concentrant les agrégats, cela devrait aussi mener à une diminution de la superficie, bien plus drastique cependant : avec la création de nouvelles paroisses au sein des agrégats, on devrait voir apparaître de nombreuses paroisses se partageant un espace très réduit.
+
+Notons que la dispersion des agrégats et des pôles, vue dans le paragraphe \cnameref{par:polarisation-dispersion} (p. \pageref{par:polarisation-dispersion}), constituerait ici aussi un bon indicateur de fixation, en observant non plus l'évolution de la couverture spatiale, mais plutôt la fixation et le renforcement des dynamiques locales de polarisation.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	(\cref{fig:nb-paroisses-v0} ).
+	Dans la version 0 de SimFeodal, on peut en premier lieu constater que la tendance -- à la croissance -- de l'évolution du nombre de paroisses est bonne (\cref{fig:nb-paroisses-v0}).
+	Ainsi, de nouvelles églises paroissiales sont bien créées ou promues régulièrement au cours du temps.
+	La quantité atteinte ($240$ en moyenne) dépasse un peu trop fortement l'objectif empirique, mais surtout, on remarque dans la figure la très forte variabilité de ces résultats (l'intervalle interquartile est de 100). De plus, cette variabilité augmente fortement avec le temps.
+	
+	La dynamique est donc plutôt satisfaisante, mais le nombre atteint autant que la variabilité sont améliorables et rendent clairement visible la nécessité d'un ajustement dans le modèle.
+	
+	Sur le plan spatial, la \cref{fig:densite-paroisses-v0} laisse bien apparaître la double évolution attendue : les paroisses les plus étendues, en périphérie, demeurent parmi les plus grandes mais voient leur superficie réduite à mesure que de nouvelles églises paroissiales y apparaissent.
+	Dans le même temps, on remarque aussi les effets de fractionnement et de subdivision des paroisses les moins étendues.
+	Cela résulte, dans la figure, en de nombreuses concentrations locales de paroisses que l'échelle des cartes nous permet plus de percevoir que de détailler précisément\footnotemark{}.
 \end{mdframed}
+\footnotetext{La trop forte hétérogénéité dans les superficies des paroisses rend difficile la lecture de l'espace.On pourrait y remédier par exemple avec des cartogrammes, mais alors, on ne verrait plus que ces zones de forte densité.}
+
+	\todobox{Là aussi, courbe et nombre du nombre de paroisses est incohérent entre chapitre TMD (154) et résultats JIAP (240), + variabilité très forte dans JIAP et pas dans TMD.}
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_paroisses.pdf}
+	\includegraphics[width=0.75\linewidth]{img/resultats/v0_nombre_paroisses.pdf}
 	\caption{Évolution du nombre de paroisses} 
 	\label{fig:nb-paroisses-v0} 
 \end{figure}
 
-
-\paragraph{Dispersion des paroisses}
-Voir aussi la dispersion des agrégats et pôles (\autoref{par:polarisation-dispersion}, p. \pageref{par:polarisation-dispersion}) 
-
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	(\cref{fig:densite-paroisses-v0;fig:couverture-paroisses-v0} ).
-\end{mdframed}
-
-
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_paroisses_densite.pdf}
+	\includegraphics[width=0.8\linewidth]{img/resultats/v0_paroisses_densite.pdf}
 	\caption{Densité des paroisses} 
 	\label{fig:densite-paroisses-v0} 
 \end{figure}
 
 
+\clearpage
+
+\paragraph*{Efficacité et équité de la desserte paroissiale}
+
+On a vu précédemment (paragraphe \cnameref{par:hierarchie-paroisses}, p. \pageref{par:hierarchie-paroisses}) que les paroisses devaient assurer conjointement une desserte efficace et équitable.
+Un indicateur possible pour évaluer l'efficacité du maillage simulé est d'en observer la couverture spatiale.
+Par définition, les paroisses couvrent ainsi l'ensemble du territoire simulé. 
+Pour autant, certaines paroisses peuvent être très étendues, comme vu dans l'indicateur précédent.
+On peut toutefois quantifier la dispersion de ces paroisses en analysant leur répartition spatiale, ou plutôt, celle des églises paroissiales qui en constituent le cœur.
+Pour cela, on peut faire appel à une méthode d'analyse spatiale assez classique, similaire à la méthode des quadrats, en découpant l'espace en un maillage orthogonal régulier et en comptant le nombre d'églises paroissiales de chacune des mailles.
+On a vu que dans SimFeodal, les églises paroissiales sont réparties de manière à la fois dispersée (zones de faible densité) et concentrées (zones denses à proximité des agrégats importants).
+Plutôt que de faire un décompte des églises paroissiales et d'en tirer une hiérarchie, un indicateur plus simple est alors de faire un compte des mailles ne contenant pas de paroisse. Ces mailles étant régulières, l'indicateur résultant permettra alors d'appréhender simplement la part de l'espace couvert par des églises paroissiales.
+On a choisi ici de discrétiser l'espace modélisé (de dimensions $100\times100$ km) en mailles de $10\times10$ km, pour un total de $100$ mailles de $100$km².
+Ces valeurs permettent d'approcher, à grands traits, la configuration théorique qui verrait chacune des 300 églises paroissiales être réparties dans une maille différente\footnote{Il faudrait alors 300 mailles de $\approx$ 6 km de largeur, mais cette valeur ne constitue pas un multiple de 100. De plus, les églises paroissiales étant générées en partie au sein d'agrégats existants pour renforcer la desserte du plus grand nombre, cette valeur est très loin d'être accessible.}.
+
+Selon les mécanismes de SimFeodal, on s'attend à ce que l'indicateur ainsi produit diminue au cours du temps, à mesure que de nouvelles églises paroissiales viennent desservir le territoire, de manière régulière (comme l'évolution du nombre d'églises paroissiales).
+Cette diminution devrait toutefois être moins rapide que celle du nombre de paroisses, puisque les églises paroissiales créées au sein des agrégats devraient logiquement ne pas desservir de nouvelles mailles, mais plutôt se situer dans des mailles déjà occupées.
+
+Du point de vue de l'équité de la desserte, on peut recourir à un indicateur plus partiel : il s'agit ici de décrire non pas l'évolution de la desserte des paroisses pour la plupart des foyers paysans, mais plutôt pour ceux d'entre eux qui seraient le plus isolés.
+Ainsi, on peut observer l'évolution de la proximité entre les foyers paysans et les églises paroissiales, et ce, pour les paysans les plus éloignés desdites églises paroissiales à chaque pas de temps.
+Une augmentation de l'équité devrait ainsi, par exemple pour les 10\% de foyers paysans les moins bien desservis, montrer une diminution de la distance moyenne aux églises paroissiales.
+
+On s'attend ici aussi à voir une augmentation de l'équité, et donc une diminution au cours du temps de cette distance.
+Empiriquement, on estime à $5$km la distance maximale à laquelle un foyer paysan se situait d'une église paroissiale en fin de période (\hl{Voir les seuils de distance dans chapitre 2}).
+Un paramétrage de SimFeodal sera donc considérée comme satisfaisant, sur ce plan de l'équité de desserte, s'il voit cette distance converger vers le seuil, voire passer en dessous, de $5$km.
+
+
+\todobox{Il manque un indicateur d'équité. A compléter une fois qu'il sera mis en place. Par exemple :\\
+	Évolution de la distance des 10\% de FP les plus éloignés d'une/à une église paroissiale ? ==> Sans doute très intéressant, mais pas \og productible\fg{} pour l'instant. De toute façon, à voir les résultats JIAP, il faudra sans doute faire retourner toutes les itérations du modèle avec des sorties semblables à celles de la v8 (4\_4\_A)\\
+==> Peut être sous forme de boxplot ou d'histogramme (ridgeplot) ou de moyenne (plus influencée par grandes distances que médiane, donc mieux ici)}
+
+\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+	
+	En matière d'efficacité, la version 0 de SimFeodal est assez peu satisfaisante : malgré un nombre d'églises paroissiales trop élevé (voir l'indicateur précédent), la couverture du territoire est assez faible.
+	En effet, la \cref{fig:couverture-paroisses-v0} montre qu'en fin de simulation, près de $90$\% de mailles restent inoccupées par des églises paroissiales.
+	La tendance est toutefois à la diminution de ces mailles vides, et cette diminution est assez stable et régulière dans le temps.
+	
+	Comme dans le cas de l'évolution du nombre de paroisses, la variabilité est ici préoccupante et très insatisfaisante : l'écart interquartile est modéré (environ $15$\%), mais les minimums et maximums présentent un écart énorme (de $95$\% à $55$\%).
+	
+	\todobox{Pas possible d'analyser les résultats de la version 0 en matière d'équité sans les mesures correspondant. A faire une fois que les graphiques auront été produits.}
+	
+\end{mdframed}
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_paroisses_occupation.pdf}
-	\caption{Évolution de la couverture du territoire par les églises paroissiales} 
+	\includegraphics[width=0.9\linewidth]{img/resultats/v0_paroisses_occupation.pdf}
+	\caption{Évolution de la couverture du territoire par les églises paroissiales.\\
+	\todobox{Attention, résultats JIAP = pas fiables}
+} 
 	\label{fig:couverture-paroisses-v0} 
 \end{figure}
-Carte + indice type nb mailles occupées
 
-\paragraph{Efficacité de la desserte}
-
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	???
-\end{mdframed}
-
-Distance des 10\% de FP les plus éloignés à une église paroissiale ?
+\clearpage
 
