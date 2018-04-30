@@ -17,15 +17,19 @@
 		{\large Version 2018-04-30}
 	\end{center}
 
-Le modèle SimFeodal présenté dans le chapitre 2 correspond à une \og version 0\fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version -- implémentant l'ensemble des mécanismes décidés dans le modèle conceptuel --, qui n'est pas encore stabilisée dans les liens, interactions et valeurs de paramètres de ceux-ci.
-Il ne répond donc pas nécessairement aux attentes que l'on peut en avoir.
-Si l'on a déjà mentionné des objectifs dans le chapitre précédent (\hl{ref. à ce passage dans, par ex. tableau, dans cp. 2)}, il convient ici de formaliser et d'expliciter le sens de ces attentes.
-En effet, celles-si sont hétérogènes, aussi bien dans leur forme que dans l'importance qui leur est accordée, et la description de leurs caractéristiques se révèle importante pour leur mobilisation dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie d'un modèle -- de SimFeodal.
-Dans cette partie, on explicitera donc d'abord le sens que l'on prête à ces attentes, sous la forme d'indices empiriques et d'indicateurs de sortie de simulation.
-On présentera alors les méthodes visant à réduire la complexité de ces indicateurs de sortie, proches de ce que se fait en statistiques :
-réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
-En mobilisant les méthodes choisies, on pourra décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa version 0, dans le chapitre précédent (\hl{ref à chap 2}).
-s
+
+
+\section{Comment évaluer un modèle ?}
+
+\subsection{Visual validation}
+
+(Trouver ref dans thèse Clémentine, sans doute Hermann encore)
+
+\subsection{Indicateurs}
+
+\subsection{L'importance de la réplication}
+
+
 \section{Indices et indicateurs}
 
 On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique qu'il cherche à simplifier.
@@ -277,7 +281,13 @@ On a vu \footnote{\hl{Ne pas oublier de présenter les objectifs dans chapitre 2
 Le modèle sera donc d'autant plus satisfaisant que cet indicateur s'approchera de $20\%$ en fin de simulation.
 
 La \og déclinaison temporelle\fg{} mentionnée juste au dessus permet d'affiner légèrement la précision de l'information communiquée par cet indicateur :
-il faut certes atteindre un objectif quantifié ($20\%$), mais les hypothèses empiriques permettent aussi de penser qu'il faut que l'évolution de cet indicateur au cours du temps présente une tendance stable à la diminution, diminuant ainsi plus ou moins, avec de faibles fluctuations à chaque pas de temps.
+il faut certes atteindre un objectif quantifié ($20\%$), mais les hypothèses empiriques permettent aussi de penser qu'il faut que l'évolution de cet indicateur au cours du temps présente une tendance stable à la diminution
+%(
+%\begin{sparkline}{5}
+%	\spark 0 .995 .25 0.8 .5 0.6 .75 0.4 1 .2 /
+%\end{sparkline}
+%)
+, diminuant ainsi plus ou moins, avec de faibles fluctuations à chaque pas de temps.
 Une configuration de paramètres présentant des valeurs d'indicateurs en sortie proches des objectifs en fin de simulation mais fluctuant fortement pendant son déroulement ne sera ainsi pas valide.
 Elle montrerait en effet  un phénomène trop aléatoire au cours du temps, dont on ne peux penser qu'il s'est déroulé historiquement selon les dires d'experts qui considèrent que cette évolution s'est déroulée de manière continue dans le temps.
 
