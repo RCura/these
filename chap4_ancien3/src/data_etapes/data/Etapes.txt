@@ -1,0 +1,41 @@
+Etape de conception du modèle
+Etape 0 : modélisation et paramétrage initial
+Cf. tableau 14.
+Etape 1 : paramétrage
+Modification des valeurs d'attraction des attracteurs (cf. tableau 15).
+Pour les paroisses localisées en-dehors d'un agrégat, augmentation du nombre minimum de foyers paysans insatisfaits dans l'aire de desserte de l'église paroissiale requis pour créer un nouvelle paroisse  : 10
+Pour les paroisses localisées dans un agrégat, diminution du nombre minimum de foyers paysans dans l'agrégat requis pour créer une nouvelle paroisse : 200
+Réduction de la distance maximale, depuis le lieu d'implantation actuel, pour un déplacement local : 5000 m.
+Augmentation de la probabilité qu'un château isolé devienne un gros château : 0,3
+Augmentation de la probabilité qu'un château situé à proximité d'une église paroissiale devienne un gros château : 0,8
+Etape 2 : modélisation et paramétrage
+Pour les paroisses localisées dans un agrégat, diminution du nombre minimum de foyers paysans dans l'agrégat requis pour créer une nouvelle paroisse : 100
+Réduction de la distance maximale, depuis le lieu d'implantation actuel, pour un déplacement local : 2500 m.
+Modification des règles de calcul de la probabilité de construire un château.
+Pour le calcul de la satisfaction des foyers paysans, suppression de la variable de mécanisme liée à la puissance armée du seigneur châtelain.
+Etape 3 : modélisation et paramétrage
+Modification des valeurs d'attraction des attracteurs (cf. tableau 15).
+Trois (et non deux) tirages successifs de probabilité de construire un château pour les grands seigneurs
+Modification du mécanisme de déplacement des foyers paysans en introduisant une comparaison entre les aspects push (insatisfaction en leur localisation actuelle) et pull (attractivité d'autres localisations possibles).
+Ajout d'un nouveau type d'attracteur, les communautés  (cf. tableau 15).
+Etape 4 : modélisation et paramétrage
+Modification des valeurs d'attraction des attracteurs (cf. tableau 15).
+Pour les paroisses localisées en-dehors d'un agrégat, augmentation du nombre minimum de foyers paysans insatisfaits dans l'aire de desserte de l'église paroissiale requis pour créer un nouvelle paroisse : 20.
+Pour les paroisses localisées dans un agrégat, augmentation du nombre minimum de foyers paysans dans l'agrégat requis pour créer une nouvelle paroisse : 300.
+Augmentation de la distance maximale, depuis le lieu d'implantation actuel, pour un déplacement local : 4000 m.
+Modification de la procédure d'identification des agrégats de foyers paysans.
+Modification de la procédure d'identification des pôles d'attraction.
+Etape 5 : modélisation et paramétrage
+Nombre de foyers paysans dans les villages présents en début de simulation (paramètre nombre\_FP\_village égal) à 10 à vérifier.
+Détection d'agrégats et héritage de communautés => Simplification
+Amélioration de la définition des pôles d'attraction et de leur enveloppe.
+Etape 6 : modélisation et paramétrage
+Modification des valeurs d'attraction des attracteurs (cf. tableau 15).
+Modification de l'ordonnancement des actions dans le modèle.
+Modification de la procédure d'identification des agrégats de foyers paysans.
+Etape 7 : modélisation et paramétrage
+Pour les foyers paysans, augmentation du rayon de la distance de déplacement local au cours du temps : 2,5km entre 800 et 880 ; puis 4km entre 900 et 980 ; puis 6km à partir de 1000.
+Modification du modèle : ne pas appartenir à une communauté est un désavantage "absolu" quels que soient les autres niveaux d'insatisfaction.
+Etape 8 : modélisation
+Modification de l'ordonnancement des actions dans le modèle.
+Modification du mécanisme de déplacement local des foyers paysans.
