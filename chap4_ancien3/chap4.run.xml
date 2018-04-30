@@ -41,14 +41,14 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>chap3.aux</file>
-      <file>chap3-blx.bib</file>
+      <file>chap4.aux</file>
+      <file>chap4-blx.bib</file>
     </provides>
     <requires type="dynamic">
-      <file>chap3.bbl</file>
+      <file>chap4.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -63,28 +63,28 @@
       <file>french.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="0">
+  <external package="biblatex" priority="5" active="1">
     <generic>bibtex</generic>
     <cmdline>
       <binary>bibtex</binary>
       <option>-min-crossrefs 2</option>
-      <infile>chap3</infile>
+      <infile>chap4</infile>
     </cmdline>
     <input>
-      <file>chap3.aux</file>
+      <file>chap4.aux</file>
     </input>
     <output>
-      <file>chap3.bbl</file>
+      <file>chap4.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>chap3.bbl</file>
+      <file>chap4.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>chap3.aux</file>
-      <file>chap3-blx.bib</file>
+      <file>chap4.aux</file>
+      <file>chap4-blx.bib</file>
     </requires>
     <requires type="editable">
-      <file>Chap3.bib</file>
+      <file>biblio_chap4.bib</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>
