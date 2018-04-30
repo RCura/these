@@ -33,7 +33,7 @@ Accompagner la modélisation des systèmes de peuplement par l’exploration int
 
   1. Explo manuelle
   2. Explo systématique
-  3. Scénarios
+  3. Scénarios>
 
   - Paramétrage de base : comment comprendre le modèle à travers des centaines de simulations
   - Vers un outil d'exploration des données (et méta-données...) de simulation
