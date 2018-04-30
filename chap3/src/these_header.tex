@@ -56,6 +56,20 @@ date=year]{biblatex}
 % ---------- COMMANDES PERSO ---------- %
 % ------------------------------------- %
 
+%\setcounter{secnumdepth}{4}
+
+\crefname{paragraph}{paragraphe}{paragraphes}
+\Crefname{paragraph}{Paragraphe}{Paragraphes}
+
+\makeatletter
+\DeclareRobustCommand{\cnameref}[1]{%
+%	\namecref{#1}
+	\nameref{#1}%
+}%
+\DeclareRobustCommand{\Cnameref}[1]{%
+	\nameCref{#1} \nameref{#1}%
+}
+
 % ###### CREATION D'ENCADRES ###### %
 
 % Encadré pris dans la thèse de Seb Rey
