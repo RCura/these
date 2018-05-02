@@ -97,9 +97,14 @@ date=year]{biblatex}
 % Surlignement texte (1) + commentaire en marge (2)
 
 \DeclareRobustCommand{\hlorange}[1]{{\sethlcolor{Dandelion}\hl{#1}}}
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{Cyan}\hl{#1}}}
 
 \newcommandx{\toChange}[2]{%
-	\colorbox{Dandelion}{#1}\marginnote{\hlorange{#2}}%
+	\colorbox{Dandelion}{#1}\marginnote{\small\hlorange{#2}}%
+}
+
+\newcommandx{\Lena}[2]{%
+	\colorbox{Cyan}{#1}\marginnote{\small\hlcyan{Lena:\\ #2}}%
 }
 
 % Highlight
