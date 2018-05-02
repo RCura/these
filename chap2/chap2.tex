@@ -14,8 +14,8 @@
 	
 	\chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 	\begin{center}
-		{\large Version 2018-04-30\\
-			(Incorporation brute du chapitre Peupler la Terre)}
+		{\large Version 2018-05-02\\
+			(Incorporation brute du chapitre Peupler la Terre +\\ Ajout commentaires manuels)}
 	\end{center}
 	
 	\section{Introduction}
@@ -109,7 +109,7 @@
 	
 	\section{Premières étapes de modélisation}
 	
-	\subsection{Identification des entités impliquées dans la transition}
+	\subsection{Identification des entités impliquées dans la transition}\marginnote{\hl{Développer !}}[-30pt]
 	
 	La première étape de la modélisation de cette transition a été d'identifier et de décrire les entités spatiales impliquées dans celle-ci.
 	Ce travail s'est appuyé sur une grille de lecture géographique qui permet d'observer un système de peuplement selon trois niveaux d'analyse qui sont dans le cas de la transition 800-1100 :
@@ -158,25 +158,25 @@
 	Ces actions entraînent la modification des attributs d'entités qui peuvent être soit sociales, soit spatiales (représentées sur la figure sous la forme de rectangles simples).
 	Ces modifications entraînent elles-mêmes (directement ou indirectement) une transformation de la configuration spatiale du peuplement : apparition d'églises, de prieurés et de châteaux ; changement de localisation des foyers paysans.
 	
-	\subsection{Établissement de règles de comportement pour chaque entité sociale}
-	
-	L'établissement de règles de comportement des entités sociales consiste en l'identification de faits stylisés représentant certains aspects de la transition étudiée.
-	Le tableau 1 les décrit en mettant en correspondance les objectifs de chaque entité sociale avec les actions qu'elle peut entreprendre pour les atteindre.
-	Parmi ces actions, certaines influencent directement la configuration spatiale du système de peuplement : création de châteaux, de prieurés, de paroisses ; déplacement des foyers paysans.
-	D'autres actions permettent d'accroître le pouvoir des entités concernées, et donc l'attractivité des sièges de pouvoir (châteaux, prieurés, abbayes) ou bien des villages quand ils possèdent une communauté agraire (ou rurale) puissante.
-	Ces actions ont une implication spatiale indirecte.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Fig1}
-		\caption{Actions de différentes entités sociales et spatiales ayant un impact direct ou indirect sur la configuration spatiale du peuplement régional de l’Europe du Nord-Ouest entre 800 et 1100.}
-		\label{fig:fig1}
-	\end{figure}
-	
-	
-	D'autres entités avaient été identifiées lors des premières étapes de modélisation comme ayant un rôle majeur dans la transition.
-	Le choix a été fait d'écarter celles qui n'avaient pas d'influence spatiale directe (monde marchand) ou pas de représentation spatiale à une échelle régionale (c'est le cas notamment de l'autorité centrale [roi ou empereur] et du Saint-Siège).
-	
+%	\subsection{Établissement de règles de comportement pour chaque entité sociale}
+%	
+%	L'établissement de règles de comportement des entités sociales consiste en l'identification de faits stylisés représentant certains aspects de la transition étudiée.
+%	Le tableau 1 les décrit en mettant en correspondance les objectifs de chaque entité sociale avec les actions qu'elle peut entreprendre pour les atteindre.
+%	Parmi ces actions, certaines influencent directement la configuration spatiale du système de peuplement : création de châteaux, de prieurés, de paroisses ; déplacement des foyers paysans.
+%	D'autres actions permettent d'accroître le pouvoir des entités concernées, et donc l'attractivité des sièges de pouvoir (châteaux, prieurés, abbayes) ou bien des villages quand ils possèdent une communauté agraire (ou rurale) puissante.
+%	Ces actions ont une implication spatiale indirecte.
+%	
+%	\begin{figure}[!h]
+%		\centering
+%		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Fig1}
+%		\caption{Actions de différentes entités sociales et spatiales ayant un impact direct ou indirect sur la configuration spatiale du peuplement régional de l’Europe du Nord-Ouest entre 800 et 1100.}
+%		\label{fig:fig1}
+%	\end{figure}
+%	
+%	
+%	D'autres entités avaient été identifiées lors des premières étapes de modélisation comme ayant un rôle majeur dans la transition.
+%	Le choix a été fait d'écarter celles qui n'avaient pas d'influence spatiale directe (monde marchand) ou pas de représentation spatiale à une échelle régionale (c'est le cas notamment de l'autorité centrale [roi ou empereur] et du Saint-Siège).
+%	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab1_1.png}
@@ -185,6 +185,7 @@
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab1_2.png}
+	\marginnote{\hl{Supprimer les trois dernières lignes (eveque, saint-siege et autorité centrale du tableau)}}[-50pt]
 	\end{figure}
 	
 	\subsection{Vers un modèle de simulation multi-agents de la transition : SimFeodal}
@@ -224,6 +225,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab2.png}
+		\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 	\end{figure}
 	
 	De la même manière et avec un niveau d'abstraction semblable, les puissants sont modélisés via des agents « \textbf{Seigneurs} ».
@@ -282,14 +284,14 @@
 	Les zones de prélèvement créées et possédées par les seigneurs se multiplient, augmentant la pression fiscale sur les foyers paysans.
 	Des agrégats de foyers paysans apparaissent, grossissent ou disparaissent.
 	
-	\subsection{L'état initial du modèle}
+	\subsection{L'état initial du modèle}\marginnote{\hl{Développer !}}[-30pt]
 	
 	Le modèle vise à reproduire les traits communs de la grande diversité des structures spatiales de la période étudiée sur l'ensemble de l'Europe du Nord-Ouest.
 	Pour ce faire, il comporte de nombreux paramètres, lesquels doivent permettre, par leur variation, de représenter les particularités de chacun des sous-ensembles régionaux de la zone d'étude.
 	Les données et connaissances disponibles pour la Touraine, qui est le référentiel choisi pour construire une première version du modèle, nous ont permis de quantifier un certain nombre de paramètres (tableau 3).
 	La variation ultérieure des paramètres et des situations initiales permettra de simuler les dynamiques à l'œuvre dans d'autres régions de l'Europe du Nord-Ouest entre 800 et 1100.
 	
-	\subsubsection{L'espace modélisé : une Touraine très stylisée}
+	\subsubsection{L'espace modélisé : une Touraine très stylisée}\marginnote{\hl{Développer !}}[-20pt]
 	
 	L'espace modélisé est une zone de 100 kilomètres de côté, représentant de manière simplifiée un diocèse d'Europe du Nord-Ouest, à l'instar de celui de Tours.
 	L'espace de modélisation est considéré comme homogène, c'est-à-dire qu'on ne représente aucun élément naturel pouvant influencer les dynamiques de peuplement, qu'il s'agisse du relief, de cours d'eau, de zones littorales, d'un couvert végétal ou de gisements de ressources ;
@@ -301,7 +303,7 @@
 	Ensuite, à l'échelle d'analyse du modèle, il n'est pas possible d'aborder la question de la production d'espaces spécifiquement intra-urbains.
 	Enfin, nous ne savons rien de l'attractivité de Tours à un moment où la ville croît certes, mais en même temps que les villages et les agglomérations secondaires.
 	
-	\subsubsection{Les agrégats de population}
+	\subsubsection{Les agrégats de population}\marginnote{\hl{Développer et faire schémas}}[-20pt]
 	
 	Un agrégat de population (village ou petite ville) est défini comme un ensemble d'au moins cinq foyers paysans espacés les uns des autres de moins de 100 m, cette distance étant un paramètre modifiable pour s'adapter à différents contextes régionaux.
 	Par convention, un village est défini comme un agrégat comportant de 5 à 29 foyers paysans ; une petite ville en comporte 30 ou plus.
@@ -313,8 +315,8 @@
 	Cette puissance est variable d'une simulation à une autre mais identique pour toutes les communautés d'une simulation donnée.
 	
 	
-	\subsubsection{Les foyers paysans}
-	
+	\subsubsection{Les foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
+
 	Ne souhaitant pas représenter une évolution démographique au sujet de laquelle nous n'avons pas de certitude, nous partons du principe qu'en 800 comme en 1160, le nombre de foyers paysans est stable, arbitrairement fixé à 4 000.
 	Ces foyers correspondent à des groupes de quatre à cinq personnes, soit un espace peuplé de 16 000 à 20 000 habitants, c'est-à-dire une densité moyenne assez faible de l'ordre de 1,6 à 2 habitants par km2.
 	En 800, la plupart des foyers paysans sont dispersés de manière aléatoire dans l'espace modélisé (tableau 3).
@@ -336,8 +338,8 @@
 	Les foyers paysans apparaissant en cours de simulation sont placés dans un agrégat choisi suivant un tirage aléatoire pondéré par le nombre de foyers paysans présents dans chaque agrégat.
 	Ce faisant, les foyers paysans concernés ont davantage de chances de se localiser dans un agrégat de grande taille plutôt que dans un agrégat de petite taille.
 	
-	\subsubsection{Les seigneurs}
-	
+	\subsubsection{Les seigneurs}\marginnote{\hl{Développer !}}[-20pt]
+
 	À l'initialisation du modèle, deux types de seigneurs coexistent : les premiers, que nous nommons « grands seigneurs », ont une portée d'action d'échelle supérieure, possèdent une puissance et des droits qui les placent loin devant les autres seigneurs en termes de pouvoir tant économique que militaire, ce qui fait d'eux des chefs de guerre.
 	Leur nombre est variable d'une région à l'autre, de même que leurs puissances relatives.
 	Dans l'exemple de la Touraine, on en décompte deux (les comtes d'Anjou et de Blois).
@@ -383,6 +385,7 @@
 	Cependant, ces éléments n'étant pas représentés dans le modèle, chaque château a simplement une probabilité de devenir un gros château.
 	Cette probabilité est beaucoup plus forte si le château est situé dans un village déjà doté d'une église (tableau 4).
 	
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab4.png}
@@ -390,16 +393,18 @@
 			\small
 			16 : Cela permet d’avoir une probabilité fortement croissante pour les valeurs moyennes, puis bornée rapidement : avec cette valeur de $n$, on obtient 0 pour une puissance de 0, environ 0,5 pour une puissance de 1000, et cela converge lentement vers 1 au-delà.
 		}
+		\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 	\end{figure}
 	
 	\subsubsection{Acquisition et prélèvement de droits seigneuriaux}
 	
 	Le prélèvement des redevances et droits seigneuriaux se fait au sein d'une zone de prélèvement, dont les attributs sont le détenteur (seigneur qui l'a créée), le rayon et le taux de prélèvement (tableau 5).
 	Dans les cas où les zones de prélèvement sont liées à un château, leur rayon dépend de la puissance du propriétaire du château comparée au minimum et maximum de puissance des autres seigneurs au moment de la création de la zone.
-	
+
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab5.png}
+		\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 	\end{figure}
 	
 
@@ -490,9 +495,8 @@
 	Les foyers paysans sont caractérisés par un ensemble de mesures de « satisfaction » qui les poussent à se déplacer lorsqu'elles sont trop faibles.
 	Ces déplacements s'effectuent selon des modalités particulières selon les situations, mais visent systématiquement à l'augmentation de la « satisfaction globale ».
 	
-	\subsubsection{Satisfaction des foyers paysans}
-	
-	
+	\subsubsection{Satisfaction des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
+
 	La satisfaction globale d'un foyer paysan est une synthèse de trois mesures de satisfaction (matérielle, religieuse, et de protection face aux violences), dont on considère qu'elles ne se compensent pas mutuellement :
 	si l'une des mesures de satisfaction est faible, la satisfaction globale le sera également (cf. équation 1 du tableau 6).
 	Ces trois mesures sont les suivantes :
@@ -508,13 +512,14 @@
 		\item la satisfaction en termes de protection est fonction de la distance entre le foyer paysan et le château le plus proche ($distance_{chateau}$) et du besoin de protection ressenti par le foyer paysan ($besoin\_protection$).
 		Celui-ci apparaît à partir de 960 et correspond à la naissance et au développement d'une conflictualité entre seigneurs locaux résultant de la perte d'influence du pouvoir central (cf. équation 4 du tableau 6).
 	\end{itemize}
-	
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab6.png}
+	\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 \end{figure}
 
-	\subsubsection{Déplacement des foyers paysans}
+	\subsubsection{Déplacement des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
 	
 	À chaque pas de temps, chaque foyer paysan a une certaine probabilité de se déplacer.
 	Ce déplacement vise à augmenter sa satisfaction en se rapprochant d'un pôle d'attraction.
@@ -535,9 +540,10 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab7.png}
+	\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 \end{figure}
 
-	\subsection{Les églises}
+	\subsection{Les églises}\marginnote{\hl{Développer}}[-30pt]
 	
 	\begin{figure}[!h]
 		\centering
@@ -561,6 +567,7 @@
 	Une fois ces nouvelles églises paroissiales créées, l'espace du modèle fait l'objet d'un nouveau découpage afin d'actualiser les contours des ressorts paroissiaux.
 	Au sein de chaque ressort paroissial, on calcule la satisfaction religieuse de chaque foyer paysan.
 	Si au moins dix foyers paysans ont une satisfaction religieuse égale à zéro, une nouvelle paroisse est créée\footnote{
+		\todobox{Modifier et développer largement pour rendre plus compréhensible en incorporant dans le corps du texte}\\
 	Selon les règles suivantes, dépendant du nombre d’églises non paroissiales dans le ressort :
 	\begin{itemize}
 		\item supérieur à 3, la plus éloignée d’entre elles devient paroissiale ;
@@ -572,9 +579,10 @@
 	L'espace du modèle fait alors l'objet d'un nouveau découpage afin d'actualiser les contours des ressorts paroissiaux et de tenir compte des nouvelles paroisses lors du calcul de la satisfaction religieuse des foyers paysans.
 	
 	
-	\section{Quelques résultats de simulation}
+	\section{Quelques résultats de simulation}\marginnote{\hl{Supprimer partie}}[-30pt]
 	
-	Les premières simulations effectuées ont eu pour objectif de vérifier que le modèle fournit des résultats plausibles pour la Touraine modélisée.
+	
+\toChange{Les premières simulations effectuées}{Conserver et déplacer ce paragraphe.} ont eu pour objectif de vérifier que le modèle fournit des résultats plausibles pour la Touraine modélisée.
 	Le modèle comporte plusieurs tirages probabilistes (par exemple, pour déterminer si un foyer paysan effectue un déplacement local ou lointain, ou pour déterminer si un château devient un gros château, ou encore pour déterminer si une nouvelle église paroissiale va être créée ou non au sein d'un agrégat de foyers paysans).
 	Par conséquent, pour un même jeu de valeurs de variables et de paramètres, les résultats fournis par le modèle sont susceptibles de varier d'une simulation à une autre.
 	Plusieurs réplications d'une même simulation sont donc nécessaires pour analyser les résultats (vingt réplications ici).
@@ -582,12 +590,15 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab8.png}
+		\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 	\end{figure}
 	
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Fig6}
-		\caption{Distributions rang-taille des agrégats obtenues pour vingt réplications d'une simulation avec les valeurs de variables et de paramètres fixés pour la Touraine.}
+		\caption{
+			\todobox{Modifier/enlever}\\
+			Distributions rang-taille des agrégats obtenues pour vingt réplications d'une simulation avec les valeurs de variables et de paramètres fixés pour la Touraine.}
 		\label{fig:fig6}
 	\end{figure}
 	
@@ -616,7 +627,7 @@
 	
 	\section*{Conclusion}
 	
-	L'étude qui est présentée ici est un cas d'application de modélisation et de simulation dans un contexte interdisciplinaire.
+	\toChange{L'étude qui est présentée ici}{Conserver et déplacer ce paragraphe} est un cas d'application de modélisation et de simulation dans un contexte interdisciplinaire.
 	Nous avons cherché à dégager des faits stylisés qui conservent un niveau de complexité acceptable et accepté par les experts du domaine.
 	Toute démarche de modélisation suppose une simplification, mais il ne s'agissait pas pour nous d'aboutir à une vision simpliste des processus considérés.
 	Pour ce faire, nous sommes passés graduellement d'une description littéraire des phénomènes à leur représentation sous des formes plus abstraites, pour finalement parvenir à la définition d'entités (objets) implémentées dans un modèle multi-agents : SimFeodal.
