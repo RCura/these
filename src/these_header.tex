@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage[left=1.5cm, right=5cm, bottom = 1.5cm, top = 1.5cm]{geometry}
 \setlength{\marginparwidth}{4.5cm}
+\usepackage{marginnote}
 
 %\usepackage[T1]{fontenc}
 \usepackage{fontspec}
@@ -16,7 +17,7 @@
 
 \usepackage{xargs} % Use more than one optional parameter in a new commands
 \usepackage[dvipsnames]{xcolor}
-\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
 
 \usepackage{graphicx}
 
@@ -92,25 +93,19 @@ date=year]{biblatex}
 
 % ###### COMMENTAIRES ###### %
 
-% Commentaire en marge
-\newcommandx{\change}[2][1=]{\todo[linecolor=lightgray,backgroundcolor=gray!10,bordercolor=gray,#1]{#2}}
-% Commentaire en marge + surlignement texte
-\newcommandx{\changec}[2][1=]{%
-	\colorbox{blue!25}{#2}\todo[linecolor=lightgray,backgroundcolor=gray!10,bordercolor=gray,#1]%
+
+% Surlignement texte (1) + commentaire en marge (2)
+
+\DeclareRobustCommand{\hlorange}[1]{{\sethlcolor{Dandelion}\hl{#1}}}
+
+\newcommandx{\toChange}[2]{%
+	\colorbox{Dandelion}{#1}\marginnote{\hlorange{#2}}%
 }
+
 % Highlight
 \newcommandx{\fixref}[1]{\hl{#1}}
 
 % ToDoBox
-%\newcommandx{\todobox}[2][1=]{%
-%	\colorbox{pink}{\parbox{0.9\textwidth}{\vskip5pt
-%			\leftskip5pt
-%			\rightskip5pt
-%			#2
-%			\vskip5pt
-%	}\bigskip
-%}
-%}
 \newcommandx{\todobox}[2][1=]{%
 	~\\	\colorbox{pink}{\parbox{0.9\textwidth}{%
 		\vskip5pt
