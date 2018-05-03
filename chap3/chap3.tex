@@ -14,7 +14,7 @@
 		
 	\chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 	\begin{center}
-		{\large Version 2018-04-30}
+		{\large Version 2018-05-03}
 	\end{center}
 
 
@@ -29,24 +29,37 @@
 
 \subsection{L'importance de la réplication}
 
+\section{Évaluer le modèle SimFeodal}
 
-\section{Indices et indicateurs}
+	Le modèle SimFeodal présenté dans le chapitre 2 correspond à une « version 0 » du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
+  	L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
+  	De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{§XX}.
+  	Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
+	Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
+	Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes relativement à l'ensemble des résultats obtenus en fin de simulation.
+	La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de SimFeodal.
+	Dans cette partie, on explicitera d'abord le sens que l'on prête à ces attentes, sous la forme « d'indices empiriques » et « d'indicateurs de sortie de simulation ».
+	Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
+	En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa « version 0 », dans le chapitre précédent (\hl{ref}).
 
-On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique qu'il cherche à simplifier.
+\subsection{Indices et indicateurs}
+
+On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique dont il cherche à rendre compte.
 Ces grands traits peuvent s'entendre de multiples manières, et se formaliser avec encore plus d'approches.
-Ici, nous avons souhaité proposer une dychotomie simple entre le domaine de l'empirique et celui de la simulation, en forçant et systématisant l'usage d'un vocabulaire qui est souvent employé de manière plurielle.
-Pour être en mesure d'évaluer la vraisemblance du comportement empirique reproduit par le modèle, il est nécessaire de s'appuyer sur des éléments empiriques ayant une correspondance dans le modèle de simulation.
+Ici, nous avons souhaité proposer une dichotomie simple entre le domaine de l'empirique et celui de la simulation, en systématisant l'usage d'un vocabulaire qui est souvent employé de manière plurielle.
+Pour être en mesure d'évaluer la vraisemblance du comportement reproduit par le modèle sur le plan empirique, il est nécessaire de mettre en correspondance des éléments empiriques et des éléments issus de la simulation.
 Nous caractérisons ces éléments en deux grands ensembles :
-(1) \textbf{les indices empiriques}, éléments quantifiables ou au moins descriptibles du domaine empirique, et  (2) \textbf{les indicateurs de sortie}, variables informatiques produites par le modèle de simulation et devant pouvoir être comparés à chacun des indices empiriques.
-La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthétique, ces ensembles, explicitant le vocabulaire mobilisé dans cette partie.
+(1) \textbf{les indices empiriques}, éléments quantifiables ou au moins descriptibles émanant du domaine empirique, et  (2) \textbf{les indicateurs de sortie}, variables informatiques produites par le modèle de simulation et devant pouvoir être comparés à chacun des indices empiriques.
+La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthétique, ces deux ensembles de mesures, explicitant le vocabulaire mobilisé dans cette partie.
 
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
 	\includegraphics[width=\linewidth]{img/schema_indice_indicateur.pdf}
-	\caption{Schéma de synthèse des correspondances entre empirie et simulation pour l'évaluation du modèle SimFeodal.\\
-		La correspondance des éléments est représentée par une symétrie axiale.
+	\caption{Schéma de synthèse des correspondances entre mesures relevant du domaine empirique et mesures issues des simulations pour l'évaluation du modèle SimFeodal.\\
+		\todobox{Lena : Paragraphe difficile}
+	La correspondance des éléments est représentée par une symétrie axiale, entre d'un côté des \og indices empiriques\fg{} et de l'autre des \og indicateurs de sortie de simulation\fg{}.
 		Les losanges pleins désignent une relation de composition :
-		un indice est soit un ordre de grandeur, soit une forme stylisée.
+		un \og indice empirique\fg{} est soit un ordre de grandeur, soit une forme stylisée.
 		Les losanges vides indiquent une relation d'agrégation :
 		une forme stylisée est une agrégation d'ordres de grandeurs.
 		Les dimensions (A à C) regroupent des indices (et les indicateurs qui leur correspondent) qui peuvent être de plusieurs types, et sont elles aussi comparables et en correspondance entre les domaines.
@@ -55,86 +68,105 @@ La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthét
 \end{figure}
 
 
-\subsection{Les indices empiriques}
+\subsubsection{Les indices empiriques}
 
-Le domaine empirique, pour pouvoir être modélisé, doit être en mesure de proposer des \og points de repère\fg{} sur lesquels le modèle s'appuiera.
-Ces éléments sont tirés de la thématique des dynamiques que l'on cherche à reproduire.
-Selon les modèles, ils peuvent revêtir de multiples formes et caractériser l'ensemble des échelles spatiales et temporelles que l'on choisit de mettre en scène dans le modèle.
+Afin d’évaluer la capacité du modèle à reproduire un phénomène observé, il est nécessaire de disposer dans le domaine empirique, de \og points de repère\fg{}.
+Selon les modèles, ceux-ci peuvent revêtir de multiples formes et relever de l'ensemble des échelles spatiales et temporelles que l'on choisit de mettre en scène dans le modèle.
 Leur point commun est qu'ils doivent pouvoir être mesurés, au sens le plus large, c'est-à-dire être en capacité d'être reproduits et comparables avec d'autres mesures.
-Dans cette étude, on a décidé de regrouper ces \textbf{indices empiriques} en deux catégories, basées la précision avec laquelle ils peuvent être décrits\footnote{Et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}}.
-La \cref{fig:schema_indices} montre cette catégorisation entre la première catégorie -- les ordres de grandeur -- et la seconde -- les formes stylisées --.
+Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits\footnote{\todobox{Lena : pas compris la note}\\Et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}}.
+La \cref{fig:schema_indices} illustre cette catégorisation entre la première catégorie -- les ordres de grandeur -- et la seconde -- les formes stylisées --.
 
-\subsubsection{Ordres de grandeur}
+\paragraph{Ordres de grandeur}
 La première catégorie est constituée d'\textbf{ordres de grandeurs} empiriques estimés -- avec une précision plus ou moins importante (\hl{cf. tableau 3 p. 317 du chap. TMD, à reproduire dans chap 2}).
 Certaines valeurs empiriques sont ainsi connues, que ce soit d'après des sources primaires ou secondaires, et peuvent ainsi constituer des indices.
 Par exemple, on connaît avec quasi-certitude le nombre d'églises paroissiales de la région Touraine en 1100.
-Certaines de ces valeurs sont toutefois plus proches de l'estimation, comme le taux de foyers paysans isolés en fin de période, que l'on ne peut qu'estimer à partir de sources secondaires et en menant des extrapolations.
-Ces différents indices observés ou estimés peuvent cependant tous trouver une correspondance presque exacte (cf. \ref{para:correspondance}, \cnameref{para:correspondance}, p. \pageref{para:correspondance}) dans le modèle de simulation, et dès lors, mener à comparaison entre données observées/estimées et données simulées.
-Ils peuvent ainsi jouer le rôle d'éléments d'évaluation du comportement du modèle simulé.
+D'autres valeurs empiriques sont en revanche issues d'estimations.
+Tel est le cas, par exemple, du taux de foyers paysans isolés en fin de période.
+Celui-ci ne peut être renseigné par des sources primaires et il a donc été nécessaire de l'estimer à partir de sources secondaires et en menant des extrapolations.
+Il est cependant possible de construire des indicateurs de sortie de simulation offrant une correspondance presque exacte de ces différents indices observés ou estimés (cf. \ref{para:correspondance}, \cnameref{para:correspondance}, p. \pageref{para:correspondance}).
+Il est dès lors possible de mener une comparaison entre données observées/estimées et données simulées.
+Ces ordres de grandeur peuvent ainsi participer à l'évaluation du comportement du modèle simulé.
 
-\subsubsection{Faits et formes stylisés}
-Le second type d'indice est moins précis, ne reposant pas sur une valeur estimable, mais plutôt sur la connaissance experte d'un phénomène.
-Il s'agit des \og \textbf{faits stylisés}\fg{}\footnotemark{}, plus tendanciels que les indicateurs.
-On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand observe que les systèmes de peuplement tendent à se hiérarchiser.
-On peut quantifier cette observation en observant que la pente formée par leur courbe rang-taille tend vers $1$ à mesure que le système évolue (\hl{Trouver ref, sans doute Pumain/Saint-Julien}).
-De la même manière, le modèle de transition démographique d'Adolphe Landry est un fait stylisé, énoncé à partir de l'observation de nombreuses récurrences de l'évolution des populations d'un pays en fonction des taux de natalité et de mortalité.
-Ces exemples montrent qu'au sein des faits stylisés, on retrouve aussi une diversité quant à la précision de leurs énoncés :
-on peut quantifier précisément la courbe de la rang-taille et l'allure de son évolution dans le temps, alors que la courbe logistique de la transition démographique revêt un caractère plus théorique.
-Dans notre cas d'étude, les faits stylisés sur lesquels on s'appuiera dans la modélisation peuvent être des allures de courbes (par exemple l'évolution dans le temps d'un indicateur) ou encore des formes de répartition spatiale.
-On pourra dès lors parler de \og \textbf{formes stylisées}\fg{}, aussi bien temporelles -- courbe logistique estimée pour la polarisation des foyers paysans --, spatiales -- différence dans l'occupation de l'espace par les agrégats entre le début et la fin de la période --, que correspondant à une agrégation à l'échelle du système, comme dans l'observation des hiérarchies grâce aux courbes rangs-tailles.
-Notons que ces formes stylisées relèvent le plus souvent d'une agrégation d'ordres de grandeurs (comme figuré dans la \cref{fig:schema_indices}) :
-l'évolution dans le temps de la population, par exemple, correspond à un vecteur d'ordres de grandeur, c'est-à-dire à une succession de mesures pour chaque date étudiée.
-Dans le cas d'une agrégation spatiale, par exemple quand on observe la hiérarchie du système de peuplement, il s'agit aussi d'une agrégation d'ordres de grandeurs :
-cette forme stylisée est constituée d'un ensemble d'ordres de grandeurs, les populations de chaque agrégat de population.
+\paragraph{Faits et formes stylisés}
+La seconde catégorie d'indice empirique est moins précise et ne repose pas sur une valeur observable ou estimable, mais plutôt sur la connaissance experte d'un phénomène.
+Il s'agit des \og \textbf{faits stylisés}\fg{}\footnotemark{}, rendant davantage compte d'une tendance dans la forme d'une relation ou d'une organisation que les indicateurs.
+On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand on qualifie la tendance des systèmes de peuplement à se hiérarchiser.
+La valeur de la pente associée à la courbe rang-taille d'un système de villes tend ainsi vers $1$ (\hl{Trouver ref, sans doute Pumain/Saint-Julien}) à mesure que le système évolue et se hiérarchise.
+De la même manière, le modèle de transition démographique d'Adolphe Landry est un fait stylisé, énoncé à partir de l'observation de nombreuses récurrences de l'évolution des populations d'un pays en fonction de leurs taux de natalité et de mortalité.
+Ces exemples montrent qu'au sein des faits stylisés, il y a une certaine diversité quant à la précision de leurs énoncés :
+on peut quantifier précisément la courbe d'une relation rang-taille et l'allure de son évolution dans le temps, \toChange{alors que la courbe logistique}{phrase à reprendre} de la transition démographique nécessite davantage de mesures et est moins précise dans les paramètres de son énoncé.
+Dans notre cas d'étude, les faits stylisés sur lesquels on s'appuiera seront des d'une part des \og allures\fg{} de courbes (par exemple l'évolution dans le temps d'un indicateur), d'autre part des formes de répartition spatiale, et enfin des \og allures\fg{} de courbes résultant d'une composition d'ordres de grandeurs.
+Nous qualifierons le premier type de \og \textbf{formes stylisées} temporelles\fg{} (courbe logistique estimée pour la polarisation des foyers paysans par exemple), le second type de \og \textbf{formes stylisées} spatiales\fg{} (changement dans la forme d'occupation de l'espace par les agrégats entre le début et la fin de la période par exemple).
+
+
+Le troisième type, \og \textbf{forme stylisée} organisationelle \fg{}, correspond à une forme repérable dans l'agrégation à l'échelle du système, comme dans l'observation des hiérarchies grâce aux courbes rang-tailles.
+Notons que ces formes stylisées relèvent le plus souvent d'une agrégation ou d'une composition d'ordres de grandeurs (comme figuré dans la \cref{fig:schema_indices}) :
+l'évolution dans le temps de la population, par exemple, correspond à un vecteur d'ordres de grandeur, c'est-à-dire à une succession de mesures de la quantité de population pour chaque date étudiée.
+\Lena{Même dans le cas }{Rendre § plus pédagogique} d'une agrégation spatiale, par exemple quand on observe \Lena{la hiérarchie du système de peuplement}{pas spatial mais organisationnel, autre exemple.}[-20pt], il s'agit d'une agrégation d'ordres de grandeurs :
+cette forme stylisée est constituée d'un ensemble d'ordres de grandeurs, les populations de chaque agrégat de \Lena{population.}{Ajouter petites figures pour clarifier cette phrase}[10pt]
 
 \footnotetext{
 	Définis ainsi par \autocite{livet2014diversite}: \og 
-	Un ``fait stylisé'' est une présentation simplifiée (i.e. taux, ratio ou écart, structure spatiale) d’une régularité empirique sur l’observation de laquelle il y a un large accord.
+	Un ``fait stylisé'' est une présentation simplifiée (i.e. taux, ratio ou écart, structure spatiale) d'une régularité empirique sur l'observation de laquelle il y a un large accord.
 	Le terme a été popularisé en économie par Nicholas Kaldor (1961).[Les] faits stylisés peuvent être construits de la manière suivante :
-	1) en partant du domaine empirique, on identifie des relations saillantes ; 2) on opère quelques simplifications qui permettent d’inclure formellement ces relations dans des modèles ; 3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
+	1) en partant du domaine empirique, on identifie des relations saillantes ; 2) on opère quelques simplifications qui permettent d'inclure formellement ces relations dans des modèles ; 3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
 }
 
-\subsection{Les indicateurs de sortie de simulation}
+\subsubsection{Les indicateurs de sortie de simulation}
+
+%\todobox{Fin des prises en compte des commentaires de Lena le 02/05/2018}
+
+Les ordres de grandeur et formes stylisées évoqués relèvent du domaine empirique, c'est-à-dire qu'on dispose de données ou de connaissances d'experts à leur sujet.
+Afin de pouvoir les mobiliser pour évaluer la capacité du modèle à reproduire le phénomène d'intérêt, il est nécessaire de définir des \textbf{indicateurs de sortie} dans le modèle de simulation, c'est-à-dire des variables informatiques que l'on enregistrera durant l'exécution du modèle et que l'on pourra ensuite comparer aux indices empiriques définis.
 
 
-Les ordres de grandeur et formes stylisées évoquées relèvent du domaine empirique.
-Afin de pouvoir les mobiliser, il est nécessaire de définir des \textbf{indicateurs en sortie} dans le modèle de simulation, c'est-à-dire des variables informatiques que l'on enregistrera durant l'exécution du modèle et que l'on pourra ensuite comparer aux indices empiriques définis.
+\paragraph{Définition}
+Comme pour les indices empiriques qui sont leurs équivalents dans le domaine empirique, on peut définir les indicateurs de sortie de simulation, en distinguant des formes numériques simples (des scalaires), et des indicateurs plus complexes, multidimensionnels.
+Ces derniers sont en effet nécessaire pour pouvoir confronter les sorties du modèle de simulation avec les formes stylisées identifiées dans le domaine empirique.
+Chaque indice empirique doit ainsi se voir correspondre, respectivement, un indicateur de sortie (\cref{fig:schema_indices}).
 
+\paragraph{Correspondance entre indicateurs de sortie de simulation et indices empiriques}\label{para:correspondance}
 
-\subsubsection{Définition}
-Comme pour les indices empiriques qui sont leurs équivalents, on peut définir une typologie différenciant les indicateurs en sortie \og numériques\fg{}, en distinguant les formes numériques simples (des scalaires), et des indicateurs plus complexes, multidimensionnels, à même de permettre la confrontation du modèle de simulation avec les formes stylisées identifiées.
-Chaque indice empirique doit ainsi se voir correspondre, respectivement, un indicateur de sortie.
+La correspondance entre indicateurs et indices ne correspond pas toujours à une équivalence exacte.
+En effet, si certains indicateurs peuvent trouver un équivalent strict dans le domaine empirique-- le nombre de châteaux connus à chaque date a un sens strictement équivalent au nombre de châteaux simulés par le modèle --, d'autres correspondances sont moins directes.
 
-\subsubsection{Correspondance entre indicateurs et indices}\label{para:correspondance}
+Il peut s'agir de correspondances ayant trait aux mêmes éléments de base et le passage de l'indicateur à l'indice résulte alors d'une simple conversion.
+Par exemple, du point de vue empirique, on connaît à peu près les populations de la région étudiée au début et à la fin de la période.
+Dans SimFeodal cependant, on ne modélise pas des individus en tant que tels, mais des foyers paysans.
+Le nombre de foyers paysans simulé n'est pas directement comparable à la population estimée, mais en supposant une moyenne de 4 ou 5 habitants par foyer paysan, il est possible d'en déduire un nombre d'habitants.
 
-Cette correspondance n'est pour autant pas une équivalence exacte.
-En effet, si certains indices empiriques peuvent trouver un équivalent strict -- le nombre de châteaux connus à chaque date est strictement équivalent au nombre de châteaux produits par le modèle --, d'autres indices trouveront une correspondance plus faible.
+Dans d’autres cas enfin, le décalage entre indicateurs et indices est plus important.
+Il s’agit notamment de caractéristiques du système féodal que l’on sait importantes mais pour lesquelles on ne dispose pas de données facilement quantifiables.
+La puissance militaire des seigneurs, par exemple, est complexe à quantifier. 
+On sait d’après connaissances expertes que la hiérarchie des puissances était forte à l’époque étudiée, majoritairement dominée par deux seigneurs (les comtes de Tours et de Blois) et assortie d’une grande quantité de petits chevaliers.
+On sait de plus qu’avec les liens de vassalité, les grands seigneurs disposaient des forces militaires des seigneurs qui leur étaient assujettis.
+Dans le domaine empirique on ne dispose pas d’éléments plus précis pour quantifier la puissance militaire des seigneurs.
+Dans le domaine du modèle, en revanche, on a défini un indicateur \og proxy\fg{} de cette puissance à partir du nombre de foyers paysans s’acquittant de droits à chaque seigneur. 
+De cette manière, on peut observer précisément en sortie de simulation la hiérarchie implicite entre les seigneurs reproduite par le modèle, avec une quantification de leurs puissances respectives.
+Ces éléments peuvent être comparés aux connaissances empiriques sur ces rapports de puissance entre les seigneurs à différents moments de l'époque féodale.
 
-Il peut s'agir de correspondances ayant trait aux mêmes éléments de bases, donc \og convertibles\fg{} entre elles.
-Par exemple, on connaît à peu près les populations de la région étudiée au début et à la fin de la période.
-Pourtant, dans SimFeodal, on ne modélise pas les individus en tant que tels, mais des foyers paysans.
-Le nombre de foyers paysans simulé n'est pas directement comparable à la population estimée, mais en estimant une moyenne de 4 ou 5 habitants par foyer paysan, ces quantités deviennent équivalentes.
-
-D'autres indicateurs trouveront une correspondance plus lointaine.
-Certains indices empiriques ne sont ainsi pas observables directement, et il faut alors leur trouver des indicateurs analogues, que l'on nomme souvent \og proxy\fg{} dans le champs statistique.
-Dans notre cas d'étude, il s'agit le plus souvent d'indices plus difficilement quantifiables.
-La puissance militaire des seigneurs, par exemple, est complexe à quantifier.
-On sait d'après connaissances expertes que la hiérarchie des puissances était forte, majoritairement dominée par deux seigneurs (les comtes de Tours et de Blois) et assortie d'une grande quantité de petits chevaliers.
-On sait de plus qu'avec les liens de vassalité, les grands seigneurs disposaient des forces militaires des seigneurs qui leur étaient assujettis.
-Faute à une capacité de quantification plus importante de ces indices, on leur associe, dans le modèle, un indicateur proxy relevant du nombre de foyers paysans s'acquittant de droits à chaque seigneur.
-De cette manière, on reproduit une hiérarchie implicite entre les seigneurs et leur puissance relative, qui est, elle, comparable aux connaissances empiriques de ces rapports de puissance.
+Les correspondances entre indicateurs de sortie et indices empiriques sont ainsi de nature multiple, reflétant différents niveaux de proximité entre le concept mobilisé dans le modèle et ce qui est observable dans le domaine empirique :
+les châteaux, entités d’intérêt dans le modèle, ont un équivalent direct dans le domaine empirique (il s’agit d’entités facilement observables et des données historiques les concernant sont disponibles) alors que la puissance militaire des seigneurs, élément moteur dans le modèle, a conduit à utiliser une variable dans le modèle pour laquelle on ne dispose pas d’observations empiriques.
 
 La création d'indicateurs de sortie correspondant aux indices empirique permet donc de quantifier une information qui n'est pas forcément aisément quantifiable dans le domaine empirique.
 
-\subsubsection{Indicateur composite}
+\paragraph{Indicateur composite}
 
-La forme numérique (scalaire ou vectorielle) des indicateurs de sortie permet de trouver des manières plus simples d'évaluer le modèle que d'observer l'ensemble des indicateurs.
+\hlcyan{La forme numérique\footnote{
+		\hlcyan{Lena :\\%
+			L’articulation des 2 § suivants ne me parait pas évidente.
+			Ils me semblent relever de 2 discussions différentes alors qu’ici ils paraissent liés :\\
+			D’un côté il y a les indicateurs composites/synthétiques qui sont issus d’une combinaison des indicateurs simples : ok ;\\
+			De l’autre il s’agit d’identifier une fonction objectif. Dans les modèles KISS il s’agit souvent d’une variable simple, par exemple la quantité de population.. Alors que « synthétique » dans ton texte semble beaucoup ressembler à « composite »\\
+			Est-ce que ce parag KISS fait sens ici ? Cette discussion là devrait peut-être figurer ailleurs ?}
+}}
+(scalaire ou vectorielle) des indicateurs de sortie permet de trouver des manières plus simples d'évaluer le modèle que d'observer l'ensemble des indicateurs.
 Chaque indicateur étant numérique, il devient en effet possible des les combiner au sein d'indicateurs composites, résultant en quelques indicateurs synthétiques permettant une évaluation plus rapide des résultats d'une simulation.
 Ces indicateurs composites sont très fréquemment utilisés en statistiques, permettant par exemple de résumer une information multidimensionnelle en un indicateur simple.
 L'Indice de Développement Humain (IDH), par exemple, est un indicateur composite dépendant de l'espérance de vie à la naissance, du niveau d'éducation et du niveau de revenu de chacun des pays caractérisés.
 On le trouve très souvent utilisé, parce qu'il permet de résumer le niveau de développement d'un pays en agrégeant trois dimensions majeures, l'aspect sanitaire, culturel et économique.
 
-\subsubsection{Indicateur synthétique}
+\paragraph{Indicateur synthétique}
 
 En renforçant cette logique de synthèse de plusieurs dimensions, on peut aller plus loin dans la définition d'un unique indicateur, synthétique, permettant d'évaluer la qualité de représentation d'un modèle.
 Là aussi, c'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (\hl{ref. à chap 2 là ou ce sera abordé}).
@@ -143,24 +175,30 @@ Il s'agit alors de définir une \og fonction objectif\fg{}, ou \og fonction de \
 
 Ces indicateurs composites et synthétiques résultent d'une quantification des autres indicateurs (excluant donc les formes stylisées qui sont plus libres d'interprétation), et apportent un grand confort dans le paramétrage d'un modèle de simulation.
 
-\subsubsection{Quels types d'indicateurs pour SimFeodal ?}
+\paragraph{Quels types d'indicateurs pour SimFeodal ?}
 
-SimFeodal n'est pourtant pas adapté à de tels indicateurs :
+SimFeodal n'est pas adapté à de tels indicateurs :
 une large partie des faits stylisés et ordres de grandeur mobilisés proviennent de connaissances expertes, et les thématiciens qui les ont consolidées rechignent à créer de tels indicateurs composites, en ce que cela demande de pondérer précisement l'importance de chacun des indicateurs par rapport aux autres.
-Pour pouvoir pondérer cette importance, il faudrait de plus que les différents indicateurs mobilisés présentent le même niveau de certitude et de variabilité dans leurs résultats, ce qui est peu le cas des indices empiriques -- et donc des indicateurs de sortie -- choisis dans le cadre du modèle SimFeodal.
+Pour pouvoir pondérer cette importance, il faudrait de plus que les différents indicateurs mobilisés présentent le même niveau de certitude et de variabilité dans leurs résultats, ce qui est peu le cas des indices empiriques -- \Lena{et donc des indicateurs de sortie}{Pas forcément. En fait:	La pondération concerne les indicateurs de sortie;	- l’incertitude est relative aux indices empiriques}[-32pt] -- choisis dans le cadre du modèle SimFeodal.
 
-On aurait ainsi pu créer quelques indicateurs synthétiques, mais ceux-ci ne prendraient en compte qu'une faible proportion du comportement attendu du modèle, résultant en une forte perte du pouvoir explicatif attendu du modèle.
+On aurait ainsi pu créer quelques indicateurs \hlcyan{synthétiques\footnote{
+	\hlcyan{Lena:\\Ou composites ?}
+}}, mais ceux-ci \hlcyan{ne prendraient en compte qu'une faible proportion du comportement attendu du modèle, résultant en une forte perte du pouvoir explicatif attendu du modèle\footnote{
+	\hlcyan{Lena:\\Pas sure de comprendre...\\ En fait il est difficile de créer ces indicateurs si les thématiciens ne peuvent fournir une pondération qui fasse sens pour eux. La combinaison des variables ne fait simplement pas sens pour eux. C’est plutôt cela le pb non ?}
+}}.
 Par exemple, pour caractériser la polarisation du système de peuplement, il pourrait suffit de définir un indicateur composite fonction du niveau de concentration -- le taux de foyers paysans dispersés --, du nombre de pôles et de l'espacement moyen entre les agrégats.
-Les valeurs de l'indicateur généré renseigneraient certes efficacement sur le succès ou l'échec d'un ensemble de valeurs de paramètres, mais cette information serait grossière, agrégeant dans le groupe des \og simulations réussies\fg{} des configurations extrêmement diverses, et donc potentiellement très éloignés des connaissances empiriques :
-une information multivariée ne peut pas toujours être résumée de manière univariée.
+Les valeurs de l'indicateur généré pourraient renseigner efficacement sur la capacité d'un ensemble de valeurs de paramètres à reproduire le phénomène de polarisation attendu.
+Cette information serait cependant grossière, dans la mesure où seraient agrégées dans le groupe des \og simulations réussies\fg{} des configurations extrêmement diverses.
+L'information fournie risquerait alors d'être très éloignée des connaissances empiriques des thématiciens :
+une information multivariée ne peut pas toujours être résumée, en gardant tout son sens, par une seule variable (de manière univariée).
 
 On a donc fait le choix d'évaluer SimFeodal en conservant des indicateurs de sortie non composites.
-Ce choix implique toutefois un problème majeur dans l'analyse des sorties de simulation auquel la réduction de dimensionnalité est une réponse :
+Ce choix implique toutefois un problème majeur dans l'analyse des sorties de simulation auquel la réduction de dimensionnalité est \Lena{une réponse}{On a l’impression que tu viens d’expliquer que ce n’est pas intéressant ! Revoir cette formulation donc $\ddot\smile$}[-30pt] :
 il est plus simple d'analyser quelques indicateurs plutôt qu'un grand nombre d'entre eux.
 
 \clearpage
 
-\section{Hiérarchiser et catégoriser les indicateurs}
+\subsection{Hiérarchiser et catégoriser les indicateurs}
 
 SimFeodal s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels.
 Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, le même niveau de précision sur les phénomènes modélisés.
@@ -171,7 +209,7 @@ Il faut dès lors, comme pour toute analyse synthétique, concevoir une hiérarc
 il ne sera pas nécessaire d'analyser chacun des indicateurs dans la plupart des cas, seuls les indicateurs jugés plus importants pourront être analysés.
 Les indicateurs de moindre importance ne seront mobilisés que pour départager des situations dont la différence ne serait pas suffisament explicitée par l'usage des indicateurs principaux.
 
-\subsection{Incertitude}\label{sssec:incertitude}
+\subsubsection{Incertitude}\label{sssec:incertitude}
 Dans le modèle de simulation, les indicateurs de sortie sont à analyser en tenant compte de la précision des indices qu'ils représentent.
 Il ne faudra ainsi pas étudier la croissance  du nombre d'agrégats au cours de la simulation de manière fine, par exemple en étudiant le coefficient directeur de la courbe, quand l'empirie ne donne quasiment aucune information à ce sujet si ce n'est qu'il y a bien plus d'agrégats en fin de période qu'au début.
 On peut vouloir quantifier la précision de ces données, par exemple à l'aide des méthodes développées dans le champ des observations floues et/ou incertaines (voir par exemple le travail de Cyril de Runz sur les données \og imparfaites\fg{} \autocite{de2008imperfection}).
@@ -182,7 +220,7 @@ Toutefois, SimFeodal se caractérise d'une part par une très forte hétérogén
 la vraisemblance d'ensemble du modèle compte bien plus que la précision de chacune de ses composantes.
 
 
-\subsection{Catégoriser les indicateurs : définir des dimensions d'analyse}
+\subsubsection{Catégoriser les indicateurs : définir des dimensions d'analyse}
 En présence de plus d'une quarantaine d'indicateurs, il est toutefois nécessaire, a minima, d'organiser leur analyse.
 On a vu qu'il n'était pas justifié de mener cet ordonnancement à partir des propriétés intrinsèques des indicateurs du modèle.
 Au contraire, et cela porte bien plus de sens vis-à-vis du rôle d'un modèle, la hiérarchisation des sortie du modèle doit suivre la hiérarchie implicite qui structure les hypothèses et objectifs du modèle en lui-même.
@@ -199,7 +237,7 @@ De même, chaque dimension sera composée d'indicateurs dotés d'une qualité de
 Le seul point commun des indicateurs de sortie de chaque dimension doit être thématique.
 Les trois dimensions choisies -- polarisation, hiérarchisation et fixation --, et les indicateurs qui les caractérisent dans le modèle, sont dès lors considérés comme les trois dimensions d'analyse des sorties de SimFeodal.
 
-\subsection{Hiérarchiser les indicateurs dans chaque dimension}\label{par:hierarchie_interne}
+\subsubsection{Hiérarchiser les indicateurs dans chaque dimension}\label{par:hierarchie_interne}
 Chacune de ces dimensions s'applique à plusieurs types d'agents du modèle.
 Pour définir la hiérarchie interne aux dimensions, on retiendra les agents les plus impactés par les dynamiques correspondant à ces dimensions :
 la polarisation, par exemple, peut être observé depuis le point de vue de ce qui polarise (les attracteurs) tout autant que de ce qui est polarisé (les foyers paysans).
@@ -208,7 +246,7 @@ Les indicateurs de sortie représentatifs des dynamiques, par exemple les indica
 Dans cet exemple, on analysera donc d'abord le résultat effectif de la polarisation, c'est-à-dire la concentration des foyers paysans en agrégats, avant d'observer la répartition et les diversité des attracteurs ayant entrainé ce phénomène.
 On peut dès lors définir des \og indicateurs principaux\fg{} pour chaque dimension, représentatifs des grands traits des structures auxquelles on souhaite aboutir en sortie de simulation, et des \og indicateurs secondaires\fg{}, permettant d'affiner l'évaluation de chacune de ces dimensions.
 
-\subsection{Une hiérarchie mouvante}
+\subsubsection{Une hiérarchie mouvante}
 Notons que l'analyse des indicateurs de sortie suit une hiérarchie parfois mouvante, et en tous les cas, assez peu quantifiable :
 si l'ordre d'observation est plutôt stable, l'importance que l'on portera à chacun des indicateurs peut varier.
 Les indicateurs principaux de chaque dynamique sont ainsi \og incontournables\fg{}, c'est-à-dire qu'un résultat trop loin de celui des indices empiriques est disqualifiant.
