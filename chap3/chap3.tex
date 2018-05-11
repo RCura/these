@@ -1,21 +1,7 @@
-% !TeX root = chap3.tex
-% !TeX encoding = UTF-8
-% !TeX spellcheck = fr_FR
-\documentclass[12pt, a4paper, oneside]{book}
-\input{../src/these_header}
-
-\bibliography{biblio_chap3}
-
-\begin{document}
-	\setcounter{part}{0}
-	\setcounter{chapter}{2}
-	\setcounter{secnumdepth}{4}
-	%\part{Accompagner la modélisation d'une transformation dans le système de peuplement de l'Europe Médiévale}
-		
-	\chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
-	\begin{center}
-		{\large Version 2018-05-03}
-	\end{center}
+\chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
+\begin{center}
+{\large Version 2018-05-03}
+\end{center}
 
 
 
@@ -31,16 +17,16 @@
 
 \section{Évaluer le modèle SimFeodal}
 
-	Le modèle SimFeodal présenté dans le chapitre 2 correspond à une « version 0 » du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
-  	L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
-  	De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{§XX}.
-  	Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
-	Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
-	Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes relativement à l'ensemble des résultats obtenus en fin de simulation.
-	La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de SimFeodal.
-	Dans cette partie, on explicitera d'abord le sens que l'on prête à ces attentes, sous la forme « d'indices empiriques » et « d'indicateurs de sortie de simulation ».
-	Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
-	En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa « version 0 », dans le chapitre précédent (\hl{ref}).
+Le modèle SimFeodal présenté dans le chapitre 2 correspond à une « version 0 » du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
+	L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
+	De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{§XX}.
+	Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
+Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
+Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes relativement à l'ensemble des résultats obtenus en fin de simulation.
+La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de SimFeodal.
+Dans cette partie, on explicitera d'abord le sens que l'on prête à ces attentes, sous la forme « d'indices empiriques » et « d'indicateurs de sortie de simulation ».
+Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
+En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa « version 0 », dans le chapitre précédent (\hl{ref}).
 
 \subsection{Indices et indicateurs}
 
@@ -53,18 +39,18 @@ Nous caractérisons ces éléments en deux grands ensembles :
 La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthétique, ces deux ensembles de mesures, explicitant le vocabulaire mobilisé dans cette partie.
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/schema_indice_indicateur.pdf}
-	\caption{Schéma de synthèse des correspondances entre mesures relevant du domaine empirique et mesures issues des simulations pour l'évaluation du modèle SimFeodal.\\
-		\todobox{Lena : Paragraphe difficile}
-	La correspondance des éléments est représentée par une symétrie axiale, entre d'un côté des \og indices empiriques\fg{} et de l'autre des \og indicateurs de sortie de simulation\fg{}.
-		Les losanges pleins désignent une relation de composition :
-		un \og indice empirique\fg{} est soit un ordre de grandeur, soit une forme stylisée.
-		Les losanges vides indiquent une relation d'agrégation :
-		une forme stylisée est une agrégation d'ordres de grandeurs.
-		Les dimensions (A à C) regroupent des indices (et les indicateurs qui leur correspondent) qui peuvent être de plusieurs types, et sont elles aussi comparables et en correspondance entre les domaines.
-	} 
-	\label{fig:schema_indices} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/schema_indice_indicateur.pdf}
+\caption{Schéma de synthèse des correspondances entre mesures relevant du domaine empirique et mesures issues des simulations pour l'évaluation du modèle SimFeodal.\\
+\todobox{Lena : Paragraphe difficile}
+La correspondance des éléments est représentée par une symétrie axiale, entre d'un côté des \og indices empiriques\fg{} et de l'autre des \og indicateurs de sortie de simulation\fg{}.
+Les losanges pleins désignent une relation de composition :
+un \og indice empirique\fg{} est soit un ordre de grandeur, soit une forme stylisée.
+Les losanges vides indiquent une relation d'agrégation :
+une forme stylisée est une agrégation d'ordres de grandeurs.
+Les dimensions (A à C) regroupent des indices (et les indicateurs qui leur correspondent) qui peuvent être de plusieurs types, et sont elles aussi comparables et en correspondance entre les domaines.
+} 
+\label{fig:schema_indices} 
 \end{figure}
 
 
@@ -106,10 +92,10 @@ l'évolution dans le temps de la population, par exemple, correspond à un vecte
 cette forme stylisée est constituée d'un ensemble d'ordres de grandeurs, les populations de chaque agrégat de \Lena{population.}{Ajouter petites figures pour clarifier cette phrase}[10pt]
 
 \footnotetext{
-	Définis ainsi par \autocite{livet2014diversite}: \og 
-	Un ``fait stylisé'' est une présentation simplifiée (i.e. taux, ratio ou écart, structure spatiale) d'une régularité empirique sur l'observation de laquelle il y a un large accord.
-	Le terme a été popularisé en économie par Nicholas Kaldor (1961).[Les] faits stylisés peuvent être construits de la manière suivante :
-	1) en partant du domaine empirique, on identifie des relations saillantes ; 2) on opère quelques simplifications qui permettent d'inclure formellement ces relations dans des modèles ; 3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
+Définis ainsi par \autocite{livet2014diversite}: \og 
+Un ``fait stylisé'' est une présentation simplifiée (i.e. taux, ratio ou écart, structure spatiale) d'une régularité empirique sur l'observation de laquelle il y a un large accord.
+Le terme a été popularisé en économie par Nicholas Kaldor (1961).[Les] faits stylisés peuvent être construits de la manière suivante :
+1) en partant du domaine empirique, on identifie des relations saillantes ; 2) on opère quelques simplifications qui permettent d'inclure formellement ces relations dans des modèles ; 3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
 }
 
 \subsubsection{Les indicateurs de sortie de simulation}
@@ -153,12 +139,12 @@ La création d'indicateurs de sortie correspondant aux indices empirique permet 
 \paragraph{Indicateur composite}
 
 \hlcyan{La forme numérique\footnote{
-		\hlcyan{Lena :\\%
-			L’articulation des 2 § suivants ne me parait pas évidente.
-			Ils me semblent relever de 2 discussions différentes alors qu’ici ils paraissent liés :\\
-			D’un côté il y a les indicateurs composites/synthétiques qui sont issus d’une combinaison des indicateurs simples : ok ;\\
-			De l’autre il s’agit d’identifier une fonction objectif. Dans les modèles KISS il s’agit souvent d’une variable simple, par exemple la quantité de population.. Alors que « synthétique » dans ton texte semble beaucoup ressembler à « composite »\\
-			Est-ce que ce parag KISS fait sens ici ? Cette discussion là devrait peut-être figurer ailleurs ?}
+\hlcyan{Lena :\\%
+	L’articulation des 2 § suivants ne me parait pas évidente.
+	Ils me semblent relever de 2 discussions différentes alors qu’ici ils paraissent liés :\\
+	D’un côté il y a les indicateurs composites/synthétiques qui sont issus d’une combinaison des indicateurs simples : ok ;\\
+	De l’autre il s’agit d’identifier une fonction objectif. Dans les modèles KISS il s’agit souvent d’une variable simple, par exemple la quantité de population.. Alors que « synthétique » dans ton texte semble beaucoup ressembler à « composite »\\
+	Est-ce que ce parag KISS fait sens ici ? Cette discussion là devrait peut-être figurer ailleurs ?}
 }}
 (scalaire ou vectorielle) des indicateurs de sortie permet de trouver des manières plus simples d'évaluer le modèle que d'observer l'ensemble des indicateurs.
 Chaque indicateur étant numérique, il devient en effet possible des les combiner au sein d'indicateurs composites, résultant en quelques indicateurs synthétiques permettant une évaluation plus rapide des résultats d'une simulation.
@@ -182,9 +168,9 @@ une large partie des faits stylisés et ordres de grandeur mobilisés proviennen
 Pour pouvoir pondérer cette importance, il faudrait de plus que les différents indicateurs mobilisés présentent le même niveau de certitude et de variabilité dans leurs résultats, ce qui est peu le cas des indices empiriques -- \Lena{et donc des indicateurs de sortie}{Pas forcément. En fait:	La pondération concerne les indicateurs de sortie;	- l’incertitude est relative aux indices empiriques}[-32pt] -- choisis dans le cadre du modèle SimFeodal.
 
 On aurait ainsi pu créer quelques indicateurs \hlcyan{synthétiques\footnote{
-	\hlcyan{Lena:\\Ou composites ?}
+\hlcyan{Lena:\\Ou composites ?}
 }}, mais ceux-ci \hlcyan{ne prendraient en compte qu'une faible proportion du comportement attendu du modèle, résultant en une forte perte du pouvoir explicatif attendu du modèle\footnote{
-	\hlcyan{Lena:\\Pas sure de comprendre...\\ En fait il est difficile de créer ces indicateurs si les thématiciens ne peuvent fournir une pondération qui fasse sens pour eux. La combinaison des variables ne fait simplement pas sens pour eux. C’est plutôt cela le pb non ?}
+\hlcyan{Lena:\\Pas sure de comprendre...\\ En fait il est difficile de créer ces indicateurs si les thématiciens ne peuvent fournir une pondération qui fasse sens pour eux. La combinaison des variables ne fait simplement pas sens pour eux. C’est plutôt cela le pb non ?}
 }}.
 Par exemple, pour caractériser la polarisation du système de peuplement, il pourrait suffit de définir un indicateur composite fonction du niveau de concentration -- le taux de foyers paysans dispersés --, du nombre de pôles et de l'espacement moyen entre les agrégats.
 Les valeurs de l'indicateur généré pourraient renseigner efficacement sur la capacité d'un ensemble de valeurs de paramètres à reproduire le phénomène de polarisation attendu.
@@ -256,28 +242,28 @@ L'étude de la dispersion des agrégats et pôles peut ainsi se révéler plus i
 
 
 \begin{encadre}{Incrémentalité des indicateurs}{construction-indicateurs}
-	De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnotemark{} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
-	
-	Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique.
-	Par exemple, quand on observe le phénomène de polarisation dans les sorties de SimFeodal, l'indicateur du nombre d'agrégats est extrêmement synthétique et informatif jusqu'à ce que l'objectif soit atteint ou que les modifications ne parviennent plus à le faire évoluer.
-	À partir de ce moment, afin d'améliorer la vraisemblance de la situation simulée par le modèle, on peut se focaliser sur la distribution spatiale de ces agrégats, par exemple pour vérifier qu'ils sont bien répartis de manière homogène dans l'espace, et non trop concentrés.
-	
-	L'observation de la répartition spatiale requiert certes de nouvelles analyses, mais surtout, par exemple, d'enregistrer les positions des agrégats au cours du temps.
-	Si cet indicateur de sortie n'était pas utile avant cela, il n'y avait aucun interêt à l'enregistrer.
-	Il faut donc adapter l'implémentation du modèle pour générer, faire évoluer et enregistrer une nouvelle variable informatique correspondant à cet indicateur.
-	Dès lors, on pourra composer un nouvel indicateur synthétique, qui, dans cet exemple, pourrait prendre la forme d'un indice de concentration spatiale).
-	
-	Ce procédé incrémental dans la construction des indicateurs est très fréquent, mais pose toutefois un problème majeur :
-	sauf à adapter chacune des anciennes versions du modèle implémenté pour y ajouter l'enregistrement des nouveaux indicateurs nécessaires, on ne pourra rendre strictement comparable les sorties de toutes les itérations du modèles informatique.
-	Et même alors, il faudrait ré-executer des réplications de chaque version du modèle implementé à chaque ajout d'indicateur, quand bien même les indicateurs présent initialement étaient jugés suffisants.
-	Un dernier obstacle est plus gênant :
-	certains indicateurs sont spécifiques à des mécanismes, et en cas de changement de ces derniers, ils peuvent ne plus être calculables ou simplement comparables.
-	Par exemple, des versions antérieures du modèle enregistraient les comportements individuels des foyers paysans quant à leur \og choix\fg{} de déplacement, selon qu'ils étaient à l'origine localisés dans un agrégat ou dispersés.
-	Une simplification du modèle a abouti à la modification des règles différenciant les possibilités de déplacement :
-	on n'observe plus si le foyer paysan est dans un agrégat, mais plutôt s'il est dans un agrégat doté d'un pôle d'attraction.
-	Dès lors, les analyses basées sur les choix de déplacement des foyers paysans selon leur origine ne sont plus comparables avec celles des versions antérieures au changement dans le modèle, quels que soient les détails d'implémentation de ce dernier.
-	
-	Ces éléments expliquent que dans les résultats de chaque étape du paramétrage du modèle, on ne présente pas systématiquement l'ensemble des indicateurs, y compris quand ceux-ci pourraient être plus pertinents que les indicateurs présentés.
+De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnotemark{} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
+
+Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique.
+Par exemple, quand on observe le phénomène de polarisation dans les sorties de SimFeodal, l'indicateur du nombre d'agrégats est extrêmement synthétique et informatif jusqu'à ce que l'objectif soit atteint ou que les modifications ne parviennent plus à le faire évoluer.
+À partir de ce moment, afin d'améliorer la vraisemblance de la situation simulée par le modèle, on peut se focaliser sur la distribution spatiale de ces agrégats, par exemple pour vérifier qu'ils sont bien répartis de manière homogène dans l'espace, et non trop concentrés.
+
+L'observation de la répartition spatiale requiert certes de nouvelles analyses, mais surtout, par exemple, d'enregistrer les positions des agrégats au cours du temps.
+Si cet indicateur de sortie n'était pas utile avant cela, il n'y avait aucun interêt à l'enregistrer.
+Il faut donc adapter l'implémentation du modèle pour générer, faire évoluer et enregistrer une nouvelle variable informatique correspondant à cet indicateur.
+Dès lors, on pourra composer un nouvel indicateur synthétique, qui, dans cet exemple, pourrait prendre la forme d'un indice de concentration spatiale).
+
+Ce procédé incrémental dans la construction des indicateurs est très fréquent, mais pose toutefois un problème majeur :
+sauf à adapter chacune des anciennes versions du modèle implémenté pour y ajouter l'enregistrement des nouveaux indicateurs nécessaires, on ne pourra rendre strictement comparable les sorties de toutes les itérations du modèles informatique.
+Et même alors, il faudrait ré-executer des réplications de chaque version du modèle implementé à chaque ajout d'indicateur, quand bien même les indicateurs présent initialement étaient jugés suffisants.
+Un dernier obstacle est plus gênant :
+certains indicateurs sont spécifiques à des mécanismes, et en cas de changement de ces derniers, ils peuvent ne plus être calculables ou simplement comparables.
+Par exemple, des versions antérieures du modèle enregistraient les comportements individuels des foyers paysans quant à leur \og choix\fg{} de déplacement, selon qu'ils étaient à l'origine localisés dans un agrégat ou dispersés.
+Une simplification du modèle a abouti à la modification des règles différenciant les possibilités de déplacement :
+on n'observe plus si le foyer paysan est dans un agrégat, mais plutôt s'il est dans un agrégat doté d'un pôle d'attraction.
+Dès lors, les analyses basées sur les choix de déplacement des foyers paysans selon leur origine ne sont plus comparables avec celles des versions antérieures au changement dans le modèle, quels que soient les détails d'implémentation de ce dernier.
+
+Ces éléments expliquent que dans les résultats de chaque étape du paramétrage du modèle, on ne présente pas systématiquement l'ensemble des indicateurs, y compris quand ceux-ci pourraient être plus pertinents que les indicateurs présentés.
 \end{encadre}
 \footnotetext{De manière incrémentielle et itérative, voir \hl{dans le chapitre x?} et http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}
 
@@ -330,19 +316,19 @@ Une configuration de paramètres présentant des valeurs d'indicateurs en sortie
 Elle montrerait en effet  un phénomène trop aléatoire au cours du temps, dont on ne peux penser qu'il s'est déroulé historiquement selon les dires d'experts qui considèrent que cette évolution s'est déroulée de manière continue dans le temps.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	
-	Dans la version 0 de SimFeodal, on atteint en moyenne (moyenne des réplications) $\textbf{57\%}$ de foyers paysans isolés en fin de simulation.
-	C'est un taux bien plus important que les $20\%$ attendus, illustrant dès lors une polarisation trop faible.
-	Dans la première moitiée de la période (jusqu'en 1000, (\cref{fig:taux-isoles-v0})), le taux est en diminution constante et linéaire, ce qui est une bonne tendance, et ne présente de plus presque pas de variabilité, ce qui l'est aussi.
-	Pourtant, à partir de 1000, la variabilité augmente, et le la diminution du taux au cours du temps s'interrompt, avant de prendre une allure croissante.
-	L'allure de la courbe sur la seconde moitié de la simulation est donc très éloignée de ce qui est attendu au regard des connaissances empiriques, aussi bien en matière de tendance qu'à la vue du taux décevant atteint au final.
+
+Dans la version 0 de SimFeodal, on atteint en moyenne (moyenne des réplications) $\textbf{57\%}$ de foyers paysans isolés en fin de simulation.
+C'est un taux bien plus important que les $20\%$ attendus, illustrant dès lors une polarisation trop faible.
+Dans la première moitiée de la période (jusqu'en 1000, (\cref{fig:taux-isoles-v0})), le taux est en diminution constante et linéaire, ce qui est une bonne tendance, et ne présente de plus presque pas de variabilité, ce qui l'est aussi.
+Pourtant, à partir de 1000, la variabilité augmente, et le la diminution du taux au cours du temps s'interrompt, avant de prendre une allure croissante.
+L'allure de la courbe sur la seconde moitié de la simulation est donc très éloignée de ce qui est attendu au regard des connaissances empiriques, aussi bien en matière de tendance qu'à la vue du taux décevant atteint au final.
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_taux_FP_isoles.pdf}
-	\caption{Évolution de la part des foyers paysans isolés.} 
-	\label{fig:taux-isoles-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/resultats/v0_taux_FP_isoles.pdf}
+\caption{Évolution de la part des foyers paysans isolés.} 
+\label{fig:taux-isoles-v0} 
 \end{figure}
 
 \clearpage
@@ -359,28 +345,28 @@ une première phase de croissante lente, le temps que les mécanismes agissent s
 Cette allure d'évolution rappelle les fonctions logistiques connues par exemple pour les cycles de diffusion/adoption des innovations \hl{ref Pumain ou MN Comin}, et résulte des connaissances expertes des archéologues spécialistes de la période.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	Le nombre d'agrégats est assez satisfaisant dans la version 0 du modèle.
-	Il s'élève ainsi à $\textbf{187}$ en moyenne, cette dernière étant d'ailleurs stable au regard des réplications.
-	L'écart à l'objectif ($200$) est donc assez minime.
-	On a toutefois vu que le taux de foyers paysans isolé était bien trop important, et dès lors, ces agrégats sont logiquement composés de trop peu de foyers paysans.
-	
-	L'observation de cet indicateur au cours du temps (\cref{fig:nombre-agregats-v0}) est quant à elle assez satisfaisante :
-	on retrouve bien les trois phases attendues, quand bien même le début de la croissance plus importante (vers 1000 ici) est un peu trop tardive.
-	Ce moment coïncide de plus avec la stagnation puis l'inversion de la courbe d'évolution de la part de foyers paysans isolés.
-	
-	On peut quand même considérer que si la polarisation n'est pas assez importante, les structures qui en résultent semblent correspondre à l'empirie.
+Le nombre d'agrégats est assez satisfaisant dans la version 0 du modèle.
+Il s'élève ainsi à $\textbf{187}$ en moyenne, cette dernière étant d'ailleurs stable au regard des réplications.
+L'écart à l'objectif ($200$) est donc assez minime.
+On a toutefois vu que le taux de foyers paysans isolé était bien trop important, et dès lors, ces agrégats sont logiquement composés de trop peu de foyers paysans.
+
+L'observation de cet indicateur au cours du temps (\cref{fig:nombre-agregats-v0}) est quant à elle assez satisfaisante :
+on retrouve bien les trois phases attendues, quand bien même le début de la croissance plus importante (vers 1000 ici) est un peu trop tardive.
+Ce moment coïncide de plus avec la stagnation puis l'inversion de la courbe d'évolution de la part de foyers paysans isolés.
+
+On peut quand même considérer que si la polarisation n'est pas assez importante, les structures qui en résultent semblent correspondre à l'empirie.
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_agregats.pdf}
-	\caption{Évolution du nombre d'agrégats.} 
-	\label{fig:nombre-agregats-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_agregats.pdf}
+\caption{Évolution du nombre d'agrégats.} 
+\label{fig:nombre-agregats-v0} 
 \end{figure}
 
 \todobox{
-	Il y a un problème ici par rapport à ce qui a été mis dans le chapitre :
-	dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'analyse de Base, il y en a 187...
+Il y a un problème ici par rapport à ce qui a été mis dans le chapitre :
+dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'analyse de Base, il y en a 187...
 }	
 
 \clearpage
@@ -393,34 +379,34 @@ Contrairement aux agrégats, un nombre trop important de pôles ne constitue pas
 en considérant que $20\%$ des foyers paysans doivent demeurer isolés en fin de simulation, il est vraisemblable qu'une partie des pôles, par exemple composés d'une église paroissiale, n'aient pas vocation à voir la constitution d'un agrégat autour d'eux.
 
 Par ailleurs, afin de renforcer la polarisation par l'action de l'attraction différenciée -- selon le nombre de foyers paysans contenus dans chaque agrégat\footnote{\label{ftn:preferential-attachment}
-	L'attraction qu'exercent les pôles contenant des agrégats de population est ainsi plus forte lorsque ces derniers sont constitués d'un nombre de foyers paysans important, et moindre quand ce nombre est faible.
-	Cela place ce mécanisme dans une logique proche de celle de l'attachement préférentiel identifié par \autocite{yule1925ii} et  \autocite{simon1955class}, cités par \autocite[93]{schmitt_modelisation_2014}) \label{ftn:attachement-preferentiel}
+L'attraction qu'exercent les pôles contenant des agrégats de population est ainsi plus forte lorsque ces derniers sont constitués d'un nombre de foyers paysans important, et moindre quand ce nombre est faible.
+Cela place ce mécanisme dans une logique proche de celle de l'attachement préférentiel identifié par \autocite{yule1925ii} et  \autocite{simon1955class}, cités par \autocite[93]{schmitt_modelisation_2014}) \label{ftn:attachement-preferentiel}
 } --, il faut que le taux de pôles contenant un agrégat soit important, et surtout croissant au cours du temps :
 comme dans l'empirie, cela est alors le marqueur que de petits pôles d'attractions, comme les églises paroissiales, parviennent à polariser suffisament de foyers paysans de leur voisinage pour aboutir à la création d'un petit agrégat, un village par exemple.
 
 Pour un résultat satisfaisant, il faut donc que le nombre de pôles augmente régulièrement au cours de la durée de la simulation, et que le taux de pôles contenant un agrégat augmente lui aussi de manière continue.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	L'évolution du nombre de pôles est assez représentative de l'empirie dans la version 0 de SimFeodal.
-	On aboutit ainsi sur $\textbf{190}$ pôles en moyenne en fin de simulation, ce qui est dans le bon ordre de grandeur, quoi qu'un peu trop faible.
-	Ce nombre est en croissance constante à partir de 940 (\cref{fig:nombre-poles-v0}).
-	Ce départ quelque peu tardif peut expliquer le relatif manque de pôles en fin de simulation.
-	
-	L'analyse de la constitution de ces pôles en matière d'agrégat est toutefois plus décevante :
-	la croissance n'est pas linéaire, stagnant entre 940 et 1000, puis à partir de 1040.
-	On constate ici un mauvais comportement du modèle par rapport à l'empirie :
-	il y a création de nombreux pôles, mais ceux-ci ne suffisent pas à polariser les foyers paysans.
-	On peut donc penser qu'il s'agit de nombreux pôles ruraux, par exemple composés d'une unique église paroissiale, ne suffisant dès lors pas à concentrer les foyers paysans alentours.
-	
-	Dans cette dimension, comme pour l'indicateur principal qu'en est le taux de foyers paysans dispersé, l'effet de la polarisation apparaît nettement trop faible.
+L'évolution du nombre de pôles est assez représentative de l'empirie dans la version 0 de SimFeodal.
+On aboutit ainsi sur $\textbf{190}$ pôles en moyenne en fin de simulation, ce qui est dans le bon ordre de grandeur, quoi qu'un peu trop faible.
+Ce nombre est en croissance constante à partir de 940 (\cref{fig:nombre-poles-v0}).
+Ce départ quelque peu tardif peut expliquer le relatif manque de pôles en fin de simulation.
+
+L'analyse de la constitution de ces pôles en matière d'agrégat est toutefois plus décevante :
+la croissance n'est pas linéaire, stagnant entre 940 et 1000, puis à partir de 1040.
+On constate ici un mauvais comportement du modèle par rapport à l'empirie :
+il y a création de nombreux pôles, mais ceux-ci ne suffisent pas à polariser les foyers paysans.
+On peut donc penser qu'il s'agit de nombreux pôles ruraux, par exemple composés d'une unique église paroissiale, ne suffisant dès lors pas à concentrer les foyers paysans alentours.
+
+Dans cette dimension, comme pour l'indicateur principal qu'en est le taux de foyers paysans dispersé, l'effet de la polarisation apparaît nettement trop faible.
 \end{mdframed}
 
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_poles.pdf}
-	\caption{Évolution du nombre de pôles et du taux de pôles contenant un agrégat.} 
-	\label{fig:nombre-poles-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_poles.pdf}
+\caption{Évolution du nombre de pôles et du taux de pôles contenant un agrégat.} 
+\label{fig:nombre-poles-v0} 
 \end{figure}
 
 \clearpage
@@ -441,25 +427,25 @@ Afin que le comportement du modèle soit satisfaisant, il faut donc que les pôl
 Comme on ne peut agréger les représentations spatiales, il convient, pour cette analyse, de regarder individuellement un échantillon de configurations spatiales générées.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	La lecture des cartes de répartition des agrégats et des pôles de deux réplications de la version 0 (\cref{fig:cartes-agregats-v0}) va, dans l'ensemble, dans le sens de l'empirie.
-	On peut ainsi remarquer que ces entités ont bien tendance, au cours du temps, à se disperser dans l'espace modélisé.
-	En fin de simulation, tout l'espace est occupé, et on remarque même que certaines zones voient une forte concentration en agrégats, reproduisant les faits stylisés connus.
-	La répartition spatiale des agrégats -- et des pôles -- est donc bonne, et ne semble pas opposer d'obstacle à la polarisation attendue du système de peuplement.
-	
-	Ce résultat peut cependant être nuancé par l'observation de la dynamique de cette dispersion :
-	on constate ainsi que la dispersion s'effectue rapidement (entre 800 et 940), et n'évolue plus vraiment après.
-	Ce phénomène est donc plus rapide dans cette version 0 du modèle que dans les connaissances empiriques de la région Touraine.
-	
-	On peut enfin remarquer, en préalable aux dynamiques de hiérarchisation du système que l'on s'apprête à étudier, que ces sorties illustrent un manque criant de hiérarchie quant à la composition des agrégats :
-	on ne remarque, visuellement, que peu de différence entre les agrégats, et surtout, cette hiérarchie semble faiblir entre 1040 et 1160 (les agrégats les plus importants ont vu leur nombre de foyers paysans diminuer).
+La lecture des cartes de répartition des agrégats et des pôles de deux réplications de la version 0 (\cref{fig:cartes-agregats-v0}) va, dans l'ensemble, dans le sens de l'empirie.
+On peut ainsi remarquer que ces entités ont bien tendance, au cours du temps, à se disperser dans l'espace modélisé.
+En fin de simulation, tout l'espace est occupé, et on remarque même que certaines zones voient une forte concentration en agrégats, reproduisant les faits stylisés connus.
+La répartition spatiale des agrégats -- et des pôles -- est donc bonne, et ne semble pas opposer d'obstacle à la polarisation attendue du système de peuplement.
+
+Ce résultat peut cependant être nuancé par l'observation de la dynamique de cette dispersion :
+on constate ainsi que la dispersion s'effectue rapidement (entre 800 et 940), et n'évolue plus vraiment après.
+Ce phénomène est donc plus rapide dans cette version 0 du modèle que dans les connaissances empiriques de la région Touraine.
+
+On peut enfin remarquer, en préalable aux dynamiques de hiérarchisation du système que l'on s'apprête à étudier, que ces sorties illustrent un manque criant de hiérarchie quant à la composition des agrégats :
+on ne remarque, visuellement, que peu de différence entre les agrégats, et surtout, cette hiérarchie semble faiblir entre 1040 et 1160 (les agrégats les plus importants ont vu leur nombre de foyers paysans diminuer).
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_cartes_agregats.pdf}
-	\includegraphics[width=\linewidth]{img/resultats/v0_cartes_poles.pdf}
-	\caption{Évolution de la répartition spatiale des agrégats et pôles, pour deux réplications.} 
-	\label{fig:cartes-agregats-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/resultats/v0_cartes_agregats.pdf}
+\includegraphics[width=\linewidth]{img/resultats/v0_cartes_poles.pdf}
+\caption{Évolution de la répartition spatiale des agrégats et pôles, pour deux réplications.} 
+\label{fig:cartes-agregats-v0} 
 \end{figure}
 
 \clearpage
@@ -503,34 +489,34 @@ Avec une autre représentation graphique du même phénomène, en discrétisant 
 On doit alors obtenir un nombre décroissant d'agrégats à mesure que la classe représente un nombre élevé de foyers paysans.
 
 \todobox{
-	Ça vaudrait peut-être le coup, pour chaque indicateur présenté sous forme graphique (évolution ou forme), de faire un graphique théorique (une sorte de courbe parfaite) de ce que l'on souhaite observer.
+Ça vaudrait peut-être le coup, pour chaque indicateur présenté sous forme graphique (évolution ou forme), de faire un graphique théorique (une sorte de courbe parfaite) de ce que l'on souhaite observer.
 }
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	La version 0 de SimFeodal présente une hiérarchisation des agrégats nettement trop faible.
-	La courbe rang-taille (\cref{fig:rt-agregats-v0}) est ainsi trop faiblement pentue, et présente une forme trop linéaire :
-	la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs  en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
-	Ce résultat de simulation est d'autant plus perturbant que son évolution est éloignée de l'empirie :
-	on remarque en effet que la distribution se hiérarchise bien entre 800 et 1020, présentant à cette date une allure très satisfaisante.
-	Pourtant, après cette période, les agrégats voient leur hiérarchie diminuer nettement et les agrégats les plus peuplés diminuer en taille.
-	
-	On constate le même décrochage dans la discrétisation des agrégats (\cref{fig:compo-agregats-v0}), où on remarque de plus que la hiérarchie la plus proche de l'attendu, où la position des classes suivrait une ligne droite, semble se dessiner entre 940 et 1040.
-	En 1040, et plus encore en 1160, la proportion d'agrégats de taille moyenne et haute (de 30 à 100, et de plus de 100 foyers paysans) est trop faible, et pas assez hiérarchisée.
-	
+La version 0 de SimFeodal présente une hiérarchisation des agrégats nettement trop faible.
+La courbe rang-taille (\cref{fig:rt-agregats-v0}) est ainsi trop faiblement pentue, et présente une forme trop linéaire :
+la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs  en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
+Ce résultat de simulation est d'autant plus perturbant que son évolution est éloignée de l'empirie :
+on remarque en effet que la distribution se hiérarchise bien entre 800 et 1020, présentant à cette date une allure très satisfaisante.
+Pourtant, après cette période, les agrégats voient leur hiérarchie diminuer nettement et les agrégats les plus peuplés diminuer en taille.
+
+On constate le même décrochage dans la discrétisation des agrégats (\cref{fig:compo-agregats-v0}), où on remarque de plus que la hiérarchie la plus proche de l'attendu, où la position des classes suivrait une ligne droite, semble se dessiner entre 940 et 1040.
+En 1040, et plus encore en 1160, la proportion d'agrégats de taille moyenne et haute (de 30 à 100, et de plus de 100 foyers paysans) est trop faible, et pas assez hiérarchisée.
+
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=.8\linewidth]{img/resultats/v0_rt_agregats.pdf}
-	\caption{Évolution de la courbe rang-taille des agrégats.} 
-	\label{fig:rt-agregats-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=.8\linewidth]{img/resultats/v0_rt_agregats.pdf}
+\caption{Évolution de la courbe rang-taille des agrégats.} 
+\label{fig:rt-agregats-v0} 
 \end{figure}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=.8\linewidth]{img/resultats/v0_compo_agregats.pdf}
-	\caption{Évolution de la composition des agrégats.} 
-	\label{fig:compo-agregats-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=.8\linewidth]{img/resultats/v0_compo_agregats.pdf}
+\caption{Évolution de la composition des agrégats.} 
+\label{fig:compo-agregats-v0} 
 \end{figure}
 
 \clearpage
@@ -552,30 +538,30 @@ On cherche de plus à ce que cette courbe présente une allure log-normale, et d
 
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	Dans l'ensemble, on peut remarquer sur les deux indicateurs de la \cref{fig:compo-poles-v0} que les pôles, dans cette version 0, sont très hiérarchisés.
-	La tendance \og évolutive va dans le bon sens :
-	depuis une quasi-uniformité en 820, des pôles plus importants apparaissent et semblent se renforcer au cours du temps.
-	On retrouve aussi, en observant les axes des ordonnées, la croissance du nombre de pôles identifiée plus haut (\ref{para:nb-poles}, \cnameref{para:nb-poles}, p. \pageref{para:nb-poles}) :
-	de nouveaux pôles apparaissent tout au long de la simulation, et restent majoritairement peu importants, quand les pôles ayant commencé à se renforcer tôt continuent dans cette tendance.
-	
-	En fin de période, les pôles sont très hiérarchisés, aussi bien en matière de composition que d'attractivité.
-	Ils le sont même plus que ce que les connaissances expertes laissent entendre :
-	au delà de $0.66$ en attractivité ou de $4$ attracteurs, on ne dénombre plus qu'un unique pôle de chaque importance, là où on attendrait que cette courbe continue plutôt à décroitre.
-	De plus, ces courbes montrent la variation des réplications de la version 0.
-	Dès lors, on peut considérer que ces pôles majeurs ne sont en fait qu'un unique pôle (le plus souvent) d'importance variable selon les réplications, mais dans tous les cas d'importance bien supérieure aux pôles qui arrivent juste après dans le classement.
-	Cette macrocéphalie ne correspond pas aux observations empiriques, d'autant que rappelons-le, la ville de Tours n'est pas modélisée dans SimFeodal.	
-	
-	
+Dans l'ensemble, on peut remarquer sur les deux indicateurs de la \cref{fig:compo-poles-v0} que les pôles, dans cette version 0, sont très hiérarchisés.
+La tendance \og évolutive va dans le bon sens :
+depuis une quasi-uniformité en 820, des pôles plus importants apparaissent et semblent se renforcer au cours du temps.
+On retrouve aussi, en observant les axes des ordonnées, la croissance du nombre de pôles identifiée plus haut (\ref{para:nb-poles}, \cnameref{para:nb-poles}, p. \pageref{para:nb-poles}) :
+de nouveaux pôles apparaissent tout au long de la simulation, et restent majoritairement peu importants, quand les pôles ayant commencé à se renforcer tôt continuent dans cette tendance.
+
+En fin de période, les pôles sont très hiérarchisés, aussi bien en matière de composition que d'attractivité.
+Ils le sont même plus que ce que les connaissances expertes laissent entendre :
+au delà de $0.66$ en attractivité ou de $4$ attracteurs, on ne dénombre plus qu'un unique pôle de chaque importance, là où on attendrait que cette courbe continue plutôt à décroitre.
+De plus, ces courbes montrent la variation des réplications de la version 0.
+Dès lors, on peut considérer que ces pôles majeurs ne sont en fait qu'un unique pôle (le plus souvent) d'importance variable selon les réplications, mais dans tous les cas d'importance bien supérieure aux pôles qui arrivent juste après dans le classement.
+Cette macrocéphalie ne correspond pas aux observations empiriques, d'autant que rappelons-le, la ville de Tours n'est pas modélisée dans SimFeodal.	
+
+
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_compo_poles.pdf}
-	\caption{Évolution de la composition et de l'attractivité des pôles\protect\footnotemark{}.} 
-	\label{fig:compo-poles-v0}
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/resultats/v0_compo_poles.pdf}
+\caption{Évolution de la composition et de l'attractivité des pôles\protect\footnotemark{}.} 
+\label{fig:compo-poles-v0}
 \end{figure}
 \footnotetext{\hl{Les figures ne sont pas en log-log (ou log-lin) et on ne voit donc pas vraiment le haut de la hiérarchie.
-		Peut-être faudrait-il changer ces axes, mais ça complexifiera la lecture pour les archéos/lecteurs non habitués aux axes log}}
+Peut-être faudrait-il changer ces axes, mais ça complexifiera la lecture pour les archéos/lecteurs non habitués aux axes log}}
 
 \clearpage
 
@@ -596,18 +582,18 @@ On s'attend donc à avoir une courbe hiérarchisée dans la lignée d'une courbe
 \todobox{ici, impérativement, il faudra mettre un graphique schématique de ce qu'on attend.}
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	En fin de simulation de cette version 0, la hiérarchie des paroisses est plutôt satisfaisante.
-	On y retrouve en effet une forte hiérarchie, peut-être même légèrement trop importante.
-	Il ne devrait ainsi par y avoir de paroisse composée de plus de $100$ foyers paysans en fin de simulation, et la courbe présente une pente trop importante (celles de 940 ou 1040 sont ainsi plus conformes aux attentes).
-	Pour autant, on remarque bien un effet de hiérarchisation au cours du temps, ainsi qu'un accroissement du nombre de petites paroisses, montrant que la dynamique, bien que non ajustée, s'inscrit bien dans la dynamique observée empiriquement.
-	(\cref{fig:compo-paroisses-v0})
+En fin de simulation de cette version 0, la hiérarchie des paroisses est plutôt satisfaisante.
+On y retrouve en effet une forte hiérarchie, peut-être même légèrement trop importante.
+Il ne devrait ainsi par y avoir de paroisse composée de plus de $100$ foyers paysans en fin de simulation, et la courbe présente une pente trop importante (celles de 940 ou 1040 sont ainsi plus conformes aux attentes).
+Pour autant, on remarque bien un effet de hiérarchisation au cours du temps, ainsi qu'un accroissement du nombre de petites paroisses, montrant que la dynamique, bien que non ajustée, s'inscrit bien dans la dynamique observée empiriquement.
+(\cref{fig:compo-paroisses-v0})
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_compo_paroisses.pdf}
-	\caption{Évolution de la composition des paroisses.} 
-	\label{fig:compo-paroisses-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/resultats/v0_compo_paroisses.pdf}
+\caption{Évolution de la composition des paroisses.} 
+\label{fig:compo-paroisses-v0} 
 \end{figure}
 
 \clearpage
@@ -670,16 +656,16 @@ En premier lieu, les mécanismes de SimFeodal différencient deux types de dépl
 les déplacements locaux (dans un rayon de $2500$m dans la version 0) et les déplacements lointains.
 
 \begin{itemize}
-	\item Les déplacements locaux visent à faire s'agréger des foyers paysans dispersés autour de pôles présents à proximités.
-	Ce mécanisme peut être présent sur toute la durée de la simulation, sur un effectif faible.
-	En effet, cet effet d'agrégation locale permet \og d'optimiser\fg{} la répartition spatiale des agrégats, en renforçant leur hiérarchie et en faisant fusionner des agrégats qui seraient très proches les uns des autres.
-	Pour autant, dans un objectif de fixation du peuplement, il est nécessaire de veiller à ce que les foyers paysans ne soient pas amenés à se déplacer localement de manière continuelle, par exemple en faisant des allers-retours entre des pôles ou agrégats spatialement proches.
-	
-	\item Les déplacements lointains servent un autre rôle :
-	un foyer paysan qui ne serait pas en mesure d'augmenter sa satisfaction localement -- faute de pôles suffisamment attractifs dans le voisinage -- a une probabilité de se déplacer vers un agrégat situé n'importe où dans l'espace modélisé.
-	Le modèle est très sensible à ce mécanisme qui agit comme une perturbation forte dans la structure spatiale du peuplement.
-	Ce mécanisme \og de dernier recours\fg{} ne doit être employé que rarement, en cas de situations où des foyers paysans seraient trop isolés pour pouvoir s'agréger localement.
-	C'est notamment le cas pour les foyers paysans nouveaux arrivants, via le mécanisme de renouvellement (\hl{ref dans chap 2}), qui peuvent se voir localisés n'importe où dans l'espace du modèle.
+\item Les déplacements locaux visent à faire s'agréger des foyers paysans dispersés autour de pôles présents à proximités.
+Ce mécanisme peut être présent sur toute la durée de la simulation, sur un effectif faible.
+En effet, cet effet d'agrégation locale permet \og d'optimiser\fg{} la répartition spatiale des agrégats, en renforçant leur hiérarchie et en faisant fusionner des agrégats qui seraient très proches les uns des autres.
+Pour autant, dans un objectif de fixation du peuplement, il est nécessaire de veiller à ce que les foyers paysans ne soient pas amenés à se déplacer localement de manière continuelle, par exemple en faisant des allers-retours entre des pôles ou agrégats spatialement proches.
+
+\item Les déplacements lointains servent un autre rôle :
+un foyer paysan qui ne serait pas en mesure d'augmenter sa satisfaction localement -- faute de pôles suffisamment attractifs dans le voisinage -- a une probabilité de se déplacer vers un agrégat situé n'importe où dans l'espace modélisé.
+Le modèle est très sensible à ce mécanisme qui agit comme une perturbation forte dans la structure spatiale du peuplement.
+Ce mécanisme \og de dernier recours\fg{} ne doit être employé que rarement, en cas de situations où des foyers paysans seraient trop isolés pour pouvoir s'agréger localement.
+C'est notamment le cas pour les foyers paysans nouveaux arrivants, via le mécanisme de renouvellement (\hl{ref dans chap 2}), qui peuvent se voir localisés n'importe où dans l'espace du modèle.
 \end{itemize}
 
 Pour ajouter à la complexité du mécanisme, et donc de l'évaluation de cet indicateur qu'est le nombre de déplacements au cours du temps, rappelons que différentes contraintes temporelles viennent bouleverser, à dessein, le comportement des foyers paysans.
@@ -689,11 +675,11 @@ Cela engendre nécessairement une plus forte propension des foyers à se déplac
 Si les connaissances empiriques d'un tel niveau de finesse ne sont pas disponibles, on peut tout de même avoir des attentes quant au comportement attendu du modèle.
 Au regard des éléments décrits plus haut, on peut ainsi chercher à ce que l'évolution des déplacements suive plusieurs rythmes au cours du temps :
 \begin{enumerate}
-	\item Dans une première phase, du début de la simulation jusqu'aux perturbations débutant en 950 :
-	quelques déplacements lointains marginaux ($\approx 5$\% à $10$\%), stables au cours du temps ; et de plus nombreux (au moins $\approx 30$\%) déplacements locaux menant à la constitution de petits agrégats locaux.
-	Les déplacements locaux doivent diminuer au cours du temps, une fois les agrégats constitués.
-	\item Pendant la deuxième phase, entre 950 et 1050, les nombreuses perturbations devraient voir une nette augmentation des déplacements locaux, et dans une moindre mesure lointains, prémices à la constitution d'agrégats plus hiérarchisés.
-	\item Après ces perturbations, on devrait retrouver le niveau de déplacement de la seconde période, et là aussi, tendre vers une diminution des déplacements locaux, le système se stabilisant à l'approche de la fin de la période.
+\item Dans une première phase, du début de la simulation jusqu'aux perturbations débutant en 950 :
+quelques déplacements lointains marginaux ($\approx 5$\% à $10$\%), stables au cours du temps ; et de plus nombreux (au moins $\approx 30$\%) déplacements locaux menant à la constitution de petits agrégats locaux.
+Les déplacements locaux doivent diminuer au cours du temps, une fois les agrégats constitués.
+\item Pendant la deuxième phase, entre 950 et 1050, les nombreuses perturbations devraient voir une nette augmentation des déplacements locaux, et dans une moindre mesure lointains, prémices à la constitution d'agrégats plus hiérarchisés.
+\item Après ces perturbations, on devrait retrouver le niveau de déplacement de la seconde période, et là aussi, tendre vers une diminution des déplacements locaux, le système se stabilisant à l'approche de la fin de la période.
 \end{enumerate}
 
 Tout au long de cette période, on cherche de plus à ce que les foyers paysans soient polarisés, c'est-à-dire ici, qu'ils se regroupent dans des agrégats de population.
@@ -702,38 +688,38 @@ plus les foyers paysans originellement dispersés auront tendance à rejoindre d
 
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	Dans cette version 0 de SimFeodal, il apparaît en premier lieu que les déplacements sont trop peu nombreux (\cref{fig:nb-deplacements-v0}).
-	Les déplacements lointains sont à peu près dans les proportions attendues, mais les déplacements locaux sont trop peu nombreux.
-	Surtout, les trois phases attendues ne se retrouvent pas sur ces sorties.
-	On y remarque bien l'impact des perturbations, mais celles-ci ne font qu'augmenter la part de déplacements, laquelle reste stable avant et après ces perturbations.
-	La version 0 de SimFeodal n'est donc pas satisfaisante en termes de stabilisation et de fixation des foyers paysans.
-	L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) montre certes une part croissante de déplacements \og Isolé -> Agrégé\fg{}, mais dans des proportions là aussi trop faibles passé le tout début de la simulation.
+Dans cette version 0 de SimFeodal, il apparaît en premier lieu que les déplacements sont trop peu nombreux (\cref{fig:nb-deplacements-v0}).
+Les déplacements lointains sont à peu près dans les proportions attendues, mais les déplacements locaux sont trop peu nombreux.
+Surtout, les trois phases attendues ne se retrouvent pas sur ces sorties.
+On y remarque bien l'impact des perturbations, mais celles-ci ne font qu'augmenter la part de déplacements, laquelle reste stable avant et après ces perturbations.
+La version 0 de SimFeodal n'est donc pas satisfaisante en termes de stabilisation et de fixation des foyers paysans.
+L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) montre certes une part croissante de déplacements \og Isolé -> Agrégé\fg{}, mais dans des proportions là aussi trop faibles passé le tout début de la simulation.
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_nombre_deplacements.pdf}
-	\caption{Évolution du nombre de déplacement des foyers paysans.\\
-		\todobox{Mettre le graphique en relatif}} 
-	\label{fig:nb-deplacements-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/resultats/v0_nombre_deplacements.pdf}
+\caption{Évolution du nombre de déplacement des foyers paysans.\\
+\todobox{Mettre le graphique en relatif}} 
+\label{fig:nb-deplacements-v0} 
 \end{figure}
 
 
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/resultats/v0_types_deplacements.pdf}
-	\caption{Évolution des types de déplacement des foyers paysans.\\
-		Inter : Déplacement depuis le pas de temps précédent vs Intra :
-		déplacement au sein d'un même pas de temps.
-		\todobox{Ne garder que l'inter et mettre le graphique en relatif}\\
-		%	- InIn : Le FP était dans un agrégat au pas de temps précédent, et est dans un agrégat à ce tour (quel qu'il  soit, ça peut être le même ou un autre).\\
-		%	- InOut : Le FP était dans un agrégat au pas de temps précédent, et est isolé à ce tour\\
-		%	- OutIn : Le FP était isolé, et est maintenant dans un agrégat\\
-		%	- OutOut : Le FP était isolé, et l'est toujours\\
-		%On constate donc que les déplacements au sein d'un tour tendent à isoler les FP, grosso modo dans le même temps et les mêmes proportions que la stabilisation du taux de FP isolés.	
-	} 
-	\label{fig:type-deplacements-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=\linewidth]{img/resultats/v0_types_deplacements.pdf}
+\caption{Évolution des types de déplacement des foyers paysans.\\
+Inter : Déplacement depuis le pas de temps précédent vs Intra :
+déplacement au sein d'un même pas de temps.
+\todobox{Ne garder que l'inter et mettre le graphique en relatif}\\
+%	- InIn : Le FP était dans un agrégat au pas de temps précédent, et est dans un agrégat à ce tour (quel qu'il  soit, ça peut être le même ou un autre).\\
+%	- InOut : Le FP était dans un agrégat au pas de temps précédent, et est isolé à ce tour\\
+%	- OutIn : Le FP était isolé, et est maintenant dans un agrégat\\
+%	- OutOut : Le FP était isolé, et l'est toujours\\
+%On constate donc que les déplacements au sein d'un tour tendent à isoler les FP, grosso modo dans le même temps et les mêmes proportions que la stabilisation du taux de FP isolés.	
+} 
+\label{fig:type-deplacements-v0} 
 \end{figure}
 
 \clearpage
@@ -755,18 +741,18 @@ Comme pour les déplacements, on attend, depuis les connaissances empiriques, qu
 et enfin, (3) une dernière phase où, passées les perturbations, le niveau de satisfaction tend à remonter doucement, sous l'effet de l'agrégation et de la constitution généralisées de communautés paysannes et de la construction de châteaux et de nouvelles églises paroissiales.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	Au vu des résultats de la version 0 de SimFeodal illsutrés dans la \cref{fig:satisfaction-fp-v0}, on constate que les trois phases attendues sont bien présentes.
-	La perturbation en milieu de période est très forte, mais pourtant, le niveau de satisfaction général reste très élevé (à toute date, plus de $80$\% des foyers paysans ont une satisfaction supérieure à $0.5$).
-	Avec ce niveau de satisfaction et les mécanismes de déplacement de cette version 0, seuls les foyers paysans à proximité de très gros pôles (au moins un gros château et plusieurs églises paroissiales) pourront se déplacer localement.
-	Et pour peu qu'il y ait plusieurs pôles importants à proximité, ils oscilleront entre les deux, gonflant artificiellement le nombre de déplacements locaux.
-	L'observation de cet indicateur confirme que le niveau de déplacement est trop faible et ne présente pas l'allure attendue, tout en donnant une explication à la mauvaise fixation du peuplement observée.
+Au vu des résultats de la version 0 de SimFeodal illsutrés dans la \cref{fig:satisfaction-fp-v0}, on constate que les trois phases attendues sont bien présentes.
+La perturbation en milieu de période est très forte, mais pourtant, le niveau de satisfaction général reste très élevé (à toute date, plus de $80$\% des foyers paysans ont une satisfaction supérieure à $0.5$).
+Avec ce niveau de satisfaction et les mécanismes de déplacement de cette version 0, seuls les foyers paysans à proximité de très gros pôles (au moins un gros château et plusieurs églises paroissiales) pourront se déplacer localement.
+Et pour peu qu'il y ait plusieurs pôles importants à proximité, ils oscilleront entre les deux, gonflant artificiellement le nombre de déplacements locaux.
+L'observation de cet indicateur confirme que le niveau de déplacement est trop faible et ne présente pas l'allure attendue, tout en donnant une explication à la mauvaise fixation du peuplement observée.
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=0.95\linewidth]{img/resultats/v0_satisfaction_fp.pdf}
-	\caption{Satisfaction des foyers paysans} 
-	\label{fig:satisfaction-fp-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=0.95\linewidth]{img/resultats/v0_satisfaction_fp.pdf}
+\caption{Satisfaction des foyers paysans} 
+\label{fig:satisfaction-fp-v0} 
 \end{figure}
 
 \clearpage
@@ -791,32 +777,32 @@ Dans les zones plus denses, concentrant les agrégats, cela devrait aussi mener 
 Notons que la dispersion des agrégats et des pôles, vue précédemment (\ref{par:polarisation-dispersion}, \cnameref{par:polarisation-dispersion}, p. \pageref{par:polarisation-dispersion}), constituerait ici aussi un bon indicateur de fixation, en observant non plus l'évolution de la couverture spatiale, mais plutôt la fixation et le renforcement des dynamiques locales de polarisation.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	Dans la version 0 de SimFeodal, on peut en premier lieu constater que la tendance -- à la croissance -- de l'évolution du nombre de paroisses est bonne (\cref{fig:nb-paroisses-v0}).
-	Ainsi, de nouvelles églises paroissiales sont bien créées ou promues régulièrement au cours du temps.
-	La quantité atteinte ($240$ en moyenne) dépasse un peu trop fortement l'objectif empirique, mais surtout, on remarque dans la figure la très forte variabilité de ces résultats (l'intervalle interquartile est de 100). De plus, cette variabilité augmente fortement avec le temps.
-	
-	La dynamique est donc plutôt satisfaisante, mais le nombre atteint autant que la variabilité sont améliorables et rendent clairement visible la nécessité d'un ajustement dans le modèle.
-	
-	Sur le plan spatial, la \cref{fig:densite-paroisses-v0} laisse bien apparaître la double évolution attendue : les paroisses les plus étendues, en périphérie, demeurent parmi les plus grandes mais voient leur superficie réduite à mesure que de nouvelles églises paroissiales y apparaissent.
-	Dans le même temps, on remarque aussi les effets de fractionnement et de subdivision des paroisses les moins étendues.
-	Cela résulte, dans la figure, en de nombreuses concentrations locales de paroisses que l'échelle des cartes nous permet plus de percevoir que de détailler précisément\footnotemark{}.
+Dans la version 0 de SimFeodal, on peut en premier lieu constater que la tendance -- à la croissance -- de l'évolution du nombre de paroisses est bonne (\cref{fig:nb-paroisses-v0}).
+Ainsi, de nouvelles églises paroissiales sont bien créées ou promues régulièrement au cours du temps.
+La quantité atteinte ($240$ en moyenne) dépasse un peu trop fortement l'objectif empirique, mais surtout, on remarque dans la figure la très forte variabilité de ces résultats (l'intervalle interquartile est de 100). De plus, cette variabilité augmente fortement avec le temps.
+
+La dynamique est donc plutôt satisfaisante, mais le nombre atteint autant que la variabilité sont améliorables et rendent clairement visible la nécessité d'un ajustement dans le modèle.
+
+Sur le plan spatial, la \cref{fig:densite-paroisses-v0} laisse bien apparaître la double évolution attendue : les paroisses les plus étendues, en périphérie, demeurent parmi les plus grandes mais voient leur superficie réduite à mesure que de nouvelles églises paroissiales y apparaissent.
+Dans le même temps, on remarque aussi les effets de fractionnement et de subdivision des paroisses les moins étendues.
+Cela résulte, dans la figure, en de nombreuses concentrations locales de paroisses que l'échelle des cartes nous permet plus de percevoir que de détailler précisément\footnotemark{}.
 \end{mdframed}
 \footnotetext{La trop forte hétérogénéité dans les superficies des paroisses rend difficile la lecture de l'espace.On pourrait y remédier par exemple avec des cartogrammes, mais alors, on ne verrait plus que ces zones de forte densité.}
 
 \todobox{Là aussi, courbe et nombre du nombre de paroisses est incohérent entre chapitre TMD (154) et résultats JIAP (240), + variabilité très forte dans JIAP et pas dans TMD.}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=0.75\linewidth]{img/resultats/v0_nombre_paroisses.pdf}
-	\caption{Évolution du nombre de paroisses} 
-	\label{fig:nb-paroisses-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=0.75\linewidth]{img/resultats/v0_nombre_paroisses.pdf}
+\caption{Évolution du nombre de paroisses} 
+\label{fig:nb-paroisses-v0} 
 \end{figure}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=0.8\linewidth]{img/resultats/v0_paroisses_densite.pdf}
-	\caption{Densité des paroisses} 
-	\label{fig:densite-paroisses-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=0.8\linewidth]{img/resultats/v0_paroisses_densite.pdf}
+\caption{Densité des paroisses} 
+\label{fig:densite-paroisses-v0} 
 \end{figure}
 
 
@@ -848,28 +834,26 @@ Un paramétrage de SimFeodal sera donc considérée comme satisfaisant, sur ce p
 
 
 \todobox{Il manque un indicateur d'équité. A compléter une fois qu'il sera mis en place. Par exemple :\\
-	Évolution de la distance des 10\% de FP les plus éloignés d'une/à une église paroissiale ? ==> Sans doute très intéressant, mais pas \og productible\fg{} pour l'instant. De toute façon, à voir les résultats JIAP, il faudra sans doute faire retourner toutes les itérations du modèle avec des sorties semblables à celles de la v8 (4\_4\_A)\\
-	==> Peut être sous forme de boxplot ou d'histogramme (ridgeplot) ou de moyenne (plus influencée par grandes distances que médiane, donc mieux ici)}
+Évolution de la distance des 10\% de FP les plus éloignés d'une/à une église paroissiale ? ==> Sans doute très intéressant, mais pas \og productible\fg{} pour l'instant. De toute façon, à voir les résultats JIAP, il faudra sans doute faire retourner toutes les itérations du modèle avec des sorties semblables à celles de la v8 (4\_4\_A)\\
+==> Peut être sous forme de boxplot ou d'histogramme (ridgeplot) ou de moyenne (plus influencée par grandes distances que médiane, donc mieux ici)}
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	
-	En matière d'efficacité, la version 0 de SimFeodal est assez peu satisfaisante : malgré un nombre d'églises paroissiales trop élevé (voir l'indicateur précédent), la couverture du territoire est assez faible.
-	En effet, la \cref{fig:couverture-paroisses-v0} montre qu'en fin de simulation, près de $90$\% de mailles restent inoccupées par des églises paroissiales.
-	La tendance est toutefois à la diminution de ces mailles vides, et cette diminution est assez stable et régulière dans le temps.
-	
-	Comme dans le cas de l'évolution du nombre de paroisses, la variabilité est ici préoccupante et très insatisfaisante : l'écart interquartile est modéré (environ $15$\%), mais les minimums et maximums présentent un écart énorme (de $95$\% à $55$\%).
-	
-	\todobox{Pas possible d'analyser les résultats de la version 0 en matière d'équité sans les mesures correspondant. A faire une fois que les graphiques auront été produits.}
-	
+
+En matière d'efficacité, la version 0 de SimFeodal est assez peu satisfaisante : malgré un nombre d'églises paroissiales trop élevé (voir l'indicateur précédent), la couverture du territoire est assez faible.
+En effet, la \cref{fig:couverture-paroisses-v0} montre qu'en fin de simulation, près de $90$\% de mailles restent inoccupées par des églises paroissiales.
+La tendance est toutefois à la diminution de ces mailles vides, et cette diminution est assez stable et régulière dans le temps.
+
+Comme dans le cas de l'évolution du nombre de paroisses, la variabilité est ici préoccupante et très insatisfaisante : l'écart interquartile est modéré (environ $15$\%), mais les minimums et maximums présentent un écart énorme (de $95$\% à $55$\%).
+
+\todobox{Pas possible d'analyser les résultats de la version 0 en matière d'équité sans les mesures correspondant. A faire une fois que les graphiques auront été produits.}
+
 \end{mdframed}
 
 \begin{figure}[H]
-	\captionsetup{width=\linewidth}
-	\includegraphics[width=0.9\linewidth]{img/resultats/v0_paroisses_occupation.pdf}
-	\caption{Évolution de la couverture du territoire par les églises paroissiales.\\
-		\todobox{Attention, résultats JIAP = pas fiables}
-	} 
-	\label{fig:couverture-paroisses-v0} 
+\captionsetup{width=\linewidth}
+\includegraphics[width=0.9\linewidth]{img/resultats/v0_paroisses_occupation.pdf}
+\caption{Évolution de la couverture du territoire par les églises paroissiales.\\
+\todobox{Attention, résultats JIAP = pas fiables}
+} 
+\label{fig:couverture-paroisses-v0} 
 \end{figure}
-	
-\end{document}
