@@ -1,0 +1,84 @@
+%% !TeX root = global_run.tex
+%% !TeX encoding = UTF-8
+%\documentclass[12pt, a4paper, oneside]{article}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,arrows}
+%
+%%%%<
+%\usepackage{verbatim}
+%\usepackage{makecell}
+%
+%\begin{document}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw,
+    minimum width=5em, align=center, rounded corners, minimum height=4em]
+
+\tikzstyle{start} = [draw, circle, node distance=3cm,
+    minimum height=2em, align=center]
+\tikzstyle{line} = [draw, -latex']
+
+\tikzstyle{legende} = [rectangle, draw,node distance=2.4cm,minimum size=2em,
+    text width=5em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{fps} = [fill=green!60]
+\tikzstyle{agregats} = [fill=blue!40]    
+\tikzstyle{seigneurs} = [fill=yellow!20]
+\tikzstyle{globals} = []
+\tikzstyle{eglises} = [fill=red!40]
+\tikzstyle{zps} = [fill=gray!20]
+    
+\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+    \node [start] (start) at (0,0) {Début\\du tour};
+    \node [block, fps, right of=start] (renouvellement-fp) {Renouvellement\\des FP};
+    
+    
+    \node [block, globals,right of=renouvellement-fp] (maj-globals) {MaJ des \\variables\\globales};
+    \node [block, agregats, right of=maj-globals] (maj-agregats) {Détection\\des\\Agrégats};
+    \node [block, seigneurs, right of=maj-agregats] (creation-seigneurs) {Création\\des nouveaux\\Seigneurs};
+    \node [block, eglises,below of=creation-seigneurs] (maj-paroisses) {MaJ des\\contours des\\paroisses};
+    \node [block, agregats, below of=maj-paroisses] (maj-poles) {Détection\\des\\Pôles};
+    \node [block, globals, below of=maj-poles] (promo-chateaux) {Promotion\\des châteaux};
+    
+    \node [block, fps, below of=promo-chateaux] (deplacement-fp) {Déplacement\\des FP};
+    \node [block, globals, left of=deplacement-fp] (maj-attrac) {MaJ\\attractivité\\châteaux et\\églises};
+%    \node [block, eglises,left of=maj-chateaux] (maj-eglises) {MaJ eglises};
+    \node [block, seigneurs, left of=maj-attrac] (maj-droits) {Gains de \\droits des\\seigneurs};
+    \node [block, zps, left of=maj-droits] (maj-zp) {MaJ Zones de\\Prélèvement};
+    \node [block, seigneurs, left of=maj-zp] (maj-dons) {Dons droits\\ et châteaux\\des Seigneurs};
+    \node [block, seigneurs ,above of=maj-dons] (constructions-chateaux) {Constructions\\ des châteaux};
+    \node [block, fps, above of=constructions-chateaux] (maj-satisfaction) {MaJ\\satisfactions\\des FP};
+    
+    \path[->, line]
+    (renouvellement-fp) -- (maj-globals)
+    (maj-globals) -- (maj-agregats)
+    (maj-agregats) -- (creation-seigneurs)
+    (creation-seigneurs) -- (maj-paroisses)
+    (maj-paroisses) -- (maj-poles)
+    (maj-poles) --(promo-chateaux)
+    (promo-chateaux) -- (deplacement-fp)
+    (deplacement-fp) -- (maj-attrac)
+    (maj-attrac) -- (maj-droits)
+    (maj-droits) -- (maj-zp)
+    (maj-zp) -- (maj-dons)
+    (maj-dons) -- (constructions-chateaux)
+    (constructions-chateaux) -- (maj-satisfaction);
+    \path [line, dotted]  (maj-satisfaction)-- (start);
+    \path [line, dotted] (start) -- (renouvellement-fp);
+    
+
+
+\node [legende, agregats,below of=maj-dons, node distance = 3cm] (agregats) {Agrégats\\et Pôles};
+\node [legende, fps, right of=agregats](fps) {Foyers\\Paysans};
+
+\node [legende, seigneurs,right of=fps] (seigneurs) {Seigneurs};
+\node [legende, eglises,right of=seigneurs] (eglises) {Églises};
+\node [legende, zps,right of=eglises] (zps) {Zones de\\Prélèvement};
+\node [legende, globals,right of=zps] (global) {Autre};
+
+\end{tikzpicture}
+
+%\end{document}
+	

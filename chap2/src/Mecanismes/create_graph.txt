@@ -1,0 +1,1 @@
+./node_modules/.bin/mmdc -i FP_deplacement_Regles.mmd -o test.png -w 2000 -H 800

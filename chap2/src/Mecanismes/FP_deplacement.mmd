@@ -1,0 +1,23 @@
+graph LR
+B[Foyer paysan] --> C{Est-il mobile ?}
+C -->|Non| E[Pas de déplacement]
+C -->|Oui| D{"Tirage :<br/> Rnd >  [1 - Satisfaction] ?"}
+D --> |Non|E
+D -->|Oui|F{"Tirage :<br/> Rnd > 0.2 ?"}
+I-->|Non|E
+F-->|Oui|I{Pole d'attraction à proximité ?}
+subgraph Déplacement local
+I-->|Oui|L["Lotterie pondérée : <br/> Attractivité des pôles  à distance locale"]
+L-->K[Déplacement dans l'enveloppe spatiale du pôle vainqueur]
+end
+subgraph Déplacement lointain
+F-->|Non|M["Lotterie pondérée : <br/> Attractivité de tous les agrégats"]
+M-->N[Déplacement dans l'enveloppe spatiale de l'agrégat vainqueur]
+end
+
+classDef debut fill:#00e64d,stroke:#000,stroke-width:2px,font-size:20px;
+classDef question fill:#F7FF3C,stroke:#000,stroke-width:2px,font-size:20px;
+classDef fin fill:Tomato,stroke:#000,stroke-width:2px,font-size:20px;
+class B debut
+class N,K,E fin
+class C,D,F,I question

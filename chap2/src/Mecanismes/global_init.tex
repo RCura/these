@@ -1,0 +1,77 @@
+% !TeX root = global_init.tex
+% !TeX encoding = UTF-8
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,fit}
+\usetikzlibrary{chains,fit,shapes.geometric}
+
+%%%<
+\usepackage{verbatim}
+\usepackage{makecell}
+
+\begin{document}
+
+% Define block styles
+\tikzstyle{start} = [draw, circle,
+minimum height=3em, align=center, fill = green!40]
+\tikzstyle{end} = [draw, circle,
+minimum height=2em, align=center, fill = red!40]
+\tikzstyle{block} = [rectangle, draw,
+minimum width=3em, align=center, rounded corners, minimum height=3em]
+\tikzstyle{line} = [draw, -latex']
+
+
+\tikzstyle{frame} = [line width=4pt, draw=blue!30,inner sep=1em]
+    
+\begin{tikzpicture}[node distance = 3.5cm, auto]
+    % Main Nodes
+    \node [start] (start) at (0,0) {Début de\\l'initialisation};
+    
+    % Creation FP
+     \node [block, below of=start] (fp-villages) {Création des\\villages};
+    \node [block, left of=fp-villages] (fp-agglos) {Création des\\agglomérations\\antiques};
+    \node [block, right of=fp-villages] (fp-isoles) {Génération\\des foyers \\paysans isolés};
+    \node[frame,fit=(fp-agglos)(fp-isoles) (fp-isoles), label={Génération des foyers paysans}] (fp) {};
+    
+    \path[->, line, dotted] (start) -- (fp);
+    \path[->, line] (fp-agglos) -- (fp-villages);
+    \path[->, line] (fp-villages) -- (fp-isoles);
+    
+    % Creation Eglises
+%    \node [block, below of=fp] (gen-eglises) {Génération des\\églises};
+	\node [below of=fp, node distance = 4cm] (invisible){};
+    \node [block, left of=invisible, node distance=2cm] (eglises-bati) {Création de\\$300$\\églises};
+    \node [block, right of=invisible, node distance=2cm] (eglises-paroisses) {Promotion de \\$n\%$ en \\églises paroissiales};
+    \node[frame,fit=(eglises-bati)(eglises-paroisses) (eglises-paroisses), label={Création des églises et paroisses}] (eglises) {};
+    
+    \path[->, line, dotted] (fp) -- (eglises);
+    \path[->, line] (eglises-bati) -- (eglises-paroisses);
+    
+    % Calcul agrégats
+    \node [block, below of=eglises] (gen-agregats) {Calcul des\\agrégats\\et pôles};
+    \path[->, line, dotted] (eglises) -- (gen-agregats);
+    
+    %
+    \node [below of=gen-agregats] (invisible) {};
+    \node [block, left of=invisible, node distance=2cm] (seigneurs-grands) {Création des\\Grands seigneurs};
+    \node [block, right of=invisible, node distance=2cm] (seigneurs-petits) {Création des\\Petits seigneurs};
+     \node[frame,fit=(seigneurs-grands)(seigneurs-petits) (seigneurs-petits), label={Création des seigneurs}] (seigneurs) {};
+     
+     \path[->, line, dotted] (gen-agregats) -- (seigneurs);
+     \path[->, line] (seigneurs-grands) -- (seigneurs-petits);
+     
+    % Fin
+    \node [end, below of=seigneurs] (end) {Fin de\\l'initialisation};
+    \path[->, line, dotted] (seigneurs) -- (end);
+    
+%	do generer_foyers_paysans; // Agglos antiques -> Villages -> Isolés
+%    do generer_eglises; // Toutes -> tirage % paroissiales
+%    do update_agregats; //
+%    do generer_seigneurs; // Grands Seigneurs -> Petits Seigneurs
+%    do attribuer_puissance_seigneurs;
+    
+
+\end{tikzpicture}
+
+\end{document}
+	

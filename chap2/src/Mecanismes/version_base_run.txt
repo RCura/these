@@ -1,0 +1,91 @@
+reflex renouvellement_monde when: (time > 0){
+	do renouvellement_FP;
+}
+	
+reflex MaJ_globals {
+	do update_besoin_protection;
+}	
+reflex MaJ_Agregats{
+	do update_agregats;
+	do creation_nouveaux_seigneurs;
+	if (length(Chateaux) > 0){
+		ask Agregats {do update_chateau;}
+	}
+	ask Agregats {do update_attractivite;}
+}
+
+reflex MaJ_paroisses {
+	do compute_paroisses ; // On redécoupe
+	do create_paroisses ; // On crée les paroisses des agrégats
+	do compute_paroisses ; // On redessine
+	do promouvoir_paroisses; // On nomme/crée de  nouvelles paroisses là où la population est mal desse
+	do compute_paroisses ; // On redessine
+}
+
+reflex MaJ_poles {
+	do update_poles;
+	if ( Annee >= 940 and Annee <= 1040 ){
+	ask Chateaux where (each.type = "Petit Chateau"){
+			do promotion_chateau;
+		}	
+	}
+}
+
+reflex Deplacement_FP {
+	ask Foyers_Paysans where (each.mobile) {
+		do deplacement;
+	}
+}
+
+reflex MaJ_Chateaux {
+	ask Chateaux {do update_attractivite;}
+}
+
+reflex MaJ_Eglises {
+	ask Eglises {do update_attractivite;}
+}
+
+reflex MaJ_Droits_Seigneurs {
+	ask Seigneurs where (each.type="Grand Seigneur"){do MaJ_droits_Grands_Seigneurs;}
+	ask Seigneurs where (each.type != "Grand Seigneur") {
+		do MaJ_droits_Petits_Seigneurs;
+		do gains_droits_PS;
+	}
+}
+
+reflex MaJ_ZP_et_preleveurs {
+	ask Zones_Prelevement {do update_shape;}
+	ask Foyers_Paysans {do reset_preleveurs;}
+	ask Seigneurs {do reset_variables;}
+	do attribution_loyers_FP;
+	ask Zones_Prelevement where (each.type_droit = "Haute_Justice"){do update_taxes_FP_HteJustice;}
+	ask Zones_Prelevement where (each.type_droit = "Banaux"){do update_taxes_FP_Banaux;}
+	ask Zones_Prelevement where (each.type_droit = "basseMoyenne_Justice"){do update_taxes_FP_BM_Justice;}
+}
+
+reflex Dons_des_Seigneurs {
+	// Don droits
+	if (Annee >= 900) {
+		ask Seigneurs where (each.type = "Grand Seigneur"){ do don_droits_GS; }
+		ask Seigneurs where (each.type != "Grand Seigneur"){ do don_droits_PS; }
+	}
+	// Don châteaux
+	if (Annee >= 950) {
+		ask Seigneurs where (each.type = "Grand Seigneur"){ do update_droits_chateaux_GS; do don_chateaux_GS; }
+	}
+	ask Seigneurs { do MaJ_puissance; do MaJ_puissance_armee; }
+}
+
+reflex Constructions_chateaux when: Annee >= apparition_chateaux{
+	ask Seigneurs where (each.type = "Grand Seigneur" and each.puissance > puissance_necessaire_creation_chateau_GS) { do construction_chateau_GS;}
+	ask Seigneurs where (each.type != "Grand Seigneur" and each.puissance > puissance_necessaire_creation_chateau_PS){ do construction_chateau_PS;}
+}
+
+reflex MaJ_satisfaction_FP {
+	ask  Foyers_Paysans {
+		do update_satisfaction_materielle;
+		do update_satisfaction_religieuse;
+		do update_satisfaction_protection;
+		set Satisfaction <- min([satisfaction_religieuse, satisfaction_protection,  satisfaction_materielle]);
+	}
+}

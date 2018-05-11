@@ -1,0 +1,63 @@
+%% !TeX root = FP_deplacement.tex
+%% !TeX encoding = UTF-8
+%\documentclass[10pt, a4paper, oneside]{article}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,arrows}
+%
+%%%%<
+%\usepackage{verbatim}
+%\usepackage{makecell}
+%
+%\begin{document}
+	
+	% Define block styles
+	\tikzstyle{start} = [draw, circle,
+	minimum height=3em, align=center, fill = green!40]
+	\tikzstyle{end} = [draw, circle,
+	minimum height=2em, align=center, fill = red!40]
+	\tikzstyle{decision} = [diamond, draw, fill=yellow!20, 
+	text width=3em, align=center, inner sep=0pt]
+	\tikzstyle{block} = [rectangle, draw,
+	minimum width=3em, align=center, rounded corners, minimum height=3em]
+	
+	
+	\tikzstyle{line} = [draw, -latex']
+
+	
+	\begin{tikzpicture}[node distance = 4cm, auto]
+	% Nodes
+	\node [start] (start) {Début du\\déplacement};
+	\node [decision, below of=start] (mobile) {FP mobile ?};
+	\node [end,left of=mobile] (fixe) {Pas de\\déplacement};
+	\node [decision, below of=mobile] (tirage-satis) {$n_1\sim\mathcal{U}(0,1)$*};
+	\node [decision, below of=tirage-satis] (tirage-rnd) {$n_2\sim\mathcal{U}(0,1)$*};
+	\node [block, left of=tirage-rnd] (local) {Déplacement\\local};
+	\node [block, right of=tirage-rnd] (lointain) {Déplacement\\lointain};
+	\node [decision, left of=local] (pole-local) {Pôle\\à\\proximité ?};
+	\node [block, below of=pole-local] (lotterie-locale) {Lotterie\\pondérée :\\
+	Attractivité des\\ Pôles locaux};
+	\node  [end, right of=lotterie-locale] (fin-local) {Déplacement\\dans le\\pôle vainqueur};
+	
+	\node [block, below of=lointain] (lotterie-agregats) {Lotterie\\pondérée :\\
+		Attractivité\\des\\ Agrégats};
+	\node  [end, left of=lotterie-agregats] (fin-lointain) {Déplacement\\dans \\l'agrégat\\vainqueur};
+	
+	% Paths
+	\path [->, line] (start) -- (mobile);
+	\path [->, line] (local) -- (pole-local);
+	\path [->, line] (lotterie-locale) -- (fin-local);
+	\path [->, line] (lointain) -- (lotterie-agregats);
+	\path [->, line] 	(lotterie-agregats) -- (fin-lointain);
+	
+	 \draw [->, dotted](mobile) -- (fixe) node [midway, above, sloped] (TextNode) {Non};
+	 \draw [->, dotted](mobile) -- (tirage-satis) node [midway, right] (TextNode) {Oui};
+	 \draw [->, dotted] (tirage-satis) -| (fixe) node [near start, below] (TextNode) {$n_1 < (1 - Satis)$};
+	 \draw [->, dotted](tirage-satis) -- (tirage-rnd) node [midway, right] (TextNode) {$n_1 \ge (1 - Satis)$};
+	 \draw [->, dotted](tirage-rnd) -- (lointain) node [midway, below] (TextNode) {$n_2 \leq 0.2$};
+	 \draw [->, dotted](tirage-rnd) -- (local) node [midway, below] (TextNode) {$n_2 > 0.2$};
+	 \draw [->, dotted] (pole-local) |- (fixe) node [near start, left] (TextNode) {Non};
+	 \draw [->, dotted] (pole-local) -- (lotterie-locale) node [midway, left] (TextNode) {Oui};
+	\end{tikzpicture}
+	
+	\footnotetext[1]{Tirage aléatoire}
+%\end{document}
