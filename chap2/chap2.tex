@@ -343,6 +343,15 @@ Quand un agrégat possède une communauté, on considère que l'ensemble des foy
 Une communauté peut être plus ou moins puissante, influant fortement ou non sur la satisfaction des foyers paysans qui en font partie.
 Cette puissance est variable d'une simulation à une autre mais identique pour toutes les communautés d'une simulation donnée.
 
+\begin{figure}[H]
+	\centering
+	\marginnote{{\blueroman Nouveau schéma}}
+	\includegraphics[width=1\linewidth]{src/identification_agregats.pdf}
+	\caption{Méthode d'identification et de définition de forme des agrégats.\\On calcule un graphe composé de tous les foyers paysans situés à moins de $100$ mètres les uns des autres (\textbf{A}$\rightarrow$\textbf{B}) ; On compte le nombre de nœuds contenus dans chacune des \og grappes\fg{} identifiées (\textbf{B}$\rightarrow$\textbf{C}); On définit comme agrégats toutes les grappes composées d'au moins 5 foyers paysans (\textbf{C}$\rightarrow$\textbf{D}). L'agrégat est géométriquement défini comme l'enveloppe convexe des foyers paysans le composant (\textbf{D}).}
+\end{figure}
+
+{\blueroman A l'initialisation de SimFeodal, on crée plusieurs agrégats de populations dans l'espace restreint du modèle. Ces agrégats peuvent être des villages (10 foyers paysans) ou des agglomérations antiques (30 foyers paysans), dans les proportions identifiées thématiquement (\hl{tableau 3}).
+
 \begin{table}[H]
 \begin{center}
 	\begin{tabular}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|>{\centering\arraybackslash}p{.25\textwidth}|>{\centering\arraybackslash}p{.25\textwidth}|>{\centering\arraybackslash}p{.25\textwidth}|@{}}
@@ -412,15 +421,17 @@ Les églises non paroissiales constituent une réserve d'édifices susceptibles 
 Ajouter schéma
 
 \subsection{Ordonnancement général des mécanismes}
-
+{\blueroman
 \begin{figure}[H]
 	\input{chap2/src/Mecanismes/global_run.tex}
 	\caption{test}
 \end{figure}
 
 Ajout du texte descriptif ici
+}
 
 	
+\clearpage	
 \section[Comportements des agents]{Description détaillée des comportements des agents}
 
 Chaque type d'agents actifs dispose d'un degré d'initiative différent et poursuit des objectifs également différents.
@@ -431,6 +442,24 @@ Les agents « seigneurs » visent quant à eux à augmenter leur puissance en cr
 Enfin les agents « églises paroissiales » se multiplient et modifient leur ressort dans le but de satisfaire le plus grand nombre de fidèles possible.
 Les interactions entre les différents types d'agents se font uniquement via des entités spatiales : zones de prélèvement pour les interactions entre foyers paysans et seigneurs, ressorts paroissiaux pour les interactions entre foyers paysans et églises paroissiales.
 
+\clearpage
+\subsubsection{Déplacement des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
+
+\begin{figure}[H]
+	\input{chap2/src/Mecanismes/FP_deplacement.tex}
+	\caption{Diagramme d'activité des mécanismes de déplacement des foyers paysans.\\
+		* : Tirage aléatoire d'une variable ($n_1$ et $n_2$) dans une distribution uniforme contenue entre $0$ et $1$.}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\marginnote{{\blueroman Reprise d'un schéma non publié dans le chapitre de Peupler la Terre}}
+	\includegraphics[width=1\linewidth]{img/Deplacement.png}
+	\caption{Déplacement locaux et déplacements lointains.}
+	\marginnote{\hl{Adapter pour pôles vs agrégats}}[-50pt]
+\end{figure}
+\clearpage
 \subsection{Seigneurs}
 
 \subsubsection{Construction de châteaux}
