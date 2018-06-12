@@ -1,0 +1,50 @@
+\documentclass[draft]{article}
+\usepackage[thinlines]{easytable}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{diagbox}
+\usepackage{fontspec}
+\usepackage[french]{babel}
+\usepackage[babel=true]{csquotes}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows}
+
+\newcommand{\tikzmark}[1]{%
+	\tikz[overlay,remember picture] \node (#1) {};}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\usepackage{colortbl}
+\begin{document}
+	
+	
+	\subsection*{Typologie des paramètres}
+	
+	\subsubsection{Thématique vs Technique}
+	
+	\subsubsection{Endogène vs Exogène}
+	
+	\subsubsection{Variabilité selon l'usage du/des modèle(s)}
+	
+	\begin{table}[!h]
+
+	\begin{TAB}(b,2cm,2cm)[11pt]{|c|c|c|}{|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+		
+\thead{\diagbox[height=2cm]{Par}{Paramètres}} & \thead{Endogène}  & \thead{Exogène}  \\
+
+\thead{Technique} & \makecell{Paramètre technique\\\tikzmark{a}} & \makecell{---\\ (ou constante?)} \\
+
+\thead{Thématique} & \makecell{Paramètre\\thématique\\endogène\\(ex-commensurable)} & \makecell{Paramètre\\\tikzmark{b}thématique\\exogène\\(ex-empirique)}
+
+\tikz[overlay,remember picture] \draw[->, >=latex', shorten >=0.5cm, bend right=45, ultra thick, dashed] 
+(a.south east) to node[pos=0.1, left]{\textbf{{\Large +}}}node[above,align=left, xshift=30pt] {$\textrm{\textit{\textbf{Fréquence}}}$\\$\textrm{\textit{\textbf{des}}}$\\$\textrm{\textit{\textbf{modifications}}}$}node[pos=0.8, below, yshift=-10pt]{\textbf{{\LARGE --}}}  (b.south); 
+
+	\end{TAB}
+\caption{Typologie des paramètres}
+\end{table}
+	
+\end{document}
