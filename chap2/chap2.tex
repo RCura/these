@@ -312,6 +312,14 @@ Pour ce faire, il comporte de nombreux paramètres, lesquels doivent permettre, 
 Les données et connaissances disponibles pour la Touraine, qui est le référentiel choisi pour construire une première version du modèle, nous ont permis de quantifier un certain nombre de paramètres (tableau 3).
 La variation ultérieure des paramètres et des situations initiales permettra de simuler les dynamiques à l'œuvre dans d'autres régions de l'Europe du Nord-Ouest entre 800 et 1100.
 
+{\blueroman
+	Dans SimFeodal, l'initialisation du modèle est endogène, c'est-à-dire qu'elle fait partie intégrante du déroulement d'une simulation.
+	Cela signifie que la configuration initiale, par exemple la répartition spatiale des agrégats pré-existants ou des églises, est entièrement générée par le modèle, de manière aléatoire, à chaque exécution du modèle.
+	Contrairement aux choix de modélisation les plus fréquents, il n'y a pas véritablement d'\og{}\textit{input} \fg{} dans SimFeodal, c'est-à-dire de variable, par exemple de population donnée, qui serait initialisée à chaque exécution du modèle.
+	Dès lors, le choix des mécanismes régissant l'état initial du modèle est particulièrement important et porteur d'une forte influence sur le déroulement des simulations.
+	On a donc choisi de générer une situation initiale aussi neutre et théorique que possible, ce qui explique la brièveté de ce mécanisme générateur.
+}
+
 \subsubsection{L'espace modélisé : une Touraine très stylisée}\marginnote{\hl{Développer !}}[-20pt]
 
 L'espace modélisé est une zone de 100 kilomètres de côté, représentant de manière simplifiée un diocèse d'Europe du Nord-Ouest, à l'instar de celui de Tours.
@@ -385,6 +393,11 @@ Cette puissance est variable d'une simulation à une autre mais identique pour t
 	\todobox{Remettre les ndbp et la catégorisation estimation/données}\\}
 \end{table}
 
+Le mécanisme est le même pour chacun de ces agrégats : on commence par localiser aléatoirement un foyer paysan dans l'espace restreint du modèle. On crée ensuite un second foyer paysan à une distance inférieure à $100$ mètres du premier foyer paysan. On place ensuite, de la même manière, les foyers paysans suivants, en tirant aléatoirement l'un des foyers paysans déjà créés et en localisant le nouveau à une distance de moins de $100$ mètres.
+On s'assure ainsi de constituer un agrégat de proche en proche.
+}.
+
+
 \subsubsection{Les foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
 
 Ne souhaitant pas représenter une évolution démographique au sujet de laquelle nous n'avons pas de certitude, nous partons du principe qu'en 800 comme en 1160, le nombre de foyers paysans est stable, arbitrairement fixé à 4 000.
@@ -427,9 +440,13 @@ En 800, de nombreuses églises sont présentes (tableau 3), réparties de maniè
 Certaines possèdent le droit de baptême et sont donc considérées comme églises paroissiales.
 Les églises non paroissiales constituent une réserve d'édifices susceptibles de se voir doter de droits paroissiaux en cours de simulation.
 
+\subsubsection{Attracteurs et pôles}
+
+{\blueroman Ajouter texte et schéma décrivant l'identification des pôles depuis les attracteurs.}
+
 \subsubsection{Initialisation technique de SimFeodal}
 
-Ajouter schéma
+{\blueroman Ajouter schéma}
 
 \subsection{Ordonnancement général des mécanismes}
 {\blueroman
@@ -441,17 +458,47 @@ Ajouter schéma
 Ajout du texte descriptif ici
 }
 
-	
 \clearpage	
 \section[Comportements des agents]{Description détaillée des comportements des agents}
 
 Chaque type d'agents actifs dispose d'un degré d'initiative différent et poursuit des objectifs également différents.
-Les agents « foyers paysans » se déplacent dans l'espace modélisé en fonction des modifications de leur environnement.
-Localement, ces modifications consistent en la création de paroisses, la modification des ressorts paroissiaux, l'alourdissement des ponctions seigneuriales et l'apparition de châteaux.
+Les agents « \textbf{foyers paysans} » se déplacent dans l'espace modélisé en fonction des modifications de leur environnement.
+Localement, ces modifications consistent en la création de \textbf{paroisses}, la modification des ressorts paroissiaux, l'alourdissement des ponctions seigneuriales et l'apparition de \textbf{châteaux}.
 Les modifications globales de l'environnement consistent, elles, en la naissance et le développement d'un climat de violence, ainsi qu'en l'accroissement des obligations religieuses.
-Les agents « seigneurs » visent quant à eux à augmenter leur puissance en créant des zones de prélèvement et des châteaux et en développant leur réseau de fidèles.
-Enfin les agents « églises paroissiales » se multiplient et modifient leur ressort dans le but de satisfaire le plus grand nombre de fidèles possible.
+Les agents « \textbf{seigneurs} » visent quant à eux à augmenter leur puissance en créant des \textbf{zones de prélèvement} et des \textbf{châteaux} et en développant leur réseau de fidèles.
+Enfin les agents « \textbf{églises paroissiales} » se multiplient et modifient leur ressort dans le but de satisfaire le plus grand nombre de fidèles possible.
 Les interactions entre les différents types d'agents se font uniquement via des entités spatiales : zones de prélèvement pour les interactions entre foyers paysans et seigneurs, ressorts paroissiaux pour les interactions entre foyers paysans et églises paroissiales.
+
+
+\subsection{Foyers Paysans}
+
+Les foyers paysans sont caractérisés par un ensemble de mesures de « satisfaction » qui les poussent à se déplacer lorsqu'elles sont trop faibles.
+Ces déplacements s'effectuent selon des modalités particulières selon les situations, mais visent systématiquement à l'augmentation de la « satisfaction globale ».
+
+\clearpage
+\subsubsection{Satisfaction des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
+
+La satisfaction globale d'un foyer paysan est une synthèse de trois mesures de satisfaction (matérielle, religieuse, et de protection face aux violences), dont on considère qu'elles ne se compensent pas mutuellement :
+si l'une des mesures de satisfaction est faible, la satisfaction globale le sera également (cf. équation 1 du tableau 6).
+Ces trois mesures sont les suivantes :
+\begin{itemize}
+	\item la satisfaction matérielle est une fonction des redevances dont doit s'acquitter le foyer paysan ($S_{redevances}$ – plus le foyer paysan doit s'acquitter de redevances, moins il est satisfait) et de son appartenance ou non à une communauté ($S_{communauté}$ – un foyer paysan est d'autant plus satisfait qu'il appartient à une communauté et que celle-ci est puissante).
+	Le montant des redevances seigneuriales dont chaque foyer paysan doit s'acquitter ($redevances\_acquittées$) est la somme des droits des différents seigneurs dont dépend le foyer paysan (cf. équation 2 du tableau 6).
+	
+	\item la satisfaction religieuse correspond à la possibilité plus ou moins aisée d'accéder aux services liturgiques :
+	se rendre à l'église et assurer le salut de son âme.
+	Ceci est fonction de la distance à parcourir pour atteindre l'église paroissiale la plus proche ($distance\_eglise$).
+	L'évaluation de cette distance varie au cours du temps et traduit une fréquentation accrue des foyers paysans (cf. équation 3 du tableau 6).
+	
+	\item la satisfaction en termes de protection est fonction de la distance entre le foyer paysan et le château le plus proche ($distance_{chateau}$) et du besoin de protection ressenti par le foyer paysan ($besoin\_protection$).
+	Celui-ci apparaît à partir de 960 et correspond à la naissance et au développement d'une conflictualité entre seigneurs locaux résultant de la perte d'influence du pouvoir central (cf. équation 4 du tableau 6).
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab6.png}
+	\marginnote{\hl{Modifier et développer tableau}}[-50pt]
+\end{figure}
 
 \clearpage
 \subsubsection{Déplacement des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
@@ -470,6 +517,29 @@ Les interactions entre les différents types d'agents se font uniquement via des
 	\caption{Déplacement locaux et déplacements lointains.}
 	\marginnote{\hl{Adapter pour pôles vs agrégats}}[-50pt]
 \end{figure}
+
+À chaque pas de temps, chaque foyer paysan a une certaine probabilité de se déplacer.
+Ce déplacement vise à augmenter sa satisfaction en se rapprochant d'un pôle d'attraction.
+
+La plupart des déplacements se font localement :
+\begin{itemize}
+	\item le foyer paysan identifie le pôle le plus attractif localement, c'est-à-dire dans un rayon de 2,5 km (une demi-heure de marche) de sa localisation actuelle ;
+	\item si la probabilité de déplacement local ($p[deplacement\_local]$\footnote{
+		$p(deplacement\_local) = max[(\text{Attractivité du pôle le plus attractif localement} – Satisfaction) ; 0].$	
+	}) se réalise, un tirage aléatoire pondéré par les attractivités respectives des pôles de son environnement va déterminer où le foyer paysan va s'implanter.
+	Un pôle d'attraction est constitué d'un ou plusieurs attracteurs proches les uns des autres (à moins de 200 m) (cf. tableau 7).
+	La valeur d'attraction d'un pôle correspond à la somme des attractivités des attracteurs le composant, pour traduire la différenciation importante de l'attraction des pôles qu'entraîne le nombre d'attracteurs présents \autocite[tableau 13, p. 96]{zadora-rio_paroisses_2008}.
+	\item si la probabilité de déplacement local ne se réalise pas, le foyer paysan a une (faible) probabilité d'effectuer un déplacement lointain ($p[deplacement\_lointain]$\footnote{
+		$p(deplacement\_lointain) = 0,2 × (1 – Satisfaction)$.
+	}).
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab7.png}
+	\marginnote{\hl{Modifier et développer tableau}}[-50pt]
+\end{figure}
+
 \clearpage
 \subsection{Seigneurs}
 
@@ -500,6 +570,7 @@ Cette probabilité est beaucoup plus forte si le château est situé dans un vil
 	\marginnote{\hl{Modifier et développer tableau}}[-50pt]
 \end{figure}
 
+\clearpage
 \subsubsection{Acquisition et prélèvement de droits seigneuriaux}
 
 Le prélèvement des redevances et droits seigneuriaux se fait au sein d'une zone de prélèvement, dont les attributs sont le détenteur (seigneur qui l'a créée), le rayon et le taux de prélèvement (tableau 5).
@@ -594,75 +665,25 @@ Elle n'intervient pas dans la dynamique du modèle mais peut être étudiée en 
 La puissance armée correspondant au cas où un seigneur est donateur d'une partie de ses zones de prélèvements permet de représenter la capacité de mobilisation militaire d'un seigneur influent, qui pourra demander des troupes à ses vassaux.
 \end{itemize}
 
-\subsection{Foyers Paysans}
-
-Les foyers paysans sont caractérisés par un ensemble de mesures de « satisfaction » qui les poussent à se déplacer lorsqu'elles sont trop faibles.
-Ces déplacements s'effectuent selon des modalités particulières selon les situations, mais visent systématiquement à l'augmentation de la « satisfaction globale ».
-
-\subsubsection{Satisfaction des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
-
-La satisfaction globale d'un foyer paysan est une synthèse de trois mesures de satisfaction (matérielle, religieuse, et de protection face aux violences), dont on considère qu'elles ne se compensent pas mutuellement :
-si l'une des mesures de satisfaction est faible, la satisfaction globale le sera également (cf. équation 1 du tableau 6).
-Ces trois mesures sont les suivantes :
-\begin{itemize}
-	\item la satisfaction matérielle est une fonction des redevances dont doit s'acquitter le foyer paysan ($S_{redevances}$ – plus le foyer paysan doit s'acquitter de redevances, moins il est satisfait) et de son appartenance ou non à une communauté ($S_{communauté}$ – un foyer paysan est d'autant plus satisfait qu'il appartient à une communauté et que celle-ci est puissante).
-	Le montant des redevances seigneuriales dont chaque foyer paysan doit s'acquitter ($redevances\_acquittées$) est la somme des droits des différents seigneurs dont dépend le foyer paysan (cf. équation 2 du tableau 6).
-	
-	\item la satisfaction religieuse correspond à la possibilité plus ou moins aisée d'accéder aux services liturgiques :
-	se rendre à l'église et assurer le salut de son âme.
-	Ceci est fonction de la distance à parcourir pour atteindre l'église paroissiale la plus proche ($distance\_eglise$).
-	L'évaluation de cette distance varie au cours du temps et traduit une fréquentation accrue des foyers paysans (cf. équation 3 du tableau 6).
-	
-	\item la satisfaction en termes de protection est fonction de la distance entre le foyer paysan et le château le plus proche ($distance_{chateau}$) et du besoin de protection ressenti par le foyer paysan ($besoin\_protection$).
-	Celui-ci apparaît à partir de 960 et correspond à la naissance et au développement d'une conflictualité entre seigneurs locaux résultant de la perte d'influence du pouvoir central (cf. équation 4 du tableau 6).
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab6.png}
-\marginnote{\hl{Modifier et développer tableau}}[-50pt]
-\end{figure}
 
 \clearpage
-\subsubsection{Déplacement des foyers paysans}\marginnote{\hl{Développer !}}[-20pt]
-
-\begin{figure}[H]
-	\input{chap2/src/Mecanismes/FP_deplacement.tex}
-	\caption{Diagramme d'activité des mécanismes de déplacement des foyers paysans.\\
-	* : Tirage aléatoire d'une variable ($n_1$ et $n_2$) dans une distribution uniforme contenue entre $0$ et $1$.}
-\end{figure}
-
-À chaque pas de temps, chaque foyer paysan a une certaine probabilité de se déplacer.
-Ce déplacement vise à augmenter sa satisfaction en se rapprochant d'un pôle d'attraction.
-
-La plupart des déplacements se font localement :
-\begin{itemize}
-	\item le foyer paysan identifie le pôle le plus attractif localement, c'est-à-dire dans un rayon de 2,5 km (une demi-heure de marche) de sa localisation actuelle ;
-	\item si la probabilité de déplacement local ($p[deplacement\_local]$\footnote{
-$p(deplacement\_local) = max[(\text{Attractivité du pôle le plus attractif localement} – Satisfaction) ; 0].$	
-}) se réalise, un tirage aléatoire pondéré par les attractivités respectives des pôles de son environnement va déterminer où le foyer paysan va s'implanter.
-	Un pôle d'attraction est constitué d'un ou plusieurs attracteurs proches les uns des autres (à moins de 200 m) (cf. tableau 7).
-	La valeur d'attraction d'un pôle correspond à la somme des attractivités des attracteurs le composant, pour traduire la différenciation importante de l'attraction des pôles qu'entraîne le nombre d'attracteurs présents \autocite[tableau 13, p. 96]{zadora-rio_paroisses_2008}.
-	\item si la probabilité de déplacement local ne se réalise pas, le foyer paysan a une (faible) probabilité d'effectuer un déplacement lointain ($p[deplacement\_lointain]$\footnote{
-	$p(deplacement\_lointain) = 0,2 × (1 – Satisfaction)$.
-}).
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Tab7.png}
-\marginnote{\hl{Modifier et développer tableau}}[-50pt]
-\end{figure}
-
 \subsection{Les églises}\marginnote{\hl{Développer}}[-30pt]
+
+\subsubsection{Définition des paroisses}
+
+{\blueroman Ajouter texte et schéma pour décrire la définition des paroisses en zones de Voronoï}
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\linewidth]{src/Chapitre_TMD/Fig5}
 	\caption{Création de nouvelles paroisses et modification de paroisses existantes.}
-	\label{fig:fig5}
+\label{fig:fig5}
 \end{figure}
 
+{\blueroman Subdiviser schéma + ajout création paroisses dans subsubsec suivante pour ajouter mécanisme création paroisses dans agrégats}
+
+\clearpage
+\subsubsection{Création et promotion d'églises paroissiales}
 De nouvelles églises, construites par les seigneurs laïques ou les communautés religieuses, viennent s'ajouter à celles qui existaient avant 800 (tableau 3), et leur rôle d'attracteur se renforce avec la mise en place, au cours de la transition, du système paroissial sur lequel les évêques exercent un contrôle croissant.
 Les églises paroissiales, qui focalisent les pratiques cultuelles et sociales, deviennent des lieux centraux à l'échelle locale.
 Elles déterminent des aires d'attraction dont la territorialisation s'est progressivement affirmée.
