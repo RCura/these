@@ -26,3 +26,17 @@
 *.loc
 *.fls
 *.fdb_latexmk
+*-blx.bib
+*.run.xml
+*.mtc*
+*chap1.pdf
+*chap2.pdf
+*chap3.pdf
+*chap4.pdf
+*chap4-1.pdf
+*chap4-2.pdf
+*chap5.pdf
+*chap6.pdf
+*chap7.pdf
+*chap8.pdf
+These_TOC.pdf
