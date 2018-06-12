@@ -24,9 +24,9 @@ Les co-concepteurs de ce modèle sont les auteurs du chapitre sus-mentionné, c'
 	\item Xavier Rodier, archéologue, Ingénieur de Recherche HDR, CNRS 
 	\\UMR CITERES-LAT -- Tours ;
 \end{itemize}
+}
 \end{mdframed}
 
-\clearpage
 \section{Introduction}
 
 La question de l'émergence de la société féodale en Occident est au cœur d'un débat historique ancien.
@@ -312,6 +312,25 @@ En outre, nous avons délibérément choisi de ne pas prendre en compte l'existe
 En premier lieu, dans le cadre géographique stylisé défini pour la modélisation, les données historiques montrent qu'il n'existe couramment qu'une seule ville de ce type, de sorte que la problématique de concurrence spatiale entre noyaux urbains, ou encore celle des réseaux de villes, ne sont pas efficientes.
 Ensuite, à l'échelle d'analyse du modèle, il n'est pas possible d'aborder la question de la production d'espaces spécifiquement intra-urbains.
 Enfin, nous ne savons rien de l'attractivité de Tours à un moment où la ville croît certes, mais en même temps que les villages et les agglomérations secondaires.
+
+{\blueroman
+
+Dans SimFeodal, l'espace support est donc un espace homogène, prenant la forme d'un carré de 100 kilomètres de côté. Notons que l'espace utile, par exemple pour l'installation des agrégats de population pré-existants, ou pour la localisation des foyers paysans et églises, est en fait légèrement moindre : il s'agit de ce carré constitué par l'espace support, retranché d'une bande de 1km sur chaque côté. Cela afin de garantir que les agrégats, générés par proximités successives, ne soient pas amenés à \og sortir\fg{} de l'espace support.
+
+\begin{figure}[H]
+	\marginnote{{\blueroman Nouveau schéma}}
+	\begin{tikzpicture}[scale=.5]
+	\draw[] (0,0) -- (0,10) -- (10,10) -- (10,0) -- cycle;
+	\draw[|-|, very thin, dashed] (0, 10.35) -- node[above] {100 km (Espace du modèle)} (10, 10.35);
+	\draw[|-|, very thin, dashed] (-0.35, 0) -- node[left] {100 km} (-0.35, 10);
+	
+	\draw[color=red!50, fill = red!10] (0.25, 0.25) -- (0.25, 9.75) -- (9.75, 9.75) -- (9.75, 0.25) -- cycle;
+	\draw[|-|, red!50] (10.35, 9.75) -- node[right] {99 km} (10.35, 0.25);
+	\draw[|-|, red!50] (0.25, -0.35) -- node[below] {99 km ({\color{red!50}Espace réduit})} (9.75, -0.35);
+	\end{tikzpicture}
+	\caption{Espace du modèle et espace \og utile\fg{}.}
+\end{figure}
+}
 
 \subsubsection{Les agrégats de population}\marginnote{\hl{Développer et faire schémas}}[-20pt]
 
