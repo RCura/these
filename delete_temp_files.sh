@@ -10,5 +10,7 @@ find . \( \
 	-name "*.run.xml" -o \
 	-name "*.out" -o \
 	-name "*.toc" -o \
+	-name "*.fls" -o \
+	-name "*.fdb_latexmk" -o \
 	-name "*-blx.bib" \
 	\) -type f -delete
