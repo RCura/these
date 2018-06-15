@@ -1,14 +1,8 @@
 \documentclass[12pt, a4paper, oneside, notitlepage]{report}
 %\documentclass[12pt, a4paper, oneside, notitlepage, draft]{report}
+\usepackage{newclude} % Ce package ne fonctionne que quand placé juste après le documentclass
 
 \input{src/these_header}
-
-
-
-% Make a TOC without line number when calling \tableofcontents
-\let\Contentsline\contentsline
-\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
-
 
 \bibliography{%
 %	chap1/biblio_chap1.bib,
@@ -21,29 +15,18 @@
 %	chap8/biblio_chap8.bib%
 }
 
-%\includeonly{chap2/chap2}
 
-\usepackage{titling}
-\title{Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles}
-\author{Robin Cura}
-\date{\vspace{-5ex}}
-\makeatletter
-\newcommand*{\toccontents}{\@starttoc{toc}}
-\makeatother
-
-%\setmainfont[Color=red]{Linux Libertine O}
-%\setsansfont[Color=red]{Linux Biolinum O}
-%\setmonofont[Color=red]{Courier}
-% On linux
-\newfontfamily\blueroman[Color=blue]{Linux Libertine O}
-\newfontfamily\redroman[Color=red]{Linux Libertine O}
-% On windows
-%\newfontfamily\blueroman[Color=blue]{Linux Libertine}
-%\newfontfamily\redroman[Color=red]{Linux Libertine} 
+%\includeonly{chap5/chap5}
 
 \begin{document}
 	\setcounter{secnumdepth}{4}
-\dominitoc	
+\dominitoc
+\faketableofcontents
+
+% ############################################
+% # Page de titre principale + plan détaillé #
+% ############################################
+
 %\begin{titlepage}
 %	\maketitle
 %	
@@ -51,48 +34,52 @@
 %		\toccontents
 %	\end{NoHyper}
 %\end{titlepage}
+
+
+% #######################
+% # CONTENU DE LA THÈSE #
+% #######################
 	
-%
 %\graphicspath{{chap1/}}
 %\setcounter{chapter}{0}
-%\include{chap1/chap1}
+%\include*{chap1/chap1}
 
 %\setcounter{part}{0}
-%\include{parties/partie1}
+%\include*{parties/partie1}
 
-\graphicspath{{chap2/}}
-\setcounter{chapter}{1}
-\include{chap2/chap2}
+%\graphicspath{{chap2/}}
+%\setcounter{chapter}{1}
+%\include*{chap2/chap2}
 
 %\graphicspath{{chap3/}}
 %\setcounter{chapter}{2}
-%\include{chap3/chap3}
+%\include*{chap3/chap3}
 %
 %\graphicspath{{chap4/}}
 %\setcounter{chapter}{3}
-%\include{chap4/chap4}
+%\include*{chap4/chap4}
 %
 %\setcounter{part}{1}
-%\include{parties/partie2}
+%\include*{parties/partie2}
 %
-%\graphicspath{{chap5/}}
-%\setcounter{chapter}{4}
-%\include{chap5/chap5}
+\graphicspath{{chap5/}}
+\setcounter{chapter}{4}
+\include*{chap5/chap5} % include* permis par newclude. Permet de ne pas mettre de page vide avant/après un include
 %
 %\graphicspath{{chap6/}}
 %\setcounter{chapter}{5}
-%\include{chap6/chap6}
+%\include*{chap6/chap6}
 %
 %\setcounter{part}{2}
-%\include{parties/partie3}
+%\include*{parties/partie3}
 %
 %\graphicspath{{chap7/}}
 %\setcounter{chapter}{6}
-%\include{chap7/chap7}
+%\include*{chap7/chap7}
 %
 %\graphicspath{{chap8/}}
 %\setcounter{chapter}{7}
-%\include{chap8/chap8}
+%\include*{chap8/chap8}
 
 \end{document} 
 
