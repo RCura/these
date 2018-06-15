@@ -1,4 +1,4 @@
-%\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -7,7 +7,6 @@
 \setlength{\marginparwidth}{4.5cm}
 \usepackage{marginnote}
 
-%\usepackage[T1]{fontenc}
 \usepackage{fontspec}
 \usepackage[french]{babel}
 \usepackage[babel=true]{csquotes}
@@ -17,9 +16,6 @@
 
 \usepackage{xargs} % Use more than one optional parameter in a new commands
 \usepackage[dvipsnames]{xcolor}
-
-
-\usepackage{graphicx}
 
 \usepackage{float}
 \usepackage{caption}
@@ -53,7 +49,6 @@ url=true,
 date=year]{biblatex}
 
 \usepackage[thinlines]{easytable}
-\usepackage{array}
 \usepackage{makecell}
 \usepackage{diagbox}
 
@@ -140,3 +135,30 @@ date=year]{biblatex}
 	}~\\
 }
 }
+
+% ######### TITRE #########
+\usepackage{titling}
+\title{Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles}
+\author{Robin Cura}
+\date{\vspace{-5ex}}
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
+
+
+% ######### COULEURS POUR REPRISE #########
+%\setmainfont[Color=red]{Linux Libertine O}
+%\setsansfont[Color=red]{Linux Biolinum O}
+%\setmonofont[Color=red]{Courier}
+% On linux
+\newfontfamily\blueroman[Color=blue]{Linux Libertine O}
+\newfontfamily\redroman[Color=red]{Linux Libertine O}
+% On windows
+%\newfontfamily\blueroman[Color=blue]{Linux Libertine}
+%\newfontfamily\redroman[Color=red]{Linux Libertine} 
+
+
+% ######### PLAN DETAILLE #########
+% Make a TOC without line number when calling \tableofcontents
+%\let\Contentsline\contentsline
+%\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
