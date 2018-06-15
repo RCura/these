@@ -66,9 +66,13 @@ date=year]{biblatex}
 % ------------------------------------- %
 % ---------- COMMANDES PERSO ---------- %
 % ------------------------------------- %
-
+% ######### TABLES AVEC FIGURES #########
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc,shapes,arrows}
+\newcommand{\tikzmark}[1]{%
+	\tikz[overlay,remember picture] \node (#1) {};}
 
 %%% TABLES
 \usepackage{verbatim}

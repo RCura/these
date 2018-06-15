@@ -1,0 +1,37 @@
+% Please add the following required packages to your document preamble:
+
+\documentclass[12pt, a4paper, oneside, notitlepage]{report}
+\usepackage{graphicx}
+
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\usepackage{makecell}
+
+
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows}
+
+\newcommand{\tikzmark}[1]{%
+	\tikz[overlay,remember picture] \node (#1) {};}
+
+\begin{document}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{N|M{2.5cm}|M{2.5cm}|M{2cm}|M{3.5cm}|M{4.5cm}|N|}
+	\hline
+&	& \multicolumn{2}{|c|}{Données} & \multicolumn{2}{|c|}{Indicateurs} \\ \hline
+& Intitulé & Quantité & Poids & Type & Quantité & \\[25pt] \hline
+\tikzmark{a}& Une simulation & \makecell{$\approx 10^5$ lignes}& $\approx 10$ Mo & \begin{tabular}[c]{@{}l@{}}Visualisations\\ en direct\end{tabular} & \makecell{$\approx 10$ indicateurs}  & \\[50pt] \hline
+\tikzmark{b}& Une expérience & \makecell{$\approx 10^6$ lignes} & $\approx 200$ Mo & Indicateurs de sortie & \makecell{$\approx 30$ indicateurs\\(variabilité des\\réplications)} & \\[50pt] \hline
+\tikzmark{c} & \makecell{Huit étapes\\de\\paramétrage} & \makecell{$\approx ~10^7$ lignes} & $\approx 5$ Go & Indicateurs de sortie & \makecell{$\approx 700$ indicateurs\\ (à comparer entre\\les expériences)} & \\[50pt] \hline
+\end{tabular}%
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (a.west) to node[pos=.5, left, align=center, xshift=0pt]{$\times 20$\\$\textrm{réplications}$} (b.west) ;
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (b.west) to node[pos=.5, left, align=center, xshift=0pt]{$\times \approx 24$\\$\textrm{expériences}$} (c.west) ;
+}
+\caption{Synthèse de l'augmentation des données et indicateurs selon la hiérarchie des simulations.}
+\label{tbl:hierarchie-simulations}
+\end{table}
+
+\end{document}
