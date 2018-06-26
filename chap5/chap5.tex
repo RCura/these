@@ -1,6 +1,8 @@
 \chapter{Explorer visuellement des données de simulation massives pour analyser le comportement d'un modèle.} 
 \begin{center}
-	{\large Version 2018-06-15}
+	{\large Version \hl{2018-06-22}}\\
+	\hl{Corrections de la partie 5.1 non prises en compte.}
+	
 \end{center}
 \minitoc
 
@@ -94,13 +96,15 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	L'aléa a donc un poids important dans ce type de mécanisme.
 
 	Pour autant, même dans des mécanismes plus anodins, l'aléa est fortement présent, étant au cœur de la conception de SimFeodal.
-	Ainsi, le simple ordre d’exécution du mécanisme de déplacement des foyers paysans peut avoir une importance considérable.\hl{Cet exemple est faux, en trouver un juste où l'ordre d’exécution importe dans SimFeodal et le développer.}
+	Ainsi, le simple ordre d’exécution du mécanisme de déplacement des foyers paysans peut avoir une importance considérable.
+	\hl{Cet exemple est faux, en trouver un juste où l'ordre d’exécution importe dans SimFeodal et le développer.}
 
 	On pourrait objecter qu'en considérant les agents de manière agrégée, donc globale, les probabilités s'effectuent sur suffisamment d'individus pour présenter un résultat cohérent et déterministe au niveau de la population dans son ensemble.
 	En corollaire, le comportement de chaque agent serait régulé par tant de variables aléatoires qu'on entrerait dans le cadre d'application de la loi forte des grands nombres, les agents adoptant alors en moyenne un comportement proche de l’espérance (moyenne théorique) de chaque tirage.
 	Avec ces considérations, on pourrait justifier le déterminisme probable des différentes exécutions de SimFeodal.
 
-	SimFeodal n'est toutefois pas simplement un modèle stochastique, mais avant tout, un modèle complexe, c'est-à-dire s'inscrivant dans le champs des systèmes complexes. Sans vouloir ici entrer dans les détails des implications et raisons de ceci, on peut simplement en retenir, qu'un modèle tel que SimFeodal est extrêmement sensible aussi bien aux conditions initiales qu'aux différents tirages aléatoires.\hl{A développer sérieusement ici, ou bien dans les chapitres 1 ou 2. Il faudra de toute façon faire un point quelque part sur les systèmes complexes, l'émergence etc.}
+	SimFeodal n'est toutefois pas simplement un modèle stochastique, mais avant tout, un modèle complexe, c'est-à-dire s'inscrivant dans le champs des systèmes complexes. Sans vouloir ici entrer dans les détails des implications et raisons de ceci, on peut simplement en retenir, qu'un modèle tel que SimFeodal est extrêmement sensible aussi bien aux conditions initiales qu'aux différents tirages aléatoires.
+	\hl{A développer sérieusement ici, ou bien dans les chapitres 1 ou 2. Il faudra de toute façon faire un point quelque part sur les systèmes complexes, l'émergence etc.}
 	Pour illustrer, on peut s'appuyer sur un exemple ---
 	fictif jusqu'ici dans les différentes exécutions du modèle
 	--- possible : à l'initialisation, tous les foyers paysans, placés aléatoirement dans l'espace, seraient ici concentrés dans un espace faible.
@@ -132,7 +136,8 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	En premier lieu, pour des impératifs de reproductibilité (\hl{Ça aussi faudrait quand même en parler quelque part. Chap. 7 ?}) de la démarche engagée, aussi bien que pour la simple capacité à restituer honnêtement et rigoureusement les étapes suivies, il était nécessaire de conserver l'ensemble des indicateurs de sortie de simulations correspondant à chaque étape ou sous-étape.
 	Cette démarche de paramétrage s'inscrivant ainsi sur une durée assez étalée, et suivant surtout un avancement non linéaire fait d'allers-retours, il était indispensable de documenter autant que possible chaque avancée, et pour cela, de conserver l'ensemble des résultats en résultant.
 
-	Une autre contrainte, méthodologique, déjà évoquée (\hl{cf. encadré incrémentalité des indicateurs dans chap. 3}), complexifie toutefois encore la tâche. Ainsi, les indicateurs jugés utiles évoluent tout au long des étapes de paramétrage.
+	Une autre contrainte, méthodologique, déjà évoquée (\hl{cf. encadré incrémentalité des indicateurs dans chap. 3}), complexifie toutefois encore la tâche.
+	Ainsi, les indicateurs jugés utiles évoluent tout au long des étapes de paramétrage.
 	Or, pour pouvoir comparer les résultats de simulations issues de jeux de paramètres différents, encore faut-il disposer d'indicateurs comparables, et donc, identiques dans leur définition.
 	Si l'on ne conserve que les indicateurs de chaque simulation, on ne peut donc les ajuster sans avoir accès aux données sources ayant permis de les produire.
 
@@ -149,19 +154,22 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	Et encore, on ne mentionne ici que les expérimentations issues des étapes de paramétrage.
 	Les phases suivantes d'exploration du comportement du modèle, par exemple autour de variations systématiques de valeurs de paramètres en vue de calibration, demandent ainsi d'exécuter, et donc d'enregistrer, une masse bien plus importante de simulations.
 
-	\subsection{Des données aux indicateurs}
+	\subsection{Des données aux indicateurs}\label{subsec:donnees-indicateurs}
 	Dans l'ensemble, l'enregistrement et la sauvegarde des données issues de simulations, en vue de leur mobilisation pour produire les indicateurs de sortie, se révèle une contrainte importante dans la compréhension du comportement d'un modèle.
 	C'est particulièrement le cas pour SimFeodal, où l'on ne peut se contenter de produire à la volée les indicateurs, pour des raisons de reproductibilité théorique et pratique.
 	
 	La masse de données en sortie est impressionnante et requiert donc premièrement d'utiliser des outils adaptés à la manipulation de grands jeux de données.
 	Cela exclue de fait l'outillage traditionnel de la géographie quantitative, ne laissant par exemple pas la possibilité d'utiliser les outils à interface graphique classiques.
-	Au contraire, face à des données de cet ordre, seules des solutions statistiques, basées sur des analyses en ligne de commande, peuvent être mobilisées. Ces solutions doivent en plus être appuyées par des capacités de calculs importantes, sans toutefois justifier encore l'usage de technologies de calcul intensif.
+	Au contraire, face à des données de cet ordre, seules des solutions statistiques, basées sur des analyses en ligne de commande, peuvent être mobilisées.
+	Ces solutions doivent en plus être appuyées par des capacités de calculs importantes, sans toutefois justifier encore l'usage de technologies de calcul intensif.
 	Cela pose une première contrainte dans l'universalité de l'analyse, en particulier dans un contexte interdisciplinaire porteur d'une large hétérogénéité en matière de pratiques quantitatives : il n'est pas possible de juste envoyer les jeux de données produits aux thématiciens, qui ne pourraient en l'état pas en tirer les indicateurs nécessaires.
 
 	Dans un second temps, et c'est là la contrainte principale, cette masse de données doit servir à la production d'indicateurs, nombreux et divers aussi bien dans leur forme que dans les caractéristiques des processus qu'ils décrivent (\hl{ref. chap. 3, indicateurs}).
 	Les mêmes raisonnement que pour les données s'appliquent ainsi aux indicateurs.
 	Si on peut prendre en compte la variabilité des réplications directement dans les indicateurs produits (par exemple avec des représentations graphiques de type \textit{box-plot} qu'adoptent une forte partie des indicateurs), ce n'est ni possible ni souhaitable entre les différentes expériences.
-	De fait, chaque expérience doit pouvoir être comparée aux précédentes sur la base de leurs seules réplications respectives. Dès lors, la raison d'être des indicateurs de sortie est de rendre possible une comparaison, indicateur par indicateur, entre chacune des expériences. Il est donc indispensable de générer, pour chaque expérience, l'ensemble des indicateurs. En ne considérant ici encore que 24 expériences, cela fait donc déjà plusieurs centaines\footnote{
+	De fait, chaque expérience doit pouvoir être comparée aux précédentes sur la base de leurs seules réplications respectives.
+	Dès lors, la raison d'être des indicateurs de sortie est de rendre possible une comparaison, indicateur par indicateur, entre chacune des expériences. 
+	Il est donc indispensable de générer, pour chaque expérience, l'ensemble des indicateurs. En ne considérant ici encore que 24 expériences, cela fait donc déjà plusieurs centaines\footnote{
 	En considérant ainsi une trentaine d'indicateurs, on obtient donc $30{\text{\tiny ~[indicateurs]}} \times 24_{\text{\tiny ~[jeux de paramètres]}} \approx 700$ indicateurs uniques.
 	} d'indicateurs (\cref{tbl:hierarchie-simulations}).
 
@@ -185,14 +193,103 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 
 	Le choix ayant été fait de mener une comparaison visuelle (\hl{ref. dans chapitre 3 : indicateurs uniques vs fonctions objectifs}), on imagine dès lors que celle-ci va être difficile en présence de tant d'indicateurs.
 
-	En sus de la contrainte de l'enregistrement et de la production des indicateurs, le verrou majeur à la compréhension des phénomènes modélisés dans SimFeodal est donc la simple capacité à visualiser et à explorer l'ensemble des indicateurs de sortie. Ce qui doit de plus être rendu possible et accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
+	En sus de la contrainte de l'enregistrement et de la production des indicateurs, le verrou majeur à la compréhension des phénomènes modélisés dans SimFeodal est donc la simple capacité à visualiser et à explorer l'ensemble des indicateurs de sortie.
+	Ce qui doit de plus être rendu possible et accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
 	
-
+\clearpage
 \section{Comment explorer les données de SimFeodal ?}
 
+	Pour évaluer une expérience de SimFeodal, on doit passer en revue une trentaine d'indicateurs de sortie de simulation.
+	Cette évaluation ne vise pas à aboutir à une note unique, mais plutôt à une idée de la capacité de l'expérimentation à reproduire les dynamiques modélisées.
+	Il ne s'agit donc pas a proprement parler d'une évaluation du modèle, mais plutôt d'une exploration de son comportement en fonction des mécanismes et valeurs de paramètres choisis.
+	Pour mener cette exploration, il convient d'utiliser des outils adaptés, c'est-à-dire de disposer de solutions techniques permettant le calcul et l'affichage des indicateurs à partir des données produites par le modèle.
+	Dans le travail mené autour de SimFeodal, plusieurs solutions ont été utilisées au cours des différentes étapes de construction du modèle.
+	La restitution purement chronologique de ces solutions ne revêt pas d'intérêt propre, mais les contraintes accumulées au cours de la construction du modèle et les choix devant permettre de les dépasser nous paraissent très largement génériques.
+	Nous justifions donc ici la succession de choix d'outils d'explorations au prisme des verrous dans l'exploration que chacun a permis de débloquer, ce qui dresse par là-même un portrait des solutions méthodologies d'exploration de données de simulations dont on peut faire usage selon les contraintes générales des modèles.\hl{Pas clair, à reprendre, mais l'idée est là.}
+	
 	\subsection{Observation en direct vs a posteriori}
-	\subsection{Générer des rapports}
-	\subsection{Automatiser les rapports}
+
+	Classiquement, le premier réflexe d'un modélisateur, du moins pour les modèles à base d'agents, est de définir des sorties graphiques pour accompagner son modèle.
+	Les différentes plate-formes de modélisation agent mettent d'ailleurs régulièrement en avant les possibilités de représentations qu'offrent leurs environnements (\hl{ref blogs Gama, NetLogo 3D, GeoMASON, Repast}).
+	Visualiser le déroulement d'un modèle ``en direct'' offre ainsi de nombreux avantages (\hl{cf. HDR Arnaud, en sortir une citation et/ou un listing}).
+
+	Dans l'exploration de SimFeodal, la création en direct de quelques graphiques correspondant à des indicateurs étudiés permet de vérifier, avant le lancement d'une série de simulations, que le déroulement de la simulation ne présente pas de forte incohérence et qu'un \textit{bug} n'a pas été oublié.
+	Pourtant, deux contraintes limitent fortement le recours à ce type de visualisation en direct des simulations.
+
+	La première contrainte, déjà évoquée plus haut, est que le modèle SimFeodal est fortement stochastique.
+	Dès lors, la visualisation des indicateurs d'une simulation particulière ne suffit pas à estimer le comportement du modèle.
+	C'est bien pour cela que les indicateurs choisis pour l'évaluation de SimFeodal prennent presque tous en compte la variabilité des résultats induite par l'exécution de réplications.
+
+	Certains environnements techniques (\hl{ref à multisim dans Gama}) permettent toutefois de mener concomitamment plusieurs réplications d'un même modèle et de visualiser directement pendant l'exécution les résultats des réplications agrégés.
+	La première contrainte, liée à la nécessaire étude des réplications du modèle, peut donc être dépassée en adaptant l'implémentation du modèle pour faire usage de ces capacités de multi-simulation.
+
+	La seconde contrainte est plus cruciale dans le cas de SimFeodal et invalide l'usage des méthodes de visualisation en direct.
+	On l'a vu, l'exploration des sorties de simulation du modèle repose sur la consultation d'une trentaine d'indicateurs, parfois très spécifiques au cas d'étude de SimFeodal.
+	Outre le fait qu'il serait concrètement difficile de représenter tous ces indicateurs au sein de l'interface graphique d'une plate-forme de simulation agent, la temporalité de l'exécution d'une simulation (ou même des réplications nécessaires) est bien plus courte que celle requise pour la compréhension des résultats produits.
+	Les indicateurs de sortie de simulation demandent ainsi un examen approfondi avant d'être en mesure de juger de leur adéquation aux attentes thématiques.
+	Cet examen ne peut que difficilement être réalisé en direct, qui plus est quand il demande de faire appel, dans le cadre de co-construction inhérent à SimFeodal, à plusieurs points de vue.
+	Les modalités mêmes de l'exploration des sorties de SimFeodal requièrent donc que les indicateurs soient visibles et explorables à des temporalités différentes, par des chercheurs différents, depuis des lieux différents.
+	Pour un même chercheur, l'évaluation n'étant pas une étape unique et finie, il est utile de pouvoir revenir sur les résultats à différents moments, ne serait-ce que pour comparer les nouveaux résultats produits à ceux générés par des expérimentations précédentes.
+
+	Il est donc indispensable que les indicateurs soient enregistrés et consultables simplement à tout moment, ce qui élimine de fait la visualisation des indicateurs en direct pendant l'exécution des simulations comme unique méthode d'exploration du comportement de SimFeodal.
+
+	La visualisation en direct n'est donc pas mobilisable en tant que telle, mais elle peut tout de même, comme dans un usage très classique, être utilisée comme un outil de validation interne pour tester chaque modification dans les valeurs de paramètres.
+	Visualiser une seule simulation, avant d'en exécuter les réplications nécessaires, permet ainsi déjà de vérifier que les modifications apportées dans les valeurs de paramètre ou dans les mécanismes n'ont pas entraîné l'apparition de \textit{bugs} ou d'incohérences immédiatement visibles.
+
+	Nous avons donc choisi de doter SimFeodal d'une interface graphique, très sommaire, mais permettant des allers-retours rapides entre l'implémentation et l'exécution.
+	Cette interface n'affiche qu'un nombre réduit d'indicateurs (\autoref{fig:simfeodal_gui_indicateurs}), ainsi qu'une représentation cartographique (\autoref{fig:simfeodal_gui_carte}) utile à une analyse rapide du comportement d'ensemble du modèle.
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=0.5\linewidth]{img/SimFeodal_GUI_FP.png}
+	\includegraphics[width=0.5\linewidth]{img/SimFeodal_GUI_seigneurs.png}
+	\caption{Visualisations intégrées à l'interface graphique de SimFeodal : indicateurs liés aux foyers paysans et aux seigneurs.} 
+	\label{fig:simfeodal_gui_indicateurs} 
+\end{figure}
+
+\begin{figure}[H]
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/SimFeodal_GUI_carte.png}
+	\caption{Visualisations intégrées à l'interface graphique de SimFeodal : cartographie synthétique de l'espace modélisé.} 
+	\label{fig:simfeodal_gui_carte} 
+\end{figure}
+	
+	Ces représentations ne suffisent pas et ne remettent aucunement en cause les constats de leur inadéquation aux contraintes d'ensemble de l'évaluation de SimFeodal.
+	Elles complètent cependant la démarche d'évaluation du modèle par l'ajout d'une étape de contrôle préalable au lancement d'expériences,ce qui ne peut être qu'avantageux.
+
+	\subsection{Générer les indicateurs}
+
+	Si la production des indicateurs doit donc nécessairement être réalisée en aval de l'execution des simulations, encore faut-il disposer d'outils adaptés au traitement des données produites, c'est-à-dire répondant aux contraintes identifiées auparavant (\autoref{subsec:donnees-indicateurs}).
+	La contrainte principale est d'être en mesure de gérer la masse de données produites.
+	On l'a vu, cela élimine d'office les outils de type tableurs, ou encore les outils de manipulation graphique de données les plus courants.
+	Pour les raisons évoquées dans le chapitre 1 (\hl{Positionnement : pourquoi utiliser des outils libres ?}), seules les solutions techniques non-propriétaires étaient envisageables.
+
+	Certains outils graphiques, basés sur des logiciels libres en arrière-plan (PSPP, R Commander, Orange), sont extrêmement aisés à prendre en main et auraient pu constituer un bon choix.
+	Pourtant, avec une trentaine d'indicateurs à produire pour chaque expérience, donc de manière régulière, nous avons préféré nous tourner vers des outils plus orientés vers une interface en ligne de commande (\textit{Command Line Interface}, abrégés \textit{CLI}).
+	
+	L'utilisation de CLI a plusieurs interêts gravitant autour de la reproductibilité des traitements.
+	En premier lieu, ils permettent une adaptation aisée et rapide aux différents jeux de données.
+	Ainsi, partant du principe que les données générées par les réplications et expérimentations sont de même structures, il suffit généralement de modifier le chemin d'entrée des fichiers résultants pour reproduire à l'identique une analyse sur un nouveau jeu de données.
+
+	De manière plus technique et interne à la génération des indicateurs, on peut remarquer que les différents indicateurs de sortie de simulation choisis présentent souvent des caractéristiques communes, aussi bien dans le traitement nécessaire que dans les formats (graphiques) produits.
+
+	Par exemple, la grande majorité des indicateurs reposent sur une première agrégation des données par réplication et pas de temps simulé, puis par une seconde agrégation montrant la variabilité des situations générées, au niveau de l'expérimentation donc.
+	En terme de manipulation de données, seul l'indicateur statistique final, et éventuellement l'agent caractérisé, est ainsi modifié dans ces nombreux indicateurs de sortie.
+	Le recours à des traitements en CLI permet ainsi un simple copier/coller, voir la création de fonctions dédiées, pour effectuer ces traitements très récurrents.
+
+	Au niveau des sorties graphiques, et donc des indicateurs multi-dimensionnels (\hl{cf. chap 3 et schéma des indicateurs}), on peut aussi remarquer que la forme est assez largement identique : on représente les pas des temps (les années simulées) en abscisse, un indicateur statistique en ordonnée, et les figurés sont sous forme de \textit{box-plot} minimalistes (\og \textit{minimal boxplot}\fg{}, promus par Edward Tufte pour minimiser le ratio données-encre.\hl{Mettre les réfs de Tufte}).
+	Là aussi, en disposant d'un environnement de type CLI, et qui plus est en faisant usage de solutions graphiques construites sur une syntaxe régulière et générique\footnote{
+	On utilise pour tous ces graphiques le \textit{package} R \texttt{ggplot2}, qui repose sur la grammaire graphique conçue par Leland Wilkinson (\hl{ref}).
+	}, il devient très confortable de n'avoir qu'a adapter un premier graphique conçu aux autres indicateurs souhaités.
+
+	\hl{Je ne sais pas si il faut argumenter ici le choix d'utiliser R, mais pour l'instant, je laisse ça pour ailleurs/plus tard.}
+
+	Avec ces solutions, il est facile de concevoir et d'implémenter les codes informatiques nécessaires à la génération des indicateurs de sortie de simulation.
+	Cela est de plus, dans l'exécution de ces programmes, extrêmement rapides, les différents fichiers de sortie de simulation étant lus et parcourus un unique fois pour en tirer toutes les variables nécessaires à l'établissement des indicateurs.
+
+	En sortie, on obtient une table synthétique (indicateurs numériques, \hl{cf. schéma chap. 3}) et de nombreux graphiques dans des formats vectoriels, donc aisément modifiables, par exemple pour publication, et surtout, lisibles et transférables très simplement.
+
+	\subsection{Organiser les indicateurs en rapports paramétrables}
 	\subsection{Organiser les rapports : Dashboards}
 	\subsection{Interagir avec les rapports : exploration interactive}
 	\subsection{Explorer en comparant}
