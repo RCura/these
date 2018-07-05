@@ -1,6 +1,6 @@
 \chapter{Explorer visuellement des données de simulation massives pour analyser le comportement d'un modèle.} 
 \begin{center}
-	{\large Version \hl{2018-06-22}}\\
+	{\large Version \hl{2018-06-29}}\\
 	\hl{Corrections de la partie 5.1 non prises en compte.}
 	
 \end{center}
@@ -194,7 +194,7 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	Le choix ayant été fait de mener une comparaison visuelle (\hl{ref. dans chapitre 3 : indicateurs uniques vs fonctions objectifs}), on imagine dès lors que celle-ci va être difficile en présence de tant d'indicateurs.
 
 	En sus de la contrainte de l'enregistrement et de la production des indicateurs, le verrou majeur à la compréhension des phénomènes modélisés dans SimFeodal est donc la simple capacité à visualiser et à explorer l'ensemble des indicateurs de sortie.
-	Ce qui doit de plus être rendu possible et accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
+	Ce qui doit de plus être rendu P et accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
 	
 \clearpage
 \section{Comment explorer les données de SimFeodal ?}
@@ -211,16 +211,16 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 
 	Classiquement, le premier réflexe d'un modélisateur, du moins pour les modèles à base d'agents, est de définir des sorties graphiques pour accompagner son modèle.
 	Les différentes plate-formes de modélisation agent mettent d'ailleurs régulièrement en avant les possibilités de représentations qu'offrent leurs environnements (\hl{ref blogs Gama, NetLogo 3D, GeoMASON, Repast}).
-	Visualiser le déroulement d'un modèle ``en direct'' offre ainsi de nombreux avantages (\hl{cf. HDR Arnaud, en sortir une citation et/ou un listing}).
+	Visualiser le déroulement d'un modèle ``en direct'' (\textit{online} dans Grignard \& Drogoul2017) offre ainsi de nombreux avantages (\hl{cf. HDR Arnaud, en sortir une citation et/ou un listing}).
 
-	Dans l'exploration de SimFeodal, la création en direct de quelques graphiques correspondant à des indicateurs étudiés permet de vérifier, avant le lancement d'une série de simulations, que le déroulement de la simulation ne présente pas de forte incohérence et qu'un \textit{bug} n'a pas été oublié.
+	Dans l'exploration de SimFeodal, la création en direct de quelques graphiques correspondant à des indicateurs étudiés permet de vérifier, avant le lancement d'une série de simulations, que le déroulement de la simulation ne présente pas de forte incohérence et qu'un \textit{bug} n'a pas été introduit involontairement.
 	Pourtant, deux contraintes limitent fortement le recours à ce type de visualisation en direct des simulations.
 
 	La première contrainte, déjà évoquée plus haut, est que le modèle SimFeodal est fortement stochastique.
 	Dès lors, la visualisation des indicateurs d'une simulation particulière ne suffit pas à estimer le comportement du modèle.
 	C'est bien pour cela que les indicateurs choisis pour l'évaluation de SimFeodal prennent presque tous en compte la variabilité des résultats induite par l'exécution de réplications.
 
-	Certains environnements techniques (\hl{ref à multisim dans Gama}) permettent toutefois de mener concomitamment plusieurs réplications d'un même modèle et de visualiser directement pendant l'exécution les résultats des réplications agrégés.
+	Certains environnements techniques (\hl{ref à multi-simulation dans Gama}) permettent toutefois de mener concomitamment plusieurs réplications d'un même modèle et de visualiser directement pendant l'exécution les résultats des réplications agrégés.
 	La première contrainte, liée à la nécessaire étude des réplications du modèle, peut donc être dépassée en adaptant l'implémentation du modèle pour faire usage de ces capacités de multi-simulation.
 
 	La seconde contrainte est plus cruciale dans le cas de SimFeodal et invalide l'usage des méthodes de visualisation en direct.
@@ -259,7 +259,7 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 
 	\subsection{Générer les indicateurs}
 
-	Si la production des indicateurs doit donc nécessairement être réalisée en aval de l'execution des simulations, encore faut-il disposer d'outils adaptés au traitement des données produites, c'est-à-dire répondant aux contraintes identifiées auparavant (\autoref{subsec:donnees-indicateurs}).
+	Si la production des indicateurs doit donc nécessairement être réalisée en aval de l'execution des simulations (\textit{offline} dans Grignard \& Drogoul 2017), encore faut-il disposer d'outils adaptés au traitement des données produites, c'est-à-dire répondant aux contraintes identifiées auparavant (\autoref{subsec:donnees-indicateurs}).
 	La contrainte principale est d'être en mesure de gérer la masse de données produites.
 	On l'a vu, cela élimine d'office les outils de type tableurs, ou encore les outils de manipulation graphique de données les plus courants.
 	Pour les raisons évoquées dans le chapitre 1 (\hl{Positionnement : pourquoi utiliser des outils libres ?}), seules les solutions techniques non-propriétaires étaient envisageables.
@@ -282,7 +282,13 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	On utilise pour tous ces graphiques le \textit{package} R \texttt{ggplot2}, qui repose sur la grammaire graphique conçue par Leland Wilkinson (\hl{ref}).
 	}, il devient très confortable de n'avoir qu'a adapter un premier graphique conçu aux autres indicateurs souhaités.
 
-	\hl{Je ne sais pas si il faut argumenter ici le choix d'utiliser R, mais pour l'instant, je laisse ça pour ailleurs/plus tard.}
+	\hl{Je ne sais pas si il faut argumenter ici le choix d'utiliser R, mais pour l'instant, je laisse ça pour ailleurs/plus tard.}\\
+	
+	\begin{encadre}{Générer les indicateurs avec \texttt{R} et \texttt{ggplot2}}{enc-technique-indicateurs-r}
+		
+		\hl{Ça pourrait être bien de faire un encadré technique ici sur les choix technologiques (R, dplyr, ggplot2) retenus pour SimFeodal}
+		
+	\end{encadre}
 
 	Avec ces solutions, il est facile de concevoir et d'implémenter les codes informatiques nécessaires à la génération des indicateurs de sortie de simulation.
 	Cela est de plus, dans l'exécution de ces programmes, extrêmement rapides, les différents fichiers de sortie de simulation étant lus et parcourus un unique fois pour en tirer toutes les variables nécessaires à l'établissement des indicateurs.
@@ -290,7 +296,88 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	En sortie, on obtient une table synthétique (indicateurs numériques, \hl{cf. schéma chap. 3}) et de nombreux graphiques dans des formats vectoriels, donc aisément modifiables, par exemple pour publication, et surtout, lisibles et transférables très simplement.
 
 	\subsection{Organiser les indicateurs en rapports paramétrables}
+
+	Du point de vue de la manipulation, la création de fichiers informatiques indépendants correspondant aux différents indicateurs de sortie de simulation est extrêmement pratique : on peut facilement les échanger et les adapter, par exemple pour inclusion dans une publication.
+
+	Du point de vue de la comparaison des résultats, cette forme n'est pourtant pas la plus adaptée.
+	Si l'on peut facilement comparer un même indicateur portant sur deux expériences différentes, la tache se complique quand il s'agit d'avoir une vision globale des différences dans les indicateurs entre deux expériences.
+	Pour cela, la démultiplication des fichiers correspondant aux indicateurs se révèle rapidement être un obstacle : on est alors amené à jongler entre de très nombreux fichiers.
+
+	Pour rendre la comparaison des indicateurs plus aisée, en présence d'une forte diversité d'indicateurs, il convient donc, a minima, d'organiser les indicateurs.
+	Nous entendons ici par organisation, une présentation structurée, suivant un certain ordre, identique selon les expériences, adapté à une évaluation des résultats du modèle SimFeodal.
+	Pour cela, nous avons choisi d'organiser ces \og indicateurs\fg{} au sein de \og rapports \fg{}.
+	Cela permet, dès lors que les expériences simulées ont été nombreuses, de rassembler l'ensemble des indicateurs de sortie propres à chacune dans un unique fichier, à la structure toujours similaire.
+
+	En dehors du simple archivage des sorties, la production de rapports facilite aussi la comparaison des expériences par le biais de leurs indicateurs de sortie.
+	On peut ainsi, par exemple, placer côte à côte deux rapports rendant compte de deux expériences différentes, et, en les faisant défiler simultanément, comparer point par point, c'est-à-dire indicateur par indicateur, leurs résultats respectifs.
+
+	Les formes que peuvent prendre des rapports, tout autant que les modalités de leur production, sont multiples et extrêmement diverses, depuis le document produit manuellement en insérant des bons indicateurs au fur et à mesure, par exemple dans un traitement de texte, jusqu'au rapport entièrement automatisé produisant des commentaires automatiques des indicateurs insérés en fonction d'expressions conditionnelles.
+
+	Pour SimFeodal, nous avons choisi de restreindre au maximum la manipulation manuelle, c'est-à-dire de générer un rapport entièrement automatique, ne requérant pas d'action spécifique en dehors du choix des données depuis lesquelles créer les indicateurs et donc le rapport.
+	Le rapport produit (\cref{fig:simfeodal_rapport_mini} pour un aperçu global, et \hl{annexe X pour un exemple de rapport complet}) n'intègre ainsi que les indicateurs, c'est-à-dire les indicateurs numériques -- sous forme de tableau -- et les indicateurs multi-dimensionnels -- sous forme de graphiques --.
+	Ces indicateurs sont toutefois organisés par partie, en l'occurrence par le type d'agents et de comportement qu'ils décrivent. 
+	
+	\begin{figure}[H]
+		\captionsetup{width=\linewidth}
+		\includegraphics[width=\linewidth]{img/SimFeodal_Rapport_exemple.png}
+		\caption{Un exemple de rapport automatique généré pour une expérimentation (étape 0) de SimFeodal. La version en taille réelle est reproduite en \hl{annexe X}.} 
+		\label{fig:simfeodal_rapport_mini} 
+	\end{figure}
+	
+	Les raisons de ce choix sont multiples, mais ont en commun une recherche de reproductibilité des résultats et des analyses menées.
+	Reproductibilité certes théorique (\hl{encore une ref au positionnement}), les résultats de simulation devant être en mesure d'être analysés et reproduis par de potentiels intéressés, mais reproductibilité aussi rendue nécessaire par la pratique de la modélisation, tel qu'explicité auparavant (\hl{ref. à partie 1 du chap, dans réplication -> expériences}).
+	La quantité d'expériences requises pour arriver à un état satisfaisant de SimFeodal a ainsi été importante, et le nombre de rapports tout autant.
+	La création d'un rapport automatisé garantissait d'une part une génération rapide des indicateurs sur les nouvelles données, permettant donc un examen des sorties de simulation presque immédiatement après leur execution.
+	D'autre part, la structure assez fixe d'un rapport automatisé, c'est-à-dire se basant une structure de données figée (des fichiers tabulés dotés d'en-têtes constantes), ou encore sur une masse suffisante et nécessaire de réplications (pour que les indicateurs soient comparables, ils doivent être réalisés sur le même nombre de réplications, $20$ dans notre cas, ce qui est introduit comme contrainte dans la génération du rapport), permet une première évaluation du bon déroulement \og interne \fg{}\footnote{
+	Au sens de l'évaluation interne, c'est-à-dire du bon fonctionnement, exempt de \textit{bugs}, du modèle de simulation implémenté.
+	} de la simulation : si le rapport ne peut être généré, c'est que le modèle a été modifié d'une manière qui le rend non rétro-compatible, du moins en ce qui concerne ses sorties.
+
+	Un autre interêt majeur des rapports, déjà pointé en avantage des outils de type \textit{CLI} est leur adaptabilité.
+	On a vu (chap. 3) que les indicateurs à examiner sont nombreux et surtout, évolutifs, dans le sens où ces indicateurs ont fortement été modifiés, remplacés, affinés, au cours des étapes de paramétrage de SimFeodal.
+	L'utilisation de rapports automatique permet de changer le code source, qui permet de générer les indicateurs, en un unique endroit.
+	À partir de là, pour mettre à jour l'ensemble des rapports déjà produits, c'est-à-dire regroupant les indicateurs de chacune des expériences passées, il suffit de ré-exécuter la routine de production des rapports, ce qui représente un gain de temps et d'efficacité conséquent dans les situations de changements fréquents d'indicateurs, comme cela a été le cas pour SimFeodal.
+	
+	
+	\begin{encadre}{Générer les rapports avec \texttt{R} et \texttt{knitr}}{enc-technique-rapports-knitr}
+		
+		\hl{Encadré sur les rapports automatiques, le \textit{\og litterate programming}\fg, le choix et le paramétrage de knitr + lien vers le code-source des rapports.}
+		
+	\end{encadre}
+
+	
+	Naturellement, la reproductibilité des rapports constitue plus un objectif qu'une réalisation effective.
+	Ainsi, comme explicité dans l'encadré sur l'incrémentalité des indicateurs (\hl{ref encadré incrémentalité chap 3}), une contrainte forte empêchent une absolue reproductibilité des analyses du comportement des différentes versions de SimFeodal : les données générées par les différentes versions du modèle ne sont pas systématiquement \og compatibles \fg{}, c'est-à-dire qu'elles ne présentent pas toute exactement la même structure, à commencer par les variables enregistrées.
+
+	Dès lors, les différents rapports peuvent être considérés comme reproductibles et automatiques au sein de \og générations \fg{} de SimFeodal, c'est-à-dire pour les versions créées et paramétrées dans le cadre d'une même phase de co-construction, avant donc d'avoir eu à adapter les indicateurs\footnote{
+	\hl{Pas clair du tout, à reprendre !}
+	}.
+
+	A l'issue de la conception et de l'implémentation de ces rapports automatiques, on dispose donc, pour chaque expérience, d'un document aisément partageable et lisible.
+	Ce pourrait être la dernière étape de la création d'outils d'évaluation de SimFeodal si le nombre de versions ou d'étapes de SimFeodal était plus restreint.
+	Pourtant, comme vu dans \hl{la partie 1 du chapitre}, le paramétrage de SimFeodal a été caractérisé par une forte quantité d'allers-retours entre le modèle et ses résultats, entraînant à chaque fois de nouvelles expérimentations.
+	De la même manière qu'au regard du nombre d'indicateurs à évaluer il n'est donc pas possible de manipuler les indicateurs un par un dans des fichiers individuels, la masse d'expériences rend partiellement caduque l'utilisation unique des rapports automatiques.
+	Il est facile de comparer, sur un même écran d'ordinateur, deux ou trois rapports, mais dès lors qu'il faut en comparer plus que cela, la manipulation conjointe des rapports devient complexe, tout autant que d'avoir une vision globale des résultats principaux de chaque expérience.
+
 	\subsection{Organiser les rapports : Dashboards}
+	
+	Pour être en mesure de comparer de nombreux éléments, il est nécessaire de passer d'une exploration linéaire, voyant défiler les indicateurs les uns après les autres, à une exploration globale et interactive.
+	C'est-à-dire que plutôt que de voir se succéder des pages d'indicateurs, mieux vaut une interface présentant le points clefs de l'évaluation et permettant d'entrer dans le détail de chacun des indicateurs après-coup.
+
+	Cette logique, assez universelle désormais, est celle qui préside à la création des nombreux \og tableaux de bord \fg{}, ou \og \textit{dashboards} \fg{} que l'ont voit émerger depuis la fin des années 1990.
+	Très répandus dans le monde de l'informatique décisionnelle (\textit{Business Intelligence, BI}), ces outils permettent d'explorer des données d'entreprises, par exemple des résultats financiers. Pour ce faire, ils mettent en avant, dans une interface unique, des indicateurs clés (\textit{Key Performance Indicators, KPI}), qu'il est ensuite possible de filtrer et d'affiner, par exemple par sélection de différents intervalles temporels.
+	
+	L'avènement des données massives et de leur prise en compte pour la gestion des villes (\textit{smart cities}) a amené à une utilisation de plus en plus fréquente de ce type de \textit{dashboards} en géographie \autocite{roumpani_creating_2013, kitchin_knowing_2015, batty_perspective_2015}, tant les villes sont des objets complexes à observer et à gérer.
+	Au regard des problématiques de gestion urbaine autant que de celles de supervision des performances d'entreprises, on comprend bien le parallèle qui peut être fait avec une utilisation appliquée à un modèle complexe à évaluer tel que SimFeodal.
+
+	L'analogie entre les indicateurs clés (KPI) et les indicateurs numériques de SimFeodal d'une part, et entre les indices issus de fouille de données du monde de l'informatique décisionnelle et les indicateurs multi-dimensionnels d'autre part, est assez explicite.
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\hl{FIN DU RENDU À LENA LE 2018-06-29}
+	\end{center}	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 	\subsection{Interagir avec les rapports : exploration interactive}
 	\subsection{Explorer en comparant}
 
