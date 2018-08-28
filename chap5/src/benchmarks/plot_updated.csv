@@ -1,0 +1,13 @@
+"Type","System","SQL?","Load/Read","Aggregation","Join"
+"Statistiques","R DT","no",30,"5.5","6.5"
+"Statistiques","R DT indexée","no",35,"1.3","1.7"
+"Statistiques","R dplyr","yes",30,45,40
+"Statistiques","Python pandas","no",30,8,25
+"Relationelles","MySQL MyISAM","yes",40,45,470
+"Relationelles","MySQL InnoDB","yes",430,70,140
+"Relationelles","PostgreSQL","yes",120,175,55
+"Analytiques","MonetDB","yes",70,7,"1.5"
+"Massives","Spark","yes",20,40,30
+"Massives","Spark-cached","yes",50,12,"2.5"
+"Analytiques","MapD (GPU)","yes",12,"0.5","0.1"
+"Analytiques","MapD (CPU)*","yes",10,"2.4","0.3"
