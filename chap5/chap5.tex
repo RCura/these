@@ -543,19 +543,53 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 		\subsubsection{MapD}
 	
 \section{Une plate-forme d'exploration de données de simulations : SimEDB}
+\clearpage
+\section{Une plate-forme d'exploration de données de simulations : SimEDB}\label{sec:SimEDB}
 	\subsection{Contraintes}
+		\subsubsection{Simplicité d'usage}
+			\paragraph*{Utilisateurs variés}
+			\paragraph*{Intuititivé de l'usage au regard des applications traditionnelmles}
 		\subsubsection{Efficacité}
-		\subsubsection{Interopérabilité}
-		\subsubsection{Adaptabilité}
+			\paragraph*{Conserver l'utilisateur}
+%						\autocite{liu_effects_2014} : ~500 ms\\
+%			https://neilpatel.com/blog/speed-is-a-killer/ : Google : -20\% pour +500ms\\
+%			https://neilpatel.com/blog/loading-time/ : graphique dans 1ere infographie
+			\paragraph*{Conserver la concentration}
+				%-> Refs en visual analytics, depuis Liu 2004 par ex., + Ben Schneiderman
+		\subsubsection{Interopérabilité et évolutivité}
+			\paragraph*{Différents supports d'interrogation}
+			\paragraph*{Gérer les mises à jours et modifications}
+			\paragraph*{Le choix d'une application web}
 		\subsubsection{Généricité / indépendance aux données}
+			\paragraph*{Indépendance au support de données}
+			\paragraph*{Indépendance aux requêtes}
+			\paragraph*{Modularité de l'implémentation}
 
-	\subsection{SimVADB / SimEDB}
+	\subsection{SimEDB}
 		\subsubsection{Choix des technologies}
+			\paragraph*{Technologies webs et responsivité}
+			\paragraph*{Le choix d'outils intégrés (vs React, Node etc.)}
+			\paragraph*{R et Shiny}
+			\paragraph*{DML : Dplyr, grammaire de manipulations et conversion SQL}
+			\paragraph*{Graphiques : ggplot2 et la grammaire of graphics}
+			\paragraph*{Modulariser les fonctions}
 		\subsubsection{Choix de l'organisation}
+			\paragraph*{Organisation avec sidebar}
+			\paragraph*{Superposer les éléments}
+			\paragraph*{Onglets et sous-onglets}
 		\subsubsection{Choix des modes d'interactions}
+			\paragraph*{Filtrage via parallel coordinates}
+			\paragraph*{Trop de choses : Filtrage via selection des sim\_names}
+			\paragraph*{Trop de choses : une UI redimensionnable}
+			\paragraph*{Téléchargement (et conserver les filtres)}
+			\paragraph*{Noter les simulations}
 		\subsubsection{Présentation générale}
+			% -> Quelques captures d'écran successives avec focus à chaque fois sur l'interaction en cours
+			% Renvoyer à un manuel utilisateur en annexe
 
 % Pour compilation finale, décommenter la dernière ligne :
 % Permet d'enlever la page vide après le chapitre, mais bloque la création du minitoc. A faire donc après avoir recompilé une dernière fois avec le minitoc
 %\let\clearpage\relax
 % -> Remplacé pas l'usage de newclude::include*{}
+
+\printbibliography[title={Références}]
