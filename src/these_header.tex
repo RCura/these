@@ -1,4 +1,4 @@
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -19,6 +19,8 @@
 
 \usepackage{float}
 \usepackage{caption}
+\usepackage{rotating}
+\usepackage{rotfloat}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -46,7 +48,13 @@ backend=bibtex,
 isbn=false,
 doi=true,
 url=true,
-date=year]{biblatex}
+date=year,
+sortcites=false,  % Ne pas changer l'ordre des citations multiples
+sorting=nyt % Citations dans biblio : NameYearTitle
+]{biblatex}
+
+
+%\usepackage{natbib}
 
 \usepackage[thinlines]{easytable}
 \usepackage{makecell}
@@ -96,7 +104,7 @@ date=year]{biblatex}
 
 % Encadré pris dans la thèse de Seb Rey
 \usepackage[most]{tcolorbox}
-\newtcbtheorem[number within=chapter]{encadre}{Encadré}{   
+\newtcbtheorem[number within=chapter]{encadre}{Encadré}{
 	outer arc=0pt,
 	arc=0pt,
 	breakable,
@@ -150,16 +158,7 @@ date=year]{biblatex}
 \makeatother
 
 
-% ######### COULEURS POUR REPRISE #########
-%\setmainfont[Color=red]{Linux Libertine O}
-%\setsansfont[Color=red]{Linux Biolinum O}
-%\setmonofont[Color=red]{Courier}
-% On linux
-\newfontfamily\blueroman[Color=blue]{Linux Libertine O}
-\newfontfamily\redroman[Color=red]{Linux Libertine O}
-% On windows
-%\newfontfamily\blueroman[Color=blue]{Linux Libertine}
-%\newfontfamily\redroman[Color=red]{Linux Libertine} 
+
 
 
 % ######### PLAN DETAILLE #########
