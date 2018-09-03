@@ -22,11 +22,9 @@ bench_plot <- bench_data %>%
 ticks <- c(0.5,1,3,5,10,30,60,120,300,600)
 ticks2 <- ticks - 1
 
-isSQL <- c(rep("black", times = 2),
-           "grey",
-           rep("black", times = 2),
-           rep("grey", times= 2),
-           rep("black", times = 5))
+isSQL <- c(rep("black", times = 4),
+           rep("grey", times = 2),
+           rep("black", times = 6))
 
 ggplot(bench_plot) +
   aes(x = System, y = Time, color = Type, point.colour=Type) +
@@ -37,7 +35,7 @@ ggplot(bench_plot) +
   labs(title= "Performances comparées de SGBD",
        subtitle = "Temps nécessaires à l'execution de requêtes",
        caption = "R. Cura (2018), d'après S. Pafka (2017)
-       * MapD (CPU) : Benchmark mené sur un système moins puissant que les autres",
+       * MapD (CPU) et SQLite : Benchmark mené sur un système moins puissant que les autres",
        x = "Systèmes de Gestion de Bases de Données",
        y = "Durée de la requête [secondes]\n (Échelle logarithmique)") +
   coord_flip() +
