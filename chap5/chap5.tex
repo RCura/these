@@ -1,7 +1,7 @@
 % !TEX root = ../These_TOC.tex
 \chapter{Explorer visuellement des données de simulation massives pour analyser le comportement d'un modèle.}
 \begin{center}
-	{\large Version \hl{2018-08-27}}\\
+	{\large Version \hl{2018-09-04}}\\
 	\hl{Corrections de la partie 5.1 à 5.2.3 non prises en compte.}
 
 \end{center}
@@ -41,8 +41,11 @@
 % Plan du 2018-06-12
 %
 
-\section{Capter les sorties de SimFeodal}\label{sec:capter-sorties-simfeodal}
-\label{sec:sorties-simfeodal}
+
+\section[Capter les sorties de SimFeodal]{{Capter les sorties de SimFeodal}%
+	\sectionmark{Capter les sorties}}\label{sec:sorties-simfeodal}
+\sectionmark{Capter les sorties}
+
 Pour évaluer un modèle, on s’appuie sur plusieurs indicateurs de sortie de simulation, de types divers (indicateurs numériques, graphiques, cartographiques etc., \hl{cf. chapitre 3, partie théorique}).
 Quand le nombre d'indicateurs devient important, comme c'est le cas dans le modèle SimFeodal (chap 3, partie présentation des indicateurs), la consultation des indicateurs pendant le déroulement d'une simulation devient difficile.
 La complexité de ces indicateurs augmente, elle-même, dans le cas d'un modèle stochastique comme SimFeodal, où il est nécessaire de multiplier les réplications afin d'avoir une idée fiable de la tendance du modèle.
@@ -198,7 +201,7 @@ Nous détaillons ici les contraintes qu’entraînent ces différentes spécific
 	Ce qui doit de plus être rendu accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
 	
 \clearpage
-\section{Comment explorer les données de SimFeodal ?}\label{sec:explorer-sorties-simfeodal}
+\section[Explorer les sorties]{Comment explorer les données de SimFeodal ?}\label{sec:explorer-sorties-simfeodal}
 
 	Pour évaluer une expérience de SimFeodal, on doit passer en revue une trentaine d'indicateurs de sortie de simulation.
 	Cette évaluation ne vise pas à aboutir à une note unique, mais plutôt à une idée de la capacité de l'expérimentation à reproduire les dynamiques modélisées.
@@ -813,7 +816,24 @@ Le choix d'une méthode d'organisation des données en sortie de simulations ne 
 
 	\subsection{Structuration des données de SimFeodal}
 	
-	Une fois le SGBD destiné à stocker les données en sortie de SimFeodal, encore faut-il choisir la manière de les organiser. \hl{Ne pas oublier de rédiger cette courte intro}
+	Une fois le SGBD destiné à stocker les données en sortie de SimFeodal, encore faut-il choisir la manière de les organiser.
+	On en peut ainsi pas travailler directement avec les données générées par SimFeodal.
+
+	\paragraph*{Pré-traitement des données}
+	Ces données sont des données \og brutes\fg{}, c'est-à-dire qu'elles ne sont pas organisées de manière rationnelle, contiennent une quantité non négligeable d'informations incomplètes et/ou superflues.
+	Par exemple, quand une simulation est arrêtée en cours, soit volontairement, soit en raison d'un \textit{bug}, les données des pas de temps réalisés sont tout de même exportées dans les fichiers bruts.
+	De la même manière, il arrive qu'on reproduise trop de fois des simulations avec le même jeu de valeurs de paramètres, amenant alors un nombre de réplications supérieur à celui d'autres experiences.
+	On peut enfin voir subvenir des erreurs dans les agents, par exemple quand, en raison d'un bug, un agent en interroge un autre qui a disparu depuis.
+	Il arrive ainsi fréquemment que des foyers paysans déclarent une appartenance à un agrégat qui a disparu depuis.
+	Dans ces cas, fautifs, les données seront aussi inscrites dans les sorties de SimFeodal, quand bien même elles n'ont pas de sens.
+
+	Les données brutes doivent donc nécessairement être vérifiées, filtrées, nettoyées et retravaillées avant de pouvoir les exploiter en vue de générer les indicateurs de sortie.
+
+	\paragraph*{Organisation des données}
+	Même pré-traitées, les données brutes conservent une structure tabulaire assez peu adaptées à un traitement : chaque type d'agent stocke ses données correspondantes dans un fichier spécifique, et le nettoyage de celui-ci ne change rien au fait qu'il demeure isolé des autres fichiers.
+	Une partie des indicateurs repose sur des analyses croisant différents types d'agents (dans quels pôles les agrégats s'inscrivent-ils par exemple ?), et il est donc nécessaire de permettre -- et de fluidifier -- ces requêtes croisées.
+	On a mentionné le choix de SGBD relationnels, il convient donc de concevoir et d'implémenter, dans le SGBD choisi, les relations entre les différentes tables individuelles qui proviennent des sorties brutes de SimFeodal.
+
 	
 	
 		\subsubsection{Quel modèle de données ?}
@@ -858,6 +878,18 @@ Le choix d'une méthode d'organisation des données en sortie de simulations ne 
 		\end{figure}
 \clearpage	
 			
+\begin{figure}[H]
+	\centering
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/MCD_SimEDB_simplified.pdf}
+	\caption{Les étapes d'interrogation de la BDD de SimEDB :\\
+		(1) Filtrage d'un sous-ensemble de valeurs de paramètres ;
+		(2) Les simulations associées sont isolées dans la table des paramètres;
+		(3) Répercussion de ce filtre dans la table contenant les identifiants des simulations ; 
+		(4) Toutes les tables sont filtrées en répercussion}
+	\label{fig:MCD_SimEDB_etapes}
+\end{figure}
+\clearpage
 		\subsubsection{Un modèle de données pour favoriser l'interrogation et le filtrage conjoint}
 		
 		Le schéma choisit, et le Modèle Conceptuel de Données (MCD) associé, permettent donc une interrogation rapide des données en simplifiant les tâches d'agrégation et en minimisant la quantité de jointures nécessaires à la génération des indicateurs de sortie.
@@ -872,20 +904,19 @@ Le choix d'une méthode d'organisation des données en sortie de simulations ne 
 		
 		Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour les données de SimFeodal, sont schématisées dans la \cref{fig:MCD_SimEDB_etapes}.
 
-		\begin{figure}[H]
-			\centering
-			\captionsetup{width=\linewidth}
-			\includegraphics[width=\linewidth]{img/MCD_SimEDB_simplified.pdf}
-			\caption{Les étapes d'interrogation de la BDD de SimEDB :\\
-			(1) - Filtrage d'un sous-ensemble de valeurs de paramètres\\
-			(2) - Les simulations associées sont isolées\\
-			(3) - Répercussion de ce filtre dans la table des simulations\\
-			(4) - L'ensemble des données de SimFeodal sont filtrées en répercussion}
-			\label{fig:MCD_SimEDB_etapes}
-		\end{figure}
 	
-	\paragraph*{Conclusion}
-	\hl{RÉDIGER CONCLUSION DE LA PARTIE DONNÉES ICI !}
+		\subsection*{Une organisation dédiée à l'exploration interactive}
+		La présentation des choix d'organisation de données témoigne d'une visée résolument applicative, c'est-à-dire visant à penser l'organisation, la structuration et les SGBD d'implémentation, comme au service de la plate-forme d'exploration SimEDB.
+		Le SGBD choisi, MapD, est ainsi un logiciel particulièrement adapté aux besoins identifiés, c'est-à-dire à une efficacité et une robustesse d'interrogation des données générées par SimFeodal.
+		MapD est interrogeable de manière universelle, via des protocoles de connexion standards, au moyen d'un langage qui fait office de \textit{lingua franca} de l'interrogation de données, le SQL.
+		Au sein du SGBD, la structure des données, révélée dans le MCD qui adopte une structure \og en étoile\fg{}, vise aussi à faciliter et à optimiser la vitesse des requêtes visant à générer les indicateurs de sortie de SimFeodal.
+		Cette structure de données est enfin pensée, en amont, pour minimiser le nombre requêtes nécessaires à l'affichage des indicateurs, dans un cadre interactif, correspondant à des sous-ensembles des nombreuses simulations effectuées au cours de la construction, du paramétrage et de la calibration de SimFeodal.
+		
+		Il est important de noter qu'en l'absence de ces choix de conception de base de données, de la modélisation conceptuelle jusqu'à l'implémentation technique, la plate-forme d'exploration des données SimEDB, que nous allons maintenant présenter plus en détail, n'aurait pu être conçue et créée de manière convaincante.
+		
+
+
+
 
 \clearpage
 \section{Une plate-forme d'exploration de données de simulations : SimEDB}\label{sec:SimEDB}
