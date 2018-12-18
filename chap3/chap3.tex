@@ -1,21 +1,156 @@
+% !TEX root = ../These_Robin_Master.tex
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \begin{center}
-{\large Version 2018-05-03}
+{\large Version \hl{2018-12-18}}
 \end{center}
 \minitoc
 
+\clearpage
+\setlength{\epigraphwidth}{0.7\textwidth}
+\epigraph{Although the construction and analysis of a simulation model, the validity of which has not been ascertained by empirical observation, may prove to be of interest for expository or pedagogical purposes (e.g., to illustrate particular simulation techniques), such	a model contributes nothing to the understanding of the system being simulated.
+[...]\\
+Unless the construction of simulation models is viewed as a game with no purpose other than the formulation of a model, it is hard to escape the conclusion that the purpose of a simulation experiment is to predict some aspect of reality.
+}{\cite[B-92-93;96]{naylor_verification_1967}}
 
 
 \section{Comment évaluer un modèle ?}
 
-\subsection{Visual validation}
+Depuis les travaux précurseurs en simulation informatique \autocite{naylor_verification_1967,hermann_validation_1967} jusqu'aux recherches contemporaines \autocite{amblard_assessment_2007,banos_pour_2013,augusiak_merging_2014, rey-coyrehourcq_plateforme_2015}, la plupart des chercheurs ont toujours mis en avant qu'un modèle de simulation non évalué n'avait ni utilité (pour les plus anciens), ni validité.
+Sans caricaturer ces écrits, on peut noter que tous cantonnent les modèles non évalués à des \og jeux\fg{} ou encore, pour les plus modérés, à des outils uniquement pédagogiques.
 
-(Trouver ref dans thèse Clémentine, sans doute Hermann encore)
+Comme indiqué dans le chapitre 1 (\hl{ref}), nous inscrivons SimFeodal comme un modèle résolument pédagogique, et l'on pourrait dès lors se passer d'en mener une évaluation quelconque.
+Il nous semble pour autant que l'exercice intellectuel que constitue la (co-)construction d'un modèle de simulation perdrait de son intérêt intrinsèque s'il ne donnait lieu à des procédures, quelles qu'elles soient, ayant pour objectif de d'en assurer une certaine qualité, à défaut d'en garantir une validation stricte.
 
-\subsection{Indicateurs}
+Nous sommes en effet convaincu que même pour des modèles visant à \og assister la construction de théories\fg{}\footnote{ \og [...] Simulation models to support theory building -- so-called heuristic modelling -- [...].\fg{}} pour reprendre les termes de \cite[260]{lake_trends_2014}, ou encore, selon la classification alternative de l'auteur, pour les modèles à usage \og de développement\fg{}\footnote{\og 'developmental' utility\fg{}, c'est-à-dire les modèles dont le développement et l'implémentation bénéficient aux chercheurs qui y prennent part plutôt qu'à ceux qui se contentent de les utiliser a posteriori.}, les différents outils d'évaluation permettent d'acquérir une connaissance précieuse sur l'objet modélisé, ne serait-ce que par les effets collatéraux qu'entraîne la vérification d'un modèle.
+
+Sans entrer dans les spécificités conceptuelles de ce qu'est l'évaluation de modèle ou de l'histoire de ces méthodes\footnote{En particulier parce que ce sujet a été très largement traité dans un travail de thèse récent au sein de notre laboratoire de recherche \autocite[pp. 58--184]{rey-coyrehourcq_plateforme_2015}, travail auquel nous renvoyons vivement pour plus d'approfondissements.}, nous nous contenterons dans la suite de cette partie de donner une vision aussi succincte que possible de ce qu'est l'évaluation, en particulier pour en dégager les méthodes employées usuellement.
+Cela nous permettra en particulier de défendre et de promouvoir l'une de ces méthode, la validation visuelle, que nous jugeons très adaptée dans le cadre de co-constructions interdisciplinaires de modèles.
+
+\subsection{Évaluation, validation, vérification\ldots : désambiguïsation}
+
+Il nous semble important de commencer cette partie par un point de définition et de clarification des concepts mobilisés, non pas par convention datée, mais parce que les usages en matière d'emploi des termes d'évaluation, de validation (méthodologique, formelle\ldots) ou encore de vérification (interne, externe\ldots) sont particulièrement diffus et trompeurs dans la littérature relative à la modélisation, y compris dans le champ plus restreint de la simulation à base d'agents en sciences humaines et sociales.
+
+Depuis les travaux fondateurs, dans les années 1960, la logique qui consiste à éprouver un modèle -- c'est-à-dire à vérifier qu'il corresponde correctement d'une part au système qu'il décrit, et d'autre part à la manière dont il est décrit -- donne lieu à différentes terminologies.
+On notera en particulier que les deux articles considérés comme pionniers, tous deux parus en 1967, reposent pour l'un sur la notion de vérification \autocite{naylor_verification_1967}, et pour l'autre sur celle de validation \autocite{hermann_validation_1967}, sans pour autant que la distinction entre les deux approches puisse être vue comme consistante.
+Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de "Validation, Verification and Testing techniques (VV\&T)", par l'entremise d'une proposition d'Osman Balci \autocite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
+Pour reprendre ses mots en une distinction devenue courante en simulation à base d'agent, la \textit{validation} consiste à concevoir le bon modèle\footnote{\og Model validation deals with building the \textit{right} model.\fg{}} alors que la \textit{vérification} permet de s'assurer que le modèle est bien construit\footnote{\og Model verification deals with building the model \textit{right}.\fg{}}.
+Le \og Testing\fg{} correspond aux techniques mises en œuvre, et s'applique donc indistinctement à ces deux composantes.
+
+En dépit de cette définition stricte, les usages persistent à ne pas formellement différencier vérification et validation, le plus souvent en englobant ces pratiques dans le terme plus large et moins défini d'\og évaluation\fg{}.
+Il n'est d'ailleurs pas rare que ces trois termes soient employés de manière interchangeable, voir intervertie, comme un recensement rigoureux des usages le démontre \autocite[Table 1, p. 120]{augusiak_merging_2014}.
+
+\paragraph*{}
+Nous partageons le besoin formel identifié par ces auteurs de définir un nouveau terme, \og \textit{evaludation} \fg{} dans leur proposition, et nous souscrivons à leur approche de définition (\cref{fig:schema_evaludationl}).
+Nous nous contenterons toutefois, dans ce travail, de nous inscrire dans les choix de \cite{amblard_assessment_2007}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone.
+Pour ces auteurs, et donc dans le présent ouvrage, on emploie le concept d'évaluation pour définir l'approche d'ensemble, et on distingue alors \og validation interne\fg{} -- correspondant à la \textit{verification} définie par Balci, c'est-à-dire s'assurer de la bonne conception du modèle, et \og validation externe\fg{} -- ce que Balci nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
+
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/Schema_Augusiak_evaludation.png}
+	\caption{Représentation schématique du cycle de modélisation et de la typologie des termes relatifs à l'évaluation de modèle, dans \cite[Fig. 1, p. 121]{augusiak_merging_2014}}
+	\label{fig:schema_evaludationl}
+\end{figure}
+
+\subsection{Les étapes de l'évaluation de modèle}
+
+
+\clearpage
++ Mettre schéma des phases (selon \autocite{hermann_validation_1967} vs  \autocite{naylor_verification_1967} ? Ou \autocite{klugl_validation_2008}?) + Mentionner \cite{sargent2009verification} + Finir sur \cite{amblard_assessment_2007} : validation interne/externe etc.
+
+
+\subsection{\og Face validity\fg{} dans l'approche classique}
+
+
+
+\begin{quotation}
+	\og Face validity is a surface or initial impression of a simulation or game's realism.
+
+	Probably no approach to model validity is reported more frequently than the subjective estimates of experimenters, observers, or human participants as to the correspondence between the model's operation and their perception of the actual phenomena which the game or simulation represent.
+
+	[...]
+
+	Face validity can be a significant part of a validity strategy. A quick impression that "things don't seem right" may be the only validity check possible during the actual operation of a game or simulation. Such validity judgments and their evaluation may also be part of the learning experience provided by operating models designed for instructional purposes.
+
+	[...]
+
+	Although face validity has value in the early stages of model building or for quick checks during actual operation, its severe limitations should be recognized. Sometimes the experimenter will not know what behaviors are "realistic" because of his limited experience observing the actual phenomena. Participants can become interested and highly motivated in an incorrect representation of the desired environment. If the simulation involves the substitution of one property for another, some features may appear quite unreal and yet replicate the performance of the reference system for which the simulation was designed. The acceptance of face validity as a rough, first approximation might be improved if the simulator explicitly stated in advance what observations would constitute indications that an aspect of the observable universe had been successfully captured. In summary, face validity in its usual form suffers from the lack of explicit validity criteria.\fg{}\\
+	\mbox{}~ \hfill \cite[221-222]{hermann_validation_1967}
+\end{quotation}
+
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/Schema_Kluegl.png}
+	\caption{\og Sketch of a general procedure for validating an agent-based simulation\fg{}, \cite[fig. 1 p. 42]{klugl_validation_2008}}
+	\label{fig:schema_kluegl}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=.6\linewidth]{img/Schema_Ngo.png}
+	\caption{\og General validation process of an ABM\fg{}, \cite[fig. 10.1 p. 183]{ngo_calibration_2012}}
+	\label{fig:schema_ngo}
+\end{figure}
+
+
+\begin{quotation}
+\og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.
+
+[...]
+
+One may argue why face validity is need, when statistical validation is successfully done? Face validation assures that the processes and structures are reasonable for a human expert. Especially, when there is (semi-)automatic calibration of a simulation that is used in combination with statistical validation, a careful check of plausibly is necessary. This is in general true for all kinds of simulation, but it is particularly important for agent-based simulations.\fg{}\\
+\mbox{}~ \hfill \cite[39-40]{klugl_validation_2008}
+	\end{quotation}
+
+\begin{quotation}
+\og Face validation usually plays an important role during
+model design. All tests based on reviews, audits, involv-
+ing presentation and justification of assumptions and model
+structure are used for reaching this form of plausibility. Face
+validation in this phase of model development consists of at
+least three methodological elements executed by potentially
+different human experts :
+\begin{itemize}
+	\item \textbf{Animation Assessment} A human expert assesses the animation of the overall simulated system (or of parts of it) whether the simulated system appears to behave like the original system. [...]
+	\item \textbf{Output Assessment} Simulation output can also be assessed by a human expert checking the plausibility of the absolute values, relations between different values and also the dynamics and trends of the different output values of simulation runs. It can be applied on the macro as well as on the agent level. If intended relations can be formalized, e.g. in forms of constraints, output assessment can be automatized.
+	\item \textbf{Immersive Assessment} A human expert looks through the eyes of one particular agent and sees what the agent perceives and how it reacts on it. Based on this information the human can evaluate directly whether the behavior of the simulated agent is appropriate. If the interface allows participation, the human may also assess the behavior of the other agents in reaction to interactions with the human-controlled agent. Clearly, the success of these tests depends on the appropriateness of the interface which may even be particular for every agent.
+\end{itemize}
+The question that remains here is about the best order to apply the different tests. I suggest to start with the animation and immersion tests and only when they are passed the output testing should be applied. The reason for this is simply the assumption that runs of an agent-based simulation are expensive and have to be repeated several times due to stochasticity. It is comparatively cheap to have a look onto animation. Thus, one should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}
+\mbox{}~ \hfill \cite[41-42]{klugl_validation_2008}
+\end{quotation}
+
+
+\begin{quotation}
+\og Although face validation may be informal and inconsistent, but it at least results in plausibility of modeled processes. Our experience with modeling and simulation in many interdisciplinary projects showed that even the formulation of a plausible model supports theory building and future empirical research.\fg{}
+\mbox{}~ \hfill \cite[43]{klugl_validation_2008}
+\end{quotation}
+
+
+
+
+
+Différencier Face validity (vraisemblance) et visual validation
+
+\subsection{Vers une validation visuelle}
+
+\cite[Table 3, p. 46]{balci1998verification} : Face validity applicable à toutes les étapes du cycle de vie de la simulation
+
+\begin{quotation}
+		\textbf{Informal methods} [...]\\
+		\og Face validation is a validation method that compares simuland behavior to model results. In face validation, observers who may be potential  users  of  the  model  and/or  subject  matter  experts  with  respect  to  the  simuland  review  or  observe  the  results  of  a  simulation  (an  execution  of  the   executable model). Based on their knowledge of the simuland, the observers  subjectively compare the behavior of the simuland as refl ected in the simulation results with their knowledge of the behavior of the actual simuland under the  same  conditions,  and  judge  whether  the  former  is  acceptably  accurate. Differences  between  the  simulation  results  and  the  experts' expectations may indicate model accuracy issues.
+
+		[...]
+
+		While  face  validation  is  arguably  most  appropriate  for  such  interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the  use  of  more  objective  and  quantitative  methods.  While  moving  beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
+	\mbox{}~ \hfill \cite[341-342;]{petty2010verification}
+\end{quotation}
+
+
+
+
+\subsection{Des critères pour la validation : les indicateurs}
 
 \subsection{L'importance de la réplication}
 
+\clearpage
 \section{Évaluer le modèle SimFeodal}
 
 Le modèle SimFeodal présenté dans le chapitre 2 correspond à une « version 0 » du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
@@ -858,3 +993,5 @@ Comme dans le cas de l'évolution du nombre de paroisses, la variabilité est ic
 } 
 \label{fig:couverture-paroisses-v0} 
 \end{figure}
+
+\printbibliography[title={Références}]
