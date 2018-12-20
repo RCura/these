@@ -73,9 +73,71 @@ Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord le
 
 \subsection{Les étapes de l'évaluation de modèle}
 
+Parmi les nombreuses techniques disponibles pour l'évaluation, il est courant de privilégier telle ou telle méthode en fonction de la phase d'avancement d'un modèle.
+Traditionnellement, l'usage veut ainsi d'aller vers des méthodes de plus en plus formelles à mesure que le modèle mûrit\footnote{Voir par exemple la typologie des méthodes d'évaluation, des plus \og informelles \fg{} aux méthodes \og formelles \fg{} chez \cite[figure 3, p. 131]{balci_validation_1994}}.
+Les schéma des étapes d'évaluation de Klügl (\cref{fig:schema_kluegl}) et de Ngo et See (\cref{{fig:schema_ngo}}) constituent un bon résumé de cette progression, que l'on peut brièvement décrire plus avant.
+
+\begin{figure}[H]
+	\center
+	\includegraphics[width=.8\linewidth]{img/Schema_Kluegl.png}
+	\caption{\og Sketch of a general procedure for validating an agent-based simulation\fg{}, \cite[fig. 1 p. 42]{klugl_validation_2008}}
+	\label{fig:schema_kluegl}
+\end{figure}
+
+
+\begin{figure}[H]
+	\center
+	\includegraphics[width=.57\linewidth]{img/Schema_Ngo.png}
+	\caption{\og General validation process of an ABM\fg{}, \cite[fig. 10.1 p. 183]{ngo_calibration_2012}}
+	\label{fig:schema_ngo}
+\end{figure}
 
 \clearpage
-+ Mettre schéma des phases (selon \autocite{hermann_validation_1967} vs  \autocite{naylor_verification_1967} ? Ou \autocite{klugl_validation_2008}?) + Mentionner \cite{sargent2009verification} + Finir sur \cite{amblard_assessment_2007} : validation interne/externe etc.
+
+\paragraph{Face validation}
+La première étape, de \og \textit{face validation}\fg{}, consiste ainsi à vérifier visuellement, rapidement, la plausibilité du modèle.
+Cette étape est souvent considérée comme une mesure préalable relevant du bon sens plus que de l'évaluation strictement dite.
+Nous y reviendrons plus longuement par la suite.
+
+\paragraph{Analyse de sensibilité}
+Quand une première version du modèle a été implémentée, il est recommandé de procéder à l'analyse de sa \og sensibilité \fg{}, entendue à l'égard des paramètres du modèle : en faisant varier, selon des méthodes plus ou moins complexes\footnote{Un point plus précis y est consacré dans le chapitre 6, \hl{REF}}, les valeurs des différents paramètres du modèle, on peut observer l'influence de chaque paramètre sur le déroulement du modèle.
+Cette mesure intervient tôt, et doit être répetée lors de chaque modifications majeures dans les mécanismes du modèle.
+L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté : si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre et/ou le mécanisme qui le mobilise.
+Réduire le nombre de paramètres et/ou de mécanismes d'un modèle peut sensiblement l'améliorer, selon le principe de parcimonie qui voudrait qu'un modèle plus simple soit meilleur\footnote{Les avis divergent nettement sur ce point, voir par exemple la définition de la \textit{simplicité} dans \cite[120]{amblard_evaluation_2006}}.
+Même sans aller jusqu'à ce type de découvertes sur l'inutilité de certains paramètres, l'analyse de sensibilité permet de gagner en connaissance sur le fonctionnement d'un modèle complexe, ne serait-ce que parce qu'elle aide souvent le modélisateur à trouver une \og polarité \fg{} à l'effet des paramètres : si tel indicateur croît quand on diminue les valeurs d'un paramètre et décroît quand on les augmente, alors on peut prévoir l'effet d'une modification de ce paramètre, ce qui peut éclairer le fonctionnement thématique du modèle.
+
+\paragraph{Calibration}
+Une fois le modèle mieux connu et surtout réduit à ses composantes nécessaires et suffisantes, on cherche à en améliorer la qualité de représentation, c'est-à-dire à faire en sorte, en jouant sur les valeurs de paramètres, que le modèle reproduise plus précisément le système qu'il décrit.
+Cette démarche, nommée calibration, soulève l'enjeu d'isoler, pour chaque paramètre, une étendue de valeurs acceptables et optimales.
+La complexité -- au sens figuré -- de cette étape réside dans la complexité -- au sens propre -- du modèle qu'il convient de calibrer : dans un modèle complexe, où chaque mécanisme peut influencer chacun des autres mécanismes, la modification des valeurs d'un paramètre doit certes modifier l'état du modèle en lui-même, mais a le plus souvent tendance à modifier par là même l'optimalité des valeurs des autres paramètres.
+Le problème ressemble à celui des vases communicants : pour que le modèle soit calibré, il faut que chaque valeur de paramètre soit optimale, mais la modification de chacun des paramètres peut dérégler l'effet des autres paramètres, et par la même les valeurs qu'ils doivent se voir attribuer.
+On ne peut donc procéder paramètre par paramètre, en les réglant un par un, au risque d'entrer dans une boucle infinie de calibration, mais au contraire, il est nécessaire de considérer l'ensemble -- ou un sous-ensemble -- des paramètres et de tester des valeurs qui iraient vers une optimisation du comportement du modèle.
+La calibration en elle-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle : il s'agit plutôt d'une méthode et  d'un problème d'optimisation.
+Les différents auteurs mettent toutefois en avant son intérêt dans l'évaluation de modèle en ce qu'elle permet de garantir une meilleure validation externe du modèle puisqu'elle aboutit à l'isolation d'étendues optimales de valeurs de paramètres : en menant de nouveaux tests de plausibilité \autocite[43]{klugl_validation_2008} sur les valeurs optimales identifiées, on peut évaluer si elles sont porteuses de sens d'un point de vue empirique ou au moins vis-à-vis de la connaissance experte du système modélisé.
+
+\paragraph{Validation statistique}
+La validation statistique (\og \textit{output validation}\fg{} dans la \cref{fig:schema_ngo}) est sans doute la méthode d'évaluation la plus évidente pour quiconque a été amené à concevoir un modèle. Il s'agit de confronter les données produites par le modèle -- les \textit{outputs} --
+aux données empiriques -- ou théoriques -- qu'ils cherchent à reproduire.
+Autrement dit, en termes statistiques, à s'assurer de la qualité de l'ajustement -- la \textit{goodness of fit} -- des données simulées.
+On en mesure l'écart avec les données théoriques, quand de telles données sont disponibles, en cherchant à minimiser cet écart : plus l'écart est faible, alors plus le modèle parvient à reproduire les observations qui ont servi de support à sa conception et construction.
+Les différents auteurs du champ de l'évaluation recommandent de ne mener cette étape qu'à la fin du processus d'évaluation, quand le réflexe en pratique est souvent de s'appuyer sur les données théoriques dès le début de la conception du modèle.
+A défaut de suivre cette recommandation, le modélisateur risque d'emmener le modèle vers du \og sur-ajustement \fg{} (\textit{overfitting}), et d'inscrire alors celui-ci dans une logique de \hl{QUEL EST CE MOT : MODÈLE QUI REPRODUIT CE QU'ON LUI DIT DE REPRODUIRE ?}.
+En conservant la validation statistique comme l'une des dernières étapes du cycle d'évaluation, c'est-à-dire en s'empêchant d'essayer de faire coller le modèle aux données qu'il doit reproduire, on s'assure de l'indépendance des mesures de l'ajustement, et on peut donc garantir une certaine objectivité quant à l'évaluation du modèle.
+
+\paragraph{Validations formelles}
+Absentes des deux figures (\ref{fig:schema_kluegl} et \ref{fig:schema_ngo}), les méthodes de validation formelles sont toutefois porteuses d'un intérêt assez prégnant quand elles sont applicables.
+Ces méthodes visent à résoudre de manière analytique un modèle complexe, c'est-à-dire à mettre en équations les comportements du modèle, leurs effets d'interaction, et à résoudre ces équations pour en proposer les ensembles finis de solutions et/ou d'états.
+Cela requiert d'être en mesure de convertir un modèle exprimé dans un formalisme quelconque en un système d'équations dynamiques, et de parvenir en outre à résoudre l'ensemble de ce système.
+Dans l'évaluation de modèles au sens large, cette étape peut se révéler indispensable et assez directe, par exemple quand il apparaît nécessaire d'évaluer un modèle basé sur la théorie des jeux, que l'on traite alors sous forme d'analyse de graphes.
+
+Dans le cas plus spécifique des modèles à base d'agent, cas dans lequel nous nous inscrivons ici, la situation est plus difficile.
+On emploie généralement la modélisation à base d'agents parce qu'elle encourage une approche anthropomorphique, plus aisément compréhensible et requérant moins de connaissances mathématiques que d'autres approches, mais aussi car il est terriblement complexe d'exprimer des systèmes dotés de multiples interactions, qui plus est multi-scalaires, sous forme de réseaux d'équations.
+En un sens, on pourrait presque considérer qu'on fait appel à de la modélisation à base d'agents quand on ne peut mobiliser des modèles formels.
+Le processus qui tendrait à formaliser des modèles agents est alors intrinsèquement contre-intuitif et inexorablement ardu.
+Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling\footnote{On reviendra et on présentera ce modèle de manière détaillée dans le chapitre 4. \hl{AJOUTER REF AU CHAP 4}}.
+En dehors de l'intérêt que cela peut représenter pour la connaissance de ce modèle en particulier, rappelons tout de même que le modèle de Schelling a été énoncé à la fin des années 1960, que c'est un modèle particulièrement parcimonieux, et qu'il tout de même fallu attendre le tournant des années 2010 afin d'y trouver une solution formelle.
+
+Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels (\cite{cherel_beyond_2015} par exemple) qui visent à l'exploration complète des comportements possible d'un modèle\footnote{C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMole \autocite{reuillon_openmole_2013}}.
 
 
 \subsection{\og Face validity\fg{} dans l'approche classique}
@@ -98,17 +160,9 @@ Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord le
 \end{quotation}
 
 
-\begin{figure}[H]
-	\includegraphics[width=\linewidth]{img/Schema_Kluegl.png}
-	\caption{\og Sketch of a general procedure for validating an agent-based simulation\fg{}, \cite[fig. 1 p. 42]{klugl_validation_2008}}
-	\label{fig:schema_kluegl}
-\end{figure}
 
-\begin{figure}[H]
-	\includegraphics[width=.6\linewidth]{img/Schema_Ngo.png}
-	\caption{\og General validation process of an ABM\fg{}, \cite[fig. 10.1 p. 183]{ngo_calibration_2012}}
-	\label{fig:schema_ngo}
-\end{figure}
+
+
 
 
 \begin{quotation}
