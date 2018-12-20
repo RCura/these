@@ -29,21 +29,21 @@ Cela nous permettra en particulier de défendre et de promouvoir l'une de ces m�
 
 \subsection{Évaluation, validation, vérification\ldots : désambiguïsation}
 
-Il nous semble important de commencer cette partie par un point de définition et de clarification des concepts mobilisés, non pas par convention datée, mais parce que les usages en matière d'emploi des termes d'évaluation, de validation (méthodologique, formelle\ldots) ou encore de vérification (interne, externe\ldots) sont particulièrement diffus et trompeurs dans la littérature relative à la modélisation, y compris dans le champ plus restreint de la simulation à base d'agents en sciences humaines et sociales.
+Il nous semble important de commencer cette partie par un point de définition et de clarification des concepts mobilisés, non pas par convention datée, mais parce que les usages en matière d'emploi des termes d'évaluation, de validation (méthodologique, formelle\ldots) ou encore de vérification sont particulièrement diffus et trompeurs dans la littérature relative à la modélisation, y compris dans le champ plus restreint de la simulation à base d'agents en sciences humaines et sociales.
 
 Depuis les travaux fondateurs, dans les années 1960, la logique qui consiste à éprouver un modèle -- c'est-à-dire à vérifier qu'il corresponde correctement d'une part au système qu'il décrit, et d'autre part à la manière dont il est décrit -- donne lieu à différentes terminologies.
 On notera en particulier que les deux articles considérés comme pionniers, tous deux parus en 1967, reposent pour l'un sur la notion de vérification \autocite{naylor_verification_1967}, et pour l'autre sur celle de validation \autocite{hermann_validation_1967}, sans pour autant que la distinction entre les deux approches puisse être vue comme consistante.
 Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de "Validation, Verification and Testing techniques (VV\&T)", par l'entremise d'une proposition d'Osman Balci \autocite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
 Pour reprendre ses mots en une distinction devenue courante en simulation à base d'agent, la \textit{validation} consiste à concevoir le bon modèle\footnote{\og Model validation deals with building the \textit{right} model.\fg{}} alors que la \textit{vérification} permet de s'assurer que le modèle est bien construit\footnote{\og Model verification deals with building the model \textit{right}.\fg{}}.
-Le \og Testing\fg{} correspond aux techniques mises en œuvre, et s'applique donc indistinctement à ces deux composantes.
+Le \og \textit{Testing}\fg{} correspond aux techniques mises en œuvre, et s'applique donc indistinctement à ces deux composantes.
 
 En dépit de cette définition stricte, les usages persistent à ne pas formellement différencier vérification et validation, le plus souvent en englobant ces pratiques dans le terme plus large et moins défini d'\og évaluation\fg{}.
 Il n'est d'ailleurs pas rare que ces trois termes soient employés de manière interchangeable, voir intervertie, comme un recensement rigoureux des usages le démontre \autocite[Table 1, p. 120]{augusiak_merging_2014}.
 
 \paragraph*{}
-Nous partageons le besoin formel identifié par ces auteurs de définir un nouveau terme, \og \textit{evaludation} \fg{} dans leur proposition, et nous souscrivons à leur approche de définition (\cref{fig:schema_evaludationl}).
-Nous nous contenterons toutefois, dans ce travail, de nous inscrire dans les choix de \cite{amblard_assessment_2007}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone.
-Pour ces auteurs, et donc dans le présent ouvrage, on emploie le concept d'évaluation pour définir l'approche d'ensemble, et on distingue alors \og validation interne\fg{} -- correspondant à la \textit{verification} définie par Balci, c'est-à-dire s'assurer de la bonne conception du modèle, et \og validation externe\fg{} -- ce que Balci nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
+Nous partageons le besoin formel -- identifié par les auteurs de cette étude~-- de définir un nouveau terme -- \og \textit{evaludation} \fg{} dans leur proposition~-- et nous souscrivons à leur approche de définition (\cref{fig:schema_evaludationl}).
+Nous nous contenterons toutefois, dans ce travail, de nous inscrire dans les choix de \cite{amblard_evaluation_2006}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone.
+Pour ces auteurs, et donc dans le présent ouvrage, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par Balci, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que Balci nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
 
 
 \begin{figure}[H]
@@ -51,6 +51,25 @@ Pour ces auteurs, et donc dans le présent ouvrage, on emploie le concept d'éva
 	\caption{Représentation schématique du cycle de modélisation et de la typologie des termes relatifs à l'évaluation de modèle, dans \cite[Fig. 1, p. 121]{augusiak_merging_2014}}
 	\label{fig:schema_evaludationl}
 \end{figure}
+
+\begin{quotation}
+\og Il est classique de différencier deux étapes dans la validation : interne et externe.
+\begin{itemize}
+	\item La phase de vérification ou \textbf{validation interne} comprend d'abord une vérification de conformité entre les spécifications et le programme implémenté et pose la question : est-ce que le modèle implémenté est bien celui que je voulais implémenter ? [...]
+	Ensuite, la validation interne concerne la recherche et l'identification des propriétés du modèle.
+	Dans le cas des simulations multi-agents, des preuves logiques ne peuvent être obtenues et se pose alors la question : est-ce que mon modèle possède les propriétés attendues ?
+	Parmi ces bonnes propriétés, on considère par exemple la robustesse ou des études de sensibilité pour vérifier si les réponses sont bien différenciées sur l'espace des paramètres.
+	Cette phase de validation interne concerne de fait une validation dans le contexte ou la logique propre du modèle.
+
+	\item La deuxième phase de validation, la \textbf{validation externe}, correspond à l’évaluation de l’adéquation entre le modèle et le phénomène réel dont il est censé rendre compte.
+	Pour cette dernière phase, la comparaison aux données empiriques ou le fait que le modèle soit capable d'exhiber des faits stylisés identifiés sur le système modélisé sont des critères clés.
+\end{itemize}
+Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord les propriétés systémiques (structurelles et dynamiques) du modèle, les formes qui peuvent apparaître du fait des hypothèses posées (validation interne) ; ensuite est évaluée la pertinence du modèle vis-à-vis de situations que l’on souhaite représenter ou prévoir (validation externe).\fg{}\\
+	\mbox{}~ \hfill \cite[110-111]{amblard_evaluation_2006}
+\end{quotation}
+
+
+\clearpage
 
 \subsection{Les étapes de l'évaluation de modèle}
 
