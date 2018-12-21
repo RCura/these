@@ -1,7 +1,7 @@
 % !TEX root = ../These_Robin_Master.tex
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \begin{center}
-{\large Version \hl{2018-12-18}}
+{\large Version \hl{2018-12-21}}
 \end{center}
 \minitoc
 
@@ -33,7 +33,7 @@ Il nous semble important de commencer cette partie par un point de définition e
 
 Depuis les travaux fondateurs, dans les années 1960, la logique qui consiste à éprouver un modèle -- c'est-à-dire à vérifier qu'il corresponde correctement d'une part au système qu'il décrit, et d'autre part à la manière dont il est décrit -- donne lieu à différentes terminologies.
 On notera en particulier que les deux articles considérés comme pionniers, tous deux parus en 1967, reposent pour l'un sur la notion de vérification \autocite{naylor_verification_1967}, et pour l'autre sur celle de validation \autocite{hermann_validation_1967}, sans pour autant que la distinction entre les deux approches puisse être vue comme consistante.
-Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de "Validation, Verification and Testing techniques (VV\&T)", par l'entremise d'une proposition d'Osman Balci \autocite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
+Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de "Validation, Verification and Testing techniques (VV\&T)", par l'entremise d'une proposition d'Osman \textsc{Balci} \autocite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
 Pour reprendre ses mots en une distinction devenue courante en simulation à base d'agent, la \textit{validation} consiste à concevoir le bon modèle\footnote{\og Model validation deals with building the \textit{right} model.\fg{}} alors que la \textit{vérification} permet de s'assurer que le modèle est bien construit\footnote{\og Model verification deals with building the model \textit{right}.\fg{}}.
 Le \og \textit{Testing}\fg{} correspond aux techniques mises en œuvre, et s'applique donc indistinctement à ces deux composantes.
 
@@ -43,7 +43,7 @@ Il n'est d'ailleurs pas rare que ces trois termes soient employés de manière i
 \paragraph*{}
 Nous partageons le besoin formel -- identifié par les auteurs de cette étude~-- de définir un nouveau terme -- \og \textit{evaludation} \fg{} dans leur proposition~-- et nous souscrivons à leur approche de définition (\cref{fig:schema_evaludationl}).
 Nous nous contenterons toutefois, dans ce travail, de nous inscrire dans les choix de \cite{amblard_evaluation_2006}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone.
-Pour ces auteurs, et donc dans le présent ouvrage, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par Balci, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que Balci nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
+Pour ces auteurs, et donc dans le présent ouvrage, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textsc{Balci}, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que \textsc{Balci} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
 
 
 \begin{figure}[H]
@@ -75,7 +75,7 @@ Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord le
 
 Parmi les nombreuses techniques disponibles pour l'évaluation, il est courant de privilégier telle ou telle méthode en fonction de la phase d'avancement d'un modèle.
 Traditionnellement, l'usage veut ainsi d'aller vers des méthodes de plus en plus formelles à mesure que le modèle mûrit\footnote{Voir par exemple la typologie des méthodes d'évaluation, des plus \og informelles \fg{} aux méthodes \og formelles \fg{} chez \cite[figure 3, p. 131]{balci_validation_1994}}.
-Les schéma des étapes d'évaluation de Klügl (\cref{fig:schema_kluegl}) et de Ngo et See (\cref{{fig:schema_ngo}}) constituent un bon résumé de cette progression, que l'on peut brièvement décrire plus avant.
+Les schéma des étapes d'évaluation de \textsc{Klügl} (\cref{fig:schema_kluegl}) et de \textsc{Ngo} et \textsc{See} (\cref{{fig:schema_ngo}}) constituent un bon résumé de cette progression, que l'on peut brièvement décrire plus avant.
 
 \begin{figure}[H]
 	\center
@@ -137,10 +137,28 @@ Le processus qui tendrait à formaliser des modèles agents est alors intrinsèq
 Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling\footnote{On reviendra et on présentera ce modèle de manière détaillée dans le chapitre 4. \hl{AJOUTER REF AU CHAP 4}}.
 En dehors de l'intérêt que cela peut représenter pour la connaissance de ce modèle en particulier, rappelons tout de même que le modèle de Schelling a été énoncé à la fin des années 1960, que c'est un modèle particulièrement parcimonieux, et qu'il tout de même fallu attendre le tournant des années 2010 afin d'y trouver une solution formelle.
 
-Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels (\cite{cherel_beyond_2015} par exemple) qui visent à l'exploration complète des comportements possible d'un modèle\footnote{C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMole \autocite{reuillon_openmole_2013}}.
+Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels (\cite{cherel_beyond_2015} par exemple) qui visent à l'exploration complète des comportements possible d'un modèle\footnote{C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMOLE \autocite{reuillon_openmole_2013}}.
 
+\paragraph{Quelle évaluation pour quels modèles ?}
 
-\subsection{\og Face validity\fg{} dans l'approche classique}
+Les étapes d'évaluation énumérées ci-dessus consistent autant en une approche chronologique -- relative aux phases successives de la construction d'un modèle --  qu'en un gradient de qualité de l'évaluation, souvent considéré en fonction de la difficulté et du coût temporel nécessaire à chacune de ces méthodes\footnote{\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}, \cite[42]{klugl_validation_2008}, par exemple.}
+Il est évident à la lecture des références du champ que pour ces auteurs, \og plus\fg{} le modèle est évalué, c'est-à-dire se confronte aux étapes d'évaluation de plus en plus formelles, plus il sera digne de confiance et donc capable d'apporter des connaissance sur les objets qu'il tend à représenter.
+Robert \textsc{Sargent} par exemple différencie les méthodes d'évaluation selon que le système modélisé est observable ou non, c'est-à-dire \og s'il est possible ou non de collecter des données sur le comportement opérationnel de l'entité \fg{}\footnote{ \og The major attribute affecting operational validity is whether the problem entity (or system) is observable, where observable means it is possible to collect data on the operational behavior of the program entity.\fg{}, \cite[6]{sargent2009verification}.}.
+Pour autant, ces auteurs soulignent aussi que selon les choix de modélisation et les caractéristiques du système modélisé, toutes ces étapes ne sont pas nécessairement accessibles ou possibles.
+
+Nous pensons qu'un autre facteur peut affecter plus fortement l'éventail des méthodes possibles d'évaluation : la parcimonie du modèle réalisé.
+Ainsi, avec un modèle très parcimonieux, qui s'inscrirait dans un certain purisme des méthodes \og KISS\fg{}, doté d'un nombre minime d'\textit{outputs}, il nous semble que toutes les méthodes, y compris les plus formelles, sont assez simplement -- si ce n'est pour la résolution analytique, on l'a vu plus haut -- applicables.
+A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}, fourmillant d'\textit{inputs}, de paramètres et d'\textit{outputs} sera bien plus complexe à évaluer de manière quantitative, ou \og objective\fg{} dans les mots des pionniers de l'évaluation.
+
+Pour illustrer l'écart entre ces approches en matière de possibilités de quantification de l'évaluation, prenons l'exemple classique d'une analyse de sensibilité :
+cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
+Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra en \hl{chap 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de $10^3 * 10 = 10 000$ simulations.
+Dans le cas d'un modèle doté d'une dizaine de paramètres, et avec le même type d'analyse basique, le nombre de simulations nécessaire dépasserait déjà le milliard\ldots
+
+Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou une calibration fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
+Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux, de tout de même mener les premières étapes d'un cycle d'évaluation \autocite[342]{petty2010verification} : \og While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}
+
+Nous ne partageons pas le dépit associé à cette recommandation, et au contraire, considérons que dans ce type de cas, des méthodes de \og \textit{face validation}\fg{} peuvent être, à condition d'être rigoureuses, extrêmement satisfaisantes et sans doute suffisante pour évaluer un modèle de simulation, ce que nous allons essayer de montrer par la suite.
 
 
 
@@ -214,7 +232,7 @@ Différencier Face validity (vraisemblance) et visual validation
 		[...]
 
 		While  face  validation  is  arguably  most  appropriate  for  such  interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the  use  of  more  objective  and  quantitative  methods.  While  moving  beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
-	\mbox{}~ \hfill \cite[341-342;]{petty2010verification}
+	\mbox{}~ \hfill \cite[341-342]{petty2010verification}
 \end{quotation}
 
 
