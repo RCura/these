@@ -112,7 +112,7 @@ Cette démarche, nommée calibration, soulève l'enjeu d'isoler, pour chaque par
 La complexité -- au sens figuré -- de cette étape réside dans la complexité -- au sens propre -- du modèle qu'il convient de calibrer : dans un modèle complexe, où chaque mécanisme peut influencer chacun des autres mécanismes, la modification des valeurs d'un paramètre doit certes modifier l'état du modèle en lui-même, mais a le plus souvent tendance à modifier par là même l'optimalité des valeurs des autres paramètres.
 Le problème ressemble à celui des vases communicants : pour que le modèle soit calibré, il faut que chaque valeur de paramètre soit optimale, mais la modification de chacun des paramètres peut dérégler l'effet des autres paramètres, et par la même les valeurs qu'ils doivent se voir attribuer.
 On ne peut donc procéder paramètre par paramètre, en les réglant un par un, au risque d'entrer dans une boucle infinie de calibration, mais au contraire, il est nécessaire de considérer l'ensemble -- ou un sous-ensemble -- des paramètres et de tester des valeurs qui iraient vers une optimisation du comportement du modèle.
-La calibration en elle-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle : il s'agit plutôt d'une méthode et  d'un problème d'optimisation.
+La calibration en elle-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle : il s'agit plutôt d'une méthode et d'un problème d'optimisation.
 Les différents auteurs mettent toutefois en avant son intérêt dans l'évaluation de modèle en ce qu'elle permet de garantir une meilleure validation externe du modèle puisqu'elle aboutit à l'isolation d'étendues optimales de valeurs de paramètres : en menant de nouveaux tests de plausibilité \autocite[43]{klugl_validation_2008} sur les valeurs optimales identifiées, on peut évaluer si elles sont porteuses de sens d'un point de vue empirique ou au moins vis-à-vis de la connaissance experte du système modélisé.
 
 \paragraph{Validation statistique}
@@ -141,7 +141,7 @@ Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc dif
 
 \paragraph{Quelle évaluation pour quels modèles ?}
 
-Les étapes d'évaluation énumérées ci-dessus consistent autant en une approche chronologique -- relative aux phases successives de la construction d'un modèle --  qu'en un gradient de qualité de l'évaluation, souvent considéré en fonction de la difficulté et du coût temporel nécessaire à chacune de ces méthodes\footnote{\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}, \cite[42]{klugl_validation_2008}, par exemple.}
+Les étapes d'évaluation énumérées ci-dessus consistent autant en une approche chronologique -- relative aux phases successives de la construction d'un modèle -- qu'en un gradient de qualité de l'évaluation, souvent considéré en fonction de la difficulté et du coût temporel nécessaire à chacune de ces méthodes\footnote{\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}, \cite[42]{klugl_validation_2008}, par exemple.}
 Il est évident à la lecture des références du champ que pour ces auteurs, \og plus\fg{} le modèle est évalué, c'est-à-dire se confronte aux étapes d'évaluation de plus en plus formelles, plus il sera digne de confiance et donc capable d'apporter des connaissance sur les objets qu'il tend à représenter.
 Robert \textsc{Sargent} par exemple différencie les méthodes d'évaluation selon que le système modélisé est observable ou non, c'est-à-dire \og s'il est possible ou non de collecter des données sur le comportement opérationnel de l'entité \fg{}\footnote{ \og The major attribute affecting operational validity is whether the problem entity (or system) is observable, where observable means it is possible to collect data on the operational behavior of the program entity.\fg{}, \cite[6]{sargent2009verification}.}.
 Pour autant, ces auteurs soulignent aussi que selon les choix de modélisation et les caractéristiques du système modélisé, toutes ces étapes ne sont pas nécessairement accessibles ou possibles.
@@ -152,7 +152,7 @@ A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}
 
 Pour illustrer l'écart entre ces approches en matière de possibilités de quantification de l'évaluation, prenons l'exemple classique d'une analyse de sensibilité :
 cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
-Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra en \hl{chap 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de $10^3 * 10 = 10 000$ simulations.
+Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra en \hl{chap 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
 Dans le cas d'un modèle doté d'une dizaine de paramètres, et avec le même type d'analyse basique, le nombre de simulations nécessaire dépasserait déjà le milliard\ldots
 
 Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou une calibration fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
@@ -227,11 +227,11 @@ Différencier Face validity (vraisemblance) et visual validation
 
 \begin{quotation}
 		\textbf{Informal methods} [...]\\
-		\og Face validation is a validation method that compares simuland behavior to model results. In face validation, observers who may be potential  users  of  the  model  and/or  subject  matter  experts  with  respect  to  the  simuland  review  or  observe  the  results  of  a  simulation  (an  execution  of  the   executable model). Based on their knowledge of the simuland, the observers  subjectively compare the behavior of the simuland as refl ected in the simulation results with their knowledge of the behavior of the actual simuland under the  same  conditions,  and  judge  whether  the  former  is  acceptably  accurate. Differences  between  the  simulation  results  and  the  experts' expectations may indicate model accuracy issues.
+		\og Face validation is a validation method that compares simuland behavior to model results. In face validation, observers who may be potential users of the model and/or subject matter experts with respect to the simuland review or observe the results of a simulation (an execution of the executable model). Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as refl ected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
 
 		[...]
 
-		While  face  validation  is  arguably  most  appropriate  for  such  interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the  use  of  more  objective  and  quantitative  methods.  While  moving  beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
+		While face validation is arguably most appropriate for such interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the use of more objective and quantitative methods. While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
 	\mbox{}~ \hfill \cite[341-342]{petty2010verification}
 \end{quotation}
 
@@ -263,7 +263,7 @@ Ces grands traits peuvent s'entendre de multiples manières, et se formaliser av
 Ici, nous avons souhaité proposer une dichotomie simple entre le domaine de l'empirique et celui de la simulation, en systématisant l'usage d'un vocabulaire qui est souvent employé de manière plurielle.
 Pour être en mesure d'évaluer la vraisemblance du comportement reproduit par le modèle sur le plan empirique, il est nécessaire de mettre en correspondance des éléments empiriques et des éléments issus de la simulation.
 Nous caractérisons ces éléments en deux grands ensembles :
-(1) \textbf{les indices empiriques}, éléments quantifiables ou au moins descriptibles émanant du domaine empirique, et  (2) \textbf{les indicateurs de sortie}, variables informatiques produites par le modèle de simulation et devant pouvoir être comparés à chacun des indices empiriques.
+(1) \textbf{les indices empiriques}, éléments quantifiables ou au moins descriptibles émanant du domaine empirique, et (2) \textbf{les indicateurs de sortie}, variables informatiques produites par le modèle de simulation et devant pouvoir être comparés à chacun des indices empiriques.
 La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthétique, ces deux ensembles de mesures, explicitant le vocabulaire mobilisé dans cette partie.
 
 \begin{figure}[H]
@@ -425,7 +425,7 @@ Les indicateurs de moindre importance ne seront mobilisés que pour départager 
 
 \subsubsection{Incertitude}\label{sssec:incertitude}
 Dans le modèle de simulation, les indicateurs de sortie sont à analyser en tenant compte de la précision des indices qu'ils représentent.
-Il ne faudra ainsi pas étudier la croissance  du nombre d'agrégats au cours de la simulation de manière fine, par exemple en étudiant le coefficient directeur de la courbe, quand l'empirie ne donne quasiment aucune information à ce sujet si ce n'est qu'il y a bien plus d'agrégats en fin de période qu'au début.
+Il ne faudra ainsi pas étudier la croissance du nombre d'agrégats au cours de la simulation de manière fine, par exemple en étudiant le coefficient directeur de la courbe, quand l'empirie ne donne quasiment aucune information à ce sujet si ce n'est qu'il y a bien plus d'agrégats en fin de période qu'au début.
 On peut vouloir quantifier la précision de ces données, par exemple à l'aide des méthodes développées dans le champ des observations floues et/ou incertaines (voir par exemple le travail de Cyril de Runz sur les données \og imparfaites\fg{} \autocite{de2008imperfection}).
 Cette quantification de l'incertitude pourrait alors servir de base à l'établissement d'une hiérarchie des indicateurs :
 on analyserait en premier lieu l'écart entre les ordres de grandeurs empiriques bien connus (\hl{cf. tableau du niveau de certitude des objectifs}) et les indicateurs calculés sur les données simulées.
@@ -508,7 +508,7 @@ Le modèle cherche à reproduire cette polarisation, par le biais d'une concentr
 \todobox{Mettre un schéma pour rendre compréhensible cette contradiction apparente.}
 
 Pour analyser la polarisation du système de peuplement, il est nécessaire de définir des indices permettant de caractériser ce phénomène.
-Ces indices doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais doivent  pouvoir être produits et enregistrés dans le modèle de simulation, formant des indicateurs.
+Ces indices doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais doivent pouvoir être produits et enregistrés dans le modèle de simulation, formant des indicateurs.
 
 Pour l'étude de la polarisation, il est nécessaire de faire appel à des indices hétérogènes, chacun devant être en mesure de décrire les différents aspects du phénomène de polarisation.
 En conséquence, on a choisi de faire appel à plusieurs indicateurs qui doivent permettre d'étudier aussi bien l'aspect structurel du système simulé en son état final que la forme et la tendance que prennent les changements qu'il subit.
@@ -541,7 +541,7 @@ il faut certes atteindre un objectif quantifié ($20\%$), mais les hypothèses e
 %)
 , diminuant ainsi plus ou moins, avec de faibles fluctuations à chaque pas de temps.
 Une configuration de paramètres présentant des valeurs d'indicateurs en sortie proches des objectifs en fin de simulation mais fluctuant fortement pendant son déroulement ne sera ainsi pas valide.
-Elle montrerait en effet  un phénomène trop aléatoire au cours du temps, dont on ne peux penser qu'il s'est déroulé historiquement selon les dires d'experts qui considèrent que cette évolution s'est déroulée de manière continue dans le temps.
+Elle montrerait en effet un phénomène trop aléatoire au cours du temps, dont on ne peux penser qu'il s'est déroulé historiquement selon les dires d'experts qui considèrent que cette évolution s'est déroulée de manière continue dans le temps.
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
 
@@ -723,7 +723,7 @@ On doit alors obtenir un nombre décroissant d'agrégats à mesure que la classe
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
 La version 0 de SimFeodal présente une hiérarchisation des agrégats nettement trop faible.
 La courbe rang-taille (\cref{fig:rt-agregats-v0}) est ainsi trop faiblement pentue, et présente une forme trop linéaire :
-la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs  en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
+la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
 Ce résultat de simulation est d'autant plus perturbant que son évolution est éloignée de l'empirie :
 on remarque en effet que la distribution se hiérarchise bien entre 800 et 1020, présentant à cette date une allure très satisfaisante.
 Pourtant, après cette période, les agrégats voient leur hiérarchie diminuer nettement et les agrégats les plus peuplés diminuer en taille.
@@ -941,7 +941,7 @@ L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) m
 Inter : Déplacement depuis le pas de temps précédent vs Intra :
 déplacement au sein d'un même pas de temps.
 \todobox{Ne garder que l'inter et mettre le graphique en relatif}\\
-%	- InIn : Le FP était dans un agrégat au pas de temps précédent, et est dans un agrégat à ce tour (quel qu'il  soit, ça peut être le même ou un autre).\\
+%	- InIn : Le FP était dans un agrégat au pas de temps précédent, et est dans un agrégat à ce tour (quel qu'il soit, ça peut être le même ou un autre).\\
 %	- InOut : Le FP était dans un agrégat au pas de temps précédent, et est isolé à ce tour\\
 %	- OutIn : Le FP était isolé, et est maintenant dans un agrégat\\
 %	- OutOut : Le FP était isolé, et l'est toujours\\
