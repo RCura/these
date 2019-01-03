@@ -2,8 +2,14 @@
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2018-12-21}}
+{\large Version \hl{2019-01-03}}
 \end{center}
+\begin{itemize}
+	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
+	\item \hl{Décembre 2018 : Ajout de la partie 3.1}
+\end{itemize}
+
+
 \minitoc
 
 \clearpage
@@ -12,6 +18,7 @@
 [...]\\
 Unless the construction of simulation models is viewed as a game with no purpose other than the formulation of a model, it is hard to escape the conclusion that the purpose of a simulation experiment is to predict some aspect of reality.
 }{\cite[B-92-93;96]{naylor_verification_1967}}
+
 
 
 \section{Comment évaluer un modèle ?}
@@ -129,7 +136,7 @@ aux données empiriques -- ou théoriques -- qu'ils cherchent à reproduire.
 Autrement dit, en termes statistiques, à s'assurer de la qualité de l'ajustement -- la \textit{goodness of fit} -- des données simulées.
 On en mesure l'écart avec les données théoriques, quand de telles données sont disponibles, en cherchant à minimiser cet écart : plus l'écart est faible, alors plus le modèle parvient à reproduire les observations qui ont servi de support à sa conception et construction.
 Les différents auteurs du champ de l'évaluation recommandent de ne mener cette étape qu'à la fin du processus d'évaluation, quand le réflexe en pratique est souvent de s'appuyer sur les données théoriques dès le début de la conception du modèle.
-A défaut de suivre cette recommandation, le modélisateur risque d'emmener le modèle vers du \og sur-ajustement \fg{} (\textit{overfitting}), et d'inscrire alors celui-ci dans une logique de \hl{QUEL EST CE MOT : MODÈLE QUI REPRODUIT CE QU'ON LUI DIT DE REPRODUIRE ?}.
+A défaut de suivre cette recommandation, le modélisateur risque d'emmener le modèle vers du \og sur-ajustement \fg{} (\textit{overfitting}), et d'inscrire alors celui-ci dans une forme de tautologie, le modèle étant alors construit précisément pour produire ce qu'il devrait plutôt faire émerger.
 En conservant la validation statistique comme l'une des dernières étapes du cycle d'évaluation, c'est-à-dire en s'empêchant d'essayer de faire coller le modèle aux données qu'il doit reproduire, on s'assure de l'indépendance des mesures de l'ajustement, et on peut donc garantir une certaine objectivité quant à l'évaluation du modèle.
 
 \paragraph{Validations formelles}
@@ -176,14 +183,30 @@ Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux
 
 Nous ne partageons pas le dépit associé à cette recommandation, et au contraire, considérons que dans ce type de cas, des méthodes de \og \textit{face validation}\fg{} peuvent être, à condition d'être rigoureuses, extrêmement satisfaisantes et sans doute suffisante pour évaluer un modèle de simulation, ce que nous allons essayer de montrer par la suite.
 
+\subsection{La \og \textit{face validity}\fg{} dans l'approche classique}
 
+Avant d'aller plus avant dans la justification de l'utilité des méthodes de \textit{face validation}, il convient de définir plus précisément ce à quoi la littérature réfère quand elle préconise cette méthode d'analyse de plausibilité d'un modèle.
+Le terme semble avoir émergé dans les années 1940, en particulier dans le champ scientifique de la psychologie et des études pédagogiques \autocite{nevo_face_1985}.
+Concept discuté et disputé dans ces domaines \autocite{mosier_critical_1947}, on y attribue un besoin pour les modèles statistiques de présenter à la fois une validité à l'épreuve des données, mais aussi de présenter une apparence de validité, c'est-à-dire de sembler plausibles\footnote{
+\og In this usage, the term ''face validity'' implies that a test which is to be used in a practical situation should, in addition to having pragmatic or statistical validity, appear practical, pertinent and related to the purpose of the test as well; i.e., it should not only be valid but it should also appear valid. This usage of the term assumes that \og face validity\fg{} is not validity in any usual sense of the word but merely an additional attribute of the test which is highly desirable in certain situations.\fg{} \cite[192]{mosier_critical_1947}
+}.
+L'utilisation très polysémique -- et donc contradictoire -- et les importants débats autour de l'usage de ce terme ayant poussé à sa désuétude\footnote{\cite[205]{mosier_critical_1947} recommande même son abandon : \og Since the term ''face validity'' has become overlaid with a high degree of emotional content and since its referents are not only highly ambiguous but lead to widely divergent conclusions, it is recommended that the term be abandoned.\fg{}}, on le retrouve pourtant au cœur de l'un des articles fondateurs de l'évaluation de modèles de simulation, où Charles H\textsc{ermann} le définit ainsi :
 
 \begin{quotation}
 	\og Face validity is a surface or initial impression of a simulation or game's realism.
-
 	Probably no approach to model validity is reported more frequently than the subjective estimates of experimenters, observers, or human participants as to the correspondence between the model's operation and their perception of the actual phenomena which the game or simulation represent.
+	[...]\\
+	Face validity can be a significant part of a validity strategy. A quick impression that "things don't seem right" may be the only validity check possible during the actual operation of a game or simulation. Such validity judgments and their evaluation may also be part of the learning experience provided by operating models designed for instructional purposes.\fg{}\\
+	\mbox{}~ \hfill \cite[221]{hermann_validation_1967}
+\end{quotation}
 
-	[...]
+Quelques années plus tard, Franziska K\textsc{lügl} donne une définition plus précise mais englobante, ainsi qu'une justification de l'intérêt de cette méthode :
+
+\begin{quotation}
+	\og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.\fg{}\\
+	\mbox{}~ \hfill \cite[39]{klugl_validation_2008}
+\end{quotation}
+
 
 	Face validity can be a significant part of a validity strategy. A quick impression that "things don't seem right" may be the only validity check possible during the actual operation of a game or simulation. Such validity judgments and their evaluation may also be part of the learning experience provided by operating models designed for instructional purposes.
 
