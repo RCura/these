@@ -1,5 +1,6 @@
 % !TEX root = ../These_Robin_Master.tex
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
+\label{chap:chap3}
 \begin{center}
 {\large Version \hl{2018-12-21}}
 \end{center}
@@ -18,7 +19,10 @@ Unless the construction of simulation models is viewed as a game with no purpose
 Depuis les travaux précurseurs en simulation informatique \autocite{naylor_verification_1967,hermann_validation_1967,sargent_validation_1979} jusqu'aux recherches contemporaines \autocite{amblard_evaluation_2006,banos_pour_2013,augusiak_merging_2014, rey-coyrehourcq_plateforme_2015}, la plupart des chercheurs ont toujours mis en avant qu'un modèle de simulation non évalué n'avait ni utilité (pour les plus anciens), ni validité.
 Sans caricaturer ces écrits, on peut noter que tous cantonnent les modèles non évalués à des \og jeux\fg{} ou encore, pour les plus modérés, à des outils uniquement pédagogiques.
 
-Comme indiqué dans le chapitre 1 (\hl{REF}), nous inscrivons SimFeodal comme un modèle résolument pédagogique, et l'on pourrait dès lors se passer d'en mener une évaluation quelconque.
+Comme indiqué dans le
+%\cref{chap:chap1}
+\hl{chapitre 1}
+, nous inscrivons SimFeodal comme un modèle résolument pédagogique, et l'on pourrait dès lors se passer d'en mener une évaluation quelconque.
 Il nous semble pour autant que l'exercice intellectuel que constitue la (co-)construction d'un modèle de simulation perdrait de son intérêt intrinsèque s'il ne donnait lieu à des procédures, quelles qu'elles soient, ayant pour objectif de d'en assurer une certaine qualité, à défaut d'en garantir une validation stricte.
 
 Nous sommes en effet convaincu que même pour des modèles visant à \og assister la construction de théories\fg{}\footnote{ \og [...] Simulation models to support theory building -- so-called heuristic modelling -- [...].\fg{}} pour reprendre les termes de \cite[260]{lake_trends_2014}, ou encore, selon la classification alternative de l'auteur, pour les modèles à usage \og de développement\fg{}\footnote{\og 'developmental' utility\fg{}, c'est-à-dire les modèles dont le développement et l'implémentation bénéficient aux chercheurs qui y prennent part plutôt qu'à ceux qui se contentent de les utiliser a posteriori.}, les différents outils d'évaluation permettent d'acquérir une connaissance précieuse sur l'objet modélisé, ne serait-ce que par les effets collatéraux qu'entraîne l'évaluation d'un modèle.
@@ -100,7 +104,11 @@ Cette étape est souvent considérée comme une mesure préalable relevant du bo
 Nous y reviendrons plus longuement par la suite.
 
 \paragraph{Analyse de sensibilité}
-Quand une première version du modèle a été implémentée, il est recommandé de procéder à l'analyse de sa \og sensibilité \fg{}, entendue à l'égard des paramètres du modèle : en faisant varier, selon des méthodes plus ou moins complexes\footnote{Un point plus précis y est consacré dans le chapitre 6, \hl{REF}}, les valeurs des différents paramètres du modèle, on peut observer l'influence de chaque paramètre sur le déroulement du modèle.
+Quand une première version du modèle a été implémentée, il est recommandé de procéder à l'analyse de sa \og sensibilité \fg{}, entendue à l'égard des paramètres du modèle : en faisant varier, selon des méthodes plus ou moins complexes\footnote{Un point plus précis y est consacré dans le
+%\cref{chap:chap6}
+\hl{chapitre 6}
+}
+, les valeurs des différents paramètres du modèle, on peut observer l'influence de chaque paramètre sur le déroulement du modèle.
 Cette mesure intervient tôt, et doit être répetée lors de chaque modifications majeures dans les mécanismes du modèle.
 L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté : si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre et/ou le mécanisme qui le mobilise.
 Réduire le nombre de paramètres et/ou de mécanismes d'un modèle peut sensiblement l'améliorer, selon le principe de parcimonie qui voudrait qu'un modèle plus simple soit meilleur\footnote{Les avis divergent nettement sur ce point, voir par exemple la définition de la \textit{simplicité} dans \cite[120]{amblard_evaluation_2006}}.
@@ -134,7 +142,13 @@ Dans le cas plus spécifique des modèles à base d'agent, cas dans lequel nous 
 On emploie généralement la modélisation à base d'agents parce qu'elle encourage une approche anthropomorphique, plus aisément compréhensible et requérant moins de connaissances mathématiques que d'autres approches, mais aussi car il est terriblement complexe d'exprimer des systèmes dotés de multiples interactions, qui plus est multi-scalaires, sous forme de réseaux d'équations.
 En un sens, on pourrait presque considérer qu'on fait appel à de la modélisation à base d'agents quand on ne peut mobiliser des modèles formels.
 Le processus qui tendrait à formaliser des modèles agents est alors intrinsèquement contre-intuitif et inexorablement ardu.
-Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling\footnote{On reviendra et on présentera ce modèle de manière détaillée dans le chapitre 4. \hl{AJOUTER REF AU CHAP 4}}.
+Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling\footnote{On reviendra et on présentera ce modèle de manière détaillée dans le
+\hl{chapitre 4}
+%\cref{chap:chap4}
+. La description du modèle, en particulier, est effectuée dans
+\hl{la description}
+%\cref{desc:schelling}
+.}.
 En dehors de l'intérêt que cela peut représenter pour la connaissance de ce modèle en particulier, rappelons tout de même que le modèle de Schelling a été énoncé à la fin des années 1960, que c'est un modèle particulièrement parcimonieux, et qu'il tout de même fallu attendre le tournant des années 2010 afin d'y trouver une solution formelle.
 
 Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels (\cite{cherel_beyond_2015} par exemple) qui visent à l'exploration complète des comportements possible d'un modèle\footnote{C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMOLE \autocite{reuillon_openmole_2013}}.
@@ -152,7 +166,9 @@ A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}
 
 Pour illustrer l'écart entre ces approches en matière de possibilités de quantification de l'évaluation, prenons l'exemple classique d'une analyse de sensibilité :
 cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
-Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra en \hl{chap 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
+Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra dans le
+%\cref{chap:chap4}
+\hl{chapitre 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
 Dans le cas d'un modèle doté d'une dizaine de paramètres, et avec le même type d'analyse basique, le nombre de simulations nécessaire dépasserait déjà le milliard\ldots
 
 Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou une calibration fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
@@ -254,7 +270,10 @@ Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes
 La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de SimFeodal.
 Dans cette partie, on explicitera d'abord le sens que l'on prête à ces attentes, sous la forme « d'indices empiriques » et « d'indicateurs de sortie de simulation ».
 Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
-En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa « version 0 », dans le chapitre précédent (\hl{ref}).
+En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa « version 0 », dans le chapitre précédent (
+\hl{chapitre 2}
+%\cref{chap:chap2}
+).
 
 \subsection{Indices et indicateurs}
 
@@ -417,7 +436,7 @@ il est plus simple d'analyser quelques indicateurs plutôt qu'un grand nombre d'
 SimFeodal s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels.
 Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, le même niveau de précision sur les phénomènes modélisés.
 A chaque changement dans le modèle, pour une évaluation complète de la capacité de cette version à reproduire les indices empiriques, il faudrait donc observer et analyser chacun de ces nombreux et divers indicateurs.
-Dans le contexte du paramétrage d'un modèle s'appuyant sur une logique itérative et incrémentielle (voir \cref{enc:construction-indicateurs}), on imagine bien que cela n'est pas possible :
+Dans le contexte du paramétrage d'un modèle s'appuyant sur une logique itérative et incrémentielle (voir \Cref{enc:incrementalite-indicateurs}), on imagine bien que cela n'est pas possible :
 le nombre d'indicateurs est bien trop élevé pour avoir rapidement une vision globale de la qualité de représentation du modèle.
 Il faut dès lors, comme pour toute analyse synthétique, concevoir une hiérarchie d'observation et d'utilisation des indicateurs :
 il ne sera pas nécessaire d'analyser chacun des indicateurs dans la plupart des cas, seuls les indicateurs jugés plus importants pourront être analysés.
@@ -470,6 +489,7 @@ L'étude de la dispersion des agrégats et pôles peut ainsi se révéler plus i
 
 
 \begin{encadre}{Incrémentalité des indicateurs}{incrementalite-indicateurs}
+
 De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnotemark{} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
 
 Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique.
