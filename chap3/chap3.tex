@@ -2,7 +2,7 @@
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-01-03}}
+{\large Version \hl{2019-01-17}}
 \end{center}
 \begin{itemize}
 	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
@@ -183,9 +183,11 @@ Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux
 
 Nous ne partageons pas le dépit associé à cette recommandation, et au contraire, considérons que dans ce type de cas, des méthodes de \og \textit{face validation}\fg{} peuvent être, à condition d'être rigoureuses, extrêmement satisfaisantes et sans doute suffisante pour évaluer un modèle de simulation, ce que nous allons essayer de montrer par la suite.
 
-\subsection{La \og \textit{face validity}\fg{} dans l'approche classique}
+\subsection{Une évaluation de la plausibilité d'un modèle : la \og \textit{face validation}\fg{}}
 
 Avant d'aller plus avant dans la justification de l'utilité des méthodes de \textit{face validation}, il convient de définir plus précisément ce à quoi la littérature réfère quand elle préconise cette méthode d'analyse de plausibilité d'un modèle.
+
+\subsubsection{Définition}
 Le terme semble avoir émergé dans les années 1940, en particulier dans le champ scientifique de la psychologie et des études pédagogiques \autocite{nevo_face_1985}.
 Concept discuté et disputé dans ces domaines \autocite{mosier_critical_1947}, on y attribue un besoin pour les modèles statistiques de présenter à la fois une validité à l'épreuve des données, mais aussi de présenter une apparence de validité, c'est-à-dire de sembler plausibles\footnote{
 \og In this usage, the term ''face validity'' implies that a test which is to be used in a practical situation should, in addition to having pragmatic or statistical validity, appear practical, pertinent and related to the purpose of the test as well; i.e., it should not only be valid but it should also appear valid. This usage of the term assumes that \og face validity\fg{} is not validity in any usual sense of the word but merely an additional attribute of the test which is highly desirable in certain situations.\fg{} \cite[192]{mosier_critical_1947}
@@ -200,23 +202,36 @@ L'utilisation très polysémique -- et donc contradictoire -- et les importants 
 	\mbox{}~ \hfill \cite[221]{hermann_validation_1967}
 \end{quotation}
 
-Quelques années plus tard, Franziska K\textsc{lügl} donne une définition plus précise mais englobante, ainsi qu'une justification de l'intérêt de cette méthode :
+Quelques années plus tard, on en trouve une définition plus succinte chez un des fondateurs de l'évaluation de modèles : \og Face validity is asking people knowledgeable about the system whether the model is reasonable.\fg{} \autocite[500]{sargent_validation_1979}. Cette définition introduit un aspect qui nous semble important en matière de \textit{face validation} : il ne s'agit pas de d'évaluer la plausibilité d'un modèle pour un quelconque examinateur, mais bel et bien pour un expert du sujet modélisé. Ce type d'évaluation n'a donc pas uniquement vocation a démasquer des comportements contre-intuitifs, mais bel et bien à faire expertiser, par un thématicien, le déroulement et l'aboutissement d'un modèle de simulation.
+
+Il a fallu attendre la relative démocratisation des plate-formes de modélisation à base d'agents pour qu'une auteur, Franziska K\textsc{lügl}, se penche véritablement sur l'identification et l'explicitation de la \textit{face validity}, et en donne une définition plus précise, mais englobante car centrée sur les usages plus que sur la méthode en elle-même :
 
 \begin{quotation}
-	\og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.\fg{}\\
-	\mbox{}~ \hfill \cite[39]{klugl_validation_2008}
+	\og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.
+	[...]\\
+	Face validation usually plays an important role during
+	model design. All tests based on reviews, audits, involv-
+	ing presentation and justification of assumptions and model
+	structure are used for reaching this form of plausibility.
+	\fg{}\\
+	\mbox{}~ \hfill \cite[39;41]{klugl_validation_2008}
 \end{quotation}
 
 
-	Face validity can be a significant part of a validity strategy. A quick impression that "things don't seem right" may be the only validity check possible during the actual operation of a game or simulation. Such validity judgments and their evaluation may also be part of the learning experience provided by operating models designed for instructional purposes.
+La description des méthodes possibles menant à cette évaluation n'est pas en reste non plus dans cet article, puisque l'auteur identifie trois familles de cette \textit{face validation}, chacune pouvant être menée par des experts différents \footnote{L'énumération qui suit est une traduction libre et une reformulation partielle de \cite[41-42]{klugl_validation_2008}} :
+\begin{itemize}
+	\item \textbf{Évaluation du déroulement} Évaluation du déroulement d'une simulation dans son ensemble.
+	Il s'agit donc ici de juger de la plausibilité des dynamiques (à l'échelle du système dans son ensemble, ou de composantes de celui-ci) reproduites dans la simulation, via une observation en direct de la simulation.
+	
+	\item \textbf{Évaluation des sorties} Cette approche consiste plutôt à une évaluation qualitative des sorties produites par la simulation.
+	Cela peut prendre la forme de vérification des valeurs (approche que l'on retrouve dans les méthodes d'évaluation plus formelles, via une automatisation de ces types d'évaluation) par un expert, mais aussi des d'analyse des co-variations et évolutions temporelles de différents indicateurs de sortie.
+	L'évaluation des sorties peut être appliquée sur le système modélisé dans son ensemble, mais aussi au niveau des types d'agents mobilisés.
+	
+	\item \textbf{Évaluation \og immersive\fg{}} Il s'agit ici d'évaluer le modèle au travers de la vraisemblance des actions et réactions individuelles des agents qui y interagissent. L'accent est donc mis sur la plausibilité du comportement des agents, ce qui est donc susceptible de requérir un expert différent de l'analyse de la plausibilité du système résultant des comportements de ces agents.
+\end{itemize}
 
-	[...]
 
-	Although face validity has value in the early stages of model building or for quick checks during actual operation, its severe limitations should be recognized. Sometimes the experimenter will not know what behaviors are "realistic" because of his limited experience observing the actual phenomena. Participants can become interested and highly motivated in an incorrect representation of the desired environment. If the simulation involves the substitution of one property for another, some features may appear quite unreal and yet replicate the performance of the reference system for which the simulation was designed. The acceptance of face validity as a rough, first approximation might be improved if the simulator explicitly stated in advance what observations would constitute indications that an aspect of the observable universe had been successfully captured. In summary, face validity in its usual form suffers from the lack of explicit validity criteria.\fg{}\\
-	\mbox{}~ \hfill \cite[221-222]{hermann_validation_1967}
-\end{quotation}
-
-
+Pour l'auteur, ces trois approches d'évaluation sont complémentaires et s'inscrivent dans des temporalités différentes de la phase de vie du modèle. Elle encourage ainsi plutôt à mener l'évaluation des sorties après les deux autres, puisque ces dernières sont comparativement moins coûteuses en termes de calcul \autocite[42]{klugl_validation_2008}.
 
 
 
