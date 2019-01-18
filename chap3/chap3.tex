@@ -2,11 +2,11 @@
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-01-17}}
+{\large Version \hl{2019-01-18}}
 \end{center}
 \begin{itemize}
 	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
-	\item \hl{Décembre 2018 : Ajout de la partie 3.1}
+	\item \hl{Décembre 2018 / Janvier 2019 : Ajout de la partie 3.1}
 \end{itemize}
 
 
@@ -160,7 +160,7 @@ En dehors de l'intérêt que cela peut représenter pour la connaissance de ce m
 
 Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels (\cite{cherel_beyond_2015} par exemple) qui visent à l'exploration complète des comportements possible d'un modèle\footnote{C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMOLE \autocite{reuillon_openmole_2013}}.
 
-\paragraph{Quelle évaluation pour quels modèles ?}
+\paragraph{Quelle évaluation pour quels modèles ?}\label{par:quelle-eval-quel-modeles}
 
 Les étapes d'évaluation énumérées ci-dessus consistent autant en une approche chronologique -- relative aux phases successives de la construction d'un modèle -- qu'en un gradient de qualité de l'évaluation, souvent considéré en fonction de la difficulté et du coût temporel nécessaire à chacune de ces méthodes\footnote{\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}, \cite[42]{klugl_validation_2008}, par exemple.}
 Il est évident à la lecture des références du champ que pour ces auteurs, \og plus\fg{} le modèle est évalué, c'est-à-dire se confronte aux étapes d'évaluation de plus en plus formelles, plus il sera digne de confiance et donc capable d'apporter des connaissance sur les objets qu'il tend à représenter.
@@ -233,41 +233,57 @@ La description des méthodes possibles menant à cette évaluation n'est pas en 
 
 Pour l'auteur, ces trois approches d'évaluation sont complémentaires et s'inscrivent dans des temporalités différentes de la phase de vie du modèle. Elle encourage ainsi plutôt à mener l'évaluation des sorties après les deux autres, puisque ces dernières sont comparativement moins coûteuses en termes de calcul \autocite[42]{klugl_validation_2008}.
 
+Il nous semble que si les deux premières approches sont applicables à tout modèle, l'évaluation immersive comporte un postulat lourd sur la rationalité des comportements individuels qui n'est pas universelle dans les modèles à base d'agents.
+Cela se prête bien à de nombreux modèles où les agents sont des humains dotés de comportements rationnels, ou encore des particules dont la trajectoire individuelle est prévisible en dehors des effets d'interaction.
+Toutefois, tout un pan de la modélisation en géographie repose sur des agents non anthropomorphiques, ou encore sur des entités primaires dont seules les interactions ont vocation à faire émerger un comportement d'ensemble.
+Dans le cas de SimFeodal par exemple (\hl{REF CHAP2}), les comportements individuels des foyers paysans (ni même des seigneurs ou autre d'ailleurs) ne reposent pas sur des hypothèses de vraisemblance : le suivi d'un foyer paysan au cours du déroulement du modèle, par un expert thématicien, n'est donc pas sujet à évaluation.
+
+L'évaluation immersive nous paraît donc peu adaptée à l'évaluation de plausibilité de tous les modèles.
+Notons cependant que même quand elle n'a pas de sens thématique, cette méthode peut toutefois s'avérer utile en matière d'évaluation interne, dans un aspect de \og débugage\fg{} : quand bien même les réactions et attributs des agents ne reproduisent pas une connaissance experte, l'observation de celles-ci peut toujours servir au modélisateur pour vérifier l'absence de valeurs aberrantes ou encore la juste activation de chacun des mécanismes.
 
 
+\subsubsection{Limites}
 
+Comme mentionné auparavant (\ref{par:quelle-eval-quel-modeles}), pour de nombreux auteurs \autocite{hermann_validation_1967, balci_validation_1994, kennedy_verification_2006}, la \textit{face validation} ne peut qu'être une étape préalable à des méthodes d'évaluation plus quantitatives et formelles.
+Les raisons donnés sont souvent le manque d'objectivité d'une démarche fondamentalement basée sur l'expertise et l'impression.
+Parmi ces auteurs, Charles H\textsc{ermann} est sans doute celui qui se montre le plus méfiant vis-à-vis de la pratique de la \textit{face validation}, en en pointant plusieurs limites :
 
 \begin{quotation}
-\og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.
+	\og Although face validity has value in the early stages of model building or for quick checks during actual operation, its severe limitations should be recognized. Sometimes the experimenter will not know what behaviors are "realistic" because of his limited experience observing the actual phenomena. Participants can become interested and highly motivated in an incorrect representation of the desired environment. If the simulation involves the substitution of one property for another, some features may appear quite unreal and yet replicate the performance of the reference system for which the simulation was designed. The acceptance of face validity as a rough, first approximation might be improved if the simulator explicitly stated in advance what observations would constitute indications that an aspect of the observable universe had been successfully captured. In summary, face validity in its usual form suffers from the lack of explicit validity criteria.\fg{}\\
+	\mbox{}~ \hfill \cite[222]{hermann_validation_1967}
+\end{quotation}
 
-[...]
-
-One may argue why face validity is need, when statistical validation is successfully done? Face validation assures that the processes and structures are reasonable for a human expert. Especially, when there is (semi-)automatic calibration of a simulation that is used in combination with statistical validation, a careful check of plausibly is necessary. This is in general true for all kinds of simulation, but it is particularly important for agent-based simulations.\fg{}\\
-\mbox{}~ \hfill \cite[39-40]{klugl_validation_2008}
-	\end{quotation}
-
-\begin{quotation}
-\og Face validation usually plays an important role during
-model design. All tests based on reviews, audits, involv-
-ing presentation and justification of assumptions and model
-structure are used for reaching this form of plausibility. Face
-validation in this phase of model development consists of at
-least three methodological elements executed by potentially
-different human experts :
+Ces réserves nous semblent être autant de pistes pour justifier de l'interêt d'une démarche scientifique de \textit{face validation}. En reprenant les critiques dans l'ordre énoncé par l'auteur, on peut y répondre ainsi :
 \begin{itemize}
-	\item \textbf{Animation Assessment} A human expert assesses the animation of the overall simulated system (or of parts of it) whether the simulated system appears to behave like the original system. [...]
-	\item \textbf{Output Assessment} Simulation output can also be assessed by a human expert checking the plausibility of the absolute values, relations between different values and also the dynamics and trends of the different output values of simulation runs. It can be applied on the macro as well as on the agent level. If intended relations can be formalized, e.g. in forms of constraints, output assessment can be automatized.
-	\item \textbf{Immersive Assessment} A human expert looks through the eyes of one particular agent and sees what the agent perceives and how it reacts on it. Based on this information the human can evaluate directly whether the behavior of the simulated agent is appropriate. If the interface allows participation, the human may also assess the behavior of the other agents in reaction to interactions with the human-controlled agent. Clearly, the success of these tests depends on the appropriateness of the interface which may even be particular for every agent.
+	\item \textbf{Manque de connaissance experte}
+	Cette première remarque nous apparaît comme quelque peu malhonnête : si l'on confie une évaluation experte à des non experts, naturellement, cela ne peut déboucher sur une évaluation correcte du modèle.
+	Cela est d'ailleurs applicable quelque soit la méthode d'évaluation : une expertise ne vaut que par la qualité de l'expert.
+	De manière plus nuancée, on notera d'ailleurs que cette phrase montre ici l'absence d'un élément de définition de la \textit{face validation} partagé par les autres auteurs :
+	H\textsc{ermann} considère par là que c'est au modélisateur uniquement de mener cette phase d'évaluation, alors que la littérature s'entend quant au fait que ce rôle échoit à des experts.
+	Ce faisant, H\textsc{ermann}se positionne dans la logique de construction de modèles par des modélisateurs, sans apport des thématiciens, et donc dans l'approche classique de séparation forte entre ces deux acteurs indispensables du modèle (voir \hl{chapitre 1, prestation vs co-construction}).
+	
+	\item \textbf{Invraisemblance de certains comportements}
+	H\textsc{ermann} met en avant que dans un modèle, tous les mécanismes n'ont pas vocation à être vraisemblables.
+	Ainsi, en mentionnant ces \og propriétés de substitutions\fg{}, il rappelle un élément important d'une évaluation, quelle qu'en soit la méthode :
+	on ne doit et ne peut juger de la plausibilité que des aspects du modèle qui cherchent à reproduire un comportement plausible.
+	Il nous semble qu'ici aussi, la critique de l'auteur revient à ignorer l'importance du dialogue entre modélisateur, tout en assumant cette fois que l'évaluateur ne serait pas le modélisateur :
+	le modélisateur connaît les \og substitutions\fg{} opérées dans le modèle, et se gardera donc bien de juger de leur vraisemblance.
+	A contrario, un expert thématicien pourrait être étonné par certains comportements micro, dans la mesure où il ne connaîtrait pas les correspondances entre éléments du modèle et éléments du système modélisé.
+	Là encore, cette limite repose donc surtout sur le choix d'un mode de construction isolé, c'est-à-dire n'impliquant pas et le thématicien et le modélisateur.
+	
+	\item \textbf{Explicitation préalable des objectifs}
+	La dernière remarque de cette citation nous semble, sans conteste, être la plus importante et la plus juste.
+	L'auteur note ainsi que la \textit{face validation} ne peut constituer une méthode d'évaluation adaptée si l'on ne spécifie pas, en amont, les critères qu'elle doit s'attacher à examiner.
+	C'est là encore vrai de toutes les méthodes d'évaluation, mais nous souscrivons aux remarques de H\textsc{ermann} quant à l'importance primordiale que cela revêt pour la \textit{face validation}.
+	En matière de plausibilité, on pourrait ainsi, comme cela nous semble souvent être le cas, se contenter d'évaluer \og à chaud\fg{} les différentes dynamiques et sorties d'un modèle, sans s'encombrer d'une démarche, ou feuille de route, spécifique.
+	Le risque est alors d'introduire encore plus de subjectivité dans cette analyse, et en particulier de briser la capacité de reproductibilité ou de justification d'une évaluation :
+	une évaluation peut être subjective tout en étant justifiée, appuyée par des arguments, et dès lors, reproductible si tant est que chacun de ces éléments soit explicités.
+	Quand un modèle est évalué par une seule personne, par exemple un expert thématicien, la nécessité d'une telle démarche est peu visible, chacun étant en capacité d'estimer qu'il sera en mesure de justifier \textit{a posteriori} son évaluation.
+	A contrario, quand un modèle résulte d'un travail collaboratif, qui plus est quand il implique plusieurs évaluateurs, les évaluations d'un même résultat peuvent varier.
+	Il est donc indispensable de les expliciter autant que possible, et pour se prémunir d'un travail gigantesque d'analyse postérieure des résultats tout autant que pour se doter d'un outil de discussion et de débat commun, il apparaît primordial de fixer une grille d'évaluation, ou, en d'autres termes, d'un ensemble de critères à observer.
+	Cela ne limite aucunement la nécessaire subjectivité et complémentarité des évaluateurs experts, mais permet au contraire d'inscrire leurs discours  dans un référentiel de comparabilité.
+
 \end{itemize}
-The question that remains here is about the best order to apply the different tests. I suggest to start with the animation and immersion tests and only when they are passed the output testing should be applied. The reason for this is simply the assumption that runs of an agent-based simulation are expensive and have to be repeated several times due to stochasticity. It is comparatively cheap to have a look onto animation. Thus, one should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}
-\mbox{}~ \hfill \cite[41-42]{klugl_validation_2008}
-\end{quotation}
-
-
-\begin{quotation}
-\og Although face validation may be informal and inconsistent, but it at least results in plausibility of modeled processes. Our experience with modeling and simulation in many interdisciplinary projects showed that even the formulation of a plausible model supports theory building and future empirical research.\fg{}
-\mbox{}~ \hfill \cite[43]{klugl_validation_2008}
-\end{quotation}
 
 
 
