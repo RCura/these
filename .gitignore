@@ -29,6 +29,7 @@
 *-blx.bib
 *.run.xml
 *.mtc*
+!/.Rhistory
 *chap1.pdf
 *chap2.pdf
 *chap3.pdf
