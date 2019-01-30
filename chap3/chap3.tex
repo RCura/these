@@ -2,11 +2,12 @@
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-01-18}}
+{\large Version \hl{2019-01-30}}
 \end{center}
 \begin{itemize}
 	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
 	\item \hl{Décembre 2018 / Janvier 2019 : Ajout de la partie 3.1}
+	\item \hl{30 Janvier 2019 : Commentaires de Lena sur 3.1 à 3.1.3.2 non pris en compte}
 \end{itemize}
 
 
@@ -282,33 +283,58 @@ Ces réserves nous semblent être autant de pistes pour justifier de l'interêt 
 	A contrario, quand un modèle résulte d'un travail collaboratif, qui plus est quand il implique plusieurs évaluateurs, les évaluations d'un même résultat peuvent varier.
 	Il est donc indispensable de les expliciter autant que possible, et pour se prémunir d'un travail gigantesque d'analyse postérieure des résultats tout autant que pour se doter d'un outil de discussion et de débat commun, il apparaît primordial de fixer une grille d'évaluation, ou, en d'autres termes, d'un ensemble de critères à observer.
 	Cela ne limite aucunement la nécessaire subjectivité et complémentarité des évaluateurs experts, mais permet au contraire d'inscrire leurs discours  dans un référentiel de comparabilité.
-
+	
 \end{itemize}
 
+\subsubsection{Intérêts de la \textit{face validation}}
+
+En dépit des limites identifiées ci-dessus, qui nous semblent surpassables à condition de définir une grille d'évaluation précision en amont, la \textit{face validation} présente de nombreux atouts en dehors de la facilité de sa mise en œuvre traditionnelle.
+
+Là où H\textsc{ermann} et les auteurs classiques cantonnent la \textit{face validation} à une étape préalable à une véritable évaluation, K\textsc{lügl} justifie l'intérêt propre de cette démarche méthodologique, y compris dans les phases plus avancées de la démarche classique d'évaluation :
+
+\begin{quotation}
+	\og One may argue why face validity is need, when statistical validation is successfully done? Face validation assures that the processes and structures are reasonable for a human expert. Especially, when there is (semi-)automatic calibration of a simulation that is used in combination with statistical validation, a careful check of plausibly is necessary. This is in general true for all kinds of simulation, but it is particularly important for agent-based simulations.[...]\\
+	
+	Although face validation may be informal and inconsistent, but it at least results in plausibility of modeled processes. Our experience with modeling and simulation in many interdisciplinary projects showed that even the formulation of a plausible model supports theory building and future empirical research.\fg{}\\
+	\mbox{}~ \hfill \cite[40;43]{klugl_validation_2008}
+\end{quotation}
+
+
+Pour l'auteure, la face validation complète ainsi d'autres méthodes d'évaluations mieux considérées, et nous irons même plus loin en considérant que chacune de ces méthodes peut potentiellement être améliorée en la conjuguant à une analyse de plausibilité visuelle de ses résultats.
+
+On notera d'ailleurs que chez B\textsc{alci}, dans une analyse de l'applicabilité des méthodes de \og VV\&T\fg{} au différentes phases du cycle de vie d'un modèle, seules 5 techniques\footnote{
+	Il s'agit systématiquement de méthodes \og informelles\fg{} : 
+	(1) La  vérification de la documentation (\textit{Documentation Checking}; (2) la \textit{Face Validation}; (3) les inspections de code; (4) les \og revues\fg{} de modèle (\textit{Reviews}) et enfin (5) les \og procédures pas à pas\fg{} d'évaluation (\textit{walkthrough}).
+} (sur 77 analysées) présentent la caractéristique d'être mobilisables à chacune de ces phases (voir la \autoref{fig:taxonomy_balci}).
+
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/VVetT_Balci.pdf}
+	\caption{Part des étapes de la cycle de vie d'un modèle pour lesquelles différentes méthodes de \og VV\&T\fg{} peuvent être mobilisées, selon le type de méthode (intitulés d'origine).
+	D'après \cite[Table 3, pp. 45-47]{balci1998verification} (taux de couverture) et \cite[Figure 2, p. 139]{balci_verification_1997} (taxonomie des méthodes).}
+	\label{fig:taxonomy_balci}
+\end{figure}
 
 
 
 
 Différencier Face validity (vraisemblance) et visual validation
 
-\subsection{Vers une validation visuelle}
 
-\cite[Table 3, p. 46]{balci1998verification} : Face validity applicable à toutes les étapes du cycle de vie de la simulation
-
-\begin{quotation}
-		\textbf{Informal methods} [...]\\
-		\og Face validation is a validation method that compares simuland behavior to model results. In face validation, observers who may be potential users of the model and/or subject matter experts with respect to the simuland review or observe the results of a simulation (an execution of the executable model). Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as refl ected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
-
-		[...]
-
-		While face validation is arguably most appropriate for such interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the use of more objective and quantitative methods. While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
-	\mbox{}~ \hfill \cite[341-342]{petty2010verification}
-\end{quotation}
+%\begin{quotation}
+%		\textbf{Informal methods} [...]\\
+%		\og Face validation is a validation method that compares simuland behavior to model results. In face validation, observers who may be potential users of the model and/or subject matter experts with respect to the simuland review or observe the results of a simulation (an execution of the executable model). Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as reflected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
+%
+%		[...]
+%
+%		While face validation is arguably most appropriate for such interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the use of more objective and quantitative methods. While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
+%	\mbox{}~ \hfill \cite[341-342]{petty2010verification}
+%\end{quotation}
 
 
 
 
-\subsection{Des critères pour la validation : les indicateurs}
+\subsection{Des critères pour l'évaluation : les indicateurs}
 
 \subsection{L'importance de la réplication}
 
