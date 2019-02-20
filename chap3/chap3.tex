@@ -2,7 +2,7 @@
 \chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-01-30}}
+{\large Version \hl{2019-02-20}}
 \end{center}
 \begin{itemize}
 	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
@@ -81,8 +81,6 @@ Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord le
 \end{quotation}
 
 
-\clearpage
-
 \subsection{Les étapes de l'évaluation de modèle}
 
 Parmi les nombreuses techniques disponibles pour l'évaluation, il est courant de privilégier telle ou telle méthode en fonction de la phase d'avancement d'un modèle.
@@ -91,7 +89,7 @@ Les schéma des étapes d'évaluation de \textsc{Klügl} (\cref{fig:schema_klueg
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=.8\linewidth]{img/Schema_Kluegl.png}
+	\includegraphics[height=.35\textheight]{img/Schema_Kluegl.png}
 	\caption{\og Sketch of a general procedure for validating an agent-based simulation\fg{}, \cite[fig. 1 p. 42]{klugl_validation_2008}}
 	\label{fig:schema_kluegl}
 \end{figure}
@@ -99,12 +97,11 @@ Les schéma des étapes d'évaluation de \textsc{Klügl} (\cref{fig:schema_klueg
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=.57\linewidth]{img/Schema_Ngo.png}
+	\includegraphics[height=.55\textheight]{img/Schema_Ngo.png}
 	\caption{\og General validation process of an ABM\fg{}, \cite[fig. 10.1 p. 183]{ngo_calibration_2012}}
 	\label{fig:schema_ngo}
 \end{figure}
 
-\clearpage
 
 \paragraph{Face validation}
 La première étape, de \og \textit{face validation}\fg{}, consiste ainsi à vérifier visuellement, rapidement, la plausibilité du modèle.
@@ -220,6 +217,7 @@ Il a fallu attendre la relative démocratisation des plate-formes de modélisati
 
 
 La description des méthodes possibles menant à cette évaluation n'est pas en reste non plus dans cet article, puisque l'auteur identifie trois familles de cette \textit{face validation}, chacune pouvant être menée par des experts différents \footnote{L'énumération qui suit est une traduction libre et une reformulation partielle de \cite[41-42]{klugl_validation_2008}} :
+\paragraph*{Composantes de la \textit{face validation}}\label{par:composantes-face-validation}
 \begin{itemize}
 	\item \textbf{Évaluation du déroulement} Évaluation du déroulement d'une simulation dans son ensemble.
 	Il s'agit donc ici de juger de la plausibilité des dynamiques (à l'échelle du système dans son ensemble, ou de composantes de celui-ci) reproduites dans la simulation, via une observation en direct de la simulation.
@@ -316,27 +314,62 @@ On notera d'ailleurs que chez B\textsc{alci}, dans une analyse de l'applicabilit
 \end{figure}
 
 
+\subsection{Vers une évaluation visuelle}
+
+Au regard de ces éléments, cantonnent-ils la \textit{face validation} à une phase préalable mineure ou au contraire à une bonne pratique qui doit être menée lors de chacune des phases de construction et d'évaluation d'un modèle, il nous semble que l'utilité des approches de \textit{face validation} est assez largement prouvée.
+
+\subsubsection{Une démarche comparative}
+Comme identifié en limites et en intérêts, il nous semble de plus que la \textit{face validation} souffre, en matière de réputation, d'un manque de clarification de la démarche qu'elle met en œuvre.
+Nous considérons que dotée d'un protocole d'évaluation rigoureux, cette méthode peux constituer une alternative crédible à des méthodes d'évaluation plus répandues, par exemple les méthodes statistiques.
+Ces dernières sont souvent basées sur l'analyse de l'écart entre des données empiriques et des données simulées, et cherchent à quantifier et à minimiser cet écart.
+La \textit{face validation} procède à la même démarche comparative :
+\begin{quotation}
+		\og Face validation is a validation method that compares simuland behavior to model results. [...] Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as reflected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
+	\mbox{}~ \hfill \cite[341]{petty2010verification}
+\end{quotation}
+Nous postulons que la démarche comparative que l'on retrouve dans l'évaluation statistique peut donc être appliquée sans recherche de quantification, c'est-à-dire en évaluant ces mêmes écarts de manière subjective et qualitative.
+Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que SimFeodal (\hl{REF chap 2}), la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
+De plus, les données empiriques qui permettraient de mener une comparaison sont trop lacunaires et incertaines pour être jugées suffisamment fiables pour évaluer le modèle.
+
+\subsubsection{Une démarche rigoureuse} Nous pensons toutefois que ces carences quantitatives peuvent être compensés par les connaissances expertes des différents thématiciens impliqués dans la construction et l'évaluation d'un modèle.
+Ainsi, dès lors que le processus d'évaluation est pensé en amont de son application, et qu'il est possible de parvenir à la création d'une grille d'analyse, c'est-à-dire à un protocole d'évaluation, il nous semble que la différence avec l'évaluation statistique est assez restreinte.
+Pour évaluer les modèles du type de SimFeodal, nous considérons dès lors qu'il est tout à fait possible de faire reposer cette démarche sur une évaluation experte, s'inscrivant dans les logiques de \textit{face validation}, et en particulier de sa composante d'évaluation des sorties (voir \cnameref{par:composantes-face-validation}, \cpageref{par:composantes-face-validation}).
+
+\subsubsection{Un nouveau terme ?} Dans la suite de cet ouvrage, nous nommerons cette approche \og \textbf{évaluation visuelle}\fg{}. Ce terme n'est, à notre connaissance, que peu employé\footnote{
+	Voir par exemple le nombre d'occurrences dans Google Scholar, Isidore ou encore  (\href{https://books.google.com/ngrams/graph?content=visual+validity\%2Cface+validity\%2Cface+validation\%2Cvisual+validation\%2Cvisual+evaluation\&case_insensitive=on\&year_start=1950\&year_end=2008\&corpus=15\&smoothing=2\&share=\&direct_url=t1\%3B\%2Cvisual\%20validity\%3B\%2Cc0\%3B.t4\%3B\%2Cface\%20validity\%3B\%2Cc0\%3B\%2Cs0\%3B\%3Bface\%20validity\%3B\%2Cc0\%3B\%3BFace\%20validity\%3B\%2Cc0\%3B\%3BFace\%20Validity\%3B\%2Cc0\%3B.t4\%3B\%2Cface\%20validation\%3B\%2Cc0\%3B\%2Cs0\%3B\%3Bface\%20validation\%3B\%2Cc0\%3B\%3BFace\%20validation\%3B\%2Cc0\%3B.t1\%3B\%2Cvisual\%20validation\%3B\%2Cc0\%3B.t4\%3B\%2Cvisual\%20evaluation\%3B\%2Cc0\%3B\%2Cs0\%3B\%3Bvisual\%20evaluation\%3B\%2Cc0\%3B\%3BVisual\%20evaluation\%3B\%2Cc0\%3B\%3BVisual\%20Evaluation\%3B\%2Cc0\%3B\%3BVISUAL\%20EVALUATION\%3B\%2Cc0}{Google Ngram Viewer} par exemple). \hl{Est-ce vraiment utile ?}
+}, et le semble surtout en études environnementales, par exemple pour définir une méthode de comptage d'espèces animales et végétales (\cite{harmelin-vivien_evaluation_1985} par exemple).
+Le pendant anglophone, la \og \textit{visual evaluation}\fg{}, semble s'inscrire dans le même champ disciplinaire (\cite{horst_assessment_1984} par exemple), et paraît aussi assez faiblement utilisée dans un usage scientifique.
+Dans l'usage qui en sera fait dans ce manuscrit, ce terme est forgé au regard de la \og \textit{face validation}\fg{} naturellement, et pourrait être confondu avec. Il s'agit toutefois de s'éloigner de l'aspect \og apparence\fg{} présent dans le terme -- qui insiste donc sur une validité de façade --, pour embrasser au contraire la méthode visuelle.
+Cette dernière a fait ses preuves -- dans de nombreux autres champs disciplinaires -- et constitue un pan non négligeable des méthodes d'analyse, et nous pensons donc adéquat d'en faire un usage argumenté dans le domaine de l'évaluation de modèles de simulations.
+On notera un usage proche de cette dernière, appliquée aux modèles aussi, mais statistiques cette fois-ci, visant à l'évaluation visuelle de modèles de \og \textit{Data Science}\fg{}. Les auteurs \autocite{eilers_its_2017} partagent le constat d'une utilité réelle de l'évaluation visuelle (intitulée \og Visual Model Evaluation\fg{} dans leur cas), et mettent une emphase particulière l'intérêt des intuitions que peuvent avoir les experts thématiques à la vue des résultats d'un modèle (p.2). Pour ce faire, ils insistent sur l'intégration d'experts dans le processus d'évaluation, et sur le besoin de communications, lors de cette phase de travail, entre les modélisateurs et ces experts\footnote{
+\og Integrating these expert groups [data scientists and domain experts] to follow a common objective is still a major challenge today for a successful data science project in the industry and therefore a suitable field for information systems research.
+A collaborative analysis system addressing this issue should therefore focus on both aspects. It is important to most efficiently support human decision-makers with data-driven expert systems, and much research has been carried out in this area (Shim et al. 2002; Power 2008).
+But it is equally important that domain experts are also part of the system itself, e.g. by supporting data scientists with their domain knowledge when constructing the underlying models.
+A key success factor for this purpose is communication between different groups.\fg{} \autocite[2]{eilers_its_2017}
+}.
 
 
-Différencier Face validity (vraisemblance) et visual validation
+\subsubsection{Définir l'évaluation visuelle} Pour définir cette évaluation visuelle, nous repartirons de la définition de la \textit{face validation} sur laquelle cette méthode s'appuie.
 
+\paragraph{Définition} Il s'agit donc d'évaluer, visuellement, la plausibilité du comportement d'un modèle à partir des données qu'il produit.
+Cette plausibilité peut être entendue comme la correspondance entre le système modélisé et le modèle du système, correspondance s'exprimant en comparant les données en sortie de simulation -- et en les agrégeant au besoin pour tenir compte de la nécessaire réplication
+\footnote{
+	Cet aspect est discuté dans les chapitres \hl{1, 2 et 7}.
+	En matière d'évaluation, tel que pointé par la majorité des auteurs cités dans cette sous-partie de chapitre, il est ainsi nécessaire de tenir compte de la variabilité d'un modèle, variabilité intrinsèque dans un modèle stochastique.
+	Il n'est donc pas possible d'évaluer, visuellement ou non, un modèle stochastique sur la base d'une seule exécution. Au contraire, seule l'exécution d'un certain nombre de \textbf{réplications} (voir \hl{chapitre 1}) permet de s'assurer que le comportement évalué correspond bien au comportement habituel, ou tendanciel, du modèle.
+} -- au comportement du système modélisé.
+Cette correspondance doit être qualifiée avant de mener cette phase d'évaluation, c'est-à-dire qu'il est nécessaire de spécifier les critères d'observation et les réponses attendues.
+Ces éléments, les critères d'évaluation, ne peuvent être formulés par n'importe qui : si le modélisateur autant qu'un expert externe peuvent les spécifier, il convient de s'assurer de l'expertise  -- thématique et de la connaissance du système tel que modélisé -- de l'évaluateur.
+On obtient ainsi un système à évaluer au filtre d'une grille d'analyse qualitative et basée sur le visuel.
+Il devient alors possible d'apprécier l'écart le modèle et le système qu'il représente, sans chercher pour autant à quantifier ou à mesurer cet écart. 
+Il s'agit en effet plutôt d'ordonner différentes versions ou paramétrages d'un modèle de simulation afin de juger de ceux qui semblent minimiser cet écart.
 
-%\begin{quotation}
-%		\textbf{Informal methods} [...]\\
-%		\og Face validation is a validation method that compares simuland behavior to model results. In face validation, observers who may be potential users of the model and/or subject matter experts with respect to the simuland review or observe the results of a simulation (an execution of the executable model). Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as reflected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
-%
-%		[...]
-%
-%		While face validation is arguably most appropriate for such interactive simulations, it is often used as a validation method of last resort, when a shortage of time or a lack of reliable data describing simuland behavior precludes the use of more objective and quantitative methods. While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}\\
-%	\mbox{}~ \hfill \cite[341-342]{petty2010verification}
-%\end{quotation}
+\paragraph*{}Cette méthode, contrairement à d'autres, plus quantitatives, permet donc au final de tirer avantage des méthodes qualitatives telles que la \textit{face validation} -- par exemple la capacité d'évaluer un modèle qui ne reposerait que sur peu de données empiriques ou encore sur des données incertaines --, tout en se confortant à une démarche d'évaluation rigoureuse, loin de l'estimation \og au doigt mouillé\fg{} à laquelle peuvent donner lieu certaines méthodes reposant sur la plausibilité et l'estimation.
 
+\subsubsection{Des critères pour l'évaluation : les indicateurs}
 
+\hl{Transition avec sous-partie suivante : à écrire après les corrections/reprises de 3.2 et 3.3}
 
-
-\subsection{Des critères pour l'évaluation : les indicateurs}
-
-\subsection{L'importance de la réplication}
 
 \clearpage
 \section{Évaluer le modèle SimFeodal}
