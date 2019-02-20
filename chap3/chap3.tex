@@ -374,16 +374,16 @@ Il s'agit en effet plutôt d'ordonner différentes versions ou paramétrages d'u
 \clearpage
 \section{Évaluer le modèle SimFeodal}
 
-Le modèle SimFeodal présenté dans le chapitre 2 correspond à une « version 0 » du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
+Le modèle SimFeodal présenté dans le chapitre 2 correspond à une \og version 0 \fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
 	L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
-	De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{§XX}.
+	De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{paragraphe XX}.
 	Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
 Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
 Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes relativement à l'ensemble des résultats obtenus en fin de simulation.
 La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de SimFeodal.
-Dans cette partie, on explicitera d'abord le sens que l'on prête à ces attentes, sous la forme « d'indices empiriques » et « d'indicateurs de sortie de simulation ».
+Dans cette partie, on explicitera d'abord le sens que l'on prête à ces attentes, sous la forme \og d'indices empiriques \fg{} et \og d'indicateurs de sortie de simulation \fg{}.
 Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
-En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa « version 0 », dans le chapitre précédent (
+En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit, dans sa \og version 0 \fg{}, dans le chapitre précédent (
 \hl{chapitre 2}
 %\cref{chap:chap2}
 ).
@@ -429,7 +429,7 @@ Par exemple, on connaît avec quasi-certitude le nombre d'églises paroissiales 
 D'autres valeurs empiriques sont en revanche issues d'estimations.
 Tel est le cas, par exemple, du taux de foyers paysans isolés en fin de période.
 Celui-ci ne peut être renseigné par des sources primaires et il a donc été nécessaire de l'estimer à partir de sources secondaires et en menant des extrapolations.
-Il est cependant possible de construire des indicateurs de sortie de simulation offrant une correspondance presque exacte de ces différents indices observés ou estimés (cf. \ref{para:correspondance}, \cnameref{para:correspondance}, p. \pageref{para:correspondance}).
+Il est cependant possible de construire des indicateurs de sortie de simulation offrant une correspondance presque exacte de ces différents indices observés ou estimés (cf. \ref{par:correspondance}, \cnameref{par:correspondance}, p. \pageref{par:correspondance}).
 Il est dès lors possible de mener une comparaison entre données observées/estimées et données simulées.
 Ces ordres de grandeur peuvent ainsi participer à l'évaluation du comportement du modèle simulé.
 
@@ -471,7 +471,7 @@ Comme pour les indices empiriques qui sont leurs équivalents dans le domaine em
 Ces derniers sont en effet nécessaire pour pouvoir confronter les sorties du modèle de simulation avec les formes stylisées identifiées dans le domaine empirique.
 Chaque indice empirique doit ainsi se voir correspondre, respectivement, un indicateur de sortie (\cref{fig:schema_indices}).
 
-\paragraph{Correspondance entre indicateurs de sortie de simulation et indices empiriques}\label{para:correspondance}
+\paragraph{Correspondance entre indicateurs de sortie de simulation et indices empiriques}\label{par:correspondance}
 
 La correspondance entre indicateurs et indices ne correspond pas toujours à une équivalence exacte.
 En effet, si certains indicateurs peuvent trouver un équivalent strict dans le domaine empirique-- le nombre de châteaux connus à chaque date a un sens strictement équivalent au nombre de châteaux simulés par le modèle --, d'autres correspondances sont moins directes.
@@ -503,7 +503,7 @@ La création d'indicateurs de sortie correspondant aux indices empirique permet 
 	L’articulation des 2 § suivants ne me parait pas évidente.
 	Ils me semblent relever de 2 discussions différentes alors qu’ici ils paraissent liés :\\
 	D’un côté il y a les indicateurs composites/synthétiques qui sont issus d’une combinaison des indicateurs simples : ok ;\\
-	De l’autre il s’agit d’identifier une fonction objectif. Dans les modèles KISS il s’agit souvent d’une variable simple, par exemple la quantité de population.. Alors que « synthétique » dans ton texte semble beaucoup ressembler à « composite »\\
+	De l’autre il s’agit d’identifier une fonction objectif. Dans les modèles KISS il s’agit souvent d’une variable simple, par exemple la quantité de population.. Alors que \og synthétique \fg{} dans ton texte semble beaucoup ressembler à \og composite \fg{}\\
 	Est-ce que ce parag KISS fait sens ici ? Cette discussion là devrait peut-être figurer ailleurs ?}
 }}
 (scalaire ou vectorielle) des indicateurs de sortie permet de trouver des manières plus simples d'évaluer le modèle que d'observer l'ensemble des indicateurs.
@@ -521,7 +521,7 @@ Il s'agit alors de définir une \og fonction objectif\fg{}, ou \og fonction de \
 
 Ces indicateurs composites et synthétiques résultent d'une quantification des autres indicateurs (excluant donc les formes stylisées qui sont plus libres d'interprétation), et apportent un grand confort dans le paramétrage d'un modèle de simulation.
 
-\paragraph{Quels types d'indicateurs pour SimFeodal ?}
+\paragraph{Quels types d'indicateurs pour SimFeodal ?}\label{par:indicateurs-simfeodal}
 
 SimFeodal n'est pas adapté à de tels indicateurs :
 une large partie des faits stylisés et ordres de grandeur mobilisés proviennent de connaissances expertes, et les thématiciens qui les ont consolidées rechignent à créer de tels indicateurs composites, en ce que cela demande de pondérer précisement l'importance de chacun des indicateurs par rapport aux autres.
@@ -542,7 +542,6 @@ On a donc fait le choix d'évaluer SimFeodal en conservant des indicateurs de so
 Ce choix implique toutefois un problème majeur dans l'analyse des sorties de simulation auquel la réduction de dimensionnalité est \Lena{une réponse}{On a l’impression que tu viens d’expliquer que ce n’est pas intéressant ! Revoir cette formulation donc $\ddot\smile$}[-30pt] :
 il est plus simple d'analyser quelques indicateurs plutôt qu'un grand nombre d'entre eux.
 
-\clearpage
 
 \subsection{Hiérarchiser et catégoriser les indicateurs}
 
@@ -600,6 +599,7 @@ Parmi les indicateurs secondaires, il n'est pas toujours possible, d'après les 
 L'évaluation de la polarisation par exemple (\cpageref{subsub:polarisation}), se définit principalement par rapport à un indicateur principal -- le taux de foyers paysans dispersés --, mais selon les résultats des autres indicateurs de sortie, on leur attribuera une importance variable.
 L'étude de la dispersion des agrégats et pôles peut ainsi se révéler plus importante que celle de l'évolution du nombre d'agrégats selon les paramètres que l'on souhaite ajuster, ou se montrer tout au moins plus différenciante selon l'état du paramétrage.
 
+\bigskip
 
 \begin{encadre}{Incrémentalité des indicateurs}{incrementalite-indicateurs}
 
@@ -732,7 +732,7 @@ dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'ana
 
 \clearpage
 
-\subsubsection{Nombre de pôles}\label{para:nb-poles}
+\subsubsection{Nombre de pôles}\label{par:nb-poles}
 
 Dans le modèle SimFeodal, les foyers paysans sont polarisés par des pôles d'attraction.
 Pour une polarisation efficace, il est donc nécessaire que les pôles soient suffisamment nombreux, c'est-à-dire, \textit{a minima}, autant que d'agrégats attendus ($200$).
@@ -902,7 +902,7 @@ On cherche de plus à ce que cette courbe présente une allure log-normale, et d
 Dans l'ensemble, on peut remarquer sur les deux indicateurs de la \cref{fig:compo-poles-v0} que les pôles, dans cette version 0, sont très hiérarchisés.
 La tendance \og évolutive va dans le bon sens :
 depuis une quasi-uniformité en 820, des pôles plus importants apparaissent et semblent se renforcer au cours du temps.
-On retrouve aussi, en observant les axes des ordonnées, la croissance du nombre de pôles identifiée plus haut (\ref{para:nb-poles}, \cnameref{para:nb-poles}, p. \pageref{para:nb-poles}) :
+On retrouve aussi, en observant les axes des ordonnées, la croissance du nombre de pôles identifiée plus haut (\ref{par:nb-poles}, \cnameref{par:nb-poles}, p. \pageref{par:nb-poles}) :
 de nouveaux pôles apparaissent tout au long de la simulation, et restent majoritairement peu importants, quand les pôles ayant commencé à se renforcer tôt continuent dans cette tendance.
 
 En fin de période, les pôles sont très hiérarchisés, aussi bien en matière de composition que d'attractivité.
