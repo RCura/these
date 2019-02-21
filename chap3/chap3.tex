@@ -144,17 +144,22 @@ Quand une première version du modèle a été implémentée, il est recommandé
 	Un point plus précis y est consacré dans le \hl{chapitre 6}
 }, les valeurs des différents paramètres du modèle, on peut observer l'influence de chaque paramètre sur le déroulement du modèle.
 Cette mesure, relative à la validation interne, intervient tôt, et doit être répétée lors de chaque modification majeure dans les mécanismes du modèle.
-L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté : si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre et/ou le mécanisme qui le mobilise.
+L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté :
+	si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre et/ou le mécanisme qui le mobilise.
 Réduire le nombre de paramètres et/ou de mécanismes d'un modèle peut sensiblement l'améliorer, selon le principe de parcimonie qui voudrait qu'un modèle plus simple soit meilleur\footnote{Les avis divergent nettement sur ce point, voir par exemple la définition de la \textit{simplicité} dans \cite[120]{amblard_evaluation_2006}}.
-Même sans aller jusqu'à ce type de découvertes sur l'inutilité de certains paramètres, l'analyse de sensibilité permet de gagner en connaissance sur le fonctionnement d'un modèle complexe et/ou non-déterministe, ne serait-ce que parce qu'elle aide souvent le modélisateur à trouver une \og polarité \fg{} à l'effet des paramètres : si tel indicateur de sortie (voir \cref{subsec:indices-indicateurs}) croît quand on diminue les valeurs d'un paramètre et décroît quand on les augmente, alors on peut prévoir l'effet d'une modification de ce paramètre, ce qui peut éclairer le fonctionnement thématique du modèle.
+Même sans aller jusqu'à ce type de découvertes sur l'inutilité de certains paramètres, l'analyse de sensibilité permet de gagner en connaissance sur le fonctionnement d'un modèle complexe et/ou non-déterministe, ne serait-ce que parce qu'elle aide souvent le modélisateur à trouver une \og polarité \fg{} à l'effet des paramètres :
+	si tel indicateur de sortie (voir \cref{subsec:indices-indicateurs}) croît quand on diminue les valeurs d'un paramètre et décroît quand on les augmente, alors on peut prévoir l'effet d'une modification de ce paramètre, ce qui peut éclairer le fonctionnement thématique du modèle.
 
 \paragraph{Calibration}
 Une fois le modèle mieux connu et surtout réduit à ses composantes nécessaires et suffisantes, on cherche à en améliorer la qualité de représentation, c'est-à-dire à faire en sorte, en jouant sur les valeurs de paramètres, que le modèle reproduise plus précisément le système qu'il décrit (validation externe) et qui correspond à l'observation empirique ou aux connaissances thématiques.
 Cette démarche, nommée calibration, soulève l'enjeu d'isoler, pour chaque paramètre, une étendue de valeurs acceptables et optimales.
-La complexité -- au sens figuré -- de cette étape réside dans la complexité -- au sens propre -- du modèle qu'il convient de calibrer : dans un modèle complexe, où chaque mécanisme peut influencer chacun des autres mécanismes de manière non linéaire, la modification des valeurs d'un paramètre doit certes modifier l'état du modèle en lui-même, mais a le plus souvent tendance à modifier par là même l'optimalité des valeurs des autres paramètres.
-Le problème ressemble à celui des vases communicants : pour que le modèle soit calibré, il faut que chaque valeur de paramètre soit optimale, mais la modification de chacun des paramètres peut dérégler l'effet des autres paramètres, et par la même les valeurs qu'ils doivent se voir attribuer.
+La complexité -- au sens figuré -- de cette étape réside dans la complexité -- au sens propre -- du modèle qu'il convient de calibrer :
+	dans un modèle complexe, où chaque mécanisme peut influencer chacun des autres mécanismes de manière non linéaire, la modification des valeurs d'un paramètre doit certes modifier l'état du modèle en lui-même, mais a le plus souvent tendance à modifier par là même l'optimalité des valeurs des autres paramètres.
+Le problème ressemble à celui des vases communicants :
+	pour que le modèle soit calibré, il faut que chaque valeur de paramètre soit optimale, mais la modification de chacun des paramètres peut dérégler l'effet des autres paramètres, et par la même les valeurs qu'ils doivent se voir attribuer.
 On ne peut donc procéder paramètre par paramètre, en les réglant un par un, au risque d'entrer dans une boucle infinie de calibration, mais au contraire, il est nécessaire de considérer l'ensemble -- ou un sous-ensemble -- des paramètres et de tester des valeurs qui iraient vers une optimisation du comportement du modèle.
-La calibration en elle-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle : elle vise ainsi plutôt à \og améliorer\fg{} le modèle plus qu'à juger de sa validité.
+La calibration en elle-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle :
+	elle vise ainsi plutôt à \og améliorer\fg{} le modèle plus qu'à juger de sa validité.
 Il s'agit ainsi plutôt d'une méthode et d'un problème d'optimisation que d'évaluation.
 Les différents auteurs mettent toutefois en avant son intérêt dans l'évaluation de modèle en ce qu'elle permet de garantir une meilleure validation externe du modèle puisqu'elle aboutit à l'isolation d'étendues optimales de valeurs de paramètres : en menant de nouveaux tests d'évaluation (analyse de sensibilité, \textit{face validation} etc.) \autocite[43]{klugl_validation_2008} sur les valeurs optimales identifiées, on peut évaluer si elles sont porteuses de sens d'un point de vue empirique ou au moins vis-à-vis de la connaissance experte du système modélisé.
 
@@ -162,7 +167,8 @@ Les différents auteurs mettent toutefois en avant son intérêt dans l'évaluat
 La validation statistique (\og \textit{output validation}\fg{} dans la \cref{fig:schema_ngo}) est sans doute la méthode d'évaluation la plus évidente pour quiconque a été amené à concevoir un modèle. Il s'agit de confronter les données produites par le modèle -- les \textit{outputs} --
 aux données empiriques -- ou observées -- qu'ils cherchent à reproduire.
 Autrement dit, en termes statistiques, à s'assurer de la qualité de l'ajustement -- la \textit{goodness of fit} -- des données simulées.
-On en mesure l'écart avec les données observées, quand de telles données sont disponibles, en cherchant à minimiser cet écart : plus l'écart est faible, alors plus le modèle parvient à reproduire les observations qui ont servi de support à sa conception et construction.
+On en mesure l'écart avec les données observées, quand de telles données sont disponibles, en cherchant à minimiser cet écart :
+	plus l'écart est faible, alors plus le modèle parvient à reproduire les observations qui ont servi de support à sa conception et construction.
 La validation statistique est donc une méthode de validation externe.
 Les différents auteurs du champ de l'évaluation recommandent de ne mener cette étape qu'à la fin du processus d'évaluation, quand le réflexe en pratique est souvent de s'appuyer sur les données théoriques dès le début de la conception du modèle.
 A défaut de suivre cette recommandation, le modélisateur risque d'emmener le modèle vers du \og sur-ajustement \fg{} (\textit{overfitting}), et d'inscrire alors celui-ci dans une forme de tautologie, le modèle étant alors construit précisément pour produire ce qu'il devrait plutôt faire émerger.
@@ -203,17 +209,19 @@ Robert \textsc{Sargent} par exemple différencie les méthodes d'évaluation sel
 }.
 Pour autant, ces auteurs soulignent aussi que selon les choix de modélisation et les caractéristiques du système modélisé, toutes ces étapes ne sont pas nécessairement accessibles ou possibles.
 
-Nous pensons qu'un autre facteur peut affecter plus fortement l'éventail des méthodes possibles d'évaluation : la parcimonie du modèle réalisé.
+Nous pensons qu'un autre facteur peut affecter plus fortement l'éventail des méthodes possibles d'évaluation :
+	la parcimonie du modèle réalisé.
 Ainsi, avec un modèle très parcimonieux, qui s'inscrirait dans un certain purisme des méthodes \og KISS\fg{}, doté d'un nombre minime d'\textit{outputs}, il nous semble que toutes les méthodes, y compris les plus formelles, sont assez simplement -- si ce n'est pour la résolution analytique, on l'a vu plus haut -- applicables.
 A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}, fourmillant d'\textit{inputs}, de paramètres et d'\textit{outputs} sera bien plus complexe à évaluer de manière quantitative, ou \og objective\fg{} selon les mots des pionniers de l'évaluation.
 
 Pour illustrer l'écart entre ces approches en matière de possibilités de quantification de l'évaluation, prenons l'exemple d'une analyse de sensibilité :
-cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
+	cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
 Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra dans le \hl{chapitre 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
 Dans le cas d'un modèle doté d'une dizaine de paramètres, et avec le même type d'analyse basique, le nombre de simulations nécessaire dépasserait déjà le milliard\ldots
 
 Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou une calibration fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
-Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux, de tout de même mener les premières étapes d'un cycle d'évaluation \autocite[342]{petty2010verification} : \og While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}
+Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux, de tout de même mener les premières étapes d'un cycle d'évaluation \autocite[342]{petty2010verification} :
+	\og While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}
 
 Nous ne partageons pas la réticence associée à cette recommandation, et au contraire, considérons que dans ce type de cas, des méthodes de \og \textit{face validation}\fg{} peuvent être, à condition d'être rigoureuses, extrêmement satisfaisantes et sans doute suffisante pour évaluer un modèle de simulation, ce que nous allons essayer de montrer par la suite.
 
@@ -283,7 +291,8 @@ Il a fallu attendre la relative démocratisation des plate-formes de modélisati
 
 
 La description des méthodes possibles menant à cette évaluation n'est pas en reste non plus dans cet article, puisque l'auteur identifie trois familles de cette \textit{face validation}, chacune pouvant être menée par des experts différents \footnote{L'énumération qui suit est une traduction libre et une reformulation partielle de \cite[41-42]{klugl_validation_2008}} :
-\paragraph*{Composantes de la \textit{face validation}}\label{par:composantes-face-validation}
+
+\paragraph{Composantes de la \textit{face validation}}\label{par:composantes-face-validation}
 \begin{itemize}
 	\item \textbf{Évaluation du déroulement} Évaluation du déroulement d'une simulation dans son ensemble.
 	Il s'agit ici de juger de la plausibilité des dynamiques (à l'échelle du système dans son ensemble, ou de composantes de celui-ci) reproduites dans la simulation, via une observation en direct de la simulation.
@@ -440,7 +449,7 @@ Il s'agit en effet plutôt d'ordonner différentes versions ou paramétrages d'u
 
 
 \clearpage
-\section{Évaluer le modèle SimFeodal}
+\section[Des indicateurs pour SimFeodal]{Des indicateurs pour évaluer le modèle SimFeodal}
 
 Le modèle SimFeodal présenté dans le chapitre 2 correspond à une \og version 0 \fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
 	L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
@@ -456,7 +465,7 @@ En mobilisant ces méthodes, on pourra ensuite décrire et qualifier le comporte
 %\cref{chap:chap2}
 ).
 
-\subsection{Indices et indicateurs}
+\subsection{Indices et indicateurs}\label{subsec:indices-indicateurs}
 
 On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique dont il cherche à rendre compte.
 Ces grands traits peuvent s'entendre de multiples manières, et se formaliser avec encore plus d'approches.
