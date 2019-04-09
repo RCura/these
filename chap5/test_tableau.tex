@@ -2,11 +2,16 @@
 
 \documentclass[12pt, a4paper, oneside, notitlepage]{report}
 \usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[babel=true]{csquotes}
 
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \newcolumntype{N}{@{}m{0pt}@{}}
 \usepackage{makecell}
+\usepackage{array}%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
 
 \usepackage{tikz}
@@ -19,17 +24,25 @@
 \begin{table}[]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{N|M{2.5cm}|M{2.5cm}|M{2cm}|M{3.5cm}|M{4.5cm}|N|}
+{\renewcommand{\arraystretch}{1.8}%
+\begin{tabular}{N|P{3cm}|M{2.5cm}|M{2cm}|M{3cm}|M{3.5cm}|N|}
 	\hline
-&	& \multicolumn{2}{|c|}{Données} & \multicolumn{2}{|c|}{Indicateurs} \\ \hline
-& Intitulé & Quantité & Poids & Type & Quantité & \\[25pt] \hline
-\tikzmark{a}& Une simulation & \makecell{$\approx 10^5$ lignes}& $\approx 10$ Mo & \begin{tabular}[c]{@{}l@{}}Visualisations\\ en direct\end{tabular} & \makecell{$\approx 10$ indicateurs}  & \\[50pt] \hline
-\tikzmark{b}& Une expérience & \makecell{$\approx 10^6$ lignes} & $\approx 200$ Mo & Indicateurs de sortie & \makecell{$\approx 30$ indicateurs\\(variabilité des\\réplications)} & \\[50pt] \hline
-\tikzmark{c} & \makecell{Huit étapes\\de\\paramétrage} & \makecell{$\approx ~10^7$ lignes} & $\approx 5$ Go & Indicateurs de sortie & \makecell{$\approx 700$ indicateurs\\ (à comparer entre\\les expériences)} & \\[50pt] \hline
+&	& \multicolumn{2}{|c|}{Données} & \multicolumn{2}{|c|}{Stockage et Analyse} \\ \hline
+& Intitulé & Quantité & Poids & Infrastructure de stockage & Outil d'analyse & \\ \hline
+\tikzmark{a} & Un agent & \makecell{$1$ ligne} & $\approx 10$ octets & Fichier texte & Plateforme SMA & \\ \hline
+\tikzmark{b} & Un pas de temps & \makecell{1 000\\lignes} & $\approx 10$ ko & Fichier texte & Plateforme SMA & \\ \hline
+\tikzmark{c} & Une simulation & \makecell{100 000\\lignes} & $\approx 1$ Mo & Fichier texte & Plateforme SMA & \\ \hline
+\tikzmark{d} & Une expérience & $1$ million de lignes & $\approx 100$ Mo & Tableur &  Outil statistique interactif & \\ \hline
+\tikzmark{e} & Un \og multi-model\fg{} & $100$ millions de lignes & $\approx 10$ Go & SGBD &  Outil statistique en lignes de commandes & \\ \hline
+\tikzmark{f} & \makecell{Une\\exploration\\complète\\de modèle} & $100$ milliards de lignes & $\approx 10$ To & SGBD distribué & Calcul Haute Performance (HPC) & \\ \hline
+
 \end{tabular}%
-\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (a.west) to node[pos=.5, left, align=center, xshift=0pt]{$\times 20$\\$\textrm{réplications}$} (b.west) ;
-\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (b.west) to node[pos=.5, left, align=center, xshift=0pt]{$\times \approx 24$\\$\textrm{expériences}$} (c.west) ;
-}
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (a.west) to node[pos=.55, left, align=center, xshift=-22pt]{$\times 1000$\\$\textrm{agents}$} (b.west) ;
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (b.west) to node[pos=.55, left, align=center, xshift=-7pt]{$\times 100$\\$\textrm{pas de temps}$} (c.west) ;
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (c.west) to node[pos=.55, left, align=center, xshift=-7pt]{$\times 100$\\$\textrm{réplications}$} (d.west) ;
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (d.west) to node[pos=.55, left, align=center, xshift=0pt]{$\times 100$\\$\textrm{combinaisons}$} (e.west) ;
+\tikz[overlay,remember picture] \draw[->, >=latex', bend right=90, thick, dashed] (e.west) to node[pos=.55, left, align=center, xshift=0pt]{$\times 1000$\\$\textrm{explorations}$} (f.west) ;
+}}
 \caption{Synthèse de l'augmentation des données et indicateurs selon la hiérarchie des simulations.}
 \label{tbl:hierarchie-simulations}
 \end{table}
