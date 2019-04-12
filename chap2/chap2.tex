@@ -127,23 +127,124 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 }
 
 
-\section[Entités et échelles -- \textit{Entities, state variables, and scales}]{Entités et échelles\protect\newline \large{\textit{Entities, state variables, and scales}}}
+
+
+
+\section[Entités et échelles -- \textit{Entities, state variables, and scales}]{Entités et échelles\protect\newline \large{\textit{Entities, state variables, and scales}} \sectionmark{Entités et échelles}}
 
 \subsection{Entités}
 
-Descriptif + tableau
+Dans le modèle SimFeodal, de nombreux types hétérogènes d'agents interagissent. Ces agents sont des implémentations informatiques des acteurs et entités identifiées dans le modèle conceptuel qui a donné lieu à SimFeodal (voir \textcite[Tableau 1, \ppno~309--310]{cura_transition_2017}).
+Au cœur du modèle, on retrouve les \textbf{Foyers Paysans}. Ces agents mobiles répondent à des mécanismes d'agrégation et de migration en fonction de leurs niveaux de \textit{satisfactions}, sur les plans matériel, spirituel et en terme de protection face aux violences.
+Les satisfactions sont mesurées respectivement en fonction des droits prélevés par des \textbf{Seigneurs} au sein de \textbf{Zones de Prélèvements} (satisfaction matérielle) ; en fonction de leur distance aux \textbf{églises paroissiales} les plus proches (satisfaction religieuse) ; et en fonction de leur distance aux \textbf{châteaux} -- construits par les \textbf{Seigneurs} -- les plus proches (satisfaction protection).
+Un niveau de satisfaction trop faible pousse les Foyers Paysans à migrer, soit dans un rayon local soit de manière globale.
+Lors de ces migrations, les Foyers Paysans sont attirés par des \textbf{Pôles}, ensembles composites d'\textbf{Attracteurs} (\textbf{châteaux}, \textbf{églises paroissiales} et \textbf{agrégats} de population) qui jouent un rôle de fixation de la population.
+Plus l'attractivité de ces pôles est importante, plus grandes sont leur chance d'attirer suffisamment de Foyers Paysans pour que ces derniers forment des \textbf{Agrégats} de population, qui leur apporteront alors un surcroît de satisfaction et permettront de fixer les Foyers Paysans présents et d'en attirer de nouveaux pour faire émerger une hiérarchie dans le système de peuplement.
+Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques de ces différents types d'agents.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+
+\begin{table}[H]
+	\centering
+	\footnotesize
+	{\renewcommand{\arraystretch}{1.5}%
+	\begin{tabular}{|p{1.75cm}|M{1.75cm}|M{2cm}|M{2cm}|M{4cm}|}
+		\hline
+		\textbf{Agent} & \textbf{Sous-type} & \makecell{\textbf{Quantité$^\upalpha$}} & \textbf{Emprise spatiale$^\upbeta$} & \textbf{Comportements actifs$^\upgamma$} \\ \hline
+		\multicolumn{2}{|c|}{Foyers Paysans} & \makecell{$\approx$ 4 000 à \\75 000} & Ponctuelle & Migrations \\ \hline
+		\multirow{2}{*}{Seigneurs} & \makecell{Grands\\Seigneurs} & $\approx$ 2 & --- & \multirow{2}{*}{\makecell{Création de zones de\\prélèvement,\\collecte de droits,\\ construction de châteaux}} \\ \cline{2-4}
+		& \makecell{Petits\\Seigneurs} & $\approx$ 200 & Ponctuelle &  \\ \hline
+		\multirow{3}{*}{\makecell{Zones de\\ Prélèvement}} & Foncier & $\approx$ 200 & \multirow{3}{*}{Zonale} & \multirow{3}{*}{---} \\ \cline{2-3}
+		& Haute-Justice & $\approx$ 100 &  &  \\ \cline{2-3}
+		& Autres droits & $\approx$ 400 &  &  \\ \hline
+		\multirow{2}{*}{Églises} & Église & $\approx$ 300 & \multirow{2}{*}{Ponctuelle} & \makecell{---} \\ \cline{2-3} \cline{5-5} 
+		& Eglise paroissiale & $\approx$ 200 &  & \makecell{Création de paroisse\\ \textit{(type d'attracteur)}} \\ \hline
+		\multicolumn{2}{|c|}{Paroisses} & $\approx$ 200 & Zonale & --- \\ \hline
+		\multirow{2}{*}{Châteaux} & Petits Châteaux & $\approx$ 40 & \multirow{2}{*}{Ponctuelle} & \multirow{2}{*}{\makecell{---\\\textit{(type d'attracteur)}}} \\ \cline{2-3} 
+		& Gros Châteaux & $\approx$ 10 &  & \\ \hline
+		Agrégats &  & $\approx$ 200 & Zonale & \makecell{Création de communautés\\ \textit{(type d'attracteur)}} \\ \hline
+		Pôles &  & $\approx$ 300 & Zonale & \makecell{Attire les Foyers Paysans \\  \textit{(composés d'attracteurs)}} \\ \hline
+		\end{tabular}}
+	\caption{Les différents types d'agents de SimFeodal.\\
+	$\upalpha$ : Il s'agit ici d'ordres de grandeur (les nombres pouvant varier fortement en fonction des simulations) du nombre d'agents de chaque type en fin de simulation.\\
+	$\upbeta$ : Les agents sans emprise spatiale (---) ne sont pas localisés dans l'espace du modèle.\\
+	$\upgamma$ : Les agents sans comportement actifs (---) n'agissent pas en tant que tel, mais peuvent servir de support pour les actions d'autres agents.}
+	\label{tab:agents-simfeodal}
+		\end{table}
 
 \subsection{Échelles spatiales et temporelles}
 
-\subsubsection{Résolution et échelle spatiale}
+\subsubsection{Résolution et échelle spatiale \label{subsec:reso-spatiale}}
 
-Descriptif : espace continu, choix de la taille du monde, paramétrable
-+ schema
+SimFeodal prend appui sur un monde théorique \textbf{isotrope}, \textbf{continu}, symbolisé sous la forme d'un \textbf{carré de 80 km de côté}, strictement \textbf{endogène} au modèle.
+
+\paragraph[Isotrope]{} Le monde est \textbf{isotrope} car il présente aucune hétérogénéité de surface ou de topologie : la distance entre deux points est mesurée de manière euclidienne.
+Cet espace support se veut ainsi le plus neutre possible, proche d'un \og modèle nul\fg{}, susceptible de cette manière de représenter l'ensemble de la diversité des espaces de l'Europe du Nord-Ouest par l'entremise de ce dessin théorique.
+
+\paragraph[Continu]{}Contrairement à un usage classique en simulation à base d'agents, nous avons aussi fait le choix de placer SimFeodal dans \textbf{un espace continu}, c'est-à-dire non discrétisé. La discrétisation de l'espace, sous forme de \og patchs\fg{} ou de \og cellules\fg{}, s'inscrit souvent dans l'héritage des modèles à base d'automates cellulaires. Les \textit{patchs} prennent d'ordinaire la forme d'agents : cela facilite l'attribution de caractéristiques, comme un certain niveau de ressource, une altitude, une population agrégée etc.
+Dans le cas de SimFeodal, l'espace n'est qu'un support : il ne possède aucune caractéristique propre, et de par sa nature isotropique, n'est pas amené à différencier d'éventuelles cellules les unes des autres.
+Une large part des mécanismes de SimFeodal s'appuie sur la prise en compte de distances entre agents, à partir de seuils dont les ordres de grandeurs peuvent être très variables (de la centaine de mètre à plus de 10 km).
+Nous avons donc préféré conserver une marge de manœuvre élargie en ne procédant pas à une discrétisation de l'espace.
+
+\paragraph[Dimension]{}L'espace est formalisé sous la forme d'\textbf{un carré de 80 km de côté}. Le choix du carré s'inscrit dans la volonté d'isotropie, et la dimension est proche de l'ordre de grandeur des diocèses médiévaux.
+Dans des versions précédentes de SimFeodal, le carré avait un côté de 100 km, que nous avons choisi de réduire afin d'approcher de la superficie de la Touraine médiévale sur laquelle nous prenons appui pour le calibrage du modèle. La superficie du département d'Indre-et-Loire actuel, ou encore du diocèse de Tours, sont ainsi d'environ 6 000 km². En choisissant un espace support de 80 $\times$ 80 km de superficie (6 400 km²), on facilite ainsi l'estimation des densités et mesures d'écartements dans le modèle au regard des connaissances empiriques.
+Notons enfin que si l'espace support est bien un carré de 80 km de côté, on en retranche en réalité une partie (1 km de chaque côté, voir \cref{fig:espace-simfeodal}) pour définir un espace utile, ou \og espace réduit\fg{}. On s'assure ainsi qu'aucune localisation ne soit située trop proche des limites de l'espace, ce qui pourrait avoir pour effet de produire des \og effets de bords\fg{}, aussi bien informatiques qu'en termes d'anomalies de voisinages.
+L'espace réel, utilisable dans le modèle, est donc de 79 $\times$ 79 km, soit 6 084 km².
+
+\begin{figure}[H]
+	\centering
+\begin{tikzpicture}[scale=.5]
+\draw[] (0,0) -- (0,10) -- (10,10) -- (10,0) -- cycle;
+\draw[|-|, very thin, dashed] (0, 10.5) -- node[above] {80 km (Espace du modèle)} (10, 10.5);
+\draw[|-|, very thin, dashed] (-0.5, 0) -- node[above, rotate=90] {80 km} (-0.5, 10);
+
+\draw[color=red!50, fill = red!10] (0.5, 0.5) -- (0.5, 9.5) -- (9.5, 9.5) -- (9.5, 0.5) -- cycle;
+\draw[|-|, very thin, dashed, red!50] (10.50, 9.50) -- node[above, red!50, rotate=-90] {79 km} (10.5, 0.5);
+\draw[|-|, very thin, dashed, red!50] (0.5, -0.5) -- node[below, red!50] {79km (Espace réduit)} (9.5, -0.5);
+\end{tikzpicture}
+\caption{L'espace support de SimFeodal, un monde théorique.\\
+N.B : Dans le schéma, pour une question de lisibilité, les dimensions de l'espace réduit ne sont pas proportionnelles à celles de l'espace d'ensemble.}
+\label{fig:espace-simfeodal}
+\end{figure}
+
+\paragraph[Endogène]{} Notons enfin que l'espace est strictement \textbf{endogène} au modèle. On entend par là que le monde n'est pas résultant du chargement d'un fichier géographique ou d'un paramétrage précis : seul un paramètre, qui régit la taille des côtés, joue sur la géométrie de l'espace.
+Il nous semble important de le préciser, en particulier parce que c'est, à notre connaissance, assez inhabituel dans la simulation de données géographiques, mêmes théoriques : les agents sont placés de manière strictement aléatoire (via un aléa contrôlé tout de même) dans l'espace du modèle, et dès lors, aucune localisation ou surface ne sont identiques ou comparables d'une simulation à l'autre.
+
 
 \subsubsection{Granularité temporelle}
 
-Descriptif : choix des dates de début et de fin (+ paramètres ?) + logique de on prolonge pour observer. + Logique de temps discret : repère plus que correspondance exacte
-+ frise
+SimFeodal modélise des processus qui se déroulent sur le temps long, et à ce titre, la gestion de la temporalité y est importante.
+Le modèle inscrit son exécution dans une étendue de \textbf{400 ans}, \textbf{discrétisée} sous la forme de 20 pas de temps de \textbf{20 ans} chacun.
+
+\paragraph[Durée]{} La période d'étude, thématique, s'étend entre 800 après J.-C. et 1100, qui correspondent à des repères temporels entre lesquels on estime que le plus gros de la transition étudiée s'est déroulée.
+Pour modéliser ces évolutions, nous avons choisi de commencer à la même date, mais de prolonger l'exécution du modèle d'un siècle, portant donc l'intervalle modélisé à \textbf{400 ans}, \textbf{de 800 à 1200}\footnote{
+	Dans les versions précédentes de SimFeodal, \textcite{cura_transition_2017} notamment, cette date était fixée à 1160. Nous avons choisi de prolonger de 40 ans parce que cela nous permet de comparer l'état final du modèle au début du XIII$^e$ siècle, et qu'on obtient ainsi un nombre de pas de temps plus \og rond\fg{} (20) qu'auparavant (18), ce qui permet par exemple de représenter l'évolution d'une simulation de manière plus régulière.
+}. Prolonger cette date d'observation permet d'analyser le comportement du modèle après la période d'étude, et par exemple de voir si les processus à l'œuvre subissent bien un ralentissement, marquant par exemple la fin de la féodalité, plutôt qu'un accroissement constant.
+
+\paragraph[Discret]{} Contrairement à la gestion de l'espace, nous avons choisi de modéliser le temps sous forme \textbf{discrète}.
+On peut justifier ce choix avec deux raisons principales.
+En premier lieu, la transition s'inscrit dans une forte incertitude temporelle. Les experts thématiques peuvent certes s'appuyer sur des dates précises, par exemple pour des années de réformes, mais les processus à l'œuvre s'inscrivent dans une durée floue, dont la résolution est difficilement réductible à moins d'un demi-siècle, et à peine meilleure pour des éléments matériels.
+Avoir une vision continue du temps s'inscrirait ainsi dans une certaine sur-détermination du modèle en rapport aux connaissances thématiques sur lesquelles il s'appuie.
+En second lieu, les processus sont modélisés à la résolution de \og foyers paysans\fg{}, c'est-à-dire à l'échelle de foyers plus que d'individus. Les migrations des foyers paysans correspondent empiriquement plutôt à des déplacements qui surviennent à l'échelle temporelle de la génération, c'est-à-dire que ces migrations se réalisent en fait quand les descendants d'un foyer s'établissent dans une nouvelle localisation.
+La prise en compte d'un temps continu impliquerait donc la mise en place de bien plus de mécanismes probabilistiques, avec des aberrations potentielles plus importantes en terme de trajectoires des agents.
+
+\paragraph[Pas de temps de 20 ans]{} Cette deuxième justification participe au choix de la granularité du modèle. \textbf{Les pas de temps ont une durée de 20 ans}, ce qui correspond à peu près à la durée d'une génération de l'époque.
+Cela correspond aussi à la précision globale que l'on peut avoir sur l'apparition d'éléments matériels tels que les églises, paroisses et châteaux\footnote{
+Certains de ces éléments sont connus avec une précision bien supérieure, par exemple quand des textes historiques mentionnent leur création. Ce n'est toutefois pas généralisé, et la granularité moyenne gravite donc plutôt autour de 20 à 40 ans.
+}.
+Dans l'ensemble, au vu des connaissances historiques, ces pas de temps doivent être interprétés comme des repères temporels plus que comme des dates précises. Que les premiers châteaux apparaissent en 980 ou en 1000 n'a pas d'importance dans le modèle, dans que cela se déroule avant la seconde moitié du XI$^e$ siècle par exemple.
+
+
+La \cref{fig:frise-chrono} illustre les processus et événements qui surviennent pendant l'ensemble de cette période.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/frise_chrono_tmd.pdf}
+	\caption{Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal. \hl{Figure issue de Peupler la Terre, à corriger/adapter.}}
+	\label{fig:frise-chrono}
+\end{figure}
+
 
 \section[Fonctionnement général -- \textit{Process overview and schedulling}]{Fonctionnement général\protect\newline \large{\textit{Process overview and schedulling}}}
 
