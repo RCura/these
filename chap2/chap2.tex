@@ -59,8 +59,39 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 \hl{Une description plus courte, plus proche des descriptions ODD classiques, est disponible en ligne.}
 }
 
+\clearpage
 
-\section*{Introduction}
+\begin{table}[H]
+	\centering
+	\caption{Les éléments du protocole ODD, d'après \cite[Table 15.1, pp. 353--354]{grimm_documenting_2017}}
+	\label{tab:proto-ODD}
+	\scriptsize
+	{\renewcommand{\arraystretch}{1.5}%
+	\begin{tabular}{|p{1.1cm}|p{1.15cm}|p{1.25cm}|p{9.5cm}|}
+		\hline
+		\textbf{Overview} & \multicolumn{2}{l|}{1. Purpose} & What is the purpose of the model ? \\ \hline
+		& \multicolumn{2}{l|}{\pbox[c][24pt][b]{3cm}{2. Entities, state variables, and scales}} & What kind of entities are in the model? Do they represent managers, voters, landowners, firms or something else? By what state variables (attributes or characteristics), are these entities characterized? What are the temporal and spatial resolutions and extents of the model? \\ \cline{2-4} 
+		& \multicolumn{2}{l|}{\pbox[c][24pt][b]{3cm}{{3. Process overview and scheduling}}} & What entity does what, in what order?  When are state variables updated? How is time modeled: as discrete steps or as a continuum over which both continuous processes and discrete events can occur? \\ \cline{2-4} 
+		\textbf{Design concepts} & 4. Design concepts & Basic principles & Which general concepts, theories or hypotheses are included in the model’s design? How were they taken into account? \\ \cline{3-4} 
+		&  & Emergence & What key results are emerging from the adaptive traits, or behaviors of individuals? What results vary in complex/unpredictable ways when particular characteristics change? \\ \cline{3-4} 
+		&  & Adaptation & What adaptive traits do the individuals have? What rules do they have for making decisions or changing behaviour in response to changes in themselves or their environment? Do agents seek to increase some measure of success or do they reproduce observed behaviours that they perceive as successful? \\ \cline{3-4} 
+		&  & Objectives & If agents (or groups) are explicitly programmed to meet some objective, what exactly is that and how is it measured? When individuals make decisions by ranking alternatives, what criteria do they use? \\ \cline{3-4} 
+		&  & Learning & May individuals change their adaptive traits over time as a consequence of their experience? If so, how? \\ \cline{3-4} 
+		&  & Prediction & Prediction can be part of decision-making; if an agent’s learning procedures are based on estimating future consequences of decisions, how they do this? What internal models do agents use to estimate future conditions or consequences? What ‘tacit’ predictions are implied in these internal model’s assumptions? \\ \cline{3-4} 
+		&  & Sensing & What aspects are individuals assumed to sense and consider? What aspects of which other entities can an individual perceive (e.g. displayed ‘signals’)? Is sensing local, through networks or global? Are the mechanisms by which agents obtain information modeled explicitly in a process or is it simply ‘known’? \\ \cline{3-4} 
+		&  & Interaction & What kinds of interactions among agents are assumed? Are there direct interactions where individuals encounter and affect others, or are interactions indirect, e.g. via competition for a mediating resource? If the interactions involve communication, how are such communications represented? \\ \cline{3-4} 
+		&  & Stochasticity & What processes are modeled by assuming they are random or partly random? Is stochasticity used, for example, to reproduce variability in processes for which it is unimportant to model the actual causes of the variability, or to cause model events or behaviours to occur with a specified frequency? \\ \cline{3-4} 
+		&  & Collectives & Do the individuals form or belong to aggregations that affect, and are affected by, the individuals? Such collectives can be an important intermediate level of organization. How are collectives represented – as emergent properties of the individuals or as a separate kind of entity with its own state variables and traits? \\ \cline{3-4} 
+		&  & Observation & What data are collected from the ABM for testing, understanding, and analyzing it, and how are they collected? \\ \hline
+		\textbf{Details} & \multicolumn{2}{l|}{5. Initialisation} & What is the initial state of the model world, i.e., at time t = 0? How many entities of what type are there initially, and what are the values of their state variables (or how were they set)? Is initialization always the same, or is it varied? Are the initial values chosen arbitrarily or based on available data? \\ \hline
+		& \multicolumn{2}{l|}{6. Input data} & Does the model use input from external sources such as data files or other models to represent processes that change over time ? \\ \cline{2-4} 
+		& \multicolumn{2}{l|}{7. Submodels} & What are the submodels that represent the processes listed in ‘process overview and scheduling’ ? What are the model parameters, their dimensions, and reference values ? How were submodels designed or chosen, tested, and parameterised ? \\ \hline
+	\end{tabular}}
+\end{table}
+
+\clearpage
+
+\section*{Introduction - Contexte historiographique}
 \label{sec:chap2-intro}
 \addcontentsline{toc}{section}{Introduction}
 
@@ -79,9 +110,9 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 	
 	C'est donc autour de l'articulation de ces trois éléments fondamentaux de la société féodale (châteaux, églises paroissiales, villages) que portent aujourd'hui analyses et théories.
 	Fixation, polarisation et hiérarchisation des centres de peuplement sont désormais les grands processus sociaux examinés à la loupe pour aborder la société médiévale.
-	Les historiens médiévistes analysent l'« encellulement » de la société \autocite{fossier_enfance_1982}, pistant d'une part les rôles polarisateurs du château (phénomène d'\textit{incastellamento} \autocite{toubert_les_1973}) et de l'église paroissiale accompagnée de son cimetière, considérés comme points de ralliement des populations paysannes, et d'autre part les manières dont les populations organisent collectivement les espaces de production (terroir villageois) pour assurer une répartition équilibrée des ressources.
+	Les historiens médiévistes analysent l'« encellulement » de la société \autocite{fossier_enfance_1982}, pistant d'une part les rôles polarisateurs du château (phénomène d'\textit{incastellamento},  \cite{toubert_les_1973}) et de l'église paroissiale accompagnée de son cimetière, considérés comme points de ralliement des populations paysannes, et d'autre part les manières dont les populations organisent collectivement les espaces de production (terroir villageois) pour assurer une répartition équilibrée des ressources.
 	
-	Dans ce contexte, la période 800-1100 est habituellement considérée comme une période de transition, durant laquelle la société féodale se structure, certains évoquant la « révolution de l'an Mil »\autocite{fossier_enfance_1982}, tandis que d'autres tempèrent en parlant de « révélation de l'an Mil » \autocite{barthelemy_societe_1993}(« révélation » par l'augmentation en quantité et en qualité de la documentation textuelle).
+	Dans ce contexte, la période 800-1100 est habituellement considérée comme une période de transition, durant laquelle la société féodale se structure, certains évoquant la « révolution de l'an Mil » \autocite{fossier_enfance_1982}, tandis que d'autres tempèrent en parlant de « révélation de l'an Mil » \autocite{barthelemy_societe_1993} (« révélation » par l'augmentation en quantité et en qualité de la documentation textuelle).
 	Les hypothèses sont ainsi nombreuses, et il est difficile de trancher en faveur de l'une ou l'autre, tant l'articulation des facteurs sociaux, politiques, institutionnels, économiques et culturels est complexe.
 }
 
