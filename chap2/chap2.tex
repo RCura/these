@@ -246,34 +246,170 @@ La \cref{fig:frise-chrono} illustre les processus et événements qui surviennen
 \end{figure}
 
 
-\section[Fonctionnement général -- \textit{Process overview and schedulling}]{Fonctionnement général\protect\newline \large{\textit{Process overview and schedulling}}}
+\section[Fonctionnement général -- \textit{Process overview and schedulling}]{Fonctionnement général\protect\newline \large{\textit{Process overview and schedulling}} \sectionmark{Fonctionnement général}}
+
+SimFeodal est un modèle qui s'inscrit plutôt dans une approche KIDS que KISS (\hl{voir chapitre 1}).
+Il est donc constitué d'une large variété d'agents (\cref{tab:agents-simfeodal}), dotés pour certains de nombreux comportements.
+Au total, ce sont près de quarante mécanismes particuliers (ici regroupés en une quinzaine de mécanismes généraux), appelés selon un ordonnancement constant, qui font interagir les agents à chaque pas de temps.
+Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entrer dans le détail, algorithmique ou mathématique, de chacun (voir la \cref{sec:meca-specifiques} pour des descriptions plus précises des mécanismes les plus complexes et importants).
 
 \subsection{Ordonnancement général}
 
+\begin{figure}[H]
+	\centering
+	% Couleurs
+	\definecolor{bleuciel}{HTML}{a6cee3}
+	\definecolor{mauve}{HTML}{1f78b4}
+	\definecolor{beige}{HTML}{b2df8a}
+	\definecolor{vert}{HTML}{33a02c}
+	\definecolor{rose}{HTML}{fb9a99}
+	\definecolor{rouge}{HTML}{e31a1c}
+	% Styles des noeuds et lignes
+	\tikzstyle{block} = [rectangle, draw, minimum width=4em, align=center, rounded corners, minimum height=2em, thick]
+	\tikzstyle{start} = [draw, circle, minimum height=2em, align=center, thick]
+	\tikzstyle{temp} = [very thick, dashed]
+	\tikzstyle{line} = [draw, -{Latex[length=2.5mm,width=2.5mm]}]
+	\tikzstyle{dline} = [draw, -{Latex[length=2.5mm,width=2.5mm,black!50]}, black!50, densely dotted]
+	% 
+	\tikzstyle{fps} = [fill=bleuciel]
+	\tikzstyle{agregats} = [fill=mauve]    
+	\tikzstyle{seigneurs} = [fill=vert]
+	\tikzstyle{globals} = [fill=rouge!80]
+	\tikzstyle{eglises} = [fill=rose!80]
+	\tikzstyle{zps} = [fill=beige]
+	\begin{tikzpicture}[node distance = .75cm and .75cm, auto, scale=0.7,every node/.style={transform shape}]
+	% Place nodes
+	\node [start, fill=rouge!80] (init) at (0,0) {Init.\\du\\monde};
+	
+	\node [start ,right= of init] (start) {Début\\du tour};
+	\node [block, globals,right= of start] (maj-globals) {MaJ des \\variables\\globales};
+	\node [block, fps, right= of maj-globals] (renouvellement-fp) {Renouvellement\\des FP};
+	\node [block, eglises,right= of renouvellement-fp] (maj-paroisses) {MaJ des\\contours des\\paroisses};
+	\node [block, agregats, right = of maj-paroisses] (maj-poles) {Détection\\des\\Pôles};
+	
+	\node [block, fps, below= of maj-poles] (maj-satisfaction) {MaJ satisfactions des FP};
+	\node [block, fps, below=of maj-satisfaction] (migration-fp) {Migration des FP};
+	\node [block, seigneurs, temp, below =of migration-fp] (maj-droits) {Gains de \\droits des seigneurs};
+	\node [block, seigneurs, below=of maj-droits] (maj-zp) {Collecte des droits};
+	
+	\node [block, seigneurs, left=of maj-zp] (maj-dons) {Dons droits\\ et châteaux\\des Seigneurs};
+	\node [block, globals, temp, left=of maj-dons] (promo-chateaux) {Promotion\\des châteaux};
+	\node [block, seigneurs, temp, left=of promo-chateaux] (constructions-chateaux) {Construction\\ de châteaux};
+	\node [block, seigneurs, left=of constructions-chateaux] (creation-seigneurs) {Création des\\nouveaux Seigneurs};		
+	
+	\node [block, agregats, above= of creation-seigneurs] (maj-agregats) {MaJ des Agrégats};
+	\node [block, agregats, above=of maj-agregats] (maj-poles2) {MaJ des Pôles};
+	\node [block, globals, above= of maj-poles2] (maj-outputs) {MaJ et enregistrement\\des \textit{outputs}};
 
-\section[Design -- \textit{Design concepts}]{Design \protect\newline \large{\textit{Design concepts}}}
+	
+	\path[line]%
+	(maj-globals) -- (renouvellement-fp)
+	(renouvellement-fp) -- (maj-paroisses)
+	(maj-paroisses) -- (maj-poles)
+	(maj-poles) -- (maj-satisfaction)
+	(maj-satisfaction) -- (migration-fp)
+	(migration-fp) -- (maj-droits)
+	(maj-droits) -- (maj-zp)
+	(maj-zp) -- (maj-dons)
+	(maj-dons) -- (promo-chateaux)
+	(promo-chateaux) -- (constructions-chateaux)
+	(constructions-chateaux) -- (creation-seigneurs)
+	(creation-seigneurs) -- (maj-agregats)
+	(maj-agregats) -- (maj-poles2)
+	(maj-poles2) -- (maj-outputs);
 
-\subsection{Basic principles}
-\subsection{Emergence}
-\subsection{Adaptation}
-\subsection{Objectives}
-\subsection{Learning}
-\subsection{Prediction}
-\subsection{Sensing}
-\subsection{Interaction}
-\subsection{Stochasticity}
-\subsection{Collectives}
-\subsection{Observation}
+	
+	\path[line] (init)-- (start);
+	\path[line] (start) -- (maj-globals);
+	\path[dline] (maj-outputs)-- (start);	
+	\end{tikzpicture}
+	\caption[a]{Ordonnancement des mécanismes de SimFeodal.\\
+	{\footnotesize
+	\colorbox{rouge!80}{\strut Mécanisme global} \colorbox{bleuciel}{\strut Foyers Paysans} \colorbox{rose!80}{\strut Églises} \colorbox{mauve}{\strut Agrégats et Pôles} \colorbox{vert}{\strut Seigneurs} \dbox{\strut Temporaire}
+	}
+	}
+	\label{fig:ordonnancement}
+\end{figure}
+\setcounter{subsubsection}{-1}
+
+Dans SimFeodal, les mécanismes sont toujours appelés dans le même ordre (voir \cref{fig:ordonnancement}) : l'ensemble de l'ordonnancement ne change pas tout au long des 20 pas de temps du modèle.
+Certains mécanismes sont toutefois temporaires, c'est-à-dire rendus inactifs en fonction des pas de temps : la construction des châteaux, par exemple, n'est pas possible avant 940.
+Jusqu'au pas de temps correspondant, le mécanisme est donc désactivé par un paramètre réglable.
+Notons que si les mécanismes suivent un ordre déterminé, ce n'est pas le cas des agents qui sont appelés dans chacun : pour un mécanisme donné, l'ordre d'appel des agents est aléatoire et varie à chaque appel de ce mécanisme.
 
 
-\section[Situation initiale -- \textit{Details - Initialisation}]{Situation initiale\protect\newline \large{\textit{Details - Initialisation}}}
+\subsubsection{Initialisation}
+
+L'initialisation du monde consiste à créer le monde théorique dans lequel les agents vont interagir et à générer ces derniers.
+Pendant cette étape, des foyers paysans sont générés dans l'espace du modèle :  une très large proportion est instanciée de manière dispersée et aléatoire, et quelques dizaines d'agents sont localisés de manière agrégés afin de constituer les premiers agrégats de population, de tailles variables (une vingtaine de villages peu peuplés et quelques agglomérations secondaires antiques plus importantes).
+Lors de l'initialisation sont aussi créés les premiers seigneurs -- grands seigneurs sans portée spatiale et petits seigneurs localisés aléatoirement dans l'espace -- et les zones de prélèvement dans lesquelles ils prélèveront des droits divers.
+L'initialisation est enfin l'occasion de créer et de disperser dans l'espace des églises (150), parmi lesquelles quelques-unes (50) se verront doter de droits paroissiaux et constitueront donc un premier maillage paroissial.
+
+L'initialisation du monde est appelée une seule fois, avant que les pas de temps ne débutent. Elle repose fortement sur l'aléatoire, et génère donc une configuration spatiale différente à chaque nouvelle exécution du modèle (voir le paragraphe sur l'endogénéité de la \cref{subsec:reso-spatiale}).
+Le détail de l'initialisation est décrit dans une partie ultérieure (\cref{sec:initialisation}), entièrement consacrée à ce mécanisme.
+
+\subsubsection{Variables globales}
+
+Plusieurs mécanismes de SimFeodal dépendent du temps : la possibilité, évoquée plus haut, pour les seigneurs de construire un château, mais aussi, entre autre, l'évolution des distances que les foyers paysans sont prêts à parcourir pour se rendre à l'église, ce qui permet de formaliser l'impact des réformes grégoriennes.
+La mise en place de mécanismes tributaires de dates nous permet ainsi de représenter des événements exogènes au modèle qui peuvent ainsi servir de déclencheurs ou de catalyseurs à des processus de longue durée.
+L'incrémentation de la date et la mise à jour des différentes variables temporelles, par exemple en sélectionnant les valeurs de ces différentes variables dans des tableaux de correspondance temporels, constituent donc la première étape de chaque nouveau pas de temps.
+
+\subsubsection{Renouvellement des foyers paysans}
+
+ABC
+
+\subsubsection{Actualisation des paroisses}
+
+\subsubsection{Détection des Pôles}
+
+\subsubsection{Satisfaction des Foyers Paysans}
+
+\subsubsection{Migration des Foyers Paysans}
+
+\subsubsection{Gains de droits}
+
+\subsubsection{Collecte des droits}
+
+\subsubsection{Dons entre seigneurs}
+
+\subsubsection{Promotion des châteaux}
+
+\subsubsection{Construction de châteaux}
+
+\subsubsection{Création de nouveaux seigneurs}
+
+\subsubsection{Détection des agrégats}
+
+\subsubsection{Actualisation des pôles}
+
+\subsubsection{Enregistrement des \textit{outputs}}
+
+
+\section[Design -- \textit{Design concepts}]{Design \protect\newline \large{\textit{Design concepts}} \sectionmark{Design}}
+
+\subsection*{Basic principles}
+\subsection*{Emergence}
+\subsection*{Adaptation}
+\subsection*{Objectives}
+\subsection*{Learning}
+\subsection*{Prediction}
+\subsection*{Sensing}
+\subsection*{Interaction}
+\subsection*{Stochasticity}
+\subsection*{Collectives}
+\subsection*{Observation}
+
+
+\section[Situation initiale -- \textit{Details - Initialisation}]{Situation initiale\protect\newline \large{\textit{Details - Initialisation}} \sectionmark{Situation initiale} \label{sec:initialisation}}
 
 \subsection{Une situation initiale théorique et endogène}
+a
 \subsection{Paramètres d'initialisation}
+a
+\section[Données en entrée -- \textit{Input data}]{Données en entrée\protect\newline \large{\textit{Input data}} \sectionmark{Données en entrée}}
+a
 
-\section[Données en entrée -- \textit{Input data}]{Données en entrée\protect\newline \large{\textit{Input data}}}
-
-\section[Mécanismes spécifiques -- \textit{Submodels}]{Mécanismes spécifiques\protect\newline \large{\textit{Submodels}}}
+\section[Mécanismes spécifiques -- \textit{Submodels}]{Mécanismes spécifiques\protect\newline \large{\textit{Submodels}} \sectionmark{Mécanismes spécifiques} \label{sec:meca-specifiques}}
 
 \subsection{Introduction} : Pas tout résumé ici
 
