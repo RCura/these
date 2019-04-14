@@ -253,7 +253,7 @@ Il est donc constitué d'une large variété d'agents (\cref{tab:agents-simfeoda
 Au total, ce sont près de quarante mécanismes particuliers (ici regroupés en une quinzaine de mécanismes généraux), appelés selon un ordonnancement constant, qui font interagir les agents à chaque pas de temps.
 Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entrer dans le détail, algorithmique ou mathématique, de chacun (voir la \cref{sec:meca-specifiques} pour des descriptions plus précises des mécanismes les plus complexes et importants).
 
-\subsection{Ordonnancement général}
+\subsection*{Ordonnancement général}
 
 \begin{figure}[H]
 	\centering
@@ -284,7 +284,7 @@ Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entre
 	\node [start ,right= of init] (start) {Début\\du tour};
 	\node [block, globals,right= of start] (maj-globals) {MaJ des \\variables\\globales};
 	\node [block, fps, right= of maj-globals] (renouvellement-fp) {Renouvellement\\des FP};
-	\node [block, eglises,right= of renouvellement-fp] (maj-paroisses) {MaJ des\\contours des\\paroisses};
+	\node [block, eglises,right= of renouvellement-fp] (maj-paroisses) {Détection et\\promotions des\\paroisses};
 	\node [block, agregats, right = of maj-paroisses] (maj-poles) {Détection\\des\\Pôles};
 	
 	\node [block, fps, below= of maj-poles] (maj-satisfaction) {MaJ satisfactions des FP};
@@ -330,7 +330,6 @@ Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entre
 	}
 	\label{fig:ordonnancement}
 \end{figure}
-\setcounter{subsubsection}{-1}
 
 Dans SimFeodal, les mécanismes sont toujours appelés dans le même ordre (voir \cref{fig:ordonnancement}) : l'ensemble de l'ordonnancement ne change pas tout au long des 20 pas de temps du modèle.
 Certains mécanismes sont toutefois temporaires, c'est-à-dire rendus inactifs en fonction des pas de temps : la construction des châteaux, par exemple, n'est pas possible avant 940.
@@ -338,7 +337,7 @@ Jusqu'au pas de temps correspondant, le mécanisme est donc désactivé par un p
 Notons que si les mécanismes suivent un ordre déterminé, ce n'est pas le cas des agents qui sont appelés dans chacun : pour un mécanisme donné, l'ordre d'appel des agents est aléatoire et varie à chaque appel de ce mécanisme.
 
 
-\subsubsection{Initialisation}
+\subsection{Initialisation \label{meca-init}}
 
 L'initialisation du monde consiste à créer le monde théorique dans lequel les agents vont interagir et à générer ces derniers.
 Pendant cette étape, des foyers paysans sont générés dans l'espace du modèle :  une très large proportion est instanciée de manière dispersée et aléatoire, et quelques dizaines d'agents sont localisés de manière agrégés afin de constituer les premiers agrégats de population, de tailles variables (une vingtaine de villages peu peuplés et quelques agglomérations secondaires antiques plus importantes).
@@ -346,43 +345,138 @@ Lors de l'initialisation sont aussi créés les premiers seigneurs -- grands sei
 L'initialisation est enfin l'occasion de créer et de disperser dans l'espace des églises (150), parmi lesquelles quelques-unes (50) se verront doter de droits paroissiaux et constitueront donc un premier maillage paroissial.
 
 L'initialisation du monde est appelée une seule fois, avant que les pas de temps ne débutent. Elle repose fortement sur l'aléatoire, et génère donc une configuration spatiale différente à chaque nouvelle exécution du modèle (voir le paragraphe sur l'endogénéité de la \cref{subsec:reso-spatiale}).
-Le détail de l'initialisation est décrit dans une partie ultérieure (\cref{sec:initialisation}), entièrement consacrée à ce mécanisme.
+Le détail de l'initialisation est décrit dans une partie ultérieure (\cref{sec:initialisation}), entièrement consacrée à cette étape préliminaire.
 
-\subsubsection{Variables globales}
+\subsection{Variables globales \label{meca-variables}}
 
 Plusieurs mécanismes de SimFeodal dépendent du temps : la possibilité, évoquée plus haut, pour les seigneurs de construire un château, mais aussi, entre autre, l'évolution des distances que les foyers paysans sont prêts à parcourir pour se rendre à l'église, ce qui permet de formaliser l'impact des réformes grégoriennes.
 La mise en place de mécanismes tributaires de dates nous permet ainsi de représenter des événements exogènes au modèle qui peuvent ainsi servir de déclencheurs ou de catalyseurs à des processus de longue durée.
 L'incrémentation de la date et la mise à jour des différentes variables temporelles, par exemple en sélectionnant les valeurs de ces différentes variables dans des tableaux de correspondance temporels, constituent donc la première étape de chaque nouveau pas de temps.
 
-\subsubsection{Renouvellement des foyers paysans}
+\subsection{Renouvellement des foyers paysans}
 
-ABC
+SimFeodal est un modèle qui simule l'évolution d'un système spatial clôt.
+On entend par là qu'il n'y a pas d'échange ou d'interaction avec les régions voisines, ce qui constitue une limite forte, par ailleurs fréquente dans la modélisation géographique.
+Pourtant, en particulier dans un modèle mettant en place des migrations, il est difficile de s'abstraire du contexte spatial, le monde modélisé constituant certes un système en lui-même, mais aussi un système inscrit comme composante d'un système de peuplement plus large (le royaume des Francs, voire l'Europe du Nord-Ouest).
+Nous avons donc choisi de modéliser les échanges avec l'extérieur par le biais d'un renouvellement partiel des foyers paysans.
+A chaque pas de temps, une proportion (5\%) des foyers paysans existant est donc supprimée de la simulation, et une quantité équivalente est réinjectée dans l'espace du modèle.
+Afin de ne pas bouleverser l'équilibre de l'agrégation, la localisation dans l'espace suit la proportion de foyers paysans dispersés et agrégés : s'il y avait 90\% de foyers paysans dispersés avant le renouvellent, 90\% des foyers paysans ré-injectés seront localisés aléatoirement dans l'espace du modèle, et les 10\% restant seront placés dans les agrégats existant\footnote{
+Selon un tirage aléatoire pondéré : les agrégats les plus peuplés attireront potentiellement plus de ces nouveaux foyers paysans que les moins peuplés.
+Cette logique d'attachement préférentiel (\hl{retrouver où j'en parle si c'est avant}) permet de modéliser l'attractivité qu'exercerait un agrégat peuplé, et donc potentiellement plus connu, sur des foyers paysans venant de régions voisines.
+}.
 
-\subsubsection{Actualisation des paroisses}
+\subsection{Mise à jour du maillage paroissial}
 
-\subsubsection{Détection des Pôles}
+Le moyen-âge voit apparaître un maillage dense, continu dans l'espace, constitué autour d'églises dotées de droits paroissiaux : les paroisses, qui organisent l'ensemble de la vie spirituelle de la population.
+Les archéologues ne s'accordent pas sur la date de leur apparition (avant la période étudiée), ni surtout sur le moment où elles constituent un maillage complet (vraisemblablement pendant la période modélisée), mais ils s'accordent sur le rôle de fixation et de stabilisation du territoire qu'elles ont eu \autocite{zadora-rio_paroisses_2008}.
+Dans SimFeodal, cette étape de mise à jour du maillage paroissial regroupe en fait trois mécanismes distincts.
 
-\subsubsection{Satisfaction des Foyers Paysans}
+\paragraph{Dessin du maillage} Le maillage paroissial est représenté et calculé sous la forme d'une partition de Voronoï autour des églises paroissiales. On garantie ainsi un pavage complet du territoire, plus lâche dans les zones les moins peuplées et dotées de moins d'églises paroissiales, et plus dense dans les zones les plus peuplées, par exemple dans les agrégats les plus importants qui peuvent être déservis par de nombreuses paroisses ainsi qu'observé empiriquement.
 
-\subsubsection{Migration des Foyers Paysans}
+\paragraph{Création de paroisses \og urbaines\fg{}} Dans les agrégats les plus peuplés, certaines paroisses peuvent être amenées à regrouper des centaines de paroissiens, ce qui ne correspondrait pas aux connaissances empiriques.
+SimFeodal comprend donc un mécanisme de création de paroisses, donc de construction d'églises dotées de droits paroissiaux, au sein des agrégats les plus peuplés, selon une logique probabiliste : plus un agrégat est peuplé, plus il a de probabilités de voir apparaître une nouvelle église paroissiale, dans son étendue, dédiée à sa desserte.
+Afin d'éviter l'apparition exponentielle d'églises paroissiales au sein d'un agrégat, cette probabilité est pondérée par le nombre d'églises paroissiales déjà présentes dans l'agrégat : là où un agrégat constitué de 1~000 foyers paysans et contenant une unique paroisse aura une probabilité de 50\% voir apparaitre une nouvelle églises paroissiale, un agrégat constitué de 1~000 foyers paysans mais déjà doté de 2 paroisses n'aura qu'une probabilité de 25\%.
 
-\subsubsection{Gains de droits}
+\paragraph{Promotion de paroisses \og rurales\fg{}} Tout au long de son développement et à mesure de l'importance sociale qu'il acquière, on sait que le maillage paroissial se densifie, pour parvenir en fin de période au maillage quasi-communal qu'on lui connaît désormais. Cette densification est observée partiellement dans les zones denses, mais aussi très largement de manière homogène sur le territoire, notamment dans les zones les moins peuplées, afin de garantir un accès facilité aux sacrements à l'ensemble des foyers paysans.
+Dans ces zones, on fait apparaître de nouvelles églises paroissiales, soit par promotion d'églises existantes (non dotées de droits paroissiaux), soit par construction de nouvelles églises qui deviendront centres paroissiaux.
+Le mécanisme de ces créations est complexe, et on le détaille et l'illustre donc, à l'instar du détail des règles de création de paroisses \og urbaines\fg{}, dans la partie du chapitre relative aux spécificités des mécanismes (\cref{sssec:paroisses}).
+Notons simplement que là encore, la promotion ou création d'églises paroissiales en zones peu denses suit une logique de seuil : si une paroisse contient trop de foyers paysans qui en sont suffisamment éloignés (donc que la paroisse a une très large superficie), on tendra à créer une nouvelle église paroissiale plus proche de ces foyers paysans.
 
-\subsubsection{Collecte des droits}
+\subsection{Détection des Pôles}
 
-\subsubsection{Dons entre seigneurs}
+Dans SimFeodal, lorsque les foyers paysans migrent, ils sont attirés par des pôles, ensemble composites d'attracteurs (agrégats, églises paroissiales et châteaux), relativement à l'attractivité de ces pôles, c'est-à-dire au nombre et au type d'attracteurs qu'ils contiennent.
+Les pôles sont donc indispensables au bon fonctionnement du mécanisme de migration, et leur définition revêt alors une importance nette.
+Le mécanisme est encore une fois complexe (voir \cref{sssec:poles} pour le détail), mais on peut le résumer ainsi : un pôle est constitué par la proximité de plusieurs attracteurs, selon une logique de continuité spatiale.
+Ainsi, quand une église paroissiale est située à proximité\footnote{
+Cette proximité est configurable par le biais d'un paramètre.
+Dans SimFeodal, on situe ce seuil à 200 mètres.
+} d'un château, lui-même par exemple à proximité d'un agrégat de population, on définit un pôle comme composé par ces trois éléments, et représenté par l'enveloppe convexe formée par leurs géométries.
+Afin de ne pas artificiellement diviser des pôles pré-existants, ou au contraire de voir apparaître de nombreux pôles dans un espace restreint (attracteurs séparés de 210 mètres par exemple), on procède ensuite à une fusion des pôles les plus proches, en considérant par exemple qu'un agrégat, quelle que soit son importance, contient et fait partie d'un seul pôle.
 
-\subsubsection{Promotion des châteaux}
+Les valeurs d'attractivité des pôles, relatives à leur composition en attracteurs, ont donné lieu à un important travail de paramétrage (\hl{voir chapitre 4, et particulièrement les étapes $n$--$j$}), et est désormais fixée selon ces principes (\cref{tab:attraction-poles}) :
 
-\subsubsection{Construction de châteaux}
+\begin{table}[H]
+	\centering
+	{\renewcommand{\arraystretch}{1.2}%
+	\begin{tabular}{|l|l|l|}\hline
+		\textbf{Attracteur} & \textbf{Détail} & \textbf{Attractivité} \\ \hline
+		\multirow{2}{*}{Châteaux} & Petit & 0.15 \\
+		& Gros & 0.25 \\ \hline
+		\multirow{4}{*}{Église paroissiale} & 1 & 0.15 \\
+		& 2 & 0.25 \\
+		& 3 & 0.5 \\
+		& 4+ & 0.6 \\ \hline
+		\multicolumn{2}{|l|}{Agrégat (doté d'une communauté)} & 0.15 \\ \hline
+	\end{tabular}}
+	\caption{Attractivité ($\in [0,1]$) conférée aux pôles par leurs attracteurs.}
+	\label{tab:attraction-poles}
+\end{table}
 
-\subsubsection{Création de nouveaux seigneurs}
+\subsection{Satisfaction des Foyers Paysans}
 
-\subsubsection{Détection des agrégats}
+La satisfaction\footnote{
+Notons que ce terme n'est pas entièrement \og satisfaisant\fg{} : la migration des foyers paysans est favorisée par une faible satisfaction, c'est-à-dire une absence de satisfaction (qui n'est donc pas un mécontentement ou \og insatisfaction\fg{}), dont l'on retrouve le sens dans le terme anglais \textit{dissatisfaction}.
+} des foyers paysans est la condition préalable au mécanisme le plus important de SimFeodal, la migration.
+Elle qualifie la capacité des foyers paysans à remplir leurs besoins fondamentaux : \og se nourrir\fg{} (satisfaction matérielle), \og assurer son salut\fg{} (satisfaction religieuse) et \og éviter d'être l'objet de violences\fg{} (satisfaction \og protection\fg{}) \autocite[Tableau 1, \ppno~309]{cura_transition_2017}.
+La satisfaction d'ensemble, qui intervient dans la probabilité de migration, est donc une synthèse numérique de ces trois satisfactions spécifiques.
+Ces composantes ne sont pas hiérarchisées, sinon en considérant qu'elles sont normalisées \og par le bas\fg{} : le satisfaction d'ensemble est égale à la plus faible de ses trois composantes, pondérée par l'appartenance à une communauté, laquelle procure un contre-pouvoir face aux différentes pressions subies par les foyers paysans
+%\footnote{
+%Le calcul de la satisfaction s'exprime donc ainsi : \\
+%{\scriptsize
+%$\textrm{satisfaction}~=~0.75 \times [MIN (s_{\textrm{matérielle}} ; s_ {\textrm{religieuse}}; s_{\textrm{protection}})] + 0.25 \times [\textrm{appartenance\_communauté}]$
+%},\\ avec {\scriptsize
+%$\{satisfaction ; s_{\textrm{matérielle}} ; s_ {\textrm{religieuse}} ; s_{\textrm{protection}}\} \in [0,1]$ et $[\textrm{appartenance\_communauté}] \in \{0;1\}$}.
+%}
+.
 
-\subsubsection{Actualisation des pôles}
+Le détail des calculs est donnée dans la partie dédiée (\cref{sssec:satisfaction}), mais on peut toutefois déjà expliciter les choix de modélisation de chacune des composantes de la satisfaction d'ensemble.
 
-\subsubsection{Enregistrement des \textit{outputs}}
+\paragraph{Satisfaction matérielle}
+
+Dans SimFeodal, on considère la satisfaction matérielle comme une fonction des différentes redevances dont un foyer paysan doit s'acquitter : plus il doit régler de droits, moins il est satisfait.
+Comme pour la satisfaction générale, notons que l'appartenance ou non à une communauté intervient dans ce calcul : on estime en effet que les communautés (paysannes, rurales, villageoises\ldots) permettent de constituer une force suffisante pour exercer un véritable contre-pouvoir face à des seigneurs qui seraient trop exigeants.
+
+\paragraph{Satisfaction religieuse}
+
+La satisfaction religieuse représente la capacité d'un foyer paysan à se rendre facilement à l'église pour y assister aux différents sacrements (baptêmes, mariages, eucharistie\ldots) qui rythment la vie spirituelle de l'époque.
+Dans SimFeodal, cette capacité est modélisée comme une fonction de la distance à l'église paroissiale la plus proche : plus on est éloigné d'une église paroissiale, plus la satisfaction est faible.
+Les seuils de distance définissant le \og loin\fg{} et le \og proche\fg{} évoluent au cours du temps, afin de représenter l'alourdissement des obligations religieuses tout au long de la période, par exemple à l'occasion des réformes grégoriennes.
+
+\paragraph{Satisfaction de \og protection\fg{}}
+
+Avec la diminution du pouvoir de l'autorité centrale carolingienne assortie d'un émiettement des pouvoirs locaux, la région d'étude subit un regain de violences militaires dont l'un des symptômes représentatifs est l'apparition des châteaux forts.
+De la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère dans SimFeodal que la satisfaction \og protection\fg{} des foyers paysans dépend de la distance au château le plus proche.
+Un château assure ainsi une certaine protection à la population, protection qui se montre de plus en plus critique au fur et à mesure de l'avancement de la période et donc du modèle.
+Comme pour la satisfaction religieuse, les seuils de distance évoluent donc au cours du temps, de même ici que le \og besoin de protection\fg{}, qui permet de renforcer l'augmentation nette du climat de violence au cours de la période.
+
+
+\subsection{Migration des Foyers Paysans}
+
+
+
+\paragraph{Migration locale}
+
+\paragraph{Migration lointaine}
+
+\paragraph{Foyers paysans mobiles et serfs}
+
+\subsection{Gains de droits}
+
+\subsection{Collecte des droits}
+
+\subsection{Dons entre seigneurs}
+
+\subsection{Promotion des châteaux}
+
+\subsection{Construction de châteaux}
+
+\subsection{Création de nouveaux seigneurs}
+
+\subsection{Détection des agrégats}
+
+\subsection{Actualisation des pôles}
+
+\subsection{Enregistrement des \textit{outputs}}
 
 
 \section[Design -- \textit{Design concepts}]{Design \protect\newline \large{\textit{Design concepts}} \sectionmark{Design}}
@@ -415,13 +509,13 @@ a
 
 \subsection{Mécanismes globals}
 	\subsubsection{Identification des agrégats}
-	\subsubsection{Identification des pôles}
+	\subsubsection{Identification des pôles \label{sssec:poles}}
 	\subsubsection{Identification des églises paroissiales}
-	\subsubsection{Création et promotion d'églises paroissiales}
+	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
 
 \subsection{Foyers paysans}
 	\subsubsection{Renouvellement des foyers paysans}
-	\subsubsection{Satisfaction et modèles gravitaires}
+	\subsubsection{Satisfaction et modèles gravitaires \label{sssec:satisfaction}}
 	\subsubsection{Déplacement des foyers paysans}
 
 \subsection{Seigneurs}
