@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-04-12}}
+	{\large Version \hl{2019-04-15}}
 \end{center}
 
 \begin{itemize}
@@ -155,9 +155,9 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques de 
 		\multicolumn{2}{|c|}{Foyers Paysans} & \makecell{$\approx$ 4 000 à \\75 000} & Ponctuelle & Migrations \\ \hline
 		\multirow{2}{*}{Seigneurs} & \makecell{Grands\\Seigneurs} & $\approx$ 2 & --- & \multirow{2}{*}{\makecell{Création de zones de\\prélèvement,\\collecte de droits,\\ construction de châteaux}} \\ \cline{2-4}
 		& \makecell{Petits\\Seigneurs} & $\approx$ 200 & Ponctuelle &  \\ \hline
-		\multirow{3}{*}{\makecell{Zones de\\ Prélèvement}} & Foncier & $\approx$ 200 & \multirow{3}{*}{Zonale} & \multirow{3}{*}{---} \\ \cline{2-3}
-		& Haute-Justice & $\approx$ 100 &  &  \\ \cline{2-3}
-		& Autres droits & $\approx$ 400 &  &  \\ \hline
+		\multirow{3}{*}{\makecell{Zones de\\ Prélèvement}} & Foncier & $\approx$ 75 & \multirow{3}{*}{Zonale} & \multirow{3}{*}{---} \\ \cline{2-3}
+		& Haute-Justice & $\approx$ 50 &  &  \\ \cline{2-3}
+		& Autres droits & $\approx$ 300 &  &  \\ \hline
 		\multirow{2}{*}{Églises} & Église & $\approx$ 300 & \multirow{2}{*}{Ponctuelle} & \makecell{---} \\ \cline{2-3} \cline{5-5} 
 		& Eglise paroissiale & $\approx$ 200 &  & \makecell{Création de paroisse\\ \textit{(type d'attracteur)}} \\ \hline
 		\multicolumn{2}{|c|}{Paroisses} & $\approx$ 200 & Zonale & --- \\ \hline
@@ -449,26 +449,84 @@ De la même manière que la satisfaction religieuse dépend de la distance aux �
 Un château assure ainsi une certaine protection à la population, protection qui se montre de plus en plus critique au fur et à mesure de l'avancement de la période et donc du modèle.
 Comme pour la satisfaction religieuse, les seuils de distance évoluent donc au cours du temps, de même ici que le \og besoin de protection\fg{}, qui permet de renforcer l'augmentation nette du climat de violence au cours de la période.
 
-
 \subsection{Migration des Foyers Paysans}
 
+La satisfaction, décrit ci dessus, sert de condition probabiliste à la possibilité pour les foyers paysans de migrer.
+Rappelons que les pas de temps durent 20 ans : les migrations ne sont donc pas des déplacements quotidiens ou saisonniers, mais illustrent plutôt le déménagement et le choix de localisation que chaque nouvelle génération de paysans est amené à réaliser.
+Dans SimFeodal, nous considérons que les foyers paysans suffisamment satisfaits ne sont pas amenés à migrer : on migre quand on est insatisfait, et l'on cherche alors à augmenter sa satisfaction.
+L'implémentation de cette logique suit un mécanisme probabiliste, où l'insatisfaction augmente la probabilité de migrer.
+Le détail du mécanisme de migration est complexe et sera détaillé dans la \cref{sssec:migration}.
+Notons aussi que ce mécanisme est sans doute le plus important et impactant du modèle SimFeodal : à ce titre, il a subit de très nombreux changements depuis le début de la conception du modèle, tel qu'illustré dans \hl{le chapitre 4}.
 
+Dans la version actuelle de SimFeodal (version 6.3 présentée dans ce chapitre), la migration répond à une succession de conditions.
+Dans l'ensemble, quand les foyers paysans migrent, c'est nécessairement vers un pôle, et si possible un pôle plus attractif que celui dans lequel ils seraient.
+Cette migration peut prendre deux formes :
+\begin{itemize}
+	\item une migration \og locale\fg{}, où les foyers paysans cherchent des pôles plus attractifs dans un rayon défini (2~500 mètres) ;
+	\item et la migration \og lointaine\fg{}, où au contraire les foyers paysans cherchent un agrégat\footnote{
+		\textit{N.B.} : La migration locale se fait en direction d'un pôle (qui peut ou non contenir un agrégat), alors que la migration lointaine vise un agrégat, potentiellement plus important.
+	} situé au delà du rayon local.
+\end{itemize} 
+La migration locale est privilégiée sur la migration lointaine, qui, en simplifiant, ne s'exerce que quand la première n'est pas possible (absence de pôles locaux, tirages de probabilité échoués etc.).
 
-\paragraph{Migration locale}
+Notons que ces règles ne s'appliquent pas à l'identique à tous les foyers paysans : une part de ceux-ci (20\%), intitulés \og non mobiles\fg{}, n'ont pas la possibilité d'effectuer des migrations lointaines : ils sont restreints à des migrations locales, ce qui permet de modéliser le comportement de dépendances de certaines catégories de population historiques (les serfs et esclaves, qui n'avaient pas le droit de quitter le domaine de leur seigneur, par exemple).
 
-\paragraph{Migration lointaine}
-
-\paragraph{Foyers paysans mobiles et serfs}
 
 \subsection{Gains de droits}
 
+Au fur et mesure de l'avancement de la période, le pouvoir central s'efface et les ressorts locaux subissent un émiettement important, voyant apparaître de nombreux seigneurs de moindre importance (les chevaliers notamment).
+Ces seigneurs gagnent et s'arrogent le prélèvement de nouveaux droits (droits banaux, droits de basse justice etc.), augmentant d'autant la charge fiscale dont doivent s'acquitter les foyers paysans.
+
+Dans SimFeodal, cela est modélisé sous la forme de l'apparition constante de nouvelles zones de prélèvement par l'intermédiaire desquelles les seigneurs pourront prélever de nouveaux droits.
+Cela peut concerner de nouveaux seigneurs, lors de leur apparition dans l'espace du modèle, ou au contraire se faire au bénéfice de seigneurs plus anciens.
+Du point de vue de l'implémentation, ce comportement est formalisé sous la forme d'une probabilité (15\%), pour les petits seigneurs, de créer une nouvelle zone de prélèvement autour de leur localisation, à chaque pas de temps.
+
+Ce mécanisme s'associe à une autre, majoritairement exercé par les grands seigneurs, qui leur permet de prélever, à partir d'une date donnée (voir \cref{meca-variables}), des droits de haute justice, là encore à partir d'un tirage de probabilité.
+
 \subsection{Collecte des droits}
+
+Dans SimFeodal, les droits sont prélevés au travers de représentations géographiques de leur emprise spatiale\footnote{
+Notons bien qu'il s'agit d'un choix de modélisation, c'est-à-dire ici d'une simplification forte.
+Les droits au moyen âge n'avaient pas nécessairement de logique spatiale : ce pouvait être en fonction de l'usage d'un matériel (four banal, moulin\ldots), ou en fonction d'une appartenance familiale (la \og taille\fg{} personnelle) par exemple, sans que la localisation précise n'entre en jeu.
+} : les zones de prélèvement.
+Celles-ci sont de trois types (cf. \cref{tab:agents-simfeodal}), qui correspondent à trois grandes catégories de droits connus : les droits fonciers ; les droits de haute justice ; et les autres droits, qui regroupent une forte diversité de redevances locales (droits banaux, droits de basse et moyenne justice, droits locaux\ldots).
+
+Dans SimFeodal, chaque droit a ses propres modalités de collecte (voir le détail en \cref{sssec:collecte-droits}), mais on peut résumer cela de manière géométrique : les zones de prélèvement sont des cercles de rayon variables, qui se superposent et s'intersectent très largement.
+Chacune de ces zones de prélèvement appartient à un seigneur, qui l'a créée, et peut en plus être confiée en garde à un autre seigneur (voir le paragraphe suivant).
+Les seigneurs (propriétaires et gardiens) prélèvent des droits aux foyers paysans situés dans les zones de prélèvement.
+Plus ces derniers sont situés dans une région dense en zones de prélèvements, plus ils seront amenés à s'acquitter de nombreux droits, et plus leur satisfaction matérielle sera faible.
+Pour les seigneurs, à l'inverse, plus les redevances collectées seront importantes (donc plus ils posséderont de zone de prélèvement recouvrant de nombreux foyers paysans), plus leur puissance sera importante, ce qui leur permettra notamment de construire des châteaux, gages de renommée et de revenus accrus.
 
 \subsection{Dons entre seigneurs}
 
+On a mentionné que les seigneurs pouvaient se voir confier des zones de prélèvement en garde.
+Historiquement, cela correspond à la pratique de certains seigneurs de nommer des gestionnaires ou de distribuer des terres à des seigneurs de moindre importance pour s'assurer de leur vassalité.
+
+Dans SimFeodal, les seigneurs peuvent donner en gardiennage, selon une probabilité, chacune de leurs possessions : zones de prélèvement et châteaux.
+Dans le premier cas, les seigneurs récipiendaires sont choisis de manière privilégiée dans le voisinage des seigneurs donateurs : on favorise ainsi une transmission locale.
+Pour les châteaux, il n'y a pas de préférence locale, mais seuls des seigneurs de faible importance peuvent être récipiendaires, c'est-à-dire ceux qui ne sont pas déjà châtelains (ie. qui n'ont pas déjà de château en propre ou en garde).
+
+En donnant en garde leurs propriétés, les seigneurs se garantissent la constitution d'un réseau de vassalité (non modélisé) et accroissent leur puissance symbolique.
+Dans SimFeodal, on le modélise en augmentant les redevances que les seigneurs collectent dans les zones de prélèvement données en gardiennage : le seigneur gardien collecte les redevances classiques, alors que le seigneur suzerain collecte ces mêmes redevances accrues d'un léger facteur\footnote{
+Par exemple, un seigneur collecte une puissance (symbolique) de $1$ sur les foyers paysans dont il collecte les droits fonciers.
+En nommant un \og gardien\fg{}, il y collectera $1.25$ de puissance, et le vassal récupèrera lui $1$.
+}.
+Notons que ces dons n'ont pas d'influence sur la satisfaction des foyers paysans : pour eux, seul un seigneur (le gardien, ou le propriétaire quand la zone n'a pas été confiée en gade) prélève les droits.
+Le mécanisme de collecte n'est donc pas symétrique : les seigneurs y gagnent plus que ce que les foyers paysans n'y \og perdent\fg{}.
+
 \subsection{Promotion des châteaux}
 
+De nombreux châteaux ont été construits pendant la période étudiée.
+Il y avait naturellement une forte hétérogénéité dans leur ampleur, leur importance stratégique et le degré de protection qu'ils apportaient.
+
+Dans SimFeodal, on a choisi de simplifier cette hiérarchie en distinguant deux types de châteaux : les \og petits châteaux\fg{} et les \og gros châteaux\fg{}.
+Les gros châteaux ont un pouvoir d'attraction plus développé (cf. \cref{tab:attraction-poles}), renforçant donc l'attraction des pôles qu'ils constituent et par là même accroissant la probabilité de voir se développer à proximité des agrégats majeurs.
+Lors de leur création (voir \textit{infra}), les châteaux sont toujours des \og petits châteaux\fg{}.
+Le mécanisme de promotion, probabiliste, permet à un château situé dans un pôle important (c'est-à-dire constitué de plusieurs attracteurs : agrégat, églises paroissiales) de devenir \og gros château\fg{}, et renforce donc l'attrait de ce pôle déjà avantageux.
+
 \subsection{Construction de châteaux}
+
+ne pas oublier logique d'ordonnancement : fin de tour, après promotion, collecte et don, pour considérer le lag du à la construction.
 
 \subsection{Création de nouveaux seigneurs}
 
@@ -510,19 +568,23 @@ a
 \subsection{Mécanismes globals}
 	\subsubsection{Identification des agrégats}
 	\subsubsection{Identification des pôles \label{sssec:poles}}
-	\subsubsection{Identification des églises paroissiales}
 	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
 
 \subsection{Foyers paysans}
-	\subsubsection{Renouvellement des foyers paysans}
 	\subsubsection{Satisfaction et modèles gravitaires \label{sssec:satisfaction}}
-	\subsubsection{Déplacement des foyers paysans}
-
+		\paragraph{Satisfaction matérielle}
+		\paragraph{Satisfaction religieuse}
+		\paragraph{Satisfaction protection}
+		\paragraph{Satisfaction générale}
+	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
+	
 \subsection{Seigneurs}
 	\subsubsection{Construction de châteaux}
 	\subsubsection{Dons de châteaux}
 	\subsubsection{Création et dons de droits}
-	\subsubsection{Prélèvement des loyers}
-	\subsubsection{Prélèvement des droits}
+	\subsubsection{Prélèvement des droits \label{sssec:collecte-droits}}
+		\paragraph{Foncier}
+		\paragraph{Haute Justice}
+		\paragraph{Autres droits}
 
 \printbibliography[title={Références}]
