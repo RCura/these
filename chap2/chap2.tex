@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-04-15}}
+	{\large Version \hl{2019-04-16}}
 \end{center}
 
 \begin{itemize}
@@ -32,6 +32,9 @@ La paternité de ce modèle est ainsi à attribuer à l'auteur de ces lignes aut
 	Historien, Maître de Conférence, Université François Rabelais
 	\item Elisabeth \textsc{Zadora-Rio}, UMR 7324 CITERES-LAT -- Tours\\
 	Archéologue, Directrice de Recherche émérite, CNRS
+\end{itemize}
+Ainsi qu'à ceux qui ont contribué au projet pendant ses premières années :
+\begin{itemize}
 	\item Élisabeth \textsc{Lorans}, UMR 7324 CITERES-LAT -- Tours\\
 	Archéologue, Professeure, Université François-Rabelais
 	\item Xavier \textsc{Rodier}, UMR 7324 CITERES-LAT -- Tours\\
@@ -44,7 +47,7 @@ Dans cette thèse, SimFeodal est présenté dans une version différente de cell
 Les fondements du modèle, toutefois, restent très largement identiques entre ces deux versions, et à ce titre, ce chapitre de thèse reprend parfois des passages entiers du chapitre de l'ouvrage collectif.
 Dans ces moments, nous avons préféré ne pas les identifier en tant que tel, notamment car l'entremêlement de modifications apportées rendrait difficile la lecture.
 
-En matière de forme, notons que contrairement au chapitre publié, le modèle SimFeodal est ici présenté en suivant le protocole de description \og ODD\fg{} (\textit{Overview, Design concepts, and Details}) \autocite{grimm_odd_2010}, dans sa formulation la plus récente (\cite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).
+En matière de forme, notons que contrairement au chapitre publié et aux parties traitant du modèle de l'Habilitation à Diriger des Recherches de Cécile \textsc{Tannier} \autocite{tannier_analyse_2017}, le modèle SimFeodal est ici présenté en suivant le protocole de description \og ODD\fg{} (\textit{Overview, Design concepts, and Details}) \autocite{grimm_odd_2010}, dans sa formulation la plus récente (\cite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).
 SimFeodal ne se prête pas à toutes les catégories identifiées par les auteurs de ce standard, et celui-ci n'est de plus pas pensé pour une description aussi détaillée du modèle\footnotemark, mais nous pensons tout de même que le suivi de ce standard d'adoption permettra d'augmenter la reproductibilité de SimFeodal.
 Pour cette même raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépot de versionnement de SimFeodal :
 \begin{center}
@@ -59,7 +62,6 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 \hl{Une description plus courte, plus proche des descriptions ODD classiques, est disponible en ligne.}
 }
 
-\clearpage
 
 \begin{table}[H]
 	\centering
@@ -497,7 +499,7 @@ Les seigneurs (propriétaires et gardiens) prélèvent des droits aux foyers pay
 Plus ces derniers sont situés dans une région dense en zones de prélèvements, plus ils seront amenés à s'acquitter de nombreux droits, et plus leur satisfaction matérielle sera faible.
 Pour les seigneurs, à l'inverse, plus les redevances collectées seront importantes (donc plus ils posséderont de zone de prélèvement recouvrant de nombreux foyers paysans), plus leur puissance sera importante, ce qui leur permettra notamment de construire des châteaux, gages de renommée et de revenus accrus.
 
-\subsection{Dons entre seigneurs}
+\subsection{Dons entre seigneurs \label{meca-dons}}
 
 On a mentionné que les seigneurs pouvaient se voir confier des zones de prélèvement en garde.
 Historiquement, cela correspond à la pratique de certains seigneurs de nommer des gestionnaires ou de distribuer des terres à des seigneurs de moindre importance pour s'assurer de leur vassalité.
@@ -526,11 +528,49 @@ Le mécanisme de promotion, probabiliste, permet à un château situé dans un p
 
 \subsection{Construction de châteaux}
 
-ne pas oublier logique d'ordonnancement : fin de tour, après promotion, collecte et don, pour considérer le lag du à la construction.
+Tout au long de la période, de nouveaux châteaux sont construits et renforcés. C'est l'apparition des \og châteaux forts\fg{}.
+Si l'on connaît des châteaux préalables à la période étudiée, leur démultiplication survient surtout à partir de la seconde moitié du X$^e$ siècle.
+Ils sont surtout construits par les grands seigneurs existants afin de mailler le territoire d'un réseau de protection, même si certains sont aussi l'œuvre de seigneurs de moindre envergure qui se sont enrichis pendant la période en profitant du système féodal.
+En Touraine, on considère que la majeure partie des châteaux forts ont été construits entre le X$^e$ et le XIII$^e$ siècle, et que leur production a ensuite fortement ralenti.
+Les châteaux sont bâtis en bonne partie dans des villes déjà attractives, même si l'on observe aussi quelques créations dans des espaces peu peuplés, qui tendront alors à le devenir par la suite (les bourgs castraux).
+
+
+Dans SimFeodal, on fait apparaître les châteaux de manière endogène, en considérant donc qu'il n'y en a aucun au début de la période.
+À partir de 940, les seigneurs ont la possibilité de créer des châteaux.
+Cette possibilité est basée sur une probabilité, fonction de la puissance des seigneurs, donc de l'accumulation des redevances perçues à chaque pas de temps.
+Plus la puissance d'un seigneur est importante, plus il a de chances de pouvoir créer un château.
+Cette probabilité est aussi fonction de la puissance relative des seigneurs : au fur et à mesure que le temps passe et que de nouveaux seigneurs émergent, les grands seigneurs historiques voient leur importance relative décliner, et donc leur probabilité de créer de nouveaux châteaux diminuer.
+A contrario, certains petits seigneurs favorisés par leurs prélèvements et par les gardiennages reçus peuvent, de manière exceptionnelle, être amenés à bâtir eux-aussi des châteaux.
+Afin de ne pas voir l'apparition de zones concentrant de nombreux châteaux, nous avons mis en place une restriction spatiale à leur implantation : un nouveau château ne peut être construit à moins de 5 km d'un château existant.
+On garanti ainsi une répartition spatiale non aberrante au regard des connaissances empiriques.
+
+Notons qu'en matière d'ordonnancement, la construction des châteaux a lieu après le calcul de la satisfaction protection des foyers paysans, de la promotion en gros châteaux, et aussi après le don de ces mêmes châteaux, ce qui pourrait sembler contre-intuitif.
+Ce choix a été fait pour symboliser la durée de construction des châteaux, bien plus longue que les autres phénomènes d'apparition décrits dans le modèle : un château apparaît en fin de tour, il n'est donc pas véritablement utilisable avant le tour suivant, soit 20 ans plus tard.
+Les détails du mécanisme, notamment en ce qui concerne les probabilités différentes pour les petits et les grands seigneurs, ou encore les choix de localisation des nouveaux châteaux (au sein d'un agrégat ou non par exemple), sont explicités dans la partie dédiée (\cref{sssec:constru-chateaux}).
 
 \subsection{Création de nouveaux seigneurs}
 
+L'émiettement des pouvoirs pousse à l'apparition de nombreux seigneurs, d'envergure très locale majoritairement, tout au long de la période : alors qu'on estime qu'il y avait une vingtaine de seigneurs en Touraine en début de période, on considère qu'il y en a plus de 200 en 1200.
+Ces seigneurs sont détenteurs d'un faible pouvoir, peu disposant de terres conséquentes : une large proportion tire ses revenus de terres et d'installations octroyées par leur suzerain, par exemple sous la forme de banalités.
+
+Dans SimFeodal, l'accroissement des seigneurs est modélisé sous la forme de l'apparition, à chaque pas de temps, d'un nombre légèrement aléatoire de nouveaux seigneurs, dont la variation est mesurée de manière à obtenir environ 200 seigneurs en fin de simulation.
+Parmi ces seigneurs, seule une faible proportion (10\%) est dotée de terres et collecte donc des droits fonciers. Les autres seigneurs constituent donc un vivier potentiel de récipiendaires de dons divers (voir \cref{meca-dons}).
+L'ensemble de ces seigneurs sont répartis, spatialement, au sein d'agrégats existants.
+
 \subsection{Détection des agrégats}
+
+L'un des constats forts ayant mené à l'identification d'une \og transition\fg{} \autocite{pumain_convergences_2017, nuninger_cadre_2017} dans le système de peuplement de l'Europe du Nord-Ouest est la hiérarchisation du système de peuplement, c'est-à-dire d'une part une concentration de la population dispersée, et d'autre part l'apparition de hameaux, villages et petites villes suivant une hiérarchie de population.
+Parce que l'utilisation de ces termes plus spécifiques est particulièrement sensible en histoire et en archéologie, en particulier en raison de potentiels anachronismes, nous avons choisi de ne pas discrétiser le continuum représentatif de l'agglomération de foyers et de le dénommer, dans son sens le plus littéral, \og agrégat\fg{} de population.
+
+Dans SimFeodal, ces agrégats sont interprétés de manière morphologique, à l'instar des agglomérations de l'INSEE : est agrégat un regroupement d'au moins 5 foyers paysans, espacés l'un à un autre d'au plus 100 mètres.
+Cette définition permet de représenter des entités géographiques très diverses, depuis le petit agrégat composé de quelques foyers paysans à l'agrégat majeur, semblable à une petite ville, constitué de plusieurs centaines de foyers.
+L'agrégat est une entité spatiale au sens propre, dotée par exemple de ses propres attributs et sa propre emprise spatiale, constituée par l'enveloppe convexe des foyers paysans qui le composent : c'est une entité individuelle mais composite.
+
+Certains agrégats peuvent contenir une \og communauté\fg{}, c'est-à-dire une structure institutionnalisée gérée par les foyers la composant et qui procure un avantage en matière de rapport de force et de subsistance matérielle (par exemple avec les logiques de gestion collective des terres et outils que permettent les communautés agraires).
+Dans SimFeodal, les agrégats ont une probabilité (20\%), à chaque pas de temps, de voir apparaître une communauté en leur sein.
+D'un point de vue informatique, cela complexifie énormément la détection des agrégats : dès lors que des agents ont des propriétés propres, celles-ci doivent être transmissibles dans le temps, c'est-à-dire d'un pas de temps à l'autre.
+Pourtant, la détection des agrégats est renouvelée à chaque pas de temps, ce qui signifie qu'un agrégat détecté en 900, situé au même endroit qu'un agrégat de 880, ne peut que difficilement lui être associé\footnote{C'est un problème récurrent des méthodes de \textit{clustering} dynamique que de réussir à mener des associations entre les \textit{cluster} de différentes dates.}.
+Le mécanisme spécifique de détection, de constitution et de transmission des attributs des agrégats est donc particulièrement complexe, et fait l'objet d'une présentation détaillée plus loin dans le chapitre (\cref{sssec:agregats}).
 
 \subsection{Actualisation des pôles}
 
@@ -566,7 +606,7 @@ a
 \subsection{Introduction} : Pas tout résumé ici
 
 \subsection{Mécanismes globals}
-	\subsubsection{Identification des agrégats}
+	\subsubsection{Identification des agrégats \label{sssec:agregats}}
 	\subsubsection{Identification des pôles \label{sssec:poles}}
 	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
 
@@ -579,7 +619,7 @@ a
 	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
 	
 \subsection{Seigneurs}
-	\subsubsection{Construction de châteaux}
+	\subsubsection{Construction de châteaux \label{sssec:constru-chateaux}}
 	\subsubsection{Dons de châteaux}
 	\subsubsection{Création et dons de droits}
 	\subsubsection{Prélèvement des droits \label{sssec:collecte-droits}}
