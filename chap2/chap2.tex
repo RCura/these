@@ -2,14 +2,16 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-04-16}}
+	{\large Version \hl{2019-04-17}}
 \end{center}
 
 \begin{itemize}
 	\item Avril 2019 : Nouveau départ pour le chapitre
 \end{itemize}
 \setcounter{minitocdepth}{2}
-\minitoc
+
+	\minitoc
+
 
 \textbf{Code couleur}
 \begin{itemize}
@@ -21,8 +23,10 @@
 \clearpage
 
 \addcontentsline{toc}{section}{\textit{\textmd{Avant-propos}}}
+
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	\textbf{Avant-propos}\\
+	\textbf{Avant-propos}\vspace{-.75cm}
+	\begin{multicols}{2}
 Le présent chapitre décrit un modèle, SimFeodal, qui est une œuvre profondément collective et interdisciplinaire.
 La paternité de ce modèle est ainsi à attribuer à l'auteur de ces lignes autant qu'à l'ensemble des co-concepteurs du modèle :
 \begin{itemize}
@@ -49,7 +53,9 @@ Dans ces moments, nous avons préféré ne pas les identifier en tant que tel, n
 
 En matière de forme, notons que contrairement au chapitre publié et aux parties traitant du modèle de l'Habilitation à Diriger des Recherches de Cécile \textsc{Tannier} \autocite{tannier_analyse_2017}, le modèle SimFeodal est ici présenté en suivant le protocole de description \og ODD\fg{} (\textit{Overview, Design concepts, and Details}) \autocite{grimm_odd_2010}, dans sa formulation la plus récente (\cite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).
 SimFeodal ne se prête pas à toutes les catégories identifiées par les auteurs de ce standard, et celui-ci n'est de plus pas pensé pour une description aussi détaillée du modèle\footnotemark, mais nous pensons tout de même que le suivi de ce standard d'adoption permettra d'augmenter la reproductibilité de SimFeodal.
-Pour cette même raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépot de versionnement de SimFeodal :
+Pour cette même raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépôt de versionnement de SimFeodal :
+\end{multicols}
+\vspace{-1.25cm}
 \begin{center}
 	\href{https://github.com/SimFeodal/SimFeodal}{https://github.com/SimFeodal/SimFeodal}
 \end{center} 
@@ -63,13 +69,14 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 }
 
 
+
 \begin{table}[H]
 	\centering
 	\caption{Les éléments du protocole ODD, d'après \cite[Table 15.1, pp. 353--354]{grimm_documenting_2017}}
 	\label{tab:proto-ODD}
 	\scriptsize
 	{\renewcommand{\arraystretch}{1.5}%
-	\begin{tabular}{|p{1.1cm}|p{1.15cm}|p{1.25cm}|p{9.5cm}|}
+	\begin{tabular}{|p{1.05cm}|p{1.15cm}|p{1.25cm}|p{10cm}|}
 		\hline
 		\textbf{Overview} & \multicolumn{2}{l|}{1. Purpose} & What is the purpose of the model ? \\ \hline
 		& \multicolumn{2}{l|}{\pbox[c][24pt][b]{3cm}{2. Entities, state variables, and scales}} & What kind of entities are in the model? Do they represent managers, voters, landowners, firms or something else? By what state variables (attributes or characteristics), are these entities characterized? What are the temporal and spatial resolutions and extents of the model? \\ \cline{2-4} 
@@ -246,7 +253,6 @@ La \cref{fig:frise-chrono} illustre les processus et événements qui surviennen
 	\caption{Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal. \hl{Figure issue de Peupler la Terre, à corriger/adapter.}}
 	\label{fig:frise-chrono}
 \end{figure}
-
 
 \section[Fonctionnement général -- \textit{Process overview and schedulling}]{Fonctionnement général\protect\newline \large{\textit{Process overview and schedulling}} \sectionmark{Fonctionnement général}}
 
@@ -574,7 +580,26 @@ Le mécanisme spécifique de détection, de constitution et de transmission des 
 
 \subsection{Actualisation des pôles}
 
+La détection des pôles intervient relativement tôt dans l'ordonnancement des mécanismes.
+Il est par exemple nécessaire que les pôles soient définis avant le mécanisme de migration des foyers paysans, qui dépend en partie de ces pôles.
+Pourtant, en vue de préparer et de sauvegarder les \textit{outputs}, il est nécessaire de redéfinir les pôles, qui ont notamment été affectés par les modifications dans les agrégats et châteaux.
+Cela permet par exemple, lors de l'enregistrement des sorties, de conserver un lien entre un agrégat et le pôle dans lequel il se situe, notamment pour étudier les relations entre composition des pôles et populations des agrégats qui y sont attachés.
+Dans SimFeodal, nous sommes donc obligés, afin d'avoir des sorties exploitables, de reconstruire les pôles en fin de tour.
+Cette duplication d'un mécanisme est malheureuse et peu optimale, mais rendue nécessaire par la structure des différents mécanismes précédents et en particulier par l'interdépendance qui caractérise de nombreux types d'agents dans le modèle.
+
 \subsection{Enregistrement des \textit{outputs}}
+
+Lors de la conception et du développement de SimFeodal, on a rapidement choisi de mener l'exploration du modèle très largement \textit{a posteriori} (\hl{voir chapitre 5, section 5.2.1}) de l'exécution du modèle.
+L'enregistrement des données d'un modèle est un problème complexe, dont les enjeux et difficultés sont largement résumées dans le chapitre 5 (\hl{section 5.1}).
+Notons ici, tout de même, que nous avons besoin d'enregistrer des données relatives à l'ensemble des agents, pris individuellement, et à leurs attributs.
+La masse de données écrite par la simulation est donc assez conséquente et revêt une importance particulière.
+Lors de cette phase, des variables globales et spécifiques sont actualisées, des indicateurs synthétiques sont calculés, et l'ensemble des données subit des traitements voués à en simplifier la conservation, par exemple en réduisant la précision des nombres décimaux\footnote{
+Pour illustrer l'importance que ce traitement d'apparence anecdotique, on peut prendre l'exemple de l'enregistrement des géométries.
+Celles-ci, dans la plate-forme Gama \autocite{taillandier_building_2018} utilisée pour SimFeodal, sont exportées dans un format textuel normalisé, le \og Well-Known Text\fg{} (\textit{WKT}).
+Par défaut, chaque géométrie est décrite avec une précision de 12 chiffres décimaux, soit une résolution spatiale proche du picomètre, l'ordre de grandeur des atomes.
+Cette précision n'a strictement aucune utilité dans un modèle où les ordres de grandeur minimums tournent autour des dizaines et centaines de mètres.
+D'un point de vue informatique, stocker 12 décimales au lieu d'entiers démultiplie considérablement la place nécessaire pour l'enregistrement des données, et ces étapes de simplification sont donc indispensables pour disposer d'un modèle fonctionnel et exploitable.
+}.
 
 
 \section[Design -- \textit{Design concepts}]{Design \protect\newline \large{\textit{Design concepts}} \sectionmark{Design}}
