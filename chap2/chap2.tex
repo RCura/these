@@ -594,7 +594,7 @@ L'enregistrement des données d'un modèle est un problème complexe, dont les e
 Notons ici, tout de même, que nous avons besoin d'enregistrer des données relatives à l'ensemble des agents, pris individuellement, et à leurs attributs.
 La masse de données écrite par la simulation est donc assez conséquente et revêt une importance particulière.
 Lors de cette phase, des variables globales et spécifiques sont actualisées, des indicateurs synthétiques sont calculés, et l'ensemble des données subit des traitements voués à en simplifier la conservation, par exemple en réduisant la précision des nombres décimaux\footnote{
-Pour illustrer l'importance que ce traitement d'apparence anecdotique, on peut prendre l'exemple de l'enregistrement des géométries.
+Pour illustrer l'importance de ce traitement d'apparence anecdotique, on peut prendre l'exemple de l'enregistrement des géométries.
 Celles-ci, dans la plate-forme Gama \autocite{taillandier_building_2018} utilisée pour SimFeodal, sont exportées dans un format textuel normalisé, le \og Well-Known Text\fg{} (\textit{WKT}).
 Par défaut, chaque géométrie est décrite avec une précision de 12 chiffres décimaux, soit une résolution spatiale proche du picomètre, l'ordre de grandeur des atomes.
 Cette précision n'a strictement aucune utilité dans un modèle où les ordres de grandeur minimums tournent autour des dizaines et centaines de mètres.
@@ -602,31 +602,79 @@ D'un point de vue informatique, stocker 12 décimales au lieu d'entiers démulti
 }.
 
 
-\section[Design -- \textit{Design concepts}]{Design \protect\newline \large{\textit{Design concepts}} \sectionmark{Design}}
 
-\subsection*{Basic principles}
-\subsection*{Emergence}
-\subsection*{Adaptation}
-\subsection*{Objectives}
-\subsection*{Learning}
-\subsection*{Prediction}
-\subsection*{Sensing}
-\subsection*{Interaction}
-\subsection*{Stochasticity}
-\subsection*{Collectives}
-\subsection*{Observation}
+\section[Concepts de modélisation-- \textit{Design concepts}]{Concepts de modélisation \protect\newline \large{\textit{Design concepts}} \sectionmark{Concepts de modélisation}}
+
+Cette section du protocole ODD vise à mettre en avant les concepts courants de la modélisation de systèmes complexes qui sont employés dans le modèle.
+C'est une liste exhaustive, et l'ensemble des concepts décrits n'ont pas nécessairement de correspondance dans SimFeodal.
+Par soucis de clarté, on décrira donc d'abord les grands principes de modélisation qui nous semblent fondamentaux dans SimFeodal, et ensuite, le cas échéant, les ensembles de concepts mobilisés.
+
+\subsection{Principes de base - \textit{Basic principles}}
+
+\paragraph{\textit{Space Matters}}
+
+SimFeodal est un modèle intrinsèquement spatial.
+De nombreux modèles agents mobilisent l'espace, ou au moins une représentation ou un support présent dans le concept du \og monde\fg{} virtuel répendu en modélisation agent, quand bien même l'approche n'est pas foncièrement spatiale.
+Par exemple, on trouve de nombreux modèles de réseaux dans les bibliothèques classiques de modèles agents, où l'espace support est une vue plannaire plus qu'un support euclidien ou topographique réel.\\
+Dans SimFeodal, au contraire et comme la brève description des mécanismes le montre, une très large partie des (inter)actions dépendent des distances (modèles de types gravitaires pour le calcul de la satisfaction religieuse et de protection), des contextes spatiaux (évaluation de l'environnement local pour les migrations locales) ou encore des voisinages (constitution d'agrégats, détection des pôles etc.).
+SimFeodal n'est donc pas qu'un modèle qui prend appui sur l'espace, mais un modèle dont le fonctionnement inhérent est spatial, voir géographique ou géométrique.
+\textit{Space matters}\ldots
+
+\paragraph{\textit{Push-Pull}}
+
+L'évolution de la structure spatiale que l'on observe dans SimFeodal résulte de la migration des foyers paysans, qui tendent ainsi à se concentrer.
+Ce mécanisme est fortement inspiré et ancré dans une certaine pratique de modélisation, courante dans le champ des études de mobilité résidentielle, que l'on peut qualifier de \og \textit{push-pull}\fg{} \autocite{tannier_analyse_2017}.
+On entend par là que les agents subissent un double mécanisme, répulsif, qui les pousse à déménager (ou migrer dans SimFeodal), le \textit{push}, et attractif, qui conditionne leur choix de destination à l'attractivité d'un lieu, le \textit{pull}.
+Ce modèle est d'ordinaire mobilisé dans l'étude de mobilités résidentielle, ou encore vis-à-vis de pratiques quotidiennes de l'espace, et nous semble inédit sur des processus d'une temporalité plus importante, telle que le temps long sur lequel SimFeodal s'appuie.\\
+Si ce choix peut paraître surprenant, il résulte avant tout d'une certaine \og culture de modélisation\fg{}, l'une des co-conceptrices du modèle ayant une forte habitude de modélisation de dynamiques résidentielles (\textit{ibid.}).
+En dehors de l'importance de cette \og path-dependency\fg{} d'un modèle aux conceptions préalables de ses modélisateurs, notons tout de même que ce type de modélisation nous semble assez facilitateur de dialogue avec des experts thématiques, permettant donc peut-être plus simplement que d'autres paradigmes de passer d'une connaissance experte spécifique à une modélisation plus générique.
+
+\paragraph{Attachement préférentiel} Ce \og grand concept\fg{} est le dernier sur lequel SimFeodal s'appuie, quoi que de manière bien moindre que les deux précédents.
+Il est néanmoins mobilisé, sous une forme faible, en matière de concentration : les pôles les plus importants attirent plus, et peuvent voir se développer des agrégats et des églises paroissiales qui à leur tour augmenteront leur attractivité.
+Cela concoure à des logiques de renforcement des plus forts, et donc d'amoindrissement (relatif) des plus faibles.
+
+\subsection{Théories et concepts de la modélisation agents mobilisés}
+
+\paragraph{Emergence}
+\paragraph{Adaptation}
+\paragraph{Objectives}
+\paragraph{Learning}
+\paragraph{Prediction}
+\paragraph{Sensing}
+\paragraph{Interaction}
+\paragraph{Stochasticity}
+\paragraph{Collectives}
+\paragraph{Observation}
 
 
 \section[Situation initiale -- \textit{Details - Initialisation}]{Situation initiale\protect\newline \large{\textit{Details - Initialisation}} \sectionmark{Situation initiale} \label{sec:initialisation}}
 
 \subsection{Une situation initiale théorique et endogène}
-a
+
 \subsection{Paramètres d'initialisation}
-a
+
 \section[Données en entrée -- \textit{Input data}]{Données en entrée\protect\newline \large{\textit{Input data}} \sectionmark{Données en entrée}}
-a
+
 
 \section[Mécanismes spécifiques -- \textit{Submodels}]{Mécanismes spécifiques\protect\newline \large{\textit{Submodels}} \sectionmark{Mécanismes spécifiques} \label{sec:meca-specifiques}}
+
+Encadré sur la polarité d'implémentation : \Cref{enc:polarite-implementation}
+
+
+\begin{encadre}{Polarité de l'implémentation}{polarite-implementation}
+
+\begin{itemize}
+	\item \textbf{Polarisation}\\
+	Logique du sens d'implémentation d'un mécanisme probabiliste : Proportion vs probabilité \\
+	1000 agents avec proba de 0.1 $\approx$ 10\% de 1000 agents
+	
+	\item \textbf{Factorisation}\\
+	1000 agents qui font A-B-C $\approx$ 1000 agents qui font A, puis 1000 agents qui font B, puis 1000 agents qui font C
+	
+	\item \textbf{Optimisation}\\
+	Distance entre 1000 agents et 3 églises $==$ Distance entre 3 églises et 1000 agents
+\end{itemize}	
+\end{encadre}
 
 \subsection{Introduction} : Pas tout résumé ici
 
