@@ -34,7 +34,7 @@ La paternité de ce modèle est ainsi à attribuer à l'auteur de ces lignes aut
 	Géographe et modélisatrice, Directrice de Recherche, CNRS
 	\item Samuel \textsc{Leturcq}, UMR 7324 CITERES-LAT -- Tours\\
 	Historien, Maître de Conférence, Université François Rabelais
-	\item Elisabeth \textsc{Zadora-Rio}, UMR 7324 CITERES-LAT -- Tours\\
+	\item Élisabeth \textsc{Zadora-Rio}, UMR 7324 CITERES-LAT -- Tours\\
 	Archéologue, Directrice de Recherche émérite, CNRS
 \end{itemize}
 Ainsi qu'à ceux qui ont contribué au projet pendant ses premières années :
@@ -164,7 +164,7 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques de 
 		& Haute-Justice & $\approx$ 50 &  &  \\ \cline{2-3}
 		& Autres droits & $\approx$ 300 &  &  \\ \hline
 		\multirow{2}{*}{Églises} & Église & $\approx$ 300 & \multirow{2}{*}{Ponctuelle} & \makecell{---} \\ \cline{2-3} \cline{5-5} 
-		& Eglise paroissiale & $\approx$ 200 &  & \makecell{Création de paroisse\\ \textit{(type d'attracteur)}} \\ \hline
+		& Église paroissiale & $\approx$ 200 &  & \makecell{Création de paroisse\\ \textit{(type d'attracteur)}} \\ \hline
 		\multicolumn{2}{|c|}{Paroisses} & $\approx$ 200 & Zonale & --- \\ \hline
 		\multirow{2}{*}{Châteaux} & Petits Châteaux & $\approx$ 40 & \multirow{2}{*}{Ponctuelle} & \multirow{2}{*}{\makecell{---\\\textit{(type d'attracteur)}}} \\ \cline{2-3} 
 		& Gros Châteaux & $\approx$ 10 &  & \\ \hline
@@ -583,7 +583,7 @@ Cela permet par exemple, lors de l'enregistrement des sorties, de conserver un l
 Dans SimFeodal, nous sommes donc obligés, afin d'avoir des sorties exploitables, de reconstruire les pôles en fin de tour.
 Cette duplication d'un mécanisme est malheureuse et peu optimale, mais rendue nécessaire par la structure des différents mécanismes précédents et en particulier par l'interdépendance qui caractérise de nombreux types d'agents dans le modèle.
 
-\subsection{Enregistrement des \textit{outputs}}
+\subsection{Enregistrement des \textit{outputs} \label{meca-outputs}}
 
 Lors de la conception et du développement de SimFeodal, on a rapidement choisi de mener l'exploration du modèle très largement \textit{a posteriori} (\hl{voir chapitre 5, section 5.2.1}) de l'exécution du modèle.
 L'enregistrement des données d'un modèle est un problème complexe, dont les enjeux et difficultés sont largement résumées dans le chapitre 5 (\hl{section 5.1}).
@@ -608,8 +608,8 @@ Par soucis de clarté, on décrira donc d'abord les grands principes de modélis
 \paragraph{\textit{Space Matters}}
 
 SimFeodal est un modèle intrinsèquement spatial.
-De nombreux modèles agents mobilisent l'espace, ou au moins une représentation ou un support présent dans le concept du \og monde\fg{} virtuel répendu en modélisation agent, quand bien même l'approche n'est pas foncièrement spatiale.
-Par exemple, on trouve de nombreux modèles de réseaux dans les bibliothèques classiques de modèles agents, où l'espace support est une vue plannaire plus qu'un support euclidien ou topographique réel.\\
+De nombreux modèles agents mobilisent l'espace, ou au moins une représentation ou un support présent dans le concept du \og monde\fg{} virtuel répandu en modélisation agent, quand bien même l'approche n'est pas foncièrement spatiale.
+Par exemple, on trouve de nombreux modèles de réseaux dans les bibliothèques classiques de modèles agents, où l'espace support est une vue planaire plus qu'un support euclidien ou topographique réel.\\
 Dans SimFeodal, au contraire et comme la brève description des mécanismes le montre, une très large partie des (inter)actions dépendent des distances (modèles de types gravitaires pour le calcul de la satisfaction religieuse et de protection), des contextes spatiaux (évaluation de l'environnement local pour les migrations locales) ou encore des voisinages (constitution d'agrégats, détection des pôles etc.).
 SimFeodal n'est donc pas qu'un modèle qui prend appui sur l'espace, mais un modèle dont le fonctionnement inhérent est spatial, voir géographique ou géométrique.
 \textit{Space matters}\ldots
@@ -675,7 +675,7 @@ Encadré sur la polarité d'implémentation : \Cref{enc:polarite-implementation}
 
 \subsection{Introduction} : Pas tout résumé ici
 
-\subsection{Mécanismes globals}
+\subsection{Mécanismes globaux}
 	\subsubsection{Identification des agrégats \label{sssec:agregats}}
 	\subsubsection{Identification des pôles \label{sssec:poles}}
 	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
