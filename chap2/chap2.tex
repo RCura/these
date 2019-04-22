@@ -8,7 +8,7 @@
 \begin{itemize}
 	\item Avril 2019 : Nouveau départ pour le chapitre
 \end{itemize}
-\setcounter{minitocdepth}{2}
+\setcounter{minitocdepth}{1}
 
 	\minitoc
 
@@ -45,20 +45,18 @@ Ainsi qu'à ceux qui ont contribué au projet pendant ses premières années :
 	Archéologue, Ingénieur de Recherche HDR, CNRS
 
 \end{itemize}
-
 Ce chapitre de thèse constitue une reprise, individuelle et largement modifiée et retravaillée, d'un chapitre -- \citetitle{cura_transition_2017} \autocite{cura_transition_2017} -- de l'ouvrage collectif \og Peupler la terre\fg{} \autocite{sanders2018peupler} issu du projet TransMonDyn\footnotemark.
 Dans cette thèse, SimFeodal est présenté dans une version différente de celle de l'ouvrage collectif, et de nombreux mécanismes sont par exemple considérablement simplifiés.
 Les fondements du modèle, toutefois, restent très largement identiques entre ces deux versions, et à ce titre, ce chapitre de thèse reprend parfois des passages entiers du chapitre de l'ouvrage collectif.
-Dans ces moments, nous avons préféré ne pas les identifier en tant que tel, notamment car l'entremêlement de modifications apportées rendrait difficile la lecture.
-
+Dans ces moments, nous avons préféré ne pas les identifier en tant que tel, notamment car l'entremêlement de modifications apportées rendrait difficile la lecture.\\
 En matière de forme, notons que contrairement au chapitre publié et aux parties traitant du modèle de l'Habilitation à Diriger des Recherches de Cécile \textsc{Tannier} \autocite{tannier_analyse_2017}, le modèle SimFeodal est ici présenté en suivant le protocole de description \og ODD\fg{} (\textit{Overview, Design concepts, and Details}) \autocite{grimm_odd_2010}, dans sa formulation la plus récente (\cite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).
 SimFeodal ne se prête pas à toutes les catégories identifiées par les auteurs de ce standard, et celui-ci n'est de plus pas pensé pour une description aussi détaillée du modèle\footnotemark, mais nous pensons tout de même que le suivi de ce standard d'adoption permettra d'augmenter la reproductibilité de SimFeodal.
-Pour cette même raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépôt de versionnement de SimFeodal :
+Pour cette même raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépôt de versionnement de SimFeodal :\\ \\
+\footnotesize
+\href{https://github.com/SimFeodal/SimFeodal}{https://github.com/SimFeodal/SimFeodal}
+
 \end{multicols}
-\vspace{-1.25cm}
-\begin{center}
-	\href{https://github.com/SimFeodal/SimFeodal}{https://github.com/SimFeodal/SimFeodal}
-\end{center} 
+
 \end{mdframed}
 \footnotetext[1]{
 Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 et 2014.
@@ -151,8 +149,6 @@ Lors de ces migrations, les Foyers Paysans sont attirés par des \textbf{Pôles}
 Plus l'attractivité de ces pôles est importante, plus grandes sont leur chance d'attirer suffisamment de Foyers Paysans pour que ces derniers forment des \textbf{Agrégats} de population, qui leur apporteront alors un surcroît de satisfaction et permettront de fixer les Foyers Paysans présents et d'en attirer de nouveaux pour faire émerger une hiérarchie dans le système de peuplement.
 Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques de ces différents types d'agents.
 
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
 
 \begin{table}[H]
 	\centering
@@ -261,7 +257,7 @@ Il est donc constitué d'une large variété d'agents (\cref{tab:agents-simfeoda
 Au total, ce sont près de quarante mécanismes particuliers (ici regroupés en une quinzaine de mécanismes généraux), appelés selon un ordonnancement constant, qui font interagir les agents à chaque pas de temps.
 Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entrer dans le détail, algorithmique ou mathématique, de chacun (voir la \cref{sec:meca-specifiques} pour des descriptions plus précises des mécanismes les plus complexes et importants).
 
-\subsection*{Ordonnancement général}
+\subsection*{Ordonnancement général \label{meca-ordonancement}}
 
 \begin{figure}[H]
 	\centering
@@ -342,7 +338,7 @@ Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entre
 Dans SimFeodal, les mécanismes sont toujours appelés dans le même ordre (voir \cref{fig:ordonnancement}) : l'ensemble de l'ordonnancement ne change pas tout au long des 20 pas de temps du modèle.
 Certains mécanismes sont toutefois temporaires, c'est-à-dire rendus inactifs en fonction des pas de temps : la construction des châteaux, par exemple, n'est pas possible avant 940.
 Jusqu'au pas de temps correspondant, le mécanisme est donc désactivé par un paramètre réglable.
-Notons que si les mécanismes suivent un ordre déterminé, ce n'est pas le cas des agents qui sont appelés dans chacun : pour un mécanisme donné, l'ordre d'appel des agents est aléatoire et varie à chaque appel de ce mécanisme.
+Notons que si les mécanismes suivent un ordre déterminé, ce n'est pas le cas des agents qui sont appelés dans chacun de ces mécanismes : pour un mécanisme donné, l'ordre d'appel des agents est aléatoire et varie à chaque appel de ce mécanisme.
 
 
 \subsection{Initialisation \label{meca-init}}
@@ -361,7 +357,7 @@ Plusieurs mécanismes de SimFeodal dépendent du temps : la possibilité, évoqu
 La mise en place de mécanismes tributaires de dates nous permet ainsi de représenter des événements exogènes au modèle qui peuvent ainsi servir de déclencheurs ou de catalyseurs à des processus de longue durée.
 L'incrémentation de la date et la mise à jour des différentes variables temporelles, par exemple en sélectionnant les valeurs de ces différentes variables dans des tableaux de correspondance temporels, constituent donc la première étape de chaque nouveau pas de temps.
 
-\subsection{Renouvellement des foyers paysans}
+\subsection{Renouvellement des foyers paysans \label{meca-renouvellement}}
 
 SimFeodal est un modèle qui simule l'évolution d'un système spatial clôt.
 On entend par là qu'il n'y a pas d'échange ou d'interaction avec les régions voisines, ce qui constitue une limite forte, par ailleurs fréquente dans la modélisation géographique.
@@ -457,7 +453,7 @@ De la même manière que la satisfaction religieuse dépend de la distance aux �
 Un château assure ainsi une certaine protection à la population, protection qui se montre de plus en plus critique au fur et à mesure de l'avancement de la période et donc du modèle.
 Comme pour la satisfaction religieuse, les seuils de distance évoluent donc au cours du temps, de même ici que le \og besoin de protection\fg{}, qui permet de renforcer l'augmentation nette du climat de violence au cours de la période.
 
-\subsection{Migration des Foyers Paysans}
+\subsection{Migration des Foyers Paysans \label{meca-migration}}
 
 La satisfaction, décrit ci dessus, sert de condition probabiliste à la possibilité pour les foyers paysans de migrer.
 Rappelons que les pas de temps durent 20 ans : les migrations ne sont donc pas des déplacements quotidiens ou saisonniers, mais illustrent plutôt le déménagement et le choix de localisation que chaque nouvelle génération de paysans est amené à réaliser.
@@ -601,8 +597,6 @@ Cette précision n'a strictement aucune utilité dans un modèle où les ordres 
 D'un point de vue informatique, stocker 12 décimales au lieu d'entiers démultiplie considérablement la place nécessaire pour l'enregistrement des données, et ces étapes de simplification sont donc indispensables pour disposer d'un modèle fonctionnel et exploitable.
 }.
 
-
-
 \section[Concepts de modélisation-- \textit{Design concepts}]{Concepts de modélisation \protect\newline \large{\textit{Design concepts}} \sectionmark{Concepts de modélisation}}
 
 Cette section du protocole ODD vise à mettre en avant les concepts courants de la modélisation de systèmes complexes qui sont employés dans le modèle.
@@ -632,6 +626,9 @@ En dehors de l'importance de cette \og path-dependency\fg{} d'un modèle aux con
 \paragraph{Attachement préférentiel} Ce \og grand concept\fg{} est le dernier sur lequel SimFeodal s'appuie, quoi que de manière bien moindre que les deux précédents.
 Il est néanmoins mobilisé, sous une forme faible, en matière de concentration : les pôles les plus importants attirent plus, et peuvent voir se développer des agrégats et des églises paroissiales qui à leur tour augmenteront leur attractivité.
 Cela concoure à des logiques de renforcement des plus forts, et donc d'amoindrissement (relatif) des plus faibles.
+Notons qu'un mécanisme d'attachement préférentiel aboutit a une distribution log-normale de ses composantes \autocite{barabasi_emergence_1999}, ce qui pourrait être le cas ici concernant les tailles des agrégats.
+Pourtant, dans SimFeodal, l'attachement préférentiel n'est pas directement fonction de la taille des agrégats, et est limité par certains seuils (le nombre de paroisses est par exemple limité dans la prise en compte de l'attractivité d'un pôle).
+Nous ne pouvons donc en aucun cas prédire, ou mettre estimer selon un raisonnement intuitif, que la forme d'attachement préférentiel implémentée dans SimFeodal doit entraîner une hiérarchisation forte (log-normale) des agrégats. 
 
 \subsection{Théories et concepts de la modélisation agents mobilisés}
 
