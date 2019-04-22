@@ -632,16 +632,60 @@ Nous ne pouvons donc en aucun cas prédire, ou mettre estimer selon un raisonnem
 
 \subsection{Théories et concepts de la modélisation agents mobilisés}
 
-\paragraph{Emergence}
-\paragraph{Adaptation}
-\paragraph{Objectives}
-\paragraph{Learning}
-\paragraph{Prediction}
-\paragraph{Sensing}
-\paragraph{Interaction}
-\paragraph{Stochasticity}
-\paragraph{Collectives}
-\paragraph{Observation}
+Le protocole ODD définit un ensemble de \textit{design concepts} qui peuvent être mobilisés dans la conception d'un modèle à base d'agents. Pour chacun de ces 10 concepts (voir \cref{tab:proto-ODD}\footnote{
+Il nous semble que les dénominations de ces concepts ne sont pas extrêmement claires et intuitives. Nous recommandons au lecteur de plutôt chercher à les comprendre en lisant les exemples de questions donnés dans la colonne de droite du tableau.
+}), nous décrivons donc brièvement, le cas échéant, si et comment ils sont appliqués dans SimFeodal.
+
+\paragraph{Émergence} Ce mécanisme constitue l'un des fondements de nombreux modèles complexes, et SimFeodal n'y échappe pas. La diversité des éléments analysés dans le modèle est trop importante pour faire une liste des éléments qui y émergent (\hl{voir le chapitre 3, section 3.? par exemple}), et l'on peut donc prendre pour exemple les modifications de structure spatiale des foyers paysans.
+Les foyers paysans ne communiquent ni n'interagissent directement les uns avec les autres, et pourtant ils tendent à se regrouper en formant des agrégats dont la hiérarchie augmente avec le temps du modèle. Dans ce cas spécifique, il y a donc une émergence \og forte\fg{}, puisque les structures résultantes de l'agrégation des foyers paysans sont attractives alors que les foyers paysans en eux-mêmes ne le sont pas.
+
+\paragraph{Adaptation} Dans SimFeodal, ce concept n'est pas présent au sens littéral : les agents ne s'adaptent pas à un environnement en modifiant leur comportement. L'adaptation est toutefois présente dans un sens plus évolutionniste, darwinien, puisque l'on peut considérer que les agents les mieux positionnés au départ, un seigneur situé à proximité d'un agrégat qui aura tendance à devenir important, seront ensuite avantagés tout au long de la simulation, et avantageront ainsi les seigneurs de leur voisinage (dons de droits par exemple).\\
+Notons aussi que la description de ce concept interroge la capacité des agents à chercher à maximiser une mesure de réussite.
+Dans ce sens là, on peut parler d'adaptation pour les foyers paysans : plutôt que de chercher à maximiser leur satisfaction, on peut tout de même dire qu'ils essaient, à force de tirages aléatoires, à ne pas la minimiser.
+
+
+\paragraph{Objectifs} Nous répondons ici à la seconde partie de la description :\\
+\og When individuals make decisions by ranking alternatives, what criteria do they use?\fg{} (\textcite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).\\
+Dans SimFeodal, un mécanisme stochastique pondéré est mobilisé de nombreuses fois pour établir la destination d'un foyer paysan, lors d'un renouvellement (voir \cref{meca-renouvellement}) ou d'une migration locale ou lointaine (\cref{meca-migration}): la \og loterie pondérée\fg{}.
+Dans ce mécanisme, les foyers paysans \og choisissent\fg{} leur agrégat (ou leur pôle) de destination en fonction de l'attractivité de celui-ci :
+plus un agrégat/pôle est attractif, c'est-à-dire composé de nombreux foyers paysans (ou attracteurs), plus il est susceptible d'attirer. Chaque agrégat/pôle, y compris le moins attractif, a toutefois une probabilité, faible, d'attirer de nouveaux foyers paysans.
+Le classement d'attracteurs en fonction de leurs caractéristiques propres est donc très présent dans SimFeodal.
+Notons qu'il l'a de plus été plus encore dans des versions préalables du modèle, où la distance était prise en compte de concert à l'attractivité, formant un véritable modèle gravitaire microscopique pour chaque choix de (re-)localisation des foyers paysans.
+
+\paragraph[Learning \& Prediction]{} Les deux concepts suivants, l'apprentissage (\textit{\textbf{learning}}) et la prédiction (\textit{\textbf{prediction}}), ne nous semblent pas adaptés à la description de SimFeodal.
+
+\paragraph{Perception - \textit{Sensing}} En tant que tel, les agents de SimFeodal n'ont aucune perception de leur environnement, c'est-à-dire qu'ils n'ont aucun comportement \og actif\fg{} de mise à jour de leurs connaissances, ou d'utilisations quelconques de connaissances d'ailleurs.
+Par extension, toutefois, on peut trouver des notions de connaissances globales ou locales chez les agents par la manière dont certains mécanismes sont construits. Par exemple, chez les foyers paysans, la migration peut être locale ou globale. En cas de migration locale, la recherche de destinations potentielles se fait dans le voisinage des foyers paysans.
+On pourrait alors y voir une notion de perception, et y considérer que ces foyers paysans (ou les foyers paysans non mobiles, les serfs) ont une perception uniquement locale de leur environnement, contrairement aux autres foyers paysans qui auraient une connaissance totale du monde modélisé.
+
+\paragraph{Interaction} C'est un concept qui est souvent au cœur de nombreux modèles à base d'agents. Dans SimFeodal, il n'y a pourtant que peu d'interaction au sens propre, c'est-à-dire impliquant un échange, une communication ou une transaction quelconque entre des agents.
+Cela est légèrement faux dans le cas des seigneurs, qui peuvent donner en garde leurs droits et châteaux à d'autres seigneurs, mais la non-réciprocité de l'échange ou encore l'absence d'\fg{}association\fg{}\footnote{
+	C'est-à-dire que pour un seigneur donateur, le choix de son vassal n'a aucune importance et aucun impact dans le modèle, et réciproquement.
+} nous poussent à ne pas considérer ces mécanismes comme des mécanismes d'interaction proprement dite.
+On pourrait toutefois, de manière figurée, voir de l'interaction entre les foyers paysans en considérant la constitution des agrégats : les agents n'interagissent pas directement ensemble, mais c'est leur co-présence qui est facteur de définition d'une entité de niveau supérieur\footnote{
+A mettre au regard de la célèbre définition de la ville de \textcite{levy_ville_2003} : \og Géotype de substance sociétale fondé sur la coprésence\fg{}.
+}.
+
+\paragraph{Stochasticité} Dans les parties précédentes de ce chapitre, on a plusieurs fois mentionné l'importance de la stochasticité dans SimFeodal.
+Celle-ci est omniprésente : dès l'initialisation du monde (\cref{meca-init}), la distribution des foyers paysans, agrégats, églises et seigneurs est entièrement aléatoire.
+En parcourant l'ensemble du déroulement de SimFeodal (\cref{fig:ordonnancement}), on réalise qu'à l'exception des détections spatiales (agrégats, pôles et paroisses) et de l'enregistrement des sorties, tous les mécanismes comportent une part important de stochasticité : \textit{a minima} sur l'ordre d'appel des agents (\cref{meca-ordonancement}), et souvent bien plus importante (loteries pondérées, probabilités de migration, probabilité de construction et de localisation de châteaux\ldots).
+Conjuguée avec la complexité du modèle, c'est-a-dire l'imbrication des mécanismes qui rend leur comportement non linéaire, la stochasticité concoure à faire de SimFeodal un modèle profondément complexe et aléatoire, dont on ne peut prédire le comportement, ni même l'effet de certains paramètres (\hl{voir le chapitre 6, section analyse de sensibilité, ou chapitre 3 sur l'évaluation des params}), sans le simuler.
+
+
+\paragraph{Collectifs} Cette partie de la grille de lecture ODD interroge l'existence et la constitution de \og collectifs\fg{}, c'est-à-dire d'agrégats d'entités individuelles, ainsi que la manière dont ils sont implémentés : dotés
+d'attributs propres ou enrichissant les attributs des entités constituantes.
+\\
+Dans SimFeodal, on pense directement aux agrégats, entités de niveau mésoscopique constituées de foyers paysans.
+Les agrégats ont leurs attributs propres, qui dépendent toutefois largement des foyers paysans (attractivité, emprise spatiale).
+Les agrégats ont toutefois une caractéristique propre, la présence d'une communauté ou non. Cette caractéristique joue, de manière rétroactive, sur les foyers paysans qui composent l'agrégat puisque la présence d'une communauté dans leur agrégat augmente mécaniquement la satisfaction matérielle et générale des foyers paysans.
+\\
+Une autre entité mésoscopique est constituée par la proximité d'attracteurs (églises paroissiales, châteaux et agrégats de population), qui dessinent alors des pôles composites.
+Comme pour les agrégats, certains attributs des pôles dérivent directement des attracteurs les composants, par exemple leur géométrie. L'autre propriété des pôles, leur attractivité, dépend aussi directement des attracteurs qui les composent, sans toutefois que la relation soit strictement cumulative : une cinquième église paroissiale n'apportera pas d'attractivité au pôle dont elle fait partie (voir \cref{tab:attraction-poles}).
+
+\paragraph{Observation} Ce dernier \og design concept\fg{} nous semble quelque peu incongru et dissonant au regard des autres concepts déployés. Il s'agit ici de définir les données produites et collectées par le modèle à base d'agents.
+Nous avons en partie mentionné le type d'enregistrement des données (\cref{meca-outputs}), et déjà annoncé que cet aspect fondamental de SimFeodal serait couvert très largement dans des parties dédiées, cette problématique occupant une large partie du \hl{chapitre 5}.\\
+Pour aider au positionnement de SimFeodal vis-à-vis de modèles à base d'agents classiques, on peut toutefois expliciter ici que la collecte des données est importante dans SimFeodal, puisque le modèle est pensé pour être analysé \textit{a posteriori}, requérant l'analyse simultanée de nombreux indicateurs hétérogènes. Au contraire d'un modèle essentiellement dynamique et \og animé\fg{} tel que celui de Schelling, où le modèle peut être appréhendé en direct de son exécution, SimFeodal est ainsi un modèle dont l'un des objectifs est de produire des données, lesquelles permettront de comprendre le modèle ultérieurement.
+
 
 
 \section[Situation initiale -- \textit{Details - Initialisation}]{Situation initiale\protect\newline \large{\textit{Details - Initialisation}} \sectionmark{Situation initiale} \label{sec:initialisation}}
