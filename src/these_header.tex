@@ -44,6 +44,7 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \usepackage{enumitem}
 
 \usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{pdftitle={Robin Cura - Thèse}}
 \usepackage[noabbrev, nameinlink]{cleveref}
 
 \usepackage{longtable}
@@ -83,7 +84,15 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 \dominitoc
 
 \usepackage{listings} % Code
+\lstset{
+	basicstyle=\ttfamily,
+	frame=single
+}
 %\usepackage{minted}
+\renewcommand\lstlistingname{Code}
+\renewcommand\lstlistlistingname{Code}
+\crefformat{lstlisting}{code~#2#1#3}
+\Crefformat{lstlisting}{Code~#2#1#3}
 
 \usepackage[lofdepth,lotdepth]{subfig}
 \usepackage{sparklines}
@@ -204,3 +213,15 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 
 % ###### AVANT-PROPOS CHAP2 ######
 \usepackage{multicol}
+
+
+% ######## Plusieurs ndbp renvoyant à la même ######
+\usepackage{footmisc}
+% # Et on met un asterisque à la place
+\newcommand{\astfootnote}[1]{
+	\let\oldthefootnote=\thefootnote
+	\setcounter{footnote}{0}
+	\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+	\hspace*{-.45cm}\footnote{#1}\unskip
+	\let\thefootnote=\oldthefootnote
+}
