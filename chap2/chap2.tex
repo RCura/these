@@ -831,7 +831,30 @@ Dans cet exemple, l'implémentation se fait donc dans un sens opposé à celui d
 \end{encadre}
 
 \subsection{Mécanismes globaux}
-	\subsubsection{Identification des agrégats \label{sssec:agregats}}
+ ABC
+\clearpage
+
+\subsubsection{Identification des agrégats \label{sssec:agregats}}
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.75\linewidth]{img/detection_agregats.pdf}
+	\caption{Les étapes du mécanisme de détection et de mise à jour des agrégats.}
+	\label{fig:detection-agregats}
+\end{figure}
+\vspace*{-.5cm}
+La \cref{fig:detection-agregats} présente les étapes successives de détection des agrégats.
+À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que tous les foyers paysans sont considérés comme dispersés (\textbf{A}).
+On exécute un algorithme de classification basé sur la distance, proche de DBSCAN : sont considérés comme agrégats les \textit{clusters} constitués d'au moins 5 foyers paysans espacés de moins de 100~m (\textbf{B}).
+On dessine alors la géométrie des agrégats, sous la forme de l'enveloppe convexe des foyers paysans qui les composent (\textbf{C}).
+Les foyers paysans situés dans la surface d'un agrégat y sont ajoutés (\textbf{D}).
+On crée ensuite des \textit{buffers} de 100~m autour des agrégats et on y rattache à nouveau les foyers paysans présents dans la surface (\textbf{E}).
+Dernière étape dans la détection des agrégats, et afin de ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion : sont fusionnés les agrégats qui s'intersectent (\textbf{F}).\\
+Les trois dernières étapes concernent l'identification des propriétés des agrégats, et en particulier de leur affectation d'une communauté.
+On isole les agrégats du pas de temps précédent qui intersectent les nouveaux agrégats (\textbf{G}).
+On procède ensuite à une intersection entre les géométries de ces anciens agrégats et le nouvel agrégat (\textbf{H}).
+Le nouvel agrégat récupère alors les propriétés de l'ancien agrégat dont la superficie d 'intersection est la plus importante, c'est-à-dire l'agrégat vert ici (\textbf{I}).
+	
 	\subsubsection{Identification des pôles \label{sssec:poles}}
 	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
 
