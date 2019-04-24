@@ -25,7 +25,7 @@
 \addcontentsline{toc}{section}{\textit{\textmd{Avant-propos}}}
 
 \begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-	\textbf{Avant-propos}\vspace{-.75cm}
+	\textbf{\hypertarget{avant-propos}{Avant-propos}}\vspace{-.75cm}
 	\begin{multicols}{2}
 Le présent chapitre décrit un modèle, SimFeodal, qui est une œuvre profondément collective et interdisciplinaire.
 La paternité de ce modèle est ainsi à attribuer à l'auteur de ces lignes autant qu'à l'ensemble des co-concepteurs du modèle :
@@ -250,7 +250,7 @@ La \cref{fig:frise-chrono} illustre les processus et événements qui surviennen
 	\label{fig:frise-chrono}
 \end{figure}
 
-\section[Fonctionnement général -- \textit{Process overview and schedulling}]{Fonctionnement général\protect\newline \large{\textit{Process overview and schedulling}} \sectionmark{Fonctionnement général}}
+\section[Fonctionnement général -- \textit{Process overview and schedulling}]{Fonctionnement général\protect\newline \large{\textit{Process overview and schedulling}} \sectionmark{Fonctionnement général} \label{sec:fonctionnement-general}}
 
 SimFeodal est un modèle qui s'inscrit plutôt dans une approche KIDS que KISS (\hl{voir chapitre 1}).
 Il est donc constitué d'une large variété d'agents (\cref{tab:agents-simfeodal}), dotés pour certains de nombreux comportements.
@@ -401,7 +401,7 @@ Les valeurs d'attractivité des pôles, relatives à leur composition en attract
 
 \begin{table}[H]
 	\centering
-	{\renewcommand{\arraystretch}{1.2}%
+	{\renewcommand{\arraystretch}{1.1}%
 	\begin{tabular}{|l|l|l|}\hline
 		\textbf{Attracteur} & \textbf{Détail} & \textbf{Attractivité} \\ \hline
 		\multirow{2}{*}{Châteaux} & Petit & 0.15 \\
@@ -705,16 +705,14 @@ Les petits seigneurs générés se voient directement associés à une zone de p
 La création des foyers paysans (1) est plus complexe, notamment car elle doit être aléatoire tout en respectant une structure choisie par les modélisateurs via les paramètres. Dans l'ensemble, elle se déroule en trois phases :
 \begin{enumerate}
 	\item On crée des \og petites villes\fg{}, peuplées d'une trentaine\footref{ftn:nombre-parametrable} de foyers paysans situés dans une voisinage suffisant pour être identifiable en tant qu'agrégat.
-	\item On répète le processus pour des \og villages\fg{}, peuplés eux d'une dizaine\footref{ftn:nombre-parametrable} de foyers paysans.
+	\item On répète le processus pour des \og villages\fg{}, peuplés de 10\footref{ftn:nombre-parametrable} agents.
 	\item On répartie alors de manière aléatoire l'ensemble des autres foyers paysans, c'est-à-dire le nombre total souhaité\footref{ftn:nombre-parametrable} auquel on retranche les foyers paysans créés dans une petite ville ou dans un village, dans l'espace du modèle.
 \end{enumerate}
-
 Afin que les foyers paysans constitutifs des villes et villages soient assurés de former des agrégats (3), la répartition des foyers paysans qui les composent suit une logique itérative illustrée dans la \cref{fig:init-fp}.
-
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\linewidth]{img/init_fp.pdf}
+	\includegraphics[width=.98\linewidth]{img/init_fp.pdf}
 	\caption{Étapes successives de l'initialisation des foyers paysans agrégés (petites villes et villages).\\
 	(A) On génère un foyer paysans ; (B) on génère un nouveau foyer paysan dans un rayon donnée du premier ; (C) et (D) on continue à générer de nouveaux foyers paysans dans le rayon de n'importe lequel des foyers existants ; (E) la géométrie d'un agrégat correspond à l'enveloppe convexe des foyers paysans ; (F) en fin d'initialisation, tous les agrégats initiaux sont répartis dans le monde.}
 	\label{fig:init-fp}
@@ -726,12 +724,12 @@ Afin que les foyers paysans constitutifs des villes et villages soient assurés 
 
 Dans la partie précédente, on a plusieurs fois indiqués que certaines des valeurs numériques de l'initialisation étaient paramétrables, c'est-à-dire qu'on peut les faire varier afin de générer des structures spatiales initiales différentes.
 Cela participe à l'endogénéisation de l'espace support de SimFeodal, où il n'y a donc aucun \og \textit{input}\fg{}, mais un ensemble de paramètres régissant les différents sous-modèles.
-Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester différents scénarios sont les suivants (\cref{tab:params-initiaux}).
+Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester différents scénarios sont précisés dans le \cref{tab:params-initiaux}.
 
 
 \begin{table}[H]
 	\centering
-	{\renewcommand{\arraystretch}{1.2}%
+	{\renewcommand{\arraystretch}{1.25}%
 	\begin{tabular}{|M{2cm}|M{4cm}|m{5.25cm}|m{1.25cm}|}
 		\hline
 		\textbf{Sous-mécanisme} & \textbf{Paramètre} & \textbf{Intitulé} & \textbf{Valeur} \\ \hline
@@ -746,7 +744,7 @@ Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester di
 		\multirow{2}{*}{\makecell{Génération\\des\\Églises}} & Nombre total d'églises & init\_nb\_eglises & 150 \\ \cline{2-4} 
 		& (dont) Nombre d'églises paroissiales & init\_nb\_eglises\_paroissiales & 50 \\ \hline
 		\multirow{3}{*}{\makecell{Génération\\des\\Seigneurs}} & Nombre de Grands Seigneurs & init\_nb\_gs & 2 \\ \cline{2-4} 
-		& \makecell{Puissance relatives\\des Grands Seigneurs} & \makecell{puissance\_grand\_seigneur1 \\ \textelp{} \\ puissance\_grand\_seigneur$N$} & 50\% \\ \cline{2-4} 
+		& \makecell{Puissance relatives\\des Grands Seigneurs} & \makecell{puissance\_grand\_seigneur$1$ \\ \textelp{} \\ puissance\_grand\_seigneur$N$} & 50\% \\ \cline{2-4} 
 		& Nombre de Petits Seigneurs & init\_nb\_ps & 18 \\ \hline
 	\end{tabular}}
 	\caption{Paramètres permettant de contrôler l'initialisation du monde de SimFeodal.}
@@ -767,37 +765,70 @@ Dans SimFeodal, cette logique est bien présente, mais est gérée directement a
 {\footnotesize
 \begin{lstlisting}[caption={
 Deux exemples de \texttt{map} dans Gama.
-\textit{De 800 à 960, les églises doivent se situer entre 5 et 25km, puis entre 3 et 10km jusqu'en 1060, et entre 1.5 et 5km après cette date.}}, captionpos=b, label={lst:maps-gama}]
-map<int,int> dist_min_eglise <- [800::5000,960::3000,1060::1500];
-map<int,int> dist_max_eglise <- [800::25000,960::10000,1060::5000]; 
+\textit{À partir de 800, les églises doivent se situer entre 5 et 25~km, puis entre 3 et 10~km de 960 à 1060, et entre 1.5 et 5~km après cette date.}}, captionpos=b, label={lst:maps-gama}]
+map<int,int> dist_min_eglise <- [800::5000,  960::3000,  1060::1500];
+map<int,int> dist_max_eglise <- [800::25000, 960::10000, 1060::5000]; 
 \end{lstlisting}
 }
 
 Pour respecter le formalisme ODD que suit ce chapitre, on peut au final considérer que SimFeodal est un modèle qui ne repose sur aucune donnée en entrée, quand bien même, conceptuellement, le rôle joué par les paramètres du modèle s'en approche fortement. Le \hl{chapitre 4} permet d'éclairer cette description en entrant plus en détail dans la définition et la nomenclature des paramètres.
 
 
-
 \section[Mécanismes spécifiques -- \textit{Submodels}]{Mécanismes spécifiques\protect\newline \large{\textit{Submodels}} \sectionmark{Mécanismes spécifiques} \label{sec:meca-specifiques}}
 
-Encadré sur la polarité d'implémentation : \Cref{enc:polarite-implementation}
+\subsection{Introduction}
 
+Cette partie du chapitre est plus technique, et vise à présenter précisément différents mécanismes de SimFeodal évoqués dans la partie relative au fonctionnement général du modèle (\cref{sec:fonctionnement-general}).
+On ne vise ici pas l'exhaustivité, les détails d'implémentation étant bien trop nombreux pour être entièrement explicités, et parce que cela ferait un double-emploi assez conséquent en sus du code-source du modèle disponible à la consultation (voir l'\hyperlink{avant-propos}{avant-propos}).
 
-\begin{encadre}{Polarité de l'implémentation}{polarite-implementation}
+Notons aussi que la présentation des mécanismes n'est pas nécessairement exacte, c'est-à-dire une description fidèle de la manière dont les mécanismes sont implémentés informatiquement sous forme de codes-sources.
+Nous avons ici fait le choix de présenter les mécanismes sous la forme, discursive et schématique, la plus courte et compréhensible, quand bien même cette forme n'est qu'une \og équivalence\fg{} de la réalité de l'implémentation.
+Ces écarts entre présentation discursive des mécanismes et implémentation effective sont discutés dans l'\cref{enc:polarite-implementation}.
 
-\begin{itemize}
-	\item \textbf{Polarisation}\\
-	Logique du sens d'implémentation d'un mécanisme probabiliste : Proportion vs probabilité \\
-	1000 agents avec proba de 0.1 $\approx$ 10\% de 1000 agents
+\bigskip 
+\begin{encadre}{Écarts entre présentation et implémentation}{polarite-implementation}
 	
-	\item \textbf{Factorisation}\\
-	1000 agents qui font A-B-C $\approx$ 1000 agents qui font A, puis 1000 agents qui font B, puis 1000 agents qui font C
-	
-	\item \textbf{Optimisation}\\
-	Distance entre 1000 agents et 3 églises $==$ Distance entre 3 églises et 1000 agents
-\end{itemize}	
+La présentation des mécanismes d'un modèle ne suit pas toujours la manière dont ces mécanismes sont implémentés dans le code-source d'un modèle.
+C'est naturellement vrai entre deux \og domaines\fg{} d'un modèle (si l'on reprend la triade des domaines conceptuels, empirique et implémenté de \textcite{livet2014diversite}), au vu des écarts qu'il peut y avoir par exemple entre le modèle conceptuel et le modèle implémenté.
+Toutefois, cela peut aussi se produire au sein d'un même domaine, par exemple ici pour le \og domaine du modèle\fg{}, c'est-à-dire dans l'implémentation du modèle.
+La présentation discursive d'un modèle suit ses règles propres, par exemple la nécessité de suivre une progression linéaire, quand bien même faite d'allers-retours.
+L'implémentation informatique, au contraire, ne suit pas forcément les mêmes règles, et tend même à requérir des logiques très différentes au nom d'une \og optimisation\fg{} du code-source, propre à chaque langage informatique.
+Dans cet encadré, nous souhaitons mettre en avant trois types de processus où la présentation discursive et l'implémentation effective sont différentes tout en produisant des résultats équivalents.
+Ces types de processus ne visent pas l'exhaustivité, mais sont des exemples rencontrés dans la présentation du modèle faite dans ce chapitre.
+
+\paragraph{Perspective de l'implémentation} Quand un tirage aléatoire probabiliste est appliqué sur un grand nombre d'entités, son espérance théorique tend vers une fréquence empirique, en vertu de la loi des grands nombres.
+En simulation à base d'agents, cela signifie que choisir une proportion de 10\% d'une large population (\og probabilité de groupe\fg{}) est quasi-équivalent à doter chacun des individus d'une probabilité de $0.1$ d'être choisis (\og probabilité individuelle\fg{}).
+Cette équivalence est fortement mobilisée dans SimFeodal, la perspective\fg{} -- probabilité individuelle ou de groupe -- changeant parfois à plusieurs reprises dans un même mécanisme, selon la praticité ou la performance (informatique) de l'une ou l'autre.
+Dans la description du modèle, où on essaie d'avoir la vision la plus \og agent-centrée\fg{} possible, on présentera donc préférentiellement des mécanismes comme faisant appel à des probabilités individuelles, quand bien même l'implémentation effective se baserait sur une approche proportionnelle, mobilisant des probabilités de groupe.
+
+\paragraph{Factorisation} Une autre différence tient à l'ordre d'exécution des sous-mécanismes par un ensemble d'agents. En mathématiques, $k\times (x+y)$ est égal, selon les règles de factorisation, à $k{\cdot}x + k{\cdot}y$.
+Dans un système multi-agent, la logique est la même, quand bien même l'ordre d'appel des agents peut faire varier le résultat et l'on considère donc à nouveau qu'il s'agit d'une équivalence plus que d'une égalité : les programmes \ref{lst:facto1} et \ref{lst:facto2} sont équivalents.\bigskip
+
+\noindent\begin{minipage}[b]{.45\textwidth}
+	\begin{lstlisting}[caption={Factorisé},frame=tlrb, captionpos=b, label = {lst:facto1}]
+ask agents [
+  do A;
+  do B;
+]
+	\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}[b]{.45\textwidth}
+	\begin{lstlisting}[caption={Développé},frame=tlrb, captionpos=b, label = {lst:facto2}]
+ask agents [
+  do A; ]
+ask agents [
+  do B; ]
+	\end{lstlisting}
+\end{minipage}
+
+En terme d'efficacité du code, à nouveau, l'alternance entre ces approches d'implémentation permet de résoudre certaines difficultés d'implémentation plus simplement, par exemple en permettant la factorisation de calculs légers et au contraire le développement, pour stockage intermédiaires entre autre, de calculs plus lourds.
+Pour bien différencier les étapes successives, dans le cadre d'une description discursive, il sera souvent plus aisé de présenter les sous-processus de manière développée plutôt que factorisée, ce qui, encore une fois, n'implique rien quant à l'implémentation réelle.
+
+\paragraph{Optimisation} Les deux types de processus précédents peuvent être combinés, pour répondre à des questions d'optimisation informatique, c'est-à-dire par exemple permettre au modèle de fonctionner plus rapidement en fonction des spécificités des langages informatiques choisis.
+Dans Gama, par exemple, il est plus lent, informatiquement, de calculer la distance depuis 1000 agents à 10 agents, que l'inverse, quand bien même les résultats sont ici strictement identiques.
+Pour le calcul de la satisfaction de protection des foyers paysans par exemple, qui demande à chacun de mesurer sa distance au château le plus proche, il est bien plus rapide de calculer, depuis la perspective des châteaux, la distance aux différents foyers paysans en en prenant le minimum.
+Dans cet exemple, l'implémentation se fait donc dans un sens opposé à celui du discours, sans que cela n'ait la moindre conséquence -- au niveau du domaine conceptuel, empirique, ou même en termes de mécanisme implémentés --, sinon une plus grande optimisation du fonctionnement informatique du modèle.
 \end{encadre}
-
-\subsection{Introduction} : Pas tout résumé ici
 
 \subsection{Mécanismes globaux}
 	\subsubsection{Identification des agrégats \label{sssec:agregats}}
