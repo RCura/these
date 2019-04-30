@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-04-24}}
+	{\large Version \hl{2019-04-30}}
 \end{center}
 
 \begin{itemize}
@@ -98,9 +98,19 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 
 \clearpage
 
-\section*{Introduction - Contexte historiographique}
+
+\section*{Introduction}
 \label{sec:chap2-intro}
 \addcontentsline{toc}{section}{Introduction}
+
+A rédiger :
+- Modèle exploratoire -> KIDS + très évolutif + changements non linéaires/mono-directionnels
+
+
+\section[Objectifs du modèle SimFeodal --  \textit{Purpose}]{Objectif du modèle SimFeodal\protect\newline \large{\textit{Purpose}}}
+
+
+\subsection{Contexte historiographique}
 
 {\redroman
 	La question de l'émergence de la société féodale en Occident est au cœur d'un débat historique ancien.
@@ -123,7 +133,7 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 	Les hypothèses sont ainsi nombreuses, et il est difficile de trancher en faveur de l'une ou l'autre, tant l'articulation des facteurs sociaux, politiques, institutionnels, économiques et culturels est complexe.
 }
 
-\section[Objectif du modèle SimFeodal --  \textit{Purpose}]{Objectif du modèle SimFeodal\protect\newline \large{\textit{Purpose}}}
+\subsection{Questionnement}
 
 {\redroman
 	Dans le cadre de l'ANR TransMonDyn, l'objectif, pour la transition des années 800-1100, est d'étudier les processus à l'œuvre dans la dynamique de fixation, polarisation et hiérarchisation de l'habitat rural.
@@ -132,9 +142,6 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 	Le cœur du questionnement réside dans l'examen de la combinaison des facteurs ayant permis, entre 800 et 1100, la formation d'agrégats de foyers paysans dans une forme hiérarchisée et durable, polarisés par des châteaux ou des églises.
 	Il s'agit d'analyser, par la modélisation et la simulation informatique, les conditions d'émergence du maillage villageois.
 }
-
-
-
 
 
 \section[Entités et échelles -- \textit{Entities, state variables, and scales}]{Entités et échelles\protect\newline \large{\textit{Entities, state variables, and scales}} \sectionmark{Entités et échelles}}
@@ -785,6 +792,8 @@ Notons aussi que la présentation des mécanismes n'est pas nécessairement exac
 Nous avons ici fait le choix de présenter les mécanismes sous la forme, discursive et schématique, la plus courte et compréhensible, quand bien même cette forme n'est qu'une \og équivalence\fg{} de la réalité de l'implémentation.
 Ces écarts entre présentation discursive des mécanismes et implémentation effective sont discutés dans l'\cref{enc:polarite-implementation}.
 
+On remarquera enfin que avons préféré présenter ces spécifiques dans un ordre différent de celui de l'ordonnancement dans le modèle (cf. \cref{fig:ordonnancement}), en les regroupant plutôt par les types d'agents concernés par chacun. On présentera d'abord les mécanismes \og globaux\fg{}, c'est-à-dire relevant de la détection des agrégats, pôles et des logiques de promotion et création de paroisses ; puis les mécanismes relatifs au foyers paysans et enfin ceux impliquant l'action des seigneurs.
+
 \bigskip 
 \begin{encadre}{Écarts entre présentation et implémentation}{polarite-implementation}
 	
@@ -831,33 +840,60 @@ Dans cet exemple, l'implémentation se fait donc dans un sens opposé à celui d
 \end{encadre}
 
 \subsection{Mécanismes globaux}
- ABC
-\clearpage
 
 \subsubsection{Identification des agrégats \label{sssec:agregats}}
 	
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.75\linewidth]{img/detection_agregats.pdf}
-	\caption{Les étapes du mécanisme de détection et de mise à jour des agrégats.}
+	\caption{Détection et de l'héritage des agrégats.}
 	\label{fig:detection-agregats}
 \end{figure}
-\vspace*{-.5cm}
+\vspace*{-.75cm}
 La \cref{fig:detection-agregats} présente les étapes successives de détection des agrégats.
 À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que tous les foyers paysans sont considérés comme dispersés (\textbf{A}).
-On exécute un algorithme de classification basé sur la distance, proche de DBSCAN : sont considérés comme agrégats les \textit{clusters} constitués d'au moins 5 foyers paysans espacés de moins de 100~m (\textbf{B}).
-On dessine alors la géométrie des agrégats, sous la forme de l'enveloppe convexe des foyers paysans qui les composent (\textbf{C}).
-Les foyers paysans situés dans la surface d'un agrégat y sont ajoutés (\textbf{D}).
-On crée ensuite des \textit{buffers} de 100~m autour des agrégats et on y rattache à nouveau les foyers paysans présents dans la surface (\textbf{E}).
-Dernière étape dans la détection des agrégats, et afin de ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion : sont fusionnés les agrégats qui s'intersectent (\textbf{F}).\\
-Les trois dernières étapes concernent l'identification des propriétés des agrégats, et en particulier de leur affectation d'une communauté.
+On exécute un algorithme de classification basé sur la distance, proche de DBSCAN : les \textit{clusters} constitués d'au moins 5 foyers paysans espacés de moins de 100~m sont considérés comme des agrégats(\textbf{B}).
+On fixe alors la géométrie des agrégats, qui prend la forme de l'enveloppe convexe des foyers paysans qui les composent (\textbf{C}).
+Les foyers paysans inclus dans la surface d'un agrégat y sont ajoutés (\textbf{D}).
+On crée ensuite des \textit{buffers} de 100~m autour des agrégats et on y rattache à nouveau les foyers paysans inclus dans la surface (\textbf{E}).
+Dernière étape dans la détection des agrégats, et afin de ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion : on réalise l'union géométrique des agrégats qui s'intersectent (\textbf{F}).\\
+Les trois dernières étapes concernent la transmission des propriétés des agrégats à travers les pas de temps, et en particulier de la présence ou non d'une communauté en leur sein.
 On isole les agrégats du pas de temps précédent qui intersectent les nouveaux agrégats (\textbf{G}).
 On procède ensuite à une intersection entre les géométries de ces anciens agrégats et le nouvel agrégat (\textbf{H}).
-Le nouvel agrégat récupère alors les propriétés de l'ancien agrégat dont la superficie d 'intersection est la plus importante, c'est-à-dire l'agrégat vert ici (\textbf{I}).
+Le nouvel agrégat hérite alors des propriétés de l'ancien agrégat dont la superficie d'intersection est la plus importante, c'est-à-dire l'agrégat orange ici (\textbf{I}).
 	
 	\subsubsection{Identification des pôles \label{sssec:poles}}
-	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/detection_poles.pdf}
+	\caption{Les étapes du mécanisme de détection et de calcul d'attractivité des pôles.}
+	\label{fig:detection-poles}
+\end{figure}
+\vspace*{-.5cm}	
+
+Les pôles sont des agents composés d'attracteurs de trois types : les châteaux (petits et gros), les églises (uniquement celles dotées de droits paroissiaux) et les agrégats (uniquement ceux comportant une communauté paysanne).
+Les pôles et leur délimitation spatiale revêtent une importance particulière lors de la migration des foyers paysans : ils attirent d'autant plus que leur attractivité est importante, et le cas échéant, les foyers paysans migrants s'installent à l'intérieur de leur délimitation.
+La \cref{fig:detection-poles} illustre la méthode de définition spatiale des pôles, ainsi que des exemples de calcul de leurs attractivités.
+
+À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que l'on recalcule systématiquement les pôles sans repartir des pas de temps précédents (\textbf{A}).
+On commence par identifier les attracteurs situés à moins de 200~m les uns des autres (\textbf{B}) pour identifier les pôles : ceux-ci peuvent être constitués de plusieurs attracteurs proches, ou d'un unique attracteur.
+L'enveloppe spatiale des pôles est définie comme un \textit{buffer} de 200~m autour de l'enveloppe convexe formée par le centroïde des attracteurs qui les composent (\textbf{C}). Il s'agit donc d'un cercle de rayon de 200~m pour les pôles mono-attracteurs, et d'un polygone pour les pôles composites.
+Afin de renforcer la probabilité de voir croître les agrégats à proximité des pôles, on fusionne (union géométrique) l'enveloppe spatiale des pôles avec les contours de l'ensemble des agrégats (comportant ou non une communauté paysanne) intersectés, ce qui peut permettre à des pôles peu éloignés de fusionner à leur tour (\textbf{D}).
+On peut alors calculer leur attractivité en se reportant au \cref{tab:attraction-poles} (p.~\pageref{tab:attraction-poles}) (\textbf{E}).
+
+
+	
+	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\linewidth]{img/constru-promo_paroisses_rurales.pdf}
+		\caption{Construction et promotion de paroisses en zone peu dense.}
+		\label{fig:promotion-paroisses}
+	\end{figure}
+	
+\clearpage
 \subsection{Foyers paysans}
 	\subsubsection{Satisfaction et modèles gravitaires \label{sssec:satisfaction}}
 		\paragraph{Satisfaction matérielle}
