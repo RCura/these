@@ -430,15 +430,7 @@ Notons que ce terme n'est pas entièrement \og satisfaisant\fg{} : la migration 
 } des foyers paysans est la condition préalable au mécanisme le plus important de SimFeodal, la migration.
 Elle qualifie la capacité des foyers paysans à remplir leurs besoins fondamentaux : \og se nourrir\fg{} (satisfaction matérielle), \og assurer son salut\fg{} (satisfaction religieuse) et \og éviter d'être l'objet de violences\fg{} (satisfaction \og protection\fg{}) \autocite[Tableau 1, \ppno~309]{cura_transition_2017}.
 La satisfaction d'ensemble, qui intervient dans la probabilité de migration, est donc une synthèse numérique de ces trois satisfactions spécifiques.
-Ces composantes ne sont pas hiérarchisées, sinon en considérant qu'elles sont normalisées \og par le bas\fg{} : le satisfaction d'ensemble est égale à la plus faible de ses trois composantes, pondérée par l'appartenance à une communauté, laquelle procure un contre-pouvoir face aux différentes pressions subies par les foyers paysans
-%\footnote{
-%Le calcul de la satisfaction s'exprime donc ainsi : \\
-%{\scriptsize
-%$\textrm{satisfaction}~=~0.75 \times [MIN (s_{\textrm{matérielle}} ; s_ {\textrm{religieuse}}; s_{\textrm{protection}})] + 0.25 \times [\textrm{appartenance\_communauté}]$
-%},\\ avec {\scriptsize
-%$\{satisfaction ; s_{\textrm{matérielle}} ; s_ {\textrm{religieuse}} ; s_{\textrm{protection}}\} \in [0,1]$ et $[\textrm{appartenance\_communauté}] \in \{0;1\}$}.
-%}
-.
+Ces composantes ne sont pas hiérarchisées, sinon en considérant qu'elles sont normalisées \og par le bas\fg{} : le satisfaction d'ensemble est égale à la plus faible de ses trois composantes, pondérée par l'appartenance à une communauté, laquelle procure un contre-pouvoir face aux différentes pressions subies par les foyers paysans.
 
 Le détail des calculs est donnée dans la partie dédiée (\cref{sssec:satisfaction}), mais on peut toutefois déjà expliciter les choix de modélisation de chacune des composantes de la satisfaction d'ensemble.
 
@@ -895,11 +887,99 @@ On peut alors calculer leur attractivité en se reportant au \cref{tab:attractio
 	
 \clearpage
 \subsection{Foyers paysans}
+
 	\subsubsection{Satisfaction et modèles gravitaires \label{sssec:satisfaction}}
-		\paragraph{Satisfaction matérielle}
-		\paragraph{Satisfaction religieuse}
-		\paragraph{Satisfaction protection}
-		\paragraph{Satisfaction générale}
+	
+Les sastisfactions religieuses et de protection des foyers paysans suivent une logique proche du modèle gravitaire : plus les foyers sont éloignés des \og attracteurs\fg{} (les châteaux pour la satisfaction protection ; les églises paroissiales pour la satisfaction religieuse), moins ils sont satisfaits.
+Cette logique simple est légèrement contrainte en ajoutant des seuils : en dessous d'une certaine distance (\textit{distance\_min}), le foyer paysan est entièrement satisfait (satisfaction = 1), et au delà d'une autre distance (\textit{distance\_max}), sa satisfaction est nulle (satisfaction = 0).
+Entre ces deux seuils, minimaux et maximaux, la satisfaction suit une logique gravitaire simple, soit ici une décroissance linéaire.
+L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcul, et la \cref{fig:satisfaction-distance} l'illustre de manière sans doute plus accessible.
+
+\begin{equation}\label{eq:satisfaction-distance}
+\begin{gathered}
+	satisfaction_{distance} = min  \left \lbrack max \left \lbrack \frac{(distance\_max - distance\_attracteur)}{(distance\_max -distance\_min)}; 0 \right \rbrack ; 1 \right \rbrack
+	\end{gathered}
+\end{equation}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\linewidth]{img/satisfaction_distance.pdf}
+	\caption{Évolution de la satisfaction en fonction de la distance à l'attracteur le plus proche.}
+	\label{fig:satisfaction-distance}
+\end{figure}
+
+\paragraph{Satisfaction religieuse}
+		
+Le calcul de la satisfaction religieuse s'inscrit rigoureusement dans cette logique, et sa formule, dépendant de paramètres qui évoluent en fonction du temps, est donc :
+		\begin{equation*}
+		s_{religieuse} = min  \left \lbrack max \left \lbrack \frac{(distance_{max} - distance\_eglise)}{(distance_{max} -distance_{min})}; 0 \right \rbrack ; 1 \right \rbrack
+		\end{equation*}
+avec les seuils de distance ($distance\_max$ et $distance\_min$) qui évoluent au cours du temps de telle manière :
+\begin{itemize}
+	\item avant 960 : $distance_{min}$ = 5 km et $distance_{max}$ =  25 km
+	\item de 960 à 1060 : $distance_{min}$ = 3 km et $distance_{max}$ =  10 km
+	\item après 1060 : $distance_{min}$ = 1,5 km et $distance_{max}$ =  5 km
+\end{itemize}
+	
+\paragraph{Satisfaction protection}	
+
+La satisfaction protection mobilise une logique proche, c'est-à-dire qu'elle est fonction de la distance au château le plus proche, pondérée toutefois par un paramètre ($besoin\_protection$) qui permet de pondérer la réaction face à un climat de violence qui tend à augmenter pendant la période.
+
+\begin{equation*}
+s_{protection} = (s_{distance\_chateau})^{(besoin\_protection)}
+\end{equation*}
+avec
+\begin{equation*}
+\begin{gathered}
+s_{distance\_chateau} = min  \left \lbrack
+max \left \lbrack \frac{(dist_{max} - distance\_chateau)}{(dist_{max} -distance_{min})}; 0.01 \right \rbrack ; 1 \right \rbrack
+\end{gathered}
+\end{equation*}
+($dist_{min}$ = 1,5 km et $dist_{max}$ = 5 km )
+et le besoin de protection évolutif :
+\begin{itemize}
+	\item avant 960 : $besoin\_protection = 0 $
+	\item de 960 à 1020 : $besoin\_protection = 0.2 ; 0.4 ; 0.6 ; 0.8$
+	\item après 1020 : $besoin\_protection = 1$
+\end{itemize}
+
+\paragraph{Satisfaction matérielle}
+
+La satisfaction matérielle ne prend aucune distance en compte : elle s'appuie sur le montant des taxes dont le foyer paysan doit s'acquitter ($redevance\_acquittees$), pondérée par un paramètre technique représentant un niveau \og acceptable\fg{} de taxation ($coef\_redevances$, qui vaut $15$ ici).
+L'appartenance du foyer paysan à une communauté fini de contre-balancer le montant des redevances acquittées, sous la forme d'un contre-poids dont l'importance augmente au fur et à mesure de la période modélisée ($puissance\_communaute$ vaut $0.2$ jusqu'en 1060, puis augmente de $0.2$ à chaque pas de temps pour atteindre $1$ en 1040 et rester à ce niveau).
+
+\begin{equation*}
+\begin{gathered}
+s_{materielle} = (s_{redevance})^{(1-puissance\_communaute)}
+\end{gathered}
+\end{equation*}
+avec 
+\begin{equation*}
+\begin{gathered}
+s_{redevance} = max \left[ \left( 1- \frac{redevances\_acquittees}{coef\_redevances} \right) ; 0 \right]
+\end{gathered}
+\end{equation*}
+
+\paragraph{Satisfaction générale}
+
+La satisfaction générale est mesurée en prenant le minimum de ces satisfaction individuelles, c'est-à-dire qu'on considère qu'elles ne s'équilibrent pas.
+Comme pour la satisfaction matérielle qui la compose, l'appartenance du foyer paysan à une communauté paysanne tend aussi à augmenter la satisfaction générale : cela intervient donc à deux reprises dans le calcul de la satisfaction, afin d'illustrer le poids que prennent ces structures sociales et institutionnelles au cours de la période modélisée.
+
+Le calcul de la satisfaction s'exprime donc ainsi :
+\begin{equation*}
+\begin{gathered}
+\begin{split}
+satisfaction =~& 0.75 \times \left[ min \left( s_{materielle} ; s_ {religieuse}; s_{protection} \right) \right] + \\
+& 0.25 \times [appartenance\_communaute]
+\end{split}
+\end{gathered}
+\end{equation*}
+avec $ \{satisfaction ; s_{materielle} ; s_ {religieuse} ; s_{protection}\} \in [0,1]$ et $[appartenance\_communaute] \in \{0;1\} $
+
+
+
+
 	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
 	
 \subsection{Seigneurs}
