@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-04-30}}
+	{\large Version \hl{2019-05-01}}
 \end{center}
 
 \begin{itemize}
@@ -66,7 +66,7 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 \hl{Une description plus courte, plus proche des descriptions ODD classiques, est disponible en ligne.}
 }
 
-
+\clearpage
 
 \begin{table}[H]
 	\centering
@@ -159,6 +159,11 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques de 
 
 \begin{table}[H]
 	\centering
+		\caption{Les différents types d'agents de SimFeodal.\\
+		$\upalpha$ : Il s'agit ici d'ordres de grandeur (les nombres pouvant varier fortement en fonction des simulations) du nombre d'agents de chaque type en fin de simulation.\\
+		$\upbeta$ : Les agents sans emprise spatiale (---) ne sont pas localisés dans l'espace du modèle.\\
+		$\upgamma$ : Les agents sans comportement actifs (---) n'agissent pas en tant que tel, mais peuvent servir de support pour les actions d'autres agents.}
+	\label{tab:agents-simfeodal}
 	\footnotesize
 	{\renewcommand{\arraystretch}{1.5}%
 	\begin{tabular}{|p{1.75cm}|M{1.75cm}|M{2cm}|M{2cm}|M{4cm}|}
@@ -178,11 +183,6 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques de 
 		Agrégats &  & $\approx$ 200 & Zonale & \makecell{Création de communautés\\ \textit{(type d'attracteur)}} \\ \hline
 		Pôles &  & $\approx$ 300 & Zonale & \makecell{Attire les Foyers Paysans \\  \textit{(composés d'attracteurs)}} \\ \hline
 		\end{tabular}}
-	\caption{Les différents types d'agents de SimFeodal.\\
-	$\upalpha$ : Il s'agit ici d'ordres de grandeur (les nombres pouvant varier fortement en fonction des simulations) du nombre d'agents de chaque type en fin de simulation.\\
-	$\upbeta$ : Les agents sans emprise spatiale (---) ne sont pas localisés dans l'espace du modèle.\\
-	$\upgamma$ : Les agents sans comportement actifs (---) n'agissent pas en tant que tel, mais peuvent servir de support pour les actions d'autres agents.}
-	\label{tab:agents-simfeodal}
 		\end{table}
 
 \subsection{Échelles spatiales et temporelles}
@@ -408,6 +408,8 @@ Les valeurs d'attractivité des pôles, relatives à leur composition en attract
 
 \begin{table}[H]
 	\centering
+		\caption{Attractivité ($\in [0,1]$) conférée aux pôles par leurs attracteurs.}
+	\label{tab:attraction-poles}
 	{\renewcommand{\arraystretch}{1.1}%
 	\begin{tabular}{|l|l|l|}\hline
 		\textbf{Attracteur} & \textbf{Détail} & \textbf{Attractivité} \\ \hline
@@ -419,8 +421,7 @@ Les valeurs d'attractivité des pôles, relatives à leur composition en attract
 		& 4+ & 0.6 \\ \hline
 		\multicolumn{2}{|l|}{Agrégat (doté d'une communauté)} & 0.15 \\ \hline
 	\end{tabular}}
-	\caption{Attractivité ($\in [0,1]$) conférée aux pôles par leurs attracteurs.}
-	\label{tab:attraction-poles}
+
 \end{table}
 
 \subsection{Satisfaction des Foyers Paysans}
@@ -482,9 +483,9 @@ Ces seigneurs gagnent et s'arrogent le prélèvement de nouveaux droits (droits 
 
 Dans SimFeodal, cela est modélisé sous la forme de l'apparition constante de nouvelles zones de prélèvement par l'intermédiaire desquelles les seigneurs pourront prélever de nouveaux droits.
 Cela peut concerner de nouveaux seigneurs, lors de leur apparition dans l'espace du modèle, ou au contraire se faire au bénéfice de seigneurs plus anciens.
-Du point de vue de l'implémentation, ce comportement est formalisé sous la forme d'une probabilité (15\%), pour les petits seigneurs, de créer une nouvelle zone de prélèvement autour de leur localisation, à chaque pas de temps.
+Du point de vue de l'implémentation, ce comportement est formalisé sous la forme d'une probabilité ($0.15$), pour les petits seigneurs, de créer une nouvelle zone de prélèvement autour de leur localisation, à chaque pas de temps.
 
-Ce mécanisme s'associe à une autre, majoritairement exercé par les grands seigneurs, qui leur permet de prélever, à partir d'une date donnée (voir \cref{meca-variables}), des droits de haute justice, là encore à partir d'un tirage de probabilité.
+Ce mécanisme s'associe à une autre, majoritairement exercé par les grands seigneurs, qui leur permet de prélever, à partir d'une date donnée (voir \cref{meca-variables}), des droits de haute justice, là encore à partir d'un tirage de probabilité ($P = 0.2$ pour les grands seigneurs de 900 à 1000 et $1$ après; $P = 0.2$ pour les petits seigneurs châtelains à partir de 1000).
 
 \subsection{Collecte des droits}
 
@@ -728,6 +729,8 @@ Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester di
 
 \begin{table}[H]
 	\centering
+		\caption{Paramètres permettant de contrôler l'initialisation du monde de SimFeodal.}
+	\label{tab:params-initiaux}
 	{\renewcommand{\arraystretch}{1.25}%
 	\begin{tabular}{|M{2cm}|M{4cm}|m{5.25cm}|m{1.25cm}|}
 		\hline
@@ -746,8 +749,7 @@ Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester di
 		& \makecell{Puissance relatives\\des Grands Seigneurs} & \makecell{puissance\_grand\_seigneur$1$ \\ \textelp{} \\ puissance\_grand\_seigneur$N$} & 50\% \\ \cline{2-4} 
 		& Nombre de Petits Seigneurs & init\_nb\_ps & 18 \\ \hline
 	\end{tabular}}
-	\caption{Paramètres permettant de contrôler l'initialisation du monde de SimFeodal.}
-\label{tab:params-initiaux}
+
 \end{table}
 
 
@@ -841,7 +843,7 @@ Dans cet exemple, l'implémentation se fait donc dans un sens opposé à celui d
 	\caption{Détection et de l'héritage des agrégats.}
 	\label{fig:detection-agregats}
 \end{figure}
-\vspace*{-.75cm}
+
 La \cref{fig:detection-agregats} présente les étapes successives de détection des agrégats.
 À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que tous les foyers paysans sont considérés comme dispersés (\textbf{A}).
 On exécute un algorithme de classification basé sur la distance, proche de DBSCAN : les \textit{clusters} constitués d'au moins 5 foyers paysans espacés de moins de 100~m sont considérés comme des agrégats(\textbf{B}).
@@ -862,7 +864,6 @@ Le nouvel agrégat hérite alors des propriétés de l'ancien agrégat dont la s
 	\caption{Les étapes du mécanisme de détection et de calcul d'attractivité des pôles.}
 	\label{fig:detection-poles}
 \end{figure}
-\vspace*{-.5cm}	
 
 Les pôles sont des agents composés d'attracteurs de trois types : les châteaux (petits et gros), les églises (uniquement celles dotées de droits paroissiaux) et les agrégats (uniquement ceux comportant une communauté paysanne).
 Les pôles et leur délimitation spatiale revêtent une importance particulière lors de la migration des foyers paysans : ils attirent d'autant plus que leur attractivité est importante, et le cas échéant, les foyers paysans migrants s'installent à l'intérieur de leur délimitation.
@@ -895,15 +896,13 @@ Cette logique simple est légèrement contrainte en ajoutant des seuils : en des
 Entre ces deux seuils, minimaux et maximaux, la satisfaction suit une logique gravitaire simple, soit ici une décroissance linéaire.
 L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcul, et la \cref{fig:satisfaction-distance} l'illustre de manière sans doute plus accessible.
 
-\begin{equation}\label{eq:satisfaction-distance}
-\begin{gathered}
-	satisfaction_{distance} = min  \left \lbrack max \left \lbrack \frac{(distance\_max - distance\_attracteur)}{(distance\_max -distance\_min)}; 0 \right \rbrack ; 1 \right \rbrack
-	\end{gathered}
-\end{equation}
-
-
 \begin{figure}[H]
 	\centering
+	\begin{equation}\label{eq:satisfaction-distance}
+	\begin{gathered}
+	satis\_dist = min  \left \lbrack max \left \lbrack \frac{(distance\_max - distance\_attracteur)}{(distance\_max -distance\_min)}; 0 \right \rbrack ; 1 \right \rbrack
+	\end{gathered}
+	\end{equation}
 	\includegraphics[width=.8\linewidth]{img/satisfaction_distance.pdf}
 	\caption{Évolution de la satisfaction en fonction de la distance à l'attracteur le plus proche.}
 	\label{fig:satisfaction-distance}
@@ -978,17 +977,45 @@ satisfaction =~& 0.75 \times \left[ min \left( s_{materielle} ; s_ {religieuse};
 avec $ \{satisfaction ; s_{materielle} ; s_ {religieuse} ; s_{protection}\} \in [0,1]$ et $[appartenance\_communaute] \in \{0;1\} $
 
 
-
-
 	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
+
+La migration des foyers paysans est sans doute le mécanisme le plus complexe et ayant subi les plus fortes évolutions depuis la conception de SimFeodal.
+La règle d'ensemble est pourtant extrêmement simple : un foyer paysan a une probabilité de migrer qui est inversement proportionnelle à sa satisfaction. Autrement dit, $P \left( migration \right) = \left( 1 - satisfaction \right)$.
+Cette règle simple a été progressivement complexifiée afin d'augmenter la rationalité et l'ancrage empirique des choix de localisation : une première complexification a abouti à la distinction de migrations \og locales\fg{} et de migrations \og lointaines\fg{} (voir \cref{fig:migrations-locales-lointaines}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{img/migration_locale-lointaine.pdf}
+\caption{Migrations locales et lointaines.}
+\label{fig:migrations-locales-lointaines}
+\end{figure}
+Pour aboutir à cette différence entre migration locale et migration lointaine, la règle est encore une fois complexe : les foyers paysans privilégient les migrations locales, et quand celles-ci ne sont pas possibles, ils ont une probabilité plus faible d'effectuer une migration lointaine. Notons que pour nous approcher des connaissances empiriques, nous avons établi un comportement légèrement différent entre les foyers paysans déjà agrégés et ceux qui seraient dispersés lors de l'exécution du mécanisme de migration (\cref{fig:choix-migration}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/choix_migration.pdf}
+	\caption{Décision de migration.}
+	\label{fig:choix-migration}
+\end{figure}
+
+Une dernière distinction a été opérée entre les foyers paysans classiques, libres de leurs migrations, et les foyers paysans \og dépendants\fg{}, qui représentent ceux qui n'avaient pas le droit de quitter le domaine de leur seigneur (les serfs entre autres). Ceux-là ne peuvent effectuer que des migrations locales, et on considère qu'ils seront amenés à migrer plus facilement, ce qui change encore une fois leur mécanisme de migration (\cref{fig:choix-migration-dependants}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/choix_migration_dependants.pdf}
+	\caption{Décision de migration des foyers paysans dépendants.}
+	\label{fig:choix-migration-dependants}
+\end{figure}
+ 
+
 	
 \subsection{Seigneurs}
 	\subsubsection{Construction de châteaux \label{sssec:constru-chateaux}}
-	\subsubsection{Dons de châteaux}
-	\subsubsection{Création et dons de droits}
 	\subsubsection{Prélèvement des droits \label{sssec:collecte-droits}}
 		\paragraph{Foncier}
 		\paragraph{Haute Justice}
 		\paragraph{Autres droits}
+
+
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
 
 \printbibliography[title={Références}]
