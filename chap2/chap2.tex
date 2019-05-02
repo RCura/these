@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-05-01}}
+	{\large Version \hl{2019-05-02}}
 \end{center}
 
 \begin{itemize}
@@ -1008,12 +1008,101 @@ Une dernière distinction a été opérée entre les foyers paysans classiques, 
 
 	
 \subsection{Seigneurs}
-	\subsubsection{Construction de châteaux \label{sssec:constru-chateaux}}
 	\subsubsection{Prélèvement des droits \label{sssec:collecte-droits}}
-		\paragraph{Foncier}
-		\paragraph{Haute Justice}
-		\paragraph{Autres droits}
 
+Les seigneurs, petits et grands, collectent les droits dont doivent s'acquitter les foyers paysans (droits de haute justice et autres droits) majoritairement (exception faite des droits fonciers pour les grands seigneurs, voir \cref{fig:prelevement-fonciers}) par l'intermédiaire des zones de prélèvement.
+Ces zones sont caractérisées par un propriétaire (le seigneur qui les possèdent), éventuellement un gardien (le seigneur à qui la zone a été \og donnée\fg{}, voir \cref{meca-dons}), une localisation (pour les petits seigneurs, il s'agit de leur propre localisation), un rayon\footnote{
+Ce rayon est tiré aléatoirement suivant une distribution uniforme, \\$rayon\_zp \sim \mathcal{U}\left[ rayon\_min\_zp\_ps , rayon\_max\_zp\_ps \right]$, avec $rayon\_min\_zp\_ps$ et $rayon\_max\_zp\_ps$ des paramètres qui valent respectivement 1 000 et 5 000 m.
+} et un taux de prélèvement\footnote{
+idem : $taux\_prelevement\_zp \sim \mathcal{U}\left[ min\_taux\_prelevement\_zp\_ps , max\_taux\_prelevement\_zp\_ps \right]$ avec $min\_taux\_prelevement\_zp\_ps$ et $max\_taux\_prelevement\_zp\_ps$ valant 5\% et 25\%.
+}.
+A noter que les zones de prélèvement liées à des châteaux suivent une règle légèrement différente, que nous n'aborderons pas ici\footnote{Se référer au code-source du modèle, dans la fonction \textsf{construction\_chateaux}}.
+
+Les prélèvements, selon les types de droits, rapportent de la \og puissance\fg{} aux seigneurs, dont le \cref{tab:puissance-droits} donne une référence.
+
+\begin{table}[H]
+	\centering
+	\caption{Gain de puissance par foyer paysan prélevé.}
+	\label{tab:puissance-droits}
+	{\renewcommand{\arraystretch}{1.1}%
+		\begin{tabular}{|l|l|l|}\hline
+			\textbf{Type de droit} & \textbf{Fonction du seigneur} & \textbf{\makecell{Puissance acquise\\par foyer paysan}} \\ \hline
+			\multirow{2}{*}{Haute Justice} & Propriétaire ou Gardien & 2 \\
+			& Souverain (zone donnée) & 2.5 \\ \hline
+			\multirow{2}{*}{Droits fonciers} & Propriétaire ou Gardien & 1 \\
+			& Souverain (zone donnée) & 1.25 \\ \hline
+			\multirow{2}{*}{Autres droits} & Propriétaire ou Gardien & 0.25 \\
+			& Souverain (zone donnée) & 0.35 \\ \hline	
+	\end{tabular}}
+\end{table}
+
+
+\paragraph{Foncier}
+
+Quelques petits seigneurs (ceux créés dès l'initialisation ainsi que $\approx 10\%$ de ceux créés pendant le déroulement de la simulation) possèdent des droits fonciers, et à ce titre, peuvent collecter ces droits au sein d'une zone de prélèvement qu'ils créent lors de leur apparition. Le mécanisme de collecte des droits fonciers est illustré dans la \cref{fig:prelevement-fonciers}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/prelevements_foncier.pdf}
+	\caption{Prélèvement des droits fonciers par les petits et grands seigneurs.}
+	\label{fig:prelevement-fonciers}
+\end{figure}
+
+\paragraph{Haute justice et autres droits}
+
+Les autres droits suivent un mécanisme plus générique : les seigneurs propriétaires collectent des droits auprès d'une partie des foyers paysans inclus dans la surface de la zone de prélèvement. Cette partie correspond aux \og taux de prélèvement\fg{} décrit plus haut. La \cref{fig:prelevement-droits} récapitule les différentes modalités de collecte de droits via les zones de prélèvement.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/prelevements_droits.pdf}
+	\caption{Mécanisme général de prélèvement des droits par les seigneurs.}
+	\label{fig:prelevement-droits}
+\end{figure}
+
+Les droits de haute justice sont prélevés exactement comme les autres droits, à la seule différence qu'ils correspondent nécessairement à des taux de prélèvement de 100\%.
+
+\subsubsection{Construction de châteaux \label{sssec:constru-chateaux}}
+
+
+À partir de 940, les seigneurs ont la possibilité de créer des châteaux.
+Le mécanisme de construction des châteaux est commun aux grands et aux petits seigneurs, mais certains paramètres varient selon le type du seigneur considéré :
+\begin{itemize}
+	\item Un grand seigneur peut constuire jusqu'à $2$ châteaux par tour (paramètre $nb\_max\_chateaux\_par\_tour\_gs$), alors qu'un petit seigneur ne peut en construire au maximum que $1$ par pas de temps ($nb\_max\_chateaux\_par\_tour\_ps$).
+	\item Pour un seigneur $i$, la probabilité de construire un château est formalisée ainsi :\\
+	$$ P \left( construction \right) =  \frac{puissance\_seigneur_{i}}{\sum{puissance\_seigneur}} \times ponderation\_proba\_chateau $$ avec $ponderation\_proba\_chateau$ valant $1.25$ pour les grands seigneurs et $7$ pour les petits (paramètres techniques).
+	\item Les grands seigneurs peuvent construire des châteaux n'importe-où dans l'espace du modèle (en respectant toutefois les règles exposées plus bas), alors que les petits seigneurs ne peuvent le faire que dans un rayon de 5 000 m de leur localisation : s'il n'y a pas d'espace disponible dans ce rayon, le petit seigneur ne crée pas de château.
+\end{itemize}
+
+Les règles de localisation de château sont identiques, et illustrés dans la \cref{fig:construction-chateaux}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/construction_chateaux.pdf}
+	\caption{Mécanisme de localisation des châteaux construits.}
+	\label{fig:construction-chateaux}
+\end{figure}
+
+\paragraph{Rayon des zones de prélèvement associées}
+
+La construction d'un château implique systématiquement la création de zones de prélèvements qui lui sont associées, c'est-à-dire qu'elles appartiennent au seigneur qui crée le château.
+Si le château est donné en gardiennage, l'ensemble des zones de prélèvement qui lui sont associées seront aussi données en gardiennage au petit seigneur choisi.
+
+Les zones de prélèvement créées concernent des droits fonciers et des autres droits.
+Si le seigneur châtelain obtient les droits de haute justice, une zone de prélèvement de droits de haute justice sera automatiquement créée autour de chacun de ses châteaux.
+Contrairement aux zones de prélèvement habituelles, celles qui sont associées à un château ont un taux de prélèvement de $100\%$.
+Leur rayon est variable et dépend de la puissance relative du seigneur qui construit le château.
+Ce rayon varie entre un seuil minimal de 2 000 m ($rayon\_min\_zp\_chateau$) et un seuil maximal de 15 000 m ($rayon\_max\_zp\_chateau$).
+Entre ces deux seuils, la valeur du rayon dépend d'une fonction linéaire correspondant au ratio entre la puissance du seigneur constructeur et les puissances maximales et minimales de l'ensemble des seigneurs, tel que formalisé dans l'équation \ref{eq:rayon-zp-chateau}. 
+
+\begin{equation}\label{eq:rayon-zp-chateau}
+\begin{aligned}
+& rayon\_zp\_chateau = \\
+& min  \left[ max \left[ puissance\_relative; rayon\_min\_zp\_chateau \right]  ; rayon\_max\_zp\_chateau \right]
+\\
+& \text{avec}
+\\
+& puissance\_relative_i = \frac{max(puissance_{0..n}) - puissance_i}{max(puissance_{0..n}) \times min(puissance_{0..n})}
+\end{aligned}
+\end{equation}
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
