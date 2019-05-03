@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-05-02}}
+	{\large Version \hl{2019-05-03}}
 \end{center}
 
 \begin{itemize}
@@ -103,8 +103,35 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 \label{sec:chap2-intro}
 \addcontentsline{toc}{section}{Introduction}
 
-A rédiger :
-- Modèle exploratoire -> KIDS + très évolutif + changements non linéaires/mono-directionnels
+Le chapitre précédent (\hl{ref chap 1}) visait à présenter le positionnement de cette thèse, entre géographie, modélisation et informatique.
+Ce positionnement, pleinement ancré dans une approche méthodologique plus que thématique, mettait notamment en avant la construction d'une démarche complète de co-construction de modèle.
+Le présent ouvrage ne peut s'absoudre de la mise en application de cette démarche, qui sera mobilisée et commentée tout au long des chapitres à venir.
+Dans un premier temps, et avant de pouvoir commenter véritablement la méthode de construction, d'évaluation et de paramétrage d'un modèle, il est nécessaire de se doter d'un cas d'étude.
+Celui-ci permettra notamment d'illustrer et d'exemplifier, dans les chapitres suivant, les raisonnements et démarches de modélisation qui sont empruntées.
+Dans ce chapitre, nous présentons donc de manière détaillée le modèle de simulation auquel notre groupe (voir l'\hyperlink{avant-propos}{avant-propos}) est parvenu à aboutir.
+
+Ce modèle s'intitule SimFeodal, acronyme à peine forcé de \og \textbf{Sim}ulation de la \textbf{F}ixation, de l'\textbf{É}mergence et de l'\textbf{O}rganisation \textbf{D}ynamique d'\textbf{A}grégats de population \textbf{L}ocalisés\fg{}.
+Nous reviendrons dans les pages suivantes sur les objectifs poursuivis par la réalisation de ce modèle.
+
+Dans un premier temps, on peut toutefois adresser une remarque au lecteur qui nous semble importante pour la compréhension de ce chapitre : SimFeodal est le résultat d'une expérience, innovante, de modélisation collaborative en contexte interdisciplinaire.
+Le processus de modélisation poursuivi est très fortement exploratoire, et n'a en aucun cas été prévisible ou linéaire tout au long des plus de 6 ans de conception.
+La seule ligne directrice, relative aux concepts de modélisation, qui a été tenue durant ces années est la volonté d'inscrire la modélisation des phénomènes spatio-temporels considérés dans une approche descriptive, respectueuse du niveau de généralisation auquel consentaient les thématiciens du groupe.
+Ces choix ancrent SimFeodal dans une approche \og KIDS\fg{} \autocite{edmonds_kiss_2005}, caractérisée par une modélisation initialement détaillée, que l'on cherche à rendre plus parcimonieuse seulement dans un second temps (\hl{voir chapitre 1}).
+Ce type de modélisation permet de ne brusquer aucun des co-concepteurs du modèle, en épargnant en particulier aux experts thématiciens de mener des généralisations hâtives, sans ancrages empirique, qui ne peuvent que contribuer à déposséder un modélisateur des résultats de son modèle.
+
+Il résulte de cette démarche exploratoire un modèle fonctionnel et satisfaisant du point de vue de ses concepteurs : on reviendra dans le \hl{chapitre 7} sur les réponses qu'il a apportées d'un point de vue thématique.
+Ce modèle est toutefois assez peu traditionnel, ou en tout cas satisfaisant d'un point de vue de la modélisation épurée et parcimonieuse : les différentes parties qui le constituent (agents, initialisation, mécanismes, sorties\ldots) sont en effet caractérisées par une forte hétérogénéité dans le niveau de généralisation.
+Il serait ainsi plutôt nécessaire de parler de niveaux de généralisation, au pluriel donc, tant ceux-ci peuvent varier.
+
+Au delà de la combinaison de démarches incrémentales et itératives (\hl{penser à reprendre l'encadré fait pour le chapitre ISTE du manuel de Denise, peut-être dans le chapitre 1 ou 3}) qui rend difficile la formation d'un produit fini entièrement homogène, il faut noter un aspect important de SimFeodal : ce modèle existe et évolue depuis des années.
+C'est vrai aussi bien que l'on prenne en considération le modèle conceptuel ( entrepris il y a plus de 8 ans, en 2011, sans l'auteur de cette thèse), que le modèle implémenté, dont le premier \textit{commit}, c'est-à-dire la première version fonctionnelle, remonte au mois d'avril 2014\footnote{
+\href{https://github.com/SimFeodal/SimFeodal/commit/a85598682cda2350b08ea789b966e613dacb1b05}{https://github.com/SimFeodal/SimFeodal/commit/a8559868}}.
+On présente, dans ce chapitre, la version \og 6.3\fg{} du modèle, ce qui donne une idée du nombre d'itérations et de modifications de SimFeodal depuis l'établissement des mécanismes d'ensemble qui marquent le début de son existence.
+
+En conclusion de cette introduction, et avant de reprendre le fil de la description de SimFeodal en suivant le protocole ODD, on notera que cette version 6.3 n'est vraisemblablement pas la dernière.
+SimFeodal a une existence propre, au sein du groupe de travail présenté dans l'\hyperlink{avant-propos}{avant-propos}, qui dépasse fortement celle de la présente thèse.
+Que le lecteur ne s'étonne donc pas de trouver des descriptions différentes de ce modèle, qu'elles soient antérieures ou postérieures au présent ouvrage.
+On ne présente ici qu'un état, très temporaire, de ce projet de longue haleine qu'est la co-construction de SimFeodal.
 
 
 \section[Objectifs du modèle SimFeodal --  \textit{Purpose}]{Objectif du modèle SimFeodal\protect\newline \large{\textit{Purpose}}}
