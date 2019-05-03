@@ -41,7 +41,7 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 
 \usepackage{epigraph}
 
-
+\newcounter{savefootnote}
 \renewcommand{\thempfootnote}{\arabic{footnote}}%
 
 \usepackage{enumitem}
@@ -199,11 +199,20 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 \setlength{\parskip}{0.75em}
 \setlength{\parindent}{2em}
 
-\usepackage{titlesec}
+\usepackage{titlesec} % Pose problème avec les headers
+% Corrigé avec ce code, à mettre pour chaque section
+%\let\orisectionmark\sectionmark
+%\renewcommand\sectionmark[1]{}%
+%\section[Titre TOC]{Titre dans texte}
+%\orisectionmark{Titre header}
+%\let\sectionmark\orisectionmark
+
 \titlespacing\section{0pt}{16pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{11pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsubsection{0pt}{11pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\paragraph{2em}{6pt plus 2pt minus 2pt}{8pt plus 0pt minus 0pt}
+
+
 
 % ######### PLAN DETAILLE #########
 % Make a TOC without line number when calling \tableofcontents
