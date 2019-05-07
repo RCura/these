@@ -237,3 +237,8 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 	\hspace*{-.45cm}\footnote{#1}\unskip
 	\let\thefootnote=\oldthefootnote
 }
+
+% ############ CITATIONS #############
+% Citer juste le prénom + nom d'une référence
+\newrobustcmd*{\citeauteur}{\AtNextCite{\DeclareNameAlias{labelname}{first-last}}\citeauthor}
+% \citeauteur{ref}
