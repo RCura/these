@@ -173,6 +173,7 @@
 		\label{fig:simfeodal_rapport_mini}
 	\end{figure}
 
+\clearpage
 	\paragraph{Structurer des rapports pour aller vers la reproductibilité des analyses}
 	On a donc fait le choix de se baser sur des rapports automatisés et minimalistes, ne contenant que les indicateurs dans une forme structurée.
 	Ce choix s'appuie sur des raisons multiples, qui ont toutes en commun une recherche de reproductibilité des résultats et des analyses menées.
@@ -210,7 +211,7 @@
 		
 	Par extension, cette même démarche d'automatisation, basée sur l'utilisation d'outils de type \textit{CLI}, devrait pouvoir s'appliquer à l'identique, avec les mêmes avantages, dans le cadre plus large de l'évaluation visuelle de modèles (\hl{ref chap 3, section 3.1.4}).
 
-%	\begin{encadre}{Générer les rapports avec \texttt{R} et \texttt{knitr}}{enc-technique-rapports-knitr}
+%	\begin{encadre}{Générer les rapports avec \texttt{R} et \texttt{knitr}}{technique-rapports-knitr}
 %
 %		\hl{Encadré sur les rapports automatiques, le \textit{\og litterate programming}\fg, le choix et le paramétrage de knitr + lien vers le code-source des rapports.}
 %
@@ -253,6 +254,7 @@
 	Avec un grand nombre d'expériences, les mêmes limites apparaissent pour les rapports : la masse d'expériences rend partiellement caduque l'utilisation unique des rapports automatiques.
 	Il est en effet aisé de comparer, sur un même écran d'ordinateur, deux ou trois rapports, mais dès lors qu'il faut en comparer un plus grand nombre, la manipulation conjointe des rapports devient complexe, tout autant que d'avoir une vision globale des résultats principaux de chaque expérience.
 
+\clearpage
 	\subsection{Organiser les rapports : Dashboards}\label{subsec:dashboards}
 
 	Pour être en mesure de comparer de nombreux éléments, il est nécessaire de passer d'une exploration linéaire, fondée sur le visualisation successive de chacun des indicateurs, à une exploration globale et interactive.
@@ -273,7 +275,7 @@
 	\begin{quotation}
 		\og For Few [\autocite[p.34]{few_information_2006}] a ‘dashboard is
 		a visual display of the most important information needed to achieve one or more objectives; consolidated and arranged on a single screen so the information can be monitored at a glance’.
-		Just as a car dashboard provides critical information needed to operate the vehicle at a glance, indicator dashboards provide key information for running companies or cities (\st{Dubriwny \& Rivard, 2004}))[\autocite{rivard_are_2004}].\fg{}\\
+		Just as a car dashboard provides critical information needed to operate the vehicle at a glance, indicator dashboards provide key information for running companies or cities (\st{Dubriwny \& Rivard, 2004})[\autocite{rivard_are_2004}].\fg{}\\
 		\mbox{}~ \hfill \cite[p. 11]{kitchin_knowing_2015}
 	\end{quotation}
 
@@ -322,83 +324,166 @@
 
 	On a pour cela développé un \textit{dashboard} adapté à SimFeodal, nommé SimVADB\footnote{
 	\textbf{S}imulation \textbf{V}isual \textbf{A}nalysis \textbf{D}ash\textbf{B}oard.\\
-	Archive du code-source disponible sur le dépôt Github associé :
-	\url{https://github.com/RCura/SimVADB/tree/9a96cc9b6cf59e62e253d6e0859febedda903e03}
+	Cette application a rapidement été remplacée par l'itération suivante (SimEDB, voir \cref{subsec:explo-interactive}), et n'a donc dans les faits jamais été complètement finalisée. On en trouve une trace, fonctionnelle mais incomplète (les versions ultérieures n'ont pas été enregistrées dans l'outil de versionnement), dans ce dépôt logiciel :
+	\href{https://github.com/RCura/SimEDB/tree/2cd22c7ccfbcf31f4a09550c2396932c46ef2622}{https://github.com/RCura/SimEDB/tree/2cd22c7c}
 	}.
 	Dans un premier temps, on souhaitait simplement ré-organiser le code-source produisant les rapports automatiques, afin de convertir ces rapports en \textit{dashboards}.
 	Cela a été effectué au moyen d'outils permettant de générer des applications en ligne, sans changer de langage de programmation.
 	Dans ce cas, on s'est appuyé sur la librairie logicielle \textsf{Flexdashboard} \autocite{iannone_flexdashboard_2018}.
-	Plutôt que de présenter les indicateurs dans des pages successives, on a préféré les organiser au seins d'onglets.
-	Chaque onglet concernait un type d'entité et présentait l'ensemble des indicateurs propres à ces entités \hl{Faire ref aux captures d'écrans qui seront ajoutées}.\\
-	\hl{Refaire tourner cette version de SimVADB pour en faire 2-3 captures d'écran...}\\
+	
+	Le passage du rapport automatique au \textit{dashboard} illustre l'un des grands intérêts des outils de type \textit{CLI} : dans le cas de SimVADB, il a suffit de ré-organiser le code, sans modifier à aucun moment les fonctions de calcul et de création des indicateurs de sortie de simulation.
+	Les codes \ref{lst:code-rapport} et \ref{lst:code-dashboard} illustrent la facilité de cette modification.
+	Il s'agit véritablement de placer les différentes fonctions dans des blocs graphiques.
+	Ces modifications minimes augmentent toutefois considérablement la convivialité et la facilité de l'analyse de résultats de sortie d'un modèle.
+\clearpage
 
-	\begin{encadre}{D'un rapport automatique à un \textit{dashboard}}{enc-technique-dashboard}
-		\hl{Encadré sur la conversion d'un rapport en un dashboard : logique d'IHM, d'organisation des visus etc.}
-	\end{encadre}
+\lstset{frame=shadowbox, tabsize=2}
+\noindent\begin{minipage}[t]{.44\textwidth}
+{\footnotesize
+	\begin{lstlisting}[caption={Pseudo-code du rapport automatique.},frame=tlrb, captionpos=b, label = {lst:code-rapport}]
+# Agent de type A
+	afficher('Agent de type A')
+	
+	print('Indicateur 1')
+	calcul_indicateur_1 {...}
+	affichage_indicateur_1 {...}
+	
+	afficher('Indicateur 2')
+	calcul_indicateur_2 {...}
+	affichage_indicateur_2 {...}
+# Agent de type B
+	afficher('Agent de type B')
+	[...]
+	\end{lstlisting}
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{.53\textwidth}
+{\footnotesize
+	\begin{lstlisting}[caption={Pseudo-code du dashboard.},frame=tlrb, captionpos=b, label = {lst:code-dashboard}]
+onglet{titre = 'Agent de type A',
+	sous_onglet{titre = 'Indicateur 1',
+		calcul_indicateur_1 {...}
+		affichage_indicateur_1 {...}
+	},
+	sous_onglet{titre = 'Indicateur 2',
+		calcul_indicateur_2 {...}
+		affichage_indicateur_2 {...}
+	}
+},
+onglet{titre = 'Agent de type B',
+	[...]
+}
+	\end{lstlisting}
+}
+\end{minipage}
+	
+	Comme dans l'exemple de code, on a préféré organiser les indicateurs au seins d'onglets plutôt que de les présenter dans des pages successives.
+	Les onglets de premier niveau représentaient les types d'agent, et des onglets de second niveau permettaient de visualiser l'ensemble des indicateurs associés à ces agents (\cref{fig:mockup_simvadb}).
 
-	Au niveau de l'interface utilisateur, SimVADB permettait de choisir, dans une liste déroulante, les expériences passées dont on voulait visualiser les indicateurs de sortie, à partir de leur nom \hl{cf. figure n}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/simvadb_mockup.pdf}
+	\caption{Un \textit{mock-up} de la première interface de SimVADB, un \textit{dashboard} dédié à la visualisation des indicateurs de sorties de simulation de SimFeodal.}
+	\label{fig:mockup_simvadb}
+\end{figure}
 
-	Avec la multiplication des valeurs de paramètres testées, il est devenu plus efficace de regrouper les simulations au sein d'expérimentations, dans lesquelles on faisait varier plusieurs paramètres, potentiellement avec de multiples valeurs de paramètres pour chacun.
+	Au niveau de l'interface utilisateur, SimVADB permettait de choisir, via un menu de sélection (partie de gauche dans la \cref{fig:mockup_simvadb}), les expériences passées dont on voulait visualiser les indicateurs de sortie (les deux niveaux d'onglets de la partie de droite).
 
-	À partir de là, il devenait difficile de sélectionner les simulations à partir de leur simple nom, ceux-ci devenant potentiellement complexes, ou recouvrant sinon différentes configurations de paramètres.
-	Le choix méthodologique d'interaction avec la plate-forme d'affichage des indicateurs s'est donc révélé inadapté à la sélection et à l'exploration des sorties de SimFeodal.
+	
+	\paragraph{Les limites du \textit{dashboard}}
+	Avec la multiplication des valeurs de paramètres testées, il est devenu plus efficace de regrouper les expériences au sein d'expérimentations.
+	Celles-ci voient varier plusieurs paramètres, potentiellement avec de multiples valeurs de paramètres pour chacun.
+	Elles constituent donc un ensemble d'expériences qui partagent des mécanismes et un jeu de paramètre par défaut communs.
 
-	Au delà du mode d'interaction, pour évaluer visuellement différentes configurations du modèle, on ne pouvait se contenter d'un simple affichage des données, au sein d'un outil de type présentoir interactif tel que SimVADB.
-
+	Avec le mode de sélection choisi dans SimVADB, basé sur le nom des expériences, il devenait plus difficile de sélectionner rapidement des ensembles d'expériences membres d'une même phase d'expérimentation.
+	En effet, et comme illustré dans la \cref{fig:mockup_simvadb}, les noms d'expériences tendent à s'allonger, et avec leur masse augmentant, il est peu commode d'avoir à parcourir tout un long menu de sélection pour trouver les expériences souhaitées.
+	De plus, malgré des tentatives de nommage régulières et explicites, la multiplication des expériences et expérimentations implique aussi une certaine confusion dans les types de mécanismes et valeurs de paramètres associés.
+	Sans table de correspondance complète entre les noms des expériences et leurs valeurs de paramètres, il devenait impraticable de retrouver les différentes expériences mettant en avant, par exemple, des attractivités fortes par les pôles, une plus forte hiérarchisation des attracteurs ou encore des migrations lointaines facilitées.
+	Le choix méthodologique d'interaction avec la plate-forme d'affichage des indicateurs, basé sur une sélection des expériences depuis leur nom, s'est donc révélé inadapté à la sélection et à l'exploration des sorties de SimFeodal.
+	
+	
+	Au delà du soucis du mode d'interaction, qui aurait pu être amélioré, un autre problème apparaissait.
+	Pour évaluer visuellement différentes configurations du modèle, on ne pouvait se contenter d'un simple affichage des données, au sein d'un outil de type présentoir interactif tel que SimVADB.
 	Comme dit dans \hl{le chapitre 4}, le paramétrage de SimFeodal a ainsi reposé sur de nombreuses étapes d'évaluation des différentes version du modèle.
-	Pour cela, l'approche principale a été la comparaison, point par point, entre les résultats des indicateurs de sortie de simulation des versions successives de SimFeodal.
-
-	Un outil de présentation statique des résultats n'est pas un outil de comparaison.
+	L'approche d'analyse principale était donc la comparaison, point par point, entre les résultats des indicateurs de sortie de simulation des versions successives de SimFeodal.
+	Un outil de présentation dynamique de résultats de sorties de simulations est certes plus adapté qu'un rapport statique, mais il ne constitue pas pour autant un outil adapté à la comparaison.
 	S'il suffit pour de la restitution, par exemple dans le cadre du rapport systématique des résultats de SimFeodal, on ne peut s'appuyer uniquement sur une succession d'évaluations visuelles pour appréhender l'étendue des changements apportées par une modification des valeurs de paramètres.
 
 	\subsection{Interagir avec les rapports : exploration interactive}\label{subsec:explo-interactive}
 
-	Face à la démultiplication des expérimentations, consécutive aux nombreuses étapes de paramétrage de SimFeodal (\hl{cf. chap 4}), il a donc fallu repenser la plate-forme d'évaluation des résultats.
-	Pour cela, considérant que les simulations ne pouvaient être aisément appréhendées et sélectionnées par leur nom, numéro d'étape ou de version, il a été décidé d'adopter une posture plus proche de l'exploration de modèle en elle-même.
+	Face à la démultiplication des expérimentations, consécutive aux nombreuses étapes de paramétrage de SimFeodal (\hl{cf. chap 4}), il a fallu repenser la plate-forme d'évaluation des résultats.
+	Pour cela, considérant que les simulations ne pouvaient être aisément appréhendées et sélectionnées par leur nom, numéro d'étape ou de version, il a été décidé d'adopter une posture plus proche de l'exploration du modèle en elle-même.
 	C'est-à-dire de ne pas caractériser les simulations par un identifiant quelconque, mais plutôt par leur spécificité intrinsèque, c'est-à-dire la combinaison de valeurs de paramètres qui les rendent uniques.
-	Ce faisant, au sein de la plate-forme d'exploration, SimVADB, l'enjeu devenait ainsi plutôt la compréhension des effets des valeurs de paramètres sur les indicateurs que l'évaluation visuelle d'une simulation en particulier.
-	Du point de vue de l'interface utilisateur, cela implique que la sélection ne se fasse plus par un unique critère (le nom de la simulation), mais par une succession de sélection, chaque paramètre constituant un nouveau filtre dans lequel choisir les valeurs à interroger.
+	Ce faisant, au sein de la plate-forme d'exploration SimVADB, l'enjeu devenait plutôt la compréhension des effets des valeurs de paramètres sur les indicateurs que l'évaluation d'une simulation en particulier.
+	Il fallait passer du descriptif, quelle qu'en soit la méthode, à du comparatif.
+	
+	Du point de vue de l'interface utilisateur, cela implique que la sélection ne se fasse plus par un unique critère (le nom de la simulation), mais au contraire sur du multi-critère.
+	Par une succession de sélections, chaque paramètre pouvait constituer un nouveau filtre dans lequel on avait à choisir les valeurs à interroger (voir la \cref{fig:schema_parcoords} \textbf{(E)} de l'\cref{enc:parcoords}).
 
-	La quantité de paramètres en entrée étant importante (\hl{cf. plus haut}), et pouvant dès lors donner lieu à un mode de sélection complexe et fastidieux -- définir une par une les valeurs voulues pour chacun des 45 paramètres --, nous avons choisi encore une fois de nous appuyer sur l'aspect visuel afin de permettre aux utilisateurs de SimVADB de choisir la ou les expérimentations à analyser.
+	La quantité de paramètres en entrée était importante et pouvait dès lors donner lieu à un mode de sélection complexe et fastidieux -- définir une par une les valeurs voulues pour chacun des 45 paramètres --.
+	Nous avons choisi encore une fois de nous appuyer sur l'aspect visuel afin de permettre aux utilisateurs de SimVADB de choisir la ou les expérimentations à analyser.
+	
+	
+	\paragraph{Visualiser avec des coordonnées parallèles }
 
-	Pour cela, on a choisi de représenter les combinaisons de paramètres dans un graphique en \og coordonnées parallèles \fg{} (\textit{parallel coordinates}, d'après \cite{inselberg_parallel_1987}, voir \cite{few_multivariate_2006} par exemple pour une description plus succincte, illustrée et pratique) :
-	ce type de graphique est en effet extrêmement pertinent pour représenter une information multi-dimensionnelle en ce qu'il permet de détecter graphiquement des \textit{cluster} de lignes \autocite[2]{heinrich_state_2013}, c'est-à-dire de faire ressortir visuellement les expériences dont les valeurs de paramètre sont proches.
+	Pour cela, on a choisi de représenter les combinaisons de paramètres dans un graphique en \og coordonnées parallèles \fg{} (\textit{parallel coordinates}, d'après \cite{inselberg_parallel_1987}, voir \cite{few_multivariate_2006} par exemple pour une description plus succincte, illustrée et pratique).
+	Ce type de graphique est en effet extrêmement pertinent pour représenter une information multi-dimensionnelle en ce qu'il permet de détecter graphiquement des \textit{clusters} d'individus statistiques\footnote{
+		Ici, chaque expérience est un individu statistique.
+		Il est caractérisé par un ensemble de variables, les différents paramètres, et les modalités de ces variables que cet individu emprunte (les valeurs de paramètres).
+		Quand le nombre d'individus est important, les différentes \og courbes\fg{}, qui correspondent au profil des individus sur le graphique en coordonnées parallèles, peuvent se superposer et montrer des tendances similaires.
+		Avec ce type de représentation, il est facile de visualiser les grandes classes d'individus constituées par ces \og tendances\fg{}, et donc de constater des distinctions entre les individus (les expériences) de manière visuelle.
+	} \autocite[2]{heinrich_state_2013}, c'est-à-dire de faire ressortir visuellement les expériences dont les valeurs de paramètre sont proches.
+	Notons bien que l'on parle ici des valeurs de paramètres, c'est-à-dire des conditions des expériences, et non des indicateurs de sortie.
+	L'approche va ainsi des paramètres aux résultats : depuis des valeurs de paramètres choisies, on analyse la diversité des résultats.
+%	L'approche inverse, souvent menée en simulation agent (\hl{ref à chap 3, exploration automatique}}), pourrait mener une classification des résultats de sortie pour reporter cette classification sur les valeurs de paramètres.
 
-
+	
+	\paragraph{Interagir avec des coordonnées parallèles}
+	De plus, en matière d'interaction, on utilise fréquemment les graphiques en coordonnées parallèles en vue de filtrage.
+	Cette opération est le plus souvent menée par des actions de \textit{brushing} (\og brossage\fg{}), c'est-à-dire de sélection graphique d'une zone en dessinant son étendue à la souris (voir \cref{enc:parcoords}).
+	Ce type de sélection se révèle en effet souvent plus efficace et intuitive qu'une sélection textuelle plus systématique :
+	
+	\begin{quotation}\vspace{-0.5cm}
+		\og Filtering is an operation that removes signals from its input. A filter reduces the number of lines to be rendered. In this sense, dynamic querying [...] is a filter, if implemented with brushing [...], which reduces clutter by putting the filtered lines in focus using some highlighting mechanism. Combining simple brushes using logical operators [...] further allows the user to formulate rather complex queries that might even achieve faster and more accurate results using parallel coordinates than using a Structured Query Language (SQL) [...].\fg{}\\
+		\mbox{}~ \hfill \cite[p. 13]{heinrich_state_2013}
+	\end{quotation}
+	
 	\begin{encadre}{Construction et utilisation interactive d'un graphique en coordonnées parallèles}{parcoords}
 
-			\begin{figure}[H]
-			\captionsetup{width=\linewidth}
-			\includegraphics[width=\linewidth]{img/ParCoords_Brush.pdf}
-			\caption{Démarche de construction d'un graphique en coordonnées parallèles (\textbf{A}--\textbf{D}) et sélection par \textit{brushing} (\textbf{E}--\textbf{G}).}
-			\label{fig:schema_parcoords}
-		\end{figure}
+	La \cref{fig:schema_parcoords} illustre les étapes successives de construction d'un graphique en coordonnées parallèles, depuis le tableau statistique (\textbf{A}) jusqu'au graphique final (\textbf{D}).
+	
+	Pour cela, on projette les valeurs des variables sur des axes représentant chacune des variables (\textbf{B}).
+	En normalisant la taille de ces axes et en les plaçant en parallèle (\textbf{C}), on peut alors tracer les \og profils\fg{} des variables en reliant les positions de chacun des individus statistiques sur chacun des axes (\textbf{D}).
+	
+	La seconde partie de la figure représente le mode d'interaction par \textit{brushing} : on \og brosse\fg{} sur chaque axe une sélection de valeurs à conserver (\textbf{E}).
+	La sélection graphique est convertie en intervalles numériques et formalisée sous une forme classique (\textbf{F}) qui permet de filtrer les données sous-jacentes.
+	Au final, cette opération renvoie le seul individu statistique répondant aux deux sélections graphiques (\textbf{G}).
+	
+	\begin{figure}[H]
+	\centering
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=.94\linewidth]{img/ParCoords_Brush.pdf}
+	\caption{Construction d'un graphique en coordonnées parallèles et sélection interactive.\vspace{.1cm}}
+	\label{fig:schema_parcoords}
+	\end{figure}
 
 	\end{encadre}
 
 
-
-	De plus, en matière d'interaction, on utilise fréquemment les graphiques en coordonnées parallèles en vue de filtrage, le plus souvent par des actions de \textit{brushing} (\og brossage\fg{}, c'est-à-dire sélection graphique d'une zone en dessinant son étendue à la souris -- cf. \cref{enc:parcoords}).
-	Ce type de sélection se révèle en effet souvent plus efficace et intuitive qu'une sélection textuelle plus systématique :
-
-	\begin{quotation}
-		\og Filtering is an operation that removes signals from its input. A filter reduces the number of lines to be rendered. In this sense, dynamic querying [...] is a filter, if implemented with brushing [...], which reduces clutter by putting the filtered lines in focus using some highlighting mechanism. Combining simple brushes using logical operators [...] further allows the user to formulate rather complex queries that might even achieve faster and more accurate results using parallel coordinates than using a Structured Query Language (SQL) [...].\fg{}\\
-		\mbox{}~ \hfill \cite[p. 13]{heinrich_state_2013}
-	\end{quotation}
-
-	Cette utilisation est aussi courante en géographie quantitative, et on la retrouve par exemple chez l'un des représentants de l'analyse spatiale des années 1990, Stewart Fotheringham, qui indique même l'usage du graphique en coordonnées parallèles en tant que filtre pour identifier des informations dans une autre dimension, spatiale ici : \og the data being displayed in parallel coordinates can be linked to a map and then brushed to highlight the locations of interesting lines displayed in \textit{m}-space on the parallel co-ordinates.\fg{} \autocite{fotheringham_trends_1999}.
+	Cette utilisation est aussi courante en géographie quantitative, et on la retrouve par exemple chez l'un des représentants de l'analyse spatiale des années 1990, Stewart Fotheringham.
+	Cet auteur indique même l'usage du graphique en coordonnées parallèles en tant que filtre pour identifier des informations dans une autre dimension, spatiale ici : \og the data being displayed in parallel coordinates can be linked to a map and then brushed to highlight the locations of interesting lines displayed in \textit{m}-space on the parallel co-ordinates.\fg{} \autocite{fotheringham_trends_1999}.
 
 	Appliqué aux données de SimFeodal, cette interface (\cref{fig:simvadb_dashboard}) se révèle particulièrement efficace pour sélectionner les configurations de paramètres à explorer.
 	Ainsi, en \og brossant \fg{} quelques filtres manuellement (\cref{fig:simvadb_dashboard} - \textbf{A}), on arrive rapidement à isoler une expérience spécifique.
 
 	\begin{figure}[H]
 		\captionsetup{width=\linewidth}
-		\includegraphics[width=\linewidth]{img/SimVADB_Dashboard2_annote.png}
+		\includegraphics[width=\linewidth]{img/SimVADB_Dashboard2_annote_retouche.png}
 		\caption{SimVADB (Simulation Visual Analysis DashBoard), un \textit{dashboard} d'exploration visuelle des indicateurs de sortie de simulation de SimFeodal.\\
 		La sélection des simulations à explorer se fait dans le graphique en coordonnées parallèles (\textbf{A}), en \og brossant\fg{} des filtres graphiques sur les \og dimensions\fg{} du graphique, dimensions dont les intitulés sont explicités dans le tableau \textbf{B}.
 		Les graphiques \textbf{C} et \textbf{D} indiquent l'évolution des types de déplacements des foyers paysans au cours des simulations.\\
 		- Le graphique \textbf{C} représente, pour cet indicateur, une moyenne de l'ensemble des simulations intégrées dans la base de données (260 ici), recouvrant donc plusieurs valeurs de paramètres.\\
-		- Le graphique \textbf{D} représente cet indicateur calculé depuis un sous-ensemble de 20 simulations (donc une expérience composée de 20 réplications), pour lesquelles le paramètre \og \texttt{X} \fg{}(\hl{Retrouver nom de ce paramètre}) vaut \texttt{true}.}
+		- Le graphique \textbf{D} représente cet indicateur calculé depuis un sous-ensemble de 20 simulations (donc une expérience composée de 20 réplications), pour lesquelles le paramètre \og \textsf{B} \fg{} (\textsf{deplacement\_alternate}) vaut \textsf{true}.}
 		\label{fig:simvadb_dashboard}
 	\end{figure}
 
@@ -429,7 +514,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=.94\linewidth]{img/SimEDB_nombreFP_villages_rotate.png}
+		\includegraphics[width=.85\linewidth]{img/SimEDB_nombreFP_villages_rotate_cut.png}
 		\caption{SimEDB }
 		\label{fig:simedb_villages}
 	\end{figure}
