@@ -360,100 +360,154 @@ Par ailleurs, par une heureuse coïncidence, MapD a été placé sous licence li
 
 \subsection{Structuration des données de SimFeodal}
 
-Une fois le SGBD destiné à stocker les données en sortie de SimFeodal, encore faut-il choisir la manière de les organiser.
-On en peut ainsi pas travailler directement avec les données générées par SimFeodal.
+Le choix d'un SGBD est une étape indispensable à la mise en place d'une base de données, mais il ne concerne que le domaine technique, voire méthodologique, mais aucunement le domaine conceptuel.
+Un SGBD est un support logiciel qui permet le stockage et l'organisation de données.
+Il n'est utile qu'une fois que le mode d'organisation des données a été décidé.
+L'organisation a proprement parler des données est explicitée dans un modèle conceptuel, nommé Modèle Conceptuel de Données (MCD).
+Un MCD est propre à un ensemble de données d'une part\footnote{
+	Le MCD décrit la manière dont les données sont stockées, organisées et mises en relations.
+	Il ne peut donc être générique, et doit être modifié quand la structure des données évolue.
+}, et un ensemble de problématiques d'autres part\footnote{
+	Il y a une infinité de possibilité d'organisation d'un même jeu de données.
+	Le MCD permet d'organiser ces données en vue de répondre à des questions, exprimées sous formes de requêtes particulières.
+	Appliquées au même jeu de données, différents MCD permettront de répondre plus ou moins facilement (et de manière plus ou moins performante) à certaines questions.
+}.
+Ce MCD décrit donc les \og tables\fg{}, leur composition (attributs) et les liens entre tables qui permettent de mener des interrogations croisées.
+Par exemple, on peut avoir une table élèves, contenant les informations relatives aux élèves d'un établissement, une table enseignants, et une table classe qui permet de faire le lien entre les élèves d'un enseignant, ou au contraire entre un élève et tous ses enseignants.
+
+Les choix de conception d'un MCD sont fortement lié aux types de SGBD dans lesquelles ils doivent être implémentés.
+On ne peut que difficilement implémenter un MCD très relationnel dans un SGBD pensé collection (NoSQL par exemple).
+À l'inverse, le stockage d'informations très hétérogènes sur un ensemble d'individus sera complexe à implémenter au sein d'un SGBD relationnel.
+
+Pour décider de la manière la plus efficace d'implémenter les données issues de SimFeodal dans un SGBD, et donc du MCD à suivre, il convient de revenir aux spécificités des données produites par le modèle d'une part, et d'autre part de réfléchir aux modes d'interrogations privilégiés, lesquels orienteront la conception du MCD.
+
 
 \paragraph*{Pré-traitement des données}
-Ces données sont des données \og brutes\fg{}, c'est-à-dire qu'elles ne sont pas organisées de manière rationnelle, contiennent une quantité non négligeable d'informations incomplètes et/ou superflues.
-Par exemple, quand une simulation est arrêtée en cours, soit volontairement, soit en raison d'un \textit{bug}, les données des pas de temps réalisés sont tout de même exportées dans les fichiers bruts.
-De la même manière, il arrive qu'on reproduise trop de fois des simulations avec le même jeu de valeurs de paramètres, amenant alors un nombre de réplications supérieur à celui d'autres expériences.
-On peut enfin voir subvenir des erreurs dans les agents, par exemple quand, en raison d'un bug, un agent en interroge un autre qui a disparu depuis.
-Il arrive ainsi fréquemment que des foyers paysans déclarent une appartenance à un agrégat qui a disparu depuis.
-Dans ces cas, fautifs, les données seront aussi inscrites dans les sorties de SimFeodal, quand bien même elles n'ont pas de sens.
+Les données produites par un modèle de simulation sont des données \og brutes\fg{}, c'est-à-dire qu'elles ne sont pas organisées de manière rationnelle, contiennent une quantité non négligeable d'informations incomplètes, superflues ou erronées.
+\begin{itemize}
+	\item Par exemple, quand une simulation est arrêtée en cours, soit volontairement, soit en raison d'un \textit{bug}, les données générées par le modèle sont \textbf{incomplètes} : elles ne concernent qu'une partie des pas de temps attendus.
+	Elles sont pourtant exportées dans les fichiers bruts, rendant ceux-ci hétérogènes en matière de complétion des informations enregistrées.
+	Pour pouvoir analyser une expérience, il faudra supprimer ces données incomplètes pour qu'elles n'influence pas l'étude des simulations complétées et donc comparables.
+	\item De la même manière, il arrive qu'on exécute, par erreur, plusieurs fois les mêmes simulations.
+	Dans ce cas, le nombre de réplications de chacune des expériences ne sera pas systématiquement le même.
+	Cela pose un problème de comparabilité dû à tailles d'échantillonnage différentes.
+	On fait donc face à un problème de données \textbf{superflues} : il faudra supprimer une partie de ces simulations des données avant de pouvoir les traiter.
+	\item On peut enfin voir subvenir des erreurs d'exécution du modèle au niveau des agents, par exemple quand, en raison d'un \textit{bug}, un agent en interroge un autre qui a disparu depuis.
+	Il arrive ainsi fréquemment que des foyers paysans déclarent une appartenance à un agrégat qui a disparu depuis, faute à une mise à jour échouée dans le modèle.
+	Dans ces cas, les données seront aussi inscrites dans les sorties de SimFeodal, quand bien même elles sont \textbf{erronées}.
+\end{itemize}
 
 Les données brutes doivent donc nécessairement être vérifiées, filtrées, nettoyées et retravaillées avant de pouvoir les exploiter en vue de générer les indicateurs de sortie.
 
 \paragraph*{Organisation des données}
-Même pré-traitées, les données brutes conservent une structure tabulaire assez peu adaptées à un traitement : chaque type d'agent stocke ses données correspondantes dans un fichier spécifique, et le nettoyage de celui-ci ne change rien au fait qu'il demeure isolé des autres fichiers.
+Même pré-traitées, les données brutes conservent une structure tabulaire assez peu adaptées à un traitement.
+les attributs de chacun des types d'agent sont enregistré dans des fichier spécifiques.
+Que ces fichiers aient été nettoyés ou non, ils demeurent fondamentalement isolés les uns des autres.
 Une partie des indicateurs repose sur des analyses croisant différents types d'agents (dans quels pôles les agrégats s'inscrivent-ils par exemple ?), et il est donc nécessaire de permettre -- et de fluidifier -- ces requêtes croisées.
-On a mentionné le choix de SGBD relationnels, il convient donc de concevoir et d'implémenter, dans le SGBD choisi, les relations entre les différentes tables individuelles qui proviennent des sorties brutes de SimFeodal.
+On a mentionné le choix de SGBD relationnels, il convient donc de concevoir et d'implémenter, dans le SGBD choisi, les relations entre les différentes tables individuelles qui proviennent des sorties brutes d'un modèle.
 
 
 
 \subsubsection{Quel modèle de données ?}
+
+Les MCD sont propres à chaque ensemble de données et questionnement associés.
+Il y a toutefois des grandes tendances dans l'organisation des données.
+Le MCD peut ainsi être catégorisé, selon sa forme, dans des familles de modèles de données.
+On nomme ces catégories \og modèles logiques\fg{} ou \og schémas\fg{} (\textit{logical schema} en anglais).
+Ceux-ci décrivent la manière dont les données sont structurées et surtout reliées les unes aux autres, d'une manière générique contrairement aux MCD.
+
 \paragraph*{Un modèle \og en étoile\fg{}}
 
-Là aussi, de nombreuses possibilités existent, autour des schémas traditionnellement utilisés avec des SGBD relationnels.
-Sans entrer dans le détail, notons que chacun des schémas existant présente des avantages et inconvénients liés aux types de requêtes qui lui seront adressés.
-Par exemple, un schéma \og en étoile\fg{}(\textit{star schema}, \autocite{noauthor_star_2018}) privilégie l'efficacité de requêtes d'agrégations et de jointures, au détriment de la robustesse des données et de la liberté des requêtes.
-Au contraire, un schéma \og en flocons\fg{} (\textit{snowflake schema}, \autocite{noauthor_snowflake_2018}) peut se révéler plus permissif en terme de capacités de requêtes, mais au coût d'une plus grande complexité des requêtes de bases.
+Les bases de données relationnelles peuvent s'appuyer sur de nombreux schémas différents.
+Sans entrer dans le détail, notons que chacun des schémas existant présente des avantages et des inconvénients liés aux types de requêtes qui lui seront adressés.
+Par exemple, un schéma \og en étoile\fg{} \autocite{noauthor_star_2018} privilégie l'efficacité de requêtes d'agrégations et de jointures, au détriment de la robustesse des données et de la \og liberté\fg{} des requêtes.
+Certains types de requêtes, complexes, seront ainsi difficiles, voire impossibles, à exprimer dans ce type de schéma.
+
+Au contraire, un schéma \og en flocons\fg{} \autocite{noauthor_snowflake_2018} peut se révéler plus permissif en terme de capacités de requêtes.
+L'inconvénient est une plus forte complexité des requêtes de bases (exprimées de manière plus verbeuses et tortueuses) et donc d'une expressivité moindre.
+
 Pour choisir un schéma, et donc une manière d'organiser la base de données, il convient donc de savoir -- ou de prévoir -- le type de requêtes qui lui seront adressées.
-Dans le cas des données de SimFeodal, les indicateurs ayant été définis avant que le besoin d'interrogation performante n'apparaisse, on connaissait déjà les indicateurs nécessaires, et donc le type de requêtes qui seraient nécessaires pour les calculer depuis les données brutes issues des simulations.
+Dans le cas des données de SimFeodal, les indicateurs avaient été définis avant que le besoin d'une interrogation performante et structurée n'apparaisse.
+On connaissait déjà les indicateurs nécessaires et le type de requêtes associés.
+Nous savions ainsi qu'une majorité des requêtes seraient des tâches d'agrégations simples (nombre d'agrégats au cours du temps, taux de foyers paysans dispersés au cours du temps etc.), pour lesquelles il fallait minimiser la complexité des requêtes et calculs.
 
-Nous savions ainsi qu'une majorité des requêtes seraient des tâches d'agrégations simples (nombre d'agrégats au cours du temps, taux de foyers paysans dispersés au cours du temps etc.), pour lesquelles il fallait donc minimiser la complexité des requêtes et calculs.
+Il a été choisi de partir d'un schéma en étoile, puisque celui-ci se montre extrêmement efficace pour réduire les besoins en jointures -- chronophages -- et pour des tâches d'agrégations lourdes.
 
-Il a donc été choisi de partir d'un schéma en étoile, puisque celui-ci se montre extrêmement efficace pour réduire les besoins en jointures -- chronophages -- et pour des tâches d'agrégations lourdes.
+\clearpage
+\begin{figure}[H]
+	\centering
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/MCD_SimEDB_repris.png}
+	\caption{Modèle Conceptuel de Données (MCD) des données en sortie de simulation de SimFeodal telles qu'implémentées dans SimEDB.}
+	\label{fig:MCD_SimEDB}
+\end{figure}
 
-Au centre de cette étoile (voir \cref{fig:MCD_SimEDB}), il était donc évident de disposer une table simple, contenant les informations sur lesquelles une majorité des agrégations seraient effectuées : les simulations, identifiées par leur nom (\texttt{sim\_name}, qui permet de savoir de quelle expérience ces simulations dépendent) et leur identifiant unique, la graine aléatoire utilisée (\texttt{seed}).
+Au centre de cette étoile (voir \cref{fig:MCD_SimEDB}), il était donc évident de disposer une table simple, contenant les informations sur lesquelles une majorité des agrégations seraient effectuées : les simulations, identifiées par leur nom (\texttt{sim\_name}, qui permet de savoir de quelle expérience ces simulations dépendent) et leur identifiant unique, la graine aléatoire utilisée (\texttt{seed})\footnote{
+	La graine aléatoire ne constitue en tant que tel pas un identifiant unique : comme son nom l'indique, elle est aléatoire et présente donc un risque de répétition.
+	Dans Gama, cette graine aléatoire est une valeur qui varie de 0 à 1 et est composé de 19 décimales.
+	Il y a donc potentiellement $10^{19}$ graines aléatoires uniques, ce qui est en soi une quasi garantie d'unicité.
+	Notons de plus que dans le MCD de SimEDB, la graine aléatoire est systématiquement associée au nom de l'expérience.
+	Même en menant un million de réplications, la probabilité que deux simulations partagent la même graine aléatoire serait largement inférieure à 1\%.
+	La graine aléatoire constitue donc un identifiant unique robuste dans notre cas.
+}.
 
 \paragraph*{Relier les tables}
 
-Toutes les tables contenant les enregistrements individuels des agents (\texttt{fp}, \texttt{agregats} etc.) sont donc liées directement à cette table centrale (intitulée \texttt{seeds} ici).
+Toutes les tables contenant les enregistrements individuels des agents (\texttt{fp} pour les foyers paysans, \texttt{paroisses} pour les églises paroissiales, etc.) sont donc liées directement à cette table centrale (intitulée \texttt{seeds} ici).
 
-En dehors de ces tables liées aux agents, deux autres tables \og globales\fg{} sont présentes : une table \og \texttt{results}\fg{}, qui contient des informations agrégées sur l'état de chaque simulation à chaque pas de temps. Ces informations, par exemple le taux de foyers paysans isolés (champ \og \texttt{prop\_fp\_isoles}\fg{}), sont redondantes : elles pourraient être calculées directement depuis la table renseignant les foyers paysans, en faisant un ratio entre le nombre de foyers paysans sans agrégat et leur nombre total.
+En dehors de ces tables liées aux agents, deux autres tables \og globales\fg{} sont présentes : une table \og \texttt{results}\fg{}, qui contient des informations agrégées sur l'état de chaque simulation à chaque pas de temps.
+Ces informations, par exemple le taux de foyers paysans isolés (champ \og \texttt{prop\_fp\_isoles}\fg{}), sont redondantes : elles pourraient être calculées directement depuis la table renseignant les foyers paysans, en faisant un ratio entre le nombre de foyers paysans sans agrégat et leur nombre total.
 Pourtant, pour des raisons d'efficacité autant que de clarté, il a été choisi de dupliquer, en les pré-calculant, ces informations qui sont interrogées extrêmement souvent pour calculer les indicateurs de SimFeodal.
 
-L'autre table ne répondant pas au schéma classique est la table \og \texttt{parameters}\fg{}, qui fournit toutes les méta-données sur les simulations. On y retrouve par exemple les valeurs de paramètres de chacune des simulations, identifiées toujours par le couple \texttt{sim\_name} et \texttt{seed}.
-Cette table est la seule à être reliée bi-directionnellement à la table centrale (\texttt{seeds}), en particulier en raison de l'usage qui en est fait interactivement (voir la \cref{fig:MCD_SimEDB_etapes}).
+Autre table ne répondant pas au schéma classique, la table \og \texttt{parameters}\fg{} fournit toutes les méta-données sur les simulations.
+ On y retrouve par exemple les valeurs de paramètres de chacune des simulations, identifiées toujours par le couple \texttt{sim\_name} et \texttt{seed}.
+Cette table est la seule à être reliée de manière bi-directionnelle à la table centrale (\texttt{seeds}), en particulier en raison de l'usage qui en est fait interactivement (voir l'\cref{enc:usage-MCD-SimEDB}).
 
 Notons tout de même que l'on s'éloigne légèrement du classique schéma en étoile en raison des relations que nous avons choisi d'insérer entre les tables des différents agents (relations notées en pointillées dans la \cref{fig:MCD_SimEDB}).
-Intégrer ces relations dans la table centrale aurait considérablement complexifié cette dernière, mais pour autant, elles étaient nécessaires : SimFeodal est un modèle complexe, dans lequel des interactions sont présentes à plusieurs niveaux entre différents types d'agents. La base de données résultant de ce modèle complexe l'est donc nécessairement aussi, et ne peut s'épargner de relations entre les agents correspondant aux interactions éprouvées.
+Intégrer ces relations dans la table centrale aurait considérablement complexifié cette dernière, mais pour autant, elles étaient nécessaires : SimFeodal est un modèle complexe, dans lequel des interactions sont présentes à plusieurs niveaux entre différents types d'agents.
+La base de données résultant de ce modèle complexe l'est donc nécessairement aussi : on doit implémenter, dans la base de données, des relations entre les  tables pour chacune des interactions entre les agents du modèle.
 Ici, ces relations permettent par exemple d'étudier la composition des pôles autour de chaque agrégat, et ainsi d'étudier le lien entre poids du pôle (en nombre d'attracteurs) et poids de l'agrégat (en nombre de foyers paysans).
 
-Ce type d'indicateur est toutefois moins utilisé que les indicateurs plus directs (\hl{ref à chapitre 3, indicateurs}), et les requêtes correspondantes, moins fréquentes, ne perturbent pas les logiques et performances d'ensemble de SimEDB.
+Ces indicateurs, situés à l'intersection de différents types d'agents, sont toutefois moins utilisé que les indicateurs plus directs (\hl{ref à chapitre 3, indicateurs}).
+Les requêtes correspondantes, moins fréquentes, ne perturbent pas les logiques et performances d'ensemble de SimEDB : elles auraient plus facilement exprimées dans un schéma \og en flocons\fg{}, mais leur relative rareté ne remet aucunement en cause l'organisation générale du MCD.
 
-\clearpage
-\begin{figure}[H]
-\centering
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/MCD_SimEDB_repris.pdf}
-\caption{Modèle Conceptuel de Données (MCD) des données en sortie de simulation de SimFeodal telles qu'implémentées dans SimEDB.}
-\label{fig:MCD_SimEDB}
-\end{figure}
-\clearpage
 
-\begin{figure}[H]
-\centering
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/MCD_SimEDB_simplified.pdf}
-\caption{Les étapes d'interrogation de la BDD de SimEDB :\\
-(1) Filtrage d'un sous-ensemble de valeurs de paramètres ;\\
-(2) Les simulations associées sont isolées dans la table des paramètres;\\
-(3) Répercussion de ce filtre dans la table contenant les identifiants des simulations ;\\
-(4) Toutes les tables sont filtrées en répercussion}
-\label{fig:MCD_SimEDB_etapes}
-\end{figure}
-\clearpage
 \subsubsection{Un modèle de données pour favoriser l'interrogation et le filtrage conjoint}
 
-Le schéma choisit, et le Modèle Conceptuel de Données (MCD) associé, permettent donc une interrogation rapide des données en simplifiant les tâches d'agrégation et en minimisant la quantité de jointures nécessaires à la génération des indicateurs de sortie.
-
+Le schéma choisi et le Modèle Conceptuel de Données (MCD) associé, permettent  une interrogation rapide des données en simplifiant les tâches d'agrégation et en minimisant la quantité de jointures nécessaires à la génération des indicateurs de sortie.
 Le choix de s'écarter légèrement du schéma en étoile présente un autre avantage, extrêmement utile, dans le cadre d'une exploration interactive des indicateurs de SimFeodal.
 En effet, comme on l'a vu auparavant (\cref{subsec:explorer-simedb}), dans SimEDB, on compare les simulations en les isolant à partir des valeurs de paramètres qui leur correspondent, via un acte de \textit{brushing} des valeurs de paramètres présentées dans un graphique en coordonnées parallèles interactif.
-
-Du côté du MCD, la table correspondante est la table \texttt{parameters}. Quand l'utilisateur sélectionne un sous-ensemble de valeurs de paramètres, la table est filtrée, et ne renvoi donc que les simulations correspondantes.
+Du côté du MCD, la table correspondante est la table \texttt{parameters}.
+Quand l'utilisateur sélectionne un sous-ensemble de valeurs de paramètres, la table est filtrée, et ne renvoie donc que les simulations correspondantes.
 
 C'est ici que l'intérêt de la table \texttt{seeds} et de son lien bidirectionnel avec la table \texttt{parameters} apparaît : une fois \texttt{parameters} filtrée, cette sélection est renvoyée à la table \texttt{seeds}, et se répercute donc directement à toutes les autres tables.
 Avec une unique requête, qui plus est sur une table de faible dimension (\texttt{seeds} ne comporte que deux champs), le filtrage est donc extrêmement véloce, accélérant d'autant le filtrage des autres tables et donc la génération des indicateurs de sortie.
+Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour les données de SimFeodal, sont présenté dans l'\cref{enc:usage-MCD-SimEDB}.
 
-Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour les données de SimFeodal, sont schématisées dans la \cref{fig:MCD_SimEDB_etapes}.
+\clearpage
 
+\begin{encadre}{Un exemple d'interrogation de la base de données de SimEDB.}{usage-MCD-SimEDB}
+	
+	La \cref{fig:MCD_SimEDB_etapes} présente l'ensemble des étapes qui permettent de générer un indicateur de sortie.
+	Cette planche montre un exemple de sélection faite dans l'application SimEDB, et décrit la manière dont cette sélection est répercutée à travers le MCD de SimFeodal (\cref{fig:MCD_SimEDB}).
+	La démarche aboutit par la sélection d'un ensemble de données, qui répondent à un critère sur deux paramètres du modèle.
+	Cette sélection est ensuite utilisée pour générer un indicateur de sortie, ici, l'évolution du nombre d'agrégats au cours du temps.
+
+\begin{figure}[H]
+	\centering
+	\captionsetup{width=\linewidth}
+	\includegraphics[width=\linewidth]{img/MCD_exemple_requetes.pdf}
+	\caption{De la sélection interactive à l'indicateur de sortie.}
+	\label{fig:MCD_SimEDB_etapes}
+\end{figure}
+\smallskip
+\end{encadre}
 
 \subsection*{Une organisation dédiée à l'exploration interactive}
 La présentation des choix d'organisation de données témoigne d'une visée résolument applicative, c'est-à-dire visant à penser l'organisation, la structuration et les SGBD d'implémentation, comme au service de la plate-forme d'exploration SimEDB.
 Le SGBD choisi, MapD, est ainsi un logiciel particulièrement adapté aux besoins identifiés, c'est-à-dire à une efficacité et une robustesse d'interrogation des données générées par SimFeodal.
 MapD est interrogeable de manière universelle, via des protocoles de connexion standards, au moyen d'un langage qui fait office de \textit{lingua franca} de l'interrogation de données, le SQL.
 Au sein du SGBD, la structure des données, révélée dans le MCD qui adopte une structure \og en étoile\fg{}, vise aussi à faciliter et à optimiser la vitesse des requêtes visant à générer les indicateurs de sortie de SimFeodal.
-Cette structure de données est enfin pensée, en amont, pour minimiser le nombre requêtes nécessaires à l'affichage des indicateurs, dans un cadre interactif, correspondant à des sous-ensembles des nombreuses simulations effectuées au cours de la construction, du paramétrage et de la calibration de SimFeodal.
+Cette structure de données est enfin pensée, en amont, pour minimiser le nombre de requêtes nécessaires à l'affichage des indicateurs, dans un cadre interactif, correspondant à des sous-ensembles des nombreuses simulations effectuées au cours de la construction, du paramétrage et de la calibration de SimFeodal.
 
 Il est important de noter qu'en l'absence de ces choix de conception de base de données, de la modélisation conceptuelle jusqu'à l'implémentation technique, la plate-forme d'exploration des données SimEDB, que nous allons maintenant présenter plus en détail, n'aurait pu être conçue, élaborée et bâtie de manière convaincante.
