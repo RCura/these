@@ -2,18 +2,73 @@
 \section[Une plate-forme d'exploration de données de simulations : SimEDB]{Une plate-forme d'exploration de données de simulations : SimEDB%
 \sectionmark{SimEDB}}\label{sec:SimEDB}
 
-La \cref{sec:explorer-sorties-simfeodal} (\cnameref{sec:explorer-sorties-simfeodal}) a décrit les étapes successives d'avancement dans l'exploration des données en sortie de SimFeodal, depuis l'observation en direct des simulations jusqu'au besoin d'une plate-forme permettant l'exploration et la comparaison interactive des sorties de simulation.
+La \cref{sec:explorer-sorties-simfeodal} (\cnameref{sec:explorer-sorties-simfeodal}) a décrit les étapes successives d'avancement dans l'exploration des données en sortie de SimFeodal, depuis l'observation en direct des simulations (\og pré-filtrage\fg{}) jusqu'au besoin d'une plate-forme permettant l'exploration et la comparaison interactive des sorties de simulation.
 La plate-forme proposée en réponse à ce besoin, SimEDB\footnote{
 \textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard, voir la note de bas de page \ref{ftn:origine-simedb}, \cpageref{par:introduction-nom-simedb}.
 }, dans un objectif de généricité et d'adéquation, se devait aussi de répondre à de nombreuses contraintes, aussi bien liées aux possibilités offertes qu'à l'usage qui en serait fait.
-Dans cette partie, nous nous attacherons donc à présenter les contraintes qui ont guidé la conception de SimEDB, ainsi que les choix, méthodologiques et techniques, qui en ont résulté.
+Dans cette partie, nous nous attacherons donc à présenter les contraintes qui ont guidé la conception de SimEDB, ainsi que les choix, méthodologiques et techniques, qui en ont résulté.\vspace{-0.5cm}
 
 \subsection{Contraintes}
 
 \subsubsection{Adapter la complexité aux utilisateurs}
 
-Dans le domaine de l'Interface Homme-Machine (IHM), il est courant de considérer qu'un outil d'analyse et de représentation doit être adapté à un public. La \cref{fig:cartography3}, emblématique de la conception de géovisualisations par Alan MacEachren, replace ainsi les types d'usage d'une plate-forme d'exploration selon trois axes : les utilisateurs visés (\textit{users}), le niveau d'interaction souhaité (\textit{interaction}) et l'objectif poursuivi par la (géo)visualisation (\textit{task}).
-D'après ce schéma, à un niveau d'expertise de l'utilisateur correspond un unique degré d'interaction : plus l'utilisateur est expert du domaine, plus il s'attendra à disposer d'un outil complexe : \og All participants agreed that user expertise requires increased interface complexity, as suggested by the Cartography³ framework\fg{} \autocite[16]{roth_interactivity_2015}.
+Dans le domaine de l'Interface Homme-Machine (IHM), il est courant de considérer qu'un outil d'analyse et de représentation doit être adapté à un public.
+La \cref{fig:cartography3}, emblématique de la conception de géovisualisations par Alan \textsc{MacEachren}, replace ainsi les types d'usage d'une plate-forme d'exploration selon trois axes : le niveau d'expertise des utilisateurs visés (\textit{users}), le niveau d'interaction souhaité (\textit{interaction}) et l'objectif poursuivi par la (géo)visu\-alisation (\textit{task}).
+D'après l'auteur, à un niveau d'expertise de l'utilisateur correspond un unique degré d'interaction et un unique objectif : dans le cube, seule une \og droite\fg{} des usages possibles est présente.
+L'auteur décompose ces usages en quatre types :
+\begin{itemize}
+	\item Pour le grand public (\textit{users} de type \textit{public}), l'objectif est de transmettre une information simple (\textit{info sharing}). Le niveau d'interaction avec la géovisualisation doit donc être faible. Il s'agit d'une tâche de présentation (\textit{present}).
+	\item Pour un public légèrement plus connaisseur, on peut augmenter le niveau d'interaction. On entre alors dans un but de synthèse (\textit{synthesize}).
+	\item En ciblant un niveau encore supérieur d'expertise chez l'utilisateur, et en visant à de la construction de connaissance plus qu'à une transmission de connaissance, on augmente encore le niveau d'interaction.
+	La géovisualisation a alors pour but l'analyse (\textit{analyze}).
+	\item Au plus haut niveau d'interaction, d'expertise et de recherche, la géovisualisation peut servir d'outil d'exploration (\textit{explore}).
+\end{itemize}
+
+%\begin{figure}[H]
+%\hspace*{\fill}%
+%\begin{minipage}[t]{.46\linewidth}
+%\centering
+%\captionsetup{width=.9\linewidth}
+%\vspace{0pt}
+%\includegraphics[width=\linewidth]{img/CV35-Fig2a-600.png}
+%\caption{\og \textit{An update to Cartography³, 10 years after its conception}\fg{}, par \cite{coltekin_geovisualization_2018}, d'après \cite[10]{maceachren_geovisualization_2004}.}
+%\label{fig:cartography3}
+%\end{minipage} \hfill
+%\begin{minipage}[t]{.46\linewidth}
+%\centering
+%\captionsetup{width=.9\linewidth}
+%\vspace{0pt}
+%\includegraphics[width=\linewidth]{img/Roth_Interface_Complexity.png}
+%\caption{\og \textit{Interface complexity versus user motivation. }\fg{}, \cite[79]{roth_interactive_2013}.}
+%\label{fig:interface-complexity}
+%\end{minipage}
+%\medskip
+%\end{figure}
+
+\begin{figure}[H]
+\centering
+\vspace{0pt}
+\includegraphics[width=.8\linewidth]{img/cartography3.png}
+\captionsetup{width=.9\linewidth}
+\caption{\og \textit{An update to Cartography³, 10 years after its conception}\fg{}, par \cite{coltekin_geovisualization_2018}, d'après \cite[10]{maceachren_geovisualization_2004}.}
+\label{fig:cartography3}
+\end{figure}
+
+\textcite[16]{roth_interactivity_2015} commente cette figure en effectuant une assimilation entre niveau d'interaction et complexité de l'interface de l'outil de géovisualisation : \og All participants agreed that user expertise requires increased interface complexity, as suggested by the Cartography³ framework\fg{}.
+
+La plateforme SimEDB est conçue pour être utilisée par des experts thématiques (l'équipe de modélisation de SimFeodal), avec un objectif clairement inscrit dans la construction de connaissance.
+A ce titre, et d'après \textsc{MacEachren}, le niveau d'interaction avec l'outil de géovisualisation devrait être élevé (forte complexité de l'interface pour \textsc{Roth}) et ancrer l'usage dans une dimension exploratoire.
+
+
+
+\paragraph*{Des utilisateurs hétérogènes mais captifs}
+
+SimEDB est pourtant pensé à un niveau intermédiaire, entre l'analyse et la synthèse, dans le cube de la \cref{fig:cartography3}.
+Il ne s'agit ainsi pas d'explorer des données, au sens de MacEachren, qui sous-entend par cette exploration (\textit{explore}) la recherche d'informations dans un jeu de données inconnu de l'utilisateur.
+Le besoin identifié consiste à permettre aux utilisateurs d'explorer des sorties de simulation à travers des indicateurs déjà pensés et constitués.
+Il ne s'agit pas de proposer un outil d'exploration de données brutes, permettant de créer à la volée des nouveaux indicateurs, via une approche d'exploration \og naïve\fg{}.
+Au contraire, l'exploration est guidée par les indicateurs, et la tâche s'apparente plus à de l'analyse de résultats de simulations, voire à de la synthèse des spécificités des résultats issus d'expériences différentes.
+L'objectif de SimEDB s'écarte donc du \og modèle\fg{} de \textsc{MacEachren}, puisqu'il ne se situe pas sur la \og droite\fg{} des usages (voir la \cref{fig:cartography3-simedb}).
 
 \begin{figure}[H]
 \hspace*{\fill}%
@@ -21,9 +76,9 @@ D'après ce schéma, à un niveau d'expertise de l'utilisateur correspond un uni
 \centering
 \captionsetup{width=.9\linewidth}
 \vspace{0pt}
-\includegraphics[width=\linewidth]{img/CV35-Fig2a-600.png}
-\caption{\og \textit{An update to Cartography³, 10 years after its conception}\fg{}, par \cite{coltekin_geovisualization_2018}, d'après \cite[10]{maceachren_geovisualization_2004}.}
-\label{fig:cartography3}
+\includegraphics[width=\linewidth]{img/Cartography3_SimEDB.pdf}
+\caption{Positionnement de SimEDB dans le cube \textit{Cartography³} de \textsc{MacEachren}.}
+\label{fig:cartography3-simedb}
 \end{minipage} \hfill
 \begin{minipage}[t]{.46\linewidth}
 \centering
@@ -33,42 +88,53 @@ D'après ce schéma, à un niveau d'expertise de l'utilisateur correspond un uni
 \caption{\og \textit{Interface complexity versus user motivation. }\fg{}, \cite[79]{roth_interactive_2013}.}
 \label{fig:interface-complexity}
 \end{minipage}
+\medskip
 \end{figure}
 
-L'usage prévu de SimEDB -- nettement dans la construction de connaissance --, de même que le \og niveau\fg{} de ses utilisateurs -- expert dans le sens thématique et de la modélisation conceptuelle --, devraient donc logiquement, selon le schéma, bénéficier d'une forte complexité possible dans l'interaction.
+Cet écart au modèle conceptuel de MacEachren s'explique notamment par la diversité des utilisateurs de SimEDB.
+Il serait absurde de qualifier un niveau d'expertise général des utilisateurs tant les spécificités de cette expertise sont nombreuses.
+Entre des profils de spécialiste thématiciens, de modélisateurs ou encore de géomaticiens, l'expertise est présente, mais concernant des champs différents, toutefois tous intéressés par l'exploration des sorties de SimFeodal.
 
-\paragraph*{Des utilisateurs hétérogènes mais captifs}
+Il est dès lors peu évident de se fixer sur un degré de complexité à atteindre dans la plate-forme d'exploration : un niveau faible serait frustrant pour les utilisateurs avancés, et un niveau avancé serait source de confusion et donc de perte de motivation pour les utilisateurs moins expérimentés (\cref{fig:interface-complexity}).
 
-SimEDB s'inscrit pourtant à un niveau intermédiaire, entre l'analyse et la synthèse : l'exploration, au sens entendu par MacEachren (\textit{explore}), est ici délaissée de par le choix de présenter des indicateurs spécifiés plutôt que de laisser l'utilisateur les assembler.
-
-Cet écart au modèle conceptuel de MacEachren s'explique notamment par la diversité des utilisateurs de SimEDB : qualifier un niveau d'expertise général serait absurde, tant les spécificités de cette expertise sont nombreuses : entre des profils de spécialiste thématiciens, de modélisateurs ou encore de géomaticiens, l'expertise est présente, mais concernant des champs différents, toutefois tous intéressés par l'exploration des sorties de SimFeodal.
-
-Il est dès lors peu évident de se fixer sur un degré de complexité à atteindre dans la plate-forme d'exploration : un niveau faible serait frustrant pour les utilisateurs avancés, et un niveau avancé serait source de confusion et donc de perte de motivation.
-
-Il nous était toutefois possible de miser sur une bonne motivation générale étant donné les circonstances particulières d'utilisation de SimEDB : contrairement à une utilisation grand public, qui ne présente aucun engagement vis-à-vis d'une interface d'exploration de données, ou à l'inverse contrairement à des domaines experts où chaque utilisateur dispose de ses propres outils et méthodes pour explorer un jeu de données, le public cible de SimEDB est \og captif\fg{}, c'est-à-dire qu'il ne dispose pas d'autre solution que de passer par cette plate-forme pour explorer les données, en particulier en raison des contraintes liées à ces données (cf. \cref{subsec:donnees-indicateurs}, \cnameref{subsec:donnees-indicateurs} par exemple).
-
-Dès lors, la motivation des utilisateurs ne peut qu'être importante, et l'interface a la possibilité de devenir plus complexe tout en se révélant adaptée (\cref{fig:interface-complexity}).
+Une spécificité du cas d'usage de SimEDB permet toutefois de miser sur une bonne motivation générale des utilisateurs, et donc sur la possibilité de créer un outil à l'interaction plus complexe qu'un simple présentoir de données.
+Contrairement à une utilisation grand public, qui ne présente aucun engagement vis-à-vis d'une interface d'exploration de données, ou à l'inverse contrairement à des domaines experts où chaque utilisateur dispose de ses propres outils et méthodes pour explorer un jeu de données, le public cible de SimEDB est \og captif\fg{}.
+On entend par là que les utilisateurs concernés par SimEDB ne disposent pas d'autre solution que de passer par cette plate-forme pour explorer les données issues de sortie de simulation, en particulier en raison des contraintes liées aux caractéristiques de ces données (leur masse par exemple, voir la \cref{subsec:donnees-indicateurs}, \cnameref{subsec:donnees-indicateurs}).
+On peut dès lors se permettre de développer une interface plus complexe que si l'on visait un plus large public.
 
 \paragraph*{Intuititivé de l'usage au regard des applications traditionnelles}
 
 En dépit de cette motivation, les utilisateurs de SimEDB demeurent majoritairement des experts thématiciens, potentiellement peu familiarisés à l'exploration de données interactives.
 Afin que le temps d'exploration des données issues de SimFeodal soit dévoué à la compréhension et à la synthèse de ces données plutôt qu'à un apprentissage ou amélioration en exploration de données, il a été choisi de créer une application aussi simple que possible au regard des fonctionnalités principales qu'elle devait permettre : observer les indicateurs de sortie de simulation pour des expériences données, et les comparer entre elles aussi efficacement que possible.
+
 Il n'était donc pas question de construire un nouveau \og logiciel expert \fg{}, doté de dizaines de fonctionnalités avancées, mais au contraire, de simplifier au maximum l'interface pour ne pas encombrer et complexifier l'utilisation de ces fonctionnalités principales.
-On souhaitait une plate-forme aussi épurée que possible, plutôt que de partir, par exemple, sur la personnalisation et adaptation de l'un des outils d'exploration existants et dédiés à offrir une forte possibilité de manipulation.
+
+On souhaitait une plate-forme aussi épurée que possible, plutôt que de partir, par exemple, sur la personnalisation et l'adaptation de l'un des outils d'exploration existants et dédiés à offrir une forte possibilité de manipulation\footnote{
+\colorbox{Cyan}{Lena : \og Éventuellement dire pourquoi recherche de généricité dans un créneau bien spécifique ?}
+}.
+
 
 \subsubsection{Efficacité}
 
-Dans la description du choix du SGBD, on a mentionné une première fois l'intérêt de disposer d'une solution d'interrogation de données permettant une rapidité de l'exécution des requêtes.
-Sans entrer dans le détail des recherches en IHM, on peut toutefois caractériser cet intérêt par deux aspects complémentaires, une solution interactive minimisant les latences permettant (1) de conserver l'utilisateur, c'est-à-dire de ne pas le décourager d'utiliser l'application, et (2) de lui faire conserver sa concentration (\textit{focus}), c'est-à-dire que le délai entre son interaction et la réponse graphique soit suffisamment court pour que l'identification effectuée par son système cognitif ne soit pas affecté.
+Dans la description du choix du SGBD, on a mentionné une première fois l'intérêt de disposer d'une solution d'interrogation de données qui garantisse une certaine rapidité dans l'exécution des requêtes.
+Sans entrer dans le détail des recherches en IHM, on peut compléter ce besoin de rapidité par deux aspects complémentaires.
+Une solution interactive qui minimise les latences permet (1) de motiver l'utilisateur, c'est-à-dire de ne pas le décourager d'utiliser l'application, et (2) de lui faire conserver sa concentration\footnote{
+Avant de spécifier ce sujet, notons que quand le délai entre une interaction avec un outil informatique et le retour qu'il doit produire (affichage de graphique par exemple) est important, l'utilisateur perd en capacité d'association entre son action et le retour observé.
+Typiquement, dans un processus d'exploration de données, plus ce délai est faible, plus l'utilisateur peut mobiliser son intuition pour évaluer, par exemple, les relations entre des variables ou des individus.
+} (\textit{focus}).
 
-Le premier point a été abordé plus haut (\cref{subsubsec:interroger-robuste-efficace}), et surtout, en raison de la \og captivité\fg{} de l'utilisateur évoquée ci-dessus, ne s'applique que marginalement à notre cas d'étude : si des délais trop importants pourraient décourager l'utilisateur, l'absence d'alternative utilisable pour explorer ces données les contraint toutefois à faire usage de la plate-forme d'exploration pour comprendre le comportement du modèle SimFeodal.
+Le premier point a été abordé plus haut (\cref{subsubsec:interroger-robuste-efficace}), et surtout, en raison de la \og captivité\fg{} de l'utilisateur évoquée ci-dessus, ne s'applique que marginalement à notre cas d'étude.
+Des délais trop importants pourraient décourager l'utilisateur, mais en l'absence d'alternative pour explorer les sorties de simulation, cela n'a pas un impact trop important.
 
 \paragraph*{Conserver la concentration}
 
-Le problème de la concentration de l'utilisateur demeure, lui, critique : des études ont montré, depuis longtemps \autocite{mackenzie_lag_1993}, qu'il y avait un lien fort entre la performance d'une interrogation visuelle et le délai nécessaire à son obtention.
-\cite[8]{liu_effects_2014} montrent ainsi qu'avec un simple délai de $500ms$, la qualité des observations, des généralisations qui peuvent être tirées des données, et des des hypothèses émises, décroît nettement. Les auteurs indiquent d'ailleurs que ces effets sont plus importants encore quand l'exploration est effectuée par des actions de \textit{brushing} et de sélections croisées (\textit{linking}), deux méthodes qui sont au cœur de SimEDB : \og For example, more aggressive caching or prefetching methods may be employed for operations sensitive to small variations in latency, such as brushing and linking \fg{}\autocite[9]{liu_effects_2014}.
+Le problème de la concentration de l'utilisateur demeure, lui, critique.
+Des études ont montré, depuis longtemps \autocite{mackenzie_lag_1993}, qu'il y avait un lien fort entre la performance d'une interrogation visuelle et le délai nécessaire à son obtention.
+\cite[8]{liu_effects_2014} montrent ainsi qu'avec un simple délai de 500 millisecondes (ms), la qualité des observations, des généralisations qui peuvent être tirées des données, et des hypothèses émises, décroît nettement chez l'utilisateur.
+Les auteurs indiquent d'ailleurs que cette diminution est plus importante encore quand l'exploration est effectuée par des actions de \textit{brushing} et de sélections croisées (\textit{linking}), deux méthodes qui sont au cœur de SimEDB : \og For example, more aggressive caching or prefetching methods may be employed for operations sensitive to small variations in latency, such as brushing and linking \fg{} \autocite[9]{liu_effects_2014}.
 
-\cite{forch_are_2017}, pour leur part, étudient la perception du délai de réponse lors d'interactions menées avec une souris d'ordinateur. Ils concluent ainsi que les utilisateurs perçoivent des délais d'attente inférieurs à $100ms$, mais notent que les utilisateurs n'en sont pas pour autant perturbés, en particulier ceux qui ont le moins l'habitude de réactions rapides\footnote{
+\cite{forch_are_2017}, pour leur part, étudient la perception du délai de réponse lors d'interactions menées avec une souris d'ordinateur.
+Ils concluent ainsi que les utilisateurs perçoivent des délais d'attente inférieurs à 100 ms, mais notent que les utilisateurs n'en sont pas pour autant perturbés, en particulier ceux qui ont le moins l'habitude de réactions rapides\footnote{
 Ils remarquent ainsi que les utilisateurs plus habitués à des jeux vidéos rapides (\og highly dynamic computer games, such as action games, racing games, or first person shooter games [...]\fg{}, \cite[51]{forch_are_2017}) sont plus vite affectés par le délai de réponse que les autres.
 }.
 
@@ -76,13 +142,24 @@ Concernant le champ, plus spécifique, des \textit{visual analytics}, nous n'avo
 Les auteurs de ce champ recommandent de prêter attention à la rapidité de rendu et à son optimisation, mais sans que ne trouvions de résultats plus précis :
 \begin{quotation}
 \og
-When simple pattern finding is needed, the importance of having a fast, highly interactive interface cannot be emphasized	enough. If a navigation technique is slow, then the cognitive costs can be much greater than just the amount of time lost, because an entire train of thought can become disrupted by the loss of the contents of both visual and nonvisual working memories.
+When simple pattern finding is needed, the importance of having a fast, highly interactive interface cannot be emphasized	enough.
+If a navigation technique is slow, then the cognitive costs can be much greater than just the amount of time lost, because an entire train of thought can become disrupted by the loss of the contents of both visual and nonvisual working memories.
 \fg{}\\
 \mbox{}~ \hfill  \cite{ware_information_2012}, tiré de \cite[12]{amirpour_amraii_human-data_2018}.
 \end{quotation}
 
+
+\hl{Ce paragraphe n'est pas clair, et je ne retrouve plus tellement la logique de mobiliser cette citation, qui n'établie en fait aucun critère temporel.}
 Tout au plus pouvons-nous émettre l'idée qu'il serait évident que la latence acceptée dans un environnement graphique de ce type soit largement supérieure à celle des environnements virtuels (réalité augmentée, visualisations immersives\ldots), sans pour autant que nous ne puissions quantifier cet écart.
-\cite[74]{shneiderman_designing_2004} indiquent tout de même, parmi les \og 8 règles d'or du design d'interfaces\fg{} un délai maximal pour une phase d'exploration, sur lequel nous pouvons construire une estimation : \og \textit{Reduce short-term memory load.} The limitation of human information processing in short-term memory (\textbf{the rule of thumb is that humans can remember ``seven plus or minus two chunks'' of information}) requires that displays be kept simple, multiple-page displays be consolidated, window-motion frequency be reduced, and sufficient training time be allotted for codes, mnemonics, and sequences of actions.\fg{}.
+\citeauteur{shneiderman_designing_2004} indiquent tout de même, parmi les \og 8 règles d'or du design d'interfaces\fg{}, un délai maximal pour une phase d'exploration, sur lequel nous pouvons construire une estimation :
+\begin{quotation}
+ 	\noindent\og
+ 	[Règle 8.] \textit{Reduce short-term memory load.}\\
+	The limitation of human information processing in short-term memory (the rule of thumb is that humans can remember ``seven plus or minus two chunks'' of information) requires that displays be kept simple, multiple-page displays be consolidated, window-motion frequency be reduced, and sufficient training time be allotted for codes, mnemonics, and sequences of actions.
+	\fg{}\\
+	\mbox{}~ \hfill  \cite[75]{shneiderman_designing_2004}.
+\end{quotation}
+
 Si l'on considère qu'une session d'exploration requiert l'étude d'une dizaine d'indicateurs, et que chacun demande une quinzaine de secondes d'analyse visuelle, alors le temps d'attente entre les visualisations ne doit pas dépasser deux à trois secondes.
 
 Selon ces différentes considérations, dans le cadre de SimEDB, on doit donc viser à développer une plate-forme aussi rapide que possible, tout en sachant, dès le départ, qu'il sera impossible d'arriver aux délais de $100ms$ ou $500ms$ évoqués précédemment, ne serait-ce que parce que le temps de requête des données -- sans compter le temps de rendu graphique -- est déjà supérieur d'un ordre de grandeur.
@@ -90,7 +167,11 @@ Selon ces différentes considérations, dans le cadre de SimEDB, on doit donc vi
 \subsubsection{Interopérabilité et évolutivité}
 
 Une autre contrainte forte tient cette fois au choix de l'environnement informatique qui accueillera la plate-forme d'exploration.
-On peut résumer ce choix à deux alternatives : un environnement local, en installant l'application sur l'ordinateur de chaque utilisateur, ou un environnement distant, où l'application serait donc accessible à distance, par exemple via une interface web.
+On peut résumer ce choix à deux alternatives : un environnement local, en installant l'application sur l'ordinateur de chaque utilisateur, ou un environnement distant, où l'application serait donc accessible à distance, par exemple via une interface web\footnote{
+Cette question était également posé pour le choix du SGBD en \cref{par:stockage-centralise}.
+L'outil d'exploration et l'architecture de données sont cependant indépendants, et le choix d'un stockage des données sur un serveur distant n'implique aucunement que l'application suive la même logique.
+On peut ainsi avoir un SGBD distant qui serait interrogé par une application locale.
+}.
 
 Ce choix a des nombreuses répercussions, aussi bien en matière de possibilité d'accès que de facilité à faire évoluer la plate-forme.
 Le choix le plus classique est de développer une application installable sur un ordinateur : cela permet de garantir une utilisation à tout moment, sans contrainte d'accès au réseau internet, et cela permet aussi d'obtenir de meilleurs performances, puisque la rapidité de l'application dépendrait uniquement de la puissance de l'ordinateur plutôt que de devoir souffrir du passage par l'intermédiaire d'un serveur.
