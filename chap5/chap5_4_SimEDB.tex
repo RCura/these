@@ -365,11 +365,11 @@ Ce faisant, avec des opérations chaînées, qui reposent sur des \og verbes\fg{
 	Les fonctions de base sont donc des \og verbes\fg{}, au sens où elles définissent les opérations qui seront effectuées sur les données.
 	On peut ainsi isoler des colonnes avec le \og verbe\fg{} \texttt{select}, filtrer les lignes avec \texttt{filter}, modifier une colonne avec \texttt{mutate} etc.
 	La \cref{subfig:exemple-dplyr-R} en donne un exemple commenté et concret.
-}, on obtient un ensemble d'instructions qui forment une \og phrase\fg{} de manipulation de données, exprimées donc dans la \og grammaire de traitement de données\fg{} fournie par \texttt{dplyr}.
+}, on obtient un ensemble d'instructions qui forment une \og phrase\fg{} de manipulation de données, exprimées donc dans la \og grammaire de traitement de données\fg{} fournie par \textsf{dplyr}.
 
-Cette \og grammaire\fg{} s'inspire notamment du SQL, bien que beaucoup plus complète, et peut en particulier être \og convertie\fg{} en SQL (\cref{fig:dml-simedb}), c'est-à-dire qu'une suite d'instructions exprimées via dplyr en R (\cref{subfig:exemple-dplyr-R}) peut être traduite en SQL (\cref{subfig:exemple-dplyr-SQL}), et donc envoyée et exécutée sur un SGBD.
+Cette \og grammaire\fg{} s'inspire notamment du SQL, bien que beaucoup plus complète, et peut en particulier être \og convertie\fg{} en SQL (\cref{fig:dml-simedb}), c'est-à-dire qu'une suite d'instructions exprimées via \textsf{dplyr} en \textsf{R} (\cref{subfig:exemple-dplyr-R}) peut être traduite en SQL (\cref{subfig:exemple-dplyr-SQL}), et donc envoyée et exécutée sur un SGBD.
 
-En matière de performance, l'approche de \textsf{dplyr} est intéressante : toutes les opérations sont effectuées par le SGBD directement, et seul le résultat final est renvoyé à R (instruction \texttt{collect()}).
+En matière de performance, l'approche de \textsf{dplyr} est intéressante : toutes les opérations sont effectuées par le SGBD directement, et seul le résultat final est renvoyé à \textsf{R} (instruction \texttt{collect()}).
 Le traitement de données bénéficie donc de la rapidité d'exécution du SGBD MapD, tout en profitant de la syntaxe expressive de \textsf{dplyr}.
 De plus, cela permet de minimiser les transferts de données : en exécutant les calculs dans le SGBD, il n'est besoin que d'en renvoyer le résultat à l'utilisateur.
 Et ce résultat est nécessairement moins lourd que les données dont il provient.
@@ -379,9 +379,10 @@ On optimise ainsi l'utilisation de bande-passante internet.
 \centering
 \hspace{5pt}
 \subfloat[Code source R avec le \textit{package} \textsf{dplyr}]{\label{subfig:exemple-dplyr-R}\includegraphics[width=\linewidth]{img/dplyr_cut.png}}
-\hspace{5pt}
+\vspace{-0.3cm}
 \subfloat[Traduction du code source \textsf{dplyr} en \textsf{SQL}]{\label{subfig:exemple-dplyr-SQL}\includegraphics[scale=.35]{img/SQL_Sublime.png}}
-\caption{Un exemple de manipulation de données stockées dans un SGBD depuis R. On y interroge la table des agrégats de population pour calculer le nombre moyen d'agrégats par année de simulation.}
+\vspace{-0.3cm}
+\caption{Un exemple de manipulation de données stockées dans un SGBD depuis \textsf{R}. On y interroge la table des agrégats de population pour calculer le nombre moyen d'agrégats par année de simulation.}
 \label{fig:dml-simedb}
 \end{figure}
 
@@ -389,28 +390,37 @@ On optimise ainsi l'utilisation de bande-passante internet.
 \paragraph*{Création de graphiques avec \textsf{ggplot2} et la \og \textit{grammar of graphics}\fg{}}
 
 \paragraph*{}
-\begin{wrapfigure}{l}{.42\linewidth}
+\begin{figure}[H]
 \centering
-\includegraphics[width=.92\linewidth]{img/ch-03-ggplot-flow-vertical.png}
-\caption{Représentation des éléments de grammaire de \textsf{ggplot2}, tiré de \cite{healy_data_2018}.\\
-\hl{Ré-organiser proprement le graphique}%
+\captionsetup{width=0.9\linewidth}
+\includegraphics[width=\linewidth]{img/grammar-graphics-steps.pdf}
+\caption{Représentation des éléments de grammaire de \textsf{ggplot2}, d'après une idée de \textcite{healy_data_2018}.
 }
 \label{fig:socviz-ggplot2}
-\end{wrapfigure}
-Une fois les données pré-traitées, encore est-il nécessaire de construire les indicateurs graphiques de sortie de simulation.
-Pour cela, il existe de nombreux \textit{packages} pour R dédiés à la représentation graphique.
+\end{figure}
+
+
+En interrogeant le SGBD avec des outils adaptés, on obtient un jeu de données qui servira de base à la représentation graphique des indicateurs (\cref{fig:socviz-ggplot2}, étape 1).
+On peut passer alors passer à l'étape de construction graphique des indicateurs.
+Il existe pour cela, toujours en restant de l'environnement (et du langage) \textsf{R}, de nombreux \textit{packages} dédiés.
+
 
 L'un des \textit{packages} les plus utilisés, \textsf{ggplot2} \autocite{wickham_ggplot2_2016}, met en œuvre une syntaxe assez adaptée à nos contraintes : ce \textit{package} est conceptuellement fondé sur la \og \textit{grammar of graphics}\fg{}, c'est-à-dire une vision modulaire et très structurée de la conception graphique, pensée par Leland Wilkison \autocite{wilkinson_grammar_2006}.
 La logique, assez familière pour un utilisateur de Systèmes d'Information Géographique (SIG), consiste à penser une représentation graphique comme un ensemble de couches (\textit{layers}), qui se superposent, se complètent, et sont toutes basées sur une source de données.
-Les différentes composantes des données (variables par exemple) sont associées à des composantes graphiques de base (abscisse, ordonnée, taille, couleur \ldots), formant ainsi une \og cartographie\fg{} (\textit{mapping}) des données avec les composants graphiques (voir \cref{fig:socviz-ggplot2}).
+Les différentes composantes des données (variables par exemple) sont associées à des composantes graphiques de base (abscisse, ordonnée, taille, couleur \ldots), formant ainsi une mise en correspondance (\textit{mapping}) des données avec les composants graphiques (voir \cref{fig:socviz-ggplot2}, étape 2).
 
-Pour SimEDB, l'un des intérêts principaux de créer les indicateurs graphiques est justement cette grammaire, extrêmement structurée, qui permet donc de ré-utiliser largement les codes-sources écrits pour un indicateur et de les adapter aisément à d'autres indicateurs.
-Par exemple, de nombreux indicateurs de sortie de SimFeodal montrent l'évolution du nombre d'agents au cours des années de simulation (\cref{fig:exemple-ggplot2-simedb}).
-Ce type de graphique est rapide à produire avec \textsf{ggplot2} -- il ne requiert que quelques lignes de code (\cref{subfig:exemple-ggplot2-R}) --,
-et en changeant le tableau de données en entrée (créé dans \cref{subfig:exemple-dplyr-R}), reproduit exactement le même type de graphique pour, par exemple, un autre type d'agent.
-Le \textit{package} \textsf{ggplot2} répond tout à fait aux contraintes de modularité exposées plus haut, et permet de factoriser le code-source, ce qui garanti une maintenance plus rapide et une meilleure robustesse de l'application dans son ensemble.
+Dans notre cas, cette grammaire est porteuse d'un avantage majeur.
+Elle est extrêmement structurée et modulaire.
+Cela permet de ré-utiliser largement les codes-sources écrits pour un indicateur et de les adapter aisément à d'autres indicateurs.
+Si la grammaire du graphique est bien définie, elle sera ainsi très indépendante du contenu des données que l'on y insère.
 
-\clearpage
+
+Par exemple, de nombreux indicateurs de sortie de SimFeodal décrivent l'évolution du nombre d'agents au cours des années de simulation (les agrégats dans la \cref{fig:exemple-ggplot2-simedb}).
+Ce type de graphique est d'une part rapide à produire avec \textsf{ggplot2} : il ne requiert que quelques lignes de code (\cref{subfig:exemple-ggplot2-R}).
+D'autre part, en changeant le tableau de données en entrée (créé dans \cref{subfig:exemple-dplyr-R}), on reproduit exactement le même type de graphique pour, par exemple, un autre type d'agent (le nombre de foyers paysans, d'églises\ldots).
+
+Le \textit{package} \textsf{ggplot2} répond tout à fait aux contraintes de modularité exposées plus haut, et permet de factoriser le code-source, ce qui garantit une maintenance plus rapide et une meilleure robustesse de l'application dans son ensemble.
+
 
 \begin{figure}[H]
 \centering
@@ -424,8 +434,22 @@ Le \textit{package} \textsf{ggplot2} répond tout à fait aux contraintes de mod
 
 \paragraph*{Fluidifier les étapes de rendu : le \og pipeline de visualisation\fg{}}\label{par:visualisation-pipeline}
 
+\textcite{dos_santos_gaining_2004} ont conceptualisé et schématisé l'ensemble des étapes nécessaires à la construction d'une visualisation, depuis les données brutes jusqu'à l'image finale, au sein d'un \og \textit{pipeline}\fg{} de la visualisation (\cref{fig:visualisation-pipeline}).
+Ils y décrivent les différents états des données en entrée et en sortie (ligne supérieure), ainsi que les traitements que ces données subissent (ligne inférieure).
 
-\Cite{dos_santos_gaining_2004} ont conceptualisé et schématisé l'ensemble des étapes nécessaires à la construction d'une visualisation, depuis les données brutes jusqu'à l'image finale, au sein d'un \og pipeline\fg{} de la visualisation (\cref{subfig:visualisation-pipeline}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/Visualisation_Pipeline_p92.png}
+	\caption{\og \textit{The Visualisation Pipeline}\fg{}, de \textcite{keim_mastering_2010}, p.92, d'après \textcite{dos_santos_gaining_2004}, p. 314.}
+	\label{fig:visualisation-pipeline}
+\end{figure}
+
+Ce \textit{pipeline} débute par des données brutes (\textit{raw data}) auxquelles ont fait subir un traitement (\textit{data analysis}, par exemple une agrégation) pour obtenir des données prêtes à l'utilisation (\textit{prepared data}).
+Il s'agit ensuite de filtrer ces données (choix des expériences à conserver par exemple), dont l'on conserve donc uniquement les éléments nécessaires (\textit{focus data}).
+Par une étape de mise en correspondance des variables et des primitives graphiques (\textit{mapping}, voir paragraphe précédent), on obtient un jeu de données \og géométriques \fg{} (\textit{geometric data}).
+Cette \og géométrie\fg{} est à entendre au sens de l'espace de la représentation graphique, qui comprend par exemple les coordonnées des points, lignes, la couleur des cercles et autres éléments mobilisés dans la construction d'un graphique.
+Il n'est donc aucunement question ici de données géographiques ou spatiales.
+La dernière étape est plus technique : il s'agit du \og rendu graphique\fg{} (\textit{rendering}), qui convertit un ensemble de spécifications géométriques (textuelles) en une image affichable, faite de pixels (\textit{image data}).
 
 Dans la chaîne de traitement la plus classique, ces étapes s'effectuent au sein de différents logiciels, chacun dédiés à une tâche. Dans le domaine des utilisateurs de SIG, on retrouve par exemple fréquemment une préparation des données dans un tableur, un import dans un logiciel SIG qui va être chargé de la cartographie, puis un export vers un logiciel de dessin vectoriel afin de réaliser la mise en page.
 À chaque changement de logiciel, il est nécessaire d'exporter les données produites, puis de les ré-importer dans le logiciel suivant.
@@ -437,13 +461,10 @@ L'enchaînement des \textit{packages} employées dans SimEDB est présenté dans
 
 \begin{figure}[H]
 \centering
-\hspace{5pt}
-\subfloat[\og \textit{The Visualisation Pipeline}\fg{}, de \cite{keim_mastering_2010}, p.92, d'après \cite{dos_santos_gaining_2004}, p. 314 ]{\label{subfig:visualisation-pipeline}\includegraphics[width=\linewidth]{img/Visualisation_Pipeline_p92.png}}
-\hspace{5pt}
 \subfloat[Technologies utilisées dans SimEDB.]{\label{subfig:visualisation-pipeline-simedb}\includegraphics[width=\linewidth]{img/Visualisation_Pipeline_SimEDB.pdf}}
 \hspace{5pt}
-\subfloat[Une implémentation d'un exemple de pipeline de visualisation pour construire un indicateur dans SimEDB]{\label{subfig:exemple-pipeline-simedb}\includegraphics[width=\linewidth]{img/simedb_pipeline_R.pdf}}
-\caption{\og \textit{Visualisation Pipeline}\fg{} et son implémentation dans SimEDB, en \og connectant\fg{} les codes des \cref{fig:dml-simedb,fig:exemple-ggplot2-simedb}.}
+\subfloat[Implémentation d'un exemple de pipeline de visualisation pour construire un indicateur dans SimEDB]{\label{subfig:exemple-pipeline-simedb}\includegraphics[width=\linewidth]{img/simedb_pipeline_R.pdf}}
+\caption{Le \og pipeline\fg{} de visualisation et son implémentation dans SimEDB. Cette implémentation est obtenue en assemblant les codes des \cref{subfig:exemple-dplyr-R,subfig:exemple-ggplot2-R}.}
 \label{fig:visualisation-pipeline-exemple}
 \end{figure}
 
@@ -452,14 +473,18 @@ L'enchaînement des \textit{packages} employées dans SimEDB est présenté dans
 \textsf{Shiny}, en tant qu'outil de création d'interface graphique, bénéficie aussi d'un avantage important en matière de conception d'application web : comme ce \textit{package} est basé sur un langage de programmation modulaire, on peut logiquement créer et ré-utiliser des \og briques d'interfaces\fg{} modulaires.
 Par l'utilisation de modules\footnote{\href{https://shiny.rstudio.com/articles/modules.html}{https://shiny.rstudio.com/articles/modules.html}}, il est possible de définir un ensemble d'éléments graphiques adaptatifs et de ré-utiliser tel quel cet ensemble.
 
-Dans l'interface de SimEDB, par exemple, les indicateurs graphiques sont toujours présentés de la même manière, avec l'indicateur à gauche et des outils de téléchargement et de notation de l'indicateur sur la droite.
-En termes de code, les deux indicateurs comparés dans la \cref{fig:simedb-modules} sont strictement identiques : seul un paramètre varie dans l'appel aux modules, ici les filtres appliqués sur les données.
+Dans l'interface de SimEDB (\cref{fig:simedb-modules}), par exemple, les indicateurs graphiques sont toujours présentés de la même manière (encadrés oranges) : dans la partie de droite relative aux indicateurs, l'indicateur à proprement parler est à gauche, et des outils de téléchargement (vectoriel et image) et de notation de l'indicateur (les étoiles) sont placés en haut à droite.
+
+En termes de code-source, la manière de produire les deux indicateurs comparés dans la \cref{fig:simedb-modules} est strictement identique : c'est une fonction générique qui prend en entrée des données et un type de graphique à produire.
+Dans la figure, seul un paramètre varie : le filtre appliqué aux données, qui renvoie ici à différentes expériences.
 Cela permet donc d'une part de minimiser la taille du code, mais surtout, avec la généricité apportée, de faciliter de manière considérable l'ajout ou la modification d'indicateurs.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{img/SimEDB_modules.png}
-\caption{Une conception modulaire. Les deux éléments graphiques encadrés sont créés par un même \og module\fg{} dont les arguments varient.}
+\includegraphics[width=\linewidth]{img/mockup_SimEDB_modules.pdf}
+\caption{Une conception modulaire. Les deux éléments graphiques encadrés sont créés par un même \og module\fg{} dont les arguments varient.
+Ici, l'argument est constitué par les expériences sélectionnées : on le visualise dans les graphiques en coordonnées parallèles (gauche) et dans la partie inférieure des des graphiques (texte \og Paramètres de la sélection\fg{}).\\
+\textbf{N.B} : À partir de cette figure, on représente l'interface de SimEDB à l'aide d'un \textit{mockup} plutôt que de captures d'écrans, pour que les composants de l'interface soient plus facilement distinguables.}
 \label{fig:simedb-modules}
 \end{figure}
 
@@ -468,37 +493,68 @@ Cela permet donc d'une part de minimiser la taille du code, mais surtout, avec l
 
 Les différentes étapes de construction d'une plate-forme d'exploration (\cref{sec:explorer-sorties-simfeodal} : \cnameref{sec:explorer-sorties-simfeodal}) ont conduit à une organisation sous forme de \textit{dashboard} interactif.
 La forme de ce \textit{dashboard} a évolué tout au long de l'apparition de nouveaux besoins, pour aboutir sur une organisation mono-page, pensée autour de la consultation d'indicateurs de sorties, qui devaient permettre de comparer des expériences différentes sélectionnées au moyen de graphiques en coordonnées parallèles.
+
 Le choix d'un outil dédié à la comparaison, plus qu'à la visualisation des résultats d'un unique ensemble de simulations, entraîne nécessairement des répercussions en matière de présentation visuelle -- d'interface graphique -- des éléments permettant de mener cette comparaison.
-Depuis la première plate-forme aboutie -- SimVADB (voir \cref{fig:simvadb_dashboard}, \cpageref{fig:simvadb_dashboard}) --, l'interface graphique a donc fortement évolué.
+Depuis la première plate-forme aboutie -- SimVADB (\cref{fig:simvadb_dashboard}, reprise ici en \cref{subfig:mini-simdavb}) --, l'interface graphique a, par conséquent, fortement évolué (\cref{subfig:mini-simedb}).
+
+\begin{figure}[H]
+	\centering
+	\subfloat[SimVADB]{\label{subfig:mini-simdavb}\includegraphics[width=.95\linewidth]{img/SimVADB_Dashboard2_annote_retouche.png}}\\[-1.5ex]
+	\hspace{1pt}
+	\subfloat[SimEDB]{\label{subfig:mini-simedb}\includegraphics[width=.9\linewidth]{img/mockup_SimEDB.pdf}}
+	\vspace{-0.25cm}
+	\caption{Comparaison visuelle de SimVADB et SimEDB.}
+	\label{fig:comparaison-simvadb-simedb}
+\end{figure}
+
 
 \paragraph*{Une comparaison verticale}
 
-En premier lieu, on peut remarquer que les \og contrôleurs\fg{}, c'est-à-dire les graphiques interactifs en coordonnées parallèles ainsi que de nouveaux menus de sélections (\cref{fig:simedb-sidebar}) ne sont plus dans la partie supérieure de l'interface, mais dans la partie latérale de l'application.
+Le premier changement tient à la disposition des \og contrôleurs\fg{}, c'est-à-dire aux composants de l'interface sur lesquels l'utilisateur peut jouer pour choisir les expériences qui seront affichées.
+Dans SimVADB, le seul contrôleur était un graphique en coordonnées parallèles interactif, situé dans le haut à gauche de l'interface (\cref{subfig:mini-simdavb}, partie \textbf{(A)}).
+Celui-ci permettait de régler le choix des expériences présentées dans l'indicateur de droite (\textbf{D}), celui de gauche (\textbf{C}) étant constitué d'une moyenne de l'ensemble des expériences.
 
-Le choix prédominant à cette modification est la volonté de comparaison : dans SimVADB, on pouvait déjà comparer deux graphiques, mais ceux-ci étaient alors côte-à-côte.
-Étant donné que l'axe des ordonnées est dépendant de chaque graphique -- on ne peut attribuer de limites communes à chaque graphique sans avoir à recalculer chacun des indicateurs à chaque changement de sélection de l'un ou de l'autre --, une comparaison visuelle des positions en ordonnées des courbes et marqueurs n'a pas véritablement de sens.
-Au contraire, le plus souvent, l'axe des abscisses est fixe : qu'il représente le temps (nombre d'agrégats par pas de temps\ldots), une discrétisation de valeurs continues (composition en attracteurs des pôles\ldots), ou encore les différentes modalités d'une variable (détail du déplacement des foyers paysans\ldots), l'étendu et la composition des éléments en abscisse est généralement prévisible.
-
-Avec un axe \og fixe\fg{}, il est donc opportun de mener la comparaison visuelle sur cet axe, et donc d'aligner les graphiques sur celui-ci. L'organisation des différents indicateurs est donc verticale plutôt qu'horizontale.
+Dans SimEDB, on a déjà expliqué le choix de permettre une double sélection, c'est-à-dire de régler les deux sous-ensembles de simulation à comparer.
+Par conséquent, la barre des contrôleurs (encadré orange dans la \cref{fig:simedb-sidebar}) est désormais constitué de deux graphiques en coordonnées parallèles interactifs (en bleu et en rouge), qui agissent sur les indicateurs présentés à leur droite.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{img/SimEDB_sidebar_cut.png}
-\caption{La barre de contrôleurs dans l'interface de SimEDB}
-\label{fig:simedb-sidebar}
+	\centering
+	\includegraphics[width=\linewidth]{img/mockup_SimEDB_controleurs.pdf}
+	\caption{La barre de contrôleurs (encadrée en orange) dans l'interface de SimEDB.}
+	\label{fig:simedb-sidebar}
 \end{figure}
 
-Afin que la sélection des simulations à explorer soit intuitive, les contrôleurs doivent donc être alignés face à cet agencement vertical des indicateurs, et dès lors, verticalisés eux aussi.
+En raison de ces composants supplémentaires dans l'interface, on a choisi d'en changer la disposition. Les contrôleurs sont désormais situés à gauche et les indicateurs à droite, alors qu'ils étaient superposés dans SimVADB.
 
-Pour bien différencier visuellement ce qui relève d'un affichage et ce qui requiert une interaction, les contrôleurs s'inscrivent dans un panneau dédié, grisé, ce qui constitue presque un standard dans les interfaces modernes d'applications interactives.
+Ce choix de re-disposition tient à deux arguments.
+En premier lieu, en termes d'occupation de l'espace visuel on peut noter que les indicateurs graphiques sont toujours plus larges que haut.
+Cela s'explique notamment de manière thématique, en ce que la variation temporelle, souvent présentée en abscisse, est plus importante que les valeurs attributaires, en ordonnée : les indicateurs de ce type s'analyse plus de manière relative, en observant leur évolution, que de manière absolue.
+L'occupation de l'espace visuel est donc mieux employée en superposant les indicateurs : cela permet d'augmenter la taille de chacun.
+
+La seconde raison est méthodologique.
+SimEDB est un outil qui sert à comparer visuellement des données de sortie de simulation.
+Dans les indicateur présentés, le plus souvent, les intervalles affichés en abcisse sont constants : qu'ils s'agissent du temps, de modalités d'un indicateur (petits seigneurs, grands seigneurs\ldots) ou encore de seuils (composition d'un agrégat en nombre de foyers paysans, discrétisée selon des seuils choisis en amont), l'axe des abscisse est identique quelles que soient les expériences comparées.
+L'axe des ordonnées, au contraire, est plus variable : qu'il représente une valeur absolue, un décompte ou une fréquence, les ordres de grandeur de ces valeurs sont très hétérogènes selon les expériences comparées.
+Le choix a donc été fait de présenter visuellement les ordres de grandeur comparables, et donc de superposer les sélections différentes (l'axe des abscisses est alors commun) plutôt que de les afficher côte-à-côte (ce qui aurait complexifié la comparaison des ordonnées en les présentant comme directement comparables alors que les ordres de grandeur varient).
+
+
+Avec un axe \og fixe\fg{}, il est donc opportun de mener la comparaison visuelle sur cet axe, et donc d'aligner les graphiques sur celui-ci. L'organisation des différents indicateurs est donc verticale plutôt qu'horizontale.
+Afin que la sélection des simulations à explorer soit intuitive, les contrôleurs doivent être alignés aux indicateurs, et dès lors, verticalisés eux aussi.
+Pour bien différencier visuellement ce qui relève d'un affichage et ce qui requiert une interaction, les contrôleurs s'inscrivent dans un panneau dédié, grisé (\cref{fig:simedb-sidebar}), ce qui constitue presque un standard dans les interfaces modernes d'applications interactives.
 
 \paragraph*{Onglets et sous-onglets}
 
-Comme dans SimVADB (\cref{subsubsec:simvadb}, \cpageref{subsubsec:simvadb}), on a choisi de conserver une navigation entre indicateurs par un systèmes d'onglets imbriqués : un premier niveau d'onglets permet d'accéder au type d'agents concernés par les indicateurs, et un second niveau permet de sélectionner spécifiquement l'indicateur choisi.
-On aurait pu privilégier une vision globale, par exemple en affichant d'un coup, pour chaque type d'agents, l'ensemble des indicateurs concernés.
-Sur des écrans de grande dimension, cela aurait permis d'embrasser du regard les résultats propres à chaque type d'agent bien plus rapidement, et d'accélérer d'autant l'évaluation de simulations ou leur comparaison.
+Comme dans SimVADB (\cref{subfig:mini-simdavb}), on a choisi de conserver une navigation entre indicateurs par un systèmes d'onglets imbriqués : un premier niveau d'onglets permet d'accéder au type d'agents concernés par les indicateurs, et un second niveau permet de sélectionner spécifiquement l'indicateur choisi\footnote{
+Notons que cette question revêt une importance réelle en matière d'ergonomie de l'application, mais que l'aspect technique en est pourtant assez simple.
+Pour changer le mode d'organisation des onglets et sous-onglets, il suffirait de ré-organiser les appels aux composants dans le code-source de l'application.
+}.
+
+En terme de disposition, cela force l'utilisateur à interagir avec l'application régulièrement puisque chaque indicateur doit être sur un onglet dédié.
 La majorité des utilisateurs potentiels de SimEDB consultent toutefois l'application sur des ordinateurs portables, dotés d'écran réduits et d'une résolution faible.
-L'encombrement visuel est alors atteint rapidement, et mieux vaut présenter un indicateur à la fois : la démarche visuelle sera plus longue, mais ne sera pas gênée ou faussée par des graphiques de dimension trop réduites qui peuvent induire des erreurs de lecture.
+L'encombrement visuel est alors atteint rapidement, et mieux vaut présenter un indicateur à la fois plutôt que de présenter l'ensemble des indicateurs sur une unique page : la démarche d'étude visuelle sera plus longue, mais ne sera pas gênée ou faussée par des graphiques de dimension trop réduites qui peuvent induire des erreurs de lecture.
+
+%On aurait pu privilégier une vision globale, par exemple en affichant d'un coup, pour chaque type d'agents, l'ensemble des indicateurs concernés.
+%Sur des écrans de grande dimension, cela aurait permis d'embrasser du regard les résultats propres à chaque type d'agent bien plus rapidement, et d'accélérer d'autant l'évaluation de simulations ou leur comparaison.
 
 L'organisation des onglets en eux-mêmes pose aussi une question importante : vaut-il mieux organiser la consultation par type d'agent, ou plutôt, hiérarchiquement, selon la catégorie de processus examinée (\hl{à corriger une fois fixé sur le terme}, \hl{faire ref au chap3}), par exemple en respectant l'ordre de consultation des indicateurs déterminé ?
 
@@ -506,7 +562,7 @@ Les deux approches présentent des avantages, mais nous avons choisi de rendre l
 
 \subsubsection{Choix des modes d'interactions}
 
-Avant même la conception de SimEDB, avec la plate-forme SimVADB, nous avions décidé de baser la sélection des simulations sur des graphiques en coordonnées parallèles interactifs (\cref{subsec:explo-interactive} : \cnameref{subsec:explo-interactive}).
+Avant même la conception de SimEDB, avec la plate-forme SimVADB, nous avions décidé de baser la sélection des simulations sur des graphiques en coordonnées parallèles interactifs (\cref{subsec:explo-interactive} : \og \cnameref{subsec:explo-interactive}\fg{}).
 La logique d'ensemble du filtrage de simulations restant la même, il n'était pas nécessaire de modifier ce choix pour SimEDB.
 
 L'accumulation d'expériences, reposant sur les variations de paramètres différents, ainsi que la démultiplication des paramètres du modèle SimFeodal ayant accompagné son paramétrage, ont pourtant demandé de reconsidérer l'usage de ces graphiques interactifs.
@@ -520,7 +576,7 @@ Plutôt que de définir les paramètres \og utiles\fg{}, et donc d'avoir à les 
 quand SimEDB est lancé, une requête est exécutée sur la table des paramètres pour identifier ceux qui présentent plusieurs modalités et ceux qui n'en ont qu'une.
 Seuls sont alors affichés les paramètres de la première catégorie, car eux-seuls présent un intérêt à être discriminés.
 
-Ce faisant, le nombre de  paramètre affichés devient plus réduit, et permet d'afficher leurs intitulés plutôt que de faire appel à une table de correspondance comme dans SimVADB.
+Ce faisant, le nombre de paramètre affichés est réduit, et permet d'afficher leurs intitulés plutôt que de faire appel à une table de correspondance comme dans SimVADB (\cref{subfig:mini-simdavb}, partie \textbf{(B)}).
 L'automatisation de ce traitement permet de plus de ne pas avoir à changer quoi que ce soit à la plate-forme lors d'ajouts ou de suppressions de simulations de la base de données, ce qui concoure à l'objectif d'indépendance aux données de la plate-forme d'exploration.
 
 \paragraph*{Pré-filtrer les simulations}
@@ -532,8 +588,8 @@ Pour SimEDB, on a donc ajouté un pré-filtrage, sous forme de \og boîte de sé
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{img/SimEDB_prefiltrage.png}
-\caption{Le menu de sélection des expériences qui permet un pré-filtrage des expériences à partir de leur nom}
+\includegraphics[width=\linewidth]{img/mockup_SimEDB_selectinput.pdf}
+\caption{Le menu de sélection des expériences (encadré en orange) qui permet un pré-filtrage des expériences à partir de leur nom.}
 \label{fig:simedb-prefilter}
 \end{figure}
 
@@ -549,30 +605,11 @@ Il n'est alors plus indispensable de consacrer une part importante de l'espace a
 
 Un outil de redimensionnement a alors été ajouté à SimEDB, permettant, par glisser-déposer, de modifier la largeur occupée par le panneau de contrôle en l'adaptant à chaque moment au besoin de visualisation.
 La \cref{fig:resizing} montre ainsi une succession d'états : en début d'exploration, l'utilisateur va augmenter la taille du panneau de contrôle pour augmenter la lisibilité des graphiques en coordonnées parallèles et effectuer une sélection plus simplement.
-Une fois la sélection effectuée, il pourra alors re-diminuer la largeur du panneau afin d'augmenter la zone disponible, et donc la taille, pour les indicateurs de sorties de simulation. 
+Une fois la sélection effectuée, il pourra alors re-diminuer la largeur du panneau afin d'augmenter la zone disponible pour les indicateurs de sorties de simulation, et donc la taille de ces derniers. 
 
 \begin{figure}[H]
-\hspace*{\fill}%
-\begin{minipage}[t]{.49\linewidth}
 \centering
-\vspace{0pt}
-\includegraphics[width=\linewidth]{img/SimEDB_base.png}
-\end{minipage} \hfill
-\begin{minipage}[t]{.49\linewidth}
-\centering
-\vspace{0pt}
-\includegraphics[width=\linewidth]{img/SimEDB_resize.png}
-\end{minipage} \hfill
-\begin{minipage}[b]{.49\linewidth}
-\centering
-\vspace{0pt}
-\includegraphics[width=\linewidth]{img/SimEDB_selection.png}
-\end{minipage} \hfill
-\begin{minipage}[b]{.49\linewidth}
-\centering
-\vspace{0pt}
-\includegraphics[width=\linewidth]{img/SimEDB_indicateur_grand_magnified.png}
-\end{minipage}
+\includegraphics[width=\linewidth]{img/mockup_SimEDB_resize.pdf}
 \caption{Utilisation interactive de SimEDB et redimensionnement du panneau de contrôle.}
 \label{fig:resizing}
 \end{figure}
@@ -581,12 +618,14 @@ Une fois la sélection effectuée, il pourra alors re-diminuer la largeur du pan
 
 L'intérêt d'une interface modulaire et factorisée se révèle véritablement quand les utilisateurs d'un outil demandent des fonctionnalités supplémentaires, non prévues lors de la conception de l'outil.
 Dans le cas de SimFeodal, une telle requête est rapidement apparue : les thématiciens, mais aussi les modélisateurs, pour conserver une trace d'une session d'exploration des indicateurs, souhaitaient pouvoir exporter les graphiques correspondant aux indicateurs.
+
 Si au départ, une simple capture d'écran pouvait suffire, ce besoin a été complété par une volonté d'inclure des indicateurs de simulations dans des articles et autres communications, requérant donc des retouches des graphiques.
 Pour ce faire, on a choisi d'ajouter des fonctionnalités de téléchargement des graphiques, selon deux formats -- image et vectoriel -- afin de satisfaire à ces deux usages.
 Avec le développement modulaire adopté, il a suffit d'ajouter ces fonctions d'export en un unique lieu dans le code-source de SimEDB, et l'ajout de ces nouvelles fonctionnalités a alors été disponible automatiquement pour chacun des indicateurs graphiques.
 
-\medskip
-\hl{Ajouter un paragraphe, plus tard, sur l'inscription des modalités de filtrage (quelles sont les filtres appliqués ?) dans les graphiques, si j'arrive à trouver le temps de l'ajouter un jour...}
+Un autre élément répond à une demande forte des utilisateurs : dans une ré-utilisation hors application des indicateurs, il était difficile de se souvenir des sélections effectuées pour produire un indicateur : en terme de reproductibilité, une fois un graphique exporté sur un ordinateur, il n'y avait plus aucun moyen de connaître les conditions précises de sa création.
+Nous avons donc ajouté, sur les graphiques eux-mêmes, un résumé des expériences et valeurs de paramètres sélectionnées dans chacun des indicateurs.
+Cela permet d'en conserver une trace plus durable et augmente leur potentiel réutilisation.
 
 \paragraph*{Noter les simulations}
 
@@ -600,8 +639,6 @@ Cette fonctionnalité, bien qu'implémentée, n'est pas encore utilisée, mais d
 
 \subsubsection{Présentation générale}
 
-\begin{itemize}
-\item \hl{Quelques captures d'écran successives avec focus à chaque fois sur l'interaction en cours, ou alors,}
-\item \hl{renvoyer à un manuel utilisateur en annexe, ou alors,}
-\item \hl{ajouter un tuto interactif à l'application et en mettre le lien + descriptif ici}
-\end{itemize}
+SimEDB est une application interactive.
+Il nous semblait dommage d'en présenter l'utilisation d'ensemble par une succession de captures d'écran commentées.
+Nous avons donc réalisé une vidéo qui en montre l'usage et est disponible à cette adresse : \hl{A faire...}
