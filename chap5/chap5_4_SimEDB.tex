@@ -139,7 +139,8 @@ Ils remarquent ainsi que les utilisateurs plus habitués à des jeux vidéos rap
 }.
 
 Concernant le champ, plus spécifique, des \textit{visual analytics}, nous n'avons pas trouvé d'articles de référence permettant d'établir une comparaison de l'efficacité des résultats trouvés selon la latence de la réponse.
-Les auteurs de ce champ recommandent de prêter attention à la rapidité de rendu et à son optimisation, mais sans que ne trouvions de résultats plus précis :
+% Les auteurs de ce champ recommandent de prêter attention à la rapidité de rendu et à son optimisation, mais sans que ne trouvions de résultats plus précis :
+Les auteurs de ce champ recommandent largement de prêter attention à la rapidité de rendu et à son optimisation:
 \begin{quotation}
 \noindent \og
 When simple pattern finding is needed, the importance of having a fast, highly interactive interface cannot be emphasized	enough.
@@ -148,28 +149,46 @@ If a navigation technique is slow, then the cognitive costs can be much greater 
 \mbox{}~ \hfill  \cite{ware_information_2012}, tiré de \cite[12]{amirpour_amraii_human-data_2018}.
 \end{quotation}
 
-Tout au plus pouvons-nous émettre l'idée qu'il serait évident que la latence acceptée dans un environnement graphique de ce type soit largement supérieure à celle des environnements virtuels (réalité augmentée, visualisations immersives\ldots), sans pour autant que nous ne puissions quantifier cet écart.
-On peut tout de même s'appuyer sur une estimation du temps de concentration, lié à la mémoire à court terme, décrit par \citeauteur{shneiderman_designing_2004} :
+De manière plus précise, on retrouve une quantification, en termes d'ordres de grandeur, des délais acceptables dans un processus d'exploration de données : 
+\og However, due to human cognitive constraints, exploration needs highly responsive system response times \textelp{}: at 500 ms, users change their querying behavior; past five or ten seconds, users abandon tasks or lose attention\fg{} \autocite[2]{fekete2019progressive}.
+Ces auteurs font référence à un billet de blog de \citeauteur{nielsen_powers_2009} qui donne une justification plus poussée en matière de capacité de concentration.
 \begin{quotation}
- 	\noindent\og
- 	A central issue is the limitation of short-term memory capacity, as outlined in George Miller's (1956) classic paper, ``The magical number seven, plus or minus two.''
- 	Miller identified the limited capacities people have for absorbing information.
- 	People can rapidly recognize approximately 7 (this value was contested by later researchers, but it serves as a good estimate) chunks of information at a time and can hold those chunks in short-term memory for 15 to 30 seconds.
- 	The size of a chunk of information depends on the person's familiarity with the material.
-	\fg{}\\
-	\mbox{}~ \hfill  \cite[459]{shneiderman_designing_2004}.
+\noindent\og
+When the computer takes more than 0.1 second but less than 1 second to respond to your input, \textbf{it feels like the computer is causing the result} to appear.
+Although users notice the short delay, they \textbf{stay focused on their current train of thought} during the one-second interval.\\
+\textelp{}\\
+After 1 second, users get impatient and notice that they're waiting for a slow computer to respond.
+The longer the wait, the more this impatience grows; after about 10 seconds, the average attention span is maxed out.
+At that point, the user's mind starts wandering and doesn't retain enough information in short-term memory to easily resume the interaction once the computer finally loads the next screen.
+
+More than 10 seconds, and you \textbf{break the flow}. Users will often \textbf{leave the site} rather than trying to regain the groove once they've started thinking about other things.
+\fg{}\\
+\mbox{}~ \hfill  \cite{nielsen_powers_2009}.
 \end{quotation}
 
-Si l'on considère qu'un indicateur contient à peu près ces sept \og morceaux d'information\fg{}\footnote{
-Par exemple, pour un indicateur simple tel que l'évolution du nombre de foyers paysans isolés au cours du temps, il faut retenir le niveau initial, le niveau final, la tendance de sa courbe et éventuellement les dates des deux ou trois inflexions ou décrochages que l'on peut y constater.
-} et que l'on se place dans une phase de comparaison entre les résultats de sortie de simulation de deux expériences différentes, il faut alors que le temps de sélection graphique de la seconde expérience et d'affichage de l'indicateur correspondant soit inférieur à quinze secondes.
-En prenant en compte le temps de sélection graphique, qui peut demander une manipulation de l'interface de l'application (voir \cref{par:simedb-resize-parcoords} et \cref{fig:resizing}, p.~\pageref{fig:resizing}), cela implique qu'un indicateur doit être généré en un maximum de 5 secondes\footnote{
-	En comptant 10 secondes pour la sélection de l'expérience.
-	On prend ici le cas extrême (faible durée de concentration et manipulation longue), afin de garantir une expérience utilisateur satisfaisante quelque soit l'état de concentration de l'utilisateur.
-}.
+
+%Tout au plus pouvons-nous émettre l'idée qu'il serait évident que la latence acceptée dans un environnement graphique de ce type soit largement supérieure à celle des environnements virtuels (réalité augmentée, visualisations immersives\ldots), sans pour autant que nous ne puissions quantifier cet écart.
+%On peut tout de même s'appuyer sur une estimation du temps de concentration, lié à la mémoire à court terme, décrit par \citeauteur{shneiderman_designing_2004} :
+%\begin{quotation}
+% 	\noindent\og
+% 	A central issue is the limitation of short-term memory capacity, as outlined in George Miller's (1956) classic paper, ``The magical number seven, plus or minus two.''
+% 	Miller identified the limited capacities people have for absorbing information.
+% 	People can rapidly recognize approximately 7 (this value was contested by later researchers, but it serves as a good estimate) chunks of information at a time and can hold those chunks in short-term memory for 15 to 30 seconds.
+% 	The size of a chunk of information depends on the person's familiarity with the material.
+%	\fg{}\\
+%	\mbox{}~ \hfill  \cite[459]{shneiderman_designing_2004}.
+%\end{quotation}
+%
+%Si l'on considère qu'un indicateur contient à peu près ces sept \og morceaux d'information\fg{}\footnote{
+%Par exemple, pour un indicateur simple tel que l'évolution du nombre de foyers paysans isolés au cours du temps, il faut retenir le niveau initial, le niveau final, la tendance de sa courbe et éventuellement les dates des deux ou trois inflexions ou décrochages que l'on peut y constater.
+%} et que l'on se place dans une phase de comparaison entre les résultats de sortie de simulation de deux expériences différentes, il faut alors que le temps de sélection graphique de la seconde expérience et d'affichage de l'indicateur correspondant soit inférieur à quinze secondes.
+%En prenant en compte le temps de sélection graphique, qui peut demander une manipulation de l'interface de l'application (voir \cref{par:simedb-resize-parcoords} et \cref{fig:resizing}, p.~\pageref{fig:resizing}), cela implique qu'un indicateur doit être généré en un maximum de 5 secondes\footnote{
+%	En comptant 10 secondes pour la sélection de l'expérience.
+%	On prend ici le cas extrême (faible durée de concentration et manipulation longue), afin de garantir une expérience utilisateur satisfaisante quelque soit l'état de concentration de l'utilisateur.
+%}.
 
 Selon ces différentes considérations, dans le cadre de SimEDB, on doit donc viser à développer une plate-forme aussi rapide que possible.
-Celle-ci doit donc viser des temps de latence maximale de l'ordre de quelques secondes maximum, tout en sachant, dès le départ, qu'il sera impossible d'arriver aux délais de 100 ms ou 500 ms évoqués précédemment, ne serait-ce que parce que le temps de requête des données -- sans compter le temps de rendu graphique -- est déjà supérieur d'un ordre de grandeur.
+Celle-ci doit donc viser des temps de latence maximale de 10 secondes, tout en sachant, dès le départ, qu'il sera impossible d'arriver aux délais de 100 ms ou 500 ms évoqués précédemment, ne serait-ce que parce que le temps de requête des données -- sans compter le temps de rendu graphique -- est déjà supérieur d'un ordre de grandeur.
 
 \subsubsection{Interopérabilité et évolutivité}
 
