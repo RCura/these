@@ -1,0 +1,77 @@
+\begin{figure}[H]
+	\centering
+	% Couleurs
+	\definecolor{col-fp}{HTML}{dae8fc}
+	\definecolor{col-agregats}{HTML}{fff2cc}
+	\definecolor{col-seigneurs}{HTML}{ffe6cc}
+	\definecolor{col-eglises}{HTML}{d5e8d4}
+	\definecolor{col-poles}{HTML}{e1d5e7}
+	\definecolor{col-global}{HTML}{F5F5F5}
+	% Styles des noeuds et lignes
+	\tikzstyle{block} = [rectangle, draw, minimum width=4em, align=center, rounded corners, minimum height=2em, thick]
+	\tikzstyle{start} = [draw, circle, minimum height=2em, align=center, thick]
+	\tikzstyle{temp} = [very thick, dashed]
+	\tikzstyle{line} = [draw, -{Latex[length=2.5mm,width=2.5mm]}]
+	\tikzstyle{dline} = [draw, -{Latex[length=2.5mm,width=2.5mm,black!50]}, black!50, densely dotted]
+	% 
+	\tikzstyle{fps} = [fill=col-fp]
+	\tikzstyle{agregats} = [fill=col-agregats]
+	\tikzstyle{poles} = [fill=col-poles]
+	\tikzstyle{seigneurs} = [fill=col-seigneurs]
+	\tikzstyle{globals} = [fill=col-global]
+	\tikzstyle{eglises} = [fill=col-eglises]
+
+	\begin{tikzpicture}[node distance = .75cm and .75cm, auto, scale=0.7,every node/.style={transform shape}]
+	% Place nodes
+	\node [start, globals] (init) at (0,0) {Init.\\du\\monde};
+	
+	\node [start ,right= of init] (start) {Début\\du tour};
+	\node [block, globals,right= of start] (maj-globals) {MaJ* des \\variables\\globales};
+	\node [block, fps, right= of maj-globals] (renouvellement-fp) {Renouvellement\\des FP**};
+	\node [block, eglises,right= of renouvellement-fp] (maj-paroisses) {Détection et\\promotions des\\paroisses};
+	\node [block, poles, right = of maj-paroisses] (maj-poles) {Détection\\des\\Pôles};
+	
+	\node [block, fps, below= of maj-poles] (maj-satisfaction) {MaJ* satisfactions des FP**};
+	\node [block, fps, below=of maj-satisfaction] (migration-fp) {Migration des FP**};
+	\node [block, seigneurs, temp, below =of migration-fp] (maj-droits) {Gains de \\droits des seigneurs};
+	\node [block, seigneurs, below=of maj-droits] (maj-zp) {Collecte des droits};
+	
+	\node [block, seigneurs, left=of maj-zp] (maj-dons) {Dons droits\\ et châteaux\\des Seigneurs};
+	\node [block, seigneurs, temp, left=of maj-dons] (promo-chateaux) {Promotion\\des châteaux};
+	\node [block, seigneurs, temp, left=of promo-chateaux] (constructions-chateaux) {Construction\\ de châteaux};
+	\node [block, seigneurs, left=of constructions-chateaux] (creation-seigneurs) {Création des\\nouveaux Seigneurs};		
+	
+	\node [block, agregats, above= of creation-seigneurs] (maj-agregats) {MaJ* des Agrégats};
+	\node [block, poles, above=of maj-agregats] (maj-poles2) {MaJ* des Pôles};
+	\node [block, globals, above= of maj-poles2] (maj-outputs) {MaJ* et enregistrement\\des \textit{outputs}};
+
+	
+	\path[line]%
+	(maj-globals) -- (renouvellement-fp)
+	(renouvellement-fp) -- (maj-paroisses)
+	(maj-paroisses) -- (maj-poles)
+	(maj-poles) -- (maj-satisfaction)
+	(maj-satisfaction) -- (migration-fp)
+	(migration-fp) -- (maj-droits)
+	(maj-droits) -- (maj-zp)
+	(maj-zp) -- (maj-dons)
+	(maj-dons) -- (promo-chateaux)
+	(promo-chateaux) -- (constructions-chateaux)
+	(constructions-chateaux) -- (creation-seigneurs)
+	(creation-seigneurs) -- (maj-agregats)
+	(maj-agregats) -- (maj-poles2)
+	(maj-poles2) -- (maj-outputs);
+
+	
+	\path[line] (init)-- (start);
+	\path[line] (start) -- (maj-globals);
+	\path[dline] (maj-outputs)-- (start);	
+	\end{tikzpicture}
+	\caption[a]{Ordonnancement des mécanismes de SimFeodal.\\
+	{\footnotesize
+	\colorbox{col-global}{\strut Mécanisme global} \colorbox{col-fp}{\strut Foyers Paysans} \colorbox{col-eglises}{\strut Églises} \colorbox{col-agregats}{\strut Agrégats} \colorbox{col-poles}{\strut Pôles} \colorbox{col-seigneurs}{\strut Seigneurs} \dbox{\strut Temporaire}.\\
+	{\strut MaJ* : \og Mise à jour\fg{}; FP** : \og Foyers paysans\fg{}}
+	}
+	}
+	\label{fig:ordonnancement}
+\end{figure}

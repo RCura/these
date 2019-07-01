@@ -1,0 +1,23 @@
+\begin{table}[H]
+	\centering
+	{\renewcommand{\arraystretch}{1.2}%
+	\begin{tabular}{|M{2.15cm}|M{4cm}|m{5.25cm}|m{1.25cm}|}
+		\hline
+		\textbf{Sous-mécanisme} & \textbf{Paramètre} & \textbf{Intitulé} & \textbf{Valeur} \\ \hline
+		\makecell{Création\\du\\ \og monde\fg{}} & Taille du monde & taille\_cote\_monde & 80 km \\ \hline
+		\multirow{7}{*}{\makecell{Génération\\des\\Foyers\\Paysans\\(FP)}} & Nombre total de FP & init\_nb\_total\_fp & 4000 \\ \cline{2-4} 
+		& Nombre de petites villes & init\_nb\_agglos & 8 \\ \cline{2-4} 
+		& Nombre de FP par petite ville & init\_nb\_fp\_agglo & 30 \\ \cline{2-4} 
+		& Nombre de villages & init\_nb\_villages & 20 \\ \cline{2-4} 
+		& Nombre de FP par village & init\_nb\_fp\_village & 10 \\ \cline{2-4} 
+		& Distance d'agrégation des FP & distance\_detection\_agregat & 100 m \\ \cline{2-4} 
+		& \makecell{Taux de FP \\ \og dépendants\fg{}\\(ie. non mobiles)} & proba\_fp\_dependant & 20\% \\ \hline
+		\multirow{2}{*}{\makecell{Génération\\des\\Églises}} & Nombre total d'églises & init\_nb\_eglises & 150 \\ \cline{2-4} 
+		& (dont) Nombre d'églises paroissiales & init\_nb\_eglises\_paroissiales & 50 \\ \hline
+		\multirow{3}{*}{\makecell{Génération\\des\\Seigneurs}} & Nombre de Grands Seigneurs & init\_nb\_gs & 2 \\ \cline{2-4} 
+		& \makecell{Puissance relatives\\des Grands Seigneurs} & \makecell{puissance\_grand\_seigneur$1$ \\ \textelp{} \\ puissance\_grand\_seigneur$N$} & 50\% \\ \cline{2-4} 
+		& Nombre de Petits Seigneurs & init\_nb\_ps & 18 \\ \hline
+	\end{tabular}}
+	\caption{Paramètres permettant de contrôler l'initialisation du monde de SimFeodal.}
+\label{tab:params-initiaux}
+\end{table}

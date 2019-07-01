@@ -1,0 +1,36 @@
+\begin{table}[H]
+	\centering
+	\footnotesize
+	{\renewcommand{\arraystretch}{1}%
+	\setlength\arrayrulewidth{1pt}\arrayrulecolor{black}
+	\begin{tabular}{|M{1.75cm}|M{1.75cm}|M{2cm}|M{2cm}|M{4cm}|}
+		\hline
+		\textbf{Agent} & \textbf{Sous-type} & \makecell{\textbf{Quantité}\\ \textit{\small{(en 1200)}}} & \textbf{Emprise spatiale$^\upalpha$} & \textbf{Comportements actifs$^\upbeta$} \\ \hline
+		
+		\rowcolor[HTML]{dae8fc} \multicolumn{2}{|c|}{Foyers Paysans} & \makecell{$\approx$ 4 000 à \\75 000} & Ponctuelle & Migrations \\ \hline
+		
+		\rowcolor[HTML]{ffe6cc} Seigneurs & \makecell{Grands\\Seigneurs} & $\approx$ 2 & --- & \makecell{Création de zones de\\prélèvement,} \\ \hhline{|>{\arrayrulecolor[HTML]{ffe6cc}}->{\arrayrulecolor{black}}--->{\arrayrulecolor[HTML]{ffe6cc}}-}
+		\rowcolor[HTML]{ffe6cc} & \makecell{Petits\\Seigneurs} & $\approx$ 200 & Ponctuelle & \makecell{collecte de droits,\\ construction de châteaux} \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		
+		\rowcolor[HTML]{cdeb8b} & Foncier & $\approx$ 75 &  &  \\ \hhline{|>{\arrayrulecolor[HTML]{cdeb8b}}->{\arrayrulecolor{black}}-->{\arrayrulecolor[HTML]{cdeb8b}}--}
+		\rowcolor[HTML]{cdeb8b} \makecell{Zones de\\ Prélèvement} & Haute-Justice & $\approx$ 50 & Zonale & --- \\ \hhline{|>{\arrayrulecolor[HTML]{cdeb8b}}->{\arrayrulecolor{black}}-->{\arrayrulecolor[HTML]{cdeb8b}}--}
+		\rowcolor[HTML]{cdeb8b} & Autres droits & $\approx$ 300 &  &  \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		
+		\rowcolor[HTML]{d5e8d4} {Églises} & Églises & $\approx$ 300 & {Ponctuelle} & --- \\ \hhline{|>{\arrayrulecolor[HTML]{d5e8d4}}->{\arrayrulecolor{black}}-->{\arrayrulecolor[HTML]{d5e8d4}}->{\arrayrulecolor{black}}-}
+		\rowcolor[HTML]{d5e8d4} & Églises paroissiales$^\upgamma$ & $\approx$ 200 &  & \makecell{Création de paroisse} \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		
+		\rowcolor[HTML]{d5e8d4} \multicolumn{2}{|c|}{\cellcolor[HTML]{d5e8d4} Paroisses} & $\approx$ 200 & Zonale & --- \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		
+		\rowcolor[HTML]{f8cecc} \multirow{2}{*}{Châteaux$^\upgamma$} & Petits Châteaux & $\approx$ 40 & \multirow{2}{*}{Ponctuelle} &
+		 \multirow{2}{*}{---} \\ \hhline{|>{\arrayrulecolor[HTML]{f8cecc}}->{\arrayrulecolor{black}}-->{\arrayrulecolor[HTML]{f8cecc}}--}
+		\rowcolor[HTML]{f8cecc} & Gros Châteaux & $\approx$ 10 &  & \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		
+		\rowcolor[HTML]{fff2cc} \multicolumn{2}{|c|}{Agrégats de population$^\upgamma$} & $\approx$ 200 & Zonale & \makecell{Création de communautés} \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		
+		\rowcolor[HTML]{e1d5e7} \multicolumn{2}{|c|}{Pôles d'attraction} & $\approx$ 300 & Zonale & \makecell{Attire les Foyers Paysans} \\ \hhline{|>{\arrayrulecolor{black}}-----}
+		\end{tabular}}
+		\caption{Les différents types d'agents de SimFeodal.\\
+		$\upalpha$ \& $\upbeta$ : Les agents sans emprise spatiale (---) ne sont pas localisés dans l'espace du modèle ; Les agents sans comportement actifs (---) n'agissent pas en tant que tel, mais peuvent servir de support pour les actions d'autres agents.\\
+		$\upgamma$ : Ces agents sont aussi des types d'attracteurs, qui constituent des pôles d'attraction, voir \cref{fig:constitution-poles-paroisses}-\textbf{A}.}
+		\label{tab:agents-simfeodal}
+		\end{table}
