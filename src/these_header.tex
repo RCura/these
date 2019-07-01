@@ -19,7 +19,7 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \usepackage{mdframed}
 
 \usepackage{xargs} % Use more than one optional parameter in a new commands
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table]{xcolor}
 
 
 \usepackage{float}
@@ -45,6 +45,10 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \renewcommand{\thempfootnote}{\arabic{footnote}}%
 
 \usepackage{enumitem}
+\setlist{  
+	listparindent=\parindent,
+	parsep=0pt,
+}
 
 \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{pdftitle={Robin Cura - Thèse}}
@@ -77,6 +81,8 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 \usepackage[thinlines]{easytable}
 \usepackage{makecell}
 \usepackage{diagbox}
+%\usepackage{colortbl}      
+\usepackage{hhline}     
 
 \renewcommand\theadalign{bc}
 \renewcommand\theadfont{\bfseries}
@@ -150,8 +156,17 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 	titlerule=0pt,
 	fonttitle=\normalcolor\itshape}{enc}
 
+% A utiliser avec \usepackage{cleveref}
 \crefformat{tcb@cnt@encadre}{encadré~#2#1#3}
 \Crefformat{tcb@cnt@encadre}{Encadré~#2#1#3}
+
+%%% UTILISATION %%%
+% \begin{encadre}{Titre de l'encadré}{label-de-lencadre}
+% Contenu de l'encadré
+%\end{encadre}
+% Référence interne dans le texte :\cref{enc:label-de-lencadre}
+
+
 
 % ###### COMMENTAIRES ###### %
 
@@ -229,7 +244,7 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 
 
 % ######## Plusieurs ndbp renvoyant à la même ######
-\usepackage{footmisc}
+\usepackage[bottom]{footmisc}
 % # Et on met un asterisque à la place
 \newcommand{\astfootnote}[1]{
 	\let\oldthefootnote=\thefootnote
