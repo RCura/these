@@ -2,13 +2,14 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-07-04}}
+	{\large Version \hl{2019-07-05}}
 \end{center}
 
 \begin{itemize}
 	\item Avril 2019 : Nouveau départ pour le chapitre
 	\item 20 Mai 2019 : Reprise commentaires Lena
 	\item 28 juin 2019 : Rendu à Lena des reprises de Intro à 2.4 (concepts de modélisation)
+	\item 5 Juillet 2019 : Rendu à Lena de 2.4 et 2.5
 \end{itemize}
 \setcounter{minitocdepth}{1}
 
@@ -156,6 +157,21 @@ On ne présente ici qu'un état, très temporaire, de ce projet de longue halein
 
 \vspace{-.5em}
 \subsection{Entités \label{subsec:entites}}
+
+
+\begin{center}
+\begin{tcolorbox}[breakable,colback=yellow,colframe=yellow,width=\dimexpr.7\textwidth\relax]
+Discussion avec Paul : commencer la description par les agents qui sont le moins \og dépendant\fg{} des autres, mais qui les affecteront : 
+	\begin{itemize}
+		\item Seigneurs (-> zones de prélèvement et chateaux)
+		\item Eglises/paroisses
+		\item FP (-> agregats + poles)
+		\item Agregats
+		\item Poles
+		
+	\end{itemize}
+\end{tcolorbox}
+\end{center}
 
 Dans le modèle SimFeodal, plusieurs types d'agents sont en interaction. Ces agents sont des implémentations informatiques des acteurs et entités identifiées dans le modèle conceptuel qui a donné lieu à SimFeodal (voir \textcite[Tableau 1, \ppno~309--310]{cura_transition_2017}).
 
@@ -973,10 +989,8 @@ Dans SimFeodal, la collecte d'un maximum de données est indispensable à la bon
 SimFeodal est un modèle dont l'un des objectifs est de produire des données, lesquelles permettront de comprendre le modèle ultérieurement.
 Cette vision s'oppose à celle des modèles plus théoriques et parcimonieux, tel que celui de Schelling, qui peuvent être appréhendé directement pendant leur exécution. 
 
-\begin{center}	
-	\hl{Fin des reprises le 2019-07-04}
-\end{center}
 
+\clearpage
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
 \section[Situation initiale -- \textit{Details - Initialisation}]{Situation initiale -- \large{\textit{Details - Initialisation}}\label{sec:initialisation}}
@@ -985,25 +999,33 @@ Cette vision s'oppose à celle des modèles plus théoriques et parcimonieux, te
 
 \setcounter{savefootnote}{\value{footnote}}
 
-L'une des spécificités de SimFeodal, comme indiqué dans la \cref{subsec:reso-spatiale}, est que l'initialisation est strictement endogène au modèle.
-Elle constitue donc un premier \og sous-modèle\fg{} de SimFeodal, chargé de générer le monde dans lequel les agents évolueront.
-Dans l'ordre, l'initialisation consiste en l'exécution de 4 mécanismes : (1) création des foyers paysans ; (2) création des églises ; (3) mise à jour des agrégats ; (4) création des seigneurs.
+\subsection{Une situation initiale théorique et générée de manière endogène}
 
-La création des églises (2) est assez simple : on répartie, de manière aléatoire dans l'espace du modèle, 150\unskip\astfootnote{Ce nombre est paramétrable.\label{ftn:nombre-parametrable}} églises.
-Puis, parmi ces églises, on en tire aléatoirement 50\footref{ftn:nombre-parametrable} a qui l'on attribue des droits paroissiaux.
+SimFeodal est un modèle qui prend appui sur un espace théorique, très générique et épuré.
+Dans cet espace, certains agents se déplacent et font émerger des configurations spatiales particulières que l'on cherche à étudier.
+Le choix de la configuration initiale, qui sera transformée au cours du modèle, 
+revêt donc une importance considérable, puisqu'il conditionne (ou tout du moins influence) les structures spatiales qui en seront issues.
+Afin de pouvoir maitriser la \og path-dependency\fg{} induite par la situation initiale, on a choisi de contrôler entièrement l'initialisation du modèle en l'intégrant, de manière endogène, aux mécanismes de SimFeodal.
+L'initialisation du monde simulé constitue donc un premier \og sous-modèle\fg{} de SimFeodal, chargé de générer le monde dans lequel les agents évolueront.
+Le sous-modèle d'initialisation consiste en l'exécution de 3 mécanismes dédiés chacun à la création d'un type d'agent : création des églises ; des foyers paysans et agrégats ; et enfin création des seigneurs.
+Dans l'ensemble, un principe commun oriente la création de ces agents : ils sont répartis de manière presque aléatoire (voir \cref{meca-init}) dans l'espace \og actif\fg{} simulé du modèle.
 
-Le mécanisme de création des premiers seigneurs (4) est lui aussi assez évident : là encore, on répartit, de manière toujours aléatoire, un nombre donné de grands seigneurs\footref{ftn:nombre-parametrable}.\\
-On localise aussi, selon un aléa contraint, un ensemble\footref{ftn:nombre-parametrable} de petits seigneurs au sein des agrégats existants, lesquels ont été délimités selon le mécanisme standard (voir \cref{meca-agregats}).
-Les petits seigneurs générés se voient directement associés à une zone de prélèvement de type \og foncier\fg{}, de rayon et de taux de prélèvement aléatoires bornés : dès l'initialisation, les premières zones de prélèvement sont donc créées.
+\paragraph{Églises}
+Empiriquement, on estime qu'environ 150 églises pré-existent à la période modélisée.
+Elles sont réparties de manière assez irrégulière et dispersée, à proximité de villages de petites villes mais aussi isolées dans l'espace rural.\\
+Dans SimFeodal, on modélise cette configuration spatiale en répartissant ces 150\unskip\astfootnote{Ce nombre est paramétrable.\label{ftn:nombre-parametrable}} églises, de manière aléatoire dans l'espace du modèle.
+Pour représenter, parmi ces édifices religieux, ceux qui sont dotés des droits paroissiaux (environ une cinquantaine au début de la période), on tire aléatoirement un tiers\footref{ftn:nombre-parametrable} de ces églises.
+On attribue alors à ces églises les droits paroissiaux, et elles deviennent dès lors le semis ponctuel autour duquel le maillage paroissial (zonal) est dessiné.
 
-La création des foyers paysans (1) est plus complexe, notamment car elle doit être aléatoire tout en respectant une structure choisie par les modélisateurs via les paramètres.
-Dans l'ensemble, elle se déroule en trois phases :
-\begin{enumerate}
-	\item On crée des \og petites villes\fg{}, peuplées d'une trentaine\footref{ftn:nombre-parametrable} de foyers paysans situés dans une voisinage suffisant pour être identifiable en tant qu'agrégat.
-	\item On répète le processus pour des \og villages\fg{}, peuplés de 10\footref{ftn:nombre-parametrable} agents.
-	\item On répartie alors de manière aléatoire l'ensemble des autres foyers paysans, c'est-à-dire le nombre total souhaité\footref{ftn:nombre-parametrable} auquel on retranche les foyers paysans créés dans une petite ville ou dans un village, dans l'espace du modèle.
-\end{enumerate}
-Afin que les foyers paysans constitutifs des villes et villages soient assurés de former des agrégats (3), la répartition des foyers paysans qui les composent suit une logique itérative illustrée dans la \cref{fig:init-fp}.
+
+\paragraph{Foyers paysans et agrégats}
+La création des foyers paysans est plus complexe, notamment car elle doit être aléatoire au niveau individuel tout en respectant une structure macroscopique contrôlée par les modélisateurs via les paramètres.
+De manière empirique, on peut résumer la distribution spatiale initiale à une immense majorité de foyers paysans dispersés, et à la pré-existence de quelques villages (peu peuplés) et petites villes (les agglomérations secondaires antiques, plus conséquentes en termes de population).\\
+Pour générer la configuration initiale, on reproduit ces grandes lignes de manière aléatoire tout en faisant en sorte que ces villages et petites villes soient bien modélisées sous la forme d'agrégats plus ou moins peuplés.
+On commence donc par répartir dans l'espace quelques\footref{ftn:nombre-parametrable} agrégats (les \og petites villes\fg{} empiriques) peuplés d'une trentaine\footref{ftn:nombre-parametrable} de foyers paysans, lesquels sont placés de manière suffisamment proches pour pouvoir constituer un agrégat au sens du modèle (voir \cref{meca-agregats}).
+La \cref{fig:init-fp} illustre la démarche mise en place pour créer ces agrégats.
+On répète cette démarche pour les \og villages\fg{}, en plaçant à nouveau quelques\footref{ftn:nombre-parametrable} agrégats dans l'espace, cette foi constitués d'une dizaine\footref{ftn:nombre-parametrable} de foyers paysans.
+On peut alors disperser, de manière entièrement aléatoire, tous les foyers paysans qui n'ont pas encore été localisés dans l'espace du modèle, c'est-à-dire ceux qui ne font pas partie des agrégats précédemment créés.
 
 \begin{figure}[H]
 	\centering
@@ -1013,21 +1035,37 @@ Afin que les foyers paysans constitutifs des villes et villages soient assurés 
 	(B) on génère un nouveau foyer paysan dans un rayon donné du premier ;\\
 	(C) et (D) on continue à générer de nouveaux foyers paysans dans le rayon de n'importe lequel des foyers existants ;\\
 	(E) la géométrie d'un agrégat correspond à l'enveloppe convexe des foyers paysans ;\\
-	(F) en fin d'initialisation, les étapes A à E ont été répétées pour le nombre d'agrégats initiaux défini, et l'ensemble des agrégats sont donc dispersés dans l'espace actif (voir \cref{fig:espace-simfeodal}))du modèle.}
+	(F) en fin d'initialisation, les étapes A à E ont été répétées pour le nombre d'agrégats initiaux défini, et l'ensemble des agrégats sont donc dispersés dans l'espace actif (voir \cref{fig:espace-simfeodal}) du modèle.}
 	\label{fig:init-fp}
 \end{figure}
+
+
+\paragraph{Seigneurs}
+Parmi les seigneurs, on distingue deux types : les grands seigneurs, sans représentation spatiale, et les petits seigneurs, localisés dans l'espace du modèle.
+L'initialisation spatiale des seigneurs ne concerne donc que les petits seigneurs, dont l'on estime empiriquement le nombre initial à une vingtaine\footref{ftn:nombre-parametrable}.\\
+À l'initialisation de SimFeodal, on répartit ces cinquante seigneurs dans l'espace du modèle, d'une manière semi-aléatoire : on considère que les seigneurs doivent être localisés dans l'un des agrégats créés à l'étape précédente.
+Les seigneurs tirent aléatoirement un agrégat, et sont placés de manière aléatoire au sein de la délimitation de cet agrégat.
+Plusieurs seigneurs peuvent ainsi être situés dans le même agrégat, et certains agrégats peuvent de la même manière ne contenir aucun seigneur.
+
+%Le mécanisme de création des premiers seigneurs est tout aussi simple et aléatoire : on répartit, de manière toujours aléatoire, un nombre donné de grands seigneurs.\\
+%On localise aussi, selon un aléa contraint, un ensemble\footref{ftn:nombre-parametrable} de petits seigneurs au sein des agrégats existants, lesquels ont été délimités selon le mécanisme standard (voir \cref{meca-agregats}).
+%Les petits seigneurs générés se voient directement associés à une zone de prélèvement de type \og foncier\fg{}, de rayon et de taux de prélèvement aléatoires bornés : dès l'initialisation, les premières zones de prélèvement sont donc créées.
 
 
 \clearpage
 \subsection{Paramètres d'initialisation}
 
 Dans la partie précédente, on a plusieurs fois indiqués que certaines des valeurs numériques de l'initialisation étaient paramétrables, c'est-à-dire qu'on peut les faire varier afin de générer des structures spatiales initiales différentes.
-Cela participe à l'endogénéisation de l'espace support de SimFeodal, où il n'y a aucun \og \textit{input}\fg{}, mais un ensemble de paramètres régissant les différents sous-modèles.
+Cela participe à la recherche de maîtrise de l'espace support initial de SimFeodal, où il n'y a aucun \og \textit{input}\fg{}, mais un ensemble de paramètres régissant les différents sous-modèles.
 Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester différents scénarios sont précisés dans le \cref{tab:params-initiaux}.
 
 \input{chap2/img/tableau-parametres-init}
 
 
+
+\begin{center}	
+	\hl{Fin des reprises le 2019-07-05, version papier}
+\end{center}
 
 
 \let\orisectionmark\sectionmark
@@ -1036,9 +1074,9 @@ Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester di
 \orisectionmark{Données en entrée}
 \let\sectionmark\orisectionmark
 
-Comme indiqué, il n'y a pas véritablement d'\textit{inputs} dans SimFeodal : tout est paramètre, et dès lors dynamique.
-En même temps, le modèle comporte de très nombreux paramètres : entre une quarantaine et une soixantaine selon les définitions possibles de ce qu'est un paramètre, voir \hl{chapitre 4}.\\
-On peut donc voir dans la multiplicité des paramètres une proximité avec la notion de données en entrée, qui ne s'expriment toutefois pas sous la forme traditionnelle.
+L'initialisation de SimFeodal constitue un sous-mécanisme à part entière, entièrement endogène au modèle.
+À ce titre, on ne peut dire que des données en entrée (\textit{inputs}) contrôlent l'état initial du modèle, tel que c'est la norme dans des modèles spatiaux classiques.
+Pour autant, on peut voir une forme d'\textit{inputs} dans les nombreux paramètres mobilisés pour l'initialisation et dans ceux, plus nombreux encore, qui influencent l'ensemble des mécanismes.
 
 Par exemple, pour mettre en place des comportements exogènes permettant de faire varier le modèle à différentes dates précises, on peut classiquement faire appel à des données de sortie d'un autre modèle, ou à un fichier de configuration.
 Dans SimFeodal, cette logique est bien présente, mais est gérée directement au sein du modèle, sans faire appel à des données externes.
@@ -1051,12 +1089,23 @@ Deux exemples de \texttt{map} dans Gama.
 \textit{À partir de 800, les églises doivent se situer entre 5 et 25~km, puis entre 3 et 10~km de 960 à 1060, et entre 1.5 et 5~km après cette date.}}, captionpos=b, label={lst:maps-gama}]
 map<int,int> dist_min_eglise <- [800::5000,  960::3000,  1060::1500];
 map<int,int> dist_max_eglise <- [800::25000, 960::10000, 1060::5000]; 
-\end{lstlisting}
+	\end{lstlisting}
 }
 
-Pour respecter le formalisme ODD que suit ce chapitre, on peut au final considérer que SimFeodal est un modèle qui ne repose sur aucune donnée en entrée.
-Conceptuellement, le rôle joué par les paramètres du modèle s'en approche toutefois assez fortement.
-Le \hl{chapitre 4} permet d'éclairer cette description en entrant plus en détail dans la définition et la nomenclature des paramètres.
+%Comme indiqué, il n'y a pas véritablement d'\textit{inputs} dans SimFeodal : tout est paramètre, et dès lors dynamique.
+%En même temps, le modèle comporte de très nombreux paramètres : entre une quarantaine et une soixantaine selon les définitions possibles de ce qu'est un paramètre, voir \hl{chapitre 4}.\\
+%On peut donc voir dans la multiplicité des paramètres une proximité avec la notion de données en entrée, qui ne s'expriment toutefois pas sous la forme traditionnelle.
+
+%Pour respecter le formalisme ODD que suit ce chapitre, on peut au final considérer que SimFeodal est un modèle qui ne repose sur aucune donnée en entrée.
+%Conceptuellement, le rôle joué par les paramètres du modèle s'en approche toutefois assez fortement.
+%Le \hl{chapitre 4} permet d'éclairer cette description en entrant plus en détail dans la définition et la nomenclature des paramètres.
+
+Quand bien même ce n'est pas le sens traditionnel d'\textit{inputs}, la multiplicité des paramètres et leur forte diversité (\hl{voir chapitre 4}) remplit le même rôle.
+Il s'agit de contrôler précisément l'initialisation du modèle, mais aussi des éléments et événements indispensables, sur le plan empirique, qui ne doivent pas émerger des interactions du modèle, mais au contraire, les conditionner.
+
+\begin{center}	
+	\hl{Fin des reprises le 2019-07-05, version numérique}
+\end{center}
 
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
