@@ -26,7 +26,7 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \usepackage{caption}
 \captionsetup[figure]{belowskip=-0.5cm}
 \captionsetup[lstlisting]{belowskip=-0.25cm}
-%\captionsetup[table]{position=above, aboveskip=0pt, belowskip=10pt}
+\captionsetup[table]{position=below, aboveskip=10pt, belowskip=-0.5cm}
 \usepackage{rotating}
 \usepackage{rotfloat}
 
@@ -50,9 +50,11 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 	parsep=0pt,
 }
 
+\usepackage{varioref}
 \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{pdftitle={Robin Cura - Thèse}}
 \usepackage[noabbrev, nameinlink]{cleveref}
+
 
 \usepackage{longtable}
 \usepackage{array}

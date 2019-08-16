@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-07-05}}
+	{\large Version \hl{2019-07-08}}
 \end{center}
 
 \begin{itemize}
@@ -10,6 +10,7 @@
 	\item 20 Mai 2019 : Reprise commentaires Lena
 	\item 28 juin 2019 : Rendu à Lena des reprises de Intro à 2.4 (concepts de modélisation)
 	\item 5 Juillet 2019 : Rendu à Lena de 2.4 et 2.5
+	\item 8 Juillet 2019 : fin reprise (->2.7.2.3 inclus) + envoi doc à Lena
 \end{itemize}
 \setcounter{minitocdepth}{1}
 
@@ -69,7 +70,7 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 
 \clearpage
 
-\input{chap2/img/tableau-ODD}
+\{chap2/img/tableau-ODD}
 \clearpage
 
 
@@ -416,7 +417,7 @@ s'il y avait 90\% de foyers paysans dispersés avant le renouvellent, 90\% des f
 	Cette logique d'attachement préférentiel (\hl{retrouver où j'en parle si c'est avant}) permet de modéliser l'attractivité qu'exercerait un agrégat peuplé, potentiellement plus connu, sur des foyers paysans venant de régions voisines.
 }
 
-\subsection{Mise à jour du maillage paroissial}
+\subsection{Mise à jour du maillage paroissial \label{meca-paroisses}}
 
 Le Moyen Âge voit apparaître un maillage dense, continu dans l'espace, constitué autour d'églises dotées de droits paroissiaux : les paroisses, qui organisent l'ensemble de la vie spirituelle de la population.
 Les archéologues ne s'accordent pas sur la date de leur apparition (avant la période étudiée), ni surtout sur le moment où elles constituent un maillage complet (vraisemblablement pendant la période modélisée).
@@ -1084,9 +1085,9 @@ Certains paramètres prennent ainsi la forme de tableaux d'associations (aussi a
 \medskip
 
 {\footnotesize
-\begin{lstlisting}[caption={
-Deux exemples de \texttt{map} dans Gama.
-\textit{À partir de 800, les églises doivent se situer entre 5 et 25~km, puis entre 3 et 10~km de 960 à 1060, et entre 1.5 et 5~km après cette date.}}, captionpos=b, label={lst:maps-gama}]
+	\begin{lstlisting}[caption={
+	Deux exemples de \texttt{map} dans Gama.
+	\textit{À partir de 800, les églises doivent se situer entre 5 et 25~km, puis entre 3 et 10~km de 960 à 1060, et entre 1.5 et 5~km après cette date.}}, captionpos=b, label={lst:maps-gama}]
 map<int,int> dist_min_eglise <- [800::5000,  960::3000,  1060::1500];
 map<int,int> dist_max_eglise <- [800::25000, 960::10000, 1060::5000]; 
 	\end{lstlisting}
@@ -1117,35 +1118,43 @@ Il s'agit de contrôler précisément l'initialisation du modèle, mais aussi de
 \subsection{Introduction}
 
 Cette partie du chapitre est plus technique, et vise à présenter précisément différents mécanismes de SimFeodal évoqués dans la partie relative au fonctionnement général du modèle (\cref{sec:fonctionnement-general}).
-On ne vise ici pas l'exhaustivité, les détails d'implémentation étant bien trop nombreux pour être entièrement explicités.
-Cela ferait un double-emploi assez conséquent en sus du code-source du modèle disponible à la consultation (voir l'\hyperlink{avant-propos}{avant-propos}).
-
-Notons aussi que la présentation des mécanismes n'est pas nécessairement exacte, c'est-à-dire une description fidèle de la manière dont les mécanismes sont implémentés informatiquement sous forme de codes-sources.
 Nous avons ici fait le choix de présenter les mécanismes sous la forme, discursive et schématique, la plus courte et compréhensible, quand bien même cette forme n'est qu'une \og équivalence\fg{} de la réalité de l'implémentation.
 Ces écarts entre présentation discursive des mécanismes et implémentation effective sont discutés dans l'\cref{enc:polarite-implementation}.
 
-On remarquera enfin que avons préféré présenter ces spécifiques dans un ordre différent de celui de l'ordonnancement dans le modèle (cf. \cref{fig:ordonnancement}), en les regroupant plutôt par les types d'agents concernés par chacun.
+Dans un objectif de lisibilité, on a choisi de ne pas entreprendre une description détaillée et exhaustive de tous les détails d'implémentation.
+Il nous semble en effet que ces éléments présentent un intérêt fondamental en termes de reproductibilité, mais qu'une description très précise présenterait aussi un caractère redondant avec le code-source du modèle.
+Celui-ci est disponible publiquement (voir l'\hyperlink{avant-propos}{avant-propos}) et à notre sens, est partie intégrante de ce travail de thèse.
+Sa reproduction à l'écrit, dans ces pages, même sous forme d'annexe, nous semble assez peu appropriée, mais cela n'enlève rien, de notre point de vue, à la nécessité de sa consultation pour une compréhension plus fine du modèle.
+
+%Notons aussi que la présentation des mécanismes n'est pas nécessairement exacte, c'est-à-dire une description fidèle de la manière dont les mécanismes sont implémentés informatiquement sous forme de codes-sources.
+
+On remarquera enfin que nous avons préféré présenter ces mécanismes spécifiques dans un ordre différent de celui de l'ordonnancement dans le modèle (cf. \cref{fig:ordonnancement}), en les regroupant plutôt suivant les types d'agents concernés par chacun.
 On présentera d'abord les mécanismes \og globaux\fg{}, c'est-à-dire relevant de la détection des agrégats, pôles et des logiques de promotion et création de paroisses ; puis les mécanismes relatifs au foyers paysans ; et enfin ceux impliquant l'action des seigneurs.
 
 \bigskip 
 \begin{encadre}{Écarts entre présentation et implémentation}{polarite-implementation}
 	
 La présentation des mécanismes d'un modèle ne suit pas toujours la manière dont ces mécanismes sont implémentés dans le code-source d'un modèle.
-C'est naturellement vrai entre deux \og domaines\fg{} d'un modèle (si l'on reprend la triade des domaines conceptuels, empirique et implémenté de \textcite{livet2014diversite}), au vu des écarts qu'il peut y avoir par exemple entre le modèle conceptuel et le modèle implémenté.
-Toutefois, cela peut aussi se produire au sein d'un même domaine, par exemple ici pour le \og domaine du modèle\fg{}, c'est-à-dire dans l'implémentation du modèle.
-La présentation discursive d'un modèle suit ses règles propres, par exemple la nécessité de suivre une progression linéaire, quand bien même faite d'allers-retours.
+C'est naturellement vrai entre deux \og domaines\fg{} d'un modèle (si l'on reprend la triade des domaines conceptuels, empirique et informatique de \textcite[\ppno~3, fig. 2]{sargent2009verification}), au vu des écarts qu'il peut y avoir par exemple entre le modèle conceptuel et le modèle implémenté.
+Toutefois, cela peut aussi se produire au sein d'un même domaine, par exemple ici pour le domaine du modèle informatique (\og computerized model\fg{} chez Sargent), notamment dans la phase de l'implémentation.
+La présentation discursive d'un modèle suit ses règles propres, par exemple la nécessité de suivre une progression linéaire.
 L'implémentation informatique, au contraire, ne suit pas forcément les mêmes règles, et tend même à requérir des logiques très différentes au nom d'une \og optimisation\fg{} du code-source, propre à chaque langage informatique.
-Dans cet encadré, nous souhaitons mettre en avant trois types de processus où la présentation discursive et l'implémentation effective sont différentes tout en produisant des résultats équivalents.
-Ces types de processus ne visent pas l'exhaustivité, mais sont des exemples rencontrés dans la présentation du modèle faite dans ce chapitre.
+Dans cet encadré, nous souhaitons mettre en avant trois types de processus où la présentation discursive et l'implémentation effective sont différentes tout en menant à des aboutissements équivalents.
+Cette typologie ne vise pas l'exhaustivité, mais s'articule autour d'exemples rencontrés dans la présentation du modèle qui est faite dans ce chapitre.
 
-\paragraph{Perspective de l'implémentation} Quand un tirage aléatoire probabiliste est appliqué sur un grand nombre d'entités, son espérance théorique tend vers une fréquence empirique, en vertu de la loi des grands nombres.
+\paragraph{Point de vue de l'implémentation} Quand un tirage aléatoire probabiliste est appliqué sur un grand nombre d'entités, son espérance théorique tend vers une fréquence empirique, en vertu de la loi des grands nombres.
 En simulation à base d'agents, cela signifie que choisir une proportion de 10\% d'une large population (\og probabilité de groupe\fg{}) est quasi-équivalent à doter chacun des individus d'une probabilité de $0.1$ d'être choisis (\og probabilité individuelle\fg{}).
-Cette équivalence est fortement mobilisée dans SimFeodal, la \og perspective\fg{} -- probabilité individuelle ou de groupe -- changeant parfois à plusieurs reprises dans un même mécanisme, selon la praticité ou la performance (informatique) de l'une ou l'autre.
-Dans la description du modèle, où on essaie d'avoir la vision la plus \og agent-centrée\fg{} possible, on présentera préférentiellement des mécanismes comme faisant appel à des probabilités individuelles, quand bien même l'implémentation effective se baserait sur une approche proportionnelle, mobilisant des probabilités de groupe.
+Cette équivalence est fortement mobilisée dans SimFeodal, le \og point de vue\fg{} -- probabilité individuelle ou de groupe -- changeant parfois à plusieurs reprises dans un même mécanisme, selon la praticité ou la performance (informatique) de l'une ou l'autre.
+Dans la description du modèle, on essaie d'avoir la vision la plus \og agent-centrée\fg{} possible.
+On présentera préférentiellement les mécanismes comme faisant appel à des probabilités individuelles, quand bien même l'implémentation effective se base sur une approche proportionnelle, mobilisant des probabilités de groupe.
 
-\paragraph{Factorisation} Une autre différence tient à l'ordre d'exécution des sous-mécanismes par un ensemble d'agents.
+\paragraph{Factorisation} Un autre écart tient à l'ordre d'exécution des sous-mécanismes par un ensemble d'agents.
 En mathématiques, $k\times (x+y)$ est égal, selon les règles de factorisation, à $k{\cdot}x + k{\cdot}y$.
-Dans un système multi-agents, la logique est la même, quand bien même l'ordre d'appel des agents peut faire varier le résultat et l'on considère donc à nouveau qu'il s'agit d'une équivalence plus que d'une égalité : les programmes \ref{lst:facto1} et \ref{lst:facto2} sont équivalents.\bigskip
+Dans un système multi-agents, la logique est la même.
+On considère ainsi que même si l'ordre d'appel des agents diffère et peut faire varier le résultat, les sous-mécanismes décrits sont équivalents (plutôt qu'égaux).
+Les programmes \ref{lst:facto1} et \ref{lst:facto2} sont ainsi considérés comme équivalents en dépit de la différence dans leur ordre d'appel.
+Le premier programme demande à tous les agents, chacun leur tour, d'effectuer les mécanismes A et B successivement.
+Le second est légèrement différent en ce qu'il demande d'abord à tous les agents d'effectuer A, et une fois que A est réalisé pour chacun, d'effectuer B : \bigskip
 
 \noindent\begin{minipage}[b]{.45\textwidth}
 	\begin{lstlisting}[caption={Factorisé},frame=tlrb, captionpos=b, label = {lst:facto1}]
@@ -1164,15 +1173,17 @@ ask agents [
 	\end{lstlisting}
 \end{minipage}
 
-En terme d'efficacité du code, à nouveau, l'alternance entre ces approches d'implémentation permet de résoudre certaines difficultés d'implémentation plus simplement.
-On peut ainsi factoriser les calculs légers et au contraire développer, pour faciliter le stockage intermédiaires entre autre, les calculs plus lourds.
-Pour bien différencier les étapes successives, dans le cadre d'une description discursive, il sera souvent plus aisé de présenter les sous-processus de manière développée plutôt que factorisée, ce qui, encore une fois, n'implique rien quant à l'implémentation réelle.
+En terme d'efficacité du code, l'alternance entre ces deux approches permet de résoudre certaines difficultés d'implémentation.
+On peut ainsi factoriser les calculs légers et au contraire développer, pour faciliter le stockage intermédiaire entre autre, les calculs plus lourds.
+En revanche, pour bien différencier les étapes successives, dans le cadre d'une description discursive, il sera souvent plus aisé de présenter les sous-processus de manière développée plutôt que factorisée.
 
-\paragraph{Optimisation} Les deux types de processus précédents peuvent être combinés, pour répondre à des questions d'optimisation informatique, c'est-à-dire par exemple permettre au modèle de fonctionner plus rapidement en fonction des spécificités des langages informatiques choisis.
-Dans Gama, par exemple, il est plus lent, informatiquement, de calculer la distance depuis 1000 agents à 10 agents, que l'inverse, quand bien même les résultats sont ici strictement identiques.
-Par exemple, le calcul de la satisfaction de protection des foyers paysans demande à chacun de mesurer sa distance au château le plus proche.
-Il est bien plus rapide de calculer, depuis la perspective des châteaux, la distance aux différents foyers paysans en en prenant le minimum.
-Dans cet exemple, l'implémentation se fait dans un sens opposé à celui du discours, sans que cela n'ait la moindre conséquence -- au niveau du domaine conceptuel, empirique, ou même en termes de mécanisme implémentés --, sinon une plus grande optimisation du fonctionnement informatique du modèle.
+\paragraph{Optimisation} Les deux types de processus précédents peuvent être combinés, pour répondre à des questions d'optimisation informatique, par exemple pour permettre au modèle de fonctionner plus rapidement en fonction des spécificités des langages informatiques choisis.
+Dans Gama, par exemple, il est plus lent, informatiquement, de calculer la distance depuis 1000 agents à 10 agents, que l'inverse, quand bien même les résultats sont strictement identiques.
+Le calcul de la satisfaction de protection des foyers paysans en offre un exemple.
+Il requiert de mesurer la distance de chaque agent concerné au château le plus proche.
+Il est bien plus rapide de calculer cette mesure depuis les châteaux, puis de sélectionner la distance minimale pour chaque couple (foyer paysan; château).
+Dans cet exemple, l'implémentation se fait dans un sens opposé à celui du discours, sans que cela n'ait la moindre conséquence sur le plan conceptuel.
+Il en résulte toutefois une bien meilleure optimisation du modèle informatique en terme de rapidité d'exécution.
 \end{encadre}
 
 \subsection{Mécanismes globaux}
@@ -1189,12 +1200,12 @@ Dans cet exemple, l'implémentation se fait dans un sens opposé à celui du dis
 La \cref{fig:detection-agregats} présente les étapes successives de détection des agrégats.
 À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que tous les foyers paysans sont considérés comme dispersés (\textbf{A}).
 On exécute un algorithme de classification basé sur la distance\footnote{
-L'opérateur Gama \textsf{simple\_clustering\_by\_distance}, proche conceptuellement de l'algorithme DBSCAN.
+	L'opérateur Gama \textsf{simple\_clustering\_by\_distance}, proche conceptuellement de l'algorithme DBSCAN.
 } : les \textit{clusters} constitués d'au moins 5 foyers paysans espacés de moins de 100~m sont considérés comme des agrégats(\textbf{B}).
 On fixe alors la géométrie des agrégats, qui prend la forme de l'enveloppe convexe des foyers paysans qui les composent (\textbf{C}).
 Les foyers paysans inclus dans la surface d'un agrégat y sont ajoutés (\textbf{D}).
 On crée ensuite des \textit{buffers} de 100~m autour des agrégats et on y rattache à nouveau les foyers paysans inclus dans la surface (\textbf{E}).
-Dernière étape dans la détection des agrégats, pour ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion : on réalise l'union géométrique des agrégats qui s'intersectent (\textbf{F}).\\
+Dernière étape dans la détection des agrégats, pour ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion : on réalise l'union géométrique des agrégats qui s'intersectent (\textbf{F}).\\
 Les trois dernières étapes concernent la transmission des propriétés des agrégats à travers les pas de temps, et en particulier de la présence ou non d'une communauté en leur sein.
 On isole les agrégats du pas de temps précédent qui intersectent les nouveaux agrégats (\textbf{G}).
 On procède ensuite à une intersection entre les géométries de ces anciens agrégats et le nouvel agrégat (\textbf{H}).
@@ -1209,7 +1220,7 @@ Le nouvel agrégat hérite alors des propriétés de l'ancien agrégat dont la s
 	\label{fig:detection-poles}
 \end{figure}
 
-Les pôles sont des agents composés d'attracteurs de trois types : les châteaux (petits et gros), les églises (uniquement celles dotées de droits paroissiaux) et les agrégats (uniquement ceux comportant une communauté paysanne).
+Les pôles sont des agents composés d'attracteurs de trois types : les châteaux (petits et gros), les églises (uniquement celles dotées de droits paroissiaux) et les agrégats (uniquement ceux comportant une communauté paysanne).
 Les pôles et leur délimitation spatiale revêtent une importance particulière lors de la migration des foyers paysans : ils attirent d'autant plus que leur attractivité est importante, et le cas échéant, les foyers paysans migrants s'installent à l'intérieur de leur délimitation.
 La \cref{fig:detection-poles} illustre la méthode de définition spatiale des pôles, ainsi que des exemples de calcul de leurs attractivités.
 
@@ -1237,8 +1248,8 @@ On peut alors calculer leur attractivité en se reportant au \cref{tab:attractio
 
 	\subsubsection{Satisfaction et modèles gravitaires \label{sssec:satisfaction}}
 	
-Les satisfactions religieuses et de protection des foyers paysans suivent une logique proche du modèle gravitaire : plus les foyers sont éloignés des \og attracteurs\fg{} (les châteaux pour la satisfaction protection ; les églises paroissiales pour la satisfaction religieuse), moins ils sont satisfaits.
-Cette logique simple est légèrement contrainte par l'introduction de seuils : en dessous d'une certaine distance (\textit{distance\_min}), le foyer paysan est entièrement satisfait (satisfaction = 1), et au delà d'une autre distance (\textit{distance\_max}), sa satisfaction est nulle (satisfaction = 0).
+Les satisfactions religieuses et de protection des foyers paysans suivent une logique proche du modèle gravitaire : plus les foyers sont éloignés des \og attracteurs\fg{} (les châteaux pour la satisfaction protection ; les églises paroissiales pour la satisfaction religieuse), moins ils sont satisfaits.
+Cette logique simple est légèrement contrainte par l'introduction de seuils : en dessous d'une certaine distance (\textit{distance\_min}), le foyer paysan est entièrement satisfait (satisfaction = 1), et au delà d'une autre distance (\textit{distance\_max}), sa satisfaction est nulle (satisfaction = 0).
 Entre ces deux seuils, minimaux et maximaux, la satisfaction suit une logique gravitaire simple, soit ici une décroissance linéaire.
 L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcul, et la \cref{fig:satisfaction-distance} l'illustre de manière sans doute plus accessible.
 
@@ -1293,9 +1304,9 @@ et le besoin de protection évolutif :
 
 \paragraph{Satisfaction matérielle}
 
-La satisfaction matérielle ne prend aucune distance en compte : elle s'appuie sur le montant des taxes dont le foyer paysan doit s'acquitter ($redevance\_acquittees$).
+La satisfaction matérielle ne prend aucune distance en compte : elle s'appuie sur le montant des taxes dont le foyer paysan doit s'acquitter ($redevance\_acquittees$).
 Ce montant est pondéré par un paramètre technique représentant un niveau \og acceptable\fg{} de taxation ($coef\_redevances$, qui vaut $15$ ici).
-L'appartenance du foyer paysan à une communauté fini de contre-balancer le montant des redevances acquittées, sous la forme d'un contre-poids dont l'importance augmente au fur et à mesure de la période modélisée ($puissance\_communaute$ vaut $0.2$ jusqu'en 1060, puis augmente de $0.2$ à chaque pas de temps pour atteindre $1$ en 1040 et rester à ce niveau).
+L'appartenance du foyer paysan à une communauté finit de contre-balancer le montant des redevances acquittées, sous la forme d'un contre-poids dont l'importance augmente au fur et à mesure de la période modélisée ($puissance\_communaute$ vaut $0.2$ jusqu'en 1060, puis augmente de $0.2$ à chaque pas de temps pour atteindre $1$ en 1040 et rester à ce niveau).
 
 \begin{equation*}
 \begin{gathered}
@@ -1311,7 +1322,7 @@ s_{redevance} = max \left[ \left( 1- \frac{redevances\_acquittees}{coef\_redevan
 
 \paragraph{Satisfaction générale}
 
-La satisfaction générale est mesurée en prenant le minimum de ces satisfaction individuelles, c'est-à-dire qu'on considère qu'elles ne s'équilibrent pas.
+La satisfaction générale est mesurée en prenant le minimum de ces satisfactions individuelles, c'est-à-dire qu'on considère qu'elles ne s'équilibrent pas.
 Comme pour la satisfaction matérielle qui la compose, l'appartenance du foyer paysan à une communauté paysanne tend aussi à augmenter la satisfaction générale.
 Les communautés interviennent donc à deux reprises dans le calcul de la satisfaction, afin d'illustrer le poids que prennent ces structures sociales et institutionnelles au cours de la période modélisée.
 
@@ -1330,7 +1341,7 @@ avec $ \{satisfaction ; s_{materielle} ; s_ {religieuse} ; s_{protection}\} \in 
 	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
 
 La migration des foyers paysans est sans doute le mécanisme le plus complexe et ayant subi les plus fortes évolutions depuis la conception de SimFeodal.
-La règle d'ensemble est pourtant extrêmement simple : un foyer paysan a une probabilité de migrer qui est inversement proportionnelle à sa satisfaction. 
+La règle d'ensemble est pourtant extrêmement simple : un foyer paysan a une probabilité de migrer qui est inversement proportionnelle à sa satisfaction. 
 Autrement dit, $P \left( migration \right) = \left( 1 - satisfaction \right)$.
 Cette règle simple a été progressivement complexifiée afin d'augmenter la rationalité et l'ancrage empirique des choix de localisation.
 Une première complexification a abouti à la distinction de migrations \og locales\fg{} et de migrations \og lointaines\fg{} (voir \cref{fig:migrations-locales-lointaines}).
@@ -1341,7 +1352,7 @@ Une première complexification a abouti à la distinction de migrations \og loca
 \caption{Migrations locales et lointaines.}
 \label{fig:migrations-locales-lointaines}
 \end{figure}
-Pour aboutir à cette différence entre migration locale et migration lointaine, la règle est encore une fois complexe : les foyers paysans privilégient les migrations locales, et quand celles-ci ne sont pas possibles, ils ont une probabilité plus faible d'effectuer une migration lointaine.
+Pour aboutir à cette différence entre migration locale et migration lointaine, la règle est encore une fois complexe : les foyers paysans privilégient les migrations locales, et quand celles-ci ne sont pas possibles, ils ont une probabilité plus faible d'effectuer une migration lointaine.
 Notons que pour nous approcher des connaissances empiriques, nous avons établi un comportement légèrement différent entre les foyers paysans déjà agrégés et ceux qui seraient dispersés lors de l'exécution du mécanisme de migration (\cref{fig:choix-migration}).
 \begin{figure}[H]
 	\centering
@@ -1366,10 +1377,12 @@ Ceux-là ne peuvent effectuer que des migrations locales, et on considère qu'il
 	\subsubsection{Prélèvement des droits \label{sssec:collecte-droits}}
 \setcounter{footnote}{\value{savefootnote}}
 Les seigneurs, petits et grands, collectent les droits dont doivent s'acquitter les foyers paysans (droits de haute justice et autres droits) majoritairement (exception faite des droits fonciers pour les grands seigneurs, voir \cref{fig:prelevement-fonciers}) par l'intermédiaire des zones de prélèvement.
-Ces zones sont caractérisées par un propriétaire (le seigneur qui les possèdent), éventuellement un gardien (le seigneur à qui la zone a été \og donnée\fg{}, voir \cref{meca-dons}), une localisation\footnote{Pour les petits seigneurs, il s'agit de leur propre localisation}, un rayon\footnote{
-Ce rayon est tiré aléatoirement suivant une distribution uniforme, \\$rayon\_zp \sim \mathcal{U}\left[ rayon\_min\_zp\_ps , rayon\_max\_zp\_ps \right]$, avec $rayon\_min\_zp\_ps$ et $rayon\_max\_zp\_ps$ des paramètres qui valent respectivement 1 000 et 5 000 m.
+Ces zones sont caractérisées par un propriétaire (le seigneur qui les possèdent), éventuellement un gardien (le seigneur à qui la zone a été \og donnée\fg{}, voir \cref{meca-dons}), une localisation\footnote{
+	Pour les petits seigneurs, il s'agit de leur propre localisation
+}, un rayon\footnote{
+	Ce rayon est tiré aléatoirement suivant une distribution uniforme, \\$rayon\_zp \sim \mathcal{U}\left[ rayon\_min\_zp\_ps , rayon\_max\_zp\_ps \right]$, avec $rayon\_min\_zp\_ps$ et $rayon\_max\_zp\_ps$ des paramètres qui valent respectivement 1 000 et 5 000 m.
 } et un taux de prélèvement\footnote{
-idem : $taux\_prelevement\_zp \sim \mathcal{U}\left[ min\_taux\_prelevement\_zp\_ps , max\_taux\_prelevement\_zp\_ps \right]$ avec $min\_taux\_prelevement\_zp\_ps$ et $max\_taux\_prelevement\_zp\_ps$ valant 5\% et 25\%.
+	idem : $taux\_prelevement\_zp \sim \mathcal{U}\left[ min\_taux\_prelevement\_zp\_ps , max\_taux\_prelevement\_zp\_ps \right]$ avec $min\_taux\_prelevement\_zp\_ps$ et $max\_taux\_prelevement\_zp\_ps$ valant 5\% et 25\%.
 }.
 À noter que les zones de prélèvement liées à des châteaux suivent une règle légèrement différente, que nous n'aborderons pas ici\footnote{Se référer au code-source du modèle, dans la fonction \textsf{construction\_chateaux}}.
 
@@ -1406,7 +1419,7 @@ Le mécanisme de collecte des droits fonciers est illustré dans la \cref{fig:pr
 
 \paragraph{Haute justice et autres droits}
 
-Les autres droits suivent un mécanisme plus générique : les seigneurs propriétaires collectent des droits auprès d'une partie des foyers paysans inclus dans la surface de la zone de prélèvement.
+Les autres droits suivent un mécanisme plus générique : les seigneurs propriétaires collectent des droits auprès d'une partie des foyers paysans inclus dans la surface de la zone de prélèvement.
 Cette partie correspond aux \og taux de prélèvement\fg{} décrit plus haut. La \cref{fig:prelevement-droits} récapitule les différentes modalités de collecte de droits via les zones de prélèvement.
 
 \begin{figure}[H]
@@ -1421,8 +1434,8 @@ Les droits de haute justice sont prélevés exactement comme les autres droits, 
 \subsubsection{Construction de châteaux \label{sssec:constru-chateaux}}
 
 
-À partir de 940, les seigneurs ont la possibilité de créer des châteaux.
-Le mécanisme de construction des châteaux est commun aux grands et aux petits seigneurs, mais certains paramètres varient selon le type du seigneur considéré :
+À partir de 940, les seigneurs ont la possibilité de créer des châteaux, dans un espace limité par la présence d'autres châteaux : on considère ainsi, au regard des connaissances empiriques, que deux châteaux ne peuvent être espacés de moins de 5 000 mètres.
+Le mécanisme de construction des châteaux est commun aux grands et aux petits seigneurs, mais certains paramètres varient selon le type du seigneur considéré :
 \begin{itemize}
 	\item Un grand seigneur peut construire jusqu'à $2$ châteaux par tour (paramètre $nb\_max\_chateaux\_par\_tour\_gs$), alors qu'un petit seigneur ne peut en construire au maximum que $1$ par pas de temps ($nb\_max\_chateaux\_par\_tour\_ps$).
 	\item Pour un seigneur $i$, la probabilité de construire un château est formalisée ainsi :\\
