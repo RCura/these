@@ -78,7 +78,7 @@ Dans le chapitre \hl{2}, on décrivait l'objectif théorique du modèle, à savo
 Dans le chapitre \hl{3}, on présentait la formalisation, au moyen d'indicateurs de sortie de simulation, des résultats du modèle.
 En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres de grandeur\ldots) sinon quantifiés (les indicateurs numériques), on esquissait un crible d'évaluation du modèle.
 
-Pourtant, même au sein des indicateurs de sortie de simulation, il est une distinction que l'on a pas encore réalisée : le distinguo entre des indicateurs \og émergents\fg{} et des indicateurs \og contextuels\fg{}.
+Pourtant, même au sein des indicateurs de sortie de simulation, il est une distinction que l'on n’a pas encore réalisée : le distinguo entre des indicateurs \og émergents\fg{} et des indicateurs \og contextuels\fg{}.
 
 \begin{itemize}
 	\item Les premiers sont les indicateurs les plus classiques en modélisation agent : on s'attache à leur évaluation parce qu'ils sont entièrement générés par la combinaison et l'intrication des mécanismes du modèle.
@@ -117,7 +117,7 @@ Ce second type de calibrage pourrait sembler évident, préalable à une démarc
 Dans un modèle descriptif, exploratoire et surtout basé sur des dynamiques passées, pourtant, la tâche de recherche précise de valeurs pour des dizaines de paramètres semble irréalisable en dehors de projets de modélisation de très large ampleur, ce qui n'est pas le cas de SimFeodal.
 
 Dans les paragraphes suivant, nous donnons des exemples de paramètres et indicateurs qui ont été calibrées dans les dernières phases de paramétrage du modèle.
-Ces exemple reprennent la distinction établie ci-dessus entre les types de calibrages : le calibrage des \textit{inputs} est entièrement thématique, celui des paroisses est mixte, entre thématique et expérimental, et le calibrage des châteaux est purement expérimental, guidé par un objectif thématique pré-défini clair.
+Ces exemples reprennent la distinction établie ci-dessus entre les types de calibrages : le calibrage des \textit{inputs} est entièrement thématique, celui des paroisses est mixte, entre thématique et expérimental, et le calibrage des châteaux est purement expérimental, guidé par un objectif thématique pré-défini clair.
 
 
 \subsubsection*{Inputs}
@@ -178,7 +178,7 @@ Pour que le contexte permette la meilleure réalisation des phénomènes émerge
 
 Pour les paroisses \og rurales\fg{}, on se base plutôt sur des aspects thématiques issus de connaissances archéologiques.
 On connaît ainsi, au moins pour la fin du XII$^e$ siècle, le nombre et la répartition spatiale de la plupart des paroisses (301 églises selon \textcite[31]{zadora-rio_paroisses_2008}, que l'on extrapole par simplicité en 300 paroisses), qui correspondent majoritairement à des milieux ruraux et qui ont en partie perduré dans le maillage communal actuel.
-En terme de répartition spatiale, par soucis de généricité, on peut tirer du semis d'églises de l'Indre-et-Loire féodale des distances d'espacement moyennes entre églises paroissiales\footnote{
+En termes de répartition spatiale, par soucis de généricité, on peut tirer du semis d'églises de l'Indre-et-Loire féodale des distances d'espacement moyennes entre églises paroissiales\footnote{
 	On retrouve ainsi cette estimation dans \textcite[261]{chareille_dynamiques_2008} : \og Entre 900 et 1200, l'augmentation importante du nombre de lieux de cultes attestés par les sources écrites se traduit par une diminution nette de l'espacement observé entre les sites : on passe d'une distance moyenne d'un peu plus de 4 km entre deux églises en 900, à une distance d'environ 2,8 km en 1200.\fg{}
 }, que l'on utilise ensuite pour calibrer le modèle.
 
@@ -207,7 +207,7 @@ Pour minimiser la modification du paramètre de seuil, on a alors agi sur le cri
 
 Le calibrage des châteaux a été bien plus simple d'un point de vue thématique : la documentation est précise quant au nombre et aux périodes d'apparition de ces monuments dans l'espace d'étude, et leur nature massive leur a le plus souvent assuré une forte pérennité, atout rare dans l'étude de monuments anciens.
 Dans l'ensemble, on sait que le nombre de châteaux\footnote{
-	Comme pour la définition des villes, il y a un débat important en archéologie et en histoire sur la définition de ce qu'est un château. Faut-il y inclure, par exemple, les \textit{castra} antiques ? Les mottes castrales ? Dans le cadre de ce modèle, nous avons considéré les \og châteaux forts\fg{}, par nécessité d'établir un référentiel accessible pour la collaboration entre thématiciens et modélisateurs.
+	Comme pour la définition des villes, il y a un débat important en archéologie et en histoire sur la définition de ce qu'est un château. Faut-il y inclure, par exemple, les \textit{castra} antiques ? Les mottes castrales ? Dans le cadre de ce modèle, nous avons considéré les \og châteaux forts\fg{}, par nécessité d'établir un référentiel accessible pour la collaboration entre thématiciens et modélisateurs.
 } est très faible, si ce n'est nul, au début de la période.
 On voit apparaître des châteaux dès le milieu du X$^e$ siècle, sans doute en réaction au climat de violence qui s'établit à ce moment.
 En 1200, on estime\footnote{
@@ -269,6 +269,174 @@ Ils ne sont pas entièrement satisfaisants, mais résultent d'un compromis entre
 	\textit{Les lignes horizontales en pointillés représentent les objectifs à atteindre.}}
 	\label{fig:calibrage-chateaux-composition}
 \end{figure}
+
+
+\clearpage
+\subsection{Résultats du modèle}
+
+Nous avons largement décrit, dans le \hl{chapitre 3}, les objectifs poursuivis par le modèle et les indicateurs de sortie de simulation employés pour les évaluer.
+Pour rappel, ces objectifs peuvent être catégorisés en trois familles, selon les objectifs thématiques qu'ils cherchent à reproduire : 
+\begin{itemize}
+	\item Polarisation du système de peuplement : le modèle parvient-il à faire émerger une structure polarisée et concentrée de l'habitat, où les foyers paysans sont concentrés dans des agrégats de population plutôt que dispersés comme dans la situation initiale ?
+	\item Hiérarchisation du système de peuplement : depuis une situation initiale composée d'une faible hiérarchie dans les agrégats (des \og agglomérations secondaires antiques\fg{} d'une trentaine de foyers et des \og villages\fg{} d'une dizaine de foyers), parvient-on à une structure à la hiérarchie importante, proche du modèle log-normal identifié dans la majorité des systèmes de peuplement historiques et contemporains ?
+	\item Fixation et dissémination du peuplement : 
+\end{itemize}
+
+Intro : rappel,  ensembles de faits stylisés : 
+
+
+Enfin, il est important de noter que les résultats présentés dans la suite de cette partie ne sont qu'une sélection de l'ensemble des résultats du modèle.
+Nous invitons le lecteur à les consulter directement dans l'application SimEDB d'où ces indicateurs sont extraits.
+Ce lien direct permet d'accéder aux résultats spécifiques à la version présentée ici : \hl{LIEN direct}
+
+
+\input{chap6/img/results_6_5_1/tableau-objectifs.tex}
+
+
+\subsubsection{Polarisation des foyers paysans}
+
+\paragraph{Taux de foyers paysans dispersés}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_Concentration_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+\paragraph{Nombre d’agrégats}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Agregats_Nb_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+\paragraph{Nombre de pôles}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_Nb_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+\paragraph{Dispersion des agrégats et pôles}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Agregats_Carte_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+
+\subsubsection{Hiérarchisation du système de peuplement}
+
+\paragraph{Hiérarchie des agrégats}~\\
+
+
+\begin{table}[H]
+	\captionsetup{singlelinecheck=off}
+	\centering
+	\small
+	{\renewcommand{\arraystretch}{1.3}%
+		\begin{tabular}{p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+			\cline{2-6}
+			& \multicolumn{5}{c|}{\textbf{Nombre de foyers paysans}} \\
+			  & \textbf{<100} & \textbf{101-200} & \textbf{201-300} &  \textbf{301-400} &\textbf{ >400}\\ \hline
+			 \multicolumn{1}{|c|}{Nombre moyen} & 130.95 & 87.4 & 30.1 & 10.85 & 8.5 \\ \hline
+			 \multicolumn{1}{|c|}{Taux moyen} & 48.8\% & 32.7\% & 11.2\% & 4.1\% & 3.2\% \\ \hline
+			 \multicolumn{1}{|c|}{\textit{Objectif (taux)}} & \textit{130.95} & \textit{87.4} & \textit{30.1} & \textit{10.85} & \textit{8.5} \\ \hline	
+	\end{tabular}}
+	\caption{Distribution des agrégats par classe de taille en fin de simulation.}
+	\label{tab:distrib-population-agregats}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Agregats_RT_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+
+
+\paragraph{Hiérarchie des pôles}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_RT_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_Attrac_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+\paragraph{Hiérarchie des paroisses}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Paroisses_Compo_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Paroisses_Superficie_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+
+\subsubsection{Fixation et dissémination du peuplement}
+
+\paragraph{Déplacement des foyers paysans}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_TypeDeplacements_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_DeplacementsDetail_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+
+\paragraph{Satisfaction des foyers paysans}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_Satisfaction_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+\paragraph{Nombre et dispersion des paroisses}~\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_5_1/Paroisses_Nb_Haut.pdf}
+	\caption{A}
+	\label{}
+\end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_Nb_Haut.pdf}
+%	\caption{A}
+%	\label{}
+%\end{figure}
+\paragraph{Efficacité et équité de la desserte paroissiale}~\\
+
 \end{figure}
 
 

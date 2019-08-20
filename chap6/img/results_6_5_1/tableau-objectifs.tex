@@ -1,0 +1,33 @@
+\begin{table}[H]
+	\captionsetup{singlelinecheck=off}
+	\centering
+	\small
+	{\renewcommand{\arraystretch}{1.3}%
+	\begin{tabular}{|p{3cm}|p{2.2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+		\hline
+		\textbf{Indicateur} & \textbf{Valeur} \textbf{attendue}\footnotemark & \textbf{Moyenne} & \textbf{Médiane} & \textbf{Q1} & \textbf{Q3} & \textbf{Écart-type} \\ \hline
+		\textit{Agrégats} & \textit{200} & 268 & 268 & 258 & 278 & 14.07 \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Châteaux} & \textit{50} & 50 & 50 & 46 & 53 & 5.09 \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Gros châteaux} & \textit{10} & 15 & 16 & 14 & 17 & 2.61 \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Seigneurs} & \textit{200} & 201 & 202 & 196 & 207 & 6.36 \\ \hline
+		\textit{Églises paroissiales} & \textit{300} & 380 & 378 & 368 & 386 & 14.88 \\ \hline
+		\textit{Distance moyenne entre églises} & \textit{3 000 m} & 1 355 m & 1 376 m & 1 299 m & 1 396 m & 91 m \\ \hline
+		\textit{Part de foyers paysans isolés} & \textit{20 \%} & 29 \% & 29 \% & 28 \% & 30 \% & 1.1 \% \\ \hline
+		\textit{Augmentation de la charge fiscale des foyers paysans} & \textit{x 3} & x 2.4 & x 2.4 & x 2.4 & x 2.5 & x 0.05 \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Nombre de Foyers Paysans} & \multicolumn{1}{c|}{---} & 50 000 & 50 000 & 50 000 & 50 000 & 0 \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Densité de population} & \multicolumn{1}{c|}{---} & 7.81 & 7.81 & 7.81 & 7.81 & 0 \\ \hline
+	\end{tabular}}
+	\caption[Indicateurs numériques de la version 6.5.1 de SimFeodal.]{
+		Indicateurs numériques de la version 6.5.1 de SimFeodal.\\
+		Valeurs de paramètres :~\vspace{-.3em}
+		\begin{itemize}
+		  \setlength{\itemsep}{-14pt}
+		\item \textsf{sim\_name : 6.5.1}\\
+		\item \textsf{croissance\_demo = 0} \&
+		\textsf{init\_nb\_total\_fp = 50000} \\
+		\item \textsf{rayon\_migration\_locale\_fp = map([800::2500])}
+		\end{itemize}
+	}
+	\label{tab:results-basique}
+\end{table}
+\footnotetext{Objectif en fin de simulation}
