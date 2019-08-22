@@ -47,12 +47,12 @@ valeurs_base %>%
 
 valeurs_normalisees <- valeurs_base %>%
   mutate(
-    nb_agregats_normalise = (nb_agregats - 200) / 14.07,
-    nb_grands_chateaux_normalise = (nb_grands_chateaux - 10) / 2.61,
-    nb_eglises_paroissiales_normalise = (nb_eglises_paroissiales - 300) / 14.88,
-    distance_eglises_paroissiales_normalise = (distance_eglises_paroissiales - 3000) / 91,
-    prop_fp_isoles_normalise = (prop_fp_isoles - 0.2) / 0.011,
-    ratio_charge_fiscale_normalise = (ratio_charge_fiscale - 3) / 0.05
+    nb_agregats_normalise = (nb_agregats - 200) / 10.45,
+    nb_grands_chateaux_normalise = (nb_grands_chateaux - 10) / 2.87,
+    nb_eglises_paroissiales_normalise = (nb_eglises_paroissiales - 300) / 12.96,
+    distance_eglises_paroissiales_normalise = (distance_eglises_paroissiales - 3000) / 97,
+    prop_fp_isoles_normalise = (prop_fp_isoles - 0.2) / 0.08,
+    ratio_charge_fiscale_normalise = (ratio_charge_fiscale - 3) / 0.03
   ) %>%
   select_at(vars(ends_with("_normalise"), starts_with("sensibility"), "type"))
 
@@ -93,7 +93,7 @@ library(ggalt)
     theme(axis.text.y = element_blank(),
           axis.ticks.y = element_blank())
   
-  ggsave(last_plot(), filename = "../3_results/sensibilite_globale.pdf", width = 17.5, height = 30, units = "cm")
+  #ggsave(last_plot(), filename = "../3_results/sensibilite_globale.pdf", width = 17.5, height = 30, units = "cm")
   
   # On garde les 10 premiers, après les "seuils" sont moins forts
   
@@ -150,6 +150,7 @@ library(ggalt)
     select(-indicateurs, -type_selection.x, -type_selection.y) %>%
     rename(`Paramètre` = sensibility_parameter,
            `Origine de la sélection` = type_selection) %>%
+    {print(.) ; .} %>%
     kableExtra::kable("latex")
   
   label_both_oneline <- function(labels){
@@ -198,9 +199,9 @@ p3 <- ggplot(foo %>% filter(type == "technique")) +
 
 
   
-ggsave(p1, filename = "test_input.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
-ggsave(p2, filename = "test_contexte.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
-ggsave(p3, filename = "test_technique.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
+# ggsave(p1, filename = "test_input.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
+# ggsave(p2, filename = "test_contexte.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
+# ggsave(p3, filename = "test_technique.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
 
 foo_scaled <- foo %>%
   group_by(Indicateur) %>%
@@ -228,9 +229,9 @@ p3_scaled <- ggplot(foo_scaled %>% filter(type == "technique")) +
   scale_y_continuous(limits = c(-10.1, 10.1)) +
   guides(fill = FALSE)
 
-ggsave(p1_scaled, filename = "test_input_scaled.pdf", width = 21, height = 29.7, units = "cm", scale = 1.5)
-ggsave(p2_scaled, filename = "test_contexte_scaled.pdf", width = 21, height = 29.7, units = "cm", scale = 1.5)
-ggsave(p3_scaled, filename = "test_technique_scaled.pdf", width = 21, height = 29.7, units = "cm", scale = 1.5)
+# ggsave(p1_scaled, filename = "test_input_scaled.pdf", width = 21, height = 29.7, units = "cm", scale = 1.5)
+# ggsave(p2_scaled, filename = "test_contexte_scaled.pdf", width = 21, height = 29.7, units = "cm", scale = 1.5)
+# ggsave(p3_scaled, filename = "test_technique_scaled.pdf", width = 21, height = 29.7, units = "cm", scale = 1.5)
 
 
 p1_scaled_all <- ggplot(foo_scaled %>% filter(type == "input")) +
@@ -254,9 +255,9 @@ p3_scaled_all <- ggplot(foo_scaled %>% filter(type == "technique")) +
   scale_y_continuous(limits = c(-10.1, 10.1)) +
   guides(fill = FALSE)
 
-ggsave(p1_scaled_all, filename = "test_input_all.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
-ggsave(p2_scaled_all, filename = "test_contexte_all.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
-ggsave(p3_scaled_all, filename = "test_technique_all.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
+# ggsave(p1_scaled_all, filename = "test_input_all.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
+# ggsave(p2_scaled_all, filename = "test_contexte_all.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
+# ggsave(p3_scaled_all, filename = "test_technique_all.pdf", width = 21, height = 29.7, units = "cm", scale = 4)
 
 
 valeurs_base %>%
@@ -264,5 +265,69 @@ valeurs_base %>%
   group_by(type) %>%
   tally()
 
-valeurs_base %>%
-  filter(sensibility_parameter %in% params_to_keep)
+
+library(ggthemes)
+source("utils_recode.R")
+
+for (i in 1:length(params_to_keep)){
+  indicateur <- params_to_keep[i]
+  thisplot <- valeurs_base %>%
+    filter(sensibility_parameter %in% indicateur) %>%
+    gather(Indicateur, Valeur, -sensibility_parameter, -sensibility_value, -type) %>%
+    mutate(Indicateur = fct_recode(as.factor(Indicateur),
+                                   "Nombre\nd'agrégats" = "nb_agregats",
+                                   "Nombre de\ngrands\nchâteaux" = 'nb_grands_chateaux',
+                                   "Nombre\nd'églises\nparoissiales" = "nb_eglises_paroissiales",
+                                   "Distance\nentre\néglises" = "distance_eglises_paroissiales",
+                                   "Taux de\nfoyers paysans\nisolés" = "prop_fp_isoles",
+                                   "Augmentation\nde la charge\nfiscale" = "ratio_charge_fiscale"
+    )) %>%
+    mutate(Indicateur = fct_relevel(Indicateur, c("Nombre\nd'agrégats",
+                                                  "Nombre de\ngrands\nchâteaux",
+                                                  "Nombre\nd'églises\nparoissiales",
+                                                  "Distance\nentre\néglises",
+                                                  "Taux de\nfoyers paysans\nisolés",
+                                                  "Augmentation\nde la charge\nfiscale"
+    ))) %>%
+    mutate(objectif = case_when(
+      Indicateur == "Nombre\nd'agrégats" ~ 200,
+      Indicateur == "Nombre de\ngrands\nchâteaux" ~ 10,
+      Indicateur == "Nombre\nd'églises\nparoissiales" ~ 300,
+      Indicateur == "Distance\nentre\néglises" ~ 3000,
+      Indicateur == "Taux de\nfoyers paysans\nisolés" ~ 0.20,
+      Indicateur == "Augmentation\nde la charge\nfiscale" ~ 3
+      )) %>%
+    rename(Parametre = sensibility_parameter) %>%
+    mutate(sensibility_value = rename_and_recode_valeurs(indicateur = indicateur,
+                                                         valeurs = sensibility_value)) %>%
+    mutate(Indicateur = fct_relabel(Indicateur, ~str_replace_all(.x, "\n", " "))) %>%
+    ggplot() +
+    aes(sensibility_value, Valeur, fill = sensibility_value) +
+    #geom_boxplot(lwd = .1, outlier.size = .75, outlier.shape = 4) +
+    geom_hline(aes(yintercept = objectif), linetype = "dashed", lwd = .5) +
+    geom_violin(lwd = 0.2) + 
+    geom_boxplot(coef = 0, width = 0.2, lwd = 0.2, outlier.shape = NA, colour = "white") +
+    facet_wrap(~Indicateur, scales = "free", drop = TRUE, ncol = 6, labeller = label_wrap_gen(width = 20)) +
+    scale_fill_viridis_d(name = indicateur, end = .8) +
+    labs(x = "", y = "") +
+    theme(axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.title.y = element_text(colour = "black", size = 8, margin = margin(t = 0,r = 15,b = 0,l = 0, unit = "pt")) ) +
+    theme(legend.position="bottom",
+          legend.justification="left",
+          legend.title.align = 0,
+          legend.title = element_text(face = "bold", vjust = 1),
+          legend.key.width = unit(x = .75, units = "cm"),
+          legend.key.height = unit(x = .75, units = "cm"),
+          legend.margin=margin(-20,0,0,0),
+          legend.box.margin=margin(0,0,0,0)) +
+    theme(strip.text.x = element_text(margin = margin(t = 2, r = 2, b = 2, l = 2, unit = "pt")))
+  #thisplot
+  ggsave(paste0("../3_results/params/sensibilite_", indicateur, ".pdf"), plot = thisplot, width = 20, height = 5, units = "cm", scale = 1.2)
+}
+
+
+
+
+
+
