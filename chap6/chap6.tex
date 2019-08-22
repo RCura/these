@@ -62,7 +62,7 @@ Dans le chapitre 3 (\cref{sec:evaluer-modele}), on indiquait que SimFeodal s'ins
 
 En tant que tels, les \og résultats\fg{} de SimFeodal ne nous semblent donc pas revêtir d'enjeu confirmatoire majeur : ils sont là pour participer à l'évaluation du modèle, tant sur un plan interne qu'externe (cf. \hl{chap3}), mais ne constituent pas pour autant des éléments objectifs et quantifiables de validation.
 
-Dans cette partie, nous rappelons les objectifs du modèle, nous décrivons les étapes de calibrage qui ont été nécessaires afin d'en approcher, et nous présentons enfin les résultats de la version actuelle (6.5.1) du modèle, c'est-à-dire les indicateurs de sortie de simulation issus de cette version, commentés selon la perspective de leur correspondance aux objectifs.
+Dans cette partie, nous rappelons les objectifs du modèle, nous décrivons les étapes de calibrage qui ont été nécessaires afin d'en approcher, et nous présentons enfin les résultats de la version actuelle (\hl{6.6}) du modèle, c'est-à-dire les indicateurs de sortie de simulation issus de cette version, commentés selon la perspective de leur correspondance aux objectifs.
 
 \subsection{Différencier objectifs contextuels et émergents}
 
@@ -102,7 +102,7 @@ Pour que ce calibrage ne soit pas guidé par une logique tautologique, en contra
 }
 ).
 
-\subsection{Calibrage du modèle}
+\subsection{Calibrage du modèle \label{subsec:calibrage}}
 
 La phase de calibrage diffère des nombreuses étapes de paramétrage décrites dans le \hl{chapitre 4}.
 Il  ne s'agit ainsi plus d'ajuster les mécanismes et paramètres pour obtenir une cohérence d'ensemble plus importante dans la manière dont le modèle réagit, mais de se concentrer sur quelques paramètres et indicateurs de sortie\footnote{
@@ -147,7 +147,7 @@ Pour SimFeodal, on a repris une hypothèse d'historien, qui semble ne pas faire 
 Cette hypothèse consiste à penser qu'un optimum démographique a été atteint au début du XIII$^e$ siècle, et que la population a alors diminué considérablement.
 Les historiens estiment que les populations du XIII$^e$ siècle n'ont été rattrapées qu'au début du XVII$^e$.
 Il serait donc possible de considérer les populations à l'issu de la période étudiée comme proches de celles, mieux connues empiriquement, du XVII$^e$ siècle.
-On a donc choisit de fixer un objectif de population, en fin de simulation (en 1200), à 50 000 foyers paysans, soit une densité d'environ 8 feu / km², ou encore d'environ 40 habitants/km².
+On a donc choisit de fixer un objectif de population, en fin de simulation (en 1200), à 40 000 foyers paysans, soit une densité d'environ 6.5 feu / km², ou encore d'environ 30 habitants/km².
 
 \hl{Mettre aussi nb de villes heritées de l'antiquité}
 
@@ -203,7 +203,7 @@ Dès lors, la définition des \og paroisses de l'agrégat\fg{} revêt une import
 Pour minimiser la modification du paramètre de seuil, on a alors agi sur le critère de définition des paroisses d'un agrégat, en ajustant les distances et mécanismes impliqués.
 
 
-\subsubsection*{Châteaux}
+\subsubsection*{Châteaux \label{subsubsec:calibrage-chateaux}}
 
 Le calibrage des châteaux a été bien plus simple d'un point de vue thématique : la documentation est précise quant au nombre et aux périodes d'apparition de ces monuments dans l'espace d'étude, et leur nature massive leur a le plus souvent assuré une forte pérennité, atout rare dans l'étude de monuments anciens.
 Dans l'ensemble, on sait que le nombre de châteaux\footnote{
@@ -241,8 +241,8 @@ En jouant sur les différents paramètres associés à la construction de châte
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.9\linewidth]{img/results_6_5_1/Chateaux_Nb_Haut.pdf}
-	\caption{Évolution du nombre de châteaux après calibration. Version 6.5.1 de SimFeodal.}
+	\includegraphics[width=.9\linewidth]{img/results_6_6/Chateaux_Nb_Haut.pdf}
+	\caption{Évolution du nombre de châteaux après calibrage. Version 6.6 de SimFeodal.}
 	\label{fig:calibrage-chateaux-nb}
 \end{figure}
 
@@ -289,9 +289,7 @@ Enfin, il est important de noter que les résultats présentés dans la suite de
 Nous invitons le lecteur à les consulter directement dans l'application SimEDB d'où ces indicateurs sont extraits.
 Ce lien direct permet d'accéder aux résultats spécifiques à la version présentée ici : \hl{LIEN direct}
 
-
-\input{chap6/img/results_6_5_1/tableau-objectifs.tex}
-
+\input{chap6/img/results_6_6/tableau-objectifs.tex}
 
 \subsubsection{Polarisation des foyers paysans}
 
@@ -299,7 +297,7 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_Concentration_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/FP_Concentration_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -308,7 +306,7 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Agregats_Nb_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Agregats_Nb_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -317,7 +315,7 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_Nb_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Nb_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -326,7 +324,7 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Agregats_Carte_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Agregats_Carte_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -342,13 +340,13 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 	\centering
 	\small
 	{\renewcommand{\arraystretch}{1.3}%
-		\begin{tabular}{p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
-			\cline{2-6}
-			& \multicolumn{5}{c|}{\textbf{Nombre de foyers paysans}} \\
-			  & \textbf{<100} & \textbf{101-200} & \textbf{201-300} &  \textbf{301-400} &\textbf{ >400}\\ \hline
-			 \multicolumn{1}{|c|}{Nombre moyen} & 130.95 & 87.4 & 30.1 & 10.85 & 8.5 \\ \hline
-			 \multicolumn{1}{|c|}{Taux moyen} & 48.8\% & 32.7\% & 11.2\% & 4.1\% & 3.2\% \\ \hline
-			 \multicolumn{1}{|c|}{\textit{Objectif (taux)}} & \textit{130.95} & \textit{87.4} & \textit{30.1} & \textit{10.85} & \textit{8.5} \\ \hline	
+		\begin{tabular}{p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+			\cline{2-7}
+			& \multicolumn{6}{c|}{\textbf{Nombre de foyers paysans}} \\
+			  & \textbf{<100} & \textbf{101-200} & \textbf{201-300} &  \textbf{301-400} &\textbf{ 401-600} & \textbf{>600} \\ \hline
+			 \multicolumn{1}{|c|}{Nombre moyen} & 142 & 78 & 18 & 7 & 4 & 2 \\ \hline
+			 \multicolumn{1}{|c|}{Taux moyen} & 56.8\% & 31.4\% & 7\% & 2.9\% & 1.6\% &<0.1\% \\ \hline
+			 \rowcolor{yellow} \multicolumn{1}{|c|}{\textit{Objectif (taux)}} & \textit{?} & \textit{?} & \textit{?} & \textit{?} & \textit{?} & \textit{?}\\ \hline	
 	\end{tabular}}
 	\caption{Distribution des agrégats par classe de taille en fin de simulation.}
 	\label{tab:distrib-population-agregats}
@@ -356,7 +354,7 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Agregats_RT_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Agregats_RT_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -367,13 +365,13 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_RT_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Poles_RT_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_Attrac_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Attrac_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -382,13 +380,13 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Paroisses_Compo_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Compo_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Paroisses_Superficie_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Superficie_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -400,13 +398,13 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_TypeDeplacements_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/FP_TypeDeplacements_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_DeplacementsDetail_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/FP_DeplacementsDetail_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
@@ -416,27 +414,34 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/FP_Satisfaction_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/FP_Satisfaction_Haut.pdf}
 	\caption{A}
-	\label{}
+	\label{fig:result-fp-satis}
 \end{figure}
 \paragraph{Nombre et dispersion des paroisses}~\\
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_5_1/Paroisses_Nb_Haut.pdf}
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Nb_Haut.pdf}
 	\caption{A}
 	\label{}
 \end{figure}
 
 %\begin{figure}[H]
 %	\centering
-%	\includegraphics[width=\linewidth]{img/results_6_5_1/Poles_Nb_Haut.pdf}
+%	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Nb_Haut.pdf}
 %	\caption{A}
 %	\label{}
 %\end{figure}
+
 \paragraph{Efficacité et équité de la desserte paroissiale}~\\
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Carte_Haut.pdf}
+%	\caption{A}
+%	\label{}
+%\end{figure}
 
 
 \clearpage
