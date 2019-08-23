@@ -26,9 +26,11 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \usepackage{caption}
 \captionsetup[figure]{belowskip=-1.5em, skip=0.25em}
 \captionsetup[lstlisting]{belowskip=-1em}
-\captionsetup[table]{position=below, aboveskip=1em, belowskip=-1em}
+\captionsetup[table]{position=below, aboveskip=1em, belowskip=-1.5em, skip=0.25em}
 \usepackage{rotating}
 \usepackage{rotfloat}
+\def\frenchtablename{\textsc{Tableau}}
+\frenchbsetup{SmallCapsFigTabCaptions=true}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}

@@ -464,7 +464,8 @@ On peut aussi procéder paramètre par paramètre, en conservant par exemple des
 Les analyses de sensibilités sont largement recommandées comme une pratique indispensable à la validation de modèle, mais nous avons décrit dans le \hl{chapitre 3} la démarche que nous avons préféré pour l'évaluation de SimFeodal.
 L'analyse de sensibilité est toutefois un outil extrêmement utile pour aider à la compréhension d'un modèle, sans chercher à en quantifier la validité.
 Cette méthode repose sur l'exploration d'un modèle par le prisme de ses réactions face aux paramètres choisis, et permet ainsi de mener une étude approfondie de l'influence des paramètres.
-Dans certains modèles (ref à thèse Clara), une analyse de ce type a par exemple permis de rendre plus parcimonieux un modèle KISS, en mettant en lumière le peu d'influence d'un paramètre sur l'ensemble des sorties d'un modèle.
+Dans certains modèles, une analyse de ce type a par exemple permis de rendre plus parcimonieux un modèle KISS, en mettant en lumière le peu d'influence d'un paramètre sur l'ensemble des sorties d'un modèle.
+C'est le cas dans le travail de thèse de \citeauteur{schmitt_modelisation_2014}, où une analyse de sensibilité a révélé la relative inutilité de l'un des 6 paramètres mobilisés dans le modèle SimpopLocal \autocite[224-225]{schmitt_modelisation_2014}.
 Dans le cadre d'un modèle exploratoire, où les très nombreux paramètres comportent vraisemblablement une part de redondance, l'ambition n'est pas de réduire la masse de paramètres, mais plutôt d'aider à comprendre lesquels ont la plus grande influence sur le modèle.
 
 Dans le cadre de SimFeodal, une analyse de sensibilité doit permettre, comme l'évaluation visuelle, de gagner en compréhension sur le modèle, et en conséquence sur les dynamiques modélisées.
@@ -884,7 +885,54 @@ En créant moins de paroisses en zone dense, la distribution de l'attractivité 
 
 \subsection{Analyser la sensibilité à l'aléa}
 
-blob blob blob \cref{fig:histo-sensib-alea}
+En menant l'analyse de sensibilité visuelle, on a pu remarquer que certains indicateurs présentaient une plus forte variation que d'autres.
+Une partie de l'explication tenait certainement à l'inégale amplitude des valeurs de paramètres testées, lesquelles influencent potentiellement plus directement ces indicateurs, mais cela ne nous semble pas être une explication suffisante.
+
+De manière globale, on constate dans les résultats de la version calibrée de SimFeodal (\cref{tab:results-basique}) que la variabilité des indicateurs émergents est assez forte en termes d'écart-type.
+L'écart-type se lisant dans l'unité de l'indicateur mesuré, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}}  /  \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
+
+
+\begin{table}[H]
+{\renewcommand{\arraystretch}{1.1}%
+	\begin{tabular}{|p{5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline
+\textbf{Indicateur} & \textbf{Moyenne} & \textbf{Écart-type} & \textbf{Coefficient de variation} \\
+\hline
+\textit{Agrégats} & 249 & 10.45 & 0.042\\
+\hline
+\textit{Grands châteaux} & 15 & 2.87 & 0.191\\
+\hline
+\textit{Églises paroissiales} & 348 & 12.96 & 0.037\\
+\hline
+\textit{Distance moyenne entre églises} & 1459 m & 97 m & 0.066\\
+\hline
+\textit{Part de foyers paysans isolés} & 30\% & 0.8 \% & 0.027\\
+\hline
+\textit{Augmentation de la charge fiscale des foyers paysans} & $\times$ 2.4 & 0.030 & 0.013\\
+\hline
+\multicolumn{3}{r|}{\textbf{\textit{Moyenne}}} & 0.063\\
+\cline{4-4}
+	\end{tabular}
+}
+\caption{Mesures de dispersion des indicateurs de sortie de la version calibrée (6.6) de SimFeodal.}
+\label{tab:variabilite-indicateurs}
+\end{table}
+
+La lecture du \cref{tab:variabilite-indicateurs} nous montre que, rapportée à un paramètre de dispersion relatif comme le coefficient de variation, la variabilité des indicateurs due à l'aléa est assez faible, et dans des ordres de grandeurs assez comparables entre les indicateurs (à l'exception du nombre de grands châteaux).
+
+Pourtant, lors de l'analyse de sensibilité, on a pu constater des variations (étendue dans l'axe des ordonnées des \textit{violin-plots}) bien plus importantes au sein des réplications des paramètres testés.
+
+Il nous paraît par conséquent utile de mener un bref complément d'analyse, dédié à l'étude de la variabilité au sein des réplications d'une expérience.
+De telles analyses nous paraissent peu fréquentes dans la littérature liée aux modèles de simulation en géographie, mais on en trouve tout de même une définition chez \textcite{ginot2005explorer}, qui nomment ces approches des \og analyses d'incertitude\fg{} : 
+\begin{quotation}
+	\og Compte tenu des incertitudes sur les paramètres, de la variabilité naturelle des variables d'entrée et des composantes stochastiques qui peuvent être incluses dans la structure du modèle, il s'agit de calculer l'incertitude associée aux variables de sorties.
+	Les analyses d'incertitude sont très liées aux analyses de sensibilité dans la mesure où l'on souhaite en général connaître non seulement cette incertitude, mais également son origine.
+	C'est pourquoi ces deux types d'analyses sont souvent menées en parallèle, voire confondues.\fg{}\\
+	\mbox{}~ \hfill \cite[76]{ginot2005explorer}
+\end{quotation}
+
+Pour mesurer cette incertitude, nous avons repris l'ensemble des réplications correspondant à l'analyse de sensibilité de chaque paramètre, en avons mesuré la variabilité (écart-type) sur chaque indicateur.
+Afin à nouveau d'avoir des mesures comparables, on a ensuite procédé à une réduction (division par l'écart-type des valeurs de référence, présentées dans le \cref{tab:variabilite-indicateurs}) de l'amplitude de ces valeurs.
 
 \begin{figure}[H]
 	\centering
@@ -893,11 +941,53 @@ blob blob blob \cref{fig:histo-sensib-alea}
 	\label{fig:histo-sensib-alea}
 \end{figure}
 
-blob blob blob \cref{fig:sensib-alea}
+La distribution de ces valeurs d'incertitude réduites est présenté dans la \cref{fig:histo-sensib-alea}.
+Dans ces histogrammes, la valeur de 1 correspond à une incertitude moyenne identique à celle des réplications de référence.
+Une valeur de 2 peut être comprise ainsi : pour l'indicateur considéré, les différentes simulations exécutées lors de l'analyse de chaque valeur de chaque paramètre ont une variabilité deux fois supérieure à la variabilité attendue.
+Autrement dit, certaines valeurs de certains paramètres amènent une bien plus forte variabilité : ils laissent une part plus importante à la stochasticité du modèle.
 
+On peut remarquer que la plupart des indicateurs présentent des \textit{outliers}, c'est-à-dire des valeurs de paramètres pour lesquelles la variabilité due à l'aléa est nettement supérieure (ou inférieure) à la normale.
+Dans le cas du nombre de grands châteaux, il y a même des valeurs de paramètres qui montre une absence presque totale de variabilité à l'aléa.
+Sans aller plus loin sur cet exemple, on peut penser qu'il s'agit des valeurs de paramètre qui ont tendance à réduire très largement le nombre de châteaux, amenant alors à une variabilité extrêmement faible dans cette amplitude des possibles restreinte.
+
+À partir de cet histogramme, nous avons isolés les \textit{outliers} et en présentons une représentation graphique dans la \cref{fig:sensib-alea}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/sensiblite_alea.pdf}
-	\caption{Paramètres présentant la plus forte sensibilité à l'aléa.}
+	\includegraphics[width=\linewidth]{img/sensiblite_alea_outliers.pdf}
+	\caption{Paramètres présentant des sensibilités atypiques à l'aléa.}
 	\label{fig:sensib-alea}
 \end{figure}
+
+De manière globale, on peut remarquer que les indicateurs relatifs aux foyers paysans présentent plus de valeurs extrêmes que les autres, c'est-à-dire sur une plus forte diversité de paramètres.
+Notons aussi que sur les 14 valeurs de paramètres isolées, la moitié concernent des paramètres qualitatifs.
+La difficile estimation de l'amplitude ceux-ci explique sans doute en partie la plus forte variabilité à l'aléa : si on a choisit des valeurs (étendues, évolutions temporelles etc.) trop éloignées des valeurs calibrées, il se peut que le modèle passe dans des régimes locaux différents du régime de base caractérisé par les réponses aux paramètres calibrés.
+
+Plus spécifiquement, on peut constater le comportement très particulier du paramètre régissant le rayon maximum de migration locale des foyers paysans.
+Non seulement les valeurs de ce paramètre sont parmi les plus fortes sensibilités à l'aléa (indicateurs nombre d'agrégats et augmentation de la charge fiscale), mais de manière surprenante, la valeur correspondant à un rayon évolutif très étendue par rapport à la valeur de base (\texttt{map([800:5000, 1000:10000])}) se caractérise aussi par une très faible sensibilité à l'aléa sur l'indicateur de concentration des foyers paysans.
+Ce paramètre a donc la capacité de faire fortement varier les sorties (vu dans l'analyse de sensibilité visuelle), mais en plus de varier tout aussi fortement la part de l'aléa dans le modèle.
+Nous pensions exécuter un scénario thématique qui fasse varier ce paramètre afin d'étudier l'effet sur la hiérarchie des agrégats, et cette analyse confirme que ce serait tout à faire approprié.
+
+\subsection{Conclusion et apports de l'analyse visuelle de sensibilité}
+
+On peut tirer un bilan extrêmement positif de l'exécution de cette analyse de sensibilité, pourtant limitée et grossière.
+
+Dans un premier temps, notons que la hiérarchie de la sensibilité des paramètres n'est pas véritablement proche de celle que l'on attendait, et qu'on a donc sans doute agit lors du paramétrage et du calibrage sur des paramètres qui n'étaient pas les plus déterminants.
+Cette étape d'évaluation qu'est l'analyse de sensibilité aurait sans doute gagné à être menée avant le calibrage du modèle afin d'obtenir une meilleure adéquation aux objectifs.
+Ce raisonnement est toutefois circulaire : sur un modèle moins calibré, peut-être que l'analyse de sensibilité n'aurait pas mis en avant les mêmes paramètres.
+Ceux-si sont en interaction étroite, et il nous semble évident que les résultats de cette analyse de sensibilité sont eux même extrêmement sensibles au paramétrage de base.
+
+Dans un second temps, l'analyse de sensibilité semble aller dans le sens d'une confirmation de la parcimonie du modèle.
+On l'a dit lors de l'analyse quantitative, mais il nous semble important de le répéter tant ce résultat est rassurant, mais aussi surprenant.
+Aucun des paramètres n'apparaît inutile, ce qui peut laisser entendre que les (très) nombreux mécanismes du modèle ne le sont pas non plus.
+Pour un modélisateur qui pense à minima comprendre à peu près son modèle et a des intuitions fortes sur les réactions de celui-ci aux différents mécanismes et paramètres, c'est une surprise très positive.
+Surprise d'autant plus positive que cet examen systématique des paramètres se révèle réellement une aide indéniable à la compréhension du modèle : après plus de 5 ans à travailler régulièrement sur un modèle, il est très enrichissant d'y trouver encore des éléments inattendus.
+
+Un autre point, classique, concerne les limites d'une telle analyse.
+L'approche entièrement quantitative, présentée dans l'introduction de cette partie, permet de s'affranchir des effets de mauvaise pondération que l'on a pu constater dans l'analyse visuelle : certains paramètres ont une sensibilité globale importante, mais celle-ci se cantonne parfois à un unique indicateur, sans avoir de répercussions sur le reste du modèle.
+Dans un modèle comme SimFeodal, c'est-à-dire descriptif, exploratoire, et composé d'autant de paramètres hétérogènes, il semble toutefois illusoire de réussir à quantifier, pour une analyse de sensibilité, tout ce qui n'a pas été quantifié dans le modèle en lui-même : pondération des objectifs, objectivation des attendus dans les indicateurs graphiques etc.
+
+C'un point de vue subjectif assumé, la démarche mise en place, basée sur le visuel, nous semble tout à fait fructueuse. 
+Elle s'inscrit, comme de nombreux aspects de ce travail de thèse, dans une approche d'analyse visuelle entièrement dédiée à l'exploration d'un modèle et paraît confirmer l'adéquation de ce type d'approches à la construction et évaluation commune et interdisciplinaire de modèles.
+
+La dernière partie de ce chapitre, tournée vers l'usage du modèle pour tester des scénarios thématiques, trouve enfin une justification supplémentaire, dans le champ méthodologique et de la modélisation cette fois-ci.
+Les brèves analyses de sensibilités ont en effet renforcé le besoin criant d'études plus approfondies des variations de certains paramètres, qui plus est quand ceux-ci trouvent des correspondances dans les connaissances empiriques.
