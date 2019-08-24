@@ -25,7 +25,7 @@
 \chapter{Exploration du comportement de SimFeodal}
 \label{chap:chap6}
 \begin{center}
-	{\large Version \hl{2019-08-20}}
+	{\large Version \hl{2019-08-25}}
 \end{center}
 \minitoc
 
@@ -279,61 +279,89 @@ Pour rappel, ces objectifs peuvent être catégorisés en trois familles, selon 
 \begin{itemize}
 	\item Polarisation du système de peuplement : le modèle parvient-il à faire émerger une structure polarisée et concentrée de l'habitat, où les foyers paysans sont concentrés dans des agrégats de population plutôt que dispersés comme dans la situation initiale ?
 	\item Hiérarchisation du système de peuplement : depuis une situation initiale composée d'une faible hiérarchie dans les agrégats (des \og agglomérations secondaires antiques\fg{} d'une trentaine de foyers et des \og villages\fg{} d'une dizaine de foyers), parvient-on à une structure à la hiérarchie importante, proche du modèle log-normal identifié dans la majorité des systèmes de peuplement historiques et contemporains ?
-	\item Fixation et dissémination du peuplement : 
+	\item Fixation et dissémination du peuplement : on estime que la population, initialement assez mobile (sur la résolution temporelle modélisée) tend peu à peu à se fixer, c'est-à-dire à trouver une localisation dans laquelle leur satisfaction ne diminuera plus.
+	Cette fixation, dans des agrégats, doit paradoxalement s'assortir d'une dispersion dans l'espace des agrégats : d'une occupation dispersée et quasi-aléatoire, l'objectif thématique est que les agrégats maillent progressivement l'ensemble du monde simulé.
 \end{itemize}
 
-Intro : rappel,  ensembles de faits stylisés : 
+Dans cette partie, nous allons donc synthétiquement commenter les indicateurs de sortie de simulation issus de la version calibrée (6.6) de SimFeodal, en analysant l'écart entre les objectifs attendus, thématiques, et les résultats du modèle.
 
-
-Enfin, il est important de noter que les résultats présentés dans la suite de cette partie ne sont qu'une sélection de l'ensemble des résultats du modèle.
+\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
+Par soucis de parcimonie et de synthèse, les résultats présentés par la suite ne sont qu'une sélection de l'ensemble des résultats du modèle.
 Nous invitons le lecteur à les consulter directement dans l'application SimEDB d'où ces indicateurs sont extraits.
 Ce lien direct permet d'accéder aux résultats spécifiques à la version présentée ici : \hl{LIEN direct}
+\end{mdframed}
+
+\subsubsection{Résumé global des résultats}
+
+Avant de chercher à analyser de manière approfondie les résultats du modèle, le \cref{tab:results-basique} peut déjà synthétiser une bonne part des résultats agrégés, en fin de simulation.
+
+On y lit en premier lieu une sur-représentation nette de la plupart des objectifs quantitatifs : le nombre d'agrégat et d'églises paroissiales, entre autre, est trop important, et sa variabilité suffisamment faible pour que cette sur-représentation puisse être considérée comme significative. 
+Le taux de foyer paysan isolés en fin de simulation est lui trop faible par rapport aux attentes, quand bien même l'intervalle de confiance empirique est assez flou.
+
+Bien que ces résultats soient systématiquement éloignés des objectifs, on notera tout de même que les ordres de grandeur sont relativement respectés, à l'exception peut-être de la distance entre églises paroissiales, dont la concentration de certains au sein des agrégats ne peut que fausser la mesure.
 
 \input{chap6/img/results_6_6/tableau-objectifs.tex}
 
 \subsubsection{Polarisation des foyers paysans}
 
-\paragraph{Taux de foyers paysans dispersés}~\\
+Les résultats d'ensemble ne sont pas entièrement satisfaisants, mais on y constate tout de même une forte concentration des foyers paysans, dont la part de foyers isolés diminue de manière importante, d'environ 90\% à 30\% en fin de simulation (\cref{fig:results-concentration-fp}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/FP_Concentration_Haut.pdf}
-	\caption{A}
-	\label{}
+	\caption{Concentration des foyers paysans.}
+	\label{fig:results-concentration-fp}
 \end{figure}
 
-\paragraph{Nombre d’agrégats}~\\
+Cette diminution paraît assez régulière, en dépit d'une légère rupture de tendance entre 1060 et 1080, période qui correspond dans le modèle à une évolution du seuil de satisfaction religieuse.
+Notons que parmi les 20 réplications étudiées, cet indicateur se montre extrêmement stable, les marques visuelles de variabilité étant à peine visibles.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/Agregats_Nb_Haut.pdf}
-	\caption{A}
-	\label{}
+	\caption{Nombre d'agrégats.}
+	\label{fig:results-nb-agregrats}
 \end{figure}
 
-\paragraph{Nombre de pôles}~\\
+La concentration des foyers paysans s'effectue à destination d'un nombre croissant d'agrégats (\cref{fig:results-nb-agregrats}), nombre quant à lui bien plus affecté par l'effet de seuil en 1060 noté dans la concentration.
+On y retrouve les trois régimes estimés empiriquement, c'est-à-dire une augmentation lente, suivie d'une augmentation rapide et enfin une stabilisation du nombre d'agrégats.
+
+Pour pouvoir parler de polarisation et pas seulement de concentration, il faut que le modèle soit en mesure non seulement de concentrer les foyers paysans dans des agrégats, mais aussi que ces agrégats se constituent autour des différents attracteurs du modèle (églises paroissiales, châteaux et agrégats dotés de communautés paysannes).
+Dans cette version du modèle, on constate bien une croissance des pôles (\cref{fig:results-nb-poles-agregats}-a), assez semblable à celle des agrégats en termes de rythme et de valeurs.
+Par rapport à la version 0 commentée dans le \hl{chapitre 3}, les valeurs sont très satisfaisantes, qui plus est au regard de l'évolution de la répartition des pôles, qui parviennent très rapidement (peut-être même trop) à la création d'agrégats dans leur voisinage (\cref{fig:results-nb-poles-agregats}-b).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Nb_Haut.pdf}
-	\caption{A}
-	\label{}
+	\hspace{5pt}
+	\subfloat[~]{\includegraphics[width=.49\linewidth]{img/results_6_6/Poles_Nb_Haut.pdf}}
+	\subfloat[~]{\includegraphics[width=.49\linewidth]{img/results_6_6/Agregats_Poles_Haut.pdf}}
+	\caption[Nombre de pôles et part des agrégats comprenant un pôle.]{Nombre de pôles et part des agrégats comprenant un pôle.}
+	\label{fig:results-nb-poles-agregats}
 \end{figure}
 
-\paragraph{Dispersion des agrégats et pôles}~\\
+Ces agrégats et les pôles correspondant sont bien plus dispersés dans l'espace du modèle que dans la version 0, et on constate, au moins visuellement, que le semis des pôles se confond avec celui des agrégats (\cref{fig:results-carte-agregats_poles}).
+Sur ces cartes, on constate une occupation importante de l'espace, largement due à une population bien supérieure en version 6.6 (40 000 foyers paysans, contre 4 000 en version 0), mais on remarque toutefois sur la troisième carte, lissée, qu'en dépit d'un semis visiblement homogène, des zones de plus forte densité sont présentes.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/Agregats_Carte_Haut.pdf}
-	\caption{A}
-	\label{}
+	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Carte_Haut.pdf}
+	\caption{Dispersion spatiales des agrégats et pôles.}
+	\label{fig:results-carte-agregats_poles}
 \end{figure}
 
+\bigskip
+Sur le plan de la polarisation d'ensemble des foyers paysans au sein d'agrégats de population, les résultats de SimFeodal répondent entièrement aux attentes.
+La valeur finale est certes légèrement inférieure à l'objectif, mais tous les ordres de grandeurs et surtout les rythmes estimés correspondent largement aux estimations issues des connaissances expertes.
 
+\clearpage
 \subsubsection{Hiérarchisation du système de peuplement}
 
-\paragraph{Hiérarchie des agrégats}~\\
+Les dernières figures étudiées montraient une forte hétérogénéité dans la taille des agrégats, ce qui est constitue déjà un indice sur la hiérarchie de ces concentrations locales de foyers paysans.
 
+Comme indiqué dans le chapitre 3, il est difficile d'avoir des mesures précises de la hiérarchie attendue dans le système de peuplement.
+Les différentes sources historiques divergent aussi bien sur les quantités absolues que sur la forme des distributions.
+Rappelons tout de même que les sources s'accordent sur une nette hiérarchisation qui doit tendre vers les formes log-normales que l'on retrouve dans les sociétés contemporaines.
 
 \begin{table}[H]
 	\captionsetup{singlelinecheck=off}
@@ -348,100 +376,161 @@ Ce lien direct permet d'accéder aux résultats spécifiques à la version prés
 			 \multicolumn{1}{|c|}{Taux moyen} & 56.8\% & 31.4\% & 7\% & 2.9\% & 1.6\% &<0.1\% \\ \hline
 			 \rowcolor{yellow} \multicolumn{1}{|c|}{\textit{Objectif (taux)}} & \textit{?} & \textit{?} & \textit{?} & \textit{?} & \textit{?} & \textit{?}\\ \hline	
 	\end{tabular}}
-	\caption{Distribution des agrégats par classe de taille en fin de simulation.}
+	\caption[Distribution des agrégats par classe de taille en fin de simulation.]{Distribution des agrégats par classe de taille en fin de simulation. \hl{Ne conserver que si Cécile arrive à trouver, pour l'article anglais, une validation des objectifs par EZR/SL.}}
 	\label{tab:distrib-population-agregats}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/Agregats_RT_Haut.pdf}
-	\caption{A}
-	\label{}
+	\caption{Hiérarchie des agrégats.}
+	\label{fig:results-rt-agregats}
 \end{figure}
 
+La \cref{fig:results-rt-agregats} montre une claire hiérarchisation des agrégats : la courbe se \og redresse\fg{} au cours du temps simulé, marque d'une pente croissante.
+Les valeurs absolues augmentent aussi : les plus gros agrégats voient leur population croître.
+Le \og coude\fg{} dans la courbe, correspondant à la longue traîne de petits agrégats, se réduit, mais on constate tout de même que le bas de la hiérarchie se renforce.
+Contrairement à la version 0 du modèle, la croissance de tous les agrégats semble constante, et on ne remarque pas, visuellement, les tendances à l'éclatement des gros agrégats qui caractérisaient la hiérarchie de cette version.
 
-
-\paragraph{Hiérarchie des pôles}~\\
+En parallèle de cette nette hiérarchisation des agrégats, les graphiques de la  \cref{fig:results-rt-poles} permettent de constater une toute aussi nette hiérarchisation des pôles.
+Cela n'est pas surprenant dans la mesure où on a vu qu'agrégats et pôles se confondaient, ce qui constitue en soi un résultat satisfaisant.
+La mesure représentée dans cette première figure, le nombre d'attracteurs de chaque pôle, est beaucoup plus discriminante et discrète que le nombre de foyers paysans des agrégats.
+La courbe en est donc d'autant plus évidente, montrant une forte hiérarchisation qui s'assortie d'une hausse importante du nombre maximum d'attracteurs des pôles les plus importants.
+Cela montre bien l'apparition d'une tête de hiérarchie urbaine dans le modèle, qui trouve une correspondance dans les villes (Amboise, Loches, Chinon\ldots) de la région d'étude, organisées autour de châteaux et composées de multiples églises paroissiales.
+La \cref{fig:results-rt-poles}-b montre aussi cette hiérarchisation : elle met en évidence un glissement des modalités d'attraction depuis une valeur de 0.2 (deux églises paroissiales) à un double mode à 0.4 (deux églises et une communauté) et 0.7 (plusieurs églises, un château, une communauté\ldots).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/Poles_RT_Haut.pdf}
-	\caption{A}
-	\label{}
+	\includegraphics[width=.405\linewidth]{img/results_6_6/Poles_RT_Haut.pdf}
+	\includegraphics[width=.58\linewidth]{img/results_6_6/Poles_Attrac_Haut.pdf}
+	\caption[Hiérarchie des pôles.]{Hiérarchie des pôles.}
+	\label{fig:results-rt-poles}
 \end{figure}
+
+Dernier élément du modèle en lien avec la hiérarchisation du peuplement, les paroisses.
+Plutôt qu'une hiérarchisation, on cherche à y reproduire deux faits stylisés.
+En premier lieu, une large majorité des paroisses, que l'on pourrait nommer \og rurales\fg{}, doivent être peu fréquentées et viser surtout à une desserte équitable de la population.
+En second lieu, pour les paroisses \og urbaines\fg{}, on souhaite qu'elles aient un nombre de paroissiens bien supérieur à celui des paroisses rurales, tout en restant largement inférieur au millier de paroissiens : dans les agrégats les plus peuplés, il doit y avoir suffisamment de paroisses pour que les fidèles ne soient pas lésés.
+
+Dans les graphiques de la \cref{fig:results-paroisses-hierarchie}, on constate un phénomène inattendu, à savoir une tendance exactement inverse à celle des agrégats.
+La convexité de la courbe augmente au cours du temps simulé, et les valeurs décroissent régulièrement.
+En regardant le détail (\cref{fig:results-paroisses-hierarchie}-b), on peut remarquer que cela correspond en fait à une forte homogénéisation dans l'intervalle de 50 à 200 paroissiens, ce qui correspond aux paroisses rurales incluant quelques agrégats ruraux de taille moyenne à faible (\cref{fig:results-rt-agregats}).
+On assiste donc bien à une double-densification du maillage paroissial.
+En milieu rural, le nombre de paroisses augmente jusqu'à assurer une desserte équitable des foyers paysans qui dans le même temps ont tendance à se concentrer, et en milieu urbain, le nombre de paroisses augmente aussi jusqu'à uniformiser le nombre de foyers paysans par paroisse entre 200 et 300.
+
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Attrac_Haut.pdf}
-	\caption{A}
-	\label{}
+	\subfloat[~]{\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_RT_Haut.pdf}}
+	\hspace{1pt}
+	\subfloat[~]{\includegraphics[width=.49\linewidth]{img/results_6_6/Paroisses_Compo_Haut.pdf}}
+	\subfloat[~]{\includegraphics[width=.49\linewidth]{img/results_6_6/Paroisses_Superficie_Haut.pdf}}
+	\caption[Hiérarchie des paroisses.]{Hiérarchie des paroisses. \\
+	\hl{ ! Attention ! les seuils sont complètement différents du chapitre 3.} }
+	\label{fig:results-paroisses-hierarchie}
 \end{figure}
 
-\paragraph{Hiérarchie des paroisses}~\\
+\bigskip
+Dans l'ensemble, la hiérarchisation est certaine mais moins connue empiriquement que la polarisation du peuplement.
+Avec les informations dont l'on dispose pour évaluer le modèle, on ne peut qu'être satisfait des tendances présentes dans cette version calibrée de SimFeodal : le modèle reproduit bien les hypothèses estimées, quand bien même ces dernières sont assez floues au regard d'autres éléments empiriques.
+À ce stade de maturité du modèle, il faudrait sans doute collecter de nouvelles sources historiques pour pouvoir raffiner le comportement du modèle, ou au moins, départager des simulations présentant de légères variations au niveau des indicateurs analysés dans cette sous-partie.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Compo_Haut.pdf}
-	\caption{A}
-	\label{}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Superficie_Haut.pdf}
-	\caption{A}
-	\label{}
-\end{figure}
-
-
+\clearpage
 \subsubsection{Fixation et dissémination du peuplement}
 
-\paragraph{Déplacement des foyers paysans}~\\
+Le dernier objectif thématique est encore plus incertain que la hiérarchisation du peuplement.
+Il s'agit d'un double objectif à deux échelles différentes.
+À l'échelle des foyers paysans, on attend que les migrations croissent afin de restructurer le peuplement, puis diminuent, signes de la fixation des foyers paysans dans un nouvel agrégat qui leur apportera une satisfaction suffisante pour ne pas trop subir les évolutions négatives de leur environnement (distance à l'église, besoin de protection, hausse de la pression fiscale...).
+À l'échelle des agrégats en eux-même, on souhaite que ceux-ci, tel qu'observé empiriquement, soient dispersés dans l'ensemble de la région simulée.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/FP_TypeDeplacements_Haut.pdf}
-	\caption{A}
-	\label{}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{img/results_6_6/FP_DeplacementsDetail_Haut.pdf}
-	\caption{A}
-	\label{}
+	\includegraphics[width=.9\linewidth]{img/results_6_6/FP_TypeDeplacements_Haut.pdf}
+	\caption{Migration des foyers paysans.}
+	\label{fig:results-fp-migrations-base}
 \end{figure}
 
-
-\paragraph{Satisfaction des foyers paysans}~\\
+Pour les foyers paysans, on peut observer ces tendances à l'aide d'indicateurs sur le nombre et le type de migrations au cours du temps (\cref{fig:results-fp-migrations-base}).
+Le décompte des migrations révèle un profil très intéressant.
+Au niveau des migrations lointaines, la tendance est globalement à la stabilité, à l'exception d'un décrochage très brusque entre 940 et 960.
+Celui-ci trouve peut-être une explication dans l'apparition du besoin de protection : d'un coup, les foyers paysans perdent beaucoup en satisfaction (\cref{fig:results-fp-satisfaction}) et le taux de foyers paysans effectuant des migrations augmente en conséquence.
+Au niveau des migrations locales, le comportement est plus explicable et attendu malgré son apparence surprenante.
+On y lit très clairement les deux périodes de bouleversement exogène amenées par les diminutions des seuils de distances aux églises.
+Ces événements amènent à des migrations assez massives, qui tendent après très nettement à se résorber : les foyers paysans isolés et ceux qui sont dans des agrégats peu stables rejoignent des agrégats plus peuplés et pérennes, et à mesure qu'ils y parviennent, le nombre de migrations locales diminue jusqu'à atteindre des niveaux assez faibles comparables à ceux des migrations lointaines (autour de 5\% en 1200).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/FP_Satisfaction_Haut.pdf}
-	\caption{A}
-	\label{fig:result-fp-satis}
+	\caption{Satisfaction des foyers paysans.}
+	\label{fig:results-fp-satisfaction}
 \end{figure}
-\paragraph{Nombre et dispersion des paroisses}~\\
+
+
+Si l'on observe le détail des migrations (\cref{fig:results-fp-migrations-detail}), on peut noter deux périodes.
+En 820 et en 900, la plupart des migrations proviennent de foyers paysans isolés.
+Ces migrations, locales et lointaines, permettent aux foyers paysans de rejoindre un agrégat, quel qu'en soit la place dans la hiérarchie.
+En 1000 et après, les foyers paysans isolés représentent encore une part substantielle de la population (50\% d'après la \cref{fig:results-concentration-fp}), mais leur poids relatif dans les migrations est devenu bien plus faible que celui des migrations entre agrégats de population : après une première période de concentration arrive une période de choix hiérarchique pour les foyers paysans, où les différences d'attractivité des agrégats jouent alors un rôle prépondérant.
+Cela indique aussi qu'à partir de cette période, les agrégats sont pour la plupart pérennes et voient alors se mettre une compétition en place.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_6/FP_DeplacementsDetail_Haut.pdf}
+	\caption{Types de migration des foyers paysans.}
+	\label{fig:results-fp-migrations-detail}
+\end{figure}
+
+Pour évaluer la dissémination du peuplement, on peut aussi observer la répartition des paroisses.
+Comme elles ont comme vocation de desservir la population des foyers paysans, elles constituent un proxy de sa répartition tout au long du temps.
+Les indicateurs liés \cref{fig:results-paroisses-nb,} donnent une lecture satisfaisante là encore du processus de dissémination.
+En premier lieu, on note que le nombre d'églises paroissiales augmente de manière régulière au cours du temps, avec un saut entre 1060 et 1080 (comme pour de nombreux indicateurs vu auparavant (\cref{fig:results-paroisses-nb}).
+Par rapport aux logiques de création et de promotion, on remarque que le nombre d'églises non paroissiales chute fortement à la même période.
+Ces églises se voient attribuer les droits paroissiaux, et on peut donc dire que l'accroît de paroisses de 1080 correspond surtout à des églises rurales puisque ce sont elles qui sont susceptibles d'être promues par le mécanisme (voir \hl{chap2}, \cref{sssec:paroisses}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Nb_Haut.pdf}
-	\caption{A}
-	\label{}
+	\caption{Nombre de paroisses.}
+	\label{fig:results-paroisses-nb}
 \end{figure}
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{img/results_6_6/Poles_Nb_Haut.pdf}
-%	\caption{A}
-%	\label{}
-%\end{figure}
+La carte de densité des paroisses (\cref{fig:results-paroisses-carte}) n'est qu'un exemple puisqu'elle ne correspond qu'à deux réplications et non à une agrégation de données.
+Toutefois, on y constate nettement la densification généralisée du maillage paroissial : contrairement à la version 0 du modèle où les paroisses périphériques demeuraient très étendues, il n'y plus véritablement ici de paroisses marginalisées (on le note aussi dans la \cref{fig:results-paroisses-hierarchie}-c).
 
-\paragraph{Efficacité et équité de la desserte paroissiale}~\\
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Carte_Haut.pdf}
-%	\caption{A}
-%	\label{}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Carte_Haut.pdf}
+	\caption{Répartition des paroisses.}
+	\label{fig:results-paroisses-carte}
+\end{figure}
+
+Un dernier indicateur (\cref{fig:results-paroisses-desserte}) apporte un complément généralisé : en tenant compte de la variabilité des réplications, l'indicateur représenté parvient à montrer que l'augmentation du nombre d'églises paroissiales est bien un phénomène réparti dans l'espace : la part de l'espace située à plus de 2.5 kilomètres d'une église paroissiale y diminue drastiquement au cours du temps.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Desserte_Haut.pdf}
+	\caption{Couverture de la desserte paroissiale.}
+	\label{fig:results-paroisses-desserte}
+\end{figure}
+
+\bigskip
+
+Dans cette dimension d'analyse, SimFeodal parvient entièrement à reproduire le double fait stylisé recherché : fixation et dissémination du peuplement.
+Pourtant, plus encore que pour les dimensions précédentes, il nous paraît extrêmement difficile d'aller plus loin dans le calibrage du modèle.
+La raison en est principalement la difficulté de l'évaluation de ces phénomènes.
+Parmi les indicateurs de sortie de simulation étudiés, ceux de cette dimension sont les plus intrinsèquement spatio-temporels, et se prêtent très mal à des indicateurs synthétiques quantitatifs.
+Certes, le champ de l'analyse spatiale s'est en partie constitué pour répondre à ce type de problème, en trouvant des mesures synthétiques et hétérogènes permettant de décrire et de comparer des semis de points, correspondent-ils à des entités ou à des époques différentes.
+Pourtant, et on y reviendra plus extensivement dans le chapitre suivant, on constate ici une limite importante de notre méthode d'évaluation des simulations.
+Un espace théorique, simulé et très variable localement comme celui de SimFeodal se prête en effet extrêmement mal à une agrégation de données, puisque les différentes réplications d'un modèle ne partagent pas véritablement de référentiel spatial commun en dehors des limites du monde simulé.
+
+Pour pousser l'évaluation et être en mesure de comparer de nouvelles simulations par le biais des indicateurs présentés ici, au moins pour ceux relatifs à la fixation et dissémination, il faudrait sans doute mener des études de cas plus approfondies, par exemple en suivant des ensembles de foyers paysans ou d'agrégats tout au long des simulations pour analyser plus finement leur comportement.
+Mais même alors, le manque de sources empiriques se ferait fortement ressentir : on pourrait peut-être isoler la différence entre des simulations, mais serait-il vraiment possible de les départager ?
+
+
+
+
+
+
 
 
 \clearpage
@@ -476,7 +565,9 @@ De manière plus générale, une analyse de sensibilité quantitative requiert �
 Dans cette partie, nous nous en tiendrons à une analyse de sensibilité grossière, orientée vers une évaluation visuelle, à l'instar des autres démarches d'évaluation du modèle mises en places.
 Nous nous inscrivons pleinement dans le raisonnement de \citeauteur{hirtzel2015exploration}, d'autant plus que le dit raisonnement est tenu dans une thèse dont l'analyse de sensibilité de modèles descriptifs est l'un des enjeux principaux :
 \begin{quotation}
-	\og Ces différents constats nous ont conduit à procéder à des analyses de sensibilité locales, avec la méthode OAT [idem \textit{OFAT}], en modifiant les valeurs de chacun des paramètres les unes après les autres, toutes choses égales par ailleurs, c’est-à-dire tous les autres paramètres étant fixés à leur valeur par défaut \textelp{}.
+	\og Ces différents constats nous ont conduit à procéder à des analyses de sensibilité locales, avec la méthode OAT\footnote{
+		[C'est un autre acronyme de \og \textit{one factor at a time}\fg{}, identique à \textit{OFAT} que nous utilisons dans cette partie.]
+	}, en modifiant les valeurs de chacun des paramètres les unes après les autres, toutes choses égales par ailleurs, c’est-à-dire tous les autres paramètres étant fixés à leur valeur par défaut \textelp{}.
 	Ce choix n’est pas unique dans la modélisation individu-centrée : la méthode OAT est utilisée dans plusieurs travaux en géographie ou en écologie (Ginot et al., 2006; Sanders et al., 2006; Laperrière et al., 2009; Schouten et al., 2014).
 	
 	Nous n’avons pas jugé indispensable le calcul d’indices de sensibilité pour étudier la sensibilité des résultats de simulation aux différents paramètres du modèle.
@@ -953,7 +1044,7 @@ Sans aller plus loin sur cet exemple, on peut penser qu'il s'agit des valeurs de
 À partir de cet histogramme, nous avons isolés les \textit{outliers} et en présentons une représentation graphique dans la \cref{fig:sensib-alea}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/sensiblite_alea_outliers.pdf}
+	\includegraphics[width=\linewidth]{img/sensibilite_alea_outliers.pdf}
 	\caption{Paramètres présentant des sensibilités atypiques à l'aléa.}
 	\label{fig:sensib-alea}
 \end{figure}
