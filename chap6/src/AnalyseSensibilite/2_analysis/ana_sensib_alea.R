@@ -175,5 +175,5 @@ alea_new <- randomness %>%
         panel.grid.minor.y = element_blank()
   )
 
-ggsave(alea_new, filename = "../3_results/sensiblite_alea_outliers.pdf", width = 20, height = 15, units = "cm", scale = 1.35)
-
+ggsave(alea_new, filename = "../3_results/sensibilite_alea_outliers.pdf",width = 20, height = 15, units = "cm", scale = 1.35)
+#extrafont::embed_fonts("../3_results/sensibilite_alea_outliers.pdf")
