@@ -116,7 +116,9 @@ sorting=nyt % Citations dans biblio : NameYearTitle
 % ######### TABLES AVEC FIGURES #########
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \newcolumntype{N}{@{}m{0pt}@{}}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{tikz}
+\usepackage{makecell}
 \usetikzlibrary{calc,shapes,arrows}
 \newcommand{\tikzmark}[1]{%
 	\tikz[overlay,remember picture] \node (#1) {};}
