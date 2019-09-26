@@ -24,13 +24,14 @@ Dans le présent chapitre, nous revenons, de manière réflexive sur cette expé
 Cela doit nous permettre d'en faire émerger les atouts, les difficultés, mais aussi d'y discerner les particularités, liées à ce modèle spécifique, vis-à-vis du cadre plus générique de la modélisation.
 La diversité des points de vue présentés dans cette thèse -- conceptuel, théorique, méthodologique ou encore technique -- nous paraissent ici devoir être mobilisés à nouveau au sein de ce retour global sur une expérience collective inscrite dans la longue durée.
 
-On a plusieurs fois insisté, notamment dans les chapitres 3 et 4, sur le fait qu'il est difficile de séparer chronologiquement la construction et le paramétrage d'un modèle d'une part, et son évaluation et exploration d'autre part, tant ces tâches s'inscrivent en fait dans une spirale d'allers-retours constants.
-La discrétisation de ce continuum est forcément artificielle, mais toutefois nécessaire pour le décrire de manière linéaire au sein d'une narration.
+On a plusieurs fois insisté, notamment dans les \hl{chapitres 3 et 4}, sur le fait qu'il est difficile de séparer chronologiquement la construction et le paramétrage d'un modèle d'une part, et son évaluation et exploration d'autre part.
+Ces tâches s'inscrivent en effet dans une spirale d'allers-retours constants.
+La discrétisation de ce continuum est forcément artificielle, mais nécessaire pour le décrire de manière linéaire au sein d'une narration.
 Dans cette thèse, cette narration s'est exprimée chronologiquement, présentant d'abord le modèle, son évolution, puis la méthodologie mise en place pour l'évaluer et l'explorer, autour du cadre théorique des (geo)visual analytics.
 
 Au sein de ce chapitre, nous inversons cet ordre, en présentant d'abord les retours liés à l'exploration visuelle des données de simulation, et seulement après cela les retours plus conceptuels sur le processus de co-construction interdisciplinaire d'un modèle.
 Cette inversion s'explique par la prépondérance que nous accordons à la visualisation des données dans le processus d'ensemble qu'est la construction d'un modèle.
-L'approche visuelle nous paraît en effet être tout à la fois une interface disciplinaire efficace et une condition préalable indispensable à l'expérience de modélisation collective, qui plus est interdisciplinaire et caractérisée par une forte hétérogénéité de cultures scientifiques.
+L'approche visuelle nous paraît être tout à la fois une interface disciplinaire efficace et une condition préalable indispensable à l'expérience de modélisation collective, qui plus est interdisciplinaire et caractérisée par une forte hétérogénéité de cultures scientifiques.
 
 \clearpage
 \let\orisectionmark\sectionmark
@@ -39,7 +40,8 @@ L'approche visuelle nous paraît en effet être tout à la fois une interface di
 \orisectionmark{Retour sur l'analyse de données de simulation}
 \let\sectionmark\orisectionmark
 
-L'évaluation des données issues de SimFeodal a été inscrite dans plusieurs cadres méthodologiques : la visualisation de données (\textit{InfoVis}), l'analyse exploratoire de données (\textit{EDA}) et les (\textit{geo})\textit{visual} \textit{analytics} d'une part, mais aussi, d'autre part, la démarche de \textit{face validation} et d'évaluation visuelle défendue dans les \hl{chapitres 3 et 5}.
+L'évaluation des données issues de SimFeodal a été inscrite dans plusieurs cadres méthodologiques :
+la visualisation de données (\textit{InfoVis}), l'analyse exploratoire de données (\textit{EDA}) et les (\textit{geo})\textit{visual} \textit{analytics} d'une part, mais aussi, d'autre part, la démarche de \textit{face validation} et d'évaluation visuelle défendue dans les \hl{chapitres 3 et 5}.
 Les premiers sont utilisables avec toutes les données numériques, y compris spatio-temporelles à l'instar des données de sortie de SimFeodal.
 Les seconds tiennent plus à la démarche de modélisation en tant que telle, quand bien même là aussi extensible à tout type de modélisation (simulation, mais aussi modélisation statistique, mathématique\ldots)
 Il nous semble toutefois important, dans cette partie, de revenir sur le cas spécifique que constituent les données issues de simulation, et en particulier en ce que cela implique en matière de visualisation.
@@ -75,10 +77,11 @@ Explorer le modèle, c'est ainsi, avant tout, comprendre les effets croisés des
 
 \noindent Dans un second temps, l'exploration de données peut entrer dans des analyses plus fines, en cherchant par exemple à discerner des groupes d'unités aux comportements différents, des \textit{outliers}, des variables aux relations inattendues\ldots
 En sciences humaines et sociales, cette période de l'analyse est souvent l'occasion d'observer les résidus de modèles statistiques, afin d'entrer dans une caractérisation plus fine des particularités de certaines entités, spatiale ou non.
-La démarche est encore une fois la même dans l'exploration de modèles : après avoir dégagé les tendances générales, on peut changer d'échelle d'observation, en observant par exemple le comportement individuel de certains agents, ou en faisant varier plus finement certains paramètres pour en observer les influences sur le déroulé de la simulation.
+La démarche est encore une fois la même dans l'exploration de modèles :
+	après avoir dégagé les tendances générales, on peut changer d'échelle d'observation, en observant par exemple le comportement individuel de certains agents, ou en faisant varier plus finement certains paramètres pour en observer les influences sur le déroulé de la simulation.
 Là encore, la première phase d'étude, agrégée, intervient comme un filtre ou un modèle nul, dont on cherche ensuite à caractériser les écarts ou la composition désagrégée.
 Dans le chapitre précédent,l'analyse de sensibilité illustrait assez largement cette démarche.
-La première phase, de filtrage des paramètres, permettait de mettre en évidence notamment les covariations habituelles des indicateurs de sortie selon les valeurs de paramètres mobilisées.
+La première phase, de filtrage des paramètres, permettait de mettre en évidence notamment les co-variations habituelles des indicateurs de sortie selon les valeurs de paramètres mobilisées.
 La phase d'analyse visuelle, plus précise, étudiait plus avant le détail de ces variations, et permettait même de mettre en évidence des co-variations inverses à celles de la majorité des cas (retrouver exemple).
 
 \noindent Les démarches d'analyse exploratoire de données et de l'exploration de modèles sont donc très similaires, appliquant les mêmes méthodes à des objets différents.
@@ -108,8 +111,8 @@ Le \cref{tab:donnees-intermediaires} exemplifie l'éventail de données qui exis
 	\label{tab:donnees-intermediaires}
 \end{table}
 
-\noindent Dans la ligne grisée, les données sont trop massives pour être traitées de manière classique, mais restent toutefois contenues dans des volumes informatiques que l'on peut est souvent amenés à manipuler (fichiers de films, logiciels\ldots).
-Ce sont ces données que l'on peut nommer \og données intermédiaires\fg{} : elles sont d'une taille largement contenue, mais constituent toutefois déjà des obstacles techniques difficiles à franchir sans faire appel à des méthodes d'archivage et d'analyse récentes.
+\noindent Dans la ligne grisée, les données sont trop massives pour être traitées de manière classique, mais demeurent contenues dans des volumes informatiques que l'on peut est souvent amenés à manipuler (fichiers de films, logiciels\ldots).
+Ce sont ces données que l'on peut nommer \og données intermédiaires\fg{} : elles sont d'une taille largement praticable, mais constituent toutefois déjà des obstacles techniques difficiles à franchir sans faire appel à des méthodes d'archivage et d'analyse récentes.
 
 \noindent Ce tableau peut facilement être comparé au \hl{tableau 5.X}\footnote{
 	Corriger référence dans chapitre 5, quand le tableau issu du manuel de modélisation aura été mis à jour.
@@ -140,7 +143,7 @@ Ce sont ces données que l'on peut nommer \og données intermédiaires\fg{} : el
 	%\end{table}
 }, où l'on montrait la massification des données issues de simulation au fur et à mesure de l'exploration d'un modèle.
 Les données issues de simulation s'inscrivent tout à fait dans les mêmes problématiques que ces \og données intermédiaires\fg{}.
-Les données issues de simulations ne sont ainsi pas des \textit{big data}, car elles ne sont ni véloces ni variables ou imprévisibles, mais leur masse requiert tout de même des outils adaptés, tant pour leur archivage que pour leur interrogation.
+Les données issues de simulations ne sont pas des \textit{big data}, car elles ne sont ni véloces, variables ou imprévisibles, mais leur masse requiert tout de même des outils adaptés, tant pour leur archivage que pour leur interrogation.
 Les solutions mises en place pour leur analyse (\hl{chapitre 5}) sont d'ailleurs précisément des solutions pensées pour ces données intermédiaires, où les infrastructures de type \og bases de données analytiques\fg{} se distinguent.
 
 \paragraph{Quelles spécificités des données de simulation ?}
@@ -170,7 +173,8 @@ L'ambition de la plateforme décrite (\textsf{VisuAgent}) était ainsi de focali
 
 
 \noindent Dans le cadre de données de simulation, qui plus est quand l'espace est continu\footnote{
-	Pour les données spatiales discrètes, par exemple quand l'espace prend la forme de cellules ou d'un maillage établi (régions, états\ldots), on peut mettre en place des systèmes graphiques de représentation de la forme des distributions d'une variable. Voir \textcite{ribecca_chart_2018} par exemple.
+	Pour les données spatiales discrètes, par exemple quand l'espace prend la forme de cellules ou d'un maillage établi (régions, états\ldots), on peut mettre en place des systèmes graphiques de représentation de la forme des distributions d'une variable.
+	Voir \textcite{ribecca_chart_2018} par exemple.
 }, on ne peut réaliser d'agrégations des données sur la dimension spatiale que quand celle-ci est stable.
 Dans un modèle comme SimFeodal, où l'espace est théorique, l'agrégation n'est pas possible car la répartition spatiale des agrégats, châteaux et églises change à chaque simulation.
 La \cref{subfig:agreg-espace} illustre ce problème en présentant deux sorties de simulation théoriques, très proches en termes d'évolution, d'espacement, de structure globale, mais dont on ne peut tirer une représentation agrégée.
@@ -187,7 +191,9 @@ Nous reprenons ici quelques uns des arguments qui nous paraissent importants en 
 \paragraph{La visualisation de modèle comme outil d'interdisciplinarité}
 Les modélisateurs savent l’importance du dialogue dans la construction d’un modèle.
 Dans son principe 2, \textcite[77]{banos_pour_2013} l’explicite ainsi :
-\og Le modélisateur doit avoir conscience du caractère fondamentalement limité de ses compétences. Ce qui peut être perçu comme une faiblesse est pour moi une force. Assumée, cette réalité mène naturellement à la collaboration. De manière très générale, je dirais même que modéliser un système complexe est un acte par essence collaboratif\fg{}.
+	\og Le modélisateur doit avoir conscience du caractère fondamentalement limité de ses compétences.
+	Ce qui peut être perçu comme une faiblesse est pour moi une force. Assumée, cette réalité mène naturellement à la collaboration.
+	De manière très générale, je dirais même que modéliser un système complexe est un acte par essence collaboratif\fg{}.
 
 \noindent La visualisation est un outil de communication au service de la transmission et de la diffusion d’un message.
 Sans prise en compte de sa réception par ses lecteurs, le risque est important de concevoir un média peu compréhensible et donc peu utile.
@@ -217,7 +223,9 @@ Ces deux communautés communiquent peu, et cette situation n'est pas vraiment no
 }, que l'on considère l'approche de modélisation graphique bien connue des géographes\footnote{
 	Par exemple autour de la chorématique de \textcite{brunet1980composition}.
 }, ou encore que l'on s'intéresse au rôle de la cartographie en géographie\footnote{
-	Par exemple chez \textcite[246--247]{pinchemel_geographie_1979}, pour qui \og seule la représentation cartographique fait ressortir les organisations géographiques, les structures et les systèmes géographiques. La carte, le langage cartographique apparaissent aussi comme l'expression, comme le révélateur privilégiés de la géographie. La pensée géographique se lit dans les représentations cartographiques\fg{}.
+	Par exemple chez \textcite[246--247]{pinchemel_geographie_1979}, pour qui \og seule la représentation cartographique fait ressortir les organisations géographiques, les structures et les systèmes géographiques.
+	La carte, le langage cartographique apparaissent aussi comme l'expression, comme le révélateur privilégiés de la géographie.
+	La pensée géographique se lit dans les représentations cartographiques\fg{}.
 }, il est difficile de ne pas voir dans la représentation graphique une certaine forme de modélisation de phénomènes sociaux ou spatiaux.
 L'exploration visuelle, composée d'une succession de compositions graphiques que l'on raffine, transforme et dont on change le point de vue, est alors en tout point similaire au processus de construction d'un modèle de simulation \autocite{andrienko2018viewing}.
 
@@ -237,10 +245,12 @@ L'itération est, nous semble-t-il, au cœur de toute démarche de modélisation
 \noindent L'exploration visuelle de modèles s'inscrit elle aussi dans une logique très comparable, en favorisant également cette posture itérative et abductive \autocite[\ppno~239--240]{banos2005voie}, présente dès les fondements de l'analyse exploratoire de données.
 
 \paragraph[Ccl : Modélisation et visualisation]{}
-Dans le cadre d'une activité de modélisation, la visualisation permet, on l'a vu, des allers-retours thématiques et méthodologiques entre modélisateurs et thématiciens, mais doit aussi s'adapter aux différentes évolutions du modèle : les modifications des sorties, des mécanismes, de l'ordonnancement etc. ont des conséquences en matière de visualisation, puisqu'elles affectent les données sur lesquelles celles-ci se fondent.
+Dans le cadre d'une activité de modélisation, la visualisation permet, on l'a vu, des allers-retours thématiques et méthodologiques entre modélisateurs et thématiciens, mais doit aussi s'adapter aux différentes évolutions du modèle :
+	les modifications des sorties, des mécanismes, de l'ordonnancement etc. ont des conséquences en matière de visualisation, puisqu'elles affectent les données sur lesquelles celles-ci se fondent.
 Quand bien même les données issues du modèle ne seraient pas amenées à évoluer, on peut concevoir la réalisation d'un processus de visualisation ou d'exploration visuelle dans les mêmes termes que le processus de modélisation \autocite{andrienko2018viewing}.
 La visualisation de données issues du modèle est donc en elle-même un processus itératif, et permet de plus de renforcer cette itération en permettant au modèle d'évoluer à mesure que les visualisations éclairent sa compréhension.
-L'exploration visuelle permet donc de gagner en compréhension sur le modèle, son objectif premier, mais aussi sur le système modélisé : en inscrivant le processus de modélisation-visualisation dans une boucle de rétroaction, on aboutit sur de nouvelles connaissances à propos du système-cible (\cref{fig:schema-va}).
+L'exploration visuelle permet donc de gagner en compréhension sur le modèle, son objectif premier, mais aussi sur le système modélisé :
+	en inscrivant le processus de modélisation-visualisation dans une boucle de rétroaction, on aboutit sur de nouvelles connaissances à propos du système-cible (\cref{fig:schema-va}).
 Comme le résume \textcite{victor_simulation_2009} à propos de l'exploration visuelle, interactive dans son cas, de modèles : \og Model, Watch, Learn\fg{}.
 
 \begin{figure}[H]
@@ -264,7 +274,9 @@ Dans les paragraphes suivant, nous proposons quelques pistes pour améliorer les
 Une première piste, plusieurs fois évoquées auparavant, tient à l'usage de méthodes d'exploration de modèle plus automatisées et systématiques.
 Ces méthodes, relatives à de la validation interne (cf. \hl{chap 3}), permettent d'obtenir une compréhension plus globale et fine à la fois du modèle.
 Dans la description de l'analyse de sensibilité de SimFeodal (\hl{chap 6.2}), on précisait que nous nous étions restreint à une analyse de type \og one factor at a time\fg{}, sans faire covarier les valeurs de paramètres.
-Dans le cadre d'un modèle véritablement complexe, qui plus est doté de très nombreux paramètres qui conditionnent des mécanismes dont l'interaction est importante (voir par exemple les paramètres agissant de manière contre-intuitive, 6.2.3), il est évident que modifier chaque paramètre indépendamment des autres n'esquisse qu'une faible part de la variabilité que ceux-ci peuvent avoir sur les sorties du modèle.
+Dans le cadre d'un modèle véritablement complexe, qui plus est doté de très nombreux paramètres qui conditionnent des mécanismes dont l'interaction est importante\footnote{
+ Voir par exemple les paramètres agissant de manière contre-intuitive, \hl{6.2.3}.
+}, il est évident que modifier chaque paramètre indépendamment des autres n'esquisse qu'une faible part de la variabilité que ceux-ci peuvent avoir sur les sorties du modèle.
 Au contraire, une analyse de sensibilité croisée, testant automatiquement différentes combinaisons de paramètres, permettrait de connaître de manière plus approfondie la gamme de réactions du modèle à des changements de paramètres.
 
 \noindent Le principal défaut des méthodes croisées tient aux risques d'explosion combinatoire, qui plus est avec un modèle doté de très nombreux paramètres.
@@ -279,7 +291,8 @@ De plus, l'exemple de l'exploration de l'espace des paramètres du modèle Simpo
 Sur un modèle moins parcimonieux, le temps nécessaire serait immense, sans même compter la consommation électrique correspondante.
 Pour SimFeodal, l'apport de connaissances et le raffinement de l'évaluation justifient-ils un tel coût ?
 Il nous semble que ces méthodes sont strictement inapplicables en l'état actuel du modèle, mais avec un important travail de réduction des paramètres et de quantification et synthèse des indicateurs de sortie, elles pourraient apporter des connaissances intéressantes sur le modèle et aider à le rendre plus générique.
-Enfin, vu la complexité des données que ces méthodes peuvent produire, il serait à nouveau utile de mener des phases d'exploration et d'interprétation, visuelle notamment, de leurs résultats : quelle que soit la complexité et l'efficacité des méthodes de fouille automatique de données ou de modèles, il semble inévitable d'avoir à en mener des analyses de plausibilité visuelle pour en vérifier ou en comprendre les conclusions.
+Enfin, vu la complexité des données que ces méthodes peuvent produire, il serait à nouveau utile de mener des phases d'exploration et d'interprétation, visuelle notamment, de leurs résultats.
+Quelle que soit la complexité et l'efficacité des méthodes de fouille automatique de données ou de modèles, il semble inévitable d'avoir à en mener des analyses de plausibilité visuelle pour en vérifier ou en comprendre les conclusions.
 Une plateforme telle que SimEDB serait entièrement adaptée à l'exploration visuelle des sorties de ces modèles de modèle.
 
 \paragraph{Validation externe : données empiriques et confrontation}
@@ -300,19 +313,24 @@ Ces deux approches partent de données historiques et archéologiques pour conce
 	\label{fig:JIG}
 \end{figure}
 
-\noindent \textcite{gravier_deux_2018} prend appui sur la constitution de bases de données harmonisées, d'une résolution très fine et tendant vers l'exhaustivité afin d'estimer statistiquement, entre autre, l'importance relative de différents lieux au regard de leurs relations et interactions.
+\noindent \textcite{gravier_deux_2018} prend appui sur la constitution de bases de données harmonisées, d'une résolution très fine et tendant vers l'exhaustivité.
+Elle mobilise ces données afin d'estimer statistiquement, entre autre, l'importance relative de différents lieux au regard de leurs relations et interactions.
 La diversité des sources archéologiques et historiques est donc importante, mais au service d'une seule question thématique, et l'hétérogénéité thématique des données est donc assez restreinte.
 L'étendue spatiale de la zone modélisée est importante, mais comme le questionnement thématique est très circonscrit, la qualité des données permet d'y apporter une réponse robuste.
-Appliqué à SimFeodal, il s'agirait donc d'aller vers la constitution de bases de données cherchant l'exhaustivité et la précision, sur une diversité de questionnements plus restreinte : s'intéresser à des phénomènes très spécifiques, mais en mener une collecte et une analyse très poussée.
+Appliqué à SimFeodal, il s'agirait donc d'aller vers la constitution de bases de données cherchant l'exhaustivité et la précision, sur une diversité de questionnements plus restreinte :
+	s'intéresser à des phénomènes très spécifiques, mais en mener une collecte et une analyse très poussée.
 On pourrait par exemple chercher des données correspondant à l'un des indicateurs du modèle, l'évolution de la distance moyenne à l'église paroissiale la plus proche par exemple.
 En se gardant d'incorporer ces données lors du calibrage du modèle, on pourrait alors constituer un jeu de données de test, composé de ces données empiriques précises, par lequel éprouver les données de sortie du modèle.
 
-\noindent À l'opposée, \textcite{nahassia_formes_2019} effectue une modélisation graphique à partir de connaissances théoriques, et éprouve les hypothèses qui en découlent, relative par exemple aux évolutions de localisation de différents types de structures intra-urbaines, en les confrontant aux riches données dont elle dispose pour la ville de Tours.
+\noindent À l'opposée, \textcite{nahassia_formes_2019} effectue une modélisation graphique à partir de connaissances théoriques, et éprouve les hypothèses qui en découlent, relative par exemple aux évolutions de localisation de différents types de structures intra-urbaines.
+L'évaluation de ses modèles graphiques consiste à confronter ces hypothèses aux riches données dont elle dispose pour la ville de Tours.
 La réduction de la masse de données ne se fait pas en restreignant la diversité thématique, mais en limitant le cas d'étude à une unique ville, point de départ d'une méthodologie reproductible et généralisable.
-En nous inspirant de cette approche, on pourrait par exemple chercher à collecter le maximum d'informations et de données sur une zone à l'étendue restreinte (une paroisse par exemple) et à nouveau, comme pour l'exemple précédent, utiliser comme critère d'ajustement la correspondance spécifique de l'une des sous-régions modélisées.
+En nous inspirant de cette approche, on pourrait par exemple chercher à collecter le maximum d'informations et de données sur une zone à l'étendue restreinte (une paroisse par exemple).
+Comme pour l'exemple précédent, on pourrait alors utiliser la correspondance spécifique de l'une des sous-régions modélisées comme critère d'ajustement.
 Cette réduction pourrait aussi être temporelle, en ne considérant comme \og crible intermédiaire\fg{}, comme dans la méthode POM \autocite{grimm_pattern-oriented_2005}, que l'accomplissement des faits stylisés choisis sur une partie limitée de la temporalité totale du modèle.
 
-\noindent Dans les deux cas, ces possibilités d'évolution de l'évaluation du modèle procèdent de manière finalement assez similaire : il n'est pas possible d'obtenir des éléments empiriques quantifiés sur l'ensemble de la diversité des processus modélisés, sur l'ensemble de la région et sur l'ensemble de la période.
+\noindent Dans les deux cas, ces possibilités d'évolution de l'évaluation du modèle procèdent de manière finalement assez similaire face à un problème commun.
+Il n'est en effet pas possible d'obtenir des éléments empiriques quantifiés sur l'ensemble de la diversité des processus modélisés, sur l'ensemble de la région et sur l'ensemble de la période.
 Une solution serait donc d'ajuster le modèle sur des sous-ensembles témoins de l'une ou plusieurs de ces dimensions (thématique, spatiale, temporelle).
 Cette approche est fréquemment utilisée pour les modèles statistiques prédictifs (scénarios démographiques et climatiques entre autre), qui peuvent par exemple avoir pour point de départ temporel une période relativement récente, et où on cherche à ce que les \og rétro-prédictions\fg{} collent aux données empiriques déjà connues au moment de la création du modèle.
 
@@ -320,11 +338,12 @@ Cette approche est fréquemment utilisée pour les modèles statistiques prédic
 \paragraph{Validation croisée : désancrer le modèle pour en évaluer la généricité}
 Une dernière piste, évoquée\noindent  dès les prémices de ce travail de thèse, consisterait à mener une évaluation par le biais de \og scénarios régionaux\fg{}.
 Dans le chapitre précédent, nous présentions une analyse de scénarios thématiques qui nous paraissent intéressants au regard des questionnements des archéologues et historiens de notre groupe de travail.
-Ces scénarios sont plausibles et doivent aider aussi bien à tester la robustesse du modèle face à des changements de valeurs de paramètres nets qu'à évaluer la réaction des interactions entre mécanismes dans des contextes thématiques légèrement différents (augmentation de la part des foyers paysans dépendants --serfs et esclaves--, hypothèses de croissance démographique\ldots).
+Ces scénarios sont plausibles et doivent aider aussi bien à tester la robustesse du modèle face à des changements de valeurs de paramètres nets qu'à évaluer la réaction des interactions entre mécanismes dans des contextes thématiques légèrement différents (augmentation de la part des foyers paysans dépendants -- serfs et esclaves --, hypothèses de croissance démographique\ldots).
 
 \noindent Les scénarios que nous entendons maintenant pour participer à l'évaluation du modèle seraient plutôt des scénarios régionaux, c'est-à-dire qu'ils viseraient à adapter les valeurs calibrées du modèle à d'autres contextes spatiaux et temporels.
 SimFeodal est un modèle qui se veut générique à l'Europe du Nord-Ouest, mais a été calibré sur une région particulière, la Touraine.
-En désancrant le modèle, c'est-à-dire en l'adaptant à une autre région dotée de paramètres différents, on pourrait ainsi procéder à une sorte de validation croisée (\textit{cross validation}) : si le modèle, une fois ses \textit{inputs} et paramètres de contexte adaptés à la description d'une autre région, produit des résultats plausibles pour les experts thématiciens de cette autre région, alors on peut penser que SimFeodal réussit à reproduire les faits stylisés recherchés de manière plus robuste qu'initialement.
+En désancrant le modèle, c'est-à-dire en l'adaptant à une autre région dotée de paramètres différents, on pourrait ainsi procéder à une sorte de validation croisée (\textit{cross validation}).
+Si le modèle, une fois ses \textit{inputs} et paramètres de contexte adaptés à la description d'une autre région, produit des résultats plausibles pour les experts thématiciens de cette autre région, alors on peut penser que SimFeodal réussit à reproduire les faits stylisés recherchés de manière plus robuste qu'initialement.
 On sait que les faits stylisés modélisés dans SimFeodal sont génériques à l'Europe du Nord-Ouest, mais selon des rythmes et des proportions propres à chaque région.
 Si l'on prend l'exemple d'un diocèse montagnard, on pourrait alors diminuer les différents seuils de distance paramétrés selon des connaissances d'experts, ici pour tenir compte du relief plus difficile aboutissant à temps de parcours augmentés.
 Aboutirait-on à une concentration plus lente, moins nette, ou au contraire est-ce que ce processus serait accéléré et augmenté ?
