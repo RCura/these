@@ -1,24 +1,22 @@
 \begin{table}[H]
-	\captionsetup{singlelinecheck=off}
 	\centering
 	\small
-	{\renewcommand{\arraystretch}{1.3}%
-	\begin{tabular}{|p{4.5cm}|p{2.1cm}|p{1.9cm}|p{4.5cm}|}
+	\resizebox{\textwidth}{!}{%
+	{\renewcommand{\arraystretch}{1.2}%
+	\begin{tabular}{|p{4.5cm}|p{2.1cm}|p{1.75cm}|p{4.5cm}|}
 		\hline
-		\textbf{Indicateur} & \textbf{Valeur attendue}\footnotemark & \textbf{Type} & \textbf{Dépendances directes}\footnotemark \\ \hline
-		\textit{Agrégats} & \textit{200} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
-		\rowcolor[HTML]{DCDCDC} \textit{Châteaux} & \textit{50} & Contextuel & probabilités de construction de châteaux (PS et GS) \\ \hline
-		\textit{Gros châteaux} & \textit{10} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
-		\rowcolor[HTML]{DCDCDC} \textit{Seigneurs} & \textit{200} & Contextuel & paramètre~dédié~: (\textsf{objectif\_nombre\_seigneurs}) \\ \hline
-		\textit{Églises paroissiales} & \textit{300} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
+		\textbf{Indicateur de sortie de simulation} & \textbf{Valeur attendue} & \textbf{Type} & \textbf{Dépendances directes} \\ \hline
+		\textit{Nombre d'agrégats} & \textit{200} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Nombre de châteaux} & \textit{50} & Contextuel & probabilités de construction de châteaux (PS et GS) \\ \hline
+		\textit{Nombre de gros châteaux} & \textit{10} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
+		\rowcolor[HTML]{DCDCDC} \textit{Nombre de seigneurs} & \textit{200} & Contextuel & paramètre~dédié~: (\textsf{objectif\_nombre\_seigneurs}) \\ \hline
+		\textit{Nombre d'églises paroissiales} & \textit{300} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
 		\textit{Distance moyenne entre églises} & \textit{3 000 m} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
 		\textit{Part de foyers paysans isolés} & \textit{20 \%} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
 		\textit{Augmentation de la charge fiscale des foyers paysans} & \textit{x 3} & Émergent & \multicolumn{1}{c|}{--} \\ \hline
 		\rowcolor[HTML]{DCDCDC} \textit{Nombre de Foyers Paysans} & 50 000 & Contextuel & nombre initial; taux de croissance\\ \hline
 		\rowcolor[HTML]{DCDCDC} \textit{Densité de population} & 8 feux/km² & Contextuel & nombre de foyers paysans ; taille du monde \\ \hline
-	\end{tabular}}
-	\caption{Les objectifs numériques, contextuels et émergents, de SimFeodal.}
+	\end{tabular}}}
+	\caption{Les indicateurs de sortie de simulation quantitatifs de SimFeodal.}
 	\label{tab:objectifs-types}
 \end{table}
-\footnotetext{Objectif en fin de simulation.}
-\footnotetext{Paramètres influant directement sur la valeur de l'indicateur.}
