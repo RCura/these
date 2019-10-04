@@ -25,13 +25,14 @@
 \chapter{Exploration du comportement de SimFeodal}
 \label{chap:chap6}
 \begin{center}
-	{\large Version \hl{2019-10-03}}
+	{\large Version \hl{2019-10-04}}
 \end{center}
 
 \begin{itemize}
 	\item 25/08/2019 : Rendu à Lena de tout sauf 6.3 (à faire après l'ECTQG).
 	\item 30/09/2019 : début reprises Lena
 	\item 03/10/2019 : fin reprise 6.1
+	\item 04/10/2019 : reprise 6.2.1 et 6.2.2
 \end{itemize} 
 
 \minitoc
@@ -187,7 +188,7 @@ Les historiens estiment que les niveaux de populations du XIII$^e$ siècle n'ont
 Il est de ce fait possible d'estimer que les niveaux de populations à l'issu de la période étudiée sont proches de celles, mieux connues empiriquement, du XVII$^e$ siècle.
 On a choisi de fixer un objectif de population, en fin de simulation (en 1200), à 40 000 foyers paysans, soit une densité d'environ 6.5 feu / km², ou encore d'environ 30 habitants/km².
 
-\hl{Mettre aussi nb de villes heritées de l'antiquité}
+%\hl{Mettre aussi nb de villes heritées de l'antiquité}
 
 La population initiale est bien plus difficile à estimer.
 Selon les sources\footnote{
@@ -212,7 +213,7 @@ Les paroisses sont ainsi autant des marqueurs spatiaux, témoins de la distribut
 Au sein du modèle, la transformation du maillage paroissial joue un rôle contextuel, conditionnant les migrations des foyers paysans, et un rôle émergent, que l'on observe à une échelle plus agrégée (densification ou étalement, rythmes de changements etc.)
 C'est le rôle contextuel que l'on a calibré, par l'intermédiaire des paramètres de contexte agissant sur la création et la localisation des paroisses, et non des paramètres régissant l'influence des paroisses sur les foyers paysans.
 
-\paragraph{Calibrer le nombre et l'espacement des paroisses \og rurales\fg{}}
+\paragraph{Calibrer le nombre et l'espacement des paroisses \og rurales\fg{}.}
 
 Pour le calibrage des paroisses \og rurales\fg{}, on se base surtout sur des aspects thématiques issus de connaissances archéologiques.
 On connaît ainsi, au moins pour la fin du XII$^e$ siècle, le nombre et la répartition spatiale de la plupart des paroisses de Touraine (en s'appuyant sur \textcite[31]{zadora-rio_paroisses_2008}, on considère dans le modèle qu'il y a environ 300 églises paroissiales).
@@ -233,7 +234,7 @@ Pour le calibrage, on a fait varier le paramètre  : diminuer la valeur de ce se
 Dans l'état actuel du modèle, le nombre de paroisses rurales est encore trop important au regard des connaissances empiriques (380 au lieu de 300, voir le \vref{tab:results-basique}), mais on n'a pas augmenté le seuil afin qu'il garde du sens sur le plan thématique.
 Le seuil est fixé à 20 foyers paysans, et thématiquement, on estime que cette quantité pouvait suffire à la création d'une nouvelle paroisse.
 
-\paragraph{Calibrer le nombre et la nombre et la hiérarchie des paroisses \og urbaines\fg{}}
+\paragraph{Calibrer le nombre et la nombre et la hiérarchie des paroisses \og urbaines\fg{}.}
 
 On dispose de moins de données empiriques pour les paroisses urbaines que pour les paroisses rurales.
 On sait que le nombre de paroisses d'une ville est à peu près corrélé à sa population (mais aussi à l'ancienneté de la ville par exemple).
@@ -267,8 +268,7 @@ Dans SimFeodal, les châteaux apportent une protection nécessaire aux foyers pa
 Leur quantité a donc une importance certaine sur le déroulement des simulations, et l'ajustement des châteaux revêt donc un intérêt majeur en termes d'élément structurant du contexte spatial dans lequel évoluent les foyers paysans.
 %Une exigence du paramétrage était que le nombre (et le type) de châteaux soit aussi stable que possible au regard des autres mécanismes du modèle et surtout des variations des autres paramètres.
 
-\paragraph{Nombre de châteaux}
-
+\paragraph{Nombre de châteaux.}
 Dans les premières versions du modèle, des seuils fixes, dépendant de la puissance des seigneurs, avaient ainsi été définis pour caractériser la probabilité de chaque seigneur de construire un château.
 Dès lors que les modifications du modèle ont amené à des changements dans la population des foyers paysans (le passage de 1 000 foyers paysans à 4 000, puis à 40 000 dans les versions les plus récentes, voir \hl{chapitre 2 et 4.1.4.4}), le nombre de châteaux a été fortement impacté.
 Les seuils étaient ainsi trop liés à des variables techniques (la puissance des seigneurs, qui dépend du nombre de foyers paysans du modèle), et donc le mécanisme n'était pas robuste aux évolutions du modèle.
@@ -299,8 +299,7 @@ En jouant sur les différents paramètres associés à la construction d'un châ
 	\label{fig:calibrage-chateaux-nb}
 \end{figure}
 
-\paragraph{Détail des types des châteaux}
-
+\paragraph{Détail des types des châteaux.}
 Le nombre de châteaux n'est toutefois pas la seule valeur empirique sur laquelle on essaie d'ajuster le contexte.
 En effet, dans SimFeodal, on distingue plusieurs catégories de châteaux, d'une part selon leur importance (gros et petits châteaux), et d'autre part selon le type de seigneurs qui les ont construits (petits ou grands seigneurs).
 L'importance des châteaux joue sur leur attractivité vis-à-vis des foyers paysans (un gros château contribue davantage à l'attractivité du pôle d'attraction qui le contient qu'un petit château).
@@ -558,14 +557,14 @@ Cette incertitude, ou au moins de manque de détail, est dû à la faiblesse de 
 À ce stade de maturité du modèle, il faudrait sans doute collecter de nouvelles sources historiques pour pouvoir raffiner le comportement du modèle, ou au moins, départager des simulations présentant de légères variations au niveau des indicateurs analysés dans cette sous-partie.
 
 \clearpage
-\subsubsection{Capacité du modèle à simuler la fixation et la dissémination du peuplement}
+\subsubsection{Capacité du modèle à simuler la fixation et la dissémination du peuplement \label{sssec:fixation-dissemination}}
 
 Dans ce dernier objectif thématique, on cherche à vérifier si le modèle parvient bien à reproduire le double processus de fixation des foyers paysans et de dissémination des peuplements dans l'espace.
 
 Dans le modèle, ces processus devraient s'exprimer sous la forme d'un accroissement des migrations (restructuration) suivi d'une diminution nette (fixation).
 Àu niveau d'observation des agrégats, on devrait observer une couverture croissante, de plus en plus dense, du monde simulé.
 
-\paragraph{Fixation des foyers paysans}
+\paragraph{Fixation des foyers paysans.}
 
 \begin{figure}[H]
 	\centering
@@ -620,7 +619,7 @@ En 1000 et après, les foyers paysans isolés représentent encore une part subs
 Après une première période de concentration arrive une période de choix hiérarchique pour les foyers paysans, où les différences d'attractivité des agrégats jouent alors un rôle prépondérant.
 Cela indique aussi qu'à partir de cette période, les agrégats sont pour la plupart pérennes et voient alors se mettre une compétition en place.
 
-\paragraph{Dissémination du peuplement}
+\paragraph{Dissémination du peuplement.}
 
 La répartition des paroisses, dans le modèle, constitue un observable intéressant pour évaluer la dissémination du peuplement.
 Comme les paroisses ont comme vocation de desservir la population des foyers paysans, elles constituent un proxy de sa répartition tout au long du temps.
@@ -755,31 +754,34 @@ Ce sont ces objectifs de compréhension plus fine du comportement du modèle que
 \section{Analyser la sensibilité de SimFeodal \label{sec:ana-sensib}}
 
 Parmi les nombreuses méthodes dédiées à l'évaluation de modèles, il en est une que l'on retrouve dans tous les manuels et dans la plupart des articles dédiés à la présentation de modèles.
-Il s'agit de l'analyse de sensibilité, catégorie en fait plurielle qui regroupent l'ensemble des méthodes voués à tester ou à explorer la stabilité d'un modèle face aux éléments qui le composent : poids des \textit{inputs} dans les résultats obtenus, variabilité des résultats selon les valeurs de paramètres choisies, variabilité des résultats due à l'aléa etc.
+Il s'agit de l'analyse de sensibilité, catégorie en fait plurielle qui regroupe l'ensemble des méthodes vouées à tester ou à explorer la stabilité d'un modèle face aux éléments qui le composent :
+poids des \textit{inputs} dans les résultats obtenus ; variabilité des résultats selon les valeurs de paramètres choisies ; variabilité des résultats due à l'aléa etc.
 Ces méthodes sont extrêmement nombreuses et constituent presque un champ scientifique entier, lié à l'évaluation de modèles, soient-ils à base d'agents ou statistiques.
 
 Parmi celles-ci, les méthodes les plus classiques \autocite[257]{crooks_agent-based_2019} visent à \og déterminer l'influence des paramètres sur les sorties du modèle.\fg{} \autocite[75]{ginot2005explorer}.
 Il s'agit de faire varier les valeurs des paramètres et de mesurer les écarts résultant dans les sorties.
 Le plus souvent, cette mesure est quantitative, par exemple sous la forme d'un \og indice de sensibilité\fg{} qui dépend des variations des sorties mais aussi de l'amplitude de la variation des paramètres\footnote{
 	Cette prise en compte de la variation des valeurs de paramètre, par exemple dans l'indice proposé par \textcite[258]{crooks_agent-based_2019} et dérivé de celui de \textcite{hamby_review_1994} (in \cite[201]{osullivan_spatial_2013}), permet de s'assurer, lors de la comparaison de la sensibilité des paramètres, que les valeurs comparées sont bien comparables.
-	Pour prendre l'exemple du modèle de Schelling, il s'agit de s'assurer qu'on ne compare par une variation de 0,1\% du seuil de tolérance avec une variation de 20\% dans la part d'espace vide.
+	Pour prendre l'exemple du modèle de Schelling, il s'agit de s'assurer qu'on ne compare pas une variation de 0,1\% du seuil de tolérance avec une variation de 20\% dans la part d'espace vide.
+	Dans ces indices, les amplitudes des valeurs testées sont en fait normalisées.
 }.
 
-Les analyses peuvent être menés en croisant des valeurs pour tous les paramètres, c'est-à-dire en analysant la sensibilité du modèle aux interactions entre paramètres.
-On peut aussi procéder paramètre par paramètre, en conservant par exemple des valeurs fixes pour un jeu de paramètre (issus de calibrage) de base et en faisant varier un unique paramètre à la fois (analyse de type \textit{OFAT}, \og \textit{one factor at a time}\fg{}).
+Les analyses peuvent être menées paramètre par paramètre, en conservant par exemple des valeurs fixes pour un jeu de paramètre (issus de calibrage) de base et en faisant varier un unique paramètre à la fois (analyse de type \textit{OFAT}, \og \textit{one factor at a time}\fg{}).
+On peut aussi procéder en croisant des valeurs pour tous les paramètres, c'est-à-dire en analysant la sensibilité du modèle aux interactions entre paramètres.
 
-Les analyses de sensibilités sont largement recommandées comme une pratique indispensable à la validation de modèle, mais nous avons décrit dans le \hl{chapitre 3} la démarche que nous avons préféré pour l'évaluation de SimFeodal.
-L'analyse de sensibilité est toutefois un outil extrêmement utile pour aider à la compréhension d'un modèle, sans chercher à en quantifier la validité.
+Les analyses de sensibilités sont largement recommandées comme une pratique indispensable à la validation de modèle : on les retrouve dans l'ensemble des schémas relatifs à la démarche d'évaluation du \hl{chapitre 3}.
+Au delà de la validation des modèles, ce type d'analyses constitue un outil extrêmement utile pour aider à la compréhension d'un modèle, sans nécessairement chercher à en quantifier la validité.
 Cette méthode repose sur l'exploration d'un modèle par le prisme de ses réactions face aux paramètres choisis, et permet ainsi de mener une étude approfondie de l'influence des paramètres.
 Dans certains modèles, une analyse de ce type a par exemple permis de rendre plus parcimonieux un modèle KISS, en mettant en lumière le peu d'influence d'un paramètre sur l'ensemble des sorties d'un modèle.
 C'est le cas dans le travail de thèse de \citeauteur{schmitt_modelisation_2014}, où une analyse de sensibilité a révélé la relative inutilité de l'un des 6 paramètres mobilisés dans le modèle SimpopLocal \autocite[224-225]{schmitt_modelisation_2014}.
-Dans le cadre d'un modèle exploratoire, où les très nombreux paramètres comportent vraisemblablement une part de redondance, l'ambition n'est pas de réduire la masse de paramètres, mais plutôt d'aider à comprendre lesquels ont la plus grande influence sur le modèle.
 
-Dans le cadre de SimFeodal, une analyse de sensibilité doit permettre, comme l'évaluation visuelle, de gagner en compréhension sur le modèle, et en conséquence sur les dynamiques modélisées.
+Dans le cadre d'un modèle exploratoire, où les très nombreux paramètres comportent vraisemblablement une part de redondance, l'ambition n'est pas de rechercher à réduire la masse de paramètres à tout prix, mais plutôt d'aider à comprendre lesquels ont la plus grande influence sur le modèle.
 
+Dans le cadre de SimFeodal, une analyse de sensibilité doit permettre de gagner en compréhension du modèle, et en conséquence, des dynamiques modélisées.
+
+
+%De manière plus générale, une analyse de sensibilité quantitative requiert à minima des objectifs quantitatifs synthétiques, hiérarchisés et parcimonieux, ce qui n'est pas la démarche empruntée dans SimFeodal.
 La nature exploratoire et descriptive de SimFeodal rend l'application des méthodes classiques de l'analyse de sensibilité assez difficile : les paramètres ne sont pas tous quantitatifs, certains fonctionnent par paires, par grappes etc.
-De manière plus générale, une analyse de sensibilité quantitative requiert à minima des objectifs quantitatifs synthétiques, hiérarchisés et parcimonieux, ce qui n'est pas la démarche empruntée dans SimFeodal.
-
 Dans cette partie, nous nous en tiendrons à une analyse de sensibilité grossière, orientée vers une évaluation visuelle, à l'instar des autres démarches d'évaluation du modèle mises en places.
 Nous nous inscrivons pleinement dans le raisonnement de \citeauteur{hirtzel2015exploration}, d'autant plus que le dit raisonnement est tenu dans une thèse dont l'analyse de sensibilité de modèles descriptifs est l'un des enjeux principaux :
 \begin{quotation}
@@ -795,92 +797,129 @@ Nous nous inscrivons pleinement dans le raisonnement de \citeauteur{hirtzel2015e
 \end{quotation}
 
 
-\subsection{Méthodologie - Analyse visuelle de sensibilité}
+\subsection{Méthodologie - Analyse visuelle de sensibilité.}
 
 Dans cette partie, nous décrivons et justifions brièvement la méthodologie mise en place pour l'analyse de sensibilité de SimFeodal.
 Les sources informatiques, précises, de la démarche sont disponibles dans le dépôt du modèle (\hl{mettre URL dossier}).
 Le détail des paramètres, les outputs du modèle, les traitements et les sorties graphiques sont disponibles quand à eux à cette adresse : \hl{depot these / anasensib}
 
-\subsubsection{Calcul de la sensibilité}
+\subsubsection{Calcul de la sensibilité.}
 
 Nous avons choisi de mener l'analyse de sensibilité de SimFeodal en empruntant l'approche \textit{OFAT}, c'est-à-dire en faisant varier les paramètres un par un.
-Dans un modèle complexe où les agents sont en interactions les uns avec les autres, cette approche est forcément biaisée et lacunaire au regard d'approches plus avancées comme les méthodes d'exploration de l'espace des paramètres.
-Pourtant, c'est la seule qui nous semblait applicable dans le cas de SimFeodal.
 Il convient en effet de rappeler que ce modèle est caractérisé par un nombre important de paramètres : près de 70.
-En ne choisissant que 5 valeurs pour chaque paramètre et pour croiser tous les paramètres, une analyse de type plan complet demanderait alors l'exécution de $5^{70} \times 20_{\text{[replications]}}$, soit environ $10^{50}$ simulations\ldots
+En ne choisissant que 5 valeurs pour chaque paramètre et pour croiser tous les paramètres, une analyse de type plan complet demanderait l'exécution de $5^{70} \times 20_{\text{[replications]}}$, soit environ $10^{50}$ simulations\ldots{}
+%Dans un modèle complexe où les agents sont en interactions les uns avec les autres, cette approche est forcément biaisée et lacunaire au regard d'approches plus avancées comme les méthodes d'exploration de l'espace des paramètres.
+Une approche plus simple, de type OFAT, nous paraît dès lors la seule  à être applicable dans le cas de SimFeodal.
 
-\paragraph{Paramètres}
 
+\paragraph{Paramètres.}
 Dans une analyse de sensibilité, le premier choix à faire concerne les paramètres à analyser.
 Dans les modèles statistiques ou KISS, l'analyse de chacun des paramètres est une évidence.
 Dans des modèles plus descriptifs tels que SimFeodal (ou les modèles analysés par \textcite{hirtzel2015exploration}), on procède souvent à une sélection des paramètres afin de réduire l'ampleur de la tâche.
 Par exemple, quand certains paramètres ont un ancrage empirique fort, on peut considérer qu'ils se comportent plus comme des constantes que comme des paramètres, n'auront jamais à varier, et ne requièrent ainsi pas d'être analysés.
 
 Dans SimFeodal, on aurait pu par exemple se passer d'analyser les paramètres de contexte les plus inscrits dans les connaissances empiriques.
-Pourtant, comme nous envisageons d'éprouver le modèle sur des scénarios hétérogènes, par exemple portant sur des régions et des périodes différentes, il nous a semblé important de tester aussi ces paramètres.
-On a opté pour une analyse de sensibilité de chacun des paramètres du modèle.
-SimFeodal comporte dans les faits 70 paramètres, mais en pratique, le nombre de paramètres sur lesquels on peu réaliser des analyse est plus faible.
-Ainsi, certains paramètres n'ont aucun sens quand mobilisés seuls.
+Pourtant, comme nous envisageons d'éprouver le modèle sur des scénarios susceptibles de faire varier tous les types de paramètres, par exemple portant sur des régions et des périodes différentes, il nous a semblé important de tester aussi ces paramètres.
+On a opté pour une analyse de sensibilité de l'ensemble des paramètres du modèle.
+SimFeodal comporte dans les faits 70 paramètres, mais en pratique, certains paramètres n'ont aucun sens quand ils mobilisés seuls.
 Par exemple, deux paramètres définissent le rayon minimum et maximum des zones de prélèvement.
 Il n'y a pas grand sens à faire varier l'un sans l'autre.
 Dans l'analyse de sensibilité, nous considérons ces deux paramètres comme un unique paramètre à analyser, qui ne prend pas la forme d'une valeur numérique simple, mais plutôt celle d'une étendue.
 
 Pour cette analyse de sensibilité, nous avons au final analysé 57 \og paramètres\fg{}, certains de forme numérique simple, d'autres sous formes d'étendues, et enfin quelques-uns ayant des structures plus complexes (étendues changeant au cours du temps par exemple).
 
-\paragraph{Méthode}
-
+\paragraph{Méthode.}
 La méthode choisie est simple : on définit un jeu de paramètres de base, issu du calibrage, et pour chacun des paramètres, on exécute un ensemble de simulations en faisant varier ce paramètre autour de sa valeur de base.
 Comme pour toute simulation d'un modèle stochastique, il est indispensable de procéder à des réplications de ces simulations.
 
 Comme le nombre de paramètres était déjà important, que le nombre de réplications (20) l'était lui aussi, on a choisi de mener une analyse de sensibilité assez réduite, en ne testant, pour chaque paramètre, que 5 valeurs différentes.
-Ce nombre est assez faible, mais amène déjà à l'exécution de $57_{\text{[paramètres]}} \times 5_{\text{[valeurs]}} \times 20_{\text{[réplications]}} = 5700$ simulations, ce qui est une quantité importante de simulations au regard de toutes celles qui ont été mené dans les étapes de paramétrage et d'évaluation visuelle du modèle.
+Ce nombre amène déjà à l'exécution de $57_{\text{[paramètres]}} \times 5_{\text{[valeurs]}} \times 20_{\text{[réplications]}} = 5700$ simulations, ce qui est une quantité importante de simulations au regard de toutes celles qui ont été menées dans les étapes de paramétrage et d'évaluation visuelle du modèle.
 
-\paragraph{Étendue}
-\label{par:etendue-parametres}
-
-Dans une analyse de sensibilité classique, on cherche à mener des variations de paramètres comparables, c'est-à-dire centrées autour des valeurs par défaut et présentant des variations relatives de de même ampleur.
+\paragraph{Étendue.}\label{par:etendue-parametres}
+Dans une analyse de sensibilité classique, on cherche à tester des variations de paramètres comparables, c'est-à-dire centrées autour des valeurs par défaut et présentant des variations relatives de même ampleur.
 Par exemple, pour un modèle dont le premier paramètre vaut 10 et le second 100, on cherchera à répartir les valeurs testées de manière comparable : 
-le premier paramètre sera testé aux valeurs 0, 5, 10, 15 et 20, et le second pour 0, 50, 100, 150 et 200.
+le premier paramètre sera testé aux valeurs [0, 5, 10, 15 et 20], et le second pour [0, 50, 100, 150 et 200].
 
 Dans un cas réel, cette règle est difficile à suivre : on a ici pris l'exemple de paramètres quantitatifs \og de stock\fg{}, qui ne sont comparables qu'entre eux.
 Dans SimFeodal, certains paramètres ont des structures bien plus difficilement comparables, à l'instar des étendues plus haut.
-Comment rendre comparable cinq variations autour de 10 et cinq variations autour de l'étendue [1500m; 5000m]?
-L'étendue des possibles transformations pour ces étendues est bien plus important : diminution, augmentation, translation\ldots
+Comment rendre comparable cinq variations autour d'un stock de 10 et cinq variations autour d'une étendue  de 1500 m à 5000 m ?
+L'étendue des possibles transformations pour ces étendues est bien plus important : diminution, augmentation, translation\ldots{}
+Contrairement aux variables de stocks qui ne comportent qu'une dimension, les étendues sont en effet composées de deux dimensions, et la quantité de variation possibles suit donc une loi de puissance.
 
 Ce problème se pose de manière plus importante encore pour les paramètres qui évoluent en fonction du temps.
-Par exemple, le paramètre , qui agit sur la satisfaction protection des foyers paysans, a une valeur composite (de type \textit{map}, voir \cref{lst:maps-gama} dans le \hl{chapitre 2}) qui vaut \og $0$ entre 800 et 940; $0.2$ en 960 ; $0.4$ en 980 ; $0.6$ en 1000 ; $0.8$ en 1020 ; et $1$ à partir de 1040\fg{}.
+Par exemple, le paramètre qui agit sur la satisfaction protection des foyers paysans, a une valeur composite (de type \textit{map}, voir \cref{lst:maps-gama} dans le \hl{chapitre 2}) qui vaut \og $0$ entre 800 et 940; $0.2$ en 960 ; $0.4$ en 980 ; $0.6$ en 1000 ; $0.8$ en 1020 ; et $1$ à partir de 1040\fg{}.
+C'est donc un paramètre à trois dimensions : une valeur (dimension 1) qui évolue selon des intervalles de temps (dimensions 2 et 3).
 Pour l'analyser dans son entièreté, il faudrait supprimer la variation en testant plusieurs valeurs, mais aussi changer le rythme de cette variation, en décaler l'étendue temporelle, en changer l'intensité etc.
 Sous bien des aspects, ce paramètre peut être considéré comme qualitatif, et les variations qu'on lui appliquera dans l'analyse de sensibilité ne peuvent être que très subjectives et intrinsèquement différentes.
 
 Face à ces difficultés, nous avons adopté une position générale acceptant la subjectivité, la non comparabilité, mais cherchant à explorer des valeurs \og caractéristiques\fg{} pour ce type de paramètres : activation et désactivation du mécanisme associé, valeur de base, et augmentation et diminution de l'ampleur de la valeur de paramètre.
-Dans l'ensemble, les valeurs de paramètres choisies (\hl{mettre les tableaux en annexe}) ne sont que peu comparables de manière numérique, mais cela n'empêche en rien qu'elles apportent un éclairage précieux sur le comportement du modèle en fonction de ses paramètres.
+Dans l'ensemble, les valeurs de paramètres choisies (\hl{mettre les tableaux en annexe}) ne sont que peu comparables de manière numérique, mais elles apportent un éclairage précieux sur le comportement du modèle en fonction de ses paramètres.
 
-\paragraph{\textit{Outputs}}
-
-Le \hl{chapitre 5} donnait des ordres de grandeur correspondant à la masse de données produites par le modèle pour une simulation, autour de 10 Mo.
+\paragraph{\textit{Outputs}.}
+Le \hl{chapitre 5} donnait des ordres de grandeur de la masse des données produites par le modèle, autour de 10 Mo pour une simulation.
 Avec 5700 simulations, un enregistrement complet des données aurait représenté plus de 50 Go de données et plus de 50 milliards de lignes de données à pré-traiter, intégrer et analyser dans la base de données.
-Pour une analyse qui n'est pas au cœur de notre démarche de co-construction, cela représentait un poids bien trop important.
-Nous avons choisi de réduire autant que possible la production d'indicateurs de sorties de simulations pour cette analyse de sensibilité.
+
+Cette masse de données pose des problème techniques tant que méthodologiques.
+Sur le plan technique, les solutions de stockage et d'interrogation de données utilisées pour l'exploration des données (\hl{chap 3.3}) ne sont pas adaptées à une telle masse, du moins sans avoir recours à des infrastructures physiques coûteuses (serveurs équipés de cartes graphiques extrêmement puissantes etc.).
+En termes de capacité d'archivage, il est donc obligatoire de réduire considérablement la masse des données.
+
+Sur le plan méthodologique, l'exploration visuelle de milliers de simulations organisées selon les variations des valeurs d'une soixantaine de paramètres nous semble répondre à des caractéristiques très particulières.
+Les méthodes et outils d'exploration interactive mis en place jusque là (\hl{chap 5.4}) ne sont pas adaptés à ce type d'usages.
+%Pour une analyse qui n'est pas au cœur de notre démarche de co-construction, cela représentait un poids bien trop important.
+Nous avons donc choisi, par soucis de lisibilité, de réduire autant que possible la production d'indicateurs de sorties de simulations pour cette analyse de sensibilité.
 
 Dans un premier temps, nous n'enregistrons l'état du modèle qu'à son pas de temps final (en 1200) plutôt que tout au long de son déroulement.
-On perd certes l'aspect dynamique et la possibilité de comparer les rythmes entre les simulations, mais comme l'analyse de sensibilité doit se concentrer sur aussi peu d'objectifs que possible, ce n'est pas véritablement gênant.
-Pour les mêmes raisons, on a aussi décidé de n'extraire que des données très agrégées du modèle : l'analyse de sensibilité s'appuie sur des résultats à l'échelle globale du modèle, et il n'est à ce moment nul besoin d'enregistrer les indicateurs individuels des agents du modèle.
+L'analyse de sensibilité doit se concentrer sur aussi peu d'objectifs que possible, et il n'est pas véritablement gênant de perdre l'aspect dynamique et la possibilité de comparer les rythmes du changement entre les simulations.
+Pour les mêmes raisons, on a décidé de n'extraire que des données très agrégées du modèle.
+L'analyse de sensibilité s'appuie sur des résultats à l'échelle globale du modèle, et il n'est pas utile, à ce stade de l'analyse, d'enregistrer les indicateurs individuels relatifs aux agents du modèle.
 
-La sélection des indicateurs agrégées a été assez rapide : on a choisit de reprendre les indicateurs numériques synthétiques, qui reprennent le tableau des objectifs présenté en \cref{tab:objectifs-types}.
-Parmi ceux-ci, on a conservé uniquement les 6 indicateurs \og émergents\fg{} : 
-nombre d'agrégats; nombre de grands châteaux; nombre d'églises paroissiales; distance moyenne entre églises paroissiales; part de foyers paysans isolés; augmentation de la charge fiscale
+\bigskip 
+\begin{encadre}{Différencier indicateurs contextuels et émergents.}{indicateurs-contextuels-emergents}
+Dans les chapitres précédents, on a présenté de manière extensive les objectifs -- dans tous les sens du terme -- poursuivis par le modèle.
+On mobilise des indicateurs de sortie de simulation pour rendre compte de l'état du modèle, et le but est que ces indicateurs soient proches des objectifs empiriques formulés.
+%Dans le chapitre \hl{2}, on décrivait l'objectif théorique du modèle, à savoir d'aider à la compréhension des phénomènes de restructuration spatiale du système de peuplement rural entre les IX$^e$ et XIII$^e$ siècles.
+%Dans le chapitre \hl{3}, nous présentions un ensemble d'indicateurs de sortie de simulation permettant de caractériser la situation finale à laquelle aboutit une simulation.
+Ces indicateurs peuvent être qualitatifs (courbes d'évolution\ldots) ou quantitatifs (taux atteints en fin de simulation).
+En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres de grandeur\ldots) sinon quantifiés (les indicateurs numériques), on esquissait une grille d'évaluation du modèle.
+
+Au sein de ces indicateurs de sortie de simulation, il est une distinction que l'on n’a pas encore réalisée, et qui nous semble indispensable pour l'analyse de la sensibilité du modèle, où il nécessaire de réduire autant que possible la quantité d'indicateurs calculés : le distinguo entre des indicateurs que l'on pourrait caractériser comme \og émergents\fg{}, et d'autres qui pourraient être qualifiés de \og contextuels\fg{}.
+
+\begin{itemize}
+	\item Le premier type, les indicateurs émergents, sont les indicateurs les plus classiques en modélisation agent : on s'attache à leur évaluation parce qu'ils sont entièrement générés par la combinaison et l'intrication des mécanismes du modèle.
+	Parvenir à obtenir des valeurs proches de ce que l'on peut observer sur le plan empirique dans ces modèles est un critère de validation d'un modèle, et donc potentiellement un signe d'acquisition de connaissance thématique ou théorique.
+	Par exemple, dans SimFeodal, le taux de foyers paysans dispersés en fin de simulation est un pur indicateur émergent : le modèle n'a nullement été paramétré ou calibré pour faire atteindre une certaine valeur à ce taux, et la valeur simulée donne des éléments d'interprétation thématique sur le modèle.
+	
+	\item Les indicateurs contextuels n'apportent aucune connaissance thématique.
+	Ils remplissent un rôle de cadrage pour les indicateurs émergents : le modèle est paramétré et calibré pour que ces indicateurs parviennent à un résultat pré-décidé.
+	Le calibrage des paramètres associés (c'est-à-dire des paramètres qui ont un impact majeur sur ces indicateurs) permet alors de définir un contexte dans lequel les indicateurs émergents pourront être exploités.
+	Dans SimFeodal, le nombre de foyers paysans en fin de simulation est un exemple d'indicateur de contexte.
+	Cette quantité est entièrement dépendante de deux paramètres (quantité initiale et taux de croissance), et peut ainsi être assimilée à un \textit{input}, c'est-à-dire ici un contexte au sein duquel les autres indicateurs s'exprimeront.
+\end{itemize}
+
+Dans le \cref{tab:objectifs-types}, nous présentons les indicateurs de sortie de simulation numériques présentés dans l'interface de SimEDB (voir \cref{chap:chap5}) et distinguons les indicateurs émergents des indicateurs contextuels.
+Si ces indicateurs ont une cohérence à être présentés conjointement au sein de SimEDB -- de par leur aspect synthétique --, leur traitement doit nécessairement être différent en matière d'évaluation du modèle.
+Dans le cadre d'une analyse de sensibilité où l'on essaye de n'enregistrer qu'un nombre très réduit d'indicateurs, il nous semble utile de ne pas conserver les indicateurs \og de contexte\fg{}.
+
+\input{chap6/img/tableau-types-objectifs.tex}
+\medskip
+\end{encadre}
+
+On a choisit de mener l'analyse de sensibilité sur les indicateurs numériques synthétiques, présentés dans le \cref{tab:objectifs-types}.
+Parmi ceux-ci, on a conservé uniquement les 6 indicateurs \og émergents\fg{} (\cref{enc:indicateurs-contextuels-emergents}): 
+nombre d'agrégats; nombre de grands châteaux; nombre d'églises paroissiales; distance moyenne entre églises paroissiales; part de foyers paysans isolés; et augmentation de la charge fiscale.
 	
 Dans la construction et l'évaluation du modèle, ce sont ces indicateurs que l'on a le plus observés, et s'ils n'informent pas sur l'ensemble des objectifs thématiques du modèle, ils permettent au moins de qualifier sommairement son comportement d'ensemble.
 
-\paragraph{Computation}
+\paragraph{Computation.}
+Dans une analyse de sensibilité portant sur autant de simulations, la masse de données n'est pas la seule difficulté technique.
+Le temps de calcul représente ainsi un obstacle qui peut devenir un véritable point de blocage, tant il peut s'allonger jusqu'à devenir irréalisable.
+Sur un ordinateur individuel, avec les valeurs de paramètre issues du calibrage, chaque simulation demande en moyenne (basse) 5 minutes de calcul.
+Multiplié par les 5700 simulations requises, l'exécution des simulations nécessaires à l'analyse de sensibilité réclame alors un temps de calcul de près de 20 jours sur un ordinateur individuel, sans véritable droit à l'erreur sous faute d'avoir à recommencer ce quasi-mois de calcul.
 
-Dans une analyse de sensibilité portant sur autant de simulations, la masse de données n'est pas la seule limite.
-Le temps de calcul l'est tout autant, sinon plus, tant il peut s'étendre rapidement.
-Sur un ordinateur individuel, avec les valeurs de paramètre décidées après calibrage, chaque simulation demande en moyenne 5 minutes de calcul.
-Multiplié par les 5700 simulations requises, l'exécution des simulations nécessaires à l'analyse de sensibilité réclame alors un temps de calcul de près de 20 jours sur un ordinateur individuel, sans véritable droit à l'erreur sous faute de recommencer ce quasi-mois de calcul.
-
-Pour que cette analyse soit effectuée dans un délai plus raisonnable, nous avons utilisé les capacités de calcul d'un serveur du laboratoire ainsi que d'un serveur de calcul géré par la TGIR Huma-Num.
-En distribuant les exécutions de simulation sur la quarantaine de processeurs informatiques que cela représentait au total, tout en laissant tourner les simulations uniquement de nuit pour ne pas gêner les autres utilisateurs de ces serveurs, toutes les simulations requises ont été exécutées en 3 jours, ce qui représente cette fois-ci un investissement temporel bien plus raisonnable.
+Pour que cette analyse soit effectuée dans un délai plus raisonnable, nous avons utilisé les capacités de calcul d'un serveur du laboratoire ainsi que d'un serveur de calcul géré par la TGIR Huma-Num\footnote{
+\href{https://www.huma-num.fr}{www.huma-num.fr}
+}.
+En distribuant les exécutions de simulation sur la quarantaine de processeurs que compte ce serveur, tout en laissant tourner les simulations uniquement de nuit pour ne pas gêner les autres utilisateurs de cet équipement collectif, toutes les simulations requises ont été exécutées en 3 jours, ce qui représente un investissement temporel bien plus raisonnable.
 
 \subsubsection{Analyse Quantitative - Filtrage des paramètres}
 
@@ -889,14 +928,15 @@ Il a été choisi de mener une première étape, quantitative, pour permettre de
 
 Pour cette étape, on a raisonné à l'échelle agrégée du paramètre, en cherchant à mesurer la variabilité des indicateurs de sortie choisis provoquée par la variation des valeurs de paramètres.
 
-\paragraph{Normalisation des objectifs}
+\paragraph{Normalisation des objectifs.}
 
-Un premier problème est que les indicateurs de sortie de simulation choisis, les objectifs, sont très hétérogènes en termes d'ordre de grandeur.
-Il était alors nécessaire de procéder à un \og centrage\fg{} des données issues de la simulation.
+Un premier problème est que les indicateurs de sortie de simulation choisis pour caractériser les objectifs dont les référentiels sont très différents.
+Une variation de 5 grands châteaux (objectif de 10) montre une sensibilité plus forte qu'une variation de 5 agrégats (objectif de 200).
+Il est alors nécessaire de procéder à un \og centrage \fg{} des données issues de la simulation.
 Ce centrage peut être effectué, classiquement, sur les valeurs obtenues, pour obtenir une moyenne valant 0, comme on le fait lors d'une normalisation classique de données.
 
 Pour l'étude de SimFeodal, nous avons préféré centrer les données de chaque indicateur relativement aux objectifs numériques identifiés.
-Par exemple, une simulation produisant 250 agrégats, quand l'objectif numérique est de 200, aura pour indicateur \og nombre d'agrégats\fg{} 50.
+Par exemple, une simulation produisant 250 agrégats, quand l'objectif numérique est de 200, aura la valeur de +50 pour l'indicateur \og nombre d'agrégats\fg{}.
 Cela permet de mesurer les comportements de manière plus thématique qu'un centrage statistique autour de 0.
 Pour chaque indicateur, on a soustrait à la valeur obtenue par simulation la \og valeur attendue\fg{}, identifiée thématiquement comme objectif (voir le \cref{tab:results-basique}).
 Après cela, pour chaque indicateur pris individuellement, les données générées par chaque simulation deviennent comparables.
@@ -904,11 +944,11 @@ Après cela, pour chaque indicateur pris individuellement, les données génér�
 Pour atteindre une comparabilité plus importante entre des données hétérogènes, on procède aussi usuellement à une \og réduction\fg{} des données, c'est-à-dire à la normalisation de leur variabilité (écart-type).
 Classiquement, cette étape consiste à diviser chaque résultat par l'écart-type.
 On obtient ainsi, pour chaque série de donnée, un écart-type de 1, qui permet alors de comparer la variabilité de ces séries hétérogènes.
-Comme pour le centrage, on a choisi de réduire les données en fonction de données connues plutôt qu'autour d'une valeur abstraire de 1.
+Comme pour le centrage, on a choisi de réduire les données en fonction de données connues plutôt qu'autour d'une valeur abstraite de 1.
 On a préféré pour cela se référer à nos données simulées de référence, c'est-à-dire issues des simulations présentées dans la première partie de ce chapitre, après calibrage.
-Les données centrées ont ainsi été ensuite divisées par l'écart-type mesuré sur les simulations de cette version de référence, pour chaque indicateur numérique.
+Les données centrées ont ainsi été ensuite divisées par l'écart-type mesuré sur les simulations de cette version de référence, pour chaque indicateur numérique, plutôt que par l'écart-type des simulations issues de l'analyse de sensibilité.
 
-Au final, ce procédé de normalisation est très proche d'une normalisation statistique classique, mais se base sur des valeurs qui ont un sens dans le modèle plutôt que sur les valeurs \og abstraites\fg{} que constituent une moyenne à 0 et un écart-type de 1.
+Au final, ce procédé de normalisation est très proche d'une normalisation statistique classique, mais se base sur des valeurs qui ont un sens dans le modèle plutôt que sur les valeurs \og abstraites\fg{} que constituent une moyenne à 0 et un écart-type de 1 : le référentiel est ici fixé à partir objectifs numériques, et la dispersion autour des résultats des simulations de la version calibrée du modèle présentée auparavant (\hl{section 6.1}).
 
 \vspace{-2em}\begin{flalign*}
 & \text{valeur\_normalis\'ee}_{\text{indicateur\_i}} = & 
@@ -919,11 +959,11 @@ Au final, ce procédé de normalisation est très proche d'une normalisation sta
 } &
 \end{flalign*}
 
-Ainsi conçue, la valeur normalisée permet une comparabilité au sein des indicateurs, mais aussi entre eux puisque les ordres de grandeur sont désormais similaires.
+Ainsi conçue, la valeur normalisée permet de comparer entre les valeurs des indicateurs puisque les ordres de grandeur sont désormais similaires.
 
-\paragraph{Calcul de la sensibilité}
+\paragraph{Calcul de la sensibilité globale des paramètres.}
 
-Comme les valeurs sont désormais normalisées, il est possible de mener des opération conjointes sur les différents indicateurs.
+Comme les valeurs sont désormais normalisées, il est possible de mener des opérations conjointes sur les différents indicateurs.
 On définit un indice global, intitulé \og sensibilité\fg{}, qui correspond à une moyenne, pour chaque paramètre, de ses valeurs normalisées dans chacun des indicateurs.
 Après le centrage, les valeurs deviennent négatives ou positives selon qu'elles sont inférieures ou supérieures aux objectifs.
 Pour un paramètre qui verrait des variations importantes, négatives et positives, le risque d'une moyenne est alors que la sensibilité calculée soit faible, le très positif compensant le très négatif.
@@ -931,63 +971,80 @@ Pour prévenir ce risque, on a choisi de calculer la sensibilité sur les valeur
 La sensibilité de chaque paramètre peut alors être définie comme suit :
 
 \vspace{-2em}\begin{flalign*}
-& \text{sensibilit\'e}_{\text{param\`etre}\_\upalpha} = \\
-& \frac{1}{n_{\text{indicateurs}}
-	\times n_{\text{valeurs\_param\`etres}\_\upalpha}
-	\times n_{\text{r\'eplications}}}
-\sum |\text{valeurs\_normalis\'ees}_{\text{param\`etre}\_\upalpha}|
+& \text{sensibilit\'e}_{\text{param\`etre}\_\upalpha} = &
+ \frac{
+		\sum |\text{valeurs\_normalis\'ees}_{\text{param\`etre}\_\upalpha}|
+	}{
+		n_{\text{indicateurs}}
+		\times n_{\text{valeurs\_param\`etres}\_\upalpha}
+		\times n_{\text{r\'eplications}}
+	}
 \end{flalign*}
 
-\paragraph{Sélection de paramètres}
+\paragraph{Sélection des paramètres à étudier.}
+Après avoir calculé la sensibilité des paramètres, on sera en mesure d'en sélectionner un sous-ensemble que l'on pourra analyser, visuellement, de manière plus approfondie.
+Pour isoler ce sous-ensemble, on cherchera à conserver une dizaine des paramètres à la plus forte sensibilité globale.
+Le nombre précis dépendra de la forme de la distribution de la sensibilité des paramètres : on cherchera avant tout à isoler des paramètres dont la sensibilité les différencie franchement des autres.
+On se basera pour cela sur une méthode subjective d'examen visuel des écarts entre les valeurs de sensibilité, tel qu'on peut le faire pour choisir un nombre de classes à étudier lors de l'exécution d'une classification ascendante hiérarchique.
 
-En calculant la sensibilité de chaque paramètre, on sera en mesure d'en sélectionner un sous-ensemble afin de procéder à une analyse visuelle de la sensibilité de ces derniers.
-Pour isoler ce sous-ensemble, on ne conservera que les paramètres à la plus forte sensibilité globale, en cherchant à en conserver une dizaine.
-Ce nombre est volontairement imprécis puisqu'il dépendra surtout de la forme de la distribution de la sensibilité des paramètres : on cherchera avant tout à isoler des paramètres dont la sensibilité les différencie franchement des autres.
-On se basera pour cela sur une méthode entièrement subjective d'examen visuel des écarts entre les valeurs de sensibilité, tel qu'on peut le faire pour choisir un nombre de classes à étudier lors de l'exécution d'une classification ascendante hiérarchique.
-
-Un risque de cette méthode est que certains indicateurs peuvent contribuer bien davantage que d'autres à la sensibilité d'ensemble, malgré la normalisation.
-Pour ne pas risquer de négliger des paramètres dont la sensibilité s'exprimerait uniquement sur certains indicateurs, on complètera la sélection de paramètres précédente par une sélection des trois paramètres les plus sensibles sur chacun des 6 indicateurs.
+Un risque de cette sélection à partir de la sensibilité globale est que certains paramètres, très influents sur un indicateur particulier, auraient une sensibilité globale assez moyenne ou faible, effet de resserrement des moyennes oblige.
+Pour ne pas risquer de négliger de tels paramètres, on complètera la sélection précédente par une sélection des trois paramètres les plus sensibles sur chacun des 6 indicateurs.
 
 \vspace{-2em}\begin{flalign*}
-& \text{sensibilit\'e}_{\text{param\`etre}\_\upalpha_{\text{indicateur\_i}}} = \\
-& \frac{1}{n_{\text{valeurs\_param\`etres}\_\upalpha}
+& \text{sensibilit\'e}_{\text{param\`etre}\_\upalpha_{\text{indicateur\_i}}} = &
+ \frac{
+ 	\sum |\text{valeurs\_normalis\'ees}_{\text{param\`etre}\_\upalpha_{\text{indicateur\_i}}}|
+ }{
+ n_{\text{valeurs\_param\`etres}\_\upalpha}
 	\times n_{\text{r\'eplications}}}
-\sum |\text{valeurs\_normalis\'ees}_{\text{param\`etre}\_\upalpha_{\text{indicateur\_i}}}|
 \end{flalign*}
 
-
-En considérant qu'une large partie de ces paramètres auront vraisemblablement déjà été isolés par le filtre sur la sensibilité globale, on devrait obtenir quelques paramètres supplémentaires sur lesquels mener l'analyse visuelle.
+Une large partie de ces paramètres auront vraisemblablement déjà été isolés par le filtre sur la sensibilité globale, mais cette méthode devrait permettre de sélectionner quelques paramètres supplémentaires sur lesquels mener l'analyse visuelle.
+On évitera en cela de laisser de côté un paramètre ayant un effet important quoi que sur un nombre réduit d'indicateurs seulement.
 
 \subsubsection{Analyse visuelle}
 
-Une fois les paramètres à étudier sélectionnés, on pourra alors mener une analyse visuelle pour comprendre l'influence des paramètres sur les indicateurs de sortie du modèle.
-Le nombre de paramètres étant réduit, il sera possible d'analyser l'importance de cette influence (la sensibilité), mais aussi sa cardinalité : en observant la réaction des indicateurs de sortie en fonction des valeurs de paramètre, on
-pourra noter les corrélations (visuelles).
+Une fois les paramètres à étudier sélectionnés, on pourra mener une analyse visuelle pour comprendre l'influence des paramètres sur les indicateurs de sortie du modèle.
+Le nombre de paramètres étant réduit, il sera possible d'analyser l'importance de cette influence (la sensibilité), mais aussi sa directoon : en observant la réaction des indicateurs de sortie en fonction des valeurs de paramètre, on pourra noter le sens des corrélations (visuelles) entre valeurs de paramètres et valeurs des indicateurs obtenus.
 
-Cette analyse visuelle de sensibilité s'inscrit ainsi dans une analyse à la fois technique et thématique de SimFeodal.
+Dans la \cref{fig:exemple-visu-sensib}, la sensibilité du paramètre $\alpha$ sur l'indicateur $n$ (haut droite) en constitue un exemple.
+On peut y voir que les valeurs de paramètres (modalités $\alpha1$ à $\alpha5$) ont un effet sur l'indicateur, et que cet effet montre une corrélation visuelle positive : les valeurs de l'indicateur $n$ augmentent dans le même sens que celles des modalités testées.
+Ce même paramètre $\alpha$, produit un effet opposé sur l'indicateur 1 : la corrélation y apparaît négative.
+
+Cette analyse visuelle de sensibilité s'inscrit dans une analyse à la fois technique et thématique de SimFeodal.
 Elle doit en effet permettre de gagner en compréhension sur les interactions entre paramètres et mécanismes.
-Cela devrait éclairer l'aspect technique, lié à la validation interne du modèle -- tel paramètre que l'on pense jouer sur tel mécanisme se comporte-t-il bien comme attendu ? -- et l'aspect thématique -- est-ce que la taille du monde simulé a 
+Cela devrait éclairer l'aspect technique, lié à la validation interne du modèle -- tel paramètre que l'on pense jouer sur tel mécanisme se comporte-t-il bien comme attendu ? -- et l'aspect thématique -- est-ce que la taille du monde simulé a un effet sur le rythme de la polarisation générée ? --.
 
 
-\paragraph{Visualisation}
+\paragraph{Visualisation.}
 
-L'objectif de la visualisation de la variation des paramètres est d'observer, pour chaque paramètre, comment ce dernier varie sur chacun des indicateurs.
+Dire qu'on voit deux choses : 
+- Différences de valeurs
+- Différences de variabilité
+
+L'objectif est d'étudier, visuellement, pour chaque paramètre, comment une variation de ce dernier influence chacun des indicateurs.
 Pour cela, on représente la variation due aux réplications de chaque paramètre au moyen de représentations visuelles dédiées à la variabilité, comme des \textit{box-plots} ou \textit{violin-plots}.
 La \cref{fig:exemple-visu-sensib} présente un exemple de mise en page de telles représentations graphiques afin de faciliter l'analyse de sensibilité visuelle.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.9\linewidth]{img/schema_violinplots_sensib.pdf}
-	\caption{Construction et mise en page de planches graphiques dédiés à l'analyse visuelle de la sensibilité des 5 modalités de $\upomega$ paramètres sur \textit{n} indicateurs.}
+	\includegraphics[width=\linewidth]{img/schema_violinplots_sensib.pdf}
+	\caption{Construction et mise en page de planches graphiques dédiées à l'analyse visuelle de la sensibilité de 5 modalités de $\upomega$ paramètres sur \textit{n} indicateurs.}
 	\label{fig:exemple-visu-sensib}
 \end{figure}
 
-\paragraph{Normalisation}
+Ces planches permettent de lire une double information.
+En premier lieu, la position relative des valeurs correspondant à chaque modalité permet de remarquer d'éventuelles influences des valeurs de paramètres sur les valeurs d'indicateur.
+Dans le schéma, on représente ainsi les \og différences de valeur\fg{} qui expriment une variabilité à la valeur du paramètre (exemple en haut à droite).
+Dans un second temps, et on y reviendra après (\cref{subsec:sensibilite-alea}), le choix des représentations en \textit{violin-plots} permet aussi d'étudier la variabilité interne des valeurs de paramètres testées sur chaque indicateur (exemple en bas à droite).
+Les différences d'amplitude (sur l'axe des ordonnées) exprime ainsi les différentes variabilités dues à l'aléa : plus les \og violons\fg{} sont grands, plus l'indicateur varie selon les réplications pour la valeur de paramètre testée.
 
-La normalisation des valeurs afin d'homogénéiser indicateurs et variation des paramètres était indispensable afin de garantir une comparabilité acceptable lors de l'analyse de l'ensemble des paramètres.
-Pourtant, sur un sous-ensemble de paramètres qui doivent être étudiés plus précisément, cette normalisation est un frein à l'interprétation : les valeurs des différents indicateurs ne sont plus exprimés dans l'unité d'origine et il est alors difficile d'en faire un commentaire thématique.
-L'analyse visuelle sera ainsi présentée sur les valeurs brutes issues des simulations, et chaque graphique aura en conséquence un axe des ordonnées propre.
+\paragraph{Normalisation.}
+La normalisation des valeurs était indispensable lors du calcul de la sensibilité globale afin d'homogénéiser la variabilité des indicateurs.
+Pourtant, sur un sous-ensemble de paramètres cette normalisation devient un frein à l'interprétation et à la lisibilité des analyses : les valeurs des différents indicateurs n'étant plus exprimés dans l'unité d'origine, il est difficile d'en faire un commentaire thématique.
+L'analyse visuelle, sur les paramètres sélectionnés, sera ainsi présentée sur les valeurs brutes issues des simulations, et chaque graphique aura en conséquence un axe des ordonnées propre.
+La logique est encore une fois la même que dans les classifications ascendantes hiérarchiques couramment pratiquées en géographie quantitative : on effectue la classification sur des valeurs normalisées, mais on représente souvent les profils des classes en revenant aux valeurs brutes.
 
-\subsection{Sélection des paramètres}
+\subsection{Sélection des paramètres à analyser.}
 
 \begin{figure}[H]
 	\centering
@@ -997,53 +1054,79 @@ L'analyse visuelle sera ainsi présentée sur les valeurs brutes issues des simu
 \end{figure}
 
 La \cref{fig:sensibilite-globale} présente les \og scores de sensibilité\fg{} de chacun des paramètres du modèle.
+Ces paramètres sont classés par ordre descendant selon leur sensibilité globale, et la couleur reprend la typologie des paramètres.
 
-Une première remarque est que de manière légèrement contre-intuitive, on ne peut discerner de motif particulier selon les types de paramètres : les \textit{inputs}, paramètres de contexte, de mécanisme et enfin les paramètres techniques sont dispersés et entremêlés dans le graphique.
-On se serait vraisemblablement attendu à ce que les inputs et paramètres de contexte jouent un rôle plus important que les paramètres techniques par exemple.
+On constate tout d'abord que la sensibilité des paramètres est relativement peu dispersée : les valeurs abstraites de la sensibilité varient entre près de \og 7\fg{} et \og 11\fg{}, soit un écart maximal de 65\%, là où on aurait pu imaginer que certains paramètres aient des sensibilités doublées, triplées\ldots{} par rapport à d'autres.
+Cela indique que les paramètres ont tous une influence sur les sorties du modèle, influence qui est située dans le même ordre de grandeur.
+Par extension, on note qu'aucun des paramètres testés ne présente une sensibilité véritablement faible.
+Ce constat est renforcé en considérant que le paramètre le moins sensible globalement (\textsf{croissance\_demo}) a une influence réelle sur le modèle, pour avoir notamment été testé plus extensivement en parallèle de cette analyse de sensibilité (voir \cref{subsec:scenario-croissance}).
+Pour le modélisateur, cette relative homogénéité des sensibilités est un résultat véritablement rassurant.
+Cela nous prouve qu'aucun paramètre n'est inutile, et ne devrait par conséquent être supprimé du modèle si on recherchait une parcimonie plus importante à cette étape.
 
-Pondérons toutefois cette remarque en rappelant que malgré une homogénéisation des valeurs en sortie par leur normalisation, il n'y a ici aucune compensation de l'étendue très variable des valeurs de paramètre testées (\hl{disponibles dans l'annexe N}).
-Par exemple, si l'on compare un paramètre très sensible (la taille du monde simulé, \textsf{taille\_cote\_monde}) et un paramètre peu sensible (le taux de croissance démographique introduit dans le modèle, \textsf{croissance\_demo}), on peut réaliser que l'ordre de grandeur de la variation est faible.
-\begin{itemize}[noitemsep,nolistsep]\vspace*{-.5em}
-	\item Pour \textsf{taille\_cote\_monde}, dont la valeur de base est de 80 km, les valeurs testées sont 50, 75, 100, 125 et 150 km.
-	Il y a donc à peu près une variation qui va de la moitié de la valeur de base à son double.
-	\item Pour \textsf{croissance\_demo}, les seuils sont plus restreints.
-	Pour ne pas déstabiliser les autres indicateurs, ce paramètre a été modifié en tenant compte d'une population finale stable de 40 000 foyers paysans, en adaptant à chaque valeur de croissance démographique une valeur différente de population initiale.
-	De ce fait, la valeur de base de croissance démographique est de 0\%, et les valeurs testées sont de 1.53\%, 3.72\%, 5.89\% et 12.89\%.
-	Ces valeurs permettent de faire passer la population de la stabilité au décuplement. Au regard du paramètre précédent, l'étendue interprétée est large, mais en absolu, les 4 premières valeurs sont très proches et on ne s'attend ainsi pas à ce qu'elles aient un effet majeur sur les sorties du modèle.
+Toujours à un niveau d'observation global, on peut remarquer que la sensibilité globale des paramètres ne semble pas liée aux types de paramètres.
+Visuellement, on constate en effet qu'il ne semble pas y avoir de motif particulier dans le positionnement des types représentés par les couleurs.
+En cela, le choix de mener l'analyse indistinctement sur tous les types de paramètres semble avoir été le bon.
+
+En entrant dans le détail, on peut remarquer que trois paramètres se démarquent véritablement : les seuils de distance acceptables à l'église paroissiale la plus proche (\textsf{dist\_minmax\_eglise}), la dimension du monde simulé (\textsf{taille\_cote\_monde}) et le seuil de distance de détection des agrégats, en dessous duquel on considère que des foyers paysans peuvent former un agrégat (\textsf{distance\_detection\_agregat}).
+Il est intéressant de noter que les valeurs par défaut de ces paramètres ont toutes été choisies avec une précaution particulière.
+\begin{itemize}
+	\item Le seuil de distance aux églises est un paramètre particulièrement complexe qui a donné lieu à de multiples allers-retours pour en fixer les valeurs.
+	Sur la forme, c'est l'un des paramètres les plus \og qualitatifs\fg{} : il désigne une étendue spatiale qui varie au cours du temps de la simulation.
+	Comme la satisfaction religieuse que ce paramètre conditionne a une importance majeure sur les migrations des foyers paysans (voir \cref{sssec:fixation-dissemination}), on pouvait s'attendre à ce qu'il se montre particulièrement sensible.
+	\item Les dimensions du monde simulé ont donné lieu à un calibrage, par ajustement empirique, dont l'on a discuté au début de ce chapitre (\cref{sssec:calibrage-inputs}).
+	On décrivait alors toutes les répercussions que ce changement avait provoqué, et il n'est pas surprenant que ce paramètre soit parmis les plus sensibles dans le modèle.
+	\item La distance de détection des agrégats a été l'un des premiers paramètres implémenté dans le modèle, ajusté selon des valeurs empiriques.
+	La valeur fixée (100 m) n'a pas évoluée depuis les premières versions du modèle.
+	C'en est presque une constante et il est très enrichissant pour le modélisateur de découvrir que ce paramètre a une influence importante sur l'issue des simulations.
 \end{itemize}
 
-Un autre exemple de ces étendues incomparables permet d'éclairer la première remarque quant au fait que les paramètres techniques ne sont pas relégués en bas de ce graphique.
-Par définition, les paramètres techniques ont des valeurs qui ne représentent strictement rien d'un point de vue thématique.
-Leur étendue acceptable est alors extrêmement difficile à évaluer, et on aura ainsi pu avoir tendance à effectuer de mauvais jugements sur les valeurs testées de ces paramètres, les conduisant soit à être sur-valués (le paramètre de caractérisation des droits fonciers, \textsf{droits\_fonciers\_zp} semble entrer dans cette catégorie avant examen spécifique), soit à sembler sous-valués (le paramètre \textsf{distance\_fusion\_agregat} par exemple, a été modifié à de nombreuses reprises lors du paramétrage du modèle et était à ce moment assez important).
+Au sein des paramètres qui suivent immédiatement ce trio, les ruptures sont moins nettes et l'on découpera donc ce continuum entre les paramètres situés en 10$^e$ et 11$^e$ position (\textsf{nb\_min\_fp\_agregat} et \textsf{taux\_prelevement\_zp\_chateau}), où l'on discerne visuellement un nouveau saut dans les valeurs de sensibilité.
+Sur ces 57 paramètres, cette sélection en isole donc 10, auxquels on ajoute une sélection des trois paramètres ayant la plus forte sensibilité sur chacun des indicateurs.
+Comme ces derniers sont en bonne partie redondants avec les autres sélections, on obtient au final un total de 14 paramètres à analyser visuellement par la suite.
+Ces paramètres, leur description complète ainsi que les valeurs testées sont présentées dans le \cref{tab:selection-parametres-anavis}.
 
-Notons aussi que dans les 10 paramètres jugés les plus sensibles, 4 portent sur des valeurs testés \og qualitatives\fg{} (étendues, variables au cours du temps\ldots, voir p.~\pageref{par:etendue-parametres}), alors que ces paramètres ne représentent que 20\% de l'ensemble des paramètres testés.
-Là encore, on peut estimer que cette légère sur-représentation de ces paramètres tient à la difficulté de leur attribuer des étendues comparables.
+\paragraph{Limites de cette approche de sélection.}
+Avant de passer à l'analyse détaillée des paramètres isolés, il nous parait important de noter une limite substantielle de la méthode mise en place pour leur sélection.
+La mesure choisie, consistant en une sensibilité normalisée, ne tient pas compte de l'étendue des valeurs de paramètres testées.
+Ces étendues sont largement incommensurables, qui plus est quand il s'agit de comparer des paramètres numériques simples (la taille des côtés du monde simulé) à des paramètres plus qualitatifs (les seuils de distance évolutifs de la distance aux églises paroissiales).
+On peut par exemple noter que dans les 10 paramètres jugés les plus sensibles, 4 portent sur des valeurs testés \og qualitatives\fg{} (étendues, variables au cours du temps\ldots, voir p.~\pageref{par:etendue-parametres}), alors que ces paramètres ne représentent que 20\% de l'ensemble des paramètres testés.
 
-Un dernier constat, à l'échelle très agrégée qui caractérise ces analyses, nous paraît extrêmement rassurant en termes de validation interne du modèle : aucun des paramètres testés ne présente une sensibilité véritablement faible, qui plus est en considérant que la plus faible sensibilité mesurée (paramètre \textsf{croissance\_demo}) correspond à un paramètre dont l'on sait qu'il a une influence réelle sur les sorties du modèle.
-Ce simple constat nous indique que dans la limite du jeu de paramètre issu du calibrage, aucun paramètre n'est inutile, et ne devrait par conséquent être supprimé du modèle si on recherchait une parcimonie plus importante à cette étape.
+Lors du choix des valeurs de paramètres à tester pour cette analyse de sensibilité (\hl{disponibles dans l'annexe N}), certains paramètres auront forcément été testés sur des valeurs plus ou moins éloignées des valeurs par défaut issues du calibrage.
+Cet éloignement se traduit forcément par des sensibilités mesurées très variables.
+On peut illustrer ce biais en comparant un paramètre de stock simple qui se montre très sensible (la taille du monde simulé à nouveau) et un paramètre de ratio qui se situe lui tout en bas du classement (le taux de croissance démographique, \textsf{croissance\_demo}).
+\begin{itemize}
+	\item Pour le premier, les valeurs testées s'échelonne régulièrement entre 50 et 150 km.
+	L'ordre de grandeur de ces valeurs est similaire, représentant une variation qui va environ de la division par deux à la multiplication par deux de la valeur par défaut (80 km).
+	\item Pour le second, qui vaut 0\% par défaut, les valeurs testées sont de 0\%, 1.53\%, 3.72\%, 5.89\% et 12.89\%.
+	Au regard du nombre de pas de temps, cela représente un doublement, un triplement, un quintuplement et enfin un décuplement de la population initiale, que l'on a fait covarier pour que la population finale soit systématiquement identique.
+ 	Vis-à-vis du paramètre précédent, l'étendue interprétée est plus large, consistant même en une activation ou non du mécanisme de croissance démographique.
+ 	En absolu, les 4 premières valeurs sont cependant très proches et on ne s'attend ainsi pas à ce qu'elles aient un effet majeur sur les sorties du modèle.	
+\end{itemize}
 
+Un autre exemple de cette incomparabilité des étendues concerne le choix des valeurs à tester pour les paramètres techniques.
+Par définition, ceux-ci ont des valeurs qui ne représentent strictement rien d'un point de vue thématique.
+Leur étendue acceptable est alors extrêmement difficile à évaluer, et on aura ainsi pu avoir tendance à effectuer de mauvais jugements sur les valeurs testées de ces paramètres.
 
+Ces biais dans la comparabilité des valeurs de paramètres testées ont forcément influencé la sélection des paramètres à analyser.
+En changeant les valeurs testées, le classement des paramètres aurait sans doute été largement altéré.
+Dans l'incapacité de produire des valeurs de paramètres plus comparables, nous nous tiendrons toutefois à la sélection des paramètres \og les plus sensibles\fg{} effectuée dans cette partie.
+Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plate-forme SimEDB : \hl{Mettre un lien direct}.
 
-À la lecture du graphique, on remarque qu'autour des 10 premiers paramètres, on peut constater qu'un \og saut\fg{} dans les valeurs de sensibilité se produit entre les paramètres \textsf{nb\_min\_fp\_agregat} et \textsf{taux\_prelevement\_zp\_chateau}.
-L'écart entre ce dernier paramètre et le suivant est en effet assez faible, et on décide de ne conserver que les 10 premières paramètres (le 10ème est \textsf{nb\_min\_fp\_agregat}) pour l'analyse visuelle.
-
-La sélection des trois paramètres ayant la plus forte sensibilité sur chaque indicateur complète cette liste avec 4 nouveaux paramètres, portant le total à 14 paramètres dont la sensibilité sera analysée visuellement.
-Le \cref{tab:selection-parametres-anavis} en présente la liste ainsi qu'une description complète.
 
 \clearpage
 \begin{table}[H]
-\includegraphics[width=1.75\linewidth, angle=90, origin=c]{img/Parametres.pdf}
+\includegraphics[width=.95\textheight, angle=90, origin=c]{img/Parametres.pdf}
 \caption{Paramètres sélectionnés pour l'analyse visuelle.}
 \label{tab:selection-parametres-anavis}
 \end{table}
 
 \subsection{Évaluation visuelle de la sensibilité}
 
-\bigskip
-\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
-	Les graphiques présentés dans la suite de ce chapitre ne concernent que les paramètres sélectionnés lors de l'analyse quantitative globale.
-	Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plate-forme SimEDB : \hl{Mettre un lien direct}.
-\end{mdframed}
+%\bigskip
+%\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
+%	Les graphiques présentés dans la suite de ce chapitre ne concernent que les paramètres sélectionnés lors de l'analyse quantitative globale.
+%	Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plate-forme SimEDB : \hl{Mettre un lien direct}.
+%\end{mdframed}
 
 Plutôt que de mener l'évaluation de la sensibilité des paramètres sélectionnés de manière linéaire, paramètre après paramètre, nous présentons ces derniers organisés par thématique c'est-à-dire selon les types d'agents concernés par chacun de ces paramètres.
 
@@ -1186,7 +1269,7 @@ En créant moins de paroisses en zone dense, la distribution de l'attractivité 
 
 
 
-\subsection{Analyser la sensibilité à l'aléa}
+\subsection{Analyser la sensibilité à l'aléa \label{subsec:sensibilite-alea}}
 
 En menant l'analyse de sensibilité visuelle, on a pu remarquer que certains indicateurs présentaient une plus forte variation que d'autres.
 Une partie de l'explication tenait certainement à l'inégale amplitude des valeurs de paramètres testées, lesquelles influencent potentiellement plus directement ces indicateurs, mais cela ne nous semble pas être une explication suffisante.
