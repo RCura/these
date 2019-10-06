@@ -25,14 +25,14 @@
 \chapter{Exploration du comportement de SimFeodal}
 \label{chap:chap6}
 \begin{center}
-	{\large Version \hl{2019-10-04}}
+	{\large Version \hl{2019-10-06}}
 \end{center}
 
 \begin{itemize}
 	\item 25/08/2019 : Rendu à Lena de tout sauf 6.3 (à faire après l'ECTQG).
-	\item 30/09/2019 : début reprises Lena
+	\item 30/09/2019 : début reprises
 	\item 03/10/2019 : fin reprise 6.1
-	\item 04/10/2019 : reprise 6.2.1 et 6.2.2
+	\item 06/10/2019 : fin reprise 6.2 + on annule l'idée d'une partie dédiée à l'analyse des scénarios. Essayer de les insérer, pour le scénario de croissance démographique, dans l'analyse de sensibilité sous forme d'un encadré.
 \end{itemize} 
 
 \minitoc
@@ -332,7 +332,7 @@ Ils ne sont pas entièrement satisfaisants, mais résultent d'un compromis entre
 
 
 \clearpage
-\subsection{Résultats des simulations}
+\subsection{Résultats des simulations \label{subsec:resultats}}
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=yellow!50,colframe=black,width=\dimexpr\textwidth\relax, 
@@ -693,7 +693,7 @@ Sans données empiriques susceptibles de préciser les taux d'occupation attendu
 %On pourrait par exemple suivre des ensembles de foyers paysans ou d'agrégats tout au long des simulations pour analyser plus finement leur comportement.
 %Mais même alors, le manque de sources empiriques se ferait forcément et fortement ressentir : on pourrait peut-être isoler la différence entre des simulations, mais serait-il vraiment possible de les départager ?
 
-\subsection{Après le calibrage, comment affiner le modèle ?}
+\subsection{Après le calibrage, comment affiner le modèle ? \label{subsec:depasser-calibrage}}
 
 Dans l'ensemble, l'analyse des résultats montre que cette version calibrée de SimFeodal répond aux attentes en matière de reproduction des faits stylisés identifiés d'après les connaissances expertes.
 Le modèle aboutit bien sur une polarisation de l'habitat, autour de pôles d'attractions très hiérarchisés et disséminés dans l'espace simulé.
@@ -1110,7 +1110,15 @@ Leur étendue acceptable est alors extrêmement difficile à évaluer, et on aur
 Ces biais dans la comparabilité des valeurs de paramètres testées ont forcément influencé la sélection des paramètres à analyser.
 En changeant les valeurs testées, le classement des paramètres aurait sans doute été largement altéré.
 Dans l'incapacité de produire des valeurs de paramètres plus comparables, nous nous tiendrons toutefois à la sélection des paramètres \og les plus sensibles\fg{} effectuée dans cette partie.
-Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plate-forme SimEDB : \hl{Mettre un lien direct}.
+Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plate-forme SimEDB (\cref{fig:screenshot-simedb-sensib}) : \hl{Mettre un lien direct}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{example-image-a}
+	\caption{Partie de l'interface de SimEDB dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de SimFeodal.}
+	\label{fig:screenshot-simedb-sensib}
+\end{figure}
+
 
 
 \clearpage
@@ -1128,9 +1136,9 @@ Tous les paramètres peuvent toutefois être analysés individuellement, de mani
 %	Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plate-forme SimEDB : \hl{Mettre un lien direct}.
 %\end{mdframed}
 
-Plutôt que de mener l'évaluation de la sensibilité des paramètres sélectionnés de manière linéaire, paramètre après paramètre, nous présentons ces derniers organisés par thématique c'est-à-dire selon les types d'agents concernés par chacun de ces paramètres.
+Plutôt que de mener l'évaluation de la sensibilité des paramètres sélectionnés de manière linéaire, paramètre après paramètre, nous présentons ces derniers organisés par thématique c'est-à-dire selon les types d'agents concernés par chacun d'entre eux.
 
-\subsubsection{Monde}
+\subsubsection{Paramètres liés au monde simulé}
 
 \begin{figure}[H]
 	\centering
@@ -1139,52 +1147,94 @@ Plutôt que de mener l'évaluation de la sensibilité des paramètres sélection
 	\label{fig:sensib-monde}
 \end{figure}
 
-Le paramètre régissant la taille du monde simulé est le seul des \textit{inputs} présent dans la sélection.
-De manière peu surprenante, c'est un paramètre majeur qui affecte la totalité des indicateurs étudiés, selon une polarité assez intuitive (\cref{fig:sensib-monde}).
-Plus le monde est restreint, plus les foyers paysans sont proches les uns des autres.
-Cela entraîne premièrement une concentration plus forte, mais aussi un nombre d'agrégats plus faible : au lieu d'être dispersés en une multitude de petits agrégats (500 en moyenne avec un monde de 150 km de côté), les foyers paysans se concentrent dans un nombre restreint d'agrégats de superficie vraisemblablement supérieures par les effets des mécanismes de fusion des agrégats.
-Quand la superficie d'ensemble est plus faible, toutes choses égales par ailleurs concernant le nombre et le rayon des zones de prélèvement, on assiste nécessairement à une superposition plus importante de ces zones.
+%Le paramètre régissant la taille du monde simulé est le seul des \textit{inputs} présent dans la sélection.
+
+Le paramètre régissant la taille du monde simulé est un paramètre majeur qui affecte la totalité des indicateurs étudiés, comme la  \cref{fig:sensib-monde} permet de le constater.
+Quand la taille du monde simulé augmente, le nombre d'agrégats, d'églises paroissiales, la distance moyenne entre églises paroissiales et le taux de foyers paysans augmente aussi.
+Au contraire, la pression fiscale varie de façon inverse : quand la taille du monde simulé augmente, elle diminue.
+On ne constate pas d'effet direct ou linéaire sur le nombre de grands châteaux, qui ne semblent pas être directement sensibles à la taille du monde.
+Les différences visuelles de position semblent surtout influencées par la forte variabilité liée à l'aléa que l'on constate sur cet indicateur de sortie de simulation.
+
+Ces résultats sont assez intuitifs : plus le monde est restreint, plus les foyers paysans sont proches les uns des autres.
+Cela entraîne premièrement une concentration plus forte, mais aussi un nombre d'agrégats plus faible : au lieu d'être dispersés en une multitude de petits agrégats (500 en moyenne avec un monde de 150 km de côté), les foyers paysans se concentrent dans un nombre restreint d'agrégats (200 quand le côté est de 50 km), de superficie vraisemblablement supérieures par les effets des mécanismes de fusion des agrégats.
+En effet, quand la superficie d'ensemble est plus faible, toutes choses égales par ailleurs concernant le nombre et le rayon des zones de prélèvement, on assiste nécessairement à une superposition plus importante de ces zones.
 La charge fiscale des foyers paysans s'en retrouve fortement affectée.
 
 Un effet de ce paramètre nous paraît légèrement contre-intuitif : avec une surface plus importante, il est entièrement logique que la distance entre les églises augmente, puisque celles-ci sont forcément plus dispersés dans un monde plus large.
-Pourtant, le nombre d'églises paroissiales croît aussi avec la superficie du monde simulé, ce qui ne nous semble pas directement interprétable.
-On peut émettre l'hypothèse que cette augmentation est une conséquence de la dispersion des foyers paysans au sein de petits agrégats.
-De petites églises paroissiales seraient créées ou promues en plus grand nombre dans les zones faiblement peuplées (petits agrégats proches du seuil minimal), là où la création d'une paroisse est moins coûteuse (en termes de nombre de foyers paysans requis) qu'au sein des agrégats plus importants.
+Pourtant, le nombre d'églises paroissiales croît aussi avec la superficie du monde simulé, ce qui ne nous semble pas découler directement des règles de création/promotion de nouvelles églises paroissiales.
+On peut interpréter ce comportement comme une conséquence imprévue et non linéaire de la dispersion des foyers paysans au sein de petits agrégats.
+De petites églises paroissiales sont mécaniquement créées ou promues en plus grand nombre dans les zones faiblement peuplées (petits agrégats proches du seuil minimal), là où la création d'une paroisse est moins coûteuse (en termes de nombre de foyers paysans requis) qu'au sein des agrégats plus importants.
+En renforçant le nombre d'agrégats, le paramètre de taille du monde simulé agit ainsi de manière indirecte sur le nombre d'églises paroissiales.
 
-\subsubsection{Foyers paysans et agrégats \label{subsubsec:sensib-fp}}
+\subsubsection{Paramètres liés aux foyers paysans et agrégats \label{subsubsec:sensib-fp}}
 
-Les foyers paysans (et les agrégats de population qui résultent de leur concentration) sont les agents les plus déterminants dans les l'évolution des structures spatiales observées dans SimFeodal.
+Les foyers paysans (et les agrégats de population qui résultent de leur concentration) sont, par hypothèse, les agents les plus déterminants dans l'évolution des structures spatiales observées dans SimFeodal.
 À ce titre, il est attendu (et sécurisant en termes de validation interne) que les paramètres contrôlant leurs mécanismes propres aient une influence nette sur les indicateurs de sortie analysés.
 
-Les trois paramètres, spécifiquement liés aux foyers paysans, qui montrent la plus forte sensibilité (\cref{fig:sensib-fp}) embrassent trois aspects bien différent des mécanismes des foyers paysans.
+\paragraph{Foyers paysans.}
+Les trois paramètres, spécifiquement liés aux foyers paysans, les plus sensibles (\cref{fig:sensib-fp-1,fig:sensib-fp-2,fig:sensib-fp-3}), embrassent trois aspects bien différents des mécanismes gérant le comportement des foyers paysans.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/sensib/sensibilite_dist_minmax_eglise.pdf}
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_rayon_migration_locale_fp.pdf}
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_croissance_demo.pdf}
-	\caption{Sensibilité des paramètres liés aux foyers paysans.}
-	\label{fig:sensib-fp}
+	\caption{Sensibilité du paramètre \textsf{dist\_minmax\_eglise}.}
+	\label{fig:sensib-fp-1}
 \end{figure}
 
-Le premier de ces paramètres, qui est aussi le plus sensible du modèle, joue sur la satisfaction religieuse des foyers paysans.
-Notons déjà que le calibrage de ce paramètre semble efficace : au moins sur les quatre premiers indicateurs, c'est la valeur par défaut dans le modèle qui approche le plus des objectifs.
-En matière d'interprétation, le fait que cette satisfaction soit déterminante est inattendu : on a pu constater dans les résultats du modèle (\cref{fig:result-fp-satis}) que le facteur limitant de la satisfaction d'ensemble était la satisfaction protection.
-Les valeurs testées, qualitatives, ont une large influence sur les aspects liés à la concentration des foyers paysans, et leur action sur les autres indicateurs est moins linéaire et évidente.
-Plus les étendues testées sont restreintes, plus le nombre d'agrégats et de foyers paysans isolés est important : cette satisfaction joue sans doute à ce moment là le rôle limitant et \og force\fg{} les foyers paysans à migrer à proximité d'églises paroissiales.
+Le premier de ces paramètres ((\cref{fig:sensib-fp-1}), qui est aussi le plus sensible du modèle, joue sur la satisfaction religieuse des foyers paysans.
+Notons déjà que le calibrage de ce paramètre semble efficace : au moins sur les quatre premiers indicateurs, c'est la valeur par défaut dans le modèle qui approche le plus les objectifs fixés.
+En matière d'interprétation, le fait que ce paramètre ait une influence sur les indicateurs de sortie du modèle est attendu et intuitif : la satisfaction religieuse, que ce paramètre conditionne, est intentionnellement l'un des éléments majeurs du modèle.
 
-Cette migration, au moins pour l'aspect local, est largement influencée par le second paramètre de la sélection : le rayon maximal de migration locale des foyers paysans. 
-Celui-ci n'est pas une étendue, mais un seuil maximum qui peut (valeurs \og dynamiques\fg{}) changer au cours du temps, la logique étant que plus le temps passe, plus ce rayon est susceptible d'augmenter en lien avec des aspects cognitifs et liés à l'intégration du système de peuplement qui voit ses distances-temps rétrécir.
-Ce paramètre a notamment un rôle déterminant sur la concentration des foyers paysans, puisque selon les valeurs éprouvées, cet indicateur peut passer en moyenne de 63\% à seulement 3\%.
-Les effets sur le nombre d'agrégats, de grands châteaux et d'églises paroissiales ne sont pas directement linéaires et l'on peut penser que les variations de ce paramètre montre alors des tendances diverses selon l'ordre de grandeur des seuils empruntés.
+Pourtant, l'ampleur de cette influence est un peu plus forte qu'on aurait pu le penser au vu des mécanismes et résultats principaux du modèle.
+Dans la \cref{fig:result-fp-satis} qui présentait l'évolution de la satisfaction des foyers paysans, on remarquait que la satisfaction protection était la composante principale de la satisfaction globale.
+On aurait donc pu s'attendre, au regard des mécanismes implémentés, à ce que les paramètres liés à la satisfaction protection aient une sensibilité supérieure à celui-ci.
 
-La croissance démographique est particulière dans le modèle.
-On la considère comme un paramètre de contexte, mais elle aurait également entièrement sa place parmi les \textit{inputs} tant son importance thématique est majeure.
-À la lecture des graphiques, on peut s'étonner de ce que ce paramètre soit le moins sensible (\cref{fig:sensibilite-globale}) tant son effet est direct sur tous indicateurs présentés (à l'exception du nombre de grands châteaux).
-On remarque qu'un taux de croissance plus élevé réduit le nombre d'agrégats tout en réduisant aussi le taux de foyers paysans isolés, deux effets qui sont souvent inverses dans les différents paramètres.
-C'est extrêmement intéressant pour le modèle tant ce paramètre permet d'approcher des objectifs de ces indicateurs qui sont tous deux dépassés alors qu'opposés.
-Ce paramètre fait l'objet d'un scénario thématique (\cref{subsec:scenario-croissance}), et on le décrira plus avant à ce moment-là.
+Pour ce paramètre qui régit les seuils de distance acceptables à l'église paroissiale la plus proche, on peut émettre l'hypothèse que les valeurs testées biaisent la mesure de la sensibilité globale.
+Ces valeurs sont qualitatives (étendues plus ou moins importantes, variables ou non au cours du temps, cf. le \cref{tab:selection-parametres-anavis}), ont une large influence sur les aspects liés à la concentration des foyers paysans, et leur action sur les autres indicateurs est moins linéaire et prévisible.
 
+Plus les étendues testées sont restreintes (modalités \og dynamique\_reduit\fg{} et \og statique\_reduit\fg{}), plus le nombre d'agrégats et de foyers paysans isolés est important.
+Pour ceux-là, la satisfaction religieuse joue à ce moment là le rôle limitant et \og force\fg{} les foyers paysans à migrer à proximité d'églises paroissiales.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/sensib/sensibilite_rayon_migration_locale_fp.pdf}
+	\caption{Sensibilité du paramètre \textsf{rayon\_migration\_locale\_fp}.}
+	\label{fig:sensib-fp-2}
+\end{figure}
+
+Cette migration, au moins pour l'aspect local, est largement influencée par le second paramètre de la sélection : le rayon maximal de migration locale des foyers paysans (\cref{fig:sensib-fp-2}). 
+Celui-ci n'est pas une étendue, mais un rayon maximum qui peut (valeurs \og dynamiques\fg{}) changer au cours du temps.
+Dans le modèle calibré, ce rayon est fixe au cours du temps (2 500 m, modalité \og base\fg{}).
+Dans des versions précédentes du modèle, les valeurs de ce paramètre augmentaient au cours du temps\footnote{
+	Reproduisant ainsi in silico la diminution des coûts de distance-temps qui témoignent de l'intégration d'un système de peuplement.
+}, et on a voulu tester l'influence de l'évolution de ces valeurs (modalités \og dynamique\_reduit\fg{} et \og dynamique\_croissant\fg{}) ainsi que d'augmentations et diminutions du rayon (modalités de type \og reduit\fg{} par opposition à \og croissant\fg{} et \og large\fg{}).
+
+Ce paramètre a notamment un rôle déterminant sur la concentration des foyers paysans, puisque selon les valeurs éprouvées, cet indicateur peut passer en moyenne de plus de 60\% à moins de 5\%.
+Les effets sur le nombre d'agrégats, de grands châteaux et d'églises paroissiales ne sont pas directement linéaires.
+C'est un exemple typique de paramètre qui régit un mécanisme dont les interactions avec les autres suit des effets de seuils.
+Sur les indicateurs de sortie, cela résulte en des tendances diverses selon l'ordre de grandeur des seuils empruntés.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/sensib/sensibilite_croissance_demo.pdf}
+	\caption{Sensibilité du paramètre \textsf{croissance\_demo}.}
+	\label{fig:sensib-fp-3}
+\end{figure}
+
+Le paramètre de croissance démographique régit un mécanisme particulier dans le modèle, puisque par hypothèse, on a choisit de considérer une population stable dans le déroulement du modèle (\hl{ref chap 2, là où j'explicite, sans doute inputs/situation initiale}).
+
+Ce paramètre est considéré comme relevant du contexte, mais aurait également entièrement sa place parmi les \textit{inputs} tant son importance thématique est majeure.
+La très faible sensibilité globale de ce paramètre (\cref{fig:sensibilite-globale}), ne nous paraît pas représentative de son influence effective tant l'analyse visuelle de son influence sur les indicateurs de sortie (\cref{fig:sensib-fp-3}) montre un effet direct sur tous les indicateurs présentés (à l'exception du nombre de grands châteaux).
+
+On peut constater que plus le taux de croissance est élevé, plus le nombre d'agrégats est faible, de même que le taux de foyers paysans isolés.
+Sur les deux paramètres précédents (\cref{fig:sensib-fp-1,fig:sensib-fp-2}), de même que plus globalement, ces deux indicateurs sont pourtant le plus souvent opposés : quand le nombre d'agrégat augmente, le taux de foyer paysans isolés diminue.
+
+L'influence de ce paramètre est extrêmement intéressante pour le modèle tant ce paramètre permet d'approcher des objectifs de ces indicateurs qui sont tous deux dépassés alors qu'opposés.
+On notera par exemple (ce sera développé dans la troisième partie de ce chapitre, \cref{subsec:scenario-croissance}) que parmi les valeurs de croissance démographique testées, la plus forte (12.80\%) permet un excellent ajustement du nombre d'agrégats et du taux de foyers paysans isolés, deux objectifs majeurs dans l'évaluation de SimFeodal.
+
+\paragraph{Agrégats de population.}
+
+Les deux paramètres agissant sur la définition des agrégats (paramètres \textsf{distance\_detection\_agregat} et \textsf{nb\_min\_fp\_agregat}) sont très comparables et agissent de manière symétriquement opposée sur les indicateurs de sortie (\cref{fig:sensib-agregats}).
 
 \begin{figure}[H]
 	\centering
@@ -1194,13 +1244,24 @@ Ce paramètre fait l'objet d'un scénario thématique (\cref{subsec:scenario-cro
 	\label{fig:sensib-agregats}
 \end{figure}
 
-Les deux paramètres agissant sur la définition des agrégats (\cref{fig:sensib-agregats}) sont très comparables et agissent de manière symétriquement opposée sur les indicateurs de sortie.
-Sans surprise, leur effet est largement circonscrit aux indicateurs relatifs aux foyers paysans (à l'exception surprenant des églises paroissiales, peut-être pour les mêmes raisons que le paramètre de taille du monde simulé), mais il est intéressant de noter leur extrême sensibilité, plus que linéaire, à des variations relativement fines dans les ordres de grandeur mobilisés (quelques foyers paysans de plus à l'échelle des 40 000, 50 ou 100 mètres à l'échelle d'un monde de 80 kilomètres de côté\ldots).
-Les variations présentées dans la figure indique que les valeurs par défaut (100 m et 5 foyers paysans) sont au moins dans des intervalles assez sensées au regard des objectifs poursuivis.
+Sans surprise, leur effet est largement circonscrit aux indicateurs relatifs aux foyers paysans (à l'exception inattendue des églises paroissiales, sans doute pour les mêmes raisons que le paramètre de taille du monde simulé), mais il est intéressant de noter leur extrême sensibilité.
 
-\subsubsection{Seigneurs et châteaux}
+On constate ainsi que des variations relativement fines de ces paramètres\footnote{
+	Des distances de quelques dizaines/centaines de mètres de plus ou moins au regard des 80 kilomètres de côté du monde simulé pour le premier paramètre ; quelques foyers paysans de plus ou de moins pour constituer un agrégat dans le second paramètre, relativement aux 40 000 foyers paysans que compte le modèle\ldots
+} aboutissent sur des variations plus que linéaires, et d'ordres de grandeurs quasi-différents sur le nombre d'agrégats (800 au maximum sur le premier paramètre, contre 200 au minimum) et le taux de foyers isolés (de plus de 30\% à moins de 2\% sur le même paramètre).
 
-Les paramètres liés aux seigneurs et aux châteaux (les premiers construisant les seconds) sont les plus nombreux du modèle et il est attendu qu'ils soient assez sensibles : ce sont les mécanismes associés qui façonnent le monde dans lequel les foyers paysans auront à évoluer et dans lequel ils essaieront de ne pas être trop insatisfaits.
+Les variations présentées dans la figure indique que les valeurs par défaut (100 m et 5 foyers paysans) sont au moins dans des intervalles assez sensés au regard des objectifs poursuivis.
+Cela nous indique qu'il serait possible de jouer plus finement sur les valeurs de ces paramètres pour améliorer le calibrage de SimFeodal.
+
+\subsubsection{Paramètres liés aux seigneurs et châteaux}
+
+Les paramètres liés aux seigneurs et aux châteaux (les premiers construisant les seconds) sont les plus nombreux du modèle et il est attendu qu'ils soient assez sensibles.
+Ce sont en effet les paramètres qui régissent les mécanismes qui façonnent le monde dans lequel les foyers paysans auront à évoluer.
+
+\paragraph{Seigneurs.}
+
+La \cref{fig:sensib-seigneurs} présente les quatre paramètres sélectionnés liés aux seigneurs et aux châteaux :
+\textsf{droits\_fonciers\_zp}, \textsf{proba\_gain\_haute\_justice\_gs}, \textsf{taux\_prelevement\_zp\_chateau} et \textsf{proba\_creation\_zp\_autres\_droits\_ps}.
 
 \begin{figure}[H]
 	\centering
@@ -1212,43 +1273,88 @@ Les paramètres liés aux seigneurs et aux châteaux (les premiers construisant 
 	\label{fig:sensib-seigneurs}
 \end{figure}
 
-Une caractéristique commune aux quatre paramètres isolés (\cref{fig:sensib-seigneurs}) tient au test de valeurs nulles, ou autrement dit, à la désactivation des mécanismes associés.
-Dans les deux premiers paramètres, l'effet de rupture est net, par exemple sur l'augmentation de la charge fiscale.
-Le montant des droits fonciers collectés ne joue que par son activation ou non (les valeurs supérieures à 0 présentent des résultats très similaires), mais présente un effet clair sur le nombre d'agrégats et l'agrégation des foyers paysans.
-L'existence et la propension des droits de haute justice des grands seigneurs ne semble jouer que sur la charge fiscale, mais y exerce une influence énorme : c'est le seul paramètre dont une valeur testée peut faire diminuer autant (1.5 alors que l'ordre de grandeur des simulations est plutôt entre 2 et 2.5)
+À la lecture de cette figure, on note en premier lieu que de nombreux indicateurs montrent des \og violons\fg{} très étendus, signes d'une forte variabilité relative à l'aléa, et donc d'une faible variabilité absolue aux valeurs testées.
+Sur ces indicateurs (les trois premiers indicateurs des trois derniers paramètres par exemple), l'influence des paramètres est presque nulle.
+Au contraire, ces quatre paramètres influent sur le dernier indicateur (augmentation de la charge fiscale), via un effet visuel linéaire (deux derniers paramètres) ou de seuil (deux premiers).
 
-Il est intéressant de remarquer que pour les deux paramètres suivant, où la valeur de 0\% correspond aussi à une désactivation du mécanisme lié, cela n'a aucun effet de seuil notable : ces paramètres se comportent, dans l'étendue testée, comme des éléments linéaires sur l'augmentation de la charge fiscale.
-Ils semblent assez dépourvus d'influence sur les autres indicateurs, mais en particulier pour le dernier paramètre, leur action sur la charge fiscale est notable.
-Pour améliorer le calibrage du modèle sur cet indicateur, on aurait sans doute intérêt à augmenter la valeur par défaut du paramètre \textsf{proba\_creation\_zp\_autres\_droits\_ps}, y compris au delà des valeurs ici testées.
-Ce serait d'autant plus adapté que la sensibilité globale de ce paramètre est relativement faible (36ème sur les 57 paramètres).
+On retrouve cet effet de seuil sur plusieurs indicateurs chez le premier paramètre, qui régit le montant des redevances de loyer que les seigneurs perçoivent : la première modalité (0) joue de manière importante sur le nombre d'agrégats et de grands châteaux et sur le taux de foyers paysans isolés et la charge fiscale.
+Il est important de noter que cette modalité est particulière : quand sa valeur vaut 0, cela signifie que les seigneurs ne gagnent pas de puissance sur les loyers qu'ils prélèvent.
+Cela correspond donc à la désactivation du mécanisme associé, et il est intéressant de remarquer que les quatre paramètres ici présentés comportent tous une modalité qui désactive le mécanisme associé.
 
+Sur les deux premiers paramètres, l'effet de rupture est net, par exemple sur l'augmentation de la charge fiscale.
+Le montant des droits fonciers (1er paramètre) collectés ne joue que par son activation ou non (les valeurs supérieures à 0 présentent des résultats très similaires).
+L'existence et la propension des droits de haute justice des grands seigneurs (2ème paramètre) ne semble jouer que sur l'augmentation de la charge fiscale, mais y exerce une influence énorme : c'est le seul des paramètres ici présentés dont une valeur testée peut faire diminuer autant cet indicateur (1.5 alors que l'ordre de grandeur des simulations est plutôt entre 2 et 2.5)
+
+Il est intéressant de remarquer que pour les deux paramètres suivant\footnote{
+\textsf{taux\_prelevement\_zp\_chateau} et \textsf{proba\_creation\_zp\_autres\_droits\_ps}.
+}, où la valeur de 0\% correspond aussi à une désactivation du mécanisme concerné, on ne retrouve pas ces effets de seuil.
+Ces paramètres ont une réaction linéaire, dans l'étendue testée, sur l'augmentation de la charge fiscale et n'ont que peu d'influence sur les autres indicateurs.
+
+Le profil du dernier paramètre illustre les gains que l'analyse de sensibilité peut apporter pour le calibrage du modèle : ce paramètre agit sur l'augmentation de la charge fiscale dans des propensions non négligeables, et pas ou très peu sur les autres indicateurs (sa sensibilité globale le place en 36ème position sur les 57 paramètres).
+Ce paramètre constitue dès lors un très bon candidat à un ajustement de l'augmentation de la charge fiscale (y compris en éprouvant des valeurs de paramètre plus élevées que celles testées ici), puisqu'il agit dessus sans présenter d'effets de bords qui viendraient perturber d'autres indicateurs.
+
+%\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
+%	colback=yellow!50,colframe=black,width=\dimexpr\textwidth\relax, 
+%	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
+%Fin reprise chapitre le 05/10/2019
+%\end{tcolorbox}
+
+\paragraph{Châteaux.}
+Les paramètres liés aux châteaux sont sensiblement surreprésentés parmi ceux qui ont la sensibilité la plus forte : il n'y en a que 6 sur les 57 paramètres (environ 11\%), mais les trois paramètres sélectionnés (\textsf{debut\_construction\_chateaux}, \textsf{nb\_tirages\_chateaux\_ps} et \textsf{periode\_promotion\_chateaux}) représentent 20\% des paramètres les plus sensibles.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/sensib/sensibilite_periode_promotion_chateaux.pdf}
+	\caption{Sensibilité du paramètre \textsf{periode\_promotion\_chateaux}.}
+	\label{fig:sensib-chateaux-1}
+\end{figure}
+
+Logiquement, on s'attend à ce que ces paramètres agissent majoritairement sur le seul indicateur numérique lié aux châteaux, ici le nombre de grands châteaux.
+C'est bien le cas du paramètre régissant l'intervalle de temps pendant lequel les châteaux peuvent être promus en gros châteaux (\cref{fig:sensib-chateaux-1}).
+Ce paramètre semble n'avoir aucun impact sur les autres indicateurs de sortie, mais influence fortement le nombre de gros châteaux.
+Sa valeur par défaut (de 940 à 1040, issue de connaissances expertes) est presque optimale au regard de cet indicateur, signe que le calibrage des autres paramètres (moins inscrits dans l'empirie) est adapté.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
+	\caption{Sensibilité du paramètre \textsf{nb\_tirages\_chateaux\_ps}.}
+	\label{fig:sensib-chateaux-2}
+\end{figure}
+
+Les deux autres paramètres liés aux châteaux (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) ont une influence qui n'est pas circonscrit au nombre de grands châteaux : tous deux agissent sur d'autres indicateurs que celui-ci.
+
+Plus le nombre de tirages probabilistes permettant aux petits seigneurs de construire un château est élevé, plus il y a de grands châteaux en fin de période (\cref{fig:sensib-chateaux-2}), ce qui est attendu au regard des mécanismes.
+Par contre, on notera aussi que le nombre de ces châteaux influe sur le nombre d'agrégats et par conséquent sur le taux de foyers paysans isolés :
+plus il y a de châteaux, plus il y a de pôles et donc d'agrégats.
+Et plus il y a d'agrégats dispersés dans le monde simulé (les châteaux sont nécessairement dispersés puisqu'ils ne peuvent être construits à moins de 5 km les uns des autres), plus les foyers paysans isolés trouvent à migrer localement, diminuant donc la part de ceux qui demeurent isolés en fin de simulation.
+Cette influence reste assez modeste toutefois au regard des variations engendrées par le troisième paramètre de cette sélection.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/sensib/sensibilite_debut_construction_chateaux.pdf}
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_periode_promotion_chateaux.pdf}
-	\caption{Sensibilité des paramètres liés aux châteaux.}
-	\label{fig:sensib-chateaux}
+	\caption{Sensibilité du paramètre \textsf{debut\_construction\_chateaux}.}
+	\label{fig:sensib-chateaux-3}
 \end{figure}
 
-Les paramètres liés aux châteaux sont sensiblement sur-représentés parmi ceux qui ont la sensibilité la plus forte : il n'y en a que 6 sur les 57 paramètres (environ 11\%), mais ils représentent 20\% des paramètres les plus sensibles et 21\% dans cette sélection de paramètres remarquables .
+Celui-ci (\cref{fig:sensib-chateaux-3}) agit de manière assez similaire en termes de tendance, avec une influence plus importante toutefois.
+Les figures peuvent laisser penser à une relation inverse à celle du paramètre précédent, mais c'est uniquement dû aux valeurs de ce paramètre qui fixe l'année à partir de laquelle des châteaux peuvent être construits : plus cette année est tardive, moins le nombre de châteaux final sera important\footnote{
+	Au contraire du paramètre précédent, où une modalité plus forte impliquait plus de châteaux.
+}.
+Au delà des remarques précédentes, on notera que la date de construction des premiers châteaux influe sur l'augmentation de la charge fiscale, dans un sens qui nous semble à nouveau intuitif : plus il y a de châteaux, plus il y a de zones de prélèvement associées, et plus les foyers paysans voient leur charge fiscale augmenter.
 
-C'est assez remarquable, d'autant qu'on peut constater à la lecture des deux premiers paramètres de la (\cref{fig:sensib-chateaux}) que leur rôle ne se cantonne absolument pas à un simple raffinement du contexte où l'atteinte d'un certain nombre de grands châteaux serait à la fois un objectif et un élément déterministe.
-Sur ces deux premiers paramètres, on remarque certes une très forte variation de l'indicateur directement lié, le nombre de grands châteaux, mais aussi et surtout un lien net avec la concentration des foyers paysans (et un autre lien moins significatif avec l'augmentation de la charge fiscale).
-La conception et le paramétrage des mécanismes liés aux châteaux ont demandé un travail conséquent (voir la partie dédiée leur calibrage -- \cref{subsec:calibrage} -- p.~\pageref{subsubsec:calibrage-chateaux}), vraisemblablement trop important relativement à la complexité de leurs règles et à notre propre estimation subjective de leur apport concret au modèle.
-Pourtant, les résultats de cette analyse de sensibilité donnent tort à l'expertise du modélisateur et gain de cause aux thématiciens pour lesquels les châteaux, et la justesse de leur implémentation, avaient une dimension thématique considérable.
+De manière générale, la conception et le paramétrage des mécanismes liés aux châteaux ont demandé un travail conséquent (voir la partie dédiée à leur calibrage -- \cref{subsec:calibrage} -- p.~\pageref{subsubsec:calibrage-chateaux}), qui nous a pourtant semblé, lors ces étapes, assez peu convaincant au regard de l'amélioration très modeste que cela a apporté en termes d'ajustement général du modèle.
+D'où de nombreux débats internes entre modélisateurs et thématiciens sur la nécessité de détailler autant les mécanismes liés à la construction des châteaux.
+
+L'analyse du premier paramètre (\textsf{periode\_promotion\_chateaux}, \cref{fig:sensib-chateaux-1}) semble aller dans ce sens, puisque la complexité des mécanismes de promotion des châteaux ne semble influencer, sur ces indicateurs très synthétiques, que l'indicateur directement lié : le nombre de gros châteaux.
+
+Les résultats l'analyse de sensibilité des autres paramètres (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) donnent tort à l'intuition du modélisateur et \og calibreur\fg{} et gain de cause aux thématiciens pour lesquels les châteaux, et la justesse de leur implémentation, avaient une dimension thématique considérable.
 La portée réduite mais claire de ces paramètres sur le premier objectif thématique recherché (la concentration des foyers paysans) justifie de leur existence et de leur nécessité dans les processus modélisés au sein de SimFeodal.
 
-Le troisième paramètre, la période durant laquelle les châteaux peuvent être promus en grands châteaux, apporte un léger contrepoint, ou au moins une précision à ce constat.
-Ce paramètre est déterminant dans le nombre de grands châteaux présents en fin de simulation, mais pourtant, il n'a aucune influence significative sur les autres indicateurs.
-Peut-on dès lors penser que la hiérarchie mise en place entre les châteaux, et la différence d'attractivité qui en découle, n'est pas indispensable au modèle ?
-Il faudra pour cela mener une étude plus approfondie des relations entre proportion de grands châteaux et les autres indicateurs.
-Rappelons en effet que l'analyse de sensibilité ici menée est grossière, et n'étudie aucunement les interactions entre valeurs de paramètres dont on peut imaginer, au sein d'un modèle aussi descriptif et complexe, qu'ils ont des effets locaux conséquents.
+\subsubsection{Paramètres liés aux églises et paroisses}
 
-\subsubsection{Églises et paroisses}
-
-Le dernier paramètre de cette analyse visuelle est aussi le seul qui porte sur un élément aussi conséquent que les paroisses, lesquelles sont l'un des moteurs principaux de la fixation de la population dans les agrégats de taille réduite qui constituent la grande majorité des lieux de concentration des foyers paysans (la fameuse \og longue traîne\fg{} de cette hiérarchie).
+Le dernier paramètre de cette analyse visuelle est aussi le seul qui porte sur les paroisses.
+Celles-ci constituent l'un des moteurs principaux de la fixation de la population dans les agrégats de taille réduite qui constituent la grande majorité des lieux de concentration des foyers paysans (la fameuse \og longue traîne\fg{} de cette hiérarchie).
+En première analyse, cette sous-représentation des paramètres liés aux paroisses dans l'ensemble des paramètres sélectionnés nous apparaît donc contre-intuitif.
 
 \begin{figure}[H]
 	\centering
@@ -1257,25 +1363,29 @@ Le dernier paramètre de cette analyse visuelle est aussi le seul qui porte sur 
 	\label{fig:sensib-paroisses}
 \end{figure}
 
-La \cref{fig:sensib-paroisses} présente les réponses des indicateurs à différentes valeurs du paramètre \textsf{ponderation\_creation\_paroisse\_agregat}.
-De manière prévisible et évidente, ce paramètre influence nettement les deux indicateurs liés aux paroisses et églises.
-Plus grand est le nombre de paroissiens nécessaire à la création d'une nouvelle paroisse dans un agrégat, plus faible est le nombre d'églises paroissiales conséquemment créées.
+La \cref{fig:sensib-paroisses} présente les réponses des indicateurs à différentes valeurs du paramètre \textsf{ponderation\_creation\_paroisse\_agregat}, qui agit sur le nombre de foyers paysans nécessaires à la création d'une nouvelle église paroissiale au sein des agrégats.
+De manière prévisible et évidente, ce paramètre influence nettement les deux indicateurs liés aux paroisses et églises :
+	plus grand est le nombre de paroissiens nécessaire à la création d'une nouvelle paroisse dans un agrégat, plus faible est le nombre d'églises paroissiales conséquemment créées.
 Et moins il y a d'églises dans un monde à la superficie constante, plus large est la distance entre elles.
-Passé cette trivialité, on notera avec intérêt la variation amenée par ce paramètre sur le nombre d'agrégats : plus le seuil est élevé, plus les agrégats sont nombreux, et cette corrélation apparaît visuellement significative et inverse à celle du nombre d'églises paroissiales, contrairement aux tendances que l'on a pu observer dans les paramètres liés aux foyers paysans et agrégats (\cref{subsubsec:sensib-fp}).
-Avec ces paramètres, nombre d'agrégats et d'églises paroissiales varient dans le même sens face aux valeurs de paramètres.
-Dans le cas du paramètre de pondération de la création de paroisses \og urbaines\fg{}, la relation est inverse, et il est difficile de l'expliquer, de même que le lien (plus ténu, mais lui aussi inverse) avec la concentration des foyers paysans.
-On peut émettre l'hypothèse que cette pondération influe largement sur la hiérarchie des paroisses et des pôles.
-En créant moins de paroisses en zone dense, la distribution de l'attractivité des pôles d'attraction -- qui est mesurée en large partie sur le nombre d'églises paroissiales qui les composent -- tend peut-être vers plus d'uniformité, et favorise ainsi relativement l'attraction locale vers des pôles de plus faible attractivité, et donc vers des agrégats plus locaux et faiblement peuplés.
 
+Passé ces éléments intuitifs, on notera avec intérêt la variation amenée par ce paramètre sur le nombre d'agrégats : plus le seuil est élevé, plus les agrégats sont nombreux, et cette corrélation apparaît visuellement significative et inverse à celle du nombre d'églises paroissiales.
+Cette tendance est inverse à celles observées dans les paramètres liés aux foyers paysans et agrégats (\cref{subsubsec:sensib-fp}, \cref{fig:sensib-fp-1,fig:sensib-fp-2,fig:sensib-fp-3,fig:sensib-agregats}).
+Pour ces paramètres, les nombres d'agrégats et d'églises paroissiales varient dans le même sens face à une augmentation de la valeur des paramètres.
+Dans le cas du paramètre de pondération de la création de paroisses \og urbaines\fg{}, la relation est inverse (\cref{fig:sensib-paroisses}).
 
+Cela nous paraît contre-intuitif au regard des mécanismes du modèle, et résulte vraisemblablement d'effets inattendus des interactions entre ces mécanismes.
+Une piste d'explication réside dans l'influence de ce paramètre de pondération des créations de paroisse sur la hiérarchisation des paroisses et des pôles.
+En créant moins de paroisses en zone dense, la distribution de l'attractivité des pôles d'attraction -- qui dépend en large partie du nombre d'églises paroissiales qui les composent -- tend vers plus d'uniformité.
+Quand les pôles ont une attractivité plus homogène, les migrations locales sont favorisées, et la concentration s'effectue alors vers des pôles moins attractifs constitués d'agrégats faiblement peuplés.
 
+\clearpage
 \subsection{Analyser la sensibilité à l'aléa \label{subsec:sensibilite-alea}}
 
 En menant l'analyse de sensibilité visuelle, on a pu remarquer que certains indicateurs présentaient une plus forte variation que d'autres.
-Une partie de l'explication tenait certainement à l'inégale amplitude des valeurs de paramètres testées, lesquelles influencent potentiellement plus directement ces indicateurs, mais cela ne nous semble pas être une explication suffisante.
+Une partie de l'explication tient à l'inégale amplitude des valeurs de paramètres testées, mais d'autres facteurs peuvent être en jeu.
 
-De manière globale, on constate dans les résultats de la version calibrée de SimFeodal (\cref{tab:results-basique}) que la variabilité des indicateurs émergents est assez forte en termes d'écart-type.
-L'écart-type se lisant dans l'unité de l'indicateur mesuré, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}}  /  \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
+De manière globale, on constate dans les résultats de la version calibrée de SimFeodal (\cref{tab:results-basique}) que la variabilité des indicateurs émergents, mesurée à partir de leur écart-type, est forte.
+L'écart-type se lisant dans l'unité de l'indicateur, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}}  /  \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
 
 
 \begin{table}[H]
@@ -1304,12 +1414,18 @@ L'écart-type se lisant dans l'unité de l'indicateur mesuré, il peut être int
 \label{tab:variabilite-indicateurs}
 \end{table}
 
-La lecture du \cref{tab:variabilite-indicateurs} nous montre que, rapportée à un paramètre de dispersion relatif comme le coefficient de variation, la variabilité des indicateurs due à l'aléa est assez faible, et dans des ordres de grandeurs assez comparables entre les indicateurs (à l'exception du nombre de grands châteaux).
+La comparaison des coefficients de variation \cref{tab:variabilite-indicateurs} montre que la variabilité des indicateurs due à l'aléa est assez faible, et d'ordre de grandeurs comparables d'un indicateur à l'autre\footnote{
+	Le nombre de grands châteaux fait exception : son coefficient de variation (0.191) est nettement supérieur aux autres.
+	Cela s'explique par l'ordre de grandeur du nombre de châteaux et grands châteaux, faible relativement aux autres, et où des variations de quelques unités jouent beaucoup sur l'écart-type en raison de la nature entière de ces variables.
+}.
 
-Pourtant, lors de l'analyse de sensibilité, on a pu constater des variations (étendue dans l'axe des ordonnées des \textit{violin-plots}) bien plus importantes au sein des réplications des paramètres testés.
+Pourtant, lors de l'analyse de sensibilité, on a pu constater des variations (étendue dans l'axe des ordonnées des \textit{violin-plots}) bien différentes au sein des réplications des paramètres testés.
+Dans la \cref{fig:sensib-fp-2} par exemple, on peut remarquer que la modalité \og dynamique\_large\fg{} présente une variabilité à l'aléa (le \og violon\fg{} est très étendu) différente des autres modalités : plus faible sur le nombre d'églises paroissiales et plus importante sur l'augmentation de la charge fiscale.
+De même, l'indicateur \textsf{ponderation\_creation\_paroisse\_agregat} (\cref{fig:sensib-paroisses}) présentait, sur le nombre de grands châteaux, une importante différence de variabilité à l'aléa.
 
 Il nous paraît par conséquent utile de mener un bref complément d'analyse, dédié à l'étude de la variabilité au sein des réplications d'une expérience.
-De telles analyses nous paraissent peu fréquentes dans la littérature liée aux modèles de simulation en géographie, mais on en trouve tout de même une définition chez \textcite{ginot2005explorer}, qui nomment ces approches des \og analyses d'incertitude\fg{} : 
+De telles analyses systématiques nous paraissent peu fréquentes dans la littérature liée aux modèles de simulation en géographie.
+On trouve une définition de ce type d'approche chez \textcite{ginot2005explorer}, sous le terme d'\og analyses d'incertitude\fg{} : 
 \begin{quotation}
 	\og Compte tenu des incertitudes sur les paramètres, de la variabilité naturelle des variables d'entrée et des composantes stochastiques qui peuvent être incluses dans la structure du modèle, il s'agit de calculer l'incertitude associée aux variables de sorties.
 	Les analyses d'incertitude sont très liées aux analyses de sensibilité dans la mesure où l'on souhaite en général connaître non seulement cette incertitude, mais également son origine.
@@ -1317,26 +1433,29 @@ De telles analyses nous paraissent peu fréquentes dans la littérature liée au
 	\mbox{}~ \hfill \cite[76]{ginot2005explorer}
 \end{quotation}
 
-Pour mesurer cette incertitude, nous avons repris l'ensemble des réplications correspondant à l'analyse de sensibilité de chaque paramètre, en avons mesuré la variabilité (écart-type) sur chaque indicateur.
-Afin à nouveau d'avoir des mesures comparables, on a ensuite procédé à une réduction (division par l'écart-type des valeurs de référence, présentées dans le \cref{tab:variabilite-indicateurs}) de l'amplitude de ces valeurs.
+Pour mesurer cette incertitude, nous avons repris l'ensemble des réplications correspondant à l'analyse de sensibilité de chaque paramètre et avons mesuré la variabilité (écart-type) sur chaque indicateur.
+Afin d'avoir des mesures comparables, on a ensuite procédé à une réduction (division par l'écart-type des valeurs de référence, présentées dans le \cref{tab:variabilite-indicateurs}) de l'amplitude de ces valeurs.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/histo_sensibilite_alea.pdf}
-	\caption{Sensibilité à l'aléa selon les indicateurs.}
+	\caption[Sensibilité à l'aléa selon les indicateurs.]{Sensibilité à l'aléa selon les indicateurs.\\
+	{\small
+	\textit{L'incertitude mesurée se lit en proportion de l'écart-type des résultats de la version calibrée de SimFeodal.
+	Une valeur de 0.5, par exemple, signifie que la variabilité due à l'aléa est moitié moins importante	que celle des valeurs de paramètres issues du calibrage.}}}
 	\label{fig:histo-sensib-alea}
 \end{figure}
 
-La distribution de ces valeurs d'incertitude réduites est présenté dans la \cref{fig:histo-sensib-alea}.
-Dans ces histogrammes, la valeur de 1 correspond à une incertitude moyenne identique à celle des réplications de référence.
-Une valeur de 2 peut être comprise ainsi : pour l'indicateur considéré, les différentes simulations exécutées lors de l'analyse de chaque valeur de chaque paramètre ont une variabilité deux fois supérieure à la variabilité attendue.
+La distribution de ces valeurs d'incertitude relatives est présenté dans la \cref{fig:histo-sensib-alea}.
+Dans ces histogrammes, la valeur de 1 correspond à une incertitude moyenne identique à celle des réplications de référence, c'est-à-dire des réplications de la version calibrée du modèle dont les résultats ont été commentés dans la première partie de ce chapitre (\cref{subsec:resultats}).
+Une valeur de 2 peut être comprise ainsi : pour l'indicateur considéré, les différentes simulations exécutées lors de l'analyse de chaque valeur de chaque paramètre ont une variabilité deux fois supérieure à la variabilité de référence.
 Autrement dit, certaines valeurs de certains paramètres amènent une bien plus forte variabilité : ils laissent une part plus importante à la stochasticité du modèle.
 
 On peut remarquer que la plupart des indicateurs présentent des \textit{outliers}, c'est-à-dire des valeurs de paramètres pour lesquelles la variabilité due à l'aléa est nettement supérieure (ou inférieure) à la normale.
 Dans le cas du nombre de grands châteaux, il y a même des valeurs de paramètres qui montre une absence presque totale de variabilité à l'aléa.
-Sans aller plus loin sur cet exemple, on peut penser qu'il s'agit des valeurs de paramètre qui ont tendance à réduire très largement le nombre de châteaux, amenant alors à une variabilité extrêmement faible dans cette amplitude des possibles restreinte.
+Sans aller plus loin sur cet exemple, il s'agit en fait des valeurs de paramètre qui ont tendance à réduire très largement le nombre de châteaux, amenant alors à une variabilité extrêmement faible dans cette amplitude des possibles restreinte.
 
-À partir de cet histogramme, nous avons isolés les \textit{outliers} et en présentons une représentation graphique dans la \cref{fig:sensib-alea}.
+À partir de cet histogramme, nous avons isolés les \textit{outliers} et en proposons une représentation graphique dans la \cref{fig:sensib-alea}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/sensibilite_alea_outliers.pdf}
@@ -1344,63 +1463,73 @@ Sans aller plus loin sur cet exemple, on peut penser qu'il s'agit des valeurs de
 	\label{fig:sensib-alea}
 \end{figure}
 
-De manière globale, on peut remarquer que les indicateurs relatifs aux foyers paysans présentent plus de valeurs extrêmes que les autres, c'est-à-dire sur une plus forte diversité de paramètres.
-Notons aussi que sur les 14 valeurs de paramètres isolées, la moitié concernent des paramètres qualitatifs.
-La difficile estimation de l'amplitude ceux-ci explique sans doute en partie la plus forte variabilité à l'aléa : si on a choisit des valeurs (étendues, évolutions temporelles etc.) trop éloignées des valeurs calibrées, il se peut que le modèle passe dans des régimes locaux différents du régime de base caractérisé par les réponses aux paramètres calibrés.
+De manière globale, on peut remarquer que les indicateurs relatifs aux foyers paysans sont surreprésentés parmi cette sélection d'\textit{outliers}.
+Cela montre bien que les foyers paysans sont les agents qui subissent le plus les changements de valeurs des paramètres du modèle.
 
-Plus spécifiquement, on peut constater le comportement très particulier du paramètre régissant le rayon maximum de migration locale des foyers paysans.
-Non seulement les valeurs de ce paramètre sont parmi les plus fortes sensibilités à l'aléa (indicateurs nombre d'agrégats et augmentation de la charge fiscale), mais de manière surprenante, la valeur correspondant à un rayon évolutif très étendue par rapport à la valeur de base (\texttt{map([800:5000, 1000:10000])}) se caractérise aussi par une très faible sensibilité à l'aléa sur l'indicateur de concentration des foyers paysans.
-Ce paramètre a donc la capacité de faire fortement varier les sorties (vu dans l'analyse de sensibilité visuelle), mais en plus de varier tout aussi fortement la part de l'aléa dans le modèle.
-Nous pensions exécuter un scénario thématique qui fasse varier ce paramètre afin d'étudier l'effet sur la hiérarchie des agrégats, et cette analyse confirme que ce serait tout à faire approprié.
+Notons aussi que sur les 14 outliers identifiés (axe des abscisses), la moitié sont des valeurs de paramètres qualitatifs.
+La difficile estimation de l'amplitude de ceux-ci explique sans doute en partie la plus forte variabilité à l'aléa : si on choisit des valeurs (étendues, évolutions temporelles etc.) trop éloignées des valeurs calibrées, il se peut que le modèle réagisse de manière non habituelle aux interactions entre mécanismes.
 
-\subsection{Conclusion et apports de l'analyse visuelle de sensibilité}
+Plus spécifiquement, on peut constater le comportement très particulier du paramètre régissant le rayon maximum de migration locale des foyers paysans (\textsf{rayon\_migration\_locale\_fp}, cinquième colonne en partant de la gauche dans la \cref{fig:sensib-alea}).
+Certaines valeurs de ce paramètre sont parmi les plus sensibles à l'aléa (notamment sur le nombre d'agrégats et l'augmentation de la charge fiscale : les barres y sont parmi les plus élevées de la figure).
+De plus, de manière surprenante, la valeur correspondant à un rayon évolutif très étendu (\texttt{map([800:5000, 1000:10000])}) se caractérise aussi par une très faible sensibilité à l'aléa sur l'indicateur de concentration des foyers paysans.
 
-On peut tirer un bilan extrêmement positif de l'exécution de cette analyse de sensibilité, pourtant limitée et grossière.
+Ce paramètre a donc la capacité de faire fortement varier les sorties (vu dans l'analyse de sensibilité visuelle), mais en plus de faire varier tout aussi fortement la part de l'aléa dans le modèle, en la diminuant ou en l'augmentant.
+%Nous pensions exécuter un scénario thématique qui fasse varier ce paramètre afin d'étudier l'effet sur la hiérarchie des agrégats, et cette analyse confirme que ce serait tout à faire approprié.
 
-Dans un premier temps, notons que la hiérarchie de la sensibilité des paramètres n'est pas véritablement proche de celle que l'on attendait, et qu'on a sans doute agit lors du paramétrage et du calibrage sur des paramètres qui n'étaient pas les plus déterminants.
-Cette étape d'évaluation qu'est l'analyse de sensibilité aurait sans doute gagné à être menée avant le calibrage du modèle afin d'obtenir une meilleure adéquation aux objectifs.
-Ce raisonnement est toutefois circulaire : sur un modèle moins calibré, peut-être que l'analyse de sensibilité n'aurait pas mis en avant les mêmes paramètres.
-Ceux-si sont en interaction étroite, et il nous semble évident que les résultats de cette analyse de sensibilité sont eux même extrêmement sensibles au paramétrage de base.
+\subsection{Quels apports de l'analyse visuelle de sensibilité ?}
 
-Dans un second temps, l'analyse de sensibilité semble aller dans le sens d'une confirmation de la parcimonie du modèle.
-On l'a dit lors de l'analyse quantitative, mais il nous semble important de le répéter tant ce résultat est rassurant, mais aussi surprenant.
+Cette analyse de sensibilité, même limitée et grossière, a permis de mettre en évidence un certain nombre de propriétés des paramètres et d'apporter des connaissances extrêmement utiles sur le fonctionnement du modèle face à divers types d'aléas en particulier.
+
+Dans un premier temps, notons que la hiérarchie de la sensibilité des paramètres n'est pas véritablement proche de celle que l'on attendait.
+Le paramétrage et le calibrage ont ainsi été menés, en partie, sur des paramètres moins déterminants que notre intuition du comportement du modèle ne pouvait le laisser croire.
+Cette étape d'évaluation qu'est l'analyse de sensibilité gagnerait à être menée avant le calibrage du modèle afin d'obtenir une meilleure adéquation aux objectifs.
+Ce raisonnement est toutefois circulaire : sur un modèle moins calibré, l'analyse de sensibilité n'aurait pas forcément mis en avant les mêmes paramètres.
+Comme ceux-si sont en interaction étroite, les résultats de cette analyse de sensibilité sont ainsi, eux-mêmes, extrêmement sensibles au paramétrage de base.
+
+Dans un second temps, l'analyse de sensibilité semble confirmer que le modèle est parcimonieux, relativement à son approche exploratoire du moins.
+On l'a dit lors de l'analyse quantitative, mais il nous semble important de le répéter tant ce résultat est rassurant au regard des craintes que l'on pouvait avoir : quand un modèle implique autant de mécanismes et paramètres, le risque est toujours important que certains soient entièrement redondants et donc superflus.
 Aucun des paramètres n'apparaît inutile, ce qui peut laisser entendre que les (très) nombreux mécanismes du modèle ne le sont pas non plus.
-Pour un modélisateur qui pense à minima comprendre à peu près son modèle et a des intuitions fortes sur les réactions de celui-ci aux différents mécanismes et paramètres, c'est une surprise très positive.
-Surprise d'autant plus positive que cet examen systématique des paramètres se révèle réellement une aide indéniable à la compréhension du modèle : après plus de 5 ans à travailler régulièrement sur un modèle, il est très enrichissant d'y trouver encore des éléments inattendus.
+Pour un modélisateur qui a des intuitions fortes sur les réactions d'un modèle aux différents changements de mécanismes et paramètres, c'est presque une surprise.
+Surprise d'autant plus positive que cet examen systématique des paramètres se révèle réellement une aide indéniable à la compréhension du modèle.
+Après plus de 5 ans à travailler régulièrement sur un modèle, il est très enrichissant d'y trouver encore des éléments inattendus voir nettement contre-intuitifs.
+De ce fait, l'analyse de sensibilité favorise elle aussi l'abduction (voir \cref{subsec:depasser-calibrage}).
 
 Un autre point, classique, concerne les limites d'une telle analyse.
-L'approche entièrement quantitative, présentée dans l'introduction de cette partie, permet de s'affranchir des effets de mauvaise pondération que l'on a pu constater dans l'analyse visuelle : certains paramètres ont une sensibilité globale importante, mais celle-ci se cantonne parfois à un unique indicateur, sans avoir de répercussions sur le reste du modèle.
-Dans un modèle comme SimFeodal, c'est-à-dire descriptif, exploratoire, et composé d'autant de paramètres hétérogènes, il semble toutefois illusoire de réussir à quantifier, pour une analyse de sensibilité, tout ce qui n'a pas été quantifié dans le modèle en lui-même : pondération des objectifs, objectivation des attendus dans les indicateurs graphiques etc.
+Une approche entièrement quantitative, présentée dans l'introduction de cette partie, permet de s'affranchir des effets de faible comparabilité que l'on a pu constater dans l'analyse visuelle : certains paramètres ont une sensibilité globale importante, mais celle-ci se cantonne parfois à un unique indicateur, sans avoir de répercussions sur le reste du modèle.
+Un modèle comme SimFeodal, c'est-à-dire descriptif, exploratoire, est caractérisé par des paramètres nombreux, hétérogènes et parfois très qualitatifs.
+il ne serait pas pertinent de chercher à quantifier, juste pour mener une analyse de sensibilité, tout ce qui n'a pas été quantifié dans le modèle en lui-même : objectivation des attendus dans les indicateurs graphiques, quantification de la pondération entre les différents objectifs etc.
 
-C'un point de vue subjectif assumé, la démarche mise en place, basée sur le visuel, nous semble tout à fait fructueuse. 
-Elle s'inscrit, comme de nombreux aspects de ce travail de thèse, dans une approche d'analyse visuelle entièrement dédiée à l'exploration d'un modèle et paraît confirmer l'adéquation de ce type d'approches à la construction et évaluation commune et interdisciplinaire de modèles.
+La démarche mise en place pour cette analyse de sensibilité a été basée sur une volonté d'exploration graphique et s'inscrit, comme de nombreux aspects de ce travail de thèse, dans une approche d'analyse visuelle entièrement dédiée à l'exploration d'un modèle.
+Cette démarche paraît confirmer l'adéquation de ce type d'approches à la construction et à l'évaluation commune et interdisciplinaire de modèles.
+Les éléments de compréhension des interactions effectives du modèle et les retours auxquels ces découvertes incitent nous paraissent entièrement fructueux, et à mettre au crédit de cette approche exploratoire, visuelle, et fondamentalement très qualitative.
 
-La dernière partie de ce chapitre, tournée vers l'usage du modèle pour tester des scénarios thématiques, trouve enfin une justification supplémentaire, dans le champ méthodologique et de la modélisation cette fois-ci.
-Les brèves analyses de sensibilités ont en effet renforcé le besoin criant d'études plus approfondies des variations de certains paramètres, qui plus est quand ceux-ci trouvent des correspondances dans les connaissances empiriques.
+%La dernière partie de ce chapitre, tournée vers l'usage du modèle pour tester des scénarios thématiques, trouve enfin une justification supplémentaire, dans le champ méthodologique et de la modélisation cette fois-ci.
+%Les brèves analyses de sensibilités ont en effet renforcé le besoin criant d'études plus approfondies des variations de certains paramètres, qui plus est quand ceux-ci trouvent des correspondances dans les connaissances empiriques.
 
-\clearpage
-\section[Exploration de scénarios]{Comprendre le modèle par l'exécution de scénarios%
-	\sectionmark{Comprendre le modèle par l'exécution de scénarios}}\label{sec:scenarios}
-
-\bigskip
-\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
-	Cette sous-partie est adapté d'une partie d'un article collectif dont la première auteure est Cécile Tannier : \hl{Mettre la ref quand ce sera soumis. Pour l'instant :} \\
-		 Tannier C., Cura R., Leturcq S., Zadora-Rio E. (2020), \og An agent-based modelling to explore the combined effects of social and demographic changes on the hierarchy of rural settlement patterns in North-Western Europe during the Middle Ages (800 CE to 1200 CE) - An application to the Tour's diocese, West of France\fg{}.
-\end{mdframed}
-
-\begin{itemize}
-	\item On ne présente ici que 3 scénarios sur les 7 \og familles\fg{} de scénarios testés dans l'article.
-	\item Les simulations sont déjà effectuées et leurs résultats intégrés dans SimEDB.
-	\item Cécile est en train de rédiger une analyse des résultats en anglais pour un article collectif.
-	\item On présentera notamment les résultats de ces scénarios à l'ECTQG.
-	\item => je les intégrerai une fois que ce sera déjà rédigé et que la sélection de graphiques/indicateurs aura déjà été faite, autant ne pas perdre de temps là dessus pour l'instant
-\end{itemize}
-
-\subsection{Tester l'hypothèse d'une croissance démographique \label{subsec:scenario-croissance}}
-
-\subsection{Modéliser la dépendance spatiale : le poids du servage \label{subsec:scenario-servage}}
-
-\subsection{Quel rôle et importance des communautés paysannes dans la structuration du système de peuplement ? \label{subsec:scenario-communautes}}
+%
+%\clearpage
+%\section[Exploration de scénarios]{Comprendre le modèle par l'exécution de scénarios%
+%	\sectionmark{Comprendre le modèle par l'exécution de scénarios}}\label{sec:scenarios}
+%
+%\bigskip
+%\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
+%	Cette sous-partie est adapté d'une partie d'un article collectif dont la première auteure est Cécile Tannier : \hl{Mettre la ref quand ce sera soumis. Pour l'instant :} \\
+%		 Tannier C., Cura R., Leturcq S., Zadora-Rio E. (2020), \og An agent-based modelling to explore the combined effects of social and demographic changes on the hierarchy of rural settlement patterns in North-Western Europe during the Middle Ages (800 CE to 1200 CE) - An application to the Tour's diocese, West of France\fg{}.
+%\end{mdframed}
+%
+%\begin{itemize}
+%	\item On ne présente ici que 3 scénarios sur les 7 \og familles\fg{} de scénarios testés dans l'article.
+%	\item Les simulations sont déjà effectuées et leurs résultats intégrés dans SimEDB.
+%	\item Cécile est en train de rédiger une analyse des résultats en anglais pour un article collectif.
+%	\item On présentera notamment les résultats de ces scénarios à l'ECTQG.
+%	\item => je les intégrerai une fois que ce sera déjà rédigé et que la sélection de graphiques/indicateurs aura déjà été faite, autant ne pas perdre de temps là dessus pour l'instant
+%\end{itemize}
+%
+%\subsection{Tester l'hypothèse d'une croissance démographique \label{subsec:scenario-croissance}}
+%
+%\subsection{Modéliser la dépendance spatiale : le poids du servage \label{subsec:scenario-servage}}
+%
+%\subsection{Quel rôle et importance des communautés paysannes dans la structuration du système de peuplement ? \label{subsec:scenario-communautes}}
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
