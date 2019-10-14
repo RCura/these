@@ -21,9 +21,14 @@
 \chapter{Modélisation et visualisation comme interfaces disciplinaires}
 \label{chap:chap1}
 \begin{center}
-	{\large Version 2018-XX-XX}	\end{center}
+	{\large Version \hl{2019-10-14}}
+\end{center}
+
 \begin{itemize}
 	\item 10/10/2019 : Nouveau plan
+	\item 14/10/2019 : fin 1.1
+\end{itemize} 
+
 \minitoc
 
 \clearpage
@@ -41,15 +46,120 @@
 \section{D'où je viens}
 
 Le travail de recherche présenté dans cette thèse s'inscrit profondément à l'interface entre plusieurs courants disciplinaires liés à l'étude des phénomènes sociaux dans l'espace.
+Pour en comprendre aussi bien le questionnement que l'approche mobilisée et les résultats obtenus, il me\footnote{
+	Dans ce chapitre, très personnel et consacré essentiellement à la description et justification d'un positionnement individuel, le choix de la première personne du singulier me semble tout à fait adapté.
+	Dans le reste de ce manuscrit, qui relate une expérience collective, la première personne du pluriel sera exclusivement mobilisée.
+} paraît important de faire un rapide retour sur ma formation initiale et début de parcours dans le monde de la recherche académique, qui explique et préfigure assez largement le positionnement adopté dans ce travail.
+Depuis une formation classique de géographie humaine et urbaine jusqu'à l'exercice de fonctions d'ingénieur d'étude en modélisation, en passant par une spécialisation en géomatique et cartographie, chacune des étapes de ma formation permet ainsi de mieux appréhender et comprendre l'aboutissement à cette thèse basée sur la co-construction interdisciplinaire de modèles spatiaux et sur leur exploration graphique.
+
 \subsection{Géographie}
 
-\section{Une méthode de co-construction faite d'allers-retours interdisciplinaires}
-\subsection{Un langage et des outils communs : préférer la co-construction à la prestation}
-\subsection{Modéliser pour explorer, explorer pour modéliser : comment combiner et accumuler les connaissances acquises}
-\subsection{Du particulier au générique : médiation et compromis entre disciplines}
+Ce travail de recherche s'inscrit avant tout, tant administrativement que conceptuellement, dans le champ disciplinaire de la géographie.
+Cette discipline, consacrée à l'étude de la dimensions spatiale de phénomènes sociaux, constitue les fondements de ma formation initiale.
+En sortant de classes préparatoires littéraires généralistes, j'avais ainsi été frappé par l'exercice du commentaire de cartes, à visée tant verticale (cartes géologiques) qu'horizontale (cartes topographiques), permettant de décrire et d'expliquer le fonctionnement humain d'un lieu par la seule observation de ses structures et contextes spatiaux.
+
+\paragraph{Géographie urbaine.}
+Cela m'a mené vers un cursus classique de géographie, majoritairement marqué par la géographie humaine et la recherche de grandes tendances spatiales dans les interactions sociales humaines.
+Avec un intérêt pour l'aménagement et l'urbanisme, la géographie urbaine, dans sa dimension sociale, m'est rapidement apparue comme particulièrement stimulante, dans sa capacité à décrypter, à expliquer et à comparer des processus sociaux variés à l'échelle intra-urbaine.
+Il ne s'agissait plus simplement de décrire un état, mais d'expliquer les processus spatiaux et sociaux y ayant mené.
+Au regard des enseignements d'urbanisme et de politiques de la ville, ces approches permettaient ainsi de comparer le résultat de différentes politiques publiques, et de mener un début de mesure objective de l'écart entre leur objectif exprimé et leur action effective.
+
+En master, j'ai voulu appliquer ces approches en initiant, sous la co-direction de Renaud Le Goix et Antonine Ribardière, un mémoire sur le thème de la comparaison de l'intégration spatiale des migrants entre les politiques francophones et anglophones.
+Les politiques migratoires francophones, nourries du modèle jacobin français, menaient-elles à une plus forte inclusion et mixité sociale que les modèles anglophones, fondés sur l'image d'un \og \textit{salad-bowl}\fg{} communautaire ?
+Le cas d'étude choisi portait sur le Canada, pays ayant l'avantage de présenter ces deux communautés linguistiques et culturelles, d'avoir une forte culture et attraction migratoire aussi bien pour les pays les plus développés que pour les Suds, et enfin de tenir un recensement permettant les études ethniques et communautaires.
+
+\paragraph{Géographie Théorique et Quantitative.}
+Dans un contexte de découverte de l'analyse spatiale, de la modélisation graphique, des systèmes d'information géographiques (SIG) et d'approches plus systémiques et horizontales de description et d'explication de phénomènes socio-spatiaux, ce travail s'est assez rapidement orienté vers une démarche quantitative et à visée plus généralisante.
+Le mémoire qui en a résulté, intitulé \og Ségrégation spatiale et origines ethniques dans les métropoles canadiennes\fg{}, illustre ce tournant vers la géographie théorique et quantitative (GTQ) et cette volonté d'approche très quantifiée, en faisant la part belle à la comparaison des différents indices de ségrégation caractérisant les distributions spatiales de la population urbaine canadienne.
+Pour être en mesure de mener cette comparaison systématique, une auto-formation poussée avait été nécessaire, notamment sur les techniques d'analyse de données, de réduction de dimensionalité (les recensements canadiens contiennent des centaines de catégorie qui ne pouvaient toutes êtres traitées individuellement) et sur une première approche d'automatisation de traitements (via SAS) pour être en mesure de tester rapidement différentes hypothèses sur les quelques milliers de \og secteurs de recensement\fg{} impliqués dans l'étude.
+
+Du point de vue méthodologique, cette première expérience d'exploration systématique d'un jeu de données hétérogène et qu'il fallait caractériser par le calcul d'une dizaines d'indices de ségrégation, globaux et locaux, m'avait montré la nécessité de parvenir à une certaine automatisation de la chaîne de traitement, depuis la sélection des données, le calcul de tel ou tel indice, jusqu'à leur représentation (carto)graphique.
+Les quelques macros SAS mises en place ne permettaient alors pas une automatisation totale de cette démarche d'analyse, et les mois d'été passés aux traitements systématiques et répétitifs nécessaires à une approche comparative ne rendaient que plus criant le besoin d'une méthode intégrée et automatisée.
+
 \subsection{Géomatique}
 
+C'est donc à la recherche de ces éléments que je me suis orienté, pour le master 2, vers une spécialisation en géomatique et cartographie, en intégrant le master professionnel Carthagéo.
+Les connaissances, méthodologiques et techniques, que j'y ai acquis sont importantes et ont toutes concouru aux démarches mises en place dans ce travail de thèse.
+
+\paragraph{Programmation, automatisation et interfaces graphiques.}
+En premier lieu, Carthagéo m'a permis de découvrir des méthodes d'automatisation de chaînes de traitement de données spatiales.
+Avec ces initiations à la programmation, une vision algorithmique, systématique et processuelle, devenait un pré-supposé obligatoire : pour automatiser un traitement, il fallait avant tout pouvoir le formaliser, sur papier d'abord, de manière à pouvoir en réaliser une implémentation informatique.
+C'est, pour moi, la découverte de la mise en place de modèles graphiques, non plus dédiés à la description d'un lieu mais à l'explicitation d'un processus.
+Avec l'automatisation permise par l'implémentation de ces chaînes de traitement, il devenait aussi possible de mener des études systématiques, reproductibles et paramétrées.
+
+Dans le cadre d'un projet de programmation SIG, j'ai aussi du réaliser un outil, sous la forme d'un \textit{plugin}, permettant une comparaison visuelle et mesurée de la qualité de géocodage de différents services.
+En dehors de l'aspect technique, cette première expérience de projet de programmation appliqué a surtout été l'occasion de réfléchir à des questions d'interface homme-machine.
+Comment rendre intuitif, pour un évaluateur détaché du sujet, l'usage d'un outil interactif pensé pour vérifier la cohérence de géocodage de différentes adresses ? Fallait-il privilégier la présentation de l'indicateur quantitatif  -- la distance entre les points issus du géocodage -- ou plutôt donner une idée plus contextuelle de la localisation spécifique des résultats du géocodage ?
+Paradoxalement, cet apprentissage de la programmation et de l'automatisation débouchait sur des questionnements relatifs au développement et à l'usage d'une interface graphique.
+Cette sensibilité à l'\og usabilité\fg{} d'un logiciel a été très présente dans la suite, et me paraît fortement visible dans le présent travail de thèse (voir \hl{partie 5.4}).
+
+\paragraph{Approches géométriques.}
+Une autre approche extrêmement mobilisée dans cette thèse consiste dans une vision processuelle \og géométrique\fg{} des traitements de données spatiales.
+Dans ce type d'approches, caractérisée par les recours aux opérateurs spatiaux, les agrégations, extractions et filtrages de données sont réalisés de manières surtout spatiales.
+Il s'agit de prendre en compte le contexte spatial, topologique, pour réaliser les opérations sur les données.
+En somme, cela revient à mobiliser la dimension spatiale des données dans les différentes chaînes de traitement mises en œuvre, et la différencier fortement des autres dimensions, attributaires.
+Ces approches sont nécessaires à la réalisation d'analyses portant sur des données de différentes granularités, de différents maillages : elles permettent en effet d'homogénéiser des informations dont la dimension spatiale est primordiale.
+En tant que telle, cette vision \og géométrique\fg{} nous a été fortement recommandée et transmise dans le cadre d'enseignements d'analyse spatiale.
+
+Dans le modèle présenté dans cette thèse (\hl{chap2}), une large partie des mécanismes est caractérisé par des processus géométriques, qu'il s'agisse de la mise en place de zones tampons, de prises en compte du voisinage, de logiques de distances euclidiennes, d'intersections et unions spatiales etc.
+L'influence de mon parcours me semble indéniable sur ces choix de modélisation où l'espace est traité de manière continue, assez peu répandus malgré tout dans les modèles de dynamiques spatiales.
+
+\paragraph{Représentations (carto)graphiques.}
+Un dernier point lié à mon enseignement de master a largement infusé sur les choix de ce travail de thèse.
+Le master Carthagéo est une formation en grande partie dédiée à la cartographie, c'est-à-dire à l'apprentissage des \og règles\fg{} de représentation cartographiques et à une certaine réflexivité sur les différents messages qu'une carte peut convoyer.
+La réflexion méthodologique sur les usages de la représentation (carto)graphique pour rendre compte d'un jeu de données est fortement présente dans l'ensemble des projets qui doivent être réalisés au cours de l'année de formation.
+Les choix de représentation graphiques, très présents dans ce travail de thèse, ont ainsi durablement percolé depuis cet apprentissage.
+
 \subsection{Modélisation : à la confluence de la GTQ et de la géomatique}
+
+Master professionel oblige, la validation de Carthagéo impliquait la réalisation d'un stage de fin d'étude, en entreprise ou en unité de recherche.
+J'ai eu la chance d'entamer un stage dans l'UMR Géographie-cités, en mai 2011, sous la co-direction de Thomas Louail, Clara Schmitt et Sébastien Rey-Coyrehourcq.
+Ce stage, finalement intitulé \og Conception de modèles et d’outils de géosimulation \fg{} \autocite{cura_conception_2011}, était déjà organisé autour de tâches qui résonnent fortement vis-à-vis du contenu de la présente thèse.
+
+Il s'agissait, de \og prendre part à toutes les étapes de la modélisation\fg{}, grâce à (1) l'enrichissement d'un modèle de simulation (SimpopLocal) ; (2) la participation à la conception et implémentation d'un second modèle de simulation (SimpopNet) ; (3) la création d'un outil de production de rapports de simulations (TrajPop) ; (4) la création d'un outil d'exploration cartographique des résultats de simulation \autocite[12-13]{cura_conception_2011}.
+Ce stage de six mois, et les deux années de contrats d'ingénieur d'étude qui l'ont suivi et ont permis d'en prolonger les recherches (au sein des projets GeoDiverCity, MIRO² puis TransMonDyn)\footnote{
+	Respectivement portés par Denise Pumain (ERC GeoDiverCity), Arnaud Banos (ANR MIRO²) et Lena Sanders (ANR TransMonDyn).
+} ont durablement marqué mon rapport à la modélisation, à l'utilité de telles méthodes et à la manière de construire un modèle de façon collective.
+
+\paragraph{Découverte de la modélisation à base d'agents.}
+Ce stage a marqué ma découverte du domaine de la modélisation, et en particulier de la modélisation à base d'agents.
+Coïncidentiellement, le premier modèle que j'ai eu à comprendre et à enrichir était un modèle de simulation de l'émergence et de la hiérarchisation d'un système de peuplement sur le temps long, au néolithique : SimpopLocal \autocite{schmitt_modelisation_2014,rey-coyrehourcq_plateforme_2015}.
+Il s'agissait donc de tester des hypothèses issues de la géographie théorique et quantitative en les testant, \textit{in silico}, à l'aide d'un outil informatique permettant de simuler des dynamiques spatiales.
+
+Pour que je parvienne à comprendre et à m'approprier le modèle, mes encadrants m'avaient demandé d'ajouter un mécanisme exogène de perturbation du système simulé, sous la forme d'incidences de catastrophes naturelles. 
+L'idée de mon implication était de me permettre de me former, par la pratique, aux notions sous-jacentes de la modélisation de systèmes complexes : émergence, interactions entre agents, processus endogènes et exogènes etc.
+
+Ces éléments ont été mis en pratique dans la participation à la conception et à l'implémentation d'un second modèle de simulation, \og SimpopNet-Réseaux\fg{}, \og modèle-jouet\fg{} servant de prototype pour le modèle SimpopNet développé plus tard \autocite{schmitt_modelisation_2014}.
+Il s'agissait cette fois-ci de modéliser la co-évolution entre systèmes de villes et réseaux de communication, en simulant des potentiels d'interactions entre villes par l'intermédiaire de réseaux routiers formalisés par des graphes.
+
+\paragraph{Visualisation et évaluation de modèle.}
+Pour rendre compte de ces deux modèles -- SimpopLocal et SimpopNet --, il m'avait été demandé de développer des outils de visualisation et d'exploration de leurs comportements.
+Les outils de visualisation intégrés à la plateforme de modélisation, NetLogo, n'étaient en effet pas suffisants pour rendre compte des différentes dynamiques produites par ces modèles.
+Dans un premier temps, pour étudier l'effet des perturbations sur SimpopLocal, j'ai implémenté un type de représentation utilisé pour montrer l'évolution des rangs des villes d'un système, en m'appuyant sur les \og rank clocks\fg{} de \textcite{batty_rank_2006}.
+Cette visualisation \textit{ad hoc} était très adaptée, mais ne permettait d'évaluer qu'une unique dimension (la stabilité des rangs) des processus modélisés.
+De plus, il était nécessaire de re-générer manuellement ces graphiques à chaque nouvelle sortie du modèle.
+
+C'est par le biais de la recherche d'automatisation et de proposition de plusieurs modes de représentation que j'ai été amené à découvrir le langage R et ses possibilités de création de rapports automatiquement produits à partir de jeux de données.
+L'outil qui en a découlé, intitulé TrajPop (analyse des trajectoires de population), a été en premier lieu mobilisé sur les populations simulées de SimpopLocal.
+Cela marquait ainsi un premier pas vers une évaluation systématique des sorties de simulation, permettant de plus d'archiver de manière systématisée les résultats de simulation.
+Par la suite, TrajPop a été employé et amélioré pendant plusieurs années pour caractériser l'évolution des populations de systèmes de villes empiriques et non plus simulés (par exemple dans \textcite{pumain_multilevel_2015}).
+
+\paragraph{Accompagnement à la modélisation.}
+Un dernier aspect hérité de mes années de stagiaire/ingénieur d'étude à l'UMR Géographi-cités concerne un mode particulier de modélisation, pleinement inscrit dans le travail collectif.
+Il s'agit d'une approche collective, collaborative voir accompagnatrice de la modélisation.
+En effet, si les modèles SimpopLocal et SimpopNet étaient pilotés par des doctorants-modélisateurs, j'ai aussi participé à une expérience de modélisation commune où mon rôle, mi-modélisateur mi-accompagnateur, consistait à formaliser et implémenter des hypothèses sur la constitution de réseaux de collaboration scientifique.
+Marie-Noëlle Comin, géographe qui avait réalisé une thèse empirique sur le sujet \autocite{comin_reseaux_2009}, cherchait ainsi à tester différents scénarios explicatifs aux regroupement de chercheurs dans le cadre de la constitution de consortiums en vue de candidature à des financements de projets scientifiques : par affinité et historique de collaboration, par importance bibliométrique, par capacité passée à remporter des financements etc.
+
+Le modèle issu de cette co-construction, SearchNet, a été élaboré pendant près de deux ans, en requérant une forte perméabilité de ses concepteurs aux thématiques et usages de l'autre.
+Par faute de temps consacré à sa finalisation, ce modèle n'a finalement jamais été achevé et mobilisé dans une publication scientifique.
+Cette expérience, que l'on pourrait qualifier d'avortée, m'a pourtant permis de réaliser que pour mener à terme un projet de modélisation fortement collectif, il était nécessaire de disposer de beaucoup de temps, de motivation, et qu'une partie non négligeable de ces deux ressources rares devait être dédiée à l'accoutumance, des deux côtés, aux thématiques et méthodologies mobilisées dans un modèle.
+
+
+\paragraph[Conclusion intermédiaire]{}
+Ma formation académique et mes expériences passées de modélisation à base d'agent, entre géographie et géomatique, ont considérablement influencé la manière dont le présent travail de recherche a été abordé.
+Ces éléments n'expliquent pas, seuls, l'ensemble des choix faits dans cette thèse, mais peut-être permettent-ils de mieux les comprendre, qui plus est au regard du contexte dans lequel cette thèse a été conçue et réalisée.
+
+
 \section{Dans quel contexte s'inscrit ce travail ?}
 
 Chapeau : TransMonDyn et LabEx DynamiTe
