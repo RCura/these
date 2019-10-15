@@ -21,12 +21,13 @@
 \chapter{Modélisation et visualisation comme interfaces disciplinaires}
 \label{chap:chap1}
 \begin{center}
-	{\large Version \hl{2019-10-14}}
+	{\large Version \hl{2019-10-15}}
 \end{center}
 
 \begin{itemize}
 	\item 10/10/2019 : Nouveau plan
 	\item 14/10/2019 : fin 1.1
+	\item 15/10/2019 : début 1.2
 \end{itemize} 
 
 \minitoc
@@ -162,11 +163,133 @@ Ces éléments n'expliquent pas, seuls, l'ensemble des choix faits dans cette th
 
 \section{Dans quel contexte s'inscrit ce travail ?}
 
-Chapeau : TransMonDyn et LabEx DynamiTe
+Le sujet initial de cette thèse a été conçu alors que j'étais ingénieur d'étude en analyse de données et représentations cartographiques, sous l'encadrement de Lena Sanders, pour le projet ANR TransMonDyn\footnote{
+Programme \og Blanc\fg{} de l'Agence Nationale de la Recherche (ANR), sous le code \mbox{ANR-10-BLAN-1805},  \href{http://www.transmondyn.parisgeo.cnrs.fr/}{www.transmondyn.parisgeo.cnrs.fr}
+}.
+Ce projet interdisciplinaire, officiellement mené entre 2011 et 2014, visait à \og modéliser les grandes transitions de l'évolution du peuplement dans l'Ancien et le Nouveau Monde: contraintes environnementales, interactions spatiales et innovations sociales dans la dynamique multi-échelles de systèmes complexes\fg{}.
+
+C'est au sein de ce projet que s'est constitué le groupe de travail qui a donné lieu à SimFeodal, et c'est dans TransMonDyn que ce modèle, les hypothèses sur lesquelles il repose et les grandes lignes conceptuelles qui l'animent ont été conçu.
+Il me paraît donc indispensable de préciser les cadres conceptuels et pratiques de ce projet, et en particulier ceux qui ont ébauché les grandes directions empruntées dans cette thèse.
 
 \subsection{Modélisation de processus spatiaux}
 
-\subsection{Inscrits dans la longue durée}
+L'entrée principale de TransMonDyn était résolument spatiale.
+Le projet cherchait à identifier et à modéliser de grandes transformations dans les systèmes de peuplements.
+En préalable au lancement du projet, la quarantaine de participants initiaux avaient identifiés douze cas d'études (\cref{tab:transitions-tmd}) où les systèmes de peuplement, dans leur dimension spatiale, avaient été profondément et durablement modifiés.
+Ces cas d'études d'étendues spatiales -- d'une région nord-américaine au monde entier -- et temporelles -- de milliers d'années à la préhistoire à un siècle contemporain -- très variées, mais avaient en commun, comme le descriptif du projet\footnote{
+	Accessible sur le site de l'ANR -  \href{https://anr.fr/Projet-ANR-10-BLAN-1805}{https://anr.fr/Projet-ANR-10-BLAN-1805}
+} le mentionne, \og un “avant” et un “après” » radicalement différents du point de vue de l’occupation de l’espace par les sociétés.\fg{}
+
+\begin{table}[H]
+	\captionsetup{singlelinecheck=off}
+	\centering
+	\footnotesize
+	\resizebox{\textwidth}{!}{%
+	{\renewcommand{\arraystretch}{1.2}%
+		\begin{tabular}{|p{.5cm}|p{4.5cm}|p{2.75cm}|p{3.5cm}|p{4cm}|}
+		\hline
+\textbf{N°} & \textbf{Titre} & \textbf{Période étudiée} & \textbf{Zone géographique} & \textbf{Porteur(s)} \\ \hline
+1 & Sortie d'Afrique & - 70 000 & Monde & J.-M. Hombert, C. Coupé \\ \hline
+2 & Néolithique Bantu & - 1000 / 1000 & Afrique subsaharienne & J.-M. Hombert, C. Coupé \\ \hline
+3 & Village formation in Pueblo societies & 600 / 1300 & Sud-Ouest États-unien & T. Kohler \\ \hline
+4 & Émergence des villes & - 8000 / 2000 & Monde & D. Pumain \\ \hline
+5 & Concentration de l'habitat de l'Âge du Fer & - 600 / - 400 & Gaule méridionale & P. Garmy, J.-L. Fiches, L. Nuninger \\ \hline
+6 & Romanisation & - 200 / 100 & Gaule méridionale & M.-J. Ouriachi, F. Bertoncello \\ \hline
+7 & Antiquité tardive : une transition ? & 100 / 600 & Gaule méridionale & F. Favory, C. Raynaud \\ \hline
+8 & 800-1100 : polarisation et territorialisation & 800 / 1100 & Europe du Nord-Ouest & S. Leturcq, E. Lorans, X. Rodier, E. Zadora-Rio \\ \hline
+9 & Transition urbaine : 18ème - 19ème siècles & 1700 / 1900 & France & A. Bretagnolle, A. Franc \\ \hline
+10 & Urbanisation de l'Afrique du Sud & ? / 2000 & Afrique du Sud & C. Vacchiani-Marcuzzo \\ \hline
+11 & Littoralisation des systèmes de peuplement & 700 / 2010 & Monde & C. Ducruet \\ \hline
+12 & Émergence de métropoles polycentriques "Mega City Regions" & 1960 / 2050 & Monde & F. Le Néchet \\
+\hline
+\end{tabular}}}
+\caption[Les 12 cas d'étude, ou \og transitions\fg{}, du projet TransMonDyn.]{Les 12 cas d'étude, ou \og transitions\fg{}, du projet TransMonDyn - \href{www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques}{www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques}}
+	\label{tab:transitions-tmd}
+\end{table}
+
+\paragraph{Des processus génériques : la recherche de faits stylisés.}
+
+L'une des ambitions principales était de parvenir à identifier des grands types génériques de transformations spatiales (migrations, concentration, dispersion, sédentarisation, hiérarchisation\ldots).
+On cherchait à caractériser ces transformations, matérialisations spatiales de processus sociaux, sous forme de \og faits stylisés\fg{}, c'est-à-dire de \og présentation simplifiée (sous la forme d’une relation entre phénomènes, d’une structure temporelle ou spatiale) d’une régularité empirique sur l’observation de laquelle il y a un assez large consensus dans la communauté scientifique\fg{} \autocite[70]{nuninger_cadre_2017}.
+
+Une fois les faits stylisés relatifs aux changements structurels identifiés, le projet ambitionnait de parvenir à caractériser les principaux leviers et catalyseurs de ces évolutions, et ainsi de proposer des faits stylisés explicatifs et génériques.
+Par exemple, on aurait pu chercher à comprendre les effets spatiaux d'une période de violence sur un système de peuplement : ce système tendrait-il à se disperser, à se concentrer, à se hiérarchiser ?
+
+\paragraph{Modéliser avec des systèmes complexes.}
+Afin de conceptualiser et formaliser ces faits stylisés liés à des processus spatio-temporels, l'approche choisie était d'en modéliser les systèmes en tenant compte de leur nature complexe.
+Pour arriver à une description systémique aussi parcimonieuse que possible de ces transformations, les membres de TransMonDyn avaient ainsi décidé de modéliser les systèmes affectés et leur évolution, en cherchant à \og endogénéiser\fg{} autant que possible les éléments déclencheurs des changements.
+Cette endogénéisation consiste à provoquer les transformations spatiales de manière endogène, c'est-à-dire en les expliquant par les dynamiques propres d'un système plutôt que par une perturbation extérieure au système (on parle alors d'élément exogène).
+Une fois endogènes, les dynamiques menant aux transformations peuvent être exprimées sous la forme de phénomènes émergents, les inscrivant dans le paradigme de la modélisation de systèmes complexes que \citeauteur{banos_pour_2013} exprime ainsi :
+\begin{quotation}
+\noindent \og Selon l’acception la plus courante aujourd’hui, un système complexe est constitué d’un grand nombre d’éléments en interactions non linéaires, situés dans un environnement.
+Ces éléments (ou entités) actifs, dénommés agents dans la terminologie informatique usuelle, agissent dans et sur cet environnement, qui les influence en retour.
+Un tel système ne bénéficie pas, de plus, d’un mode de contrôle global, centralisé.
+Le pouvoir d’action des agents est réduit à une dimension très locale, et certaines structures globales observées sont le fait de processus d’auto-­organisation.
+Dans une telle perspective, les multiples interactions, qui plus est localisées, entre agents peuvent conduire à l’apparition de propriétés à un autre niveau d’observation ou d’agrégation, intermédiaire ou global, non déductibles à partir des simples propriétés des agents.
+Ces propriétés sont dites émergentes et leur identification constitue l’un des principaux enjeux des théories de la complexité. 
+\fg{}\\
+\mbox{}~ \hfill \cite[39-40]{banos_pour_2013}  	  
+\end{quotation}
+
+\subsection{Des processus inscrits dans la longue durée}
+
+Une particularité importante du projet TransMonDyn et des systèmes complexes modélisés en son sein est leur inscription dans le temps long, et souvent, dans un temps long situé dans un passé lointain relativement aux thèmes habituellement traités en géographie.
+
+\paragraph{Identifier des \og régimes\fg{} et \og transitions\fg{}.}
+
+Ce recul historique, tant en termes de position que d'étendue temporelle, s'exprime notamment par la manière dont les transformations spatiales sont décrites.
+On les décrit comme des \og transitions\fg{} dans le système de peuplement, selon une logique qui rappelle les transitions de phase chimiques\footnote{
+	Dans l'ouvrage \og Peupler la Terre\fg{} \autocite{sanders2018peupler}, qui constitue un bilan du projet TransMonDyn, un chapitre entier \autocite{pumain_convergences_2017} porte sur le choix de cette terminologie.
+}.
+Ces transitions occurrent de manière brusque relativement aux \og régimes\fg{} qui les précèdent (\og régime 1\fg{}) et en découlent (\og régime 2\fg{}).
+
+Pour décrire ces termes, on peut s'appuyer sur l'une de ces transitions, originellement dénommée \og Transition 8\fg{} (de son rang dans l'ordre chronologique des cas d'étude) ou \og 800-1100 : polarisation et territorialisation en Europe du Nord-Ouest\fg{} (voir le \cref{tab:transitions-tmd}), qui constitue aussi le cas d'étude sur lequel ce travail de thèse repose.
+
+Dans cette transition \footnote{
+Dont la description originale peut être consultée sur le site internet du projet \mbox{TransMonDyn} : \href{http://www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques/t8}{www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques/t8}
+}, le régime 1, hérité de l'antiquité tardive, est caractérisé par un pouvoir centralisé et un habitat majoritairement dispersé et constitué de villages de faible population.
+La transition en tant que telle est caractérisée par un émiettement des pouvoirs seigneuriaux, l'essor urbain, une polarisation de l'habitat rural et par une stabilisation de l'habitat.
+Après cette transition, dans le régime 2, le système féodal a été mis en place, l'habitat est polarisé autour des églises paroissiales et socialement structuré par des communautés rurales.
+
+\paragraph{Longue durée et modélisation.}
+
+L'inscription passée et sur la longue durée pose plusieurs problèmes en terme de modélisation.
+En premier lieu, sur le plan conceptuel, l'étude d'un système sur le temps long impose d'en caractériser les composantes de manière pérenne.
+L'exemple des \og villes \og en est caractéristique : la définition de ces entités socio-spatiales varie selon les disciplines, mais aussi selon les époques considérées.
+Pour certains, parler de villes pour caractériser les agglomérations secondaires héritées de l'antiquité constitue ainsi un anachronisme complet.
+La première difficulté d'un projet tel que l'étude d'une transition est donc déjà de formaliser, de manière ontologique, des objets valides sur l'ensemble de la période étudiée, alors même que presque par définition, ces objets sont amenés à évoluer et potentiellement à se transformer d'un régime à l'autre.
+
+\paragraph{Longue durée et sources : le problème des \og connaissances expertes\fg{}}
+
+Une autre difficulté majeure auquel le projet TransMonDyn devait faire face, intrinsèquement à la volonté de modéliser des transitions sur la longue durée, est la nature forcément lacunaire des sources empiriques sur lesquelles reposent les connaissances de ces transitions.
+Plus l'on remonte dans le passé, moins les données empiriques sont nombreuses (voir \cref{fig:champignon-kaplan}), et plus elles sont incomplètes et non exhaustives.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/champignon_informationnel_kaplan.pdf}
+	\caption{Le \og champignon informationnel\fg{} de \textcite{kaplan_lancement_2013}.}
+	\label{fig:champignon-kaplan}
+\end{figure}
+
+L'exercice de la modélisation demande pourtant une quantité substantielle de données, et surtout que ces données soient homogènes en terme de couverture spatio-temporelle et en terme de certitude.
+Afin d'augmenter la couverture spatio-temporelle, on a recours à des sources variées -- matérielles, écrites, voire biologiques --, par nature hétérogènes.
+
+Les éléments empiriques ne peuvent dès lors reposer que sur une connaissance large et diversifiée des périodes et régions étudées.
+Cette connaissance, que l'on peut qualifier d'experte, est l'apanage des \og thématiciens\fg{} du projet.
+Le modélisateur, qui ne peut imaginer acquérir l'ensemble des connaissances expertes des thématiciens, doit accepter de leur faire entièrement confiance quant aux éléments empiriques mobilisés dans le modèle et par les biais desquels les modèles seront ensuite évalués.
+
+Cela mène à une double implication en matière d'illégitimité.
+Pour le modélisateur, cela implique qu'il sera toujours nécessaire de s'en remettre à la connaissance experte d'une personne (ou d'un groupe), sans possibilité d'ailleurs d'enrichir ces connaissances de son côté : mobiliser une référence scientifique dans une thématique de recherche inconnue ou distante, c'est risquer de citer des travaux non reconnus par la communauté, dépassés, ou encore anecdotiques.
+Dans cette thèse, les tentations de référencer certains éléments empiriques en menant des recherches bibliographiques ont été nombreuses, mais sans vision d'ensemble de l'historiographie de ces sujets, cela n'ajouterait en fait aucun gage de scientificité.
+
+Pour le thématicien, cela implique d'être en permanence \og malmené\fg{} par un modélisateur en recherche de connaissances plus précises et exhaustives.
+Pierre \textsc{Garmy} le résume ainsi à propos de son expérience en tant que thématicien dans le projet TransMonDyn :
+\begin{quotation}
+\noindent \og La collaboration interdisciplinaire entre thématiciens et modélisateurs suppose le dépassement de deux contradictions : exhaustivité tendancielle \textit{vs} parcimonie recherchée d’une part et complexité \textit{vs} schématisation ou stylisation d’autre part.
+
+\noindent Il existe un véritable paradoxe entre l’incomplétude de fait des données -- que les spécialistes disciplinaires cherchent à combler progressivement par l’enrichissement continu des corpus au moyen de recherches appropriées, rentabilisées par la définition de problématiques préalables aussi pointues que possible -- et l’attente des interlocuteurs modélisateurs qui veulent tout savoir et se bercent souvent d’illusions sur l’état de l’art réel dans chaque champ de connaissances. \fg{} \\
+\mbox{}~ \textsc{Garmy} P., \og Annexe 1 - Retour sur expérience d’un “thématicien” \fg{}, in \textcite[476]{ouriachi_lelaboration_2017}  	  
+\end{quotation}
+
 
 \subsection{Dans un contexte fortement interdisciplinaire}
 
