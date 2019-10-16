@@ -21,13 +21,13 @@
 \chapter{Modélisation et visualisation comme interfaces disciplinaires}
 \label{chap:chap1}
 \begin{center}
-	{\large Version \hl{2019-10-15}}
+	{\large Version \hl{2019-10-16}}
 \end{center}
 
 \begin{itemize}
 	\item 10/10/2019 : Nouveau plan
 	\item 14/10/2019 : fin 1.1
-	\item 15/10/2019 : début 1.2
+	\item 16/10/2019 : fin 1.2
 \end{itemize} 
 
 \minitoc
@@ -160,7 +160,6 @@ Cette expérience, que l'on pourrait qualifier d'avortée, m'a pourtant permis d
 Ma formation académique et mes expériences passées de modélisation à base d'agent, entre géographie et géomatique, ont considérablement influencé la manière dont le présent travail de recherche a été abordé.
 Ces éléments n'expliquent pas, seuls, l'ensemble des choix faits dans cette thèse, mais peut-être permettent-ils de mieux les comprendre, qui plus est au regard du contexte dans lequel cette thèse a été conçue et réalisée.
 
-
 \section{Dans quel contexte s'inscrit ce travail ?}
 
 Le sujet initial de cette thèse a été conçu alors que j'étais ingénieur d'étude en analyse de données et représentations cartographiques, sous l'encadrement de Lena Sanders, pour le projet ANR TransMonDyn\footnote{
@@ -228,7 +227,8 @@ Le pouvoir d’action des agents est réduit à une dimension très locale, et c
 Dans une telle perspective, les multiples interactions, qui plus est localisées, entre agents peuvent conduire à l’apparition de propriétés à un autre niveau d’observation ou d’agrégation, intermédiaire ou global, non déductibles à partir des simples propriétés des agents.
 Ces propriétés sont dites émergentes et leur identification constitue l’un des principaux enjeux des théories de la complexité. 
 \fg{}\\
-\mbox{}~ \hfill \cite[39-40]{banos_pour_2013}  	  
+\mbox{}~ \hfill \cite[39-40]{banos_pour_2013}  	
+  
 \end{quotation}
 
 \subsection{Des processus inscrits dans la longue durée}
@@ -270,7 +270,7 @@ Plus l'on remonte dans le passé, moins les données empiriques sont nombreuses 
 	\label{fig:champignon-kaplan}
 \end{figure}
 
-L'exercice de la modélisation demande pourtant une quantité substantielle de données, et surtout que ces données soient homogènes en terme de couverture spatio-temporelle et en terme de certitude.
+L'exercice de la modélisation demande pourtant une quantité substantielle de données, et surtout que ces données soient homogènes en terme de couverture spatio-temporelle et en terme de certitude au risque que des \og effets de source\fg{} ne biaisent les résultats.
 Afin d'augmenter la couverture spatio-temporelle, on a recours à des sources variées -- matérielles, écrites, voire biologiques --, par nature hétérogènes.
 
 Les éléments empiriques ne peuvent dès lors reposer que sur une connaissance large et diversifiée des périodes et régions étudées.
@@ -290,8 +290,82 @@ Pierre \textsc{Garmy} le résume ainsi à propos de son expérience en tant que 
 \mbox{}~ \textsc{Garmy} P., \og Annexe 1 - Retour sur expérience d’un “thématicien” \fg{}, in \textcite[476]{ouriachi_lelaboration_2017}  	  
 \end{quotation}
 
+\subsection{Un contexte fortement interdisciplinaire}
 
-\subsection{Dans un contexte fortement interdisciplinaire}
+L'interdisciplinarité est le dernier élément marquant du contexte dans lequel ce travail de thèse a été initié, et qui l'aura influencé et incliné jusqu'à son terme.
+Celle-ci est au cœur d'un projet tel que TransMonDyn, où collaboraient des géographes, archéologues et historiens, informaticiens et géomaticiens, épistémologues, linguistes, mathématiciens\ldots{}
+Une expérience précédente, Archeomedes \autocite{durand1998archaeomedes}, avait déjà posé les bases d'une certaine interdisciplinarité entre géographes et archéologues\footnote{
+	On se réfère ici aux chercheurs en géographie humaine et/ou urbaine.
+	En géomorphologie, géophysique et géographie environnementale, les collaborations entre géographes et archéologues, sur des questions techniques notamment, sont plus fréquentes et anciennes.
+}, et plusieurs de ses membres historiques se sont donc retrouvés dans TansMonDyn.
+Ce \og noyau dur\fg{} a constitué le pôle auxquels se sont agrégés d'autres chercheurs des disciplines mentionnées, et y compris, en archéologie, des chercheurs qui avaient marqué une franche opposition aux approches très empruntes de systèmes complexes d'Archéomedes \autocite[voir][par exemple]{ferdiere_modelisation_2000}.
+
+Au regard des enjeux du projet TransMonDyn, l'interdisciplinarité qui le caractérise s'exprime et contraint son ambition au moins de deux manières, que l'on pourrait rapporter aux domaines thématiques et méthodologiques.
+
+\paragraph{Interdisciplinarité et thématique.} 
+En premier lieu, et au plus évident, une forte interdisciplinarité implique des points de vue thématiques très différents.
+Il me semble que ceux-ci sont fortement liés aux sources manipulées.
+Les données statistiques et issues d'enquêtes contemporaines de la géographie urbaine, les textes et la littérature grise historique ou les traces et matériaux archéologiques, tous ces éléments sur lesquels les disciplines se constituent influencent fortement la manière de considérer un thème commun, comme par exemple celui de l'étude d'un système de villes donné.
+Les géographes en analyseront les interactions et populations au moyen de données de recensement ou d'analyses des acteurs territoriaux.
+Les historiens se référeront aux sources historiques, le plus souvent issues des élites ou structures dominantes, qui donneront sans doute des liens politiques ou religieux très détaillés entre les villes.
+Les archéologues chercheront dans les traces matérielles des points communs en terme de nature de construction, de répartitions spatiales à l'échelle des lieux de fouilles etc.
+Ces descriptifs, certes caricaturaux, montrent bien que pour une thématique commune, la disponibilité et couverture spatio-temporelle des sources privilégiés par telle ou telle discipline orientera nécessairement l'approche.
+
+Ces sources et perspectives différentes orientent aussi fortement les ontologies et lexiques utilisés.
+On a donné l'exemple des villes, mais au délà, chaque discipline use de son propre jargon et y attribue des concepts spécifiques.
+Un des défis de l'interdisciplinarité, du point de vue des thématiques, est alors de parvenir à expliciter, en usant d'une formalisme (définitions, ontologies\ldots) commun de manière à ne pas laisser de place à l'implicite disciplinaire.
+
+Découle de cette différence de vocabulaire et de sources considérées une approche nécessairement variée en terme de recherche d'explication des processus observés.
+Dans cette thèse, il me semble que c'est assez visible, on a essayé de concilier les explications en intégrant l'ensemble des éléments constitutifs du système modélisé qui semblaient, pour l'un ou l'autre des thématiciens, pouvoir apporter une part d'explication.
+Il fallait ainsi concilier la vision d'une géographe modélisatrice qui cherchait à expliquer la polarisation aux moyens d'attractions différenciées, la vision d'une archéologue pour qui les effets de lignages seigneuriaux et la territorialisation due aux paroisses permettaient de comprendre cette même polarisation et fixation, ou encore un historien pour qui les communautés rurales/agraires/paysannes émergentes étaient un facteur indispensable de la fixation de l'habitat rural.
+
+Ce dernier point est aussi l'occasion d'estomper une différenciation, forte dans TransMonDyn, entre \og thématiciens\fg{}, porteurs de connaissance experte vis-à-vis des processus étudiés, et \og modélisateurs\fg{}, porteurs eux aussi d'une connaissance experte vis-à-vis de la manière de modéliser ces processus.
+A mon sens, l'un des accomplissements de ce projet est aussi d'avoir montré que la frontière entre ces \og rôles\fg{} est fine, et extrêmement dépendante d'un positionnement particulier dans le cadre d'un projet particulier.
+Au delà du poncif qui reviendrait à dire que chacun est tour à tour modélisateur ou thématicien selon son interlocuteur, il me semble ainsi pouvoir retirer de l'expérience TransMonDyn que pour modéliser en interdisciplinarité, chacun doit en même temps adopter ces deux postures, devenant un \og modélicien\fg{} selon les termes d'Arnaud \textsc{Banos} :
+\begin{quotation}
+	\noindent \og Sous le néologisme “Modélicien”, je désignais un type d’interaction très différent, qui avait amené Robin Cura et Cécile Tannier, tous deux géographes et modélisateurs, à s’investir avec une telle intensité et une telle profondeur dans la problématique historique de leur groupe de travail qu’ils en étaient progressivement venus à s’exprimer comme s’ils avaient été eux-mêmes longuement formés à cette discipline (cf. chapitre 11).
+	L’évolution était tellement flagrante et systématiquement soulignée par les collègues historiens eux-mêmes que j’en suis même venu à émettre la possibilité d’un syndrome de TransMonDyn (en référence bien sûr au syndrome de Stockholm), défini de la manière suivante :
+	“phénomène psychologique selon lequel des modélisateurs partageant longtemps la vie des thématiciens développent une empathie, voire une sympathie, ou une contagion émotionnelle avec ces derniers, devenant ainsi des modéliciens”.
+	\fg{} \\
+	\mbox{}~ \textsc{Banos} A., \og Annexe 3 - Petite typologie “empirique” des modélisateurs \fg{}, in \textcite[484]{ouriachi_lelaboration_2017}
+\end{quotation}
+
+\paragraph{Interdisciplinarité et méthodologie.}
+Au délà des difficultés thématiques qu'elle implique, une interdisciplinarité large a aussi des retentissements en termes méthodologiques, très visibles dans le projet TransMonDyn.
+La présence de géographes-modélisateurs, de géomaticiens, d'informaticiens, de mathématiciens ou encore de philosophes dans un projet résulte nécessairement dans des approches diversifées en matière de modélisation.
+Le mathématicien favorisera en effet des formalismes mathématiques tels que les systèmes dynamiques ou la théorie des jeux, les philosophes préfèreront une modélisation ontologique des processus à l'oeuvre, le géographe préfèrera une entrée spatiale, potentiellement statistique par exemple autour de modèles gravitaires, et l'informaticien usera de ses habitudes en modélisation à base d'agents, proches de la programmation à base d'objets communicants.
+
+Le panorama des approches de modélisation mobilisées dans les transitions de TransMonDyn illustre cette diversité de pratiques : on y retrouve beaucoup de modèles à base d'agents, mais aussi des modèles basés sur la théorie des jeux, ou encore un modèle conceptuel basé sur une ontologie dynamique \autocite{favory_transition_2018}.
+En considérant l'historique des approches de modélisation du projet, on pourrait de plus y ajouter des modèles graphiques, sagittaux ou chorématiques.
+Ces approches ont en commun une vision systémique des processus, mais les modalités de leurs mises en place s'effectuent selon des langages (informatiques ou formels) et des paradigmes (mathématiques, statistiques ou informatiques) très différents.
+
+Au sein même des modèles implémentés au travers de systèmes multi-agents, l'hétérogénéité est forte : entre un modèle KISS\footnote{
+Caractérisés ainsi par \textcite[110]{amblard_evaluation_2006} : 
+\og Un premier courant, qui est une application directe du rasoir d'Occam, aussi appelé « principe de parcimonie », le mouvement KISS (Keep It Simple, Stupid !) recommande de construire des modèles qui soient analysables par la suite, suffisamment simples pour être disséqués par un humain qui observe les simulations attentivement \textelp{}.
+Le positionnement de ce courant peut se résumer ainsi : rien ne sert de concevoir des modèles dont on ne pourrait étudier sérieusement les propriétés et oublier ainsi la validation interne, définie comme l'existence des bonnes propriétés du modèle dans le cadre formel de ce dernier
+\fg{}.
+}, un modèle descriptif, voir un modèle comportemental individu-centré, les paradigmes mobilisés sont entièrement différents et surtout ont des implications en matière de conception et d'évaluation diamétralement opposées.
+Du point de vue méthodologique, l'interdisciplinarité dans la conception de modèles requiert, comme pour les aspects thématiques, une forte explicitation des concepts et méthodes employés afin que l'ensemble des parties prenantes soient d'une part satisfaits des modèles produits, et d'autre part en capacité de comprendre les hypothèses et biais intrinsèques qui découlent du choix du type de modélisation.
+
+\bigskip
+\paragraph[Conclusion intermédiaire]{}
+Le contexte dans lequel cette thèse a été imaginée et initiée, retracé dans cette partie, permet de mieux comprendre les enjeux -- méthodologiques et thématiques -- de ce travail.
+Les membres du groupe de travail de la \og transition 8\fg{} de TransMonDyn ont continué à œuvrer ensemble, même après les fins officielles (2014) et effectives (2017, à la parution de l'ouvrage collectif \og Peupler la Terre\fg{} dirigé par \textcite{sanders2018peupler}) de ce projet de recherche interdisciplinaire.
+Le modèle SimFeodal, et cette thèse plus largement en constituent l'un des aboutissements.
+
+Ma thèse, en tant que telle, n'a pourtant pas été réalisée dans le cadre officiel de l'ANR TransMonDyn.
+Le présent travail de thèse a ainsi bénéficié d'un financement du LabEx DynamiTe\footnote{
+Laboratoire d’Excellence \og Dynamiques Territoriales et Spatiales\fg{}, ANR-11-LABX-0046, dans le cadre du programme \og Investissements d’Avenir\fg{}.
+}, proposé par le groupe de travail \og Systèmes de Peuplement sur le temps long\fg{}\footnote{
+Co-dirigé par Patrice \textsc{Brun}, Marie-Vic \textsc{Ozouf-Marignier} et Lena \textsc{Sanders}.
+}, dont l'obectif initial était de \og croiser les connaissances et savoir-faire de géographes, historiens, archéologues et mathématiciens pour décrire, conceptualiser et modéliser les dynamiques du peuplement sur le temps long dans leurs expressions spatiales et leurs rythmes temporels\fg{}\footnote{
+Descriptif du groupe de travail : \href{http://labex-dynamite.com/fr/recherches/groupes-travail/les-systemes-de-peuplement-sur-le-temps-long/}{http://labex-dynamite.com/fr/recherches/groupes-travail/les-systemes-de-peuplement-sur-le-temps-long/}
+}.
+Au regard de ces objectifs, on comprendra aisément les similarités avec TransMonDyn, que ce soit en terme d'interdisciplinarité ou de démarche.
+
+Dans les faits, ce groupe de travail \og temps long\fg{}, dans lequel je me suis inscrit tout au long de mon travail de thèse, a surtout œuvré à la résolution d'une des difficultés de l'interdisciplinarité décrite plus haut : la mise en place d'un vocabulaire commun et explicite sur les concepts et notions liés à la description et à la modélisation des systèmes de peuplement sur le temps long.
+La réalisation du \og lexique spatio-temporel illustré\fg{} -- nom provisoire qui a par la suite été abandonné -- qui en résulte, intitulé \og « Les concepts-clés des systèmes de peuplement sur le temps long » (\hl{ajouter ref, voir avec Lena}), a nourri l'ensemble de cette thèse, en contribuant largement à mettre au clair les concepts employés.
+À ce titre, le groupe de travail du LabEx a aussi constitué un contexte fort, en mettant en place des discussions interdisciplinaires, autour des mêmes disciplines mais avec une communauté de chercheurs et d'approches de ces disciplines très différente de celles de TransMonDyn.
 
 
 \section{Quel questionnement et évolution ?}
