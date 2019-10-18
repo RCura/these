@@ -25,7 +25,7 @@
 \newfontfamily\blueroman[Color=blue]{Charis SIL}
 \newfontfamily\redroman[Color=red]{Charis SIL}
 
-%\setcounter{tocdepth}{4}
+
 
 % ######### TITRE #########
 \usepackage{titling}
@@ -38,6 +38,8 @@
 
 
 \begin{document}
+\setcounter{tocdepth}{1}
+\setcounter{minitocdepth}{2}
 \setcounter{secnumdepth}{3}
 \dominitoc
 \faketableofcontents
@@ -65,7 +67,7 @@
 \include*{chap1/chap1}
 %
 %\setcounter{part}{0}
-%\include*{parties/partie1}
+%\part{Accompagner la modélisation d'une transformation dans le système de peuplement de l'Europe médiévale}
 %
 %\graphicspath{{chap2/}}
 %\setcounter{chapter}{1}
@@ -80,7 +82,7 @@
 %\include*{chap4/chap4}
 %
 %\setcounter{part}{1}
-%\include*{parties/partie2}
+%\part{L'analyse visuelle exploratoire au service de la compréhension de phénomènes spatiaux} 
 %
 %\graphicspath{{chap5/}}
 %\setcounter{chapter}{4}
@@ -91,15 +93,13 @@
 %\include*{chap6/chap6}
 %
 %\setcounter{part}{2}
-%\include*{parties/partie3}
+%\part{Du cas d'étude à un retour sur les pratiques disciplinaires collectives de modélisation et d'exploration de données} 
+
 %
 %\graphicspath{{chap7/}}
 %\setcounter{chapter}{6}
 %\include*{chap7/chap7}
 %
-%\graphicspath{{chap8/}}
-%\setcounter{chapter}{7}
-%\include*{chap8/chap8}
 
 \printbibliography[title={Références}]
 
