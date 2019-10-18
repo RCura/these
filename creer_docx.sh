@@ -1,5 +1,5 @@
 #!/bin/bash
 pandoc -s These_Robin_Master.tex \
 --latex-engine=xelatex \
---bibliography=chap2/biblio_chap2.bib \
--o chapitre2.docx
+--bibliography=chap6/biblio_chap6.bib \
+-o chapitre6.docx
