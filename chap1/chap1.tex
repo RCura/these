@@ -21,14 +21,16 @@
 \chapter{Modélisation et visualisation comme interfaces disciplinaires}
 \label{chap:chap1}
 \begin{center}
-	{\large Version \hl{2019-10-18}}
+	{\large Version \hl{2019-10-20}}
 \end{center}
 
 \begin{itemize}
 	\item 10/10/2019 : Nouveau plan
 	\item 14/10/2019 : fin 1.1
 	\item 16/10/2019 : fin 1.2
-	\item 18/10/2019 : fin 1.3 + plan détaillé 1.4
+	\item 18/10/2019 : fin 1.3
+	\item 19/10/2019 : début 1.4
+	\item 20/10/2019 : fin 1.4.1
 \end{itemize} 
 
 \minitoc
@@ -45,7 +47,7 @@
 \end{itemize}
 
 
-\section{D'où je viens}
+\section{D'où je viens \label{sec:formation}}
 
 Le travail de recherche présenté dans cette thèse s'inscrit profondément à l'interface entre plusieurs courants disciplinaires liés à l'étude des phénomènes sociaux dans l'espace.
 Pour en comprendre aussi bien le questionnement que l'approche mobilisée et les résultats obtenus, il me\footnote{
@@ -165,7 +167,7 @@ Cette expérience, que l'on pourrait qualifier d'avortée, m'a pourtant permis d
 Ma formation académique et mes expériences passées de modélisation à base d'agent, entre géographie et géomatique, ont considérablement influencé la manière dont le présent travail de recherche a été abordé.
 Ces éléments n'expliquent pas, seuls, l'ensemble des choix faits dans cette thèse, mais peut-être permettent-ils de mieux les comprendre, qui plus est au regard du contexte dans lequel cette thèse a été conçue et réalisée.
 
-\section{Dans quel contexte s'inscrit ce travail ?}
+\section{Dans quel contexte s'inscrit ce travail ? \label{sec:contexte}}
 
 Le sujet initial de cette thèse a été conçu alors que j'étais ingénieur d'étude en analyse de données et représentations cartographiques, sous l'encadrement de Lena Sanders, pour le projet ANR TransMonDyn\footnote{
 Programme \og Blanc\fg{} de l'Agence Nationale de la Recherche (ANR), sous le code \mbox{ANR-10-BLAN-1805},  \href{http://www.transmondyn.parisgeo.cnrs.fr/}{www.transmondyn.parisgeo.cnrs.fr}
@@ -375,7 +377,7 @@ La réalisation du \og lexique spatio-temporel illustré\fg{} -- nom provisoire 
 
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
-\section{Questionnement initial, obstacles et pistes de résolution}
+\section{Questionnement initial, obstacles et pistes de résolution \label{sec:evolution}}
 \orisectionmark{Évolution du questionnement}
 \let\sectionmark\orisectionmark
 
@@ -474,9 +476,90 @@ C'est au final dans cette direction que j'ai orienté mon travail de thèse, en 
 C'est cette démarche qui est précisée dans la partie suivante, en matière de positionnement dans le champ de la modélisation géographique, et que l'ensemble de la thèse cherche à définir sur la base d'un retour sur une expérience fructueuse de modélisation interdisciplinaire.
 
 
-\section{Quelle position ?}
+\let\orisectionmark\sectionmark
+\renewcommand\sectionmark[1]{}%
+\section{Un positionnement résolument interdisciplinaire, facilité par la conception d'interfaces exploratoires}
+\orisectionmark{Un positionnement résolument interdisciplinaire}
+\let\sectionmark\orisectionmark
 
-\subsection{Co-construction}
+Les parties précédentes ont permis d'identifier l'objet de recherche de ce travail de thèse, la modélisation de transitions dans le système de peuplement.
+
+Le contexte dans lequel cette recherche s'est déroulée (\cref{sec:contexte}), entre les projets TransMonDyn et le groupe de travail \og temps long\fg{} du LabEx DynamiTe, a amené ce thème et montré les enjeux de la modélisation des transitions comme thématique interdisciplinaire, faite de l'étude de processus spatiaux complexes et de leur inscription dans le temps long.
+
+Ma formation initiale et son extension en tant qu'ingénieur d'étude à l'UMR Géographie-cités (\cref{sec:formation}) ont poussé au choix de méthodes pour mener cette modélisation :
+	mobiliser le cadre méthodologique des modèles à base d'agent, en donnant une forte place aux mécanismes géographiques et géométriques, et veiller à l'importance de la représentation graphique dans leur usage.
+
+Le questionnement initial et son évolution (\cref{sec:evolution}) ont permis de recentrer l'ambition d'ensemble de cette recherche : d'une volonté de créer un méta-modèle à celle de documenter et promouvoir l'approche d'ensemble mise en place tout au long de cette thèse.
+
+Dans cette dernière partie, je souhaite préciser et justifier cette approche de modélisation interdisciplinaire qui est résolument inscrite dans la co-construction (1), s'appuie sur la mise en places d'interfaces disciplinaires (thématiques et méthodologiques) pour parvenir à faciliter cette co-construction interdisciplinaire (2), et s'exprime dans sous la forme d'une démarche exploratoire, aussi bien pour la conception du modèle que pour son exploration (3).
+
+
+\subsection{Co-construction interdisciplinaire}
+
+Quand on cherche à initier une démarche de modélisation collective, qui plus est en situation d'interdisciplinarité, les approches de modélisation d'accompagnement (\og ComMod\fg{}, pour \textit{companion modelling}) paraissent incontournables dans le champ francophone de l'étude des systèmes complexes.
+Il me semble dès lors important de positionner l'approche défendue dans cette thèse vis-à-vis de la modélisation d'accompagnement, et d'en identifier les points communs et de divergence.
+
+\paragraph{Animer un projet interdisciplinaire.}
+
+L'approche ComMod est définie par ses créateurs comme \og une démarche permettant de faciliter des processus collectifs de décision, en proposant un travail d’explicitation des points de vue et des critères subjectifs auxquels se réfèrent implicitement, voire inconsciemment, les différentes parties prenantes\fg{} \autocite[167]{commod_modelisation_2005}.
+Les partisans de cette approche utilisent la modélisation de systèmes complexes comme un outil d'interface entre les différents acteurs d'une problématique environnementale.
+Cette modélisation est pensée comme véritablement collaborative, le modèle servant de support de discussion et de négociation entre les acteurs parfois opposés.
+La démarche mobilisée, bien ancrée dans le paysage de la modélisation de systèmes complexes, se fonde autour de \og cinq étapes incontournables\fg{} \autocite[41-132]{etienne_modelisation_2015} :
+\begin{enumerate}
+	\item Identifier et formuler une question clé initiale partagée
+	\item Co-construire une représentation partagée de la question (méthode \og ARDI\fg{})
+	\item Concevoir et animer un jeu de rôles
+	\item Concevoir et développer un modèle informatique
+	\item Suivre le développement et évaluer les effets de la démarche
+\end{enumerate}
+
+Cette approche émane de chercheurs impliqués dans des opération de \og recherche-action\fg{} \autocite[165]{commod_modelisation_2005}, et donne dès lors une importance prépondérante au travail de terrain \autocite[3.3]{barreteau_our_2003}, en particulier comme méthode d'évaluation des modèles produits.
+Les modélisateurs y sont d'ailleurs présentés comme des \og animateurs\fg{}\footnote{
+	Dans la méthode \og ARDI \fg{} (Acteurs, Ressources, Dynamiques et Interactions) \autocite{etienne_co-construction_2009} qui est au cœur de la démarche ComMod.
+}, dont l'objectif est de pousser au dialogue les \og participants\fg{}, décideurs politiques, acteurs de la société civile ou encore population potentiellement à risque dans les programmes de sensibilisation.
+
+Cette dichotomie entre \og animateurs\fg{} et \og participants\fg{} peut rappeler celle que l'on fait entre \og thématiciens\fg{} et \og modélisateurs\fg{}, mais elle y ajoute une hiérarchie en termes de maîtrise du processus de modélisation dans son ensemble.
+Dans cette thèse, nous défendons une approche \og démocratique\fg{}, où le modélisateur n'a pas pour vocation de guider les thématiciens, mais bien de construire avec eux, de manière collective, c'est-à-dire de co-construire.
+
+L'utilité d'un \og animateur\fg{} est toutefois incontestable, notamment pour initier réellement le projet collectif et, de prime abord, réussir à concilier les intérêts thématiques et méthodologiques de chacun des membres impliqués autour d'un objectif consensuel commun.
+Dans le groupe de travail de la \og transition 8\fg{} de TransMonDyn, c'est Cécile \textsc{Tannier} qui a joué ce rôle, en mobilisant son expérience de modélisation pour amener les thématiciens à concevoir collectivement un premier modèle conceptuel de la transition, sous la forme d'une ontologie \autocite{tannier_ontologie_2014}.
+
+\paragraph{Un projet collectif et intégrateur.}
+
+Dans l'approche ComMod, l'implémentation informatique des modèle conceptualisés est une option, concurrente au développement d'un jeu de rôle, qui peut être mieux adapté aux problématiques modélisées \autocite[96-97]{etienne_modelisation_2015}.
+Le modèle de simulation joue donc aussi le rôle de compagnon dans le processus de modélisation, mais n'est pas un objectif en soi.
+Le développement du modèle de simulation demande des compétences informatiques particulières, difficiles ou peu stimulantes à acquérir dans le cadre d'un projet caractérisé par le \og peu de temps disponible et l'hétérogénéité des savoir-faire informatiques des participants et la diversité de leurs attentes en la matière\fg{} \autocite[29]{etienne_modelisation_2015}.
+
+D'après ma compréhension de la démarche ComMod, l'implémentation est alors  le plus souvent réalisée par des modélisateurs externes au projet et le modèle permet de tester les hypothèses des participants ou de les faire évoluer.
+Cela place le modélisateur-informaticien dans une position extérieure mais aussi sur-plombante, où un risque est que le modèle implémenté soit considéré comme \og l'implémentation\fg{} du modèle conceptuel plutôt que comme une de ses implémentations possibles.
+Cela place les participants dans une démarche clientéliste, plus proche de la pluridisciplinarité que de l'interdisciplinarité, que le texte suivant de \textsc{Tukey} me semble bien résumer, en remplaçant le \og statisticien\fg{} par l'\og{}informaticien modélisateur\fg{}.
+
+\begin{quotation}
+	\noindent \og Like every other methodology, statistical-and-quantitative methodology has fostered a separation of roles, here into “statistician” and “client”. Today theses roles are usually embodied in separate people. Tomorrow more persons will play both roles. But these roles will not melt together, and the need to consult another person will not altogether disappear [...]
+	
+	Too often the client (whether or not a social scientist) looks to the statistician as a man who applies the final stamp of approval -- perhaps by saying, “This result is significant”. Too often the statistician looks upon himself as a guardian of the proven truth -- sometimes feeling it appropriate to say “That difference is not significant at 5\%, \textit{and hence} you should act as if it were \textit{zero}”. The roles of “client seeking stamp of approval” and “statistician guarding the proven truth” are clearly rewarding to client and statistician respectively, as persons, though they are detrimental to progress and to the advance of science.\fg{} \\
+	\mbox{}~ \hfill \cite[145]{jones_statistical_1986}
+\end{quotation}
+
+Pour la conception et l'implémentation de SimFeodal, nous avons cherché à suivre une approche plus intégratrice, en séparant moins nettement les rôles de thématicien, de modélisateur, voire d'\og{}implémenteur\fg{}.
+Si chacun de ces rôles a des compétences particulières peu accessibles aux autres, l'idée était tout de même d'échanger au maximum sur chacun des aspects du modèle de manière à les rendres plus compréhensibles.
+Les explications thématiques à un choix de valeur de paramètre devaient être explicités et justifiés, de même que les partis-pris et biais de telle logique d'interaction entre agents, ou encore à l'instar de choix d'implémentation, par exemple dans le point de vue adopté dans un mécanisme via-à-vis des actions d'un type d'agent (cf. \hl{encadré chap2 ?}).
+
+Sans chercher à ce que chacun des chercheurs impliqués dans la construction de SimFeodal ne devienne omnicompétent, notre approche visait toutefois, dans la mesure de possible, à ce que chacun soit en mesure de comprendre, au moins dans les grandes lignes, et donc de défendre les choix de modélisation et d'implémentation qui seraient à réaliser.
+
+\paragraph{Une position de \og modélisateur-géographe\fg{}.}
+Dans cette approche de co-construction, on essaie de faire en sorte que chacun partage un socle de connaissances commun de manière à pouvoir comprendre les implications des différentes décisions, conceptuelles, méthodologiques ou techniques.
+Thématiciens et modélisateurs devaient donc tendre vers l'objectif, théorique, de devenir des \og modéliciens\fg{}.
+
+En pratique, chacun a toutefois ses compétences et connaissances spécifiques et ne cherche pas à acquérir entièrement celles des autres.
+La position de co-construction est donc celle de l'interdisciplinarité, complémentaire autour de sujets communs, plutôt que celle de la transdisciplinarité où les points de vue disciplinaires s'effacent \autocite[14]{gravier_deux_2018}.
+
+Il me semble en effet que ces points de vue disciplinaires sont d'une part difficilement solubles dans des rôles donnés, et d'autre part extrêmement enrichissants dans un projet de co-construction.
+Ma position, en tant que modélisateur-\fg{}implémenteur\fg{}, n'est pas celle d'un informaticien distancié qui réaliserait sur commande les lignes de code correspondant au modèle conceptuel.
+Cette implémentation n'est qu'une partie, non négligeable certes, du travail attendu, mais surtout, elle n'est pas automatique et indiscutable, et elle est profondément influencée par mes propres expériences, envies et connaissances.
+
+Plutôt que modélisateur géographe, ma position dans la co-construction de SimFeodal est donc tout à la fois celle de géographe, de modélisateur, d'informaticien, et enfin celle de géomaticien pour une large partie des moyens mis en œuvre pour l'évaluation du modèle.
+
 
 \subsection{Interface}
 
