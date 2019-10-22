@@ -46,11 +46,13 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \newcounter{savefootnote}
 \renewcommand{\thempfootnote}{\arabic{footnote}}%
 
+\usepackage{paralist} % apporte compactenum et compactitem
 \usepackage{enumitem}
 \setlist{  
 	listparindent=\parindent,
 	parsep=0pt,
 }
+
 
 \usepackage{varioref}
 \usepackage[hyperfootnotes=false]{hyperref}
