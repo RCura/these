@@ -4,14 +4,24 @@
 \sectionmark{Capter les sorties}
 
 Pour évaluer un modèle, on s'appuie sur plusieurs indicateurs de sortie de simulation, de types divers (indicateurs numériques, graphiques, cartographiques etc., \hl{cf. chapitre 3, partie théorique}).
-Quand le nombre d'indicateurs devient important, comme c'est le cas dans le modèle SimFeodal (chap 3, partie présentation des indicateurs), la consultation des indicateurs pendant le déroulement d'une simulation devient difficile.
+Quand le nombre d'indicateurs devient important, comme c'est le cas dans le modèle SimFeodal (\hl{chap 3, partie présentation des indicateurs}), la consultation des indicateurs pendant le déroulement d'une simulation devient difficile.
 La complexité de ces indicateurs augmente dans le cas d'un modèle stochastique, où il est nécessaire de multiplier les réplications afin d'avoir une idée fiable des tendances simulées par le modèle.
-Le travail de paramétrage d'un modèle requiert de plus de mener différentes expériences, c'est-à-dire de faire varier les paramètres (chap 4) du modèle, démultipliant encore la masse des sorties, et avec elle, la complexité de leur analyse.
+Le travail de paramétrage d'un modèle requiert de plus de mener différentes expériences, c'est-à-dire de faire varier les paramètres (\hl{chap 4}) du modèle, démultipliant encore la masse des sorties, et avec elle, la complexité de leur analyse.
+
 Nous détaillons ici les contraintes qu'entraînent ces différentes spécificités des données issues de simulations.
 Ces contraintes sont transversales à plusieurs types de modèles, et on peut noter que certains autres types de modèles peuvent faire face à d'autres contraintes, propres ou génériques.
+
 Dans l'ensemble, les modèles peuvent être amenés à soulever les problèmes génériques à la production de données, quelles qu'en soient la source.
+Cette recherche n'a pas vocation à dresser le portrait de l'ensemble des contraintes et solutions relatives à l'enregistrement et au stockage de données.
+Cette partie vise à identifier les plus fortes limites qui rendent difficile l'enregistrement des données issues d'un modèle de simulation à base d'agents, descriptif, fortement stochastique, et exploratoire tel que SimFeodal.
+
+
+
+
 Dans ce chapitre, nous n'avons pas l'ambition de dresser le portrait de l'ensemble des contraintes et solutions relatives à l'enregistrement et au stockage de données.
 Nous nous contenterons donc de soulever les plus fortes limites qui rendent difficile l'enregistrement des données issues d'un modèle de simulation à base d'agents, fortement stochastique, descriptif et exploratoire tel que SimFeodal.
+
+\input{chap5/img/tableau_acroissement_chap5}
 
 \subsection{Masse des données}
 Dans un premier temps, il convient de noter que l'ensemble des indicateurs observés en sortie de SimFeodal reposent sur des données qu'il est nécessaire de produire et d'enregistrer tout au long de la simulation.
