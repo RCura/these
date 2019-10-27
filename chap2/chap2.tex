@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-10-26}}
+	{\large Version \hl{2019-10-27}}
 \end{center}
 
 \begin{itemize}
@@ -12,6 +12,7 @@
 	\item 05/07/2019 : Rendu à Lena de 2.4 et 2.5
 	\item 08/07/2019 : fin reprise (->2.7.2.3 inclus) + envoi doc à Lena
 	\item 26/10/2019 : début dernières reprises Lena
+	\item 27/10/2019 : reprises texte + figures
 \end{itemize}
 \setcounter{minitocdepth}{1}
 
@@ -184,11 +185,11 @@ Dans le modèle SimFeodal, plusieurs types d'agents sont en interaction. Ces age
 Ces agents sont une représentation des familles paysannes médiévales et de leur foyer de résidence.
 Dans le modèle, l'agent représentant un foyer paysan peut perdurer de 800 à 1200, tout en changeant potentiellement de foyer de résidence à chaque pas de temps, celui-ci correspondant à une période de 20 ans.
 Les agents représentent ainsi plutôt des lignées que des familles au sens classique.
-Il s'agit ainsi de simuler les migrations résidentielles que peuvent traverser les générations successives de paysans d’une famille.
+Il s'agit ainsi de simuler les migrations résidentielles que peuvent traverser les générations successives de paysans d'une famille.
 Chaque foyer paysan est caractérisé par une \textit{localisation} (leur lieu de résidence à un instant \textit{t}), et par une \textit{satisfaction} qui va déterminer sa propension à migrer.
 
 La satisfaction d'un agent foyer paysan, et en conséquence son comportement migratoire, dépend de ses interactions avec les autres agents du modèle.
-Il aura une probabilité d'autant plus forte de migrer qu'il sera insatisfait, que ce soit sur le plan \textit{matériel} ou celui de l’accessibilité à une pratique \textit{religieuse} et à une \textit{protection} en cas de conflit (voir \cref{fig:interactions-agents}-\textbf{B}).
+Il aura une probabilité d'autant plus forte de migrer qu'il sera insatisfait, que ce soit sur le plan \textit{matériel} ou celui de l'accessibilité à une pratique \textit{religieuse} et à une \textit{protection} en cas de conflit (voir \cref{fig:interactions-agents}-\textbf{B}).
 
 \begin{figure}[H]
 	\centering
@@ -203,30 +204,30 @@ Les agents pouvant influencer le niveau de satisfaction ou d'insatisfaction des 
 Les trois premiers sont liés à leur niveau de satisfaction, les deux derniers influent directement sur leur comportement migratoire :
 \begin{itemize}
 	\item Les agents \og \textbf{seigneurs}\fg{} et les agents \og \textbf{zones de prélèvement}\fg{} : \\
-	un foyer paysan doit s’acquitter de droits qui sont \ul{prélevés} par des seigneurs, au sein de zones de prélèvement qu'ils \ul{créent}.
+	un foyer paysan doit s'acquitter de droits qui sont \ul{prélevés} par des seigneurs, au sein de zones de prélèvement qu'ils \ul{créent}.
 	Ces zones sont une représentation spatiale des droits dont les agents-seigneurs disposent sur les agents-foyers paysans :
 		\textit{droits fonciers}, \textit{droits de haute justice}, et \textit{autres droits} (droits banaux, droits de basse justice etc.) (\cref{fig:interactions-agents}-\textbf{A}).
 	En prélevant des droits, les seigneurs gagnent de la \textit{puissance} et, à l'inverse, l'importance des droits prélevés influe sur l'insatisfaction matérielle des foyers paysans.
 	
 	\item Les agents \og \textbf{églises}\fg{} et \og \textbf{paroisses}\fg{} : \\
 	les agents \og églises\fg{} offrent aux foyers paysans les services religieux dont ils ont besoin.
-	Certaines de ces églises ont acquis des \textit{droits paroissiaux}, et ont le statut d’églises paroissiales, ce qui constitue une \ul{promotion} (voir \cref{fig:constitution-agents}).
+	Certaines de ces églises ont acquis des \textit{droits paroissiaux}, et ont le statut d'églises paroissiales, ce qui constitue une \ul{promotion} (voir \cref{fig:constitution-agents}).
 	La satisfaction religieuse des foyers paysans dépend alors de la distance à l'église paroissiale la plus proche (\cref{fig:interactions-agents}-\textbf{B}).
 	Le territoire est maillé par des agents-paroisses, qui constituent le pendant surfacique des églises paroissiales et visent à desservir la population (\cref{fig:constitution-poles-paroisses}-\textbf{B}).
 	
-	\item Les agents \og \textbf{châteaux}\fg{} qui ont la capacité de protéger les foyers paysans face aux violences de l’époque (guerres, pillages, bandits\ldots).
+	\item Les agents \og \textbf{châteaux}\fg{} qui ont la capacité de protéger les foyers paysans face aux violences de l'époque (guerres, pillages, bandits\ldots).
 	La satisfaction relative à cette protection est mesurée en fonction de la distance au château le plus proche.
 	Ces châteaux sont \ul{construits} par les seigneurs tout au long de la simulation, en fonction de leur puissance.
 	
 	\item Les agents \og \textbf{agrégats} de foyers paysans\fg{} : \\
-	ces agrégats sont des agents composites composés d'un ensemble suffisant (5) de foyers paysans situés à proximité les uns des autres (\cref{fig:constitution-agents}).
-	Les agrégats sont des agents en tant que tel, composite puisque constitués par des foyers paysans, mais dotés de leurs propres attributs, telle que l'existence en leur sein d’une éventuelle \textit{communauté paysanne}.
-	L'agrégat n’a pas de pérennité propre : il émerge quand les migrations des foyers paysans débouchent sur des regroupements dans l’espace.
-	Si les foyers paysans qui le composent migrent ailleurs à un des pas de temps suivants, l’agrégat ne perdure pas.
+	ces agrégats sont des agents \og composites\fg{} (par opposition aux autres types d'agents, dénommés \og atomiques\fg{} dans la \cref{fig:interactions-agents}) composés d'un ensemble suffisant (5) de foyers paysans situés à proximité les uns des autres (\cref{fig:constitution-agents}).
+	Les agrégats sont des agents en tant que tel, composite puisque constitués par des foyers paysans, mais dotés de leurs propres attributs, telle que l'existence en leur sein d'une éventuelle \textit{communauté paysanne}.
+	L'agrégat n'a pas de pérennité propre : il émerge quand les migrations des foyers paysans débouchent sur des regroupements dans l'espace.
+	Si les foyers paysans qui le composent migrent ailleurs à un des pas de temps suivants, l'agrégat ne perdure pas.
 	
-	\item Les agents \og \textbf{pôles d’attraction}\fg{} : \\
-	il s’agit ici encore d'agents composites, cette fois constitués d’un ou plusieurs \textbf{attracteurs}, c'est-à-dire des églises paroissiales, des châteaux ou des agrégats de foyers paysans (\cref{fig:constitution-poles-paroisses}-\textbf{A}).
-	C’est vers un tel pôle que se dirige le foyer paysan qui a pris la décision de migrer  (\cref{fig:interactions-agents}-\textbf{B}).
+	\item Les agents \og \textbf{pôles d'attraction}\fg{} : \\
+	il s'agit ici encore d'agents composites, cette fois constitués d'un ou plusieurs \textbf{attracteurs}, c'est-à-dire des églises paroissiales, des châteaux ou des agrégats de foyers paysans (\cref{fig:constitution-poles-paroisses}-\textbf{A}).
+	C'est vers un tel pôle que se dirige le foyer paysan qui a pris la décision de migrer  (\cref{fig:interactions-agents}-\textbf{B}).
 \end{itemize}
 
 Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des différents agents de SimFeodal.
@@ -366,9 +367,13 @@ Au total, ce sont près de quarante mécanismes particuliers (ici regroupés en 
 Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entrer dans le détail, algorithmique ou mathématique, de chacun (voir la \cref{sec:meca-specifiques} pour des descriptions plus précises des mécanismes les plus complexes et importants).
 
 Par ailleurs, afin de bien distinguer ce qui relève du domaine empirique, avec les connaissances thématiques qui y sont associées, et ce qui relève du domaine du modèle et des choix de modélisation qui y sont opérés, les descriptions et commentaires associés à chacun de ces domaines apparaissent de manière différenciée dans le texte.
-Les premiers apparaissent dans un format classique, les secondes sont encadrés en grisé.
+Les premiers sont présentés dans un format classique, les secondes sont encadrés en grisé.
 
-Par ailleurs, afin de bien distinguer ce qui relève de l'explication thématique, empirique, et ce qui relève des choix de modélisation, la description des implémentations au sein de SimFeodal sont encadrés en grisé.
+Notons enfin que dans le cas des \og mécanismes globaux\fg{}\footnote{
+	C'est-à-dire les mécanismes ne correspondant pas à des \og réflexes\fg{} ou actions des agents, mais qui servent à modifier l'état \og global\fg{} du modèle.
+	Par exemple, l'initialisation du monde simulé est un processus global : ce n'est pas un agent qui, par son comportement, va créer le monde simulé, mais un mécanisme global qui suit une logique procédurale programmée par le modélisateur.
+} et de certains mécanismes très techniques (mise à jour des agrégats ou des pôles par exemple), la description des mécanismes ne s'appuiera pas sur une description empirique : ce sont des contraintes et choix propres à la description du monde -- et de ses caractéristiques spatiales -- dans lequel les agents interagissent.
+Certains de ces mécanismes peuvent être guidés par les connaissances expertes, et c'est alors précisé, mais ils peuvent aussi remplir un rôle purement technique (enregistrement des \textit{outputs} par exemple), qui est nécessaire au bon fonctionnement du modèle mais n'a pas d'inscription ou de correspondance empirique.
 
 \subsection*{Ordonnancement général \label{meca-ordonancement}}
 
@@ -383,27 +388,29 @@ Certains mécanismes sont toutefois temporaires, c'est-à-dire rendus inactifs e
 Jusqu'au pas de temps correspondant, le mécanisme est alors désactivé par un paramètre réglable.
 Notons que si les mécanismes suivent un ordre déterminé, ce n'est pas le cas des agents qui y sont associés.
 Pour un mécanisme donné, l'ordre d'appel des agents est aléatoire et varie à chaque appel de ce mécanisme.
-
-\medskip
-Remarquons que dans le cas des \og mécanismes globaux\fg{} et de certains mécanismes très techniques (mise à jour des agrégats ou des pôles par exemple), la description des mécanismes ne s'appuiera pas sur une description empirique : ce sont des contraintes et choix propres à la description du monde -- et de ses caractéristiques spatiales -- dans lequel les agents interagissent.
 \end{tcolorbox}
 
 
 \subsection{Initialisation \label{meca-init}}
 
-L'étape d'initialisation du \og monde\fg{} simulé consiste à créer le monde théorique dans lequel les agents vont interagir et à générer ces derniers.
+L'étape d'initialisation du \og monde\fg{} simulé consiste à créer l'espace théorique dans lequel les agents vont interagir, et à générer ces derniers.
+Il s'agit ainsi de créer les églises, paroissiales ou non, de localiser les seigneurs et surtout les foyers paysans.
+Ceux-ci, empiriquement, sont majoritairement dispersés dans la région d'étude, mais aussi regroupés localement, au sein de villages et d'agglomérations secondaires antiques.
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 Pendant cette étape, des foyers paysans sont générés et localisés dans l'espace du modèle.
-Comme indiqué dans la \cref{subsec:reso-spatiale}, cette localisation des foyers paysans doit répondre à une double contrainte : aléatoire localement, mais contrôlée globalement.
-Pour que ces deux contraintes potentiellement contradictoires soient respectées, on distribue une partie des agents dans l'espace par groupes.
-La localisation de ces groupes est aléatoire, mais leur propriétés (nombre de foyers paysans par exemple) sont contrôlées (voir (\cref{sec:initialisation}).
+Comme indiqué dans la \cref{subsec:reso-spatiale}, cette localisation des foyers paysans doit répondre à une double contrainte : aléatoire localement, mais organisée selon une structure macrogéographique prédéfinie.
+Pour que ces deux contraintes potentiellement contradictoires soient respectées, les agents sont très majoritairement localisés de manière aléatoire, mais certains sont répartis \og par groupe\fg{} dans le monde simulé.
+La localisation de ces groupes est aléatoire, mais leurs propriétés (nombre de foyers paysans par exemple) dépendent de paramètres du modèle  (voir (\cref{sec:initialisation}).
 
 \medskip
 Quelques dizaines d'agents sont ainsi localisés de manière agrégée afin de constituer les premiers agrégats de population, de tailles variables (une vingtaine de villages peu peuplés et quelques petites villes plus importantes, correspondant aux agglomérations secondaires antiques).
 Lors de l'initialisation sont aussi créés les premiers seigneurs -- grands seigneurs sans portée spatiale et petits seigneurs localisés aléatoirement dans l'espace -- et les zones de prélèvement dans lesquelles ils prélèveront des droits divers.
+Ces zones de prélèvement sont matérialisées sous formes de cercles de rayons variables, dont le centre correspond à la localisation des seigneurs qui les créent.
+Dès le départ de la simulation, l'espace support constitue ainsi une contrainte pour les foyers paysans qui se verront prélever des droits dans ces zones.
+
 L'initialisation est enfin l'occasion de créer et de disperser dans l'espace des églises (150).
 Parmi celles-ci, quelques-unes (50), choisies suivant un tirage aléatoire, se verront dotées de droits paroissiaux.
 Ces églises paroissiales constitueront alors le semis autour duquel sera organisé le premier maillage paroissial.
@@ -455,7 +462,10 @@ Dans les zones rurales, l'espacement des églises paroissiales est assez importa
 	Dans SimFeodal, le maillage paroissial est représenté à partir d'un diagramme de Voronoï autour des églises paroissiales.
 	À chaque pas de temps, de nouvelles églises paroissiales apparaissent, à travers des mécanismes de promotion ou de création.
 	Les diagrammes de Voronoï sont fortement sensibles à l'ajout où à la suppression de points, par la manière dont ils sont conçus.
-	Il est donc nécessaire, à chaque pas de temps, de ré-initialiserla construction du maillage, c'est-à-dire de répéter l'opération de création du diagramme de Voronoï, en repartant d'une situation \og neutre\fg{} d'où l'on aura supprimé le maillage pré-existant.
+	Il est donc nécessaire, à chaque pas de temps, de ré-initialiserla construction du maillage, c'est-à-dire de répéter l'opération de création du diagramme de Voronoï, en repartant d'une situation \og neutre\fg{} d'où l'on aura supprimé le maillage pré-existant\footnote{
+		Il n'y a pas pour autant de perte totale d'héritage : la tesselation de Voronoï est un processus déterministe, et si les églises paroissiales n'ont pas changé, le maillage sera identique.
+		De plus, les répercussions des ajouts d'églises paroissiales sont assez localisées : si on ajoute une église paroissiale dans une zone déjà dense, par exemple dans un agrégat, les répercussions sur les mailles situées en dehors de cette zone seront minimes voire nulles.
+	}.
 	À ce titre, on peut parler de mécanisme de \og mise à jour\fg{} du maillage, qui comprend donc autant la délimitation des paroisses (les mailles) que la création et promotion de nouvelles églises paroissiales.
 \end{tcolorbox}
 	Le mécanisme de mise à jour du maillage paroissial s'effectue en trois étapes distinctes~:
@@ -603,7 +613,7 @@ Ils assurent une protection à la population en cas de violence, protection qui 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	Dans SimFeodal, de la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère que la satisfaction protection des foyers paysans dépend de la distance au château le plus proche.
+	Dans SimFeodal, de la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère que la satisfaction \og protection\fg{} des foyers paysans dépend de la distance au château le plus proche.
 	Cette distance est aussi segmentée par des seuils, eux aussi évolutifs au cours du temps de la simulation.
 	Le calcul de la satisfaction en termes de protection dépend en plus d'un paramètre, le \og besoin de protection\fg{}, qui permet de représenter l'importance du climat de violence, et notamment, la forme de son évolution temporelle.
 \end{tcolorbox}
@@ -691,6 +701,10 @@ Cette répartition des droits pouvait être faite en fonction de l'usage d'un ma
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 Dans SimFeodal, on a cependant choisi de modéliser ces droits au travers de représentations géographiques agentifiées de l'emprise spatiale des droits,  c'est-à-dire en créant des agents-zones de prélèvement.
+Cette simplification de la complexité empirique ne correspond pas nécessairement aux cas les plus courants, mais est acceptable aux yeux des thématiciens impliqués dans la construction de SimFeodal.
+Cette vision s'inscrit de plus dans une approche surfacique de l'espace continue où les relations sont notamment caractérisées par des inclusions et intersections géométriques.
+Une vision réticulaire, parfois privilégiée par les médiévistes (\hl{demander des sources à Julie}) serait sans doute plus appropriée, mais introduirait des paradigmes très différents dans un modèle déjà très complexe.
+
 Celles-ci sont de trois types (cf. \cref{fig:interactions-agents}-A \cref{tab:agents-simfeodal}), qui correspondent à trois grandes catégories de droits connus : les droits fonciers ; les droits de haute justice ; et les autres droits, qui regroupent une forte diversité de redevances locales (droits banaux, droits de basse et moyenne justice, droits locaux\ldots).
 
 \medskip
@@ -736,22 +750,7 @@ Dans le système féodal, à travers le don, les seigneurs constituent ainsi de 
 	Le tableau des puissances acquises selon le type de collecte (\cref{tab:puissance-droits}) quantifie ce principe.
 }
 
-\subsection{Promotion des châteaux}
-
-De nombreux châteaux ont été construits pendant la période étudiée.
-Il y a une forte hétérogénéité dans leurs dimensions, leur importance stratégique et le degré de protection qu'ils apportaient.
-
-
-\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
-	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
-	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	Dans SimFeodal, on a choisi de simplifier cette hiérarchie en distinguant deux types de châteaux : les \og petits châteaux\fg{} et les \og gros châteaux\fg{}, ces derniers ayant un pouvoir d'attraction plus développé que les petits.
-	Ces châteaux renforcent l'attraction des pôles dont ils font partie et par là même accroissent la probabilité de voir des agrégats majeurs se développer à proximité.
-	Lors de leur création (voir \textit{infra}), les châteaux sont toujours des \og petits châteaux\fg{}.
-	Le mécanisme de promotion, probabiliste, permet à un château situé dans un pôle important (c'est-à-dire constitué de plusieurs attracteurs comme des agrégats ou des églises paroissiales) de devenir \og gros château\fg{}, et renforce encore l'attrait de ce pôle déjà avantageux.
-\end{tcolorbox}
-
-\subsection{Construction de châteaux}
+\subsection{Construction et promotion des châteaux}
 
 Tout au long de la période, de nouveaux châteaux sont construits et renforcés. C'est l'apparition des \og châteaux forts\fg{}.
 Si l'on connaît des châteaux antérieurs à la période étudiée, leur démultiplication survient surtout à partir de la seconde moitié du X$^e$ siècle.
@@ -768,18 +767,65 @@ Les châteaux sont bâtis en bonne partie dans des villes déjà attractives, m�
 	Cette possibilité est basée sur une probabilité, fonction de la puissance des seigneurs, c'est-à-dire de l'accumulation des redevances perçues à chaque pas de temps.
 	Plus la puissance d'un seigneur est importante, plus il a de chances de pouvoir créer un château.
 	Pour que les simulations soient comparables entre les différents paramétrages, et en particulier selon le nombre de foyers paysans implémentés dans chaque simulation, on mobilise cette puissance de manière relative : la puissance relative d'un seigneur est le rapport entre sa propre puissance et la somme des puissances de tous les seigneurs.
-
+	
 	\medskip
 	Les grands seigneurs, qui perçoivent plus de droits dès le départ de la simulation, sont ainsi favorisés.
 	Au fur et à mesure du déroulement de la simulation, certains petits seigneurs peuvent toutefois aussi être favorisés par leurs prélèvements et par les gardiennages reçus.
 	Dans de rares cas (avec une faible probabilité donc), ils peuvent alors être amenés à bâtir eux-aussi des châteaux.
 	Les règles spécifiques et précises de construction de châteaux sont explicités dans la partie \cref{sssec:constru-chateaux}.
 	
-	\medskip
-	Notons qu'en matière d'ordonnancement, la construction des châteaux a lieu après le calcul de la \og satisfaction protection\fg{} des foyers paysans, de la promotion en gros châteaux, et aussi après le don de ces mêmes châteaux, ce qui pourrait sembler contre-intuitif.
-	Ce choix a été fait pour symboliser la durée de construction des châteaux, bien plus longue que les autres phénomènes d'apparition décrits dans le modèle : un château apparaît en fin de tour, il n'est donc pas véritablement utilisable avant le tour suivant, soit 20 ans plus tard.
-
 \end{tcolorbox}
+
+Parmi les nombreux châteaux construits, on sait d'après les connaissances expertes qu'il y a une forte hétérogénéité dans leurs dimensions, leur importance stratégique et le degré de protection qu'ils apportaient.
+Par rapport aux dynamiques étudiées dans ce cas d'étude, nous avons jugé peu utile de rendre compte de toute l'étendue de cette diversité, qui n'influe pas véritablement sur les logiques de polarisation ou de fixation du peuplement.
+D'après les connaissances historiques, on note tout de même que certains châteaux, les plus importants, ont eu un rôle plus remarquable dans la polarisation : soit qu'ils aient été suffisamment \og forts\fg{} pour attirer une population plus nombreuse, soit que la plus forte population déjà présente ait justifié la création de châteaux plus imposants, soit que ce soit une conjonction de ces phénomènes via une boucle de rétroaction.
+
+\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
+	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
+	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
+	Dans SimFeodal, on a choisi de simplifier cette hiérarchie en distinguant deux types de châteaux : les \og petits châteaux\fg{} et les \og gros châteaux\fg{}, ces derniers ayant un pouvoir d'attraction plus développé que les petits.
+	Ces châteaux renforcent l'attraction des pôles dont ils font partie et par là même accroissent la probabilité de voir des agrégats majeurs se développer à proximité.
+	Lors de leur création (voir \textit{infra}), les châteaux sont toujours des \og petits châteaux\fg{}.
+	Le mécanisme de promotion, probabiliste, permet à un château situé dans un pôle important (c'est-à-dire constitué de plusieurs attracteurs comme des agrégats ou des églises paroissiales) de devenir \og gros château\fg{}, et renforce encore l'attrait de ce pôle déjà avantageux.
+\end{tcolorbox}
+
+\bigskip
+\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
+	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
+	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
+Notons qu'en matière d'ordonnancement, la construction des châteaux a lieu après la promotion en gros châteaux, et aussi après le don de ces mêmes châteaux (cf. \cref{fig:ordonnancement}), ce qui pourrait sembler contre-intuitif.
+Ce choix a été fait pour symboliser la durée de construction des châteaux, bien plus longue que les autres phénomènes d'apparition décrits dans le modèle : un château apparaît en fin de tour, il n'est donc pas véritablement utilisable avant le tour suivant, soit 20 ans plus tard.
+\end{tcolorbox}
+
+%\subsection{Construction de châteaux}
+%
+%Tout au long de la période, de nouveaux châteaux sont construits et renforcés. C'est l'apparition des \og châteaux forts\fg{}.
+%Si l'on connaît des châteaux antérieurs à la période étudiée, leur démultiplication survient surtout à partir de la seconde moitié du X$^e$ siècle.
+%Ils sont surtout construits par les grands seigneurs existants afin de mailler le territoire d'un réseau de protection, même si certains sont aussi l'œuvre de seigneurs de moindre envergure qui se sont enrichis pendant la période en profitant du système féodal.
+%En Touraine, on considère que la majeure partie des châteaux forts ont été construits entre le X$^e$ et le XIII$^e$ siècle, et que leur production a ensuite fortement ralenti.
+%Les châteaux sont bâtis en bonne partie dans des villes déjà attractives, même si l'on observe aussi quelques créations dans des espaces peu peuplés, qui tendront alors à le devenir par la suite (les bourgs castraux).
+%
+%\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
+%	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
+%	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
+%	
+%	Dans SimFeodal, on fait apparaître les châteaux de manière endogène, en considérant qu'il n'y en a aucun au début de la période.
+%	À partir de 940, les seigneurs ont la possibilité de créer des châteaux.
+%	Cette possibilité est basée sur une probabilité, fonction de la puissance des seigneurs, c'est-à-dire de l'accumulation des redevances perçues à chaque pas de temps.
+%	Plus la puissance d'un seigneur est importante, plus il a de chances de pouvoir créer un château.
+%	Pour que les simulations soient comparables entre les différents paramétrages, et en particulier selon le nombre de foyers paysans implémentés dans chaque simulation, on mobilise cette puissance de manière relative : la puissance relative d'un seigneur est le rapport entre sa propre puissance et la somme des puissances de tous les seigneurs.
+%
+%	\medskip
+%	Les grands seigneurs, qui perçoivent plus de droits dès le départ de la simulation, sont ainsi favorisés.
+%	Au fur et à mesure du déroulement de la simulation, certains petits seigneurs peuvent toutefois aussi être favorisés par leurs prélèvements et par les gardiennages reçus.
+%	Dans de rares cas (avec une faible probabilité donc), ils peuvent alors être amenés à bâtir eux-aussi des châteaux.
+%	Les règles spécifiques et précises de construction de châteaux sont explicités dans la partie \cref{sssec:constru-chateaux}.
+%	
+%	\medskip
+%	Notons qu'en matière d'ordonnancement, la construction des châteaux a lieu après le calcul de la \og satisfaction protection\fg{} des foyers paysans, de la promotion en gros châteaux, et aussi après le don de ces mêmes châteaux, ce qui pourrait sembler contre-intuitif.
+%	Ce choix a été fait pour symboliser la durée de construction des châteaux, bien plus longue que les autres phénomènes d'apparition décrits dans le modèle : un château apparaît en fin de tour, il n'est donc pas véritablement utilisable avant le tour suivant, soit 20 ans plus tard.
+%
+%\end{tcolorbox}
 
 
 
@@ -965,7 +1011,7 @@ Dans ce mécanisme, les foyers paysans \og choisissent\fg{} leur pôle de destin
 plus un pôle est attractif, c'est-à-dire composé de nombreux attracteurs, plus il est susceptible d'attirer.
 En migrant vers un pôle plus attractif, les foyers paysans ont une bonne probabilité de voir leur satisfaction augmenter.
 
-Il y a donc bien adaptation à l'environnement dans la mesure où les agents-foyers paysans répondent à une insatisfaction par un déplacement et cherchent à maximiser leur satisfaction future, mais il n'y a pas adaptation au sens fort des systèmes multi-agents puisqu'il n’y a pas changement dans les règles de comportement.
+Il y a donc bien adaptation à l'environnement dans la mesure où les agents-foyers paysans répondent à une insatisfaction par un déplacement et cherchent à maximiser leur satisfaction future, mais il n'y a pas adaptation au sens fort des systèmes multi-agents puisqu'il n'y a pas changement dans les règles de comportement.
 
 On préfèrera cependant y voir le concept d'\og objectif\fg{}, tel que décrit par les auteurs du protocole ODD : \og If agents (or groups) are explicitly programmed to meet some objectives, what exactly is that and how is it measured ? When individuals make decisions by ranking alternatives, what criteria do they use?\fg{}~(\cite[p. 353]{grimm_documenting_2017}, voir \cref{tab:proto-ODD})
 
@@ -1060,9 +1106,17 @@ Cette vision s'oppose à celle des modèles plus théoriques et parcimonieux, te
 
 SimFeodal est un modèle qui prend appui sur un espace théorique, très générique et épuré.
 Dans cet espace, certains agents se déplacent et font émerger des configurations spatiales particulières que l'on cherche à étudier.
-Le choix de la configuration initiale, qui sera transformée au cours du modèle, 
-revêt donc une importance considérable, puisqu'il conditionne (ou tout du moins influence) les structures spatiales qui en seront issues.
-Afin de pouvoir maitriser la \og path-dependency\fg{} induite par la situation initiale, on a choisi de contrôler entièrement l'initialisation du modèle en l'intégrant, de manière endogène, aux mécanismes de SimFeodal.
+Le choix de la configuration initiale, qui sera transformée au cours du modèle, revêt donc une importance considérable, puisqu'il conditionne (ou tout du moins influence) les structures spatiales qui en seront issues.
+
+Le \og monde\fg{} simulé n'est pas un espace géographique précis qui correspondrait à l'observation empirique.
+La situation initiale ne correspond pas non plus à une organisation complètement aléatoire, comme c'est le cas dans le modèle de Schelling par exemple.
+Il s'agit d'un espace fictif, aléatoire, mais dont la structure a des propriétés précises au niveau macrogéographique, notamment à travers l'existence d’agrégats de deux types (villages et villes) dont le nombre et les effectifs sont fixés (et paramétrables).
+D'un point de vue thématique, il est en effet essentiel que la situation initiale du modèle SimFeodal corresponde à une configuration macrogéographique précise, puisque l'objectif est de modéliser la transition à partir de cette situation initiale (voir \cref{subsec:reso-spatiale}).
+À l'inverse, il ne s'agit pas de simuler cette transition pour un espace géographique précis, où les villages et villes existant en 800 seraient positionnés.
+Le choix a donc été fait de fixer la macrostructure visée à partir d'un certain nombre de paramètres contraignant les positions des foyers paysans et des seigneurs, tout en les répartissant de manière aléatoire.
+Une infinité de situations initiales respectant les contraintes fixées au niveau macrogéographique sont ainsi possibles.
+Dans un souci de généricité il a donc été décidé d'intégrer la construction de la situation initiale en tant que première étape du modèle.
+
 L'initialisation du monde simulé constitue donc un premier \og sous-modèle\fg{} de SimFeodal, chargé de générer le monde dans lequel les agents évolueront.
 Le sous-modèle d'initialisation consiste en l'exécution de 3 mécanismes dédiés chacun à la création d'un type d'agent : création des églises ; des foyers paysans et agrégats ; et enfin création des seigneurs.
 Dans l'ensemble, un principe commun oriente la création de ces agents : ils sont répartis de manière presque aléatoire (voir \cref{meca-init}) dans l'espace \og actif\fg{} simulé du modèle.
@@ -1083,7 +1137,7 @@ De manière empirique, on peut résumer la distribution spatiale initiale à une
 Pour générer la configuration initiale, il s'agit donc de reproduire ces grandes lignes de manière aléatoire tout en faisant en sorte que ces villages et petites villes soient bien modélisées sous la forme d'agrégats plus ou moins peuplés.
 La première étape consiste donc à déterminer, par tirage aléatoire, l'emplacement des agrégats (les \og petites villes\fg{} empiriques).
 Le tirage se fait au niveau des foyers paysans et la localisation (aléatoire) du premier sélectionné détermine la localisation d'un premier agrégat.
-Les foyers paysans suivants (une trentaine\footref{ftn:nombre-parametrable}) sont localisés, de manière aléatoire, à l’intérieur d’un certain rayon (voir \cref{meca-agregats}) du premier (\cref{fig:init-fp}).
+Les foyers paysans suivants (une trentaine\footref{ftn:nombre-parametrable}) sont localisés, de manière aléatoire, à l'intérieur d'un certain rayon (voir \cref{meca-agregats}) du premier (\cref{fig:init-fp}).
 
 On répète cette démarche pour les \og villages\fg{}, en plaçant à nouveau quelques\footref{ftn:nombre-parametrable} agrégats dans l'espace, cette fois constitués d'une dizaine\footref{ftn:nombre-parametrable} de foyers paysans.
 On peut alors disperser, de manière entièrement aléatoire, tous les foyers paysans qui n'ont pas encore été localisés dans l'espace du modèle, c'est-à-dire ceux qui ne font pas partie des agrégats précédemment créés.
@@ -1115,8 +1169,8 @@ Plusieurs seigneurs peuvent ainsi être situés dans le même agrégat, et certa
 
 \subsection{Paramètres d'initialisation}
 
-Dans la partie précédente, on a plusieurs fois indiqué que certaines des valeurs numériques de l'initialisation étaient paramétrables, c'est-à-dire qu'on peut les faire varier afin de générer des structures spatiales initiales différentes.
-Cela participe à la recherche de maîtrise de l'espace support initial de SimFeodal, où il n'y a aucun \og \textit{input}\fg{}, mais un ensemble de paramètres régissant les différents sous-modèles.
+Dans la partie précédente, on a plusieurs fois indiqué que certaines des valeurs numériques de l'initialisation étaient paramétrables, c'est-à-dire qu'on peut les faire varier afin de générer des structures spatiales initales différentes à l'échelle macrogéographique.
+Cela participe à la recherche de caractérisation de l'espace support initial de SimFeodal, où il n'y a pas d'\og \textit{input}\fg{} en tant que telle, mais un ensemble de paramètres qui influent sur les différents sous-modèles (voir \cref{sec:inputs}).
 Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester différents scénarios sont précisés dans le \cref{tab:params-initiaux}.
 
 \input{chap2/img/tableau-parametres-init}
@@ -1124,12 +1178,12 @@ Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester di
 
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
-\section[Données en entrée -- \textit{Input data}]{Données en entrée -- \large{\textit{Input data}}}
+\section[Données en entrée -- \textit{Input data}]{Données en entrée -- \large{\textit{Input data}} \label{sec:inputs}}
 \orisectionmark{Données en entrée}
 \let\sectionmark\orisectionmark
 
 L'initialisation de SimFeodal constitue un sous-mécanisme à part entière, entièrement endogène au modèle.
-À ce titre, on ne peut dire que des données en entrée (\textit{inputs}) contrôlent l'état initial du modèle, tel que c'est la norme dans des modèles spatiaux classiques.
+À ce titre, on ne peut dire que des données en entrée (\textit{inputs}) contrôlent l'état initial du modèle, tel que c'est la norme dans des modèles spatiaux classiques (cf. \cref{sec:initialisation}).
 Pour autant, on peut voir une forme d'\textit{inputs} dans les nombreux paramètres mobilisés pour l'initialisation et dans ceux, plus nombreux encore, qui influencent l'ensemble des mécanismes.
 
 Par exemple, pour mettre en place des comportements exogènes permettant de faire varier le modèle à différentes dates précises, on peut classiquement faire appel à des données de sortie d'un autre modèle, ou à un fichier de configuration.
@@ -1171,7 +1225,8 @@ Il s'agit de contrôler précisément l'initialisation du modèle, mais aussi de
 \subsection{Introduction}
 
 Cette partie du chapitre est plus technique, et vise à présenter précisément différents mécanismes de SimFeodal évoqués dans la partie relative au fonctionnement général du modèle (\cref{sec:fonctionnement-general}).
-Nous avons fait le choix de présenter les mécanismes sous la forme, discursive et schématique, la plus courte et compréhensible possible, quand bien même cette forme n'est qu'un \og modèle\fg{} de la réalité de l'implémentation.
+Nous avons fait le choix de présenter les mécanismes sous la forme, discursive et schématique, la plus courte et compréhensible possible, quand bien même cette forme n'est qu'un \og modèle\fg{} de la réalité de l'implémentation : les formalismes, souvent graphiques, empruntés ici ne peuvent entièrement correspondre à l'implémentation effective en lignes de code.
+De la même manière qu'une traduction d'une langue à une autre ne peut transcrire toutes les nuances originelles (\textit{traduttore}, \textit{traditore}), le passage d'une suite d'instruction algorithmiques à un formalisme plus accessible, comme les schémas qui suivent dans cette partie, ne peut ainsi se faire sans quelques approximations.
 Ces écarts entre présentation discursive des mécanismes et implémentation effective sont discutés dans l'\cref{enc:polarite-implementation}.
 
 Dans un objectif de lisibilité, on a en effet choisi de ne pas entreprendre une description détaillée et exhaustive de tous les détails d'implémentation.
@@ -1244,13 +1299,6 @@ Il en résulte toutefois une bien meilleure optimisation du modèle informatique
 \subsection{Mécanismes globaux}
 
 \subsubsection{Identification des agrégats \label{sssec:agregats}}
-	
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.75\linewidth]{img/detection_agregats.pdf}
-	\caption{Détection des agrégats et identification de leur \og héritage\fg{}.}
-	\label{fig:detection-agregats}
-\end{figure}
 
 La \cref{fig:detection-agregats} présente les étapes successives de détection des agrégats.
 À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que tous les foyers paysans sont considérés comme dispersés (\textbf{A}).
@@ -1259,6 +1307,14 @@ On exécute un algorithme de classification basé sur la distance\footnote{
 } : les \textit{clusters} constitués d'au moins 5 foyers paysans espacés de moins de 100~m sont considérés comme des agrégats(\textbf{B}).
 On fixe alors la géométrie des agrégats, qui prend la forme de l'enveloppe convexe des foyers paysans qui les composent (\textbf{C}).
 Les foyers paysans inclus dans la surface d'un agrégat y sont ajoutés (\textbf{D}).
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.75\linewidth]{img/detection_agregats.pdf}
+	\caption{Détection des agrégats et identification de leur \og héritage\fg{}.}
+	\label{fig:detection-agregats}
+\end{figure}
+
 On crée ensuite des \textit{buffers} de 100~m autour des agrégats et on y rattache à nouveau les foyers paysans inclus dans la surface (\textbf{E}).
 Dernière étape dans la détection des agrégats, pour ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion : on réalise l'union géométrique des agrégats qui s'intersectent (\textbf{F}).\\
 Les trois dernières étapes concernent la transmission des propriétés des agrégats à travers les pas de temps, et en particulier de la présence ou non d'une communauté en leur sein.
@@ -1266,7 +1322,12 @@ On isole les agrégats du pas de temps précédent qui intersectent les nouveaux
 On procède ensuite à une intersection entre les géométries de ces anciens agrégats et le nouvel agrégat (\textbf{H}).
 Le nouvel agrégat hérite alors des propriétés de l'ancien agrégat dont la superficie d'intersection est la plus importante, c'est-à-dire l'agrégat orange ici (\textbf{I}).
 	
-	\subsubsection{Identification des pôles \label{sssec:poles}}
+\subsubsection{Identification des pôles \label{sssec:poles}}
+
+Les pôles sont des agents composés d'attracteurs de trois types (cf. \cref{fig:constitution-poles-paroisses}-\textbf{A}) : les châteaux (petits et gros), les églises (dotées de droits paroissiaux) et les agrégats (comportant une communauté paysanne).
+Notons que les églises simples ou les agrégats ne comportant pas de communauté villageoise ne sont pas considérés comme des attracteurs.
+Les pôles et leur délimitation spatiale revêtent une importance particulière lors de la migration des foyers paysans : ils attirent d'autant plus que leur attractivité est importante, et le cas échéant, les foyers paysans migrants s'installent à l'intérieur de leur délimitation.
+La \cref{fig:detection-poles} illustre la méthode de définition spatiale des pôles, ainsi que des exemples de calcul de leurs attractivités.
 
 \begin{figure}[H]
 	\centering
@@ -1275,38 +1336,107 @@ Le nouvel agrégat hérite alors des propriétés de l'ancien agrégat dont la s
 	\label{fig:detection-poles}
 \end{figure}
 
-Les pôles sont des agents composés d'attracteurs de trois types : les châteaux (petits et gros), les églises (uniquement celles dotées de droits paroissiaux) et les agrégats (uniquement ceux comportant une communauté paysanne).
-Les pôles et leur délimitation spatiale revêtent une importance particulière lors de la migration des foyers paysans : ils attirent d'autant plus que leur attractivité est importante, et le cas échéant, les foyers paysans migrants s'installent à l'intérieur de leur délimitation.
-La \cref{fig:detection-poles} illustre la méthode de définition spatiale des pôles, ainsi que des exemples de calcul de leurs attractivités.
-
 À chaque pas de temps, on repart d'une situation \og neutre\fg{}, c'est-à-dire que l'on recalcule systématiquement les pôles sans repartir des pas de temps précédents (\textbf{A}).
 On commence par identifier les attracteurs situés à moins de 200~m les uns des autres (\textbf{B}) pour identifier les pôles : ceux-ci peuvent être constitués de plusieurs attracteurs proches, ou d'un unique attracteur.
 L'enveloppe spatiale des pôles est définie comme un \textit{buffer} de 200~m autour de l'enveloppe convexe formée par le centroïde des attracteurs qui les composent (\textbf{C}).
 Il s'agit par conséquent d'un cercle de rayon de 200~m pour les pôles mono-attracteurs, et d'un polygone pour les pôles composites.
-Afin de renforcer la probabilité de voir croître les agrégats à proximité des pôles, on fusionne (union géométrique) l'enveloppe spatiale des pôles avec les contours de l'ensemble des agrégats (comportant ou non une communauté paysanne) intersectés.
+Pour que les agrégats proches d'un pôle soient bien identifiés comme en faisant partie, on fusionne (union géométrique) l'enveloppe spatiale des pôles avec les contours de l'ensemble des agrégats (comportant ou non une communauté paysanne) intersectés.
 Cela permet à des pôles peu éloignés de fusionner à leur tour (\textbf{D}).
-On peut alors calculer leur attractivité en se reportant au \cref{tab:attraction-poles} (p.~\pageref{tab:attraction-poles}) (\textbf{E}).
+On peut alors calculer leur attractivité en se reportant au \cref{tab:attraction-poles} (\textbf{E}).
+
+\begin{table}[H]
+	\centering
+	{\renewcommand{\arraystretch}{1.1}%
+	\begin{tabular}{|l|l|l|}\hline
+		\textbf{Attracteur} & \textbf{Détail} & \textbf{Attractivité} \\ \hline
+		\multirow{2}{*}{Châteaux} & Petit & 0.15 \\
+		& Gros & 0.25 \\ \hline
+		\multirow{4}{*}{Église paroissiale} & 1 & 0.15 \\
+		& 2 & 0.25 \\
+		& 3 & 0.5 \\
+		& 4+ & 0.6 \\ \hline
+		\multicolumn{2}{|l|}{Agrégat (doté d'une communauté)} & 0.15 \\ \hline
+	\end{tabular}}
+\caption{Attractivité ($\in [0,1]$) conférée aux pôles par leurs attracteurs.}
+\label{tab:attraction-poles}
+\end{table}
 
 
 	
-	\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
+\subsubsection{Création et promotion d'églises paroissiales \label{sssec:paroisses}}
+
+Dans les zones peu denses, c'est-à-dire hors agrégat, de nouvelles églises paroissiales peuvent apparaître soit par promotion, soit par création.
+Dans le premier cas, c'est une église existante, qui n'a pas les droits paroissiaux, qui sera promue et deviendra alors église paroissiale.
+Dans le second cas, c'est-à-dire quand il n'y a pas d'église non paroissiale qui satisfasse aux critères spatiaux, une nouvelle église est créée et directement dotée des droits paroissiaux.
+
+Dans les zones faiblement peuplés, c'est-à-dire là où peu d'agrégats sont présents, la population des foyers paysans doit aussi être desservie par des églises paroissiales afin que leur satisfaction religieuse demeure correcte.
+Quand une paroisse comporte plus de 20 foyers paysans insatisfaits sur le plan religieux, elle cherche à se subdiviser en créant une nouvelle église paroissiale.
+Celle-ci peut être une église non dotée de droits paroissiaux qui se verrait promu, ou donner lieu à la création d'une nouvelle église, directement dotée de droits paroissiaux.
+Les paragraphes suivants résument les différentes manières de renforcer le maillage paroissial, autour de l'exemple de quatre paroisses insatisfaites (\textbf{A}, \textbf{B}, \textbf{C} et \textbf{D}, voir \cref{fig:promotion-paroisses-base}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/promo_creation_paroisses_base.pdf}
+	\caption{Quatre exemples de paroisses insatisfaites.}
+	\label{fig:promotion-paroisses-base}
+\end{figure}
+
+
+\subparagraph{Promotion d'églises paroissiales en présence d'églises non paroissiales.}
+Les deux paroisses situées en haut de cet exemple (\textbf{A} et \textbf{B}) contiennent chacune des églises non paroissiales dont l'une pourra être promue en église paroissiale (\cref{fig:promotion-paroisses-1}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/promo_creation_paroisses_promo1.pdf}
+	\caption{Promotion d'églises paroissiales avec églises non paroissiales.}
+	\label{fig:promotion-paroisses-1}
+\end{figure}
+
+\begin{itemize}
+	\item S'il y a au plus 3 églises non paroissiales disponibles dans la maille de la paroisse (\textbf{A}), on en sélectionne une aléatoirement et on la promeut en église paroissiale.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\linewidth]{img/constru-promo_paroisses_rurales.pdf}
-		\caption{Construction et promotion de paroisses en zone peu dense.}
-		\label{fig:promotion-paroisses}
-	\end{figure}
+	\item S'il y a plus de trois églises non paroissiales disponibles (\textbf{B}), on commence par réaliser une triangulation de Delaunay autour des églises paroissiales (les églises \textbf{A}, \textbf{B}, \textbf{C} et \textbf{D}, visibles dans la \cref{fig:promotion-paroisses-base}).\\
+	On conserve le triangle résultant qui est le plus proche du centroïde de la paroisse.\\
+	On promeut en église paroissiale l'église la plus proche du centre de ce triangle.	
+\end{itemize}
+
+
+\subparagraph{Paroisses sans églises non paroissiales.}
+
+Les deux paroisses situées en bas (\textbf{C} et \textbf{D}) de l'exemple ne contiennent pas d'églises non paroissiales (\cref{fig:promotion-paroisses-2}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/promo_creation_paroisses_promo2.pdf}
+	\caption{Promotion et création d'églises paroissiales sans églises non paroissiales.}
+	\label{fig:promotion-paroisses-2}
+\end{figure}
+
+Dans ce cas, on cherche les églises non paroissiales situées dans un rayon de 2000 m autour de la paroisse.
+\begin{itemize}
+	\item Si des églises non paroissiales sont présentes dans ce \textit{buffer} (\textbf{C}), on en sélectionne une de manière aléatoire et on lui attribue des droits paroissiaux : cette église devient paroissiale.
 	
-\clearpage
+	\item S'il n'y a aucune église non paroissiale dans ce \textit{buffer} de 2 000 m (\textbf{D}), on bâti une nouvelle église.\\
+	Celle-ci sera localisée sur le sommet du polygone paroissial le plus éloigné de l'église paroissiale existante.
+\end{itemize}
+
+%	
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=1\linewidth]{img/constru-promo_paroisses_rurales.pdf}
+%		\caption{Construction et promotion de paroisses en zone peu dense.}
+%		\label{fig:promotion-paroisses}
+%	\end{figure}
+	
 \subsection{Foyers paysans}
 
 	\subsubsection{Satisfaction et modèles gravitaires \label{sssec:satisfaction}}
 	
-Les satisfactions religieuses et de protection des foyers paysans suivent une logique proche du modèle gravitaire : plus les foyers sont éloignés des \og attracteurs\fg{} (les châteaux pour la satisfaction protection ; les églises paroissiales pour la satisfaction religieuse), moins ils sont satisfaits.
-Cette logique simple est légèrement contrainte par l'introduction de seuils : en dessous d'une certaine distance (\textit{distance\_min}), le foyer paysan est entièrement satisfait (satisfaction = 1), et au delà d'une autre distance (\textit{distance\_max}), sa satisfaction est nulle (satisfaction = 0).
-Entre ces deux seuils, minimaux et maximaux, la satisfaction suit une logique gravitaire simple, soit ici une décroissance linéaire.
-L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcul, et la \cref{fig:satisfaction-distance} l'illustre de manière sans doute plus accessible.
+Les satisfactions religieuses et de protection des foyers paysans suivent une logique proche du modèle gravitaire : plus les foyers sont éloignés des \og attracteurs\fg{} (les châteaux pour la satisfaction \og protection\fg{} ; les églises paroissiales pour la satisfaction religieuse), moins ils sont satisfaits.
+Cette logique simple est légèrement contrainte par l'introduction de seuils :
+	 en dessous d'une certaine distance (\textit{distance\_min}), le foyer paysan est entièrement satisfait (satisfaction = 1), et au delà d'une autre distance (\textit{distance\_max}), sa satisfaction est nulle (satisfaction = 0).
+Entre ces deux seuils, minimal et maximal, la satisfaction suit une logique gravitaire simple, soit ici une décroissance linéaire.
+L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcul, et la \cref{fig:satisfaction-distance} illustre de manière simple cette relation.
 
 \begin{figure}[H]
 	\centering
@@ -1316,7 +1446,7 @@ L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcu
 	\end{gathered}
 	\end{equation}
 	\includegraphics[width=.8\linewidth]{img/satisfaction_distance.pdf}
-	\caption{Évolution de la satisfaction en fonction de la distance à l'attracteur le plus proche.}
+	\caption{Variation de la satisfaction en fonction de la distance à l'attracteur le plus proche.}
 	\label{fig:satisfaction-distance}
 \end{figure}
 
@@ -1327,17 +1457,19 @@ On peut le formuler ainsi :
 		\begin{equation*}
 		s_{religieuse} = min  \left \lbrack max \left \lbrack \frac{(distance_{max} - distance\_eglise)}{(distance_{max} -distance_{min})}; 0 \right \rbrack ; 1 \right \rbrack
 		\end{equation*}
-avec les seuils de distance ($distance\_max$ et $distance\_min$) qui évoluent au cours du temps de telle manière :
+avec des seuils de distance ($distance\_max$ et $distance\_min$) qui évoluent au cours du temps de telle manière :
 \begin{itemize}
 	\item avant 960 : $distance_{min}$ = 5 km et $distance_{max}$ =  25 km
 	\item de 960 à 1060 : $distance_{min}$ = 3 km et $distance_{max}$ =  10 km
 	\item après 1060 : $distance_{min}$ = 1,5 km et $distance_{max}$ =  5 km
 \end{itemize}
-	
-\paragraph{Satisfaction protection}	
+Ces seuils, tenant compte de l'évolution de la vitesse des déplacements et de l'augmentation de la fréquence obligatoire de visite des églises paroissiales, ont été déterminés par les archéologues participant au projet.
 
-La satisfaction protection mobilise une logique proche, c'est-à-dire qu'elle est fonction de la distance au château le plus proche.
-Cette distance est ici pondérée par un paramètre ($besoin\_protection$) qui permet de prendre en compte la réaction face à un climat de violence, lequel tend à augmenter pendant la période.
+	
+\paragraph{Satisfaction \og protection\fg{}}	
+
+La satisfaction \og protection\fg{} mobilise une logique proche, c'est-à-dire qu'elle est fonction de la distance au château le plus proche.
+Cette distance est ici pondérée par un paramètre ($besoin\_protection$) qui permet de prendre en compte la sensibilité des foyers paysans au climat de violence, lequel tend à augmenter pendant la période.
 
 \begin{equation*}
 s_{protection} = (s_{distance\_chateau})^{(besoin\_protection)}
@@ -1350,7 +1482,7 @@ max \left \lbrack \frac{(dist_{max} - distance\_chateau)}{(dist_{max} -distance_
 \end{gathered}
 \end{equation*}
 ($dist_{min}$ = 1,5 km et $dist_{max}$ = 5 km )
-et le besoin de protection évolutif :
+et un paramètre de sensibilité évoluant au cours du temps ($besoin\_protection$)  :
 \begin{itemize}
 	\item avant 960 : $besoin\_protection = 0 $
 	\item de 960 à 1020 : $besoin\_protection = 0.2 ; 0.4 ; 0.6 ; 0.8$
@@ -1360,8 +1492,14 @@ et le besoin de protection évolutif :
 \paragraph{Satisfaction matérielle}
 
 La satisfaction matérielle ne prend aucune distance en compte : elle s'appuie sur le montant des taxes dont le foyer paysan doit s'acquitter ($redevance\_acquittees$).
-Ce montant est pondéré par un paramètre technique représentant un niveau \og acceptable\fg{} de taxation ($coef\_redevances$, qui vaut $15$ ici).
-L'appartenance du foyer paysan à une communauté finit de contre-balancer le montant des redevances acquittées, sous la forme d'un contre-poids dont l'importance augmente au fur et à mesure de la période modélisée ($puissance\_communaute$ vaut $0.2$ jusqu'en 1060, puis augmente de $0.2$ à chaque pas de temps pour atteindre $1$ en 1040 et rester à ce niveau).
+Ce montant est pondéré par un paramètre technique représentant un niveau \og acceptable\fg{} de taxation ($coef\_redevances$, qui vaut $15$ ici, c'est-à-dire qu'un foyer paysan s'acquittant de 15 droits ou plus aura une satisfaction matérielle de 0).
+
+L'appartenance du foyer paysan à une communauté permet aussi de pondérer l'influence des redevances acquittées : plus le paramètre $puissance\_communaute$ est important, moins la satisfaction matérielle du foyer paysan sera affectée par les droits dont il s'acquitte.
+La valeur de ce paramètre est par ailleurs évolutive :  elle augmente au fur et à mesure de la période modélisée\footnote{
+$puissance\_communaute$ vaut $0.2$ jusqu'en 1060, puis augmente de $0.2$ à chaque pas de temps pour atteindre $1$ en 1040 et rester à ce niveau.
+}.
+Cela permet d'intégrer le rôle croissant, empirique, des communautés paysannes.
+
 
 \begin{equation*}
 \begin{gathered}
@@ -1377,9 +1515,12 @@ s_{redevance} = max \left[ \left( 1- \frac{redevances\_acquittees}{coef\_redevan
 
 \paragraph{Satisfaction générale}
 
-La satisfaction générale est mesurée en prenant le minimum de ces satisfactions individuelles, c'est-à-dire qu'on considère qu'elles ne s'équilibrent pas.
-Comme pour la satisfaction matérielle qui la compose, l'appartenance du foyer paysan à une communauté paysanne tend aussi à augmenter la satisfaction générale.
-Les communautés interviennent donc à deux reprises dans le calcul de la satisfaction, afin d'illustrer le poids que prennent ces structures sociales et institutionnelles au cours de la période modélisée.
+La satisfaction générale est mesurée à partir du minimum de ces satisfactions individuelles.
+Ce choix traduit l'hypothèse que ces satisfactions ne s'équilibrent pas, une \og satisfaction protection\fg{} forte ne compensant pas une forte insatisfaction religieuse par exemple.
+En revanche l'appartenance du foyer paysan à une communauté paysanne intervient directement dans la satisfaction générale, cette appartenance tendant à l'augmenter.
+L'appartenance à une communauté paysanne intervient ainsi à deux reprises dans le calcul de la satisfaction, une fois dans le calcul de la satisfaction matérielle et ensuite dans le calcul de la satisfaction générale.
+Ce choix permet de tenir compte du poids que prennent ces structures sociales et institutionnelles au cours de la période modélisée.
+
 
 Le calcul de la satisfaction s'exprime ainsi :
 \begin{equation*}
@@ -1396,9 +1537,11 @@ avec $ \{satisfaction ; s_{materielle} ; s_ {religieuse} ; s_{protection}\} \in 
 	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
 
 La migration des foyers paysans est sans doute le mécanisme le plus complexe et ayant subi les plus fortes évolutions depuis la conception de SimFeodal.
-La règle d'ensemble est pourtant extrêmement simple : un foyer paysan a une probabilité de migrer qui est inversement proportionnelle à sa satisfaction. 
+La règle d'ensemble est pourtant extrêmement simple : un foyer paysan a une probabilité de migrer qui est proportionnelle à son insatisfaction. 
 Autrement dit, $P \left( migration \right) = \left( 1 - satisfaction \right)$.
-Cette règle simple a été progressivement complexifiée afin d'augmenter la rationalité et l'ancrage empirique des choix de localisation.
+Cette règle simple a été progressivement complexifiée afin d'augmenter à la fois la rationalité et l'ancrage empirique des choix de localisation.
+Cette complexification du mécanisme est inhérente au choix de modélisation, KIDS, dans lequel SimFeodal s'inscrit (cf. \hl{chapitre 1}), et où l'on cherche à suivre autant que possible les connaissances empiriques, quitte à complexifier plus que de nécessaire (par rapport au niveau de détail des autres mécanismes) certaines règles.
+
 Une première complexification a abouti à la distinction de migrations \og locales\fg{} et de migrations \og lointaines\fg{} (voir \cref{fig:migrations-locales-lointaines}).
 
 \begin{figure}[H]
@@ -1407,8 +1550,11 @@ Une première complexification a abouti à la distinction de migrations \og loca
 \caption{Migrations locales et lointaines.}
 \label{fig:migrations-locales-lointaines}
 \end{figure}
-Pour aboutir à cette différence entre migration locale et migration lointaine, la règle est encore une fois complexe : les foyers paysans privilégient les migrations locales, et quand celles-ci ne sont pas possibles, ils ont une probabilité plus faible d'effectuer une migration lointaine.
-Notons que pour nous approcher des connaissances empiriques, nous avons établi un comportement légèrement différent entre les foyers paysans déjà agrégés et ceux qui seraient dispersés lors de l'exécution du mécanisme de migration (\cref{fig:choix-migration}).
+Pour aboutir à cette différence entre migration locale et migration lointaine, la règle est que les foyers paysans privilégient les migrations locales.
+Quand celles-ci ne sont pas possibles, ils ont une probabilité (plus faible) d'effectuer une migration lointaine.
+Afin de prendre en compte les connaissances empiriques sur la migration des foyers paysans de cette époque, nous avons introduit une légère différence de comportement entre les foyers paysans déjà agrégés et ceux qui sont dispersés lors de l'exécution du mécanisme de migration (\cref{fig:choix-migration}).
+On a ainsi considéré, d'après les connaissances empiriques, qu'un foyer paysan déjà agrégé cherchait un agrégat potentiellement plus attractif, afin de voir sa satisfaction augmenter, alors qu'un foyer paysan dispersé cherchait avant tout à rejoindre un agrégat, en faisant preuve de moins de difficulté dans son choix.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{img/choix_migration.pdf}
@@ -1416,9 +1562,14 @@ Notons que pour nous approcher des connaissances empiriques, nous avons établi 
 	\label{fig:choix-migration}
 \end{figure}
 
-Une dernière distinction a été opérée entre les foyers paysans classiques, libres de leurs migrations, et les foyers paysans \og dépendants\fg{}.
-Ces derniers représentent les foyers qui n'avaient pas le droit de quitter le domaine de leur seigneur (les serfs entre autres).
-Ceux-là ne peuvent effectuer que des migrations locales, et on considère qu'ils seront amenés à migrer plus facilement, ce qui change encore une fois leur mécanisme de migration (\cref{fig:choix-migration-dependants}).
+Une dernière distinction a été opérée entre les foyers paysans classiques, libres de leurs choix migratoires, et les foyers paysans \og dépendants\fg{}.
+Ces derniers représentent les foyers qui n'ont pas le droit de quitter le domaine de leur seigneur (les serfs entre autres).
+Ceux-là ne peuvent effectuer que des migrations locales, et on considère qu'ils seront amenés à migrer plus facilement, les migrations locales ayant un \og coût\fg{} moindre pour le foyer paysan.
+
+Cette nouvelle distinction, comme les précédentes, s'inscrit encore dans le processus de modélisation KIDS : pour les thématiciens, la distinction entre foyers paysans \og mobiles\fg{} et foyers paysans \og dépendants\fg{} est importante empiriquement, et devait être prise en compte dans le modèle.
+Le mécanisme spécifique de migration des foyers paysans dépendants est présenté dans la \cref{fig:choix-migration-dependants}.
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{img/choix_migration_dependants.pdf}
@@ -1427,19 +1578,19 @@ Ceux-là ne peuvent effectuer que des migrations locales, et on considère qu'il
 \end{figure}
  
 
-	
 \subsection{Seigneurs}
 	\subsubsection{Prélèvement des droits \label{sssec:collecte-droits}}
 \setcounter{footnote}{\value{savefootnote}}
 Les seigneurs, petits et grands, collectent les droits dont doivent s'acquitter les foyers paysans (droits de haute justice et autres droits) majoritairement (exception faite des droits fonciers pour les grands seigneurs, voir \cref{fig:prelevement-fonciers}) par l'intermédiaire des zones de prélèvement.
-Ces zones sont caractérisées par un propriétaire (le seigneur qui les possèdent), éventuellement un gardien (le seigneur à qui la zone a été \og donnée\fg{}, voir \cref{meca-dons}), une localisation\footnote{
+Ces zones sont caractérisées par un propriétaire (le seigneur qui les possède), éventuellement un gardien (le seigneur à qui la zone a été \og donnée\fg{}, voir \cref{meca-dons}), une localisation\footnote{
 	Pour les petits seigneurs, il s'agit de leur propre localisation
 }, un rayon\footnote{
-	Ce rayon est tiré aléatoirement suivant une distribution uniforme, \\$rayon\_zp \sim \mathcal{U}\left[ rayon\_min\_zp\_ps , rayon\_max\_zp\_ps \right]$, avec $rayon\_min\_zp\_ps$ et $rayon\_max\_zp\_ps$ des paramètres qui valent respectivement 1 000 et 5 000 m.
+	Ce rayon est tiré aléatoirement suivant une distribution uniforme, \\$rayon\_zp \sim \mathcal{U}\left[ rayon\_min\_zp\_ps , rayon\_max\_zp\_ps \right]$, avec $rayon\_min\_zp\_ps$ et $rayon\_max\_zp\_ps$ des paramètres qui valent respectivement 1 000 et 5 000 m.\\
+	N.B : zp = zone de prélèvement et ps = petit seigneur
 } et un taux de prélèvement\footnote{
 	idem : $taux\_prelevement\_zp \sim \mathcal{U}\left[ min\_taux\_prelevement\_zp\_ps , max\_taux\_prelevement\_zp\_ps \right]$ avec $min\_taux\_prelevement\_zp\_ps$ et $max\_taux\_prelevement\_zp\_ps$ valant 5\% et 25\%.
 }.
-À noter que les zones de prélèvement liées à des châteaux suivent une règle légèrement différente, que nous n'aborderons pas ici\footnote{Se référer au code-source du modèle, dans la fonction \textsf{construction\_chateaux}}.
+%À noter que les zones de prélèvement liées à des châteaux suivent une règle légèrement différente, que nous n'aborderons pas ici\footnote{Se référer au code-source du modèle, dans la fonction \textsf{construction\_chateaux}}.
 
 Les prélèvements, selon les types de droits, rapportent de la \og puissance\fg{} aux seigneurs, dont le \cref{tab:puissance-droits} donne une référence.
 
@@ -1462,7 +1613,7 @@ Les prélèvements, selon les types de droits, rapportent de la \og puissance\fg
 
 \paragraph{Foncier}
 
-Quelques petits seigneurs (ceux créés dès l'initialisation ainsi que $\approx 10\%$ de ceux créés pendant le déroulement de la simulation) possèdent des droits fonciers.
+Quelques petits seigneurs (tous ceux créés dès l'initialisation ainsi que $\approx 10\%$ de ceux créés pendant le déroulement de la simulation) possèdent des droits fonciers.
 À ce titre, ils peuvent collecter ces droits au sein d'une zone de prélèvement qu'ils créent lors de leur apparition.
 Le mécanisme de collecte des droits fonciers est illustré dans la \cref{fig:prelevement-fonciers}.
 \begin{figure}[H]
@@ -1476,6 +1627,9 @@ Le mécanisme de collecte des droits fonciers est illustré dans la \cref{fig:pr
 
 Les autres droits suivent un mécanisme plus générique : les seigneurs propriétaires collectent des droits auprès d'une partie des foyers paysans inclus dans la surface de la zone de prélèvement.
 Cette partie correspond aux \og taux de prélèvement\fg{} décrit plus haut. La \cref{fig:prelevement-droits} récapitule les différentes modalités de collecte de droits via les zones de prélèvement.
+
+La partie (b) de la figure (prélèvements multiples) illustre le cas où un même seigneur possède plusieurs zones de prélèvement concentriques, et où les taux de prélèvement partiels (20\% et 25\% dans cet exemple) s'appliquent donc en partie aux mêmes foyers paysans.
+Du point de vue du foyer paysan, cela montre qu'avec ces deux zones, un même foyer paysan situé dans la zone de prélèvement de plus faible rayon peut se voir prélevé 0, 1 ou 2 droits, affectant sa satisfaction matérielle en conséquence.
 
 \begin{figure}[H]
 	\centering
@@ -1492,13 +1646,13 @@ Les droits de haute justice sont prélevés exactement comme les autres droits, 
 À partir de 940, les seigneurs ont la possibilité de créer des châteaux, dans un espace limité par la présence d'autres châteaux : on considère ainsi, au regard des connaissances empiriques, que deux châteaux ne peuvent être espacés de moins de 5 000 mètres.
 Le mécanisme de construction des châteaux est commun aux grands et aux petits seigneurs, mais certains paramètres varient selon le type du seigneur considéré :
 \begin{itemize}
-	\item Un grand seigneur peut construire jusqu'à $2$ châteaux par tour (paramètre $nb\_max\_chateaux\_par\_tour\_gs$), alors qu'un petit seigneur ne peut en construire au maximum que $1$ par pas de temps ($nb\_max\_chateaux\_par\_tour\_ps$).
+	\item Un grand seigneur peut construire jusqu'à $2$ châteaux par tour (paramètre $nb\_max\_chateaux\_par\_tour\_gs$), alors qu'un petit seigneur peut en construire au maximum $1$ par pas de temps ($nb\_max\_chateaux\_par\_tour\_ps$).
 	\item Pour un seigneur $i$, la probabilité de construire un château est formalisée ainsi :\\
 	$$ P \left( construction \right) =  \frac{puissance\_seigneur_{i}}{\sum{puissance\_seigneur_{0..n}}} \times ponderation\_proba\_chateau $$ avec $ponderation\_proba\_chateau$ valant $1.25$ pour les grands seigneurs et $7$ pour les petits (paramètres techniques).
 	\item Les grands seigneurs peuvent construire des châteaux n'importe-où dans l'espace du modèle (en respectant toutefois les règles exposées plus bas), alors que les petits seigneurs ne peuvent le faire que dans un rayon de 5 000 m de leur localisation : s'il n'y a pas d'espace disponible dans ce rayon, le petit seigneur ne crée pas de château.
 \end{itemize}
 
-Les règles de localisation de château sont identiques, et illustrés dans la \cref{fig:construction-chateaux}.
+Les règles de localisation de château sont identiques, et illustrées dans la \cref{fig:construction-chateaux}.
 
 \begin{figure}[H]
 	\centering
@@ -1514,8 +1668,11 @@ Si le château est donné en gardiennage, l'ensemble des zones de prélèvement 
 
 Les zones de prélèvement créées concernent des droits fonciers et des autres droits.
 Si le seigneur châtelain obtient les droits de haute justice, une zone de prélèvement de droits de haute justice sera automatiquement créée autour de chacun de ses châteaux.
+
 Contrairement aux zones de prélèvement habituelles, celles qui sont associées à un château ont un taux de prélèvement de $100\%$.
-Leur rayon est variable et dépend de la puissance relative du seigneur qui construit le château.
+Cette particularité est due à l'importance thématique des châteaux, qui remplissent un rôle de protection au prix d'un investissement important.
+Cela implique dès lors des prélèvements plus élevés et systématiques que dans les zones plus classiques.
+Dans SimFeodal, cela est modélisé sous la forme de ce taux de prélèvement supérieur à la norme, et aussi à un rayon lui aussi supérieur : il est variable et dépend de la puissance relative du seigneur qui construit le château.
 Ce rayon varie entre un seuil minimal de 2 000 m ($rayon\_min\_zp\_chateau$) et un seuil maximal de 15 000 m ($rayon\_max\_zp\_chateau$).
 Entre ces deux seuils, la valeur du rayon dépend d'une fonction linéaire correspondant au ratio entre la puissance du seigneur constructeur et les puissances maximales et minimales de l'ensemble des seigneurs, tel que formalisé dans l'équation \ref{eq:rayon-zp-chateau}. 
 
@@ -1541,3 +1698,14 @@ Entre ces deux seuils, la valeur du rayon dépend d'une fonction linéaire corre
 	\item -> Hétérogénéité forte dans le niveau de détail des mécanismes
 	\item Description ni complète, ni trop schématisée : une tentative de juste milieu, qui respecte le niveau de détail de chacun des mécanismes.
 \end{itemize}
+
++ modèle KIDS, avec beaucoup d'hétérogénéité dans le niveau de précision des différents mécanismes, mais malgré tout, une certaine généricité dans les manières de concevoir ces mécanismes, qui peuvent être spécifiés après. \\
+cf. commentaire Lena :
+\begin{quotation}
+\noindent\og beaucoup de similitudes dans les fonctionnements de ces deux mécanismes.\\
+Ils auraient pu être présentés de manière plus générique. Je ne te demande pas de le faire ici, mais cela pourrait, soit en conclusion de ce §, soit à un autre endroit, donner lieu à une petite discussions sur le généricité de ces mécanismes et les manières de les appliquer à des cas empiriques précis.\\
+religieux + protection : très générique\\
+périodes et renforcement du religieux = particulier
+\fg{}\\
+\hfill Lena, 15/08/2019, satisfactions religieuses et protection (2.3.6)
+\end{quotation}

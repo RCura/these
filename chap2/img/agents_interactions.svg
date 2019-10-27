@@ -14,7 +14,7 @@
    viewBox="0 0 210.44926 96.466248"
    version="1.1"
    id="svg1567"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.4 (unknown)"
    sodipodi:docname="agents_interactions.svg">
   <defs
      id="defs1561">
@@ -334,15 +334,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4377358"
-     inkscape:cx="390.44285"
-     inkscape:cy="94.884411"
+     inkscape:cx="372.30102"
+     inkscape:cy="178.12275"
      inkscape:document-units="mm"
-     inkscape:current-layer="g7255"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1043"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      showguides="false"
      fit-margin-top="0"
@@ -357,7 +357,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -982,36 +982,38 @@
          d="m 41.126772,34.724439 c -0.05291,0.104029 -0.115498,0.201882 -0.187623,0.293623 -0.07227,0.09167 -0.15264,0.175492 -0.241335,0.251356 -0.0887,0.07586 -0.183929,0.142357 -0.285734,0.199455 -0.101794,0.0571 -0.208165,0.103738 -0.319136,0.139888 -0.110976,0.03615 -0.224412,0.06112 -0.340315,0.07492 -0.11588,0.01381 -0.232004,0.01618 -0.348378,0.0071 -0.116351,-0.0091 -0.230706,-0.0294 -0.343064,-0.06099 -0.112362,-0.03159 -0.220569,-0.07386 -0.3246,-0.126763 -0.104024,-0.05291 -0.201889,-0.115467 -0.293605,-0.187648 -0.09168,-0.07219 -0.175496,-0.152631 -0.251352,-0.241319 -0.07588,-0.0887 -0.142341,-0.183932 -0.199453,-0.285726 -0.05711,-0.10179 -0.103744,-0.208174 -0.139895,-0.319144 -0.03615,-0.110976 -0.06113,-0.224411 -0.07492,-0.340299 -0.01379,-0.115894 -0.01617,-0.232032 -0.0071,-0.348391 0.0091,-0.116363 0.02942,-0.230708 0.06101,-0.343067 0.03153,-0.11239 0.07383,-0.220561 0.126736,-0.32459 0.05291,-0.104035 0.115501,-0.201889 0.187672,-0.29361 0.07226,-0.09167 0.152616,-0.175509 0.241315,-0.251371 0.0887,-0.07586 0.183956,-0.142344 0.28573,-0.199451 0.101777,-0.05711 0.208164,-0.103736 0.319137,-0.139884 0.110976,-0.03615 0.224412,-0.06113 0.340314,-0.07493 0.115899,-0.0138 0.232029,-0.01617 0.348381,-0.0071 0.116373,0.0091 0.230729,0.02941 0.343062,0.061 0.11236,0.03159 0.220545,0.07385 0.324571,0.12676 0.104027,0.05291 0.201921,0.115461 0.293633,0.187651 0.09171,0.0722 0.1755,0.152621 0.251355,0.241314 0.07588,0.0887 0.142363,0.183943 0.199477,0.285735 0.05709,0.101781 0.103719,0.208167 0.139869,0.319141 0.03615,0.110975 0.06113,0.224408 0.07495,0.340304 0.01379,0.115894 0.01615,0.232018 0.0071,0.348378 -0.0091,0.116363 -0.0294,0.230726 -0.06099,0.343083 -0.03152,0.112397 -0.07387,0.220541 -0.126785,0.324576 z" />
       <g
          id="g226-8"
-         transform="matrix(0.22634077,0.11511396,-0.11511396,0.22634077,24.487679,47.943364)">
-        <path
-           d="M -4.5596615,7.1503889 17.676365,-4.2758571 29.559661,18.849611 7.3236344,30.275857 Z"
-           style="fill:#f0f0f0;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="path228-4"
-           inkscape:connector-curvature="0" />
-        <text
-           y="14.275858"
-           x="-6.1048841"
-           transform="rotate(-27.196903)"
-           style="font-variant:normal;font-weight:normal;font-size:11px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text232-6">
-          <tspan
-             x="-6.1048841 1.2320298 7.3497057 13.467381"
-             y="14.275858"
-             sodipodi:role="line"
-             id="tspan230-9">Peut</tspan>
-        </text>
-        <text
-           y="27.275856"
-           x="-7.3236341"
-           transform="rotate(-27.196903)"
-           style="font-variant:normal;font-weight:normal;font-size:11px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text236-2">
-          <tspan
-             x="-7.3236341 -1.8236343 1.8394517 7.9571271 14.074802"
-             y="27.275856"
-             sodipodi:role="line"
-             id="tspan234-9">créer</tspan>
-        </text>
+         transform="matrix(0.22634077,0.11511396,-0.11511396,0.22634077,38.60649,59.394566)">
+        <g
+           id="g1372"
+           transform="translate(-2.4029711,4.0678167)">
+          <path
+             inkscape:connector-curvature="0"
+             id="path228-4"
+             style="fill:#f0f0f0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.74110007"
+             d="m -88.008607,-19.44508 41.501573,-21.297724 19.329578,37.5588848 -41.501591,21.2977312 z" />
+          <text
+             id="text232-6"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.00003624px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="rotate(-27.196903)"
+             x="-45.602386"
+             y="-47.45499">
+            <tspan
+               sodipodi:role="line"
+               id="tspan1374"
+               x="-45.602386"
+               y="-47.45499">a la</tspan>
+            <tspan
+               sodipodi:role="line"
+               id="tspan1376"
+               x="-45.602386"
+               y="-33.704945">capacité</tspan>
+            <tspan
+               sodipodi:role="line"
+               id="tspan1378"
+               x="-45.602386"
+               y="-19.954899">de créer</tspan>
+          </text>
+        </g>
       </g>
       <g
          transform="matrix(0.07546717,0.03838162,-0.03838162,0.07546717,-64.31075,-68.252711)"
@@ -1463,6 +1465,7 @@
          y="94.502907">(et <tspan
    style="font-style:italic"
    id="tspan6068">inputs</tspan>
+
 
 )</tspan>
     </text>
