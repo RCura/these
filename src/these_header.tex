@@ -57,7 +57,12 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 
 \usepackage{varioref}
 \usepackage[hyperfootnotes=false]{hyperref}
-\hypersetup{pdftitle={Robin Cura - Thèse}}
+\hypersetup{
+	pdfauthor={Robin CURA},
+	pdftitle={These\_Robin\_CURA},
+	pdfsubject={Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles},
+	pdfkeywords={blob, blob2, blob3}
+}
 \usepackage[noabbrev, nameinlink]{cleveref}
 
 
@@ -67,14 +72,15 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \usepackage{fontawesome}
 \usepackage{wrapfig}
 \usepackage[style=authoryear-icomp,
-hyperref,
+hyperref=true,
 backend=bibtex,
 isbn=false,
 doi=true,
 url=true,
 date=year,
 sortcites=false,  % Ne pas changer l'ordre des citations multiples
-sorting=nyt % Citations dans biblio : NameYearTitle
+sorting=nyt, % Citations dans biblio : NameYearTitle
+%backref=true
 ]{biblatex}
 
 
