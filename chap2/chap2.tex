@@ -2,7 +2,7 @@
 \chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
 \label{chap:chap2}
 \begin{center}
-	{\large Version \hl{2019-10-29}}
+	{\large Version \hl{2019-10-30}}
 \end{center}
 
 \begin{itemize}
@@ -12,7 +12,8 @@
 	\item 05/07/2019 : Rendu à Lena de 2.4 et 2.5
 	\item 08/07/2019 : fin reprise (->2.7.2.3 inclus) + envoi doc à Lena
 	\item 26/10/2019 : début dernières reprises Lena
-	\item 29/10/2019 : fin reprises : envoi en relecture à Thomas \& Julie
+	\item 29/10/2019 : rédaction parties manquantes
+	\item 30/10/2019 : dernière relecture + envoi à Thomas \& Julie
 \end{itemize}
 \setcounter{minitocdepth}{1}
 
@@ -121,17 +122,20 @@ On ne présente ici qu'un état, temporaire, de ce projet de longue haleine qu'e
 
 Le contexte de réalisation du modèle SimFeodal a été présenté dans le \hl{chapitre 1, partie contexte TransMonDyn}, de même qu'une première description, brève, des processus sociaux et spatiaux qu'on cherche à reproduire dans le modèle (\hl{chapitre 1, \og Identifier des régimes et transitions\fg{}}).
 
-Dans cette partie, il nous semble important de remettre en avant l'aspect thématique du modèle, c'est-à-dire aussi bien les questions thématiques qu'il cherche à adresser que le contexte historiographique dans lequel ces questions s'inscrivent.
+Dans cette partie, il nous semble important de mettre en avant l'aspect thématique du modèle, c'est-à-dire aussi bien les questions qu'il cherche à adresser que le contexte historiographique dans lequel ces questions s'inscrivent.
 
 \subsection{Contexte historiographique \label{subsec:contexte-historio}}
 
-Le contexte historique et historiographique qui accompagne le modèle SimFeodal est riche et très étudié par les médiévistes.
-Il dessine les contours d'un paysage scientifique, entre histoire et archéologie, qui cherche à comprendre les origines du féodalisme et les changements que ce système a provoqué autour de l'\og{}An Mil\fg{}~\autocite{duby1967mil}\footnote{
-	Pour ce contexte, nous avons préféré reprendre, en la citant, une partie de l'introduction d'un chapitre d'ouvrage collectif \autocite{cura_transition_2017}, rédigé par les auteurs du modèle et donc validé par chacun d'entre eux.
-	Cela nous semble préférable à une certaine forme d'\og{}auto-paraphrase\fg{} qui ne reviendrait qu'au travestissement d'un texte porté avant tout par l'expertise empirique des archéologues et historiens qui en sont les co-auteurs. 
-}.
+Le contexte historique et historiographique auquel prend part le modèle SimFeodal est riche et très étudié par les médiévistes.
+Il dessine les contours d'un paysage scientifique, entre histoire et archéologie, qui cherche à comprendre les origines du féodalisme et les changements que ce système a provoqué autour de l'\og{}An Mil\fg{}~\autocite{duby1967mil}.
 
-\begin{quotation}
+Plutôt que de mener un exercice d'\og{}auto-paraphrase\fg{}, nous préférons ici mobiliser un texte collectif (\cref{enc:contexte-historio}), publié par les auteurs de SimFeodal \autocite[Introduction du chapitre]{cura_transition_2017}.
+Le pan historiographique relève en effet plutôt des connaissances expertes thématiques, et à ce titre, n'aurait pas véritablement de sens à être ré-écrit par l'unique auteur de cette thèse.
+Procéder à une citation, même aussi longue, permet de garantir la justesse de la description de ce contexte historiographique, et en assure de plus une validation par les co-auteurs, notamment thématiciens, de ce chapitre d'ouvrage.
+
+\medskip 
+\begin{encadre}{Un modèle inscrit dans un vif débat historiographique}{contexte-historio}
+	
 \noindent \og
 La question de l'émergence de la société féodale en Occident est au cœur d'un débat historique ancien.
 Depuis le XVIIIe siècle, les penseurs cherchent à comprendre le fonctionnement de la société médiévale et à cerner ses fondements.
@@ -139,25 +143,27 @@ Les archives sont continûment explorées pour comprendre isolément et précis�
 Cette compréhension se heurte toutefois à la très grande complexité de ces processus, qui peuvent varier chronologiquement, mais aussi présenter des nuances infinies en fonction des zones étudiées.
 Ces difficultés sont encore amplifiées par l'accès aux données, très variable selon l'état de la documentation, soumise aux aléas de la conservation \textelp{}
 %; d'une manière générale, les historiens des temps féodaux travaillent sur des documents rares et lacunaires, vestiges d'une société fondamentalement portée par l'oralité.
-
-\noindent Depuis une quarantaine d'années, l'afflux massif de données de fouilles issues du développement de l'archéologie préventive a permis de renouveler et enrichir ces débats.\textelp{}
+\paragraph[espace]{}
+Depuis une quarantaine d'années, l'afflux massif de données de fouilles issues du développement de l'archéologie préventive a permis de renouveler et enrichir ces débats.\textelp{}
 [La] complémentarité des approches textuelles et matérielles, loin de simplifier les questionnements portant sur la société féodale, les a encore complexifiés en mettant en évidence des aspects anthropologiques et des différenciations géographiques jusqu'alors sous-estimés.
 Le débat s'en est trouvé vivifié, se focalisant désormais sur la question de l'occupation de l'espace, considéré comme un marqueur efficace des transformations sociales.
 L'émiettement et la dissémination des pouvoirs, dont témoigne la multiplication des châteaux (seigneuries châtelaines), se font concomitamment à l'apparition d'un réseau très structuré d'encadrement religieux (paroissialisation de la société), tandis que se fixe de manière définitive un système de peuplement fondé sur un maillage villageois, cœur d'une vie communautaire active.
 
-\noindent C'est autour de l'articulation de ces trois éléments fondamentaux de la société féodale (châteaux, églises paroissiales, villages) que portent aujourd'hui analyses et théories.
+\paragraph[espace]{}
+C'est autour de l'articulation de ces trois éléments fondamentaux de la société féodale (châteaux, églises paroissiales, villages) que portent aujourd'hui analyses et théories.
 Fixation, polarisation et hiérarchisation des centres de peuplement sont désormais les grands processus sociaux examinés à la loupe pour aborder la société médiévale.
 Les historiens médiévistes analysent l'\og encellulement\fg{} de la société \autocite{fossier_enfance_1982}, pistant d'une part les rôles polarisateurs du château (phénomène d'\textit{incastellamento}, \cite{toubert_les_1973}) et de l'église paroissiale accompagnée de son cimetière, considérés comme points de ralliement des populations paysannes, et d'autre part les manières dont les populations organisent collectivement les espaces de production (terroir villageois) pour assurer une répartition équilibrée des ressources.
 
-\noindent Dans ce contexte, la période 800-1100 est habituellement considérée comme une période de transition, durant laquelle la société féodale se structure, certains évoquant la \og révolution de l'an Mil\fg{} \autocite{fossier_enfance_1982}, tandis que d'autres tempèrent en parlant de \og révélation de l'an Mil\fg{} \autocite{barthelemy_societe_1993} (\og révélation\fg{} par l'augmentation en quantité et en qualité de la documentation textuelle).
+\paragraph[espace]{}
+Dans ce contexte, la période 800-1100 est habituellement considérée comme une période de transition, durant laquelle la société féodale se structure, certains évoquant la \og révolution de l'an Mil\fg{} \autocite{fossier_enfance_1982}, tandis que d'autres tempèrent en parlant de \og révélation de l'an Mil\fg{} \autocite{barthelemy_societe_1993} (\og révélation\fg{} par l'augmentation en quantité et en qualité de la documentation textuelle).
 Les hypothèses sont ainsi nombreuses, et il est difficile de trancher en faveur de l'une ou l'autre, tant l'articulation des facteurs sociaux, politiques, institutionnels, économiques et culturels est complexe.
 \fg{}\\
-\mbox{}~ \hfill \cite[301-302]{cura_transition_2017} 	
-\end{quotation}
+\mbox{}~ \hfill \cite[301-302]{cura_transition_2017} 
+\end{encadre}
 
 \subsection{Questionnement}
 
-Dans ce contexte, nous avons cherché à étudier, avec une approche \og résolument géographique\fg{}~\autocite[302]{cura_transition_2017}, les causes et conditions des processus spatiaux, à l'œuvre durant cette période, de polarisation, de fixation, et de hiérarchisation du système de peuplement rural.
+Dans ce contexte, nous avons cherché à étudier, avec une approche \og résolument géographique\fg{}~\autocite[302]{cura_transition_2017}, les causes et conditions des processus spatiaux à l'œuvre durant cette période : polarisation, fixation, et hiérarchisation du système de peuplement rural.
 Les hypothèses qui sous-tendent notre approche modélisatrice sont multiples.
 On estime ainsi, d'après les connaissances expertes des thématiciens du projet, que ces processus spatiaux incombent à une triple dynamique sociale.
 
@@ -171,7 +177,7 @@ On estime ainsi, d'après les connaissances expertes des thématiciens du projet
 
 À ces trois processus sociaux, on associe des conséquences sur le plan spatial : de la violence émerge le besoin de protection, d'où la création de châteaux et la concentration de la population rurale à proximité ; de l'encadrement religieux émerge une nette augmentation du devoir de fréquentation des églises, d'où la démultiplication des églises paroissiales et la polarisation de la population à leurs abords ; de l'apparition des communautés, en réaction notamment aux augmentations des droits et impôts causés par l'émiettement des pouvoirs, émerge un interêt réel à la concentration des paysans dispersés.
 
-En étudiant cette population à l'échelle d'une région, on cherche à éprouver la combinaison de ces hypothèses, en interrogeant leur capacité à expliquer à elles seules l'apparition de la structure spatiale polarisée (par les châteaux et églises) et hiérarchisée (du petit village à la ville à portée nationale) que l'on constate à la fin de la période.
+En étudiant cette population à l'échelle d'une région, on cherche à éprouver la combinaison de ces hypothèses, en interrogeant leur capacité à expliquer à elles seules l'apparition de la structure spatiale polarisée (par les châteaux et églises) et hiérarchisée (du petit village à la ville de portée nationale) que l'on constate à la fin de la période.
 
 %{\redroman
 %	Dans le cadre de l'ANR TransMonDyn, l'objectif, pour la transition des années 800-1100, est d'étudier les processus à l'œuvre dans la dynamique de fixation, polarisation et hiérarchisation de l'habitat rural.
@@ -1556,12 +1562,10 @@ Ce choix permet de tenir compte du poids que prennent ces structures sociales et
 
 Le calcul de la satisfaction s'exprime ainsi :
 \begin{equation*}
-\begin{gathered}
 \begin{split}
 satisfaction =~& 0.75 \times \left[ min \left( s_{materielle} ; s_ {religieuse}; s_{protection} \right) \right] + \\
 & 0.25 \times [appartenance\_communaute]
 \end{split}
-\end{gathered}
 \end{equation*}
 avec $ \{satisfaction ; s_{materielle} ; s_ {religieuse} ; s_{protection}\} \in [0,1]$ et $[appartenance\_communaute] \in \{0;1\} $
 
@@ -1732,7 +1736,8 @@ Cette difficulté de présentation du modèle dans le cadre d'ODD est renforcée
 Le terme complexité est ici employé au sens algorithmique, et non au sens des systèmes complexes.
 Une plus forte complexité désigne ici un mécanisme plus \og compliqué\fg{}, régit par un nombre de règles, d'étapes ou de conditions plus importantes qu'un autre.
 }, des mécanismes de SimFeodal.
-On en a déjà mentionné les raisons dans l'introduction : les niveaux de précision des connaissances des différents objets modélisés sont très variables, et très liés aux parcours et sujets de recherche individuels des thématiciens impliqués.
+On en a déjà mentionné les raisons dans l'introduction :
+	les niveaux de précision des connaissances des différents objets modélisés sont très variables, et très liés aux parcours et sujets de recherche individuels des thématiciens impliqués.
 Si l'on ajoute une \og longue durée\fg{} de conception et de développement du modèle, qui plus est caractérisée par des allers-retours entre des phases de simplification et des phases de complexification, on ne peut qu'obtenir un modèle difficile à homogénéiser.
 Tous ces éléments sont toutefois caractéristiques de la nature -- et de la vocation -- exploratoire de SimFeodal, dont le développement porte sans doute plus de résultats que l'utilisation d'un état \og final\fg{}.
 
