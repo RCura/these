@@ -1,19 +1,29 @@
 % !TEX root = ../These_Robin_Master.tex
-\chapter{Évaluer un modèle de simulation complexe en situation d'inter-disciplinarité}
+\chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-02-22}}
+{\large Version \hl{2019-11-01}}
 \end{center}
 \begin{itemize}
-	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
-	\item Décembre 2018 / Février 2019 : Ajout de la partie 3.1
-	\item Janvier/Février 2019 : Corrections après commentaires de Lena sur 3.1 à 3.1.4
+%	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
+%	\item Décembre 2018 / Février 2019 : Ajout de la partie 3.1
+%	\item Janvier/Février 2019 : Corrections après commentaires de Lena sur 3.1 à 3.1.4
+	\item 31/10/2019 : Fusion anciens chapitre 3 (évaluation) et 4 (paramétrage)
+	\item 01/11/2019 : Réorganisation plan
 \end{itemize}
 
 
 \minitoc
-
 \clearpage
+
+\section*{Introduction}
+\label{sec:chap3-4-intro}
+\addcontentsline{toc}{section}{Introduction}
+
+\begin{center}
+	\hl{A rédiger}
+\end{center}
+
 
 \section{Comment évaluer un modèle ?}\label{sec:evaluer-modele}
 
@@ -79,12 +89,13 @@ Au moment de rédiger ces lignes, seuls deux auteurs en font un usage en frança
 
 Par soucis d'homogénéité et de compréhension par un plus grand nombre de ce travail, nous nous contenterons donc de nous inscrire dans les choix de \cite{amblard_evaluation_2006} (voir \Cref{enc:lexique-eval-amblard}), en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone, quand bien même ces concepts nous paraissent moins robustes que ceux présentés auparavant.
 
+\clearpage
 \begin{encadre}{Les mots de l'évaluation}{lexique-eval-amblard}
 
 Pour \cite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textsc{Balci}, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que \textsc{Balci} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
 
 \begin{quotation}
-\og Il est classique de différencier deux étapes dans la validation : interne et externe.
+\noindent \og Il est classique de différencier deux étapes dans la validation : interne et externe.
 \begin{itemize}
 	\item La phase de vérification ou \textbf{validation interne} comprend d'abord une vérification de conformité entre les spécifications et le programme implémenté et pose la question : est-ce que le modèle implémenté est bien celui que je voulais implémenter ? [...]
 	Ensuite, la validation interne concerne la recherche et l'identification des propriétés du modèle.
@@ -176,12 +187,18 @@ Dans l'évaluation de modèles au sens large, cette étape peut se révéler ind
 Dans le cas plus spécifique des modèles à base d'agent, cas dans lequel nous nous inscrivons ici, la situation est plus difficile.
 On emploie généralement la modélisation à base d'agents parce qu'elle encourage une approche anthropomorphique, plus aisément compréhensible et requérant moins de connaissances mathématiques que d'autres approches, mais aussi car il est terriblement complexe d'exprimer des systèmes dotés de multiples interactions, qui plus est multi-scalaires, sous forme de réseaux d'équations.
 En un sens, on pourrait presque considérer qu'on fait appel à de la modélisation à base d'agents quand on ne peut mobiliser des modèles formels.
-Le processus qui tendrait à formaliser, mathématiquement, des modèles agents est alors intrinsèquement contre-intuitif et difficile, quand bien même certains pensent que ce n'est pas une fatalité mais une question de temps
-\footnote{
-Par exemple Alain \textsc{Franc}, mathématicien : \og L’une des difficultés de l’acceptation des SMA comme modèles est que ces comportements sont très mal compris mathématiquement. Il existe peu de résultats qui permettent de relier un type de règles avec un type de comportement, alors que de tels liens sont à la base du succès des systèmes dynamiques, où l’on connaît (parfois\ldots) les gammes de paramètres qui mènent à un comportement d’équilibre, cyclique ou chaotique, et l’on sait qu’il ne peut y en avoir d’autres. [...] Il existe donc une tension entre, d’un côté, les systèmes dynamiques qui forment une théorie riche et solide de modélisation mathématique, mais pour un nombre assez restreint de situations (bien des difficultés apparaissent dans le cadre non linéaire, que l’on peut lire dans la richesse des travaux sur la modélisation de la turbulence par exemple) et, d’un autre côté, les SMA qui permettent des simulations à partir de règles plus riches et diversifiées, mais pour des résultats dont la compréhension mathématique très souvent nous échappe (il y a peu de théorèmes). On peut donc dire en résumé que les SMA sont « en avance » sur la compréhension mathématique des systèmes dynamiques et peuvent proposer des cas d’études aux mathématiciens.\fg{} \autocite[Annexe 2, \og Retour sur les SMA comme outil et cadre conceptuel de modélisation.\fg{}, pp. 479-482 ]{ouriachi_lelaboration_2018}
+Le processus qui tendrait à formaliser, mathématiquement, des modèles agents est alors intrinsèquement contre-intuitif et difficile, quand bien même certains pensent que ce n'est pas une fatalité mais une question de temps\footnote{
+	Par exemple Alain \textsc{Franc}, mathématicien :
+	\og L’une des difficultés de l’acceptation des SMA comme modèles est que ces comportements sont très mal compris mathématiquement.
+	Il existe peu de résultats qui permettent de relier un type de règles avec un type de comportement, alors que de tels liens sont à la base du succès des systèmes dynamiques, où l’on connaît (parfois\ldots) les gammes de paramètres qui mènent à un comportement d’équilibre, cyclique ou chaotique, et l’on sait qu’il ne peut y en avoir d’autres.
+	[...]
+	Il existe donc une tension entre, d’un côté, les systèmes dynamiques qui forment une théorie riche et solide de modélisation mathématique, mais pour un nombre assez restreint de situations (bien des difficultés apparaissent dans le cadre non linéaire, que l’on peut lire dans la richesse des travaux sur la modélisation de la turbulence par exemple) et, d’un autre côté, les SMA qui permettent des simulations à partir de règles plus riches et diversifiées, mais pour des résultats dont la compréhension mathématique très souvent nous échappe (il y a peu de théorèmes).
+	On peut donc dire en résumé que les SMA sont « en avance » sur la compréhension mathématique des systèmes dynamiques et peuvent proposer des cas d’études aux mathématiciens.\fg{}
+	\autocite[Annexe 2, \og Retour sur les SMA comme outil et cadre conceptuel de modélisation.\fg{}, pp. 479-482 ]{ouriachi_lelaboration_2018}
 }.
-Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012}\footnote{\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths.}} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling
-\footnote{
+Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012}\footnote{
+	\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths.}
+} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling \footnote{
 	On reviendra et on présentera ce modèle de manière détaillée dans le \hl{chapitre 4}.
 	La description du modèle, en particulier, est effectuée dans \hl{lien vers la description} %\cref{desc:schelling}
 .}.
@@ -202,8 +219,7 @@ Robert \textsc{Sargent} par exemple différencie les méthodes d'évaluation sel
 }.
 Pour autant, ces auteurs soulignent aussi que selon les choix de modélisation et les caractéristiques du système modélisé, toutes ces étapes ne sont pas nécessairement accessibles ou possibles.
 
-Nous pensons qu'un autre facteur peut affecter plus fortement l'éventail des méthodes possibles d'évaluation :
-	la parcimonie du modèle réalisé.
+Nous pensons qu'un autre facteur peut affecter plus fortement l'éventail des méthodes possibles d'évaluation : la parcimonie du modèle réalisé.
 Ainsi, avec un modèle très parcimonieux, qui s'inscrirait dans un certain purisme des méthodes \og KISS\fg{}, doté d'un nombre minime d'\textit{outputs}, il nous semble que toutes les méthodes, y compris les plus formelles, sont assez simplement -- si ce n'est pour la résolution analytique, on l'a vu plus haut -- applicables.
 A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}, fourmillant d'\textit{inputs}, de paramètres et d'\textit{outputs} sera bien plus complexe à évaluer de manière quantitative, ou \og objective\fg{} selon les mots des pionniers de l'évaluation.
 
@@ -230,7 +246,9 @@ Concept discuté et disputé dans ces domaines \autocite{mosier_critical_1947}, 
 }.
 
 Pour illustrer ce besoin de \og plausibilité\fg{}, on peut prendre l'exemple des problèmes de corrélations fallacieuses (ou \og \textit{spurious correlations}\fg{}) et autres exemple de la non-équivalence de causalité et corrélation.
-À la suite d'un article \autocite{shaw_elevated_2017} liant utilisation de glyphosate et nombre d'enfants diagnostiqués autistes (\cref{fig:autisme-glyphosate}), plusieurs chercheurs ont renvoyé à l'analyse menée par un membre de l'espace de discussion \textit{reddit} (\textsc{jasonp55}, voir \href{https://www.reddit.com/r/skeptic/comments/14qbn9/rskeptic_i_was_practicing_graphpad_and_i_think_i/}{www.reddit.com/r/skeptic/comments/14qbn9/}).
+À la suite d'un article \autocite{shaw_elevated_2017} liant utilisation de glyphosate et nombre d'enfants diagnostiqués autistes (\cref{fig:autisme-glyphosate}), plusieurs chercheurs ont renvoyé à l'analyse menée par un membre de l'espace de discussion \textit{reddit}\footnote{
+Message posté par l'utilisateur \og jasonp55\fg{} en 2012 : \\ \href{https://www.reddit.com/r/skeptic/comments/14qbn9/rskeptic_i_was_practicing_graphpad_and_i_think_i/}{www.reddit.com/r/skeptic/comments/14qbn9/}
+}.
 Celui-ci qui proposait en effet-- de manière ironique -- une explication opposée, liant prévalence de l'autisme et vente de produits de  l'agriculture biologique (\cref{fig:autisme-bio}).
 
 \begin{figure}[H]
@@ -242,7 +260,8 @@ Celui-ci qui proposait en effet-- de manière ironique -- une explication oppos�
 	\begin{minipage}[b]{.46\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{img/autisme_bio.png}
-		\caption{Relation entre autisme et vente d'aliments \og bio\fg{}, d'après \href{https://www.reddit.com/r/skeptic/comments/14qbn9/rskeptic_i_was_practicing_graphpad_and_i_think_i/}{\textsc{jasonp55}, 2012, sur \textit{reddit}} \label{fig:autisme-bio}}
+		\caption[Relation entre autisme et vente d'aliments \og bio\fg{}]{Relation entre autisme et vente d'aliments \og bio\fg{}, d'après \og jasonp55\fg{}, 2012.}
+		\label{fig:autisme-bio}
 	\end{minipage}
 \end{figure}
 
@@ -441,7 +460,6 @@ Il s'agit en effet plutôt d'ordonner différentes versions ou paramétrages d'u
 \hl{Transition avec sous-partie suivante : à écrire après les corrections/reprises de 3.2 et 3.3}
 
 
-\clearpage
 \section[Des indicateurs pour SimFeodal]{Des indicateurs pour évaluer le modèle SimFeodal}
 
 Le modèle SimFeodal présenté dans le chapitre 2 correspond à une \og version 0 \fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
@@ -469,10 +487,9 @@ Nous caractérisons ces éléments en deux grands ensembles :
 La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthétique, ces deux ensembles de mesures, explicitant le vocabulaire mobilisé dans cette partie.
 
 \begin{figure}[H]
-\captionsetup{width=\linewidth}
 \includegraphics[width=\linewidth]{img/schema_indice_indicateur.pdf}
-\caption{Schéma de synthèse des correspondances entre mesures relevant du domaine empirique et mesures issues des simulations pour l'évaluation du modèle SimFeodal.\\
-\todobox{Lena : Paragraphe difficile}
+\caption[Schéma de synthèse des correspondances entre mesures relevant du domaine empirique et mesures issues des simulations pour l'évaluation du modèle SimFeodal]{Schéma de synthèse des correspondances entre mesures relevant du domaine empirique et mesures issues des simulations pour l'évaluation du modèle SimFeodal.\\
+\hl{Lena : Paragraphe difficile}\\
 La correspondance des éléments est représentée par une symétrie axiale, entre d'un côté des \og indices empiriques\fg{} et de l'autre des \og indicateurs de sortie de simulation\fg{}.
 Les losanges pleins désignent une relation de composition :
 un \og indice empirique\fg{} est soit un ordre de grandeur, soit une forme stylisée.
@@ -489,7 +506,9 @@ Les dimensions (A à C) regroupent des indices (et les indicateurs qui leur corr
 Afin d’évaluer la capacité du modèle à reproduire un phénomène observé, il est nécessaire de disposer dans le domaine empirique, de \og points de repère\fg{}.
 Selon les modèles, ceux-ci peuvent revêtir de multiples formes et relever de l'ensemble des échelles spatiales et temporelles que l'on choisit de mettre en scène dans le modèle.
 Leur point commun est qu'ils doivent pouvoir être mesurés, au sens le plus large, c'est-à-dire être en capacité d'être reproduits et comparables avec d'autres mesures.
-Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits\footnote{\todobox{Lena : pas compris la note}\\Et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}}.
+Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits\footnote{
+	\hl{Lena : pas compris la note}
+} et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}.
 La \cref{fig:schema_indices} illustre cette catégorisation entre la première catégorie -- les ordres de grandeur -- et la seconde -- les formes stylisées --.
 
 \paragraph{Ordres de grandeur}
@@ -698,17 +717,14 @@ Ces éléments expliquent que dans les résultats de chaque étape du paramétra
 \end{encadre}
 \footnotetext{De manière incrémentielle et itérative, voir \hl{dans le chapitre x?} et \cite[\url{http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}]{thomas_revisiting_2012} }
 
+\clearpage
+\subsection{Les indicateurs et dimensions de SimFeodal}
 
-\pagebreak
-
-\section{Les indicateurs et dimensions de SimFeodal}
-
-\subsection{Évaluer la polarisation des foyers paysans \label{subsub:polarisation}}
+\subsubsection{Évaluer la polarisation des foyers paysans \label{subsub:polarisation}}
 
 La polarisation des foyers paysans dans l'espace du modèle est sans doute la dimension principale des dynamiques spatiales que l'on cherche à reproduire.
 Rappelons ici que l'on estime, à partir des connaissances d'experts, que les foyers paysans sont très majoritairement dispersés en 800, et concentrés au sein de villages et petites villes en 1100.
-Le modèle cherche à reproduire cette polarisation, par le biais d'une concentration des foyers paysans, initialement localisés aléatoirement dans l'espace mais n'en parsemant qu'une faible part, en des agrégats de foyers paysans répartis dans dans une plus large partie de l'espace modélisé.
-\todobox{Mettre un schéma pour rendre compréhensible cette contradiction apparente.}
+Le modèle cherche à reproduire cette polarisation, par le biais d'une concentration des foyers paysans, initialement localisés aléatoirement dans l'espace mais n'en parsemant qu'une faible part, en des agrégats de foyers paysans répartis dans une plus large partie de l'espace modélisé.
 
 Pour analyser la polarisation du système de peuplement, il est nécessaire de définir des indices permettant de caractériser ce phénomène.
 Ces indices doivent d'une part avoir une logique thématique, c'est-à-dire être appropriés à la description et à l'étude de la polarisation, mais doivent pouvoir être produits et enregistrés dans le modèle de simulation, formant des indicateurs.
@@ -728,128 +744,43 @@ Par exemple, la dispersion des agrégats et pôles peut renseigner, une fois le 
 Il s'agit donc d'indicateurs secondaires, permettant de préciser la capacité du modèle à reproduire les faits stylisés, alors que l'évaluation de cette capacité est surtout le rôle de l'indicateur principal.
 
 
-\subsubsection{Taux de foyers paysans dispersés}
+\paragraph{Taux de foyers paysans dispersés.}
 
 Cet indicateur, et sa déclinaison temporelle, sont vraisemblablement les plus évidents :
 plus le taux de foyers paysans dispersés en fin de simulation est faible, plus le système de peuplement est polarisé.
-On a vu \footnote{\hl{Ne pas oublier de présenter les objectifs dans chapitre 2. Ou alors, on les présente ici au fur et à mesure qu'on mentionne les indicateurs}} qu'empiriquement, autour de 1160, on observe environ $20\%$ de foyers paysans encore dispersés, alors qu'ils sont près de $95\%$ au départ.
-Le modèle sera donc d'autant plus satisfaisant que cet indicateur s'approchera de $20\%$ en fin de simulation.
-
-La \og déclinaison temporelle\fg{} mentionnée juste au dessus permet d'affiner légèrement la précision de l'information communiquée par cet indicateur :
-il faut certes atteindre un objectif quantifié ($20\%$), mais les hypothèses empiriques permettent aussi de penser qu'il faut que l'évolution de cet indicateur au cours du temps présente une tendance stable à la diminution
-%(
-%\begin{sparkline}{5}
-%	\spark 0 .995 .25 0.8 .5 0.6 .75 0.4 1 .2 /
-%\end{sparkline}
-%)
-, diminuant ainsi plus ou moins, avec de faibles fluctuations à chaque pas de temps.
+La \og déclinaison temporelle\fg{} mentionnée juste au dessus permet d'affiner légèrement la précision de l'information communiquée par cet indicateur.
+Il faut certes atteindre un objectif quantifié (20\%), mais les hypothèses empiriques permettent aussi de penser qu'il faut que l'évolution de cet indicateur au cours du temps présente une tendance stable à la diminution, diminuant ainsi plus ou moins, avec de faibles fluctuations à chaque pas de temps.
 Une configuration de paramètres présentant des valeurs d'indicateurs en sortie proches des objectifs en fin de simulation mais fluctuant fortement pendant son déroulement ne sera ainsi pas valide.
 Elle montrerait en effet un phénomène trop aléatoire au cours du temps, dont on ne peux penser qu'il s'est déroulé historiquement selon les dires d'experts qui considèrent que cette évolution s'est déroulée de manière continue dans le temps.
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-
-Dans la version 0 de SimFeodal, on atteint en moyenne (moyenne des réplications) $\textbf{57\%}$ de foyers paysans isolés en fin de simulation.
-C'est un taux bien plus important que les $20\%$ attendus, illustrant dès lors une polarisation trop faible.
-Dans la première moitiée de la période (jusqu'en 1000, (\cref{fig:taux-isoles-v0})), le taux est en diminution constante et linéaire, ce qui est une bonne tendance, et ne présente de plus presque pas de variabilité, ce qui l'est aussi.
-Pourtant, à partir de 1000, la variabilité augmente, et le la diminution du taux au cours du temps s'interrompt, avant de prendre une allure croissante.
-L'allure de la courbe sur la seconde moitié de la simulation est donc très éloignée de ce qui est attendu au regard des connaissances empiriques, aussi bien en matière de tendance qu'à la vue du taux décevant atteint au final.
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/resultats/v0_taux_FP_isoles.pdf}
-\caption{Évolution de la part des foyers paysans isolés.}
-\label{fig:taux-isoles-v0}
-\end{figure}
-
-\clearpage
-
-\subsubsection{Nombre d'agrégats}
+\paragraph{Nombre d'agrégats.}
 
 Puisque les foyers paysans se concentrent au sein d'agrégats, il est logique d'observer l'évolution de ces derniers.
-Là aussi, (\hl{objectif à définir}), on peut considérer qu'un nombre d'agrégats en fin de simulation proche de l'objectif, $200$, permet de caractériser une polarisation réussie.
-Cet indicateur ne peut être lu seul, et c'est pour cela qu'il vient dans un second temps (cf. \ref{par:hierarchie_interne}, \cnameref{par:hierarchie_interne}, p.\pageref{par:hierarchie_interne}) :
-en effet, un faible nombre d'agrégats peut aussi bien être révélateur d'une très faible polarisation des foyers paysans (ceux-ci restant dispersés) que d'une trop importante (un unique agrégat concentrant l'ensemble des foyers paysans par exemple).
-Une fois le taux de foyers paysans dispersés connu et ces potentiels biais pris en compte, le nombre d'agrégats et son évolution nous renseigne cependant sur les dynamiques de polarisation.
-D'après les connaissances expertes, on s'attend à ce que le nombre d'agrégats, très faible au départ (24 dans la version 0), suive trois phases :
+Là aussi, on peut considérer qu'un nombre d'agrégats en fin de simulation proche de l'objectif -- 200 --, permet de caractériser une polarisation réussie.
+Cet indicateur ne peut être lu seul, et c'est pour cela qu'il vient dans un second temps.
+En effet, un faible nombre d'agrégats peut aussi bien être révélateur d'une très faible polarisation des foyers paysans (ceux-ci restant dispersés) que d'une trop importante (un unique agrégat concentrant l'ensemble des foyers paysans par exemple).
+
+On s'attend à ce que le nombre d'agrégats, très faible au départ, suive trois phases :
 une première phase de croissante lente, le temps que les mécanismes agissent sur la polarisation, suivie d'une période de croissance plus rapide, une fois que tous les foyers paysans commenceront à être suffisament attirés par les pôles pour y former des agrégats, et enfin, une nouvelle phase de croissante plus lente, une fois les foyers paysans répartis dans les agrégats existants et qui se déplaceront vers des agrégats plus importants, hiérarchisant le système de peuplement.
-Cette allure d'évolution rappelle les fonctions logistiques connues par exemple pour les cycles de diffusion/adoption des innovations \hl{ref Pumain ou MN Comin}, et résulte des connaissances expertes des archéologues spécialistes de la période.
+Cette allure d'évolution rappelle les fonctions logistiques connues par exemple pour les cycles de diffusion/adoption des innovations \hl{ref Pumain ou MN Comin}.
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-Le nombre d'agrégats est assez satisfaisant dans la version 0 du modèle.
-Il s'élève ainsi à $\textbf{187}$ en moyenne, cette dernière étant d'ailleurs stable au regard des réplications.
-L'écart à l'objectif ($200$) est donc assez minime.
-On a toutefois vu que le taux de foyers paysans isolé était bien trop important, et dès lors, ces agrégats sont logiquement composés de trop peu de foyers paysans.
-
-L'observation de cet indicateur au cours du temps (\cref{fig:nombre-agregats-v0}) est quant à elle assez satisfaisante :
-on retrouve bien les trois phases attendues, quand bien même le début de la croissance plus importante (vers 1000 ici) est un peu trop tardive.
-Ce moment coïncide de plus avec la stagnation puis l'inversion de la courbe d'évolution de la part de foyers paysans isolés.
-
-On peut quand même considérer que si la polarisation n'est pas assez importante, les structures qui en résultent semblent correspondre à l'empirie.
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_agregats.pdf}
-\caption{Évolution du nombre d'agrégats.}
-\label{fig:nombre-agregats-v0}
-\end{figure}
-
-\todobox{
-Il y a un problème ici par rapport à ce qui a été mis dans le chapitre :
-dans le chapitre TMD, on mentionne 83 agrégats en moyenne, alors que dans l'analyse de Base, il y en a 187...
-}
-
-\clearpage
-
-\subsubsection{Nombre de pôles}\label{par:nb-poles}
+\paragraph{Nombre de pôles.}\label{par:nb-poles}
 
 Dans le modèle SimFeodal, les foyers paysans sont polarisés par des pôles d'attraction.
-Pour une polarisation efficace, il est donc nécessaire que les pôles soient suffisamment nombreux, c'est-à-dire, \textit{a minima}, autant que d'agrégats attendus ($200$).
+Pour une polarisation efficace, il est donc nécessaire que les pôles soient suffisamment nombreux, c'est-à-dire, \textit{a minima}, autant que d'agrégats attendus (200).
 Contrairement aux agrégats, un nombre trop important de pôles ne constitue pas un problème :
 en considérant que $20\%$ des foyers paysans doivent demeurer isolés en fin de simulation, il est vraisemblable qu'une partie des pôles, par exemple composés d'une église paroissiale, n'aient pas vocation à voir la constitution d'un agrégat autour d'eux.
 
-Par ailleurs, afin de renforcer la polarisation par l'action de l'attraction différenciée -- selon le nombre de foyers paysans contenus dans chaque agrégat\footnote{\label{ftn:preferential-attachment}
-L'attraction qu'exercent les pôles contenant des agrégats de population est ainsi plus forte lorsque ces derniers sont constitués d'un nombre de foyers paysans important, et moindre quand ce nombre est faible.
-Cela place ce mécanisme dans une logique proche de celle de l'attachement préférentiel identifié par \cite{yule1925ii} et \cite{simon1955class}, cités par \cite[93]{schmitt_modelisation_2014}) \label{ftn:attachement-preferentiel}
+Par ailleurs, afin de renforcer la polarisation par l'action de l'attraction différenciée -- selon le nombre de foyers paysans contenus dans chaque agrégat\footnote{
+	L'attraction qu'exercent les pôles contenant des agrégats de population est ainsi plus forte lorsque ces derniers sont constitués d'un nombre de foyers paysans important, et moindre quand ce nombre est faible.
+	Cela place ce mécanisme dans une logique proche de celle de l'attachement préférentiel (cf. \hl{Chap 2 - attachement préférentiel}) identifié pour la croissance des systèmes de ville par \cite{yule1925ii} et \cite{simon1955class}, cités par \cite[93]{schmitt_modelisation_2014}).
 } --, il faut que le taux de pôles contenant un agrégat soit important, et surtout croissant au cours du temps :
 comme dans l'empirie, cela est alors le marqueur que de petits pôles d'attractions, comme les églises paroissiales, parviennent à polariser suffisament de foyers paysans de leur voisinage pour aboutir à la création d'un petit agrégat, un village par exemple.
 
 Pour un résultat satisfaisant, il faut donc que le nombre de pôles augmente régulièrement au cours de la durée de la simulation, et que le taux de pôles contenant un agrégat augmente lui aussi de manière continue.
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-L'évolution du nombre de pôles est assez représentative de l'empirie dans la version 0 de SimFeodal.
-On aboutit ainsi sur $\textbf{190}$ pôles en moyenne en fin de simulation, ce qui est dans le bon ordre de grandeur, quoi qu'un peu trop faible.
-Ce nombre est en croissance constante à partir de 940 (\cref{fig:nombre-poles-v0}).
-Ce départ quelque peu tardif peut expliquer le relatif manque de pôles en fin de simulation.
+\paragraph{Dispersion des agrégats et pôles.}\label{par:polarisation-dispersion}
 
-L'analyse de la constitution de ces pôles en matière d'agrégat est toutefois plus décevante :
-la croissance n'est pas linéaire, stagnant entre 940 et 1000, puis à partir de 1040.
-On constate ici un mauvais comportement du modèle par rapport à l'empirie :
-il y a création de nombreux pôles, mais ceux-ci ne suffisent pas à polariser les foyers paysans.
-On peut donc penser qu'il s'agit de nombreux pôles ruraux, par exemple composés d'une unique église paroissiale, ne suffisant dès lors pas à concentrer les foyers paysans alentours.
-
-Dans cette dimension, comme pour l'indicateur principal qu'en est le taux de foyers paysans dispersé, l'effet de la polarisation apparaît nettement trop faible.
-\end{mdframed}
-
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=0.5\linewidth]{img/resultats/v0_nombre_poles.pdf}
-\caption{Évolution du nombre de pôles et du taux de pôles contenant un agrégat.}
-\label{fig:nombre-poles-v0}
-\end{figure}
-
-\clearpage
-
-\subsubsection{Dispersion des agrégats et pôles}\label{par:polarisation-dispersion}
-
-Les indicateurs présentés ci-dessus avaient en commun d'être des indicateurs de sortie, générés automatiquement, et présentés sous forme d'agrégations des réplications.
-Pour préciser l'analyse de la polarisation, il est toutefois nécessaire d'aborder une dimension qui n'est fondamentalement pas agrégeable dans les indicateurs de sortie :
-l'espace du modèle.
-Comme celui-ci est théorique et aléatoire, il n'y a aucun sens à agréger des entités différentes, par exemple des agrégats, sachant que ceux-ci occupent des localisation aléatoires et ne sont pas identifiables en tant que tels.
-
-On ne peut cependant pas se passer d'une analyse spatiale de la répartition des pôles et agrégats afin de comprendre les dynamiques effectivement simulées par le modèle.
 La distribution spatiale des agrégats et des pôles est en effet un facteur majeur de la polarisation :
 s'ils sont très concentrés, les foyers paysans non présents alentours ne trouveront pas d'attracteurs à proximité, et ne seront de plus pas particulièrement affectés par l'augmentation des droits (banaux etc.) et des contraintes spatiales (proximité à une église, à un château etc.).
 A l'inverse, des agrégats entièrement dispersés ne favoriseraient pas la structure spatiale hiérarchisée que l'on chercher à faire émerger.
@@ -857,31 +788,7 @@ A l'inverse, des agrégats entièrement dispersés ne favoriseraient pas la stru
 Afin que le comportement du modèle soit satisfaisant, il faut donc que les pôles et agrégats occupent l'ensemble de l'espace du modèle, tout en présentant des zones de concentration relatives plus importantes.
 Comme on ne peut agréger les représentations spatiales, il convient, pour cette analyse, de regarder individuellement un échantillon de configurations spatiales générées.
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-La lecture des cartes de répartition des agrégats et des pôles de deux réplications de la version 0 (\cref{fig:cartes-agregats-v0}) va, dans l'ensemble, dans le sens de l'empirie.
-On peut ainsi remarquer que ces entités ont bien tendance, au cours du temps, à se disperser dans l'espace modélisé.
-En fin de simulation, tout l'espace est occupé, et on remarque même que certaines zones voient une forte concentration en agrégats, reproduisant les faits stylisés connus.
-La répartition spatiale des agrégats -- et des pôles -- est donc bonne, et ne semble pas opposer d'obstacle à la polarisation attendue du système de peuplement.
-
-Ce résultat peut cependant être nuancé par l'observation de la dynamique de cette dispersion :
-on constate ainsi que la dispersion s'effectue rapidement (entre 800 et 940), et n'évolue plus vraiment après.
-Ce phénomène est donc plus rapide dans cette version 0 du modèle que dans les connaissances empiriques de la région Touraine.
-
-On peut enfin remarquer, en préalable aux dynamiques de hiérarchisation du système que l'on s'apprête à étudier, que ces sorties illustrent un manque criant de hiérarchie quant à la composition des agrégats :
-on ne remarque, visuellement, que peu de différence entre les agrégats, et surtout, cette hiérarchie semble faiblir entre 1040 et 1160 (les agrégats les plus importants ont vu leur nombre de foyers paysans diminuer).
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/resultats/v0_cartes_agregats.pdf}
-\includegraphics[width=\linewidth]{img/resultats/v0_cartes_poles.pdf}
-\caption{Évolution de la répartition spatiale des agrégats et pôles, pour deux réplications.}
-\label{fig:cartes-agregats-v0}
-\end{figure}
-
-\clearpage
-
-\subsection{Évaluer la hiérarchisation du système de peuplement}
+\subsubsection{Évaluer la hiérarchisation du système de peuplement}
 
 La seconde dimension de l'évaluation du modèle SimFeodal correspond à l'étude de la hiérarchisation du système de peuplement.
 On déduit en effet des connaissances empiriques une forte hiérarchisation du système de peuplement sur la période, et plus généralement, des entités présentes.
@@ -898,65 +805,28 @@ la forme de la distribution de la composition en foyers paysans des agrégats.
 De la même manière que pour la polarisation, les indicateurs secondaires ont aussi pour but de préciser cet indicateur principal, et en particulier d'analyser les moteurs de cette hiérarchisation du peuplement.
 On a en effet choisi d'observer plutôt la hiérarchisation des autres types d'entités -- pôles, seigneurs, paroisses --, pour vérifier qu'elles accompagnent et/ou entraînent bien la hiérarchisation des agrégats.
 La hiérarchie des pôles, par exemple, a une influence directe sur l'attraction effectuée sur les foyers paysans (polarisation) et sur la hiérarchisation des agrégats :
-par effet d'attraction différenciée (voir la note de bas de page \ref{ftn:attachement-preferentiel} \cpageref{ftn:attachement-preferentiel}), des agrégats plus importants se constituemouvementnt autour des pôles les plus importants.
+par effet d'attraction différenciée, des agrégats plus importants se constituent autour des pôles les plus importants.
 
 Comme pour la polarisation, l'analyse de la capacité du modèle a reproduire la hiérarchisation du système de peuplement se fait donc en deux temps :
 en premier lieu, on évalue cette capacité à l'aide de l'indicateur principal, puis on précise cette qualification et on essaie de l'expliquer à l'aide des indicateurs secondaires.
 
-
-\subsubsection{Hiérarchie des agrégats}
+\paragraph{Hiérarchie des agrégats.}
 
 L'indicateur principal est un indicateur agrégé, correspondant à la forme de la distribution des agrégats mesurés par le nombre de foyers paysans qui les composent.
 Cet indicateur est classique dans l'analyse des systèmes de peuplement, et il est courant de l'observer par le biais d'un indicateur agrégé simple, correspondant à la loi rang-taille.
 On observe pour cela le modèle statistique, ou sa représentation graphique tout du moins, mettant en relation le logarithme de la taille des individus (le nombre de foyers paysans composant chaque agrégat ici) et le logarithme du rang de cet individu.
 Comme pour toute régression linéaire, on peut alors quantifier l'ajustement du modèle grâce au coefficient de détermination ($R^2$), et spécifier la pente de la courbe, représentant le degré de hiérarchie, à travers le coefficient directeur ($a$ dans la formule $y = ax + b$).
-
 Dans le cas de SimFeodal, le faible nombre d'agrégats ainsi que la variabilité de leurs tailles rend difficile cette analyse quantifiée, le coefficient directeur, par exemple, étant très sensible aux faibles effectifs.
 On utilise toutefois la représentation graphique décrite comme un indicateur majeur de la hiérarchie des agrégats.
 
 Du point de vue des connaissances empiriques, la courbe doit ainsi voir sa pente augmenter avec le temps, tout en devenant plus convexe, ce qui représente la \og longue traine\fg{} des petits agrégats, empiriquement observée dans toutes les distributions de systèmes de peuplement.
 
-Avec une autre représentation graphique du même phénomène, en discrétisant les agrégats selon leur taille et en dénombrant le nombre d'agrégats de chaque classe, on peut aussi avoir une vision plus synthétique (car moins exhaustive) de la forme de la distribution.
-On doit alors obtenir un nombre décroissant d'agrégats à mesure que la classe représente un nombre élevé de foyers paysans.
-
-\todobox{
-Ça vaudrait peut-être le coup, pour chaque indicateur présenté sous forme graphique (évolution ou forme), de faire un graphique théorique (une sorte de courbe parfaite) de ce que l'on souhaite observer.
-}
-
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-La version 0 de SimFeodal présente une hiérarchisation des agrégats nettement trop faible.
-La courbe rang-taille (\cref{fig:rt-agregats-v0}) est ainsi trop faiblement pentue, et présente une forme trop linéaire :
-la convexité due à la longue traine n'est pas assez visible, en raison sans doute de trop faibles valeurs en haut de la hiérarchie, qui ne \og tire\fg{} alors pas assez la distribution.
-Ce résultat de simulation est d'autant plus perturbant que son évolution est éloignée de l'empirie :
-on remarque en effet que la distribution se hiérarchise bien entre 800 et 1020, présentant à cette date une allure très satisfaisante.
-Pourtant, après cette période, les agrégats voient leur hiérarchie diminuer nettement et les agrégats les plus peuplés diminuer en taille.
-
-On constate le même décrochage dans la discrétisation des agrégats (\cref{fig:compo-agregats-v0}), où on remarque de plus que la hiérarchie la plus proche de l'attendu, où la position des classes suivrait une ligne droite, semble se dessiner entre 940 et 1040.
-En 1040, et plus encore en 1160, la proportion d'agrégats de taille moyenne et haute (de 30 à 100, et de plus de 100 foyers paysans) est trop faible, et pas assez hiérarchisée.
-
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=.8\linewidth]{img/resultats/v0_rt_agregats.pdf}
-\caption{Évolution de la courbe rang-taille des agrégats.}
-\label{fig:rt-agregats-v0}
-\end{figure}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=.8\linewidth]{img/resultats/v0_compo_agregats.pdf}
-\caption{Évolution de la composition des agrégats.}
-\label{fig:compo-agregats-v0}
-\end{figure}
-
-\clearpage
-
-\subsubsection{Hiérarchie des pôles}
+\paragraph{Hiérarchie des pôles.}
 
 La hiérarchie des agrégats donne une bonne vision agrégée de la hiérarchisation du système de peuplement dans son ensemble.
 Pour autant, afin d'appréhender la dynamique de cette dimension, il est là encore nécessaire d'observer le comportement des composantes qui provoquent cette hiérarchisation.
-En effet, une forte hiérarchie des pôles entraînera une attractivité des foyers paysans très inégale \footnote{En raison des logiques d'attachement préférentiel, voir la note de bas de page \ref{ftn:preferential-attachment} page \pageref{ftn:preferential-attachment}.} De plus, comme indiqué plus haut, on cherche à obtenir une forte hiérarchi)e pour les différents types d'agents du modèle.
+En effet, une forte hiérarchie des pôles entraînera une attractivité des foyers paysans très inégale.
+De plus, comme indiqué plus haut, on cherche à obtenir une forte hiérarchie pour les différents types d'agents du modèle.
 L'observation de la hiérarchie des pôles est donc importante pour évaluer le modèle SimFeodal.
 Pour déterminer cette hiérarchie, on peut se fier à deux indicateurs complémentaires :
 le nombre d'attracteurs composant chaque pôle et l'attractivité de ces derniers.
@@ -967,36 +837,7 @@ On aurait pu présenter une information plus détaillée quant à cette composit
 À partir des connaissances expertes qui guident l'évaluation de SimFeodal, on cherche à obtenir, pour ces deux indicateurs, une courbe d'allure similaire, c'est-à-dire une courbe décroissante, avec bien plus de pôles mineurs (faible attractivité ou nombre d'attracteurs) que de pôles plus importants.
 On cherche de plus à ce que cette courbe présente une allure log-normale, et donc que la proportion de pôles décroisse fortement à mesure que leur importance augmente.
 
-
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-Dans l'ensemble, on peut remarquer sur les deux indicateurs de la \cref{fig:compo-poles-v0} que les pôles, dans cette version 0, sont très hiérarchisés.
-La tendance \og évolutive va dans le bon sens :
-depuis une quasi-uniformité en 820, des pôles plus importants apparaissent et semblent se renforcer au cours du temps.
-On retrouve aussi, en observant les axes des ordonnées, la croissance du nombre de pôles identifiée plus haut (\ref{par:nb-poles}, \cnameref{par:nb-poles}, p. \pageref{par:nb-poles}) :
-de nouveaux pôles apparaissent tout au long de la simulation, et restent majoritairement peu importants, quand les pôles ayant commencé à se renforcer tôt continuent dans cette tendance.
-
-En fin de période, les pôles sont très hiérarchisés, aussi bien en matière de composition que d'attractivité.
-Ils le sont même plus que ce que les connaissances expertes laissent entendre :
-au delà de $0.66$ en attractivité ou de $4$ attracteurs, on ne dénombre plus qu'un unique pôle de chaque importance, là où on attendrait que cette courbe continue plutôt à décroitre.
-De plus, ces courbes montrent la variation des réplications de la version 0.
-Dès lors, on peut considérer que ces pôles majeurs ne sont en fait qu'un unique pôle (le plus souvent) d'importance variable selon les réplications, mais dans tous les cas d'importance bien supérieure aux pôles qui arrivent juste après dans le classement.
-Cette macrocéphalie ne correspond pas aux observations empiriques, d'autant que rappelons-le, la ville de Tours n'est pas modélisée dans SimFeodal.
-
-
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/resultats/v0_compo_poles.pdf}
-\caption{Évolution de la composition et de l'attractivité des pôles\protect\footnotemark{}.}
-\label{fig:compo-poles-v0}
-\end{figure}
-\footnotetext{\hl{Les figures ne sont pas en log-log (ou log-lin) et on ne voit donc pas vraiment le haut de la hiérarchie.
-Peut-être faudrait-il changer ces axes, mais ça complexifiera la lecture pour les archéos/lecteurs non habitués aux axes log}}
-
-\clearpage
-
-\subsubsection{Hiérarchie des paroisses}\label{par:hierarchie-paroisses}
+\paragraph{Hiérarchie des paroisses.}\label{par:hierarchie-paroisses}
 
 A l'instar des pôles, on attend aussi des ressorts paroissiaux d'être hiérarchisés.
 La période modélisée voit ainsi apparaître ces paroisses qui auront un rôle majeur dans la fixation du peuplement, et, pré-figurant le maillage communal, ont un double rôle de desserte efficace\footnote{C'est-à-dire desservir de manière optimale la plupart de la population.} et équitable\footnote{C'est-à-dire faire en sorte que même les populations les plus isolées aient un accès aussi rapide que possible à une église paroissiale.}.
@@ -1008,28 +849,13 @@ Au contraire, dans les zones les plus denses, et en particulier au sein des peti
 il y donc une croissance du nombre d'églises paroissiales proches les unes des autres, visant à accompagner un encadrement maximum de la population, ainsi, avec une logique concurrentielle de ce clergé féodal, qu'à capter l'importante source de revenus qu'assure la collecte de la dîme.
 Cette logique concurrentielle doit aussi permettre de restreindre le nombre de foyers paysans desservis par une unique paroisse.
 
-On s'attend donc à avoir une courbe hiérarchisée dans la lignée d'une courbe log-normale, mais avec toutefois un double seuil minimal (l'effet de \og longue traîne\fg{}), autour des paroisses \og rurales\fg{} peu peuplées (moins de 10 foyers paysans désservis) et des paroisses du bas de la hiérarchie classique, peuplées de 10 à 40 foyers paysans\footnote{D'après les valeurs des paramètres \texttt{nb\_min\_paroissiens} et \texttt{nb\_max\_paroissiens}}).
+On s'attend donc à avoir une courbe hiérarchisée dans la lignée d'une courbe log-normale, mais avec toutefois un double seuil minimal (l'effet de \og longue traîne\fg{}), autour des paroisses \og rurales\fg{} peu peuplées (moins de 10 foyers paysans desservis) et des paroisses du bas de la hiérarchie classique, peuplées de 10 à 40 foyers paysans\footnote{D'après les valeurs des paramètres \texttt{nb\_min\_paroissiens} et \texttt{nb\_max\_paroissiens}}).
 
-\todobox{ici, impérativement, il faudra mettre un graphique schématique de ce qu'on attend.}
+\begin{center}
+\hl{Ici, impérativement, il faudra mettre un graphique schématique de ce qu'on attend.}
+\end{center}
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-En fin de simulation de cette version 0, la hiérarchie des paroisses est plutôt satisfaisante.
-On y retrouve en effet une forte hiérarchie, peut-être même légèrement trop importante.
-Il ne devrait ainsi par y avoir de paroisse composée de plus de $100$ foyers paysans en fin de simulation, et la courbe présente une pente trop importante (celles de 940 ou 1040 sont ainsi plus conformes aux attentes).
-Pour autant, on remarque bien un effet de hiérarchisation au cours du temps, ainsi qu'un accroissement du nombre de petites paroisses, montrant que la dynamique, bien que non ajustée, s'inscrit bien dans la dynamique observée empiriquement.
-(\cref{fig:compo-paroisses-v0})
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/resultats/v0_compo_paroisses.pdf}
-\caption{Évolution de la composition des paroisses.}
-\label{fig:compo-paroisses-v0}
-\end{figure}
-
-\clearpage
-
-\subsection{Évaluer la fixation et la dissémination du peuplement}
+\subsubsection{Évaluer la fixation et la dissémination du peuplement}
 
 
 La dernière dimension étudiée par SimFeodal est moins définie que les précédentes.
@@ -1072,8 +898,7 @@ Dès lors, les indicateurs présentés ci-après ne peuvent être catégorisés 
 On retrouvera cependant cette hiérarchie d'évaluation au sein des indicateurs, par exemple en suivant l'ordre des graphiques présentés.
 Par exemple, pour évaluer la fixation des foyers paysans, on observera d'abord le résultat produit (nombre de déplacements) avant d'entrer dans le détail de sa composition (types des déplacements).
 
-
-\subsubsection{Déplacement des foyers paysans}
+\paragraph{Déplacement des foyers paysans.}
 
 Le déplacement des foyers paysans est l'élément moteur de SimFeodal :
 c'est par le déplacement individuel de chacun des foyers paysans que la configuration spatiale évolue.
@@ -1117,45 +942,7 @@ Tout au long de cette période, on cherche de plus à ce que les foyers paysans 
 Parmi les modalités de déplacement, un autre indicateur utile est ainsi l'observation des provenances et destinations des foyers paysans qui se déplacent :
 plus les foyers paysans originellement dispersés auront tendance à rejoindre des agrégats, plus la simulation sera satisfaisante au regard des hypothèses empiriquement émises.
 
-
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-Dans cette version 0 de SimFeodal, il apparaît en premier lieu que les déplacements sont trop peu nombreux (\cref{fig:nb-deplacements-v0}).
-Les déplacements lointains sont à peu près dans les proportions attendues, mais les déplacements locaux sont trop peu nombreux.
-Surtout, les trois phases attendues ne se retrouvent pas sur ces sorties.
-On y remarque bien l'impact des perturbations, mais celles-ci ne font qu'augmenter la part de déplacements, laquelle reste stable avant et après ces perturbations.
-La version 0 de SimFeodal n'est donc pas satisfaisante en termes de stabilisation et de fixation des foyers paysans.
-L'observation des modalités de déplacement (\cref{fig:type-deplacements-v0}) montre certes une part croissante de déplacements \og Isolé -> Agrégé\fg{}, mais dans des proportions là aussi trop faibles passé le tout début de la simulation.
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/resultats/v0_nombre_deplacements.pdf}
-\caption{Évolution du nombre de déplacement des foyers paysans.\\
-\todobox{Mettre le graphique en relatif}}
-\label{fig:nb-deplacements-v0}
-\end{figure}
-
-
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=\linewidth]{img/resultats/v0_types_deplacements.pdf}
-\caption{Évolution des types de déplacement des foyers paysans.\\
-Inter : Déplacement depuis le pas de temps précédent vs Intra :
-déplacement au sein d'un même pas de temps.
-\todobox{Ne garder que l'inter et mettre le graphique en relatif}\\
-%	- InIn : Le FP était dans un agrégat au pas de temps précédent, et est dans un agrégat à ce tour (quel qu'il soit, ça peut être le même ou un autre).\\
-%	- InOut : Le FP était dans un agrégat au pas de temps précédent, et est isolé à ce tour\\
-%	- OutIn : Le FP était isolé, et est maintenant dans un agrégat\\
-%	- OutOut : Le FP était isolé, et l'est toujours\\
-%On constate donc que les déplacements au sein d'un tour tendent à isoler les FP, grosso modo dans le même temps et les mêmes proportions que la stabilisation du taux de FP isolés.
-}
-\label{fig:type-deplacements-v0}
-\end{figure}
-
-\clearpage
-
-\subsubsection{Satisfaction des foyers paysans}
+\paragraph{Satisfaction des foyers paysans.}
 
 On a vu dans les deux indicateurs précédents que les déplacements des foyers paysans sont très affectés par leur niveau de satisfaction.
 Pour comprendre ces déplacements, il est donc utile d'observer en détail l'évolution de la satisfaction qui les provoquent.
@@ -1171,24 +958,7 @@ Comme pour les déplacements, on attend, depuis les connaissances empiriques, qu
 (2) une seconde phase, entre 950 et 1050, où les restrictions fortes (distance à un château, à une église paroissiale) auront pour effet de violemment abaisser le niveau de satisfaction ;
 et enfin, (3) une dernière phase où, passées les perturbations, le niveau de satisfaction tend à remonter doucement, sous l'effet de l'agrégation et de la constitution généralisées de communautés paysannes et de la construction de châteaux et de nouvelles églises paroissiales.
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-Au vu des résultats de la version 0 de SimFeodal illsutrés dans la \cref{fig:satisfaction-fp-v0}, on constate que les trois phases attendues sont bien présentes.
-La perturbation en milieu de période est très forte, mais pourtant, le niveau de satisfaction général reste très élevé (à toute date, plus de $80$\% des foyers paysans ont une satisfaction supérieure à $0.5$).
-Avec ce niveau de satisfaction et les mécanismes de déplacement de cette version 0, seuls les foyers paysans à proximité de très gros pôles (au moins un gros château et plusieurs églises paroissiales) pourront se déplacer localement.
-Et pour peu qu'il y ait plusieurs pôles importants à proximité, ils oscilleront entre les deux, gonflant artificiellement le nombre de déplacements locaux.
-L'observation de cet indicateur confirme que le niveau de déplacement est trop faible et ne présente pas l'allure attendue, tout en donnant une explication à la mauvaise fixation du peuplement observée.
-\end{mdframed}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=0.95\linewidth]{img/resultats/v0_satisfaction_fp.pdf}
-\caption{Satisfaction des foyers paysans}
-\label{fig:satisfaction-fp-v0}
-\end{figure}
-
-\clearpage
-
-\subsubsection{Nombre et dispersion des paroisses}
+\paragraph{Nombre et dispersion des paroisses.}
 
 Tout au long de la période, de nouvelles églises paroissiales sont créées (\hl{cf. mécanisme dans chap. 2}) et viennent renforcer l'encadrement des foyers paysans.
 L'évolution du maillage constitué par les ressorts paroissiaux représente donc l'évolution de la structure spatiale des foyers paysans.
@@ -1207,39 +977,7 @@ Dans les zones plus denses, concentrant les agrégats, cela devrait aussi mener 
 
 Notons que la dispersion des agrégats et des pôles, vue précédemment (\ref{par:polarisation-dispersion}, \cnameref{par:polarisation-dispersion}, p. \pageref{par:polarisation-dispersion}), constituerait ici aussi un bon indicateur de fixation, en observant non plus l'évolution de la couverture spatiale, mais plutôt la fixation et le renforcement des dynamiques locales de polarisation.
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-Dans la version 0 de SimFeodal, on peut en premier lieu constater que la tendance -- à la croissance -- de l'évolution du nombre de paroisses est bonne (\cref{fig:nb-paroisses-v0}).
-Ainsi, de nouvelles églises paroissiales sont bien créées ou promues régulièrement au cours du temps.
-La quantité atteinte ($240$ en moyenne) dépasse un peu trop fortement l'objectif empirique, mais surtout, on remarque dans la figure la très forte variabilité de ces résultats (l'intervalle interquartile est de 100). De plus, cette variabilité augmente fortement avec le temps.
-
-La dynamique est donc plutôt satisfaisante, mais le nombre atteint autant que la variabilité sont améliorables et rendent clairement visible la nécessité d'un ajustement dans le modèle.
-
-Sur le plan spatial, la \cref{fig:densite-paroisses-v0} laisse bien apparaître la double évolution attendue : les paroisses les plus étendues, en périphérie, demeurent parmi les plus grandes mais voient leur superficie réduite à mesure que de nouvelles églises paroissiales y apparaissent.
-Dans le même temps, on remarque aussi les effets de fractionnement et de subdivision des paroisses les moins étendues.
-Cela résulte, dans la figure, en de nombreuses concentrations locales de paroisses que l'échelle des cartes nous permet plus de percevoir que de détailler précisément\footnotemark{}.
-\end{mdframed}
-\footnotetext{La trop forte hétérogénéité dans les superficies des paroisses rend difficile la lecture de l'espace.On pourrait y remédier par exemple avec des cartogrammes, mais alors, on ne verrait plus que ces zones de forte densité.}
-
-\todobox{Là aussi, courbe et nombre du nombre de paroisses est incohérent entre chapitre TMD (154) et résultats JIAP (240), + variabilité très forte dans JIAP et pas dans TMD.}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=0.75\linewidth]{img/resultats/v0_nombre_paroisses.pdf}
-\caption{Évolution du nombre de paroisses}
-\label{fig:nb-paroisses-v0}
-\end{figure}
-
-\begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=0.8\linewidth]{img/resultats/v0_paroisses_densite.pdf}
-\caption{Densité des paroisses}
-\label{fig:densite-paroisses-v0}
-\end{figure}
-
-
-\clearpage
-
-\subsubsection{Efficacité et équité de la desserte paroissiale}
+\paragraph{Efficacité et équité de la desserte paroissiale.}
 
 On a vu précédemment (\ref{par:hierarchie-paroisses} , \cnameref{par:hierarchie-paroisses}, p. \pageref{par:hierarchie-paroisses}) que les paroisses devaient assurer conjointement une desserte efficace et équitable.
 Un indicateur possible pour évaluer l'efficacité du maillage simulé est d'en observer la couverture spatiale.
@@ -1268,23 +1006,433 @@ Un paramétrage de SimFeodal sera donc considérée comme satisfaisant, sur ce p
 Évolution de la distance des 10\% de FP les plus éloignés d'une/à une église paroissiale ? ==> Sans doute très intéressant, mais pas \og productible\fg{} pour l'instant. De toute façon, à voir les résultats JIAP, il faudra sans doute faire retourner toutes les itérations du modèle avec des sorties semblables à celles de la v8 (4\_4\_A)\\
 ==> Peut être sous forme de boxplot ou d'histogramme (ridgeplot) ou de moyenne (plus influencée par grandes distances que médiane, donc mieux ici)}
 
-\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+\section{Paramétrer ? Quoi et comment ?}
 
-En matière d'efficacité, la version 0 de SimFeodal est assez peu satisfaisante : malgré un nombre d'églises paroissiales trop élevé (voir l'indicateur précédent), la couverture du territoire est assez faible.
-En effet, la \cref{fig:couverture-paroisses-v0} montre qu'en fin de simulation, près de $90$\% de mailles restent inoccupées par des églises paroissiales.
-La tendance est toutefois à la diminution de ces mailles vides, et cette diminution est assez stable et régulière dans le temps.
+Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
+Dans ce chapitre, nous nous attacherons à présenter le travail de paramétrage réalisé à la suite, ayant abouti à une version plus adaptée aux questions des thématiciens. Le descriptif technique de cette version \og finale\fg{} se trouve dans l'annexe $n$ (\hl{Ref à l'annexe contenant le descriptif technique de la dernière version du modèle.})
+Par paramétrage, nous entendons ici le processus visant à doter le modèle de paramètres (empiriques, \og commensurables\fg{} et techniques (\cref{enc:types-parametres})) lui permettant de mieux répondre aux objectifs fixé en termes de comportements attendus ou d'objectifs quantitatifs. Nous nous attacherons dans un premier temps à expliciter et spécifier ce sens.
 
-Comme dans le cas de l'évolution du nombre de paroisses, la variabilité est ici préoccupante et très insatisfaisante : l'écart interquartile est modéré (environ $15$\%), mais les minimums et maximums présentent un écart énorme (de $95$\% à $55$\%).
 
-\todobox{Pas possible d'analyser les résultats de la version 0 en matière d'équité sans les mesures correspondant. A faire une fois que les graphiques auront été produits.}
+Avant de préciser le sens du terme \og paramétrage\fg{}, il semble important de définir précisément ce qu'est un paramètre. C'est en particulier nécessaire en ce que ce terme recouvre de nombreux sens selon les champs disciplinaires qui l'emploient, mais aussi, au sein même de ceux-ci, par les différents chercheurs.
 
-\end{mdframed}
+\subsection{Différents points de vue sur la définition d'un paramètre}
+
+Au plus général, le nouveau petit Robert définit un paramètre en ces mots :
+\begin{quote}
+	\og 1. \textsc{math.} Quantité à fixer librement, maintenue constante, dont dépend une fonction de variables indépendantes, une équation ou une expression mathématique. --- Variable en fonction de laquelle on exprime chacune des variables d'une équation.\\
+	2. \textsc{fig.} et \textsc{didact.} Élément important dont la connaissance explicite les caractéristiques essentielles de l'ensemble d'une question.\\
+	3. \textsc{par ext.} Élément nécessaire pour juger, évaluer, comprendre (qqch.).\fg{}\\
+	\mbox{}~ \hfill \autocite[\textbf{Paramètre}]{robert_nouveau_1993}
+\end{quote}
+
+
+Seule la première définition correspond, à grands traits, à ce que l'on attend ici, mais elle est très généraliste, bien que ne correspondant pas pour autant à tous les usages du terme employés dans la littérature.
+
+\subsubsection{En mathématiques, une définition univoque}
+L'acceptation mathématiques d'un paramètre est sans doute celle qui souffre le moins d'ambiguïté : il s'agit des termes fixes d'une équation simple, par opposition aux variables qui en constituent les éléments qui seront amenés à évoluer.
+Par exemple, dans la formulation d'une fonction affine, $f(x) = ax + b$, la valeur de $f(x)$ dépend de la variable $x$ et des paramètres fixés $a$ et $b$.
+Quelles que soient les valeurs empruntées par $x$, ces paramètres demeurent constants. Dans une famille d'équations plus complexes, par exemple le modèle de croissance logistique de population\footnote{
+	$\frac{\text{d}y}{\text{d}t} = \alpha y \times (1 - \frac{y}{K})$ d'après \autocite{verhulst1838notice}
+}, l'accroissement de population au cours du temps ($\frac{\text{d}y}{\text{d}t}$) dépend de la valeur de la variable $y$, population à cet instant, ainsi que de deux paramètres, $\alpha$, le taux de croissance, et $K$, la \og capacité d'accueil\fg{}, c'est-à-dire un potentiel maximum de population vers laquelle tend -- et ne peut donc dépasser -- le système modélisé.
+La définition mathématique est donc assez universelle et convient à la quasi-totalité des systèmes d'équations\footnote{A l'exclusion notable des systèmes d'équation paramétriques, où, à l'inverse, le terme de paramètre désigne alors les variables indépendantes.}.
+Il convient toutefois de noter que la différence entre variable et paramètre est une affaire de point de vue, une inversion de perspective menant à échanger les paramètres et variables, tel que décrit dans l'exemple suivant :
+\begin{quote}
+	\og For the function $f(x)=ax^2+bx+c$, could we learn something by leaving the expression in terms of the symbols $a$, $b$, and $c$ and seeing how $f(x)$ depends on the parameters? Maybe we could fix $x=2$ and look how $f(2)$ changes as we let $a$ vary.
+	
+	If we do such manipulations and look at how the output of a function depends on varying a parameter, then we are treating the function as though the parameter were a input variable. But that's OK, as the difference between variables and parameters is really just a matter of perspective.\fg{}\\
+	\mbox{}~ \hfill \autocite{nykamp_function_2015}
+\end{quote}
+On peut donc en retenir qu'en mathématiques, ce qui différencie la variable du paramètre est l'aspect fixe de ce dernier, au moins pendant la durée d'exécution d'une fonction : 
+\begin{quote}
+	\og{}A parameter is a quantity that influences the output or behavior of a mathematical object but is viewed as being held constant. [\dots]
+	Variables are viewed as changing while parameters typically either don't change or change more slowly.\fg{}\\
+	\mbox{}~ \hfill \autocite{nykamp_parameter_2015}
+\end{quote}
+
+% Conserver pour experiences etc. \footnote{
+%		\og{}In some contexts, one can imagine performing multiple experiments, where the variables are changing through each experiment, but the parameters are held fixed during each experiment and only change between experiments.\fg{}\autocite{nykamp_parameter_2015}
+
+On propose donc une une définition sans doute plus spécifique que celle du nouveau petit Robert, mais aussi plus tournée vers l'usage : un paramètre est une variable maintenue constante durant l'ensemble de l'utilisation d'une fonction.
+
+\subsubsection{Une vision duale en statistiques}
+En statistiques, quand bien même cette discipline fait un large usage des formalismes mathématiques, les paramètres recouvrent un ensemble assez différent : il s'agit d'une \og grandeur mesurable qui permet de présenter de façon plus simple, plus abrégée les caractéristiques essentielles d'un ensemble statistique.\fg{} \autocite[Paramètre, \textsc{stat.} (calcul des probabilités)]{tresor1992}
+\begin{quote}
+	\textit{In statistics}, the most common use of \og parameter\fg{} is for a characteristic of a population, or of a distribution of scores, described by a statistic such as a mean or a standard deviation. For example, the mean (average) score of on the midterm exam in Psychology 201 is a parameter. It describes the population composed of all those who took the exam.\\
+	\mbox{}~ \hfill \autocite[164]{vogt1993dictionary}
+\end{quote}
+Ainsi, pour les statisticiens, la moyenne, l'écart-type ou encore le coefficient d'asymétrie sont des paramètres, que l'on symbolise alors au moyen de lettres grecques \autocite[ibid.]{vogt1993dictionary}.
+On peut toutefois y retrouver une logique commune avec les paramètres mathématiques quand on décrit une loi statistique avec ces valeurs, qui deviennent alors les éléments permettant de caractériser une variable. Ainsi, pour décrire les caractéristiques de la distribution théorique -- normale-- d'une variable $X$, on fera appel aux paramètres théoriques de cette loi que sont l'espérance\footnote{Il s'agit de la moyenne théorique. On réserve ainsi le terme de moyenne à une valeur calculée depuis des valeurs empiriques.} ($\mu$) et l'écart-type ($\sigma^{2}$): $X \hookrightarrow  \mathcal{N}(\mu,\,\sigma^{2})$.
+
+\subsubsection{Une absence de consensus en informatique}
+Dans le domaine informatique, la définition est bien plus floue et inclusive que dans les champs décrits auparavant, sans doute en raison d'une hétérogénéité bien supérieure dans les pratiques et construits informatiques. Comme dans les fonctions mathématiques, les paramètres sont les arguments des fonctions informatiques. Ces fonctions recouvrent toutefois un ensemble extrêmement vaste, bien plus hétérogène que dans les domaines mentionnés ci-dessus.
+On parle ainsi de fonction\footnote{On utilisera aussi indistinctement les termes de procédure, de (sub)routine ou encore de méthode. Notons que chacun de ces mots a normalement un sens précis. Par exemple, une méthode désigne une fonction qui peut être exécutée par une instance de classe en programmation orientée objet. Certaines définitions plus précises sont toutefois souvent utilisé à mauvais escient, provoquant alors des inversions de sens. Ainsi, une procédure est le plus souvent décrit comme une suite d'instructions ne retournant pas de valeur, au contraire d'une fonction. Mais, par exemple dans le langage SAS \autocite{sas1990sas}, toute fonction est nommée procédure, à l'instar de la moyenne par exemple (\texttt{PROC MEANS}).} pour toute suite d'instructions informatique ayant pour vocation -- ou pour capacité -- à être répétée, ré-exécutée.
+Ces fonctions appliquent ainsi, le plus fréquemment, cette suite d'instruction sur des données en entrée, et produisent ainsi des données en sortie, résultantes du traitement effectué sur les entrées\footnote{
+	Notons que certaines fonctions produisent des \og effets de bord\fg{}, c'est-à-dire ne renvoient pas de données en sortie, mais effectuent une action à partir des données en entrée. La fonction imprimer par exemple, ne renvoie aucune sortie informatique, ce sont ses effets de bord qui déclenchent l'impression d'un document.
+}.
+Certaines fonctions sont donc très simples, et peuvent s'apparenter à des fonctions mathématiques, telles que par exemple la fonction arrondi (\texttt{round()} dans sa version la plus courante). Cette dernière prend en entrée un nombre décimal, et retourne un nombre entier. Le nombre décimal passé en entrée est alors nommé paramètre. Notons que cette fonction accepte le plus souvent un second paramètre, sous forme d'un nombre entier, qui permet de définir le nombre de décimales (\textit{digits}) que l'on souhaite conserver. Par exemple, l'arrondi de $2,551$ à une décimale renverra la valeur $2,6$.
+Il est important de noter qu'en informatique, les paramètres ont souvent une \og valeur par défaut\fg{}, c'est-à-dire une valeur qui sera utilisée si le paramètre n'est pas explicitement spécifié. \toChange{D'où une confusion fréquente entre paramètre et valeur initiale, en particulier dans le domaine de la simulation à base d'agents.}{Lena : vraiment ?}
+Dans le cas de la fonction arrondi, si le premier paramètre n'a pas de valeur par défaut, ce qui n'aurait aucun sens, le second paramètre est souvent proposé avec une valeur par défaut de $0$. Si on ne la précise pas, le nombre renvoyé par la fonction sera ainsi un entier, soit $3$ dans le cas précédent:
+\texttt{round}$(2.551) = 3$, mais \texttt{round}$(2.551, \text{digits} = 1) = 2,6$.
+
+Ce premier exemple est quasiment en tout point assimilable à l'acceptation mathématique d'une fonction, et dès lors, ses paramètres ressemblent fortement à ceux que ce domaine définit, à l'exception que le premier paramètre de la fonction arrondi serait défini comme une variable en mathématiques. Pour autant, l'informatique fait usage de nombreuses fonctions bien moins comparables, car formulées de manière algorithmique et non mathématique.
+
+Prenons l'exemple d'une fonction simple de conversion d'image, permettant par exemple de convertir une image du format \texttt{JPEG} au format \texttt{PDF}. Cette fonction, que l'on nommera \texttt{convert}\footnote{Cette fonction est disponible dans le logiciel ImageMagick \autocite{imagemagick2008imagemagick}.}, requiert au moins deux \og paramètres\fg{} : l'emplacement informatique (le \og chemin\fg{}, ou \textit{path}) du fichier image (\texttt{JPEG}) d'origine, et le chemin du \texttt{PDF} en sortie. Il ne s'agit plus dès lors de paramètres numériques comme en mathématiques ou en statistiques, mais d'éléments nécessaires à une fonction pour être exécutée.
+De plus, cette fonction accepte aussi d'autres \og paramètres\fg{}, permettant entre autre de redimensionner l'image pendant cette conversion, d'en modifier la résolution, ou encore d'en transformer les couleurs, par exemple en la convertissant en nuances de gris.
+Ces paramètres, facultatifs, agissent alors comme autant de nouvelles fonctions. Ils ne servent plus uniquement à \og paramétrer\fg{} le but premier de la fonction de conversion, mais en fait à y ajouter des fonctionnalités, des mécanismes de transformation de l'image source.
+
+On ne peut donc plus véritablement parler de variables qui seraient affectées ou transformées par des valeurs statiques de paramètres. On utilisera donc, dans ce contexte, davantage le terme de paramètre d'entrée ou encore d'argument dans ce cas. Notons qu'en anglais, la différence entre \textit{parameter} et \textit{argument} est plus formalisée qu'en français : ils se définissent par le lieu de leur utilisation. Lors de la définition d'une fonction, on fait appel à des paramètres qui seront utilisés au sein de la fonction. Lors de l'utilisation de cette fonction, l'utilisateur fournira des arguments, dont les valeurs seront alors utilisés en remplacement des paramètres dans la fonction.
+\begin{quote}
+	\og The terms parameter and argument are sometimes used interchangeably, and the context is used to distinguish the meaning. The term parameter (sometimes called formal parameter) is often used to refer to the variable as found in the function definition, while argument (sometimes called actual parameter) refers to the actual input passed. For example, if one defines a function as \texttt{def f(x): ...}, then \texttt{x} is the parameter, while if it [is] called by \texttt{a = ...; f(a)} then \texttt{a} is the argument.\fg{}\\
+	\mbox{}~ \hfill \autocite{wiki_parameter2017} 
+\end{quote}
+
+
+\subsubsection*{} Il apparaît donc que si les définitions mathématiques et statistiques d'un paramètre sont assez largement précises et explicites, il en est tout autre dans le champs disciplinaire informatique. Peut-être parce que ce champs est composé de bien plus de praticiens (les développeurs) que de chercheurs, on constate que les termes de variables, de paramètres, d'arguments ou encore d'entrées (\textit{inputs}) y sont assez régulièrement intervertis. Afin de préciser l'emploi que nous ferons de ces termes dans le cadre de la modélisation à base d'agents présentée dans le chapitre précédent, il convient donc de s'intéresser plus spécifiquement aux usages de ces termes dans le domaine de la simulation informatique en sciences humaines.
+
+\subsection{Les paramètres dans les modèles agents}
+
+\subsubsection{L'approche classique}
+
+Un premier point est à noter : nous n'avons trouvé que très peu de définitions spécifiques de ce qu'est un paramètre dans le champs de la simuation à base d'agents. C'est pourtant un terme employé dans la quasi-totalité de la littérature existante. Cela ne relèverait que d'un problème de jargon non explicité s'il y avait consensus que le sens donné à ce mot, mais au contraire, les acceptations, qui doivent être comprises par le contexte en l'absence de définitions formelles, varient fortement selon les auteurs.
+Par exemple, la définition que l'on peut extraire de l'un des manuels de référence en modélisation agent \autocite{treuil_modelisation_2008} s'éloigne fortement de ce que l'on a pu décrire ci-dessus :
+\begin{quote}
+	Un modèle dynamique renferme en effet deux composants distincts : une représentation de la structure du système de référence (exprimée dans le langage du méta-modèle), et une représentation des lois régissant sa dynamique. Ces deux représentations sont habituellement pourvues de données ou d'éléments d'information souvent numériques (le minimum pour un modèle dynamique étant d'être pourvu d'un élément représentant le temps) appelés \textbf{paramètres}. La \og perturbation\fg{} d'un modèle par simulation va donc signifier la modification contrôlée de la valeur de certains de ces paramètres, que l'on appelera \textbf{entrées} du modèle. Inversement, ce que l'on pourra mesurer dans une simulation sera décrit sous la forme d'autres paramètres qui seront appelé \textbf{sorties}.\\
+	
+	Les \textit{entrées} d'un modèle dynamique sont des paramètres dont la valeur est définie en dehors du modèle et qui représentent ce que le simulateur peut perturber. Les \textit{sorties} d'un modèle dynamique sont également des paramètres qui expriment ce que l'on cherche à mesurer en réponse à ces perturbations.\\
+	\mbox{}~ \hfill \autocite[8]{treuil_modelisation_2008}
+\end{quote}
+
+Nous trouvons plusieurs problèmes à cette définition. En premier lieu, l'acceptation très globale de ce qu'est un paramètre rappelle celle d'une variable en informatique. Il semble s'agir d'une vision plus orientée techniquement que conceptuellement. Ainsi, définir le temps --- ou la variable informatique permettant de le mesurer --- comme un paramètre nous semble bien trop à contre-courant des définitions de paramètres issues des autres champs scientifiques.
+De plus, le fait que les sorties d'un modèle soient considérées comme des paramètres est en opposition avec l'ensemble de l'usage courant de ce terme, y compris dans le domaine spécifique de la modélisation agent. Nous ne pouvons donc souscrire à cette définition, ni à la vision qu'elle dépeint de ce qu'est un paramètre.
+
+Dans le présent ouvrage, nous donnerons donc à ces termes des sens différents, voire opposés, qui nous semblent plus fréquents dans le champ de la modélisation en sciences humaines et se retrouvent partiellement dans le schéma de Balci (\cref{fig:parametres-Balci}).
+\begin{figure}[!h]
+	\includegraphics[width=.4\linewidth]{img/Balci1994a_Figure_Parametres.png}
+	\caption{Les variables d'un modèle de simulation selon Balci \autocite[122]{balci_validation_1994}.\\
+		\textit{Nota bene} : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en mirroir à une partie \og système\fg{} représentant l'empirique.}
+	\label{fig:parametres-Balci} 
+\end{figure}
+
+Dans ce schéma et l'article associé, et bien qu'il n'en définisse nulle part explicitement le sens, Balci esquisse la composition d'un modèle de simulation.
+
+\todobox{
+	Décrire le schéma de Balci point par point. Faire un schéma pour Treuil, puis introduire les miens en les explicitant complètement.
+}
+
+
+\subsubsection{Paramètres, variables, indicateurs : un essai de définition}
+\label{subsubsec:mes_definitions_params}
+
+Nous considèrerons donc plutôt les paramètres comme le sous-ensemble des entrées, qui peuvent s'exprimer sous forme numérique (excluant donc de fait certaines entrée telles que les configurations spatiales initiales), et que l'on fera varier, aussi bien dans la calibration du modèle que pour l'exploration de scénarios.
+
+
+\todobox{
+	Faire un schéma avec organisation des variables/paramètres/entrées/sorties telles que proposée dans ma thèse.
+}
+
+
+
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{img/schemas_params_simple.pdf}
+	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P).} 
+	\label{fig:parametres-these-simple} 
+\end{figure}
+
+\colorbox{pink}{\parbox{0.9\textwidth}{%
+		\vskip5pt
+		\leftskip5pt\rightskip5pt
+		Ne pas oublier de préciser différence entre paramètres et situation initiale. Ex. de situation initiale : des variables déjà allouées, par ex. pop des villes.
+		Il n'y en a pas vraiment dans mon modèle pk tout est endogénéisé : pas de situation initiale, mais des paramètres qui définissent la création de celle-ci.
+		\vskip5pt
+	}
+}
+
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{img/schemas_params_complet.pdf}
+	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P) incorporant l'aspect temporel de certains indicateurs ($\text{I}_{\text{D}}$ et $\text{I}_{\text{E}}$).} 
+	\label{fig:parametres-these-complet} 
+\end{figure}
+
+\newpage
+\subsubsection{Paramètres et variables}
+
+\begin{encadre}{Variables, entrées, paramètres\ldots}{termes-variables}
+	Au sein des \textbf{variables}, constituées par l'ensemble des éléments d'un modèle ayant la capacité de changer, que ce soit au cours d'une simulation ou au travers de plusieurs expérimentations, nous distinguerons trois types spécifiques.
+	\begin{description}[style=nextline]	
+		\item[Entrées] Les \textbf{entrées} constituent l'ensemble des informations nécessaires à l'exécution d'un modèle en ce qu'elles en alimentent les mécanismes. Elles peuvent être constantes au cours d'une simulation (la date de fin d'exécution de notre modèle par exemple), ou évoluer de par l'action du modèle (le nombre d'églises paroissiale du modèle, qui est une entrée, et augmente tout au long de la simulation).
+		
+		\item[Paramètres] Certaines de ces entrées sont des \textbf{paramètres} : ce sont les entrées qui peuvent être mobilisées afin de modifier le comportement du modèle, et qui \og représentent ce que le simulateur peut perturber\fg{}\footnote{Pour reprendre les mots de Treuil et al. qu'ils appliquent aux entrées\autocite[8]{treuil_modelisation_2008}. }. Dans cet ouvrage, nous distinguerons plusieurs types de paramètres (\cref{enc:types-parametres}) selon leur ancrage dans l'empirique. Notons toutefois dès maintenant que le nombre de paramètres d'un modèle peut être bien supérieur au nombre de paramètres que l'on fera réellement varier dans les expérimentations.
+		
+		\item[Sorties] \hl{Les sorties d'un modèle représentent ce que l'on va observer après l'exécution du modèle afin d'observer son déroulement et aboutissement}.\footnote{Pas clair}.
+		Ces sorties peuvent être très nombreuses, et concerner autant les variables individuelles (une liste des Foyers Paysans et de leur satisfaction au cours du temps par exemple) que des variables agrégées (Quartiles de satisfaction des foyers paysans par exemple), moins coûteuses en temps d'écriture ainsi qu'en espace de stockage. De la même manière que pour les paramètres, sur l'infinité potentielle de sorties d'un modèle, seules quelques-unes seront effectivement générées et enregistrées afin de minimiser les données produites à celles que le modélisateur compte explorer.
+	\end{description}
+\end{encadre}
+
+\subsubsection{Différents types de paramètres}
+
+
+Les paramètres sont donc un sous-ensemble des entrées d'un modèle qui ont vocation à varier dans les différentes exécutions de ce modèle. Pour autant, c'est un sous-ensemble assez divers, et tous les paramètres n'apportent pas les mêmes connaissances, que ce soit par leur valeur ou par la manière dont ils varient. Il convient donc d'identifier différents types de paramètres, non selon leur caractéristique propre (c'est-à-dire leurs propriétés, qui permettent de les différencier des sorties par exemple), mais selon leur usage et donc la manière dont on pourra les mobiliser. A ce titre, quand la littérature en sciences humaines et sociales\footnote{En physique ou en mathématiques par exemple, une telle distinction n'existe pas, la définition d'un paramètre prenant une considération plus simple d'élément rendu constant dans une exécution d'un modèle. \hl{pas clair, prendre une définition quelconque reprenant cette idée.}} distingue souvent (\hl{refs}) deux types de paramètres : les paramètres empiriques, dont la valeur a une correspondance directe dans le domaine empirique (on peut donc l'observer), et les paramètres techniques\footnote{Mathian et Tannier \autocite{mathian_formalisation_2015} utilisent le terme de paramètre mécanique pour définir ce type de paramètres. Nous trouvons l'usage du mot technique plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait. De plus, chaque paramètre, empirique, technique ou autre, a un impact sur les mécanismes du modèle, de par la définition que nous empruntons des paramètres \cref{enc:termes-variables}. Nous préférerons donc ce terme de \og technique\fg{} pour éviter les confusions.}, pour lesquels cette correspondance n'existe pas. Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes. Nous en proposons donc une troisième, que nous avons choisi de nommer \og paramètres commensurables\fg{}\footnote{
+	La définition du dictionnaire \og Le Petit Robert\fg{} pour ce terme est celle-ci :  \og  Se dit d'une grandeur qui a, avec une autre grandeur, une commune mesure.\fg{}\autocite{robert_nouveau_1993}. \\Cf. aussi :			
+	\og Les mondes n'apparaissent commensurables ou incommensurables qu'à ceux qui s'attachent aux mesures mesurées. Or, toutes les mesures, en science dure comme en science souple, sont aussi des mesures mesurantes et celles-là construisent une commensurabilité qui n'existait pas avant leur mise au point.\fg{}\autocite[153]{latour_nous_2013}},
+qui nous semble à même caractériser des paramètres partiellement inscrits dans l'empirie, c'est-à-dire sans valeur empirique propre, mais permettant tout de même d'être mobilisés comme les paramètres empiriques, c'est-à-dire à même d'être comparés, que ce soit par les fluctuations de leurs propres valeurs ou en comparant des paramètres commensurables les uns avec les autres. Avec cette typologie des paramètres basées non sur la nature de ceux-ci mais sur leur utilisation dans un modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de Minsky\footnote{\hl{Cf. sans doute le chapitre 1, à faire.}} \autocite{minsky_matter_1965}. Pour différents modélisateurs, un même paramètre pourra donc être considéré comme empirique ou commensurable, ou encore comme commensurable ou technique.
+\todobox{
+	Ne pas oublier de préciser que selon le point de vue du modélisateur, un paramètre peut passer de empirique à commensurable, ou de commensurable à technique (et vice-versa), mais pas \og franchir\fg{} toutes les catégories.
+}
+
+
+\begin{encadre}{Typologie de paramètres}{typo-parametres}
+	\begin{TAB}(b,3cm,3cm)[11pt]{|c|c|c|}{|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+		\thead{\diagbox{Par}{Paramètres}} & \thead{Endogène}  & \thead{Exogène}  \\
+		
+		\thead{Technique} & \makecell{Paramètre technique} & \makecell{---\\ (ou constante?)} \\
+		
+		\thead{Thématique} & \makecell{Paramètre\\thématique\\endogène\\(ex commensurable)} & \makecell{Paramètre\\thématique\\exogène\\(ex empirique)}
+		
+	\end{TAB}
+\end{encadre}
+
+\begin{encadre}{Trois types de paramètres}{types-parametres}
+	
+	\todobox{
+		Regarder s'il y a des enquêtes sur les seuils de satisfaction de Schelling dans la littérature.
+	}
+	
+	\begin{description}
+		\item[Paramètres empiriques] Les paramètres empiriques sont les paramètres qui peuvent être fixés à l'aide d'une ou de valeur(s) empiriquement connue(s), ou à défaut, dont la valeur se réfère à une quantité directement identifiable par une personne ayant des connaissances thématiques sur ce qui est modélisé.
+		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+			Dans le modèle de Schelling (\ref{desc:schelling}), le paramètre \fixref{\texttt{S}} est un paramètre empirique : la valeur qui lui est donnée peut être interprétée empiriquement, quand bien même il serait difficile d'obtenir, par exemple d'un enquêté, une valeur exacte à utiliser.
+		\end{mdframed}
+		\item[Paramètres techniques] Il s'agit des paramètres dont la valeur, ou même son ordre de grandeur, n'apportent aucune connaissance thématique au modélisateur. Ces paramètres ont pour raison d'être de permettre à d'autres types de paramètres de s'exprimer en valeurs compréhensibles et exploitables. Dès lors, leurs valeurs sont propres à chaque modèle formalisé, et une comparaison de ces valeurs entre les différents modèles n'apporte pas de connaissance.
+		
+		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+			Dans le modèle gravitaire (\cref{desc:gravitaire}), $k$ est un paramètre technique : c'est un ratio qui varie afin d'ajuster l'ordre de grandeur des masses ($M_i$ et $M_j$) à celui des flux  échangés ($F_{ij}$). C'est une valeur d'ajustement, qui ne peut être comparée entre des modèles portant sur différents espaces et/ou thématiques\footnotemark.
+		\end{mdframed}
+		
+		\item[Paramètres \og commensurable \fg{}]
+		
+		Cette catégorie, forgée dans le cadre de cet ouvrage, permet de représenter les paramètres qui ne sont pas fondamentalement issus de l'empirique mais qui peuvent toutefois être interprétés, que ce soit par rapport à une valeur canonique, définissant alors un repère, ou alors par rapport à d'autres valeurs de ce même paramètre, créant dès lors une échelle d'analyse. Outre la calibration d'un modèle, les valeurs de ces paramètres ont donc un intérêt propre et peuvent être analysées. pour elles-mêmes.
+		
+		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
+			Dans le modèle gravitaire (\cref{desc:gravitaire}), le frein de la distance (paramètre $\alpha$) peut être considéré comme un paramètre commensurable. Sa valeur ne renvoit ainsi à aucune dimension empirique, mais son usage répandu permet de comparer les valeurs qu'il peut prendre à des valeurs bien connues. Par exemple, on utilise fréquemment des valeurs de $\alpha$ comprises entre $1$ et $2$ pour exprimer la friction de la distance dans les navettes domicile-travail. Une valeur inférieure à $1$ peut donc être interprétée comme laissant une part plus faible à la distance, par exemple dans le cas de déplacements de loisirs. A contrario, un paramètre $\alpha$ supérieur à $2$ montrera une plus forte friction de la distance, par exemple dans les choix d'une école élémentaire à proximité du foyer d'un ménage.
+		\end{mdframed}
+	\end{description}
+	\footnotetext{Dans le cas où $\alpha$ vaut $0$, ce paramètre peut être vu comme commensurable dans la mesure où il devient alors la part de la masse qui devient un flux.}
+\end{encadre}
+
+
+\subsubsection{Comment choisir les valeurs de paramètres ?}
+
+\hl{Ici, faire un court paragraphe de transition pour présenter rapidement l'approche générale du paramétrage : peut-être redondant avec ce qui suit, en particulier dans les présentations des paramètrages du modèle gravitaire et de Schelling.}
+
+\subsection{Le paramétrage, un processus d'amélioration du modèle.}
+
+Le paramétrage d'un modèle est souvent réduit à l'un de ses aspects, le \og calibrage \fg, étape finale de la construction d'un modèle qui cherchera à reproduire autant que possible des données empirique en faisant varier les valeurs des paramètres jusqu'à ce qu'une combinaison de celles-ci soit satisfaisante.
+
+De nombreux auteurs ont montré que le paramétrage d'un modèle ne pouvait se réduire à cette étape, chacun employant des termes différents pour désigner le processus de paramétrage.
+
+%%%% Pas adapté  %%%%
+Gilbert et Troitzsch \autocite{gilbert_simulation_2005} restent très flous en utilisant les termes de \textit{checking} et de \textit{debugging}, qu'ils inscrivent dans une démarche plus large de \textit{verification} correspondant à la \hl{validation interne}\footnote{\hl{Définir !}}.
+Osman Balci \autocite{balci_validation_1994} crée et emploie l'acronyme \og \textit{VV\&T}\fg{}\footnote{\textit{Validation, Verification and Testing}}, à portée plus large puisqu'il s'applique à chacune des étapes de la modélisation
+%%%%  %%%%
+
+Le plus souvent (\fixref{ref Seb, Clem...}), une fois le modèle construit, le modélisateur s'attache à son \og calibrage\fg{}, en cherchant pour chaque paramètre la ou les valeurs qui permettront au modèle de s'approcher des données empiriques devant être reproduites.
+Cette étape, que l'on nomme généralement calibration, peut se faire de manière manuelle, par approximations successives (\fixref{C. Cottineau et/ou S. Rey, d'après Hermann}), par semi-automatisme, \toChange{exemple en effectuant des analyses de sensibilité}{Lena : trouver d'autres exemples plus classiques et lointains} (\fixref{C. Schmitt, J. Hirtzel}), ou encore de manière entièrement automatique (\fixref{C. Schmitt, S. Rey, C. Cottineau avec PSE}).
+L'approche souvent défendue, notamment dans les travaux les plus récents (\fixref{Rimbault?}), voudrait que cette étape soit obligatoire pour toute modélisation, permettant par une exploration systématique de comprendre l'entièreté du comportement d'un modèle, et d'en faire dès lors un outil complètement maitrisé \toChange{rendant possible l'établissement d'une loi}{Lena: expliciter}.
+
+Dans notre travail, nous souhaitons revenir sur cette approche de la modélisation, ancrant le paramétrage comme étape ultime de la construction d'un modèle, en particulier en ce que nous considérons que cette pratique de recherches de \toChange{valeurs optimales}{Lena : penser à bien l'introduire avant.} est un exercice qui devrait s'effectuer tout au long de la construction du modèle, de manière plus itérative que conclusive.
+
+
+\subsection{Qu'est-ce que le(s) paramétrage(s) ?}
+
+\subsubsection{Définition}
+
+\toChange{Paramétrer (informatique): \og Programmer (un appareil complexe), en définissant les paramètres assurant son fonctionnement optimal. Ex. \textit{Paramétrer une imprimante}\fg{}\autocite{robert_nouveau_1993}.}{J'aime bien cette définition, c'est la seule à avoir le sens que j'entends dans paramétrage/paramétrer. Et elle introduit une logique d'optimalité.}
+
+Le terme recouvre deux sens différents, dont la distinction peut se faire selon qu'on l'utilise pour définir un processus ou pour caractériser une configuration.
+Ici, nous emploierons plutôt le premier cas, définissant dès lors le paramétrage comme le processus, manuel ou automatique, visant à constituer cette configuration de paramètres.
+Dans ce deuxième cas, le paramétrage désigne un ensemble de valeurs de paramètres, par exemple quand on mentionne un paramétrage par défaut, ou un paramétrage optimal.
+Pour ne pas risquer de contre-sens, nous préférerons le terme de configuration de paramètres.
+
+On tend à distinguer le paramétrage -- passage obligé ne nécessitant pas d'être évoqué -- de la calibration, processus systématique qui inscrirait le modèle comme un outil scientifique et incontestable.
+Nous choisissons ici de confondre ces approches, non pas en considérant le paramétrage comme un outil d'évaluation du modèle, mais comme une composante inhérente à la construction d'un modèle, quelque soient les formes et les temporalités que le paramétrage adopte.
+Le paramétrage est en effet une pratique utile dans la construction du modèle, car les résultats auxquels il aboutit, c'est-à-dire les valeurs de paramètres qui semblent mieux adaptés, renseignent aussi bien sur les biais des mécanismes adoptés que sur leur efficacité réelle.
+Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que des variations dans les valeurs de paramètres ne changent pas réellement les sorties du modèle, cela peut être l'occasion de repenser le mécanisme dans son ensemble, ou plus souvent, la manière dont le paramètre est mobilisé dans ce mécanisme. On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant sa calibration plus complexe et instable :
+\begin{quote}
+	Au dessous du seuil des 150 pas de simulation pour le paramétrage de InnovationLife, le calibrage du modèle est très difficile voire impossible. Au dessus de ce seuil, le mécanisme associé au paramètre InnovationLife n’a plus d’effet sur le calibrage du modèle. Dans un soucis de parcimonie du nombre et de la complexité des mécanismes simulés dans le modèle SimpopLocal, il est justifiable de retirer du modèle ce mécanisme qui n’est pas nécessaire à la simulation de la dynamique de croissance recherchée.\\
+	\mbox{}~ \hfill \autocite[224]{schmitt_modelisation_2014}
+\end{quote}
+
+\paragraph{}Afin d'illustrer ces propos, on peut s'appuyer sur des modèles bien connus de la littérature, issus de deux champs disciplinaires différents.
+
+\subsubsection{Illustration : le modèle gravitaire.\label{desc:gravitaire}}
+
+\paragraph{Description}	Ce modèle statistique\footnote{Pour une description plus complète, se référer à l'ouvrage de Pumain et Saint-Julien \autocite{pumain_les_2001}.}, dans la formulation qu'en a faite Stewart \autocite{stewart_demographic_1948}, vise à prédire des flux (démographiques, marchands etc.) potentiels entre des lieux à partir d'une analogie avec la loi physique de la gravitation. Dans le formalisme le plus simple, \og sans contrainte\fg{} \autocite{pumain_les_2001}, on peut l'exprimer ainsi :
+$$
+F_{ij} = \frac{k \times M_{i} \times M_{j}}{d_{ij}{}^\alpha}
+$$
+Ce modèle présente trois valeurs empiriques ($M_i$, $M_j$ et $d_{ij}$) et deux paramètres ($k$ et $\alpha$). $k$ est un paramètre technique (\cref{enc:types-parametres}), puisque bien que basée sur l'empirique, sa valeur -- et les fluctuations de celle-ci -- ne donne aucune information sur le système étudié. $\alpha$ est un paramètre commensurable pour les raisons explicités dans l'\cref{enc:types-parametres}.
+
+À partir des valeurs empiriques $M_i$ et $M_j$ qui caractérisent les masses (populations, ou stocks de  marchandise par exemple) des lieux $i$ et $j$, et de la distance qui les sépare $d_{ij}$, on peut ainsi prédire $F_{ij}$, le flux entre ces lieux.
+
+\paragraph{Objectif} Afin que ce modèle donne des ordres de grandeur réalistes quand aux quantités échangées, il faut le paramétrer en définissant une valeur de $k$, permettant dès lors d'obtenir un rapport entre les masses d'origine et les quantités échangées.
+La valeur de ce paramètre est conditionnée par celle de $\alpha$, que l'on nomme fréquemment \og frein de la distance\fg{}, en ce qu'il permet de quantifier l'impact qu'aura un éloignement plus ou moins important sur la quantité de flux échangés.
+
+\paragraph{Paramétrage} Pour \og ajuster\fg{}\footnote{C'est le terme employé par \autocite{pumain_les_2001}, que l'on peut ici retenir comme équivalent de paramétrer. François Durand-Dastès  \autocite[298]{durand1995modeles} utilise pour sa part le terme de calibration à propos du même modèle.} le modèle, il faut donc en réaliser le paramétrage en s'appuyant sur les éléments connus de l'équation (les valeurs empiriques).
+$\alpha$ et $k$ étant liés dans l'équation, la valeur de chacun de ces paramètres dépend de celle choisie pour l'autre, et un changement dans l'un des paramètres entraînera la nécessité de modifier l'autre.
+
+Le paramétrage le plus simple consiste à réaliser une régression linéaire sur les logarithmes décimaux des distances et des flux observés, $k$ prenant alors la valeur du logarithme de l'ordonnée à l'origine et $\alpha$ celle du coefficient directeur de la courbe.	
+Le modèle est alors calibré (voir \cref{enc:termes-calibration}), mais si l'on souhaite donner une valeur spécifique à l'un des paramètres, par exemple pour utiliser une valeur classique de 2 au frein de la distance ($\alpha$) \autocite{pumain_modegravitaire_2004}, il faudra alors le re-soumettre à paramétrage pour adapter $k$. De même si l'on modifie les lieux et/ou les masses sur lesquels il s'applique.
+
+
+\subsubsection{Illustration : le modèle de ségrégation de Schelling.\label{desc:schelling}}
+
+\paragraph{Description}Le modèle de Schelling\footnote{Une description plus poussée accompagnée d'une description de l'exploration du modèle peut être lue dans \autocite{daude_comparaison_2006}} est un modèle de simulation décrit par Thomas Schelling \autocite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état intégré à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle. Il montre en particulier qu'on peut parvenir à un état ségrégé même quand les comportements individuels sont majoritairement tolérants.
+
+L'espace du modèle est défini comme une grille carrée composée de $N$\footnote{Nous reprenons ici la notation $M(N, d, n, S)$ proposée par \autocite[433]{daude_comparaison_2006} en n'explicitant toutefois pas le paramètre $n$ décrivant le type de voisinage (4 ou 8) utilisé.} cellules.
+Au début de la simulation, des agents de deux types, en proportions similaires, sont distribués aléatoirement dans l'espace du modèle. Chaque agent occupe une cellule, et le nombre total de cellules occupées (et donc d'agents) dépend d'un paramètre de densité $d$ qui représente la part (entre $0\%$ et $100\%$) du nombre de cellule qui sera occupé\footnote{Il y a donc $N \times d$ agents, et donc $\frac{N \times d}{2}$ agents de chaque type.}.
+Chaque agent est défini par une satisfaction. Celle-ci correspond à la part de cellules voisines occupées par des agents \og étrangers\fg{}, c'est-à-dire d'un autre type : plus le voisinage contient d'étrangers, moins l'agent est satisfait.
+Si cette satisfaction est inférieure à un paramètre de tolérance $S$, l'agent est considéré comme insatisfait et se déplace aléatoirement dans une cellule non occupée.
+A terme, Schelling montre que même en considérant des valeurs de $S$ assez élevées, c'est-à-dire un comportement plutôt tolérant, la succession de choix individuels entraîne la mise en place d'une distribution spatiale très ségrégée.
+On considère que le modèle a convergé quand l'ensemble des agents sont satisfaits, ce que ne permettent pas toutes les combinaisons de valeurs de paramètres.
+
+Dans ce modèle, on peut donc dénoter trois paramètres, $N$, $d$ et $S$. Les deux premier sont des paramètres techniques (\cref{enc:types-parametres}), en ce que, purement théoriques, ils ne se réfèrent à aucune quantité empirique, ni ne peuvent être utilisés afin de se référer à un ordre de grandeur connu qui en ferait des paramètres commensurables. $S$ est un paramètre empirique. Bien que le modèle soit théorique, ce paramètre se réfère toutefois à une comportement ayant un sens empirique fort.
+
+\paragraph{Objectif} Le paramétrage de ce modèle consiste à fixer un $N$ constant et à faire varier $d$ et $S$ afin d'en trouver des valeurs permettant la convergence vers une situation stable. Quand $d$ est très faible ($30\%$ dans l'exemple de \autocite{daude_comparaison_2006}), quelles que soient les valeurs de $S$, le modèle converge rapidement : quand l'espace du modèle dispose d'une faible densité d'agents, il est facile pour ceux-là de créer des agrégats homogènes distants d'agrégats de l'autre type d'agents. Quand $d$ est plus important ($\geq66\%$), l'espace disponible étant limité, toutes les valeurs de $S$ ne permettent pas la convergence du modèle. Le paramétrage du modèle aura donc pour objectif de trouver la valeur maximale possible -- pour un $N$ et un $d$ donné -- que peut prendre le paramètre de tolérance $S$ tout en laissant le modèle converger.
+
+\paragraph{Paramétrage}Contrairement au modèle gravitaire, le modèle de Schelling est stochastique : les agents se déplacent aléatoirement quand non satisfaits. Dès lors, deux exécutions du modèle avec le même jeu de paramètres n’entraîneront pas forcément la même configuration spatiale. Qui plus est, pour certains jeux de paramètres, seules certaines exécutions convergeront. Le paramétrage de ce modèle ressemble donc à celui qui est réalisé pour le modèle SimFeodal. La manière \og traditionnelle\fg{}\footnote{C'est-à-dire manuelle, au contraire de méthodes automatiques plus rigoureuses et récentes.} consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge. Si le modèle converge pour tout $S$, on augmente la valeur de $d$ et on recommence à chercher la valeur maximale possible pour $S$. De part la nature stochastique du modèle, chaque jeu de paramètres doit être simulé plusieurs fois, le nombre de ces réplications dépendant de la part d'aléa dans le comportement du modèle.
+Un modèle de Schelling calibré, c'est-à-dire dont le paramétrage est achevé,
+donnera pour un $N$ fixé les valeurs maximales de $d$ et de $S$ atteignables.
+
+\paragraph{}A travers ces deux exemples ayant traits à des méthodes différentes, on retrouve deux approches de paramétrage que l'on souhaite ici voire confondues : dans le premier cas, le paramétrage du modèle gravitaire tend à sa calibration, à la recherche d'une solution optimale, c'est-à-dire meilleure que toute autre. Pour un phénomène donné (un jeu de données précis par exemple) et un formalisme donné (l'expression la plus simple du modèle, ici sans contrainte), seule un couple de paramètres $\alpha$ et $k$ permet ainsi d'obtenir des flux modélisés proches des flux observés.
+Dans le cas du modèle de Schelling, il n'y a pas de recherche d'optimum : le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence. Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quel est la valeur maximale de $d$ permettant cette convergence (et réciproquement).
+
+\subsubsection{Paramétrer un ou des modèles ? \label{sssec:parametrer-un-des-modeles}}
+
+\toChange{\fixref{Cottineau, Reuillon et Rey} ont montré qu'on construisait plus souvent des familles de modèles que des modèles uniques.}{Lena : trop endogame, prendre exemples modèles modulaires dans JASSS}
+Ces auteurs plaident pour une construction modulaire de modèles, chacun des mécanismes et complexifications devant être autonomes afin de pouvoir les assembler en autant de combinaisons que nécessaire à une exploration d'ensemble de leurs interactions.
+
+Nous reprendrons de leur discours une vision moins ambitieuse, en considérant (\toChange{ref Rey}{à chercher il en parlait à sa soutenance je crois}) simplement qu'en fait d'un modèle, la modélisation passe par plusieurs modèles, ayant chacun différentes implémentations d'un mécanisme conceptuellement identique et chacun se devant dès lors d'être adapté par un paramétrage dédié.
+
+Pour illustrer ce propos, on peut prendre l'exemple d'une modification qui a eu lieu sur notre modèle au cours de son développement. On considérait jusque là que pour prendre en compte la population rurale (hors Tours donc), $1000$ foyers paysans donnaient une bonne idée de la situation en 800 pour l'espace considéré.
+Lors d'une réunion, les thématiciens se sont rendus compte que ce nombre sous-estimait très largement la population réelle, et qu'il valait mieux passer ce paramètre à $4000$ foyers paysans.
+Les autres paramètres, fixés en bonne partie empiriquement, n'avaient visiblement aucune raison d'évoluer du fait de ce changement. Les mécanismes  et effets de seuil étaient en effet conçus de manière à être relatifs aux masses manipulées, et le changement attendu était une augmentation linéaire des indicateurs de sortie.
 
 \begin{figure}[H]
-\captionsetup{width=\linewidth}
-\includegraphics[width=0.9\linewidth]{img/resultats/v0_paroisses_occupation.pdf}
-\caption{Évolution de la couverture du territoire par les églises paroissiales.\\
-\todobox{Attention, résultats JIAP = pas fiables}
-}
-\label{fig:couverture-paroisses-v0}
+	\includegraphics[width = \linewidth]{img/plotComits.pdf}
+	\caption{Temporalité du paramétrage du modèle.\\
+		Chaque \og enregistrement\fg{} (\textit{comit}) correspond à une version modifiée et sauvegardée du modèle, contenant un ou plusieurs changements. On a ici rapporté le nombre de changements de chaque type (modification de mécanisme ou de valeur de paramètre) au nombre total de changements de chaque \textit{comit} afin de figurer l'évolution des types de modification au cours de la construction du modèle.}
+	\label{fig:comits-periodes}
 \end{figure}
+
+Dans les faits, cette légère modification a entraîné une obligation de repenser la quasi-totalité des autres paramètres et d'ajuster une bonne part des règles. 
+La concentration des foyers paysans était en effet bien trop rapide avec autant d'individus, et le modèle convergeait en quelques pas de temps vers une configuration presque statique et très concentrée.
+Tous les mécanismes de régulation de ce comportement étaient dès lors rendus ineptes, et il a fallu changer en profondeur la manière dont chaque paramètre et mécanisme interagissait avec les autres.
+\toChange{C'est un changement majeur, que l'on peut constater dans la figure~\ref{fig:comits-periodes} (1ère modification de la période B), ayant donc entraîné des adaptations de tous les plans du modèle (paramètres en B, mécanismes en C).}{Lena : Là on ne suit pas, mais ce sera explicité dans le chap. 2}
+La première version avait été paramétré aussi correctement que possible, mais ce paramétrage était entièrement à refaire avec la nouvelle version (modifications de la période B, \cref{fig:comits-periodes}).
+\toChange{On pourrait dès lors différencier le modèle pré-existant et celui qui a suivi ce changement, et les considérer comme deux modèles puisque réagissant de manière extrêmement différente.}{Lena : à discuter plus profondément}
+
+\toChange{Cet exemple renforce le caractère nécessaire du paramétrage, et qui plus est, de la continuité de cette étape, qui ne peut être pensée que comme une calibration finale d'un modèle abouti, auquel on ne peut en fait parvenir que par des paramétrages réguliers de modèles successifs moins aboutis.}{Lena: Pas clair et pas assez logique}
+
+\subsubsection{Désambiguïsation}
+
+De nombreux termes sont utilisés dans la littérature, souvent sans réelle distinction, pour désigner cette opération qui consister à choisir un jeu de paramètres pour un modèle. Pêle-mêle, on y retrouve le paramétrage, la validation, l'évaluation ou encore la calibration. Nous définissons dans l'\cref{enc:termes-calibration} le sens donné à chacun de ces termes dans le cadre de ce manuscrit.
+\bigskip
+
+\begin{encadre}{Calibration, évaluation, validation\ldots}{termes-calibration}
+	\begin{description}[style=nextline]	
+		\item[Calibration] On réserve souvent, et nous nous y tiendrons, ce terme à la dernière étape dans l'aboutissement d'un modèle.
+		Une fois les mécanismes fixés et des objectifs définis, on peut procéder à la calibration, c'est-à-dire à une exploration de l'espace des paramètres ayant pour but de stabiliser les paramètres afin de se rapprocher autant que possible de ces objectifs.
+		Cette étape, quelques soient les moyens employés, s'approche de la résolution utilisée dans le cadre de systèmes d'équations.
+		Le contexte des systèmes complexes, et donc d'une non-linéarité des effets des paramètres, rend toutefois difficile l'obtention d'une unique configuration de \hl{paramètres optimale}\footnote{Lena : il faut partir d'une def plus basique en intro}, et la calibration aboutit donc souvent à un ensemble de configurations possibles, constituant par exemple un optimum de Pareto (\fixref{Trouver ref}).
+		
+		\item[Évaluation] On emploie majoritairement ce mot pour décrire les méthodes permettant de comprendre le comportement du modèle et sa réaction aux différents paramètres.
+		Là où la calibration cherche une configuration de paramètres optimale, l'évaluation tend surtout à caractériser la stabilité du modèle face à l'aléa ou a des configurations exceptionnelles.
+		On vise ainsi à s'assurer que le modèle reproduise \hl{les faits stylisés}\footnote{Lena : pas introduits avant} voulus quelque soient son réglage, ou au moins à quantifier les intervalles de paramètres qui y satisfont.
+		
+		\item[Validation] La validation (refs Seb) tire son origine de sciences plus nomothétiques, et correspond donc à la démonstration qu'un modèle reproduit correctement ce qu'il représente. Au delà de l'évaluation, le terme amène une logique de preuve formelle que le modèle réagit bien ainsi et pas autrement quelque soient les conditions d'exécution. Cette démonstration formelle peut être effectuée sur des modèles à faible nombre de paramètres et mécanismes, mais le terme n'est jamais (à vérifier) employé dès lors que les modèles se complexifient.\footnote{Lena : cf. JASSS : Faire un rappel du sens classique, par ex. en stats.}
+	\end{description}
+\end{encadre}
+
+\clearpage
+\section{Paramétrage de SimFeodal}
+
+\subsection{Historique de SimFeodal}
+
+\subsection{Exploration de l'évolution d'un modèle exploratoire}
+ -> Quand paramétrer ?
+ 	-> Allers-retours params/indicateurs
+ -> méthodo d'analyse exploratoire
+ 	-> graphique
+ 	-> analyse phases
+
+
+\subsection{Avant propos sur le paramétrage d'un modèle complexe}
+
+
+Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent. Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que l'explicitation de chacune de ces étapes permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
+
+Notons que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014}. Nous ne détaillerons pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, en guise d'exemples illustratifs, dans les chapitres 6 et 7 \hl{(Partie 3)}.
+
+\subsubsection{De manière générale}
+
+\subsection{Les étapes du paramètrage de SimFeodal}
+
+Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction. Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté ces modifications du modèle. L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation. Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes. La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
+
+\begin{center}
+	\hl{Faire tableau des versions de SimFeodal}
+\end{center}
+
+\pagebreak
+\begin{footnotesize}
+	\begin{longtable}{ m{.05\textwidth} m{.08\textwidth} m{.12\textwidth} m{.65\textwidth}}
+		Étape & Version & Type & Modifications \\
+		\endhead \hline
+		0 & Base & Création & Création du modèle. \fixref{Cf. tableau 14 de Tannier 2017} \\
+		\hline
+		1 & Base2 & paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
+		Modification des critères de création de nouvelles paroisses. \newline
+		Réduction de la distance maximale de déplacement local. \newline
+		Assouplissement des règles de promotion d'un château en gros château. \\
+		\hline
+		2 & Base2 compo5 2bis & modélisation et paramétrage & Assouplissement des règles de création d'une paroisse.\newline
+		Réduction de la distance maximale de déplacement local. \newline
+		Modification des règles de calcul de la probabilité de construire un château.\newline
+		Modification du calcul de la satisfaction matérielle des foyers paysans. \\
+		\hline
+		3 & Base2 compo5 2quat & modélisation et paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
+		Facilitation de la construction de châteaux. \newline
+		Rationnalisation du déplacement des foyers paysans. \newline
+		Ajout d'un nouveau type d'attracteur, les communautés. \\
+		\hline
+		4 & Base3 2 & modélisation et paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
+		Modification des critères de création de nouvelles paroisses. \newline
+		Augmentation de la distance maximale de déplacement local. \newline
+		Modification de la procédure d'identification des agrégats et des pôles. \\
+		\hline
+		5 & Base4 1 & modélisation et paramétrage & 
+		Modification de la répartition initiale des foyers paysans.\newline
+		Simplification de la procédure d'identification d'héritage des agrégats.
+		Amélioration de la définition des pôles d'attraction et de leur enveloppe. \\
+		\hline
+		6 & Base4 2 & modélisation et paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
+		Modification de l'ordonnancement des actions dans le modèle.\newline
+		Modification de la procédure d'identification des agrégats. \\
+		\hline
+		7 & Base4 3ter & modélisation et paramétrage &
+		Dynamisation de la distance maximale de déplacement local.
+		\newline
+		Modification du calcul de satisfaction des foyers paysans. \\
+		\hline
+		8 & Base4 4A & modélisation & Modification de l'ordonnancement des actions dans le modèle. \newline
+		Modification du mécanisme de déplacement local des foyers paysans. \\
+		\hline
+		\caption{Tableau récapitulatif des étapes de construction du modèle. Conception : C. Tannier (\fixref{Tannier 2017, HDR}) et R. Cura, 2017}
+		\label{table:etapes-construction}
+	\end{longtable}
+\end{footnotesize}
+
+\section*{Conclusion}
+\label{sec:chap3-conclu}
+\addcontentsline{toc}{section}{Conclusion}
+
