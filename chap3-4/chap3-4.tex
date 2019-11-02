@@ -2,7 +2,7 @@
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-11-01}}
+{\large Version \hl{2019-11-02}}
 \end{center}
 \begin{itemize}
 %	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
@@ -35,8 +35,8 @@ Il nous semble pour autant que l'exercice intellectuel que constitue la (co-)con
 
 Nous sommes en effet convaincu que même pour des modèles visant à \og assister la construction de théories\fg{}
 \footnote{
-	\og [...] Simulation models to support theory building -- so-called heuristic modelling -- [...].\fg{}
-} pour reprendre les termes de \cite[260]{lake_trends_2014}, ou encore, selon la classification alternative de l'auteur, pour les modèles à utilité \og de développement\fg{}
+	\og Simulation models to support theory building -- so-called heuristic modelling -- \textelp{}.\fg{}
+} pour reprendre les termes de \textcite[260]{lake_trends_2014}, ou encore, selon la classification alternative de l'auteur, pour les modèles à utilité \og de développement\fg{}
 \footnote{
 	\og 'developmental' utility\fg{}, c'est-à-dire les modèles dont le développement et l'implémentation bénéficient aux chercheurs qui y prennent part plutôt qu'à ceux qui se contentent de les utiliser a posteriori.
 }, les différents outils d'évaluation permettent d'acquérir une connaissance précieuse sur l'objet modélisé, ne serait-ce que par les effets collatéraux qu'entraîne l'évaluation d'un modèle.
@@ -54,14 +54,14 @@ Il nous semble important de commencer cette partie par un point de définition e
 
 Depuis les travaux fondateurs, dans les années 1960, la logique qui consiste à éprouver un modèle -- c'est-à-dire à (1) vérifier qu'il corresponde correctement d'une part au système qu'il décrit, et d'autre part à (2) la manière dont il est décrit -- donne lieu à différentes terminologies.
 On notera en particulier que les deux articles considérés comme pionniers, tous deux parus en 1967, reposent pour l'un sur la notion de vérification \autocite{naylor_verification_1967}, et pour l'autre sur celle de validation \autocite{hermann_validation_1967}, sans pour autant que la distinction entre les deux approches puisse être vue comme consistante.
-Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de \og Validation, Verification and Testing techniques (VV\&T)\fg{}, par l'entremise d'une proposition d'Osman \textsc{Balci} \autocite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
+Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de \og Validation, Verification and Testing techniques (VV\&T)\fg{}, par l'entremise d'une proposition de \textcite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
 Pour reprendre ses mots en une distinction devenue courante en simulation à base d'agent, la \textit{validation} consiste à concevoir le bon modèle 
 \footnote{
-	\og Model validation deals with building the \textit{right} model.\fg{}
+	\og Model validation deals with building the \textit{right} model.\fg{} \autocite[121]{balci_validation_1994}
 } -- sens (1) exposé plus haut --,
 alors que la \textit{verification} permet de s'assurer que le modèle est bien construit
 \footnote{
-	\og Model verification deals with building the model \textit{right}.\fg{}
+	\og Model verification deals with building the model \textit{right}.\fg{} \autocite[123]{balci_validation_1994}
 } -- sens (2).
 Le \og \textit{Testing}\fg{} correspond aux techniques mises en œuvre, et s'applique donc indistinctement à ces deux termes (\textit{validation} et \textit{verification}).
 
@@ -69,30 +69,28 @@ En dépit de cette définition stricte, les usages persistent dans une absence d
 Il n'est d'ailleurs pas rare que ces trois termes soient employés de manière interchangeable, voir intervertie, comme un recensement rigoureux des usages le démontre \autocite{augusiak_merging_2014}.
 Dans cet article, les auteurs mènent une méta-analyse de la littérature sur les usages de chacun des termes liés à l'évaluation\footnote{\textit{Corroboration}, \textit{Evaluation}, \textit{Testing}, \textit{Validation}, \textit{Verification} et \textit{Substantiation}}, et en particulier de celui de \textit{validation}, et du sens signifié par leurs auteurs respectifs.
 Ils en tirent le constat qu'une large partie des termes analysés a été employé par plusieurs auteurs leur affectant des sens contradictoires.
-Par exemple : \og the term ‘validation’ has been given virtually any possible meaning in this context\fg{} (\textit{Ibid.}, p. 120).
+Par exemple : \og the term ``validation'' has been given virtually any possible meaning in this context\fg{} \autocite[120]{augusiak_merging_2014}.
 
 \paragraph*{}
 Les auteurs de cette étude puisent dans ce constat les besoins d'une nouvelle terminologie, unique et explicite, permettant de dépasser notamment les successions d'attrait et de rejet que la notion de validation entraîne de par son positivisme.
-Ils proposent ainsi un nouveau terme, l'\og \textit{evaludation} \fg{}, assorti à une typologie de concepts -- explicitement définis (\textit{Ibid.}, Table 2, p. 125) -- liés à l'évaluation permettant d'identifier l'objet et le sujet de chacune des phases du cycle d'\og évaludation\fg{} (voir \cref{fig:schema_evaludationl}).
+Ils proposent ainsi un nouveau terme, l'\og \textit{evaludation} \fg{}, assorti à une typologie de concepts -- explicitement définis  \autocite[table 2, p. 125]{augusiak_merging_2014} -- liés à l'évaluation permettant d'identifier l'objet et le sujet de chacune des phases du cycle d'\og évaludation\fg{} (voir \cref{fig:schema_evaludationl}).
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{img/Schema_Augusiak_evaludation.png}
-	\caption{Représentation schématique du cycle de modélisation et de la typologie des termes relatifs à l'évaluation de modèle, dans \cite[Fig. 1, p. 121]{augusiak_merging_2014}}
+	\caption{Représentation schématique du cycle de modélisation et de la typologie des termes relatifs à l'évaluation de modèle, dans \textcite[Fig. 1, p. 121]{augusiak_merging_2014}}
 	\label{fig:schema_evaludationl}
 \end{figure}
 
 Nous partageons absolument le besoin formel, identifié par les auteurs de cette étude, de définir un nouveau terme dans leur proposition, et nous souscrivons à leur approche de définition.
 Il nous semble toutefois, et nous le déplorons, que ce travail n'ait pas encore suffisamment percolé dans la communauté scientifique, et en particulier dans le monde francophone.
-Au moment de rédiger ces lignes, seuls deux auteurs en font un usage en français, au moins l'un des deux \autocite[89,436]{rey-coyrehourcq_plateforme_2015} ne le mentionnant que par recension.
-\hl{Ajuster après/si retour de Sophie Plassin, interrogée par mail.}
+Au moment de rédiger ces lignes, seuls deux auteurs en font un usage en français, au moins l'un des deux \autocite[89, 436]{rey-coyrehourcq_plateforme_2015} ne le mentionnant que par recension.
 
-
-Par soucis d'homogénéité et de compréhension par un plus grand nombre de ce travail, nous nous contenterons donc de nous inscrire dans les choix de \cite{amblard_evaluation_2006} (voir \Cref{enc:lexique-eval-amblard}), en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone, quand bien même ces concepts nous paraissent moins robustes que ceux présentés auparavant.
+Par soucis d'homogénéité et de compréhension par un plus grand nombre de ce travail, nous nous contenterons donc de nous inscrire dans les choix de \textcite[voir \cref{enc:lexique-eval-amblard}]{amblard_evaluation_2006}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique de modélisation en sciences humaines et sociales francophone, quand bien même ces concepts nous paraissent moins robustes que ceux présentés auparavant.
 
 \clearpage
 \begin{encadre}{Les mots de l'évaluation}{lexique-eval-amblard}
 
-Pour \cite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textsc{Balci}, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que \textsc{Balci} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
+Pour \textcite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textcite{balci_validation_1994}, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que \citeauthor{balci_validation_1994} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
 
 \begin{quotation}
 \noindent \og Il est classique de différencier deux étapes dans la validation : interne et externe.
@@ -117,8 +115,9 @@ Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord le
 \subsection{Les étapes de l'évaluation d'un modèle}
 
 Parmi les nombreuses techniques disponibles pour l'évaluation, il est courant de privilégier telle ou telle méthode en fonction de la phase d'avancement d'un modèle.
-Traditionnellement, l'usage veut ainsi que le modélisateur tende vers des méthodes de plus en plus formelles à mesure que l'évaluation progresse\footnote{Voir par exemple la typologie des méthodes d'évaluation, des plus \og informelles \fg{} aux méthodes \og formelles \fg{} chez \cite[figure 3, p. 131]{balci_validation_1994}}.
-Les schémas des étapes d'évaluation de \textsc{Klügl} (\cref{fig:schema_kluegl}) et de \textsc{Ngo} et \textsc{See} (\cref{{fig:schema_ngo}}) constituent un bon résumé de cette progression -- représentée de manière itérative quand bien même chaque auteur insiste sur le fait que ces étapes doivent être menées en multipliant les allers-retours entre elles -- que l'on peut brièvement décrire plus avant.
+Traditionnellement, l'usage veut ainsi que le modélisateur tende vers des méthodes de plus en plus formelles à mesure que l'évaluation progresse\footnote{
+	Voir par exemple la typologie des méthodes d'évaluation, des plus \og informelles \fg{} aux méthodes \og formelles \fg{} chez \textcite[figure 3, p. 131]{balci_validation_1994}}.
+Les schémas des étapes d'évaluation de \citeauthor{klugl_validation_2008} (\cref{fig:schema_kluegl}) et de \citeauthor{ngo_calibration_2012} (\cref{{fig:schema_ngo}}) constituent un bon résumé de cette progression -- représentée de manière itérative quand bien même chaque auteur insiste sur le fait que ces étapes doivent être menées en multipliant les allers-retours entre elles -- que l'on peut brièvement décrire plus avant.
 
 \begin{figure}[H]
 	\center
@@ -135,13 +134,13 @@ Les schémas des étapes d'évaluation de \textsc{Klügl} (\cref{fig:schema_klue
 \end{figure}
 
 
-\paragraph{\og \textit{Face validation}\fg{}}
+\paragraph{\og \textit{Face validation}\fg{}.}
 La première étape, de \og \textit{face validation}\fg{}, consiste ainsi à vérifier visuellement, en se confortant à des intuitions sur le comportement attendu, la plausibilité du modèle.
 On entend par plausibilité la potentielle adéquation entre le déroulement (en termes de dynamiques observés) et l'issu (au travers des données produites) d'une simulation, et les connaissances expertes que l'on possède sur le système modélisé.
 Cette étape est souvent considérée comme une mesure préalable relevant du bon sens plus que de l'évaluation strictement dite, et relève autant de la validation interne que de la validation externe.
 Nous reviendrons plus longuement sur cette étape, essentielle d'après l'avis partagé dans la littérature mais néanmoins largement sous-exploité et méjugée à notre avis, dans les pages suivantes (voir \cref{subsec:face-validity}).
 
-\paragraph{Analyse de sensibilité}
+\paragraph{Analyse de sensibilité.}
 Quand une première version du modèle a été implémentée, il est recommandé de procéder à l'analyse de sa \og sensibilité \fg{}, entendue à l'égard des paramètres du modèle : en faisant varier, selon des méthodes plus ou moins complexes
 \footnote{
 	Un point plus précis y est consacré dans le \hl{chapitre 6}
@@ -149,24 +148,27 @@ Quand une première version du modèle a été implémentée, il est recommandé
 Cette mesure, relative à la validation interne, intervient tôt, et doit être répétée lors de chaque modification majeure dans les mécanismes du modèle.
 L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté :
 	si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre et/ou le mécanisme qui le mobilise.
-Réduire le nombre de paramètres et/ou de mécanismes d'un modèle peut sensiblement l'améliorer, selon le principe de parcimonie qui voudrait qu'un modèle plus simple soit meilleur\footnote{Les avis divergent nettement sur ce point, voir par exemple la définition de la \textit{simplicité} dans \cite[120]{amblard_evaluation_2006}}.
+Réduire le nombre de paramètres et/ou de mécanismes d'un modèle peut sensiblement l'améliorer, selon le principe de parcimonie qui voudrait qu'un modèle plus simple soit meilleur\footnote{
+	Les avis divergent nettement sur ce point, voir par exemple la définition de la \textit{simplicité} dans \textcite[120]{amblard_evaluation_2006}
+}.
 Même sans aller jusqu'à ce type de découvertes sur l'inutilité de certains paramètres, l'analyse de sensibilité permet de gagner en connaissance sur le fonctionnement d'un modèle complexe et/ou non-déterministe, ne serait-ce que parce qu'elle aide souvent le modélisateur à trouver une \og polarité \fg{} à l'effet des paramètres :
 	si tel indicateur de sortie (voir \cref{subsec:indices-indicateurs}) croît quand on diminue les valeurs d'un paramètre et décroît quand on les augmente, alors on peut prévoir l'effet d'une modification de ce paramètre, ce qui peut éclairer le fonctionnement thématique du modèle.
 
-\paragraph{Calibration}
+\paragraph{Calibrage.}
 Une fois le modèle mieux connu et surtout réduit à ses composantes nécessaires et suffisantes, on cherche à en améliorer la qualité de représentation, c'est-à-dire à faire en sorte, en jouant sur les valeurs de paramètres, que le modèle reproduise plus précisément le système qu'il décrit (validation externe) et qui correspond à l'observation empirique ou aux connaissances thématiques.
-Cette démarche, nommée calibration, soulève l'enjeu d'isoler, pour chaque paramètre, une étendue de valeurs acceptables et optimales.
+Cette démarche, nommée calibrage, soulève l'enjeu d'isoler, pour chaque paramètre, une étendue de valeurs acceptables et optimales.
 La complexité -- au sens figuré -- de cette étape réside dans la complexité -- au sens propre -- du modèle qu'il convient de calibrer :
 	dans un modèle complexe, où chaque mécanisme peut influencer chacun des autres mécanismes de manière non linéaire, la modification des valeurs d'un paramètre doit certes modifier l'état du modèle en lui-même, mais a le plus souvent tendance à modifier par là même l'optimalité des valeurs des autres paramètres.
 Le problème ressemble à celui des vases communicants :
 	pour que le modèle soit calibré, il faut que chaque valeur de paramètre soit optimale, mais la modification de chacun des paramètres peut dérégler l'effet des autres paramètres, et par la même les valeurs qu'ils doivent se voir attribuer.
-On ne peut donc procéder paramètre par paramètre, en les réglant un par un, au risque d'entrer dans une boucle infinie de calibration, mais au contraire, il est nécessaire de considérer l'ensemble -- ou un sous-ensemble -- des paramètres et de tester des valeurs qui iraient vers une optimisation du comportement du modèle.
-La calibration en elle-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle :
-	elle vise ainsi plutôt à \og améliorer\fg{} le modèle plus qu'à juger de sa validité.
+On ne peut donc procéder paramètre par paramètre, en les réglant un par un, au risque d'entrer dans une boucle infinie de calibrage, mais au contraire, il est nécessaire de considérer l'ensemble -- ou un sous-ensemble -- des paramètres et de tester des valeurs qui iraient vers une optimisation du comportement du modèle.
+Le calibrage en lui-même n'est pas à proprement parler une véritable procédure d'évaluation d'un modèle :
+	il vise ainsi plutôt à \og améliorer\fg{} le modèle plus qu'à juger de sa validité.
 Il s'agit ainsi plutôt d'une méthode et d'un problème d'optimisation que d'évaluation.
-Les différents auteurs mettent toutefois en avant son intérêt dans l'évaluation de modèle en ce qu'elle permet de garantir une meilleure validation externe du modèle puisqu'elle aboutit à l'isolation d'étendues optimales de valeurs de paramètres : en menant de nouveaux tests d'évaluation (analyse de sensibilité, \textit{face validation} etc.) \autocite[43]{klugl_validation_2008} sur les valeurs optimales identifiées, on peut évaluer si elles sont porteuses de sens d'un point de vue empirique ou au moins vis-à-vis de la connaissance experte du système modélisé.
+Les différents auteurs mettent toutefois en avant son intérêt dans l'évaluation de modèle en ce qu'il permet de garantir une meilleure validation externe du modèle puisqu'il aboutit à l'isolation d'étendues optimales de valeurs de paramètres :
+	en menant de nouveaux tests d'évaluation (analyse de sensibilité, \textit{face validation} etc.) \autocite[43]{klugl_validation_2008} sur les valeurs optimales identifiées, on peut évaluer si elles sont porteuses de sens d'un point de vue empirique ou au moins vis-à-vis de la connaissance experte du système modélisé.
 
-\paragraph{Validation statistique}
+\paragraph{Validation statistique.}
 La validation statistique (\og \textit{output validation}\fg{} dans la \cref{fig:schema_ngo}) est sans doute la méthode d'évaluation la plus évidente pour quiconque a été amené à concevoir un modèle. Il s'agit de confronter les données produites par le modèle -- les \textit{outputs} --
 aux données empiriques -- ou observées -- qu'ils cherchent à reproduire.
 Autrement dit, en termes statistiques, à s'assurer de la qualité de l'ajustement -- la \textit{goodness of fit} -- des données simulées.
@@ -177,7 +179,7 @@ Les différents auteurs du champ de l'évaluation recommandent de ne mener cette
 A défaut de suivre cette recommandation, le modélisateur risque d'emmener le modèle vers du \og sur-ajustement \fg{} (\textit{overfitting}), et d'inscrire alors celui-ci dans une forme de tautologie, le modèle étant alors construit précisément pour produire ce qu'il devrait plutôt faire émerger.
 En conservant la validation statistique comme l'une des dernières étapes du cycle d'évaluation, c'est-à-dire en s'empêchant d'essayer de faire coller le modèle aux données qu'il doit reproduire, on s'assure de l'indépendance des mesures de l'ajustement, et on peut donc garantir une certaine objectivité quant à l'évaluation du modèle.
 
-\paragraph{Validations formelles}
+\paragraph{Validations formelles.}
 Absentes des deux figures (\ref{fig:schema_kluegl} et \ref{fig:schema_ngo}), les méthodes de validation formelles sont toutefois porteuses d'un intérêt assez prégnant quand elles sont applicables.
 Ces méthodes visent à résoudre de manière analytique un modèle complexe, c'est-à-dire à mettre en équations les comportements du modèle, leurs effets d'interaction, et à résoudre ces équations pour en proposer les ensembles finis de solutions et/ou d'états.
 Cela requiert d'être en mesure de convertir un modèle exprimé dans un formalisme quelconque en un système d'équations dynamiques, et de parvenir en outre à résoudre l'ensemble de ce système.
@@ -196,25 +198,26 @@ Le processus qui tendrait à formaliser, mathématiquement, des modèles agents 
 	\autocite[Annexe 2, \og Retour sur les SMA comme outil et cadre conceptuel de modélisation.\fg{}, pp. 479-482 ]{ouriachi_lelaboration_2018}
 }.
 Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012}\footnote{
-	\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths.}
-} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling \footnote{
-	On reviendra et on présentera ce modèle de manière détaillée dans le \hl{chapitre 4}.
-	La description du modèle, en particulier, est effectuée dans \hl{lien vers la description} %\cref{desc:schelling}
-.}.
+	\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths. --> je ne trouve pas cette référence.}
+} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling (voir \cref{desc:schelling}).
 En dehors de l'intérêt que cela peut représenter pour la connaissance de ce modèle en particulier, rappelons tout de même que le modèle de Schelling a été énoncé à la fin des années 1960, que c'est un modèle particulièrement parcimonieux, et qu'il a tout de même fallu attendre le tournant des années 2010 afin d'y trouver une solution formelle.
 
-Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels (\cite{cherel_beyond_2015} par exemple) qui visent à l'exploration complète des comportements possible d'un modèle\footnote{C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMOLE \autocite{reuillon_openmole_2013}}.
+\hl{Regarder dans :} \textcite[1590-1591]{epstein2006remarks}
+
+Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels \autocite[par exemple][]{cherel_beyond_2015} qui visent à l'exploration complète des comportements possible d'un modèle\footnote{
+	C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMOLE \autocite{reuillon_openmole_2013}
+}.
 
 \paragraph{Quelle évaluation pour quels modèles ?}\label{par:quelle-eval-quel-modeles}
 
 Les étapes d'évaluation énumérées ci-dessus consistent autant en une approche chronologique -- relative aux phases successives de la construction d'un modèle -- qu'en un gradient de qualité de l'évaluation, souvent considéré en fonction de la difficulté et du coût temporel nécessaire à chacune de ces méthodes
 \footnote{
-	\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}, \cite[42]{klugl_validation_2008}, par exemple.
+	\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid.\fg{}, \textcite[42]{klugl_validation_2008}, par exemple.
 }.
 Il est évident à la lecture des auteurs de références du champ (par exemple ceux référencés en \cref{sec:evaluer-modele}) que pour eux, \og plus\fg{} le modèle est évalué, c'est-à-dire se confronte aux étapes d'évaluation de plus en plus formelles, plus il sera digne de confiance et donc capable d'apporter des connaissance sur les objets qu'il tend à représenter.
 Robert \textsc{Sargent} par exemple différencie les méthodes d'évaluation selon que le système modélisé est observable ou non, c'est-à-dire \og s'il est possible ou non de collecter des données sur le comportement opérationnel de l'entité \fg{}
 \footnote{
-	\og The major attribute affecting operational validity is whether the problem entity (or system) is observable, where observable means it is possible to collect data on the operational behavior of the program entity.\fg{}, \cite[6]{sargent2009verification}.
+	\og The major attribute affecting operational validity is whether the problem entity (or system) is observable, where observable means it is possible to collect data on the operational behavior of the program entity.\fg{}, \textcite[6]{sargent2009verification}.
 }.
 Pour autant, ces auteurs soulignent aussi que selon les choix de modélisation et les caractéristiques du système modélisé, toutes ces étapes ne sont pas nécessairement accessibles ou possibles.
 
@@ -224,7 +227,7 @@ A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}
 
 Pour illustrer l'écart entre ces approches en matière de possibilités de quantification de l'évaluation, prenons l'exemple d'une analyse de sensibilité :
 	cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
-Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (on y reviendra dans le \hl{chapitre 4}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
+Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (cf. \cref{desc:schelling}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
 Dans le cas d'un modèle doté d'une dizaine de paramètres, et avec le même type d'analyse basique, le nombre de simulations nécessaire dépasserait déjà le milliard\ldots
 
 Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou une calibration fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
@@ -241,7 +244,7 @@ Avant d'aller plus avant dans la justification de l'utilité des méthodes de \t
 Le terme semble avoir émergé dans les années 1940, en particulier dans le champ scientifique de la psychologie et des études pédagogiques \autocite{nevo_face_1985}.
 Concept discuté et disputé dans ces domaines \autocite{mosier_critical_1947}, on y attribue un besoin pour les modèles, statistiques dans ce cas, de présenter à la fois une validité à l'épreuve des données, mais aussi de présenter une apparence de validité, c'est-à-dire de sembler plausibles
 \footnote{
-	\og In this usage, the term ''face validity'' implies that a test which is to be used in a practical situation should, in addition to having pragmatic or statistical validity, appear practical, pertinent and related to the purpose of the test as well; i.e., it should not only be valid but it should also appear valid. This usage of the term assumes that \og face validity\fg{} is not validity in any usual sense of the word but merely an additional attribute of the test which is highly desirable in certain situations.\fg{} \cite[192]{mosier_critical_1947}
+	\og In this usage, the term ''face validity'' implies that a test which is to be used in a practical situation should, in addition to having pragmatic or statistical validity, appear practical, pertinent and related to the purpose of the test as well; i.e., it should not only be valid but it should also appear valid. This usage of the term assumes that \og face validity\fg{} is not validity in any usual sense of the word but merely an additional attribute of the test which is highly desirable in certain situations.\fg{} \textcite[192]{mosier_critical_1947}
 }.
 
 Pour illustrer ce besoin de \og plausibilité\fg{}, on peut prendre l'exemple des problèmes de corrélations fallacieuses (ou \og \textit{spurious correlations}\fg{}) et autres exemple de la non-équivalence de causalité et corrélation.
@@ -273,46 +276,46 @@ Cet exemple, trivial, illustre le besoin d'une évaluation basée sur la plausib
 L'utilisation très polysémique -- et donc contradictoire -- de \og \textit{face validity}\fg{}, et les importants débats autour de l'usage de ce terme ayant poussé à sa désuétude
 \footnote{
 	\cite[205]{mosier_critical_1947} recommande même son abandon : \og Since the term ''face validity'' has become overlaid with a high degree of emotional content and since its referents are not only highly ambiguous but lead to widely divergent conclusions, it is recommended that the term be abandoned.\fg{}
-}, on le retrouve pourtant au cœur de l'un des articles fondateurs de l'évaluation de modèles de simulation, où Charles H\textsc{ermann} le définit ainsi :
+}, on le retrouve pourtant au cœur de l'un des articles fondateurs de l'évaluation de modèles de simulation, où \citeauthor{hermann_validation_1967} le définit ainsi :
 
 \begin{quotation}
-	\og Face validity is a surface or initial impression of a simulation or game's realism.
+	\noindent \og Face validity is a surface or initial impression of a simulation or game's realism.
 	Probably no approach to model validity is reported more frequently than the subjective estimates of experimenters, observers, or human participants as to the correspondence between the model's operation and their perception of the actual phenomena which the game or simulation represent.
 	[...]\\
 	Face validity can be a significant part of a validity strategy. A quick impression that "things don't seem right" may be the only validity check possible during the actual operation of a game or simulation. Such validity judgments and their evaluation may also be part of the learning experience provided by operating models designed for instructional purposes.\fg{}\\
-	\mbox{}~ \hfill \cite[221]{hermann_validation_1967}
+	\mbox{}~ \hfill \textcite[221]{hermann_validation_1967}
 \end{quotation}
 
 Quelques années plus tard, on en trouve une définition plus succinte chez un des fondateurs de l'évaluation de modèles : \og Face validity is asking people knowledgeable about the system whether the model is reasonable.\fg{} \autocite[500]{sargent_validation_1979}.
 Cette définition introduit un aspect qui nous semble important en matière de \textit{face validation} : il ne s'agit pas de faire évaluer la plausibilité d'un modèle par un quelconque examinateur, mais bel et bien par un expert du sujet modélisé.
 Ce type d'évaluation n'a donc pas uniquement vocation a démasquer des comportements contre-intuitifs, mais bel et bien à faire expertiser, par un thématicien, le déroulement et l'aboutissement d'un modèle de simulation.
 
-Il a fallu attendre la relative démocratisation des plate-formes de modélisation à base d'agents pour qu'une auteur, Franziska K\textsc{lügl}, se penche véritablement sur l'identification et l'explicitation de la \textit{face validity}, et en donne une définition plus précise, mais englobante car centrée sur les usages plus que sur la méthode en elle-même :
+Il a fallu attendre la relative démocratisation des plate-formes de modélisation à base d'agents pour qu'une auteure, \citeauthor{klugl_validation_2008}, se penche véritablement sur l'identification et l'explicitation de la \textit{face validity}, et en donne une définition plus précise, mais englobante car centrée sur les usages plus que sur la méthode en elle-même :
 
 \begin{quotation}
-	\og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.
+	\noindent \og Face validity can be seen as the result of face validation. Under this paradigm I want to subsume all methods that rely on natural human intelligence. Examples are structured walk-through, expert assessments of descriptions, animations or results. Thus, face validity shows that processes and outcomes are reasonable and plausible within the frame of theoretic basis and implicit knowledge of system experts or stake-holder. Face validation may be applied from the early phases of the simulation study under the umbrella of conceptual validations. It is often also called plausibility checking.
 	[...]\\
 	Face validation usually plays an important role during
 	model design. All tests based on reviews, audits, involv-
 	ing presentation and justification of assumptions and model
 	structure are used for reaching this form of plausibility.
 	\fg{}\\
-	\mbox{}~ \hfill \cite[39;41]{klugl_validation_2008}
+	\mbox{}~ \hfill \textcite[39--41]{klugl_validation_2008}
 \end{quotation}
 
 
-La description des méthodes possibles menant à cette évaluation n'est pas en reste non plus dans cet article, puisque l'auteur identifie trois familles de cette \textit{face validation}, chacune pouvant être menée par des experts différents \footnote{L'énumération qui suit est une traduction libre et une reformulation partielle de \cite[41-42]{klugl_validation_2008}} :
+La description des méthodes possibles menant à cette évaluation n'est pas en reste non plus dans cet article, puisque l'auteur identifie trois familles de cette \textit{face validation}, chacune pouvant être menée par des experts différents \footnote{L'énumération qui suit est une traduction libre et une reformulation partielle de \textcite[41-42]{klugl_validation_2008}} :
 
-\paragraph{Composantes de la \textit{face validation}}\label{par:composantes-face-validation}
+\paragraph{Composantes de la \textit{face validation}.}\label{par:composantes-face-validation}
 \begin{itemize}
-	\item \textbf{Évaluation du déroulement} Évaluation du déroulement d'une simulation dans son ensemble.
+	\item \textbf{Évaluation du déroulement.} Évaluation du déroulement d'une simulation dans son ensemble.
 	Il s'agit ici de juger de la plausibilité des dynamiques (à l'échelle du système dans son ensemble, ou de composantes de celui-ci) reproduites dans la simulation, via une observation en direct de la simulation.
 	
-	\item \textbf{Évaluation des sorties} Cette approche consiste plutôt à une évaluation qualitative des sorties produites par la simulation.
+	\item \textbf{Évaluation des sorties.} Cette approche consiste plutôt à une évaluation qualitative des sorties produites par la simulation.
 	Cela peut prendre la forme de vérification des valeurs (approche que l'on retrouve dans les méthodes d'évaluation plus formelles, via une automatisation de ces types d'évaluation) par un expert, mais aussi d'analyse des co-variations et évolutions temporelles de différents indicateurs de sortie.
 	L'évaluation des sorties peut être appliquée sur le système modélisé dans son ensemble, mais aussi au niveau des types d'agents mobilisés.
 	
-	\item \textbf{Évaluation \og immersive\fg{}} Il s'agit ici d'évaluer le modèle au travers de la vraisemblance des actions et réactions individuelles des agents qui y interagissent. L'accent est donc mis sur la plausibilité du comportement des agents (niveau micro), plus que sur celle des dynamiques macroscopiques résultantes.
+	\item \textbf{Évaluation \og immersive\fg{}.} Il s'agit ici d'évaluer le modèle au travers de la vraisemblance des actions et réactions individuelles des agents qui y interagissent. L'accent est donc mis sur la plausibilité du comportement des agents (niveau micro), plus que sur celle des dynamiques macroscopiques résultantes.
 	Les experts de ces deux niveau d'observation peuvent être différents (un psychologue spécialiste des réactions individuelles en cas d'incident ne peut porter un jugement de même niveau qu'un physicien spécialisé dans les dynamiques de foules par exemple), et il faut donc, à chaque niveau d'observation du modèle, faire intervenir un expert adéquat.
 \end{itemize}
 
@@ -333,24 +336,24 @@ Notons cependant que même quand elle n'a pas de sens thématique, cette méthod
 
 Comme mentionné auparavant (\ref{par:quelle-eval-quel-modeles}), pour de nombreux auteurs \autocite{hermann_validation_1967, balci_validation_1994, kennedy_verification_2006}, la \textit{face validation} ne peut qu'être une étape préalable à des méthodes d'évaluation plus quantitatives et formelles.
 Les raisons donnés sont souvent le manque d'objectivité d'une démarche fondamentalement basée sur l'expertise et l'impression.
-Parmi ces auteurs, Charles H\textsc{ermann} est sans doute celui qui se montre le plus méfiant vis-à-vis de la pratique de la \textit{face validation}, en en pointant plusieurs limites :
+Parmi ces auteurs, \citeauthor{hermann_validation_1967} est sans doute celui qui se montre le plus méfiant vis-à-vis de la pratique de la \textit{face validation}, en en pointant plusieurs limites :
 
 \begin{quotation}
-	\og Although face validity has value in the early stages of model building or for quick checks during actual operation, its severe limitations should be recognized. Sometimes the experimenter will not know what behaviors are "realistic" because of his limited experience observing the actual phenomena. Participants can become interested and highly motivated in an incorrect representation of the desired environment. If the simulation involves the substitution of one property for another, some features may appear quite unreal and yet replicate the performance of the reference system for which the simulation was designed. The acceptance of face validity as a rough, first approximation might be improved if the simulator explicitly stated in advance what observations would constitute indications that an aspect of the observable universe had been successfully captured. In summary, face validity in its usual form suffers from the lack of explicit validity criteria.\fg{}\\
-	\mbox{}~ \hfill \cite[222]{hermann_validation_1967}
+	\noindent \og Although face validity has value in the early stages of model building or for quick checks during actual operation, its severe limitations should be recognized. Sometimes the experimenter will not know what behaviors are "realistic" because of his limited experience observing the actual phenomena. Participants can become interested and highly motivated in an incorrect representation of the desired environment. If the simulation involves the substitution of one property for another, some features may appear quite unreal and yet replicate the performance of the reference system for which the simulation was designed. The acceptance of face validity as a rough, first approximation might be improved if the simulator explicitly stated in advance what observations would constitute indications that an aspect of the observable universe had been successfully captured. In summary, face validity in its usual form suffers from the lack of explicit validity criteria.\fg{}\\
+	\mbox{}~ \hfill \textcite[222]{hermann_validation_1967}
 \end{quotation}
 
 Ces réserves nous semblent être autant de pistes pour justifier de l'interêt d'une démarche scientifique de \textit{face validation}. En reprenant les critiques dans l'ordre énoncé par l'auteur, on peut y répondre ainsi :
 \begin{itemize}
-	\item \textbf{Manque de connaissance experte}
+	\item \textbf{Manque de connaissance experte.}
 	Cette première remarque nous apparaît comme quelque peu biaisée : si l'on confie une évaluation experte à des non experts, naturellement, cela ne peut déboucher sur une évaluation correcte du modèle.
 	Cela est d'ailleurs applicable quelque soit la méthode d'évaluation : une expertise ne vaut que par la qualité de l'expert.
 	De manière plus nuancée, on notera d'ailleurs que cette phrase montre ici l'absence d'un élément de définition de la \textit{face validation} partagé par les autres auteurs :
-	H\textsc{ermann} considère par là que c'est au modélisateur uniquement de mener cette phase d'évaluation, alors que la littérature s'entend quant au fait que ce rôle échoit à des experts.
-	Ce faisant, H\textsc{ermann} se positionne dans la logique de construction de modèles par des modélisateurs, sans apport des thématiciens, et donc dans l'approche classique de séparation forte entre ces deux acteurs indispensables du modèle (voir \hl{chapitre 1, prestation vs co-construction}).
+	\citeauthor{hermann_validation_1967} considère par là que c'est au modélisateur uniquement de mener cette phase d'évaluation, alors que la littérature s'entend quant au fait que ce rôle échoit à des experts.
+	Ce faisant, \citeauthor{hermann_validation_1967} se positionne dans la logique de construction de modèles par des modélisateurs, sans apport des thématiciens, et donc dans l'approche classique de séparation forte entre ces deux acteurs indispensables du modèle (voir \hl{chapitre 1, prestation vs co-construction}).
 	
-	\item \textbf{Invraisemblance de certains comportements}
-	H\textsc{ermann} met en avant que dans un modèle, tous les mécanismes n'ont pas vocation à être vraisemblables.
+	\item \textbf{Invraisemblance de certains comportements.}
+	\citeauthor{hermann_validation_1967} met en avant que dans un modèle, tous les mécanismes n'ont pas vocation à être vraisemblables.
 	Ainsi, en mentionnant ces \og propriétés de substitutions\fg{}, il rappelle un élément important d'une évaluation, quelle qu'en soit la méthode :
 	on ne doit et ne peut juger de la plausibilité que des aspects du modèle qui cherchent à reproduire un comportement plausible.
 	Il nous semble qu'ici aussi, la critique de l'auteur revient à ignorer l'importance du dialogue entre modélisateur et évaluateur, tout en assumant cette fois que l'évaluateur ne serait pas le modélisateur :
@@ -358,10 +361,10 @@ Ces réserves nous semblent être autant de pistes pour justifier de l'interêt 
 	A contrario, un expert thématicien pourrait être étonné par certains comportements micro, dans la mesure où il ne connaîtrait pas les correspondances entre éléments du modèle et éléments du système modélisé.
 	Là encore, cette limite repose donc surtout sur le choix d'un mode de construction isolé, c'est-à-dire n'impliquant pas et le thématicien et le modélisateur.
 	
-	\item \textbf{Explicitation préalable des objectifs}
+	\item \textbf{Explicitation préalable des objectifs.}
 	La dernière remarque de cette citation nous semble, sans conteste, être la plus importante et la plus juste.
 	L'auteur note ainsi que la \textit{face validation} ne peut constituer une méthode d'évaluation adaptée si l'on ne spécifie pas, en amont, les critères qu'elle doit s'attacher à examiner.
-	C'est là encore vrai de toutes les méthodes d'évaluation, mais nous souscrivons aux remarques de H\textsc{ermann} quant à l'importance primordiale que cela revêt pour la \textit{face validation}.
+	C'est là encore vrai de toutes les méthodes d'évaluation, mais nous souscrivons aux remarques de \citeauthor{hermann_validation_1967} quant à l'importance primordiale que cela revêt pour la \textit{face validation}.
 	En matière de plausibilité, on pourrait ainsi, comme cela nous semble souvent être le cas, se contenter d'évaluer \og à chaud\fg{} les différentes dynamiques et sorties d'un modèle, sans s'encombrer d'une démarche, ou feuille de route, spécifique.
 	Le risque est alors d'introduire encore plus de subjectivité dans cette analyse, et en particulier de briser la capacité de reproductibilité ou de justification d'une évaluation :
 	une évaluation peut être subjective tout en étant justifiée, appuyée par des arguments, et dès lors, reproductible si tant est que chacun de ces éléments soit explicités.
@@ -379,10 +382,10 @@ En dépit des limites identifiées ci-dessus, qui nous semblent surpassables à 
 Là où H\textsc{ermann} et les auteurs classiques cantonnent la \textit{face validation} à une étape préalable à une véritable évaluation, K\textsc{lügl} justifie l'intérêt propre de cette démarche méthodologique, y compris dans les phases plus avancées de la démarche classique d'évaluation :
 
 \begin{quotation}
-	\og One may argue why face validity is need, when statistical validation is successfully done? Face validation assures that the processes and structures are reasonable for a human expert. Especially, when there is (semi-)automatic calibration of a simulation that is used in combination with statistical validation, a careful check of plausibly is necessary. This is in general true for all kinds of simulation, but it is particularly important for agent-based simulations.[...]\\
+	\noindent \og One may argue why face validity is need, when statistical validation is successfully done? Face validation assures that the processes and structures are reasonable for a human expert. Especially, when there is (semi-)automatic calibration of a simulation that is used in combination with statistical validation, a careful check of plausibly is necessary. This is in general true for all kinds of simulation, but it is particularly important for agent-based simulations.[...]
 	
-	Although face validation may be informal and inconsistent, but it at least results in plausibility of modeled processes. Our experience with modeling and simulation in many interdisciplinary projects showed that even the formulation of a plausible model supports theory building and future empirical research.\fg{}\\
-	\mbox{}~ \hfill \cite[40;43]{klugl_validation_2008}
+	\noindent Although face validation may be informal and inconsistent, but it at least results in plausibility of modeled processes. Our experience with modeling and simulation in many interdisciplinary projects showed that even the formulation of a plausible model supports theory building and future empirical research.\fg{}\\
+	\mbox{}~ \hfill \textcite[40;43]{klugl_validation_2008}
 \end{quotation}
 
 
@@ -397,7 +400,7 @@ On notera d'ailleurs que chez B\textsc{alci}, dans une analyse de l'applicabilit
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{img/VVetT_Balci.pdf}
 	\caption{Part des étapes de la cycle de vie d'un modèle pour lesquelles différentes méthodes de \og VV\&T\fg{} peuvent être mobilisées, selon le type de méthode (intitulés d'origine).
-	D'après \cite[Table 3, pp. 45-47]{balci1998verification} (taux de couverture) et \cite[Figure 2, p. 139]{balci_verification_1997} (taxonomie des méthodes).}
+	D'après \textcite[Table 3, pp. 45-47]{balci1998verification}  -- taux de couverture --  et \textcite[Figure 2, p. 139]{balci_verification_1997}  -- taxonomie des méthodes --.}
 	\label{fig:taxonomy_balci}
 \end{figure}
 
@@ -412,8 +415,8 @@ Nous considérons que dotée d'un protocole d'évaluation rigoureux, cette méth
 Ces dernières sont souvent basées sur l'analyse de l'écart entre des données empiriques et des données simulées, et cherchent à quantifier et à minimiser cet écart.
 La \textit{face validation} procède à la même démarche comparative :
 \begin{quotation}
-		\og Face validation is a validation method that compares simuland behavior to model results. [...] Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as reflected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
-	\mbox{}~ \hfill \cite[341]{petty2010verification}
+		\noindent \og Face validation is a validation method that compares simuland behavior to model results. [...] Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as reflected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
+	\mbox{}~ \hfill \textcite[341]{petty2010verification}
 \end{quotation}
 Nous postulons que la démarche comparative que l'on retrouve dans l'évaluation statistique peut donc être appliquée sans recherche de quantification, c'est-à-dire en évaluant ces mêmes écarts de manière subjective et qualitative.
 Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que SimFeodal (\hl{REF chap 2}), la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
@@ -423,23 +426,25 @@ De plus, les données empiriques qui permettraient de mener une comparaison sont
 Ainsi, dès lors que le processus d'évaluation est pensé en amont de son application, et qu'il est possible de parvenir à la création d'une grille d'analyse, c'est-à-dire à un protocole d'évaluation, il nous semble que la différence avec l'évaluation statistique est assez restreinte.
 Pour évaluer les modèles du type de SimFeodal, nous considérons dès lors qu'il est tout à fait possible de faire reposer cette démarche sur une évaluation experte, s'inscrivant dans les logiques de \textit{face validation}, et en particulier de sa composante d'évaluation des sorties (voir \cnameref{par:composantes-face-validation}, \cpageref{par:composantes-face-validation}).
 
-\subsubsection{Un nouveau terme ?} Dans la suite de cet ouvrage, nous nommerons cette approche \og \textbf{évaluation visuelle}\fg{}. Ce terme n'est, à notre connaissance, que peu employé\footnote{
-	Voir par exemple le nombre d'occurrences dans Google Scholar, Isidore ou encore (\href{https://books.google.com/ngrams/graph?content=visual+validity\%2Cface+validity\%2Cface+validation\%2Cvisual+validation\%2Cvisual+evaluation\&case_insensitive=on\&year_start=1950\&year_end=2008\&corpus=15\&smoothing=2\&share=\&direct_url=t1\%3B\%2Cvisual\%20validity\%3B\%2Cc0\%3B.t4\%3B\%2Cface\%20validity\%3B\%2Cc0\%3B\%2Cs0\%3B\%3Bface\%20validity\%3B\%2Cc0\%3B\%3BFace\%20validity\%3B\%2Cc0\%3B\%3BFace\%20Validity\%3B\%2Cc0\%3B.t4\%3B\%2Cface\%20validation\%3B\%2Cc0\%3B\%2Cs0\%3B\%3Bface\%20validation\%3B\%2Cc0\%3B\%3BFace\%20validation\%3B\%2Cc0\%3B.t1\%3B\%2Cvisual\%20validation\%3B\%2Cc0\%3B.t4\%3B\%2Cvisual\%20evaluation\%3B\%2Cc0\%3B\%2Cs0\%3B\%3Bvisual\%20evaluation\%3B\%2Cc0\%3B\%3BVisual\%20evaluation\%3B\%2Cc0\%3B\%3BVisual\%20Evaluation\%3B\%2Cc0\%3B\%3BVISUAL\%20EVALUATION\%3B\%2Cc0}{Google Ngram Viewer} par exemple). \hl{Est-ce vraiment utile ?}
-}, et le semble surtout en études environnementales, par exemple pour définir une méthode de comptage d'espèces animales et végétales (\cite{harmelin-vivien_evaluation_1985} par exemple).
-Le pendant anglophone, la \og \textit{visual evaluation}\fg{}, semble s'inscrire dans le même champ disciplinaire (\cite{horst_assessment_1984} par exemple), et paraît aussi assez faiblement utilisée dans un usage scientifique.
-Dans l'usage qui en sera fait dans ce manuscrit, ce terme est forgé au regard de la \og \textit{face validation}\fg{} naturellement, et pourrait être confondu avec. Il s'agit toutefois de s'éloigner de l'aspect \og apparence\fg{} présent dans le terme -- qui insiste donc sur une validité de façade --, pour embrasser au contraire la méthode visuelle.
+\subsubsection{Un nouveau terme ?} Dans la suite de cet ouvrage, nous nommerons cette approche \og \textbf{évaluation visuelle}\fg{}.
+Ce terme n'est, à notre connaissance, que peu employé, et le semble surtout en études environnementales, par exemple pour définir une méthode de comptage d'espèces animales et végétales \autocite[par exemple][]{harmelin-vivien_evaluation_1985}.
+Le pendant anglophone, la \og \textit{visual evaluation}\fg{}, semble s'inscrire dans le même champ disciplinaire \autocite[par exemple][]{horst_assessment_1984}, et paraît aussi assez faiblement utilisée dans un usage scientifique.
+Dans l'usage qui en sera fait dans ce manuscrit, ce terme est forgé au regard de la \og \textit{face validation}\fg{} naturellement, et pourrait être confondu avec.
+Il s'agit toutefois de s'éloigner de l'aspect \og apparence\fg{} présent dans le terme -- qui insiste donc sur une validité de façade --, pour embrasser au contraire la méthode visuelle.
 Cette dernière a fait ses preuves -- dans de nombreux autres champs disciplinaires -- et constitue un pan non négligeable des méthodes d'analyse, et nous pensons donc adéquat d'en faire un usage argumenté dans le domaine de l'évaluation de modèles de simulations.
-On notera un usage proche de cette dernière, appliquée aux modèles aussi, mais statistiques cette fois-ci, visant à l'évaluation visuelle de modèles de \og \textit{Data Science}\fg{}. Les auteurs \autocite{eilers_its_2017} partagent le constat d'une utilité réelle de l'évaluation visuelle (intitulée \og Visual Model Evaluation\fg{} dans leur cas), et mettent une emphase particulière l'intérêt des intuitions que peuvent avoir les experts thématiques à la vue des résultats d'un modèle (p.2). Pour ce faire, ils insistent sur l'intégration d'experts dans le processus d'évaluation, et sur le besoin de communications, lors de cette phase de travail, entre les modélisateurs et ces experts\footnote{
-\og Integrating these expert groups [data scientists and domain experts] to follow a common objective is still a major challenge today for a successful data science project in the industry and therefore a suitable field for information systems research.
-A collaborative analysis system addressing this issue should therefore focus on both aspects. It is important to most efficiently support human decision-makers with data-driven expert systems, and much research has been carried out in this area (Shim et al. 2002; Power 2008).
-But it is equally important that domain experts are also part of the system itself, e.g. by supporting data scientists with their domain knowledge when constructing the underlying models.
-A key success factor for this purpose is communication between different groups.\fg{} \autocite[2]{eilers_its_2017}
+On notera un usage proche de cette dernière, appliquée aux modèles aussi, mais statistiques cette fois-ci, visant à l'évaluation visuelle de modèles de \og \textit{Data Science}\fg{}.
+\textcite{eilers_its_2017} partagent le constat d'une utilité réelle de l'évaluation visuelle (intitulée \og Visual Model Evaluation\fg{} dans leur cas), et mettent une emphase particulière dans l'intérêt des intuitions que peuvent avoir les experts thématiques à la vue des résultats d'un modèle.
+Pour ce faire, ils insistent sur l'intégration d'experts dans le processus d'évaluation, et sur le besoin de communications, lors de cette phase de travail, entre les modélisateurs et ces experts\footnote{
+	\og Integrating these expert groups [data scientists and domain experts] to follow a common objective is still a major challenge today for a successful data science project in the industry and therefore a suitable field for information systems research.
+	A collaborative analysis system addressing this issue should therefore focus on both aspects. It is important to most efficiently support human decision-makers with data-driven expert systems, and much research has been carried out in this area (Shim et al. 2002; Power 2008).
+	But it is equally important that domain experts are also part of the system itself, e.g. by supporting data scientists with their domain knowledge when constructing the underlying models.
+	A key success factor for this purpose is communication between different groups.\fg{} \autocite[2]{eilers_its_2017}
 }.
 
 
 \subsubsection{Définir l'évaluation visuelle} Pour définir cette évaluation visuelle, nous repartirons de la définition de la \textit{face validation} sur laquelle cette méthode s'appuie.
 
-\paragraph{Définition} Il s'agit donc d'évaluer, visuellement, la plausibilité du comportement d'un modèle à partir des données qu'il produit.
+\paragraph{Définition.} Il s'agit d'évaluer, visuellement, la plausibilité du comportement d'un modèle à partir des données qu'il produit.
 Cette plausibilité peut être entendue comme la correspondance entre le système modélisé et le modèle du système, correspondance s'exprimant en comparant les données en sortie de simulation -- et en les agrégeant au besoin pour tenir compte de la nécessaire réplication
 \footnote{
 	Cet aspect est discuté dans les chapitres \hl{1, 2 et 7}.
@@ -461,10 +466,10 @@ Il s'agit en effet plutôt d'ordonner différentes versions ou paramétrages d'u
 
 \section[Des indicateurs pour SimFeodal]{Des indicateurs pour évaluer le modèle SimFeodal}
 
-Le modèle SimFeodal présenté dans le chapitre 2 correspond à une \og version 0 \fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
-	L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
-	De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{paragraphe XX}.
-	Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
+Le modèle SimFeodal présenté dans le \hl{chapitre 2} correspond à une \og version 0 \fg{} du modèle souhaité, c'est-à-dire qu'il en constitue une première pré-version.
+L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
+De ce fait les résultats des simulations ne répondent pas nécessairement aux attentes définies au \hl{paragraphe XX}.
+Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
 Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
 Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes relativement à l'ensemble des résultats obtenus en fin de simulation.
 La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de SimFeodal.
@@ -500,17 +505,15 @@ Les dimensions (A à C) regroupent des indices (et les indicateurs qui leur corr
 \end{figure}
 
 
-\subsubsection{Les indices empiriques}
+\subsubsection{Les indices empiriques.}
 
 Afin d’évaluer la capacité du modèle à reproduire un phénomène observé, il est nécessaire de disposer dans le domaine empirique, de \og points de repère\fg{}.
 Selon les modèles, ceux-ci peuvent revêtir de multiples formes et relever de l'ensemble des échelles spatiales et temporelles que l'on choisit de mettre en scène dans le modèle.
 Leur point commun est qu'ils doivent pouvoir être mesurés, au sens le plus large, c'est-à-dire être en capacité d'être reproduits et comparables avec d'autres mesures.
-Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits\footnote{
-	\hl{Lena : pas compris la note}
-} et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}.
+Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}.
 La \cref{fig:schema_indices} illustre cette catégorisation entre la première catégorie -- les ordres de grandeur -- et la seconde -- les formes stylisées --.
 
-\paragraph{Ordres de grandeur}
+\paragraph{Ordres de grandeur.}
 La première catégorie est constituée d'\textbf{ordres de grandeurs} empiriques estimés -- avec une précision plus ou moins importante (\hl{cf. tableau 3 p. 317 du chap. TMD, à reproduire dans chap 2}).
 Certaines valeurs empiriques sont ainsi connues, que ce soit d'après des sources primaires ou secondaires, et peuvent ainsi constituer des indices.
 Par exemple, on connaît avec quasi-certitude le nombre d'églises paroissiales de la région Touraine en 1100.
@@ -521,7 +524,7 @@ Il est cependant possible de construire des indicateurs de sortie de simulation 
 Il est dès lors possible de mener une comparaison entre données observées/estimées et données simulées.
 Ces ordres de grandeur peuvent ainsi participer à l'évaluation du comportement du modèle simulé.
 
-\paragraph{Faits et formes stylisés}
+\paragraph{Faits et formes stylisés.}
 La seconde catégorie d'indice empirique est moins précise et ne repose pas sur une valeur observable ou estimable, mais plutôt sur la connaissance experte d'un phénomène.
 Il s'agit des \og \textbf{faits stylisés}\fg{}\footnotemark{}, rendant davantage compte d'une tendance dans la forme d'une relation ou d'une organisation que les indicateurs.
 On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand on qualifie la tendance des systèmes de peuplement à se hiérarchiser.
@@ -554,12 +557,12 @@ Les ordres de grandeur et formes stylisées évoqués relèvent du domaine empir
 Afin de pouvoir les mobiliser pour évaluer la capacité du modèle à reproduire le phénomène d'intérêt, il est nécessaire de définir des \textbf{indicateurs de sortie} dans le modèle de simulation, c'est-à-dire des variables informatiques que l'on enregistrera durant l'exécution du modèle et que l'on pourra ensuite comparer aux indices empiriques définis.
 
 
-\paragraph{Définition}
+\paragraph{Définition.}
 Comme pour les indices empiriques qui sont leurs équivalents dans le domaine empirique, on peut définir les indicateurs de sortie de simulation, en distinguant des formes numériques simples (des scalaires), et des indicateurs plus complexes, multidimensionnels.
 Ces derniers sont en effet nécessaire pour pouvoir confronter les sorties du modèle de simulation avec les formes stylisées identifiées dans le domaine empirique.
 Chaque indice empirique doit ainsi se voir correspondre, respectivement, un indicateur de sortie (\cref{fig:schema_indices}).
 
-\paragraph{Correspondance entre indicateurs de sortie de simulation et indices empiriques}\label{par:correspondance}
+\paragraph{Correspondance entre indicateurs de sortie de simulation et indices empiriques.}\label{par:correspondance}
 
 La correspondance entre indicateurs et indices ne correspond pas toujours à une équivalence exacte.
 En effet, si certains indicateurs peuvent trouver un équivalent strict dans le domaine empirique-- le nombre de châteaux connus à chaque date a un sens strictement équivalent au nombre de châteaux simulés par le modèle --, d'autres correspondances sont moins directes.
@@ -584,7 +587,7 @@ les châteaux, entités d’intérêt dans le modèle, ont un équivalent direct
 
 La création d'indicateurs de sortie correspondant aux indices empirique permet donc de quantifier une information qui n'est pas forcément aisément quantifiable dans le domaine empirique.
 
-\paragraph{Indicateur composite}
+\paragraph{Indicateur composite.}
 
 \hlcyan{La forme numérique\footnote{
 \hlcyan{Lena :\\%
@@ -600,7 +603,7 @@ Ces indicateurs composites sont très fréquemment utilisés en statistiques, pe
 L'Indice de Développement Humain (IDH), par exemple, est un indicateur composite dépendant de l'espérance de vie à la naissance, du niveau d'éducation et du niveau de revenu de chacun des pays caractérisés.
 On le trouve très souvent utilisé, parce qu'il permet de résumer le niveau de développement d'un pays en agrégeant trois dimensions majeures, l'aspect sanitaire, culturel et économique.
 
-\paragraph{Indicateur synthétique}
+\paragraph{Indicateur synthétique.}
 
 En renforçant cette logique de synthèse de plusieurs dimensions, on peut aller plus loin dans la définition d'un unique indicateur, synthétique, permettant d'évaluer la qualité de représentation d'un modèle.
 Là aussi, c'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (\hl{ref. à chap 2 là ou ce sera abordé}).
@@ -1265,7 +1268,8 @@ Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que de
 
 \subsubsection{Illustration : le modèle gravitaire.\label{desc:gravitaire}}
 
-\paragraph{Description}	Ce modèle statistique\footnote{Pour une description plus complète, se référer à l'ouvrage de Pumain et Saint-Julien \autocite{pumain_les_2001}.}, dans la formulation qu'en a faite Stewart \autocite{stewart_demographic_1948}, vise à prédire des flux (démographiques, marchands etc.) potentiels entre des lieux à partir d'une analogie avec la loi physique de la gravitation. Dans le formalisme le plus simple, \og sans contrainte\fg{} \autocite{pumain_les_2001}, on peut l'exprimer ainsi :
+\paragraph{Description.}
+Ce modèle statistique\footnote{Pour une description plus complète, se référer à l'ouvrage de Pumain et Saint-Julien \autocite{pumain_les_2001}.}, dans la formulation qu'en a faite Stewart \autocite{stewart_demographic_1948}, vise à prédire des flux (démographiques, marchands etc.) potentiels entre des lieux à partir d'une analogie avec la loi physique de la gravitation. Dans le formalisme le plus simple, \og sans contrainte\fg{} \autocite{pumain_les_2001}, on peut l'exprimer ainsi :
 $$
 F_{ij} = \frac{k \times M_{i} \times M_{j}}{d_{ij}{}^\alpha}
 $$
@@ -1273,10 +1277,12 @@ Ce modèle présente trois valeurs empiriques ($M_i$, $M_j$ et $d_{ij}$) et deux
 
 À partir des valeurs empiriques $M_i$ et $M_j$ qui caractérisent les masses (populations, ou stocks de  marchandise par exemple) des lieux $i$ et $j$, et de la distance qui les sépare $d_{ij}$, on peut ainsi prédire $F_{ij}$, le flux entre ces lieux.
 
-\paragraph{Objectif} Afin que ce modèle donne des ordres de grandeur réalistes quand aux quantités échangées, il faut le paramétrer en définissant une valeur de $k$, permettant dès lors d'obtenir un rapport entre les masses d'origine et les quantités échangées.
+\paragraph{Objectif.}
+Afin que ce modèle donne des ordres de grandeur réalistes quand aux quantités échangées, il faut le paramétrer en définissant une valeur de $k$, permettant dès lors d'obtenir un rapport entre les masses d'origine et les quantités échangées.
 La valeur de ce paramètre est conditionnée par celle de $\alpha$, que l'on nomme fréquemment \og frein de la distance\fg{}, en ce qu'il permet de quantifier l'impact qu'aura un éloignement plus ou moins important sur la quantité de flux échangés.
 
-\paragraph{Paramétrage} Pour \og ajuster\fg{}\footnote{C'est le terme employé par \autocite{pumain_les_2001}, que l'on peut ici retenir comme équivalent de paramétrer. François Durand-Dastès  \autocite[298]{durand1995modeles} utilise pour sa part le terme de calibration à propos du même modèle.} le modèle, il faut donc en réaliser le paramétrage en s'appuyant sur les éléments connus de l'équation (les valeurs empiriques).
+\paragraph{Paramétrage.}
+Pour \og ajuster\fg{}\footnote{C'est le terme employé par \autocite{pumain_les_2001}, que l'on peut ici retenir comme équivalent de paramétrer. François Durand-Dastès  \autocite[298]{durand1995modeles} utilise pour sa part le terme de calibration à propos du même modèle.} le modèle, il faut donc en réaliser le paramétrage en s'appuyant sur les éléments connus de l'équation (les valeurs empiriques).
 $\alpha$ et $k$ étant liés dans l'équation, la valeur de chacun de ces paramètres dépend de celle choisie pour l'autre, et un changement dans l'un des paramètres entraînera la nécessité de modifier l'autre.
 
 Le paramétrage le plus simple consiste à réaliser une régression linéaire sur les logarithmes décimaux des distances et des flux observés, $k$ prenant alors la valeur du logarithme de l'ordonnée à l'origine et $\alpha$ celle du coefficient directeur de la courbe.	
@@ -1285,7 +1291,9 @@ Le modèle est alors calibré (voir \cref{enc:termes-calibration}), mais si l'on
 
 \subsubsection{Illustration : le modèle de ségrégation de Schelling.\label{desc:schelling}}
 
-\paragraph{Description}Le modèle de Schelling\footnote{Une description plus poussée accompagnée d'une description de l'exploration du modèle peut être lue dans \autocite{daude_comparaison_2006}} est un modèle de simulation décrit par Thomas Schelling \autocite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état intégré à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle. Il montre en particulier qu'on peut parvenir à un état ségrégé même quand les comportements individuels sont majoritairement tolérants.
+\paragraph{Description.}
+Le modèle de Schelling\footnote{Une description plus poussée accompagnée d'une description de l'exploration du modèle peut être lue dans \autocite{daude_comparaison_2006}} est un modèle de simulation décrit par Thomas Schelling \autocite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état intégré à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle.
+Il montre en particulier qu'on peut parvenir à un état ségrégé même quand les comportements individuels sont majoritairement tolérants.
 
 L'espace du modèle est défini comme une grille carrée composée de $N$\footnote{Nous reprenons ici la notation $M(N, d, n, S)$ proposée par \autocite[433]{daude_comparaison_2006} en n'explicitant toutefois pas le paramètre $n$ décrivant le type de voisinage (4 ou 8) utilisé.} cellules.
 Au début de la simulation, des agents de deux types, en proportions similaires, sont distribués aléatoirement dans l'espace du modèle. Chaque agent occupe une cellule, et le nombre total de cellules occupées (et donc d'agents) dépend d'un paramètre de densité $d$ qui représente la part (entre $0\%$ et $100\%$) du nombre de cellule qui sera occupé\footnote{Il y a donc $N \times d$ agents, et donc $\frac{N \times d}{2}$ agents de chaque type.}.
@@ -1294,16 +1302,38 @@ Si cette satisfaction est inférieure à un paramètre de tolérance $S$, l'agen
 A terme, Schelling montre que même en considérant des valeurs de $S$ assez élevées, c'est-à-dire un comportement plutôt tolérant, la succession de choix individuels entraîne la mise en place d'une distribution spatiale très ségrégée.
 On considère que le modèle a convergé quand l'ensemble des agents sont satisfaits, ce que ne permettent pas toutes les combinaisons de valeurs de paramètres.
 
-Dans ce modèle, on peut donc dénoter trois paramètres, $N$, $d$ et $S$. Les deux premier sont des paramètres techniques (\cref{enc:types-parametres}), en ce que, purement théoriques, ils ne se réfèrent à aucune quantité empirique, ni ne peuvent être utilisés afin de se référer à un ordre de grandeur connu qui en ferait des paramètres commensurables. $S$ est un paramètre empirique. Bien que le modèle soit théorique, ce paramètre se réfère toutefois à une comportement ayant un sens empirique fort.
+Dans ce modèle, on peut donc dénoter trois paramètres, $N$, $d$ et $S$.
+Les deux premier sont des paramètres techniques (\cref{enc:types-parametres}), en ce que, purement théoriques, ils ne se réfèrent à aucune quantité empirique, ni ne peuvent être utilisés afin de se référer à un ordre de grandeur connu qui en ferait des paramètres commensurables.
+$S$ est un paramètre empirique.
+Bien que le modèle soit théorique, ce paramètre se réfère toutefois à une comportement ayant un sens empirique fort.
 
-\paragraph{Objectif} Le paramétrage de ce modèle consiste à fixer un $N$ constant et à faire varier $d$ et $S$ afin d'en trouver des valeurs permettant la convergence vers une situation stable. Quand $d$ est très faible ($30\%$ dans l'exemple de \autocite{daude_comparaison_2006}), quelles que soient les valeurs de $S$, le modèle converge rapidement : quand l'espace du modèle dispose d'une faible densité d'agents, il est facile pour ceux-là de créer des agrégats homogènes distants d'agrégats de l'autre type d'agents. Quand $d$ est plus important ($\geq66\%$), l'espace disponible étant limité, toutes les valeurs de $S$ ne permettent pas la convergence du modèle. Le paramétrage du modèle aura donc pour objectif de trouver la valeur maximale possible -- pour un $N$ et un $d$ donné -- que peut prendre le paramètre de tolérance $S$ tout en laissant le modèle converger.
+\paragraph{Objectif.}
+Le paramétrage de ce modèle consiste à fixer un $N$ constant et à faire varier $d$ et $S$ afin d'en trouver des valeurs permettant la convergence vers une situation stable.
+Quand $d$ est très faible ($30\%$ dans l'exemple de \autocite{daude_comparaison_2006}), quelles que soient les valeurs de $S$, le modèle converge rapidement :
+	quand l'espace du modèle dispose d'une faible densité d'agents, il est facile pour ceux-là de créer des agrégats homogènes distants d'agrégats de l'autre type d'agents.
+Quand $d$ est plus important ($\geq66\%$), l'espace disponible étant limité, toutes les valeurs de $S$ ne permettent pas la convergence du modèle.
+Le paramétrage du modèle aura donc pour objectif de trouver la valeur maximale possible -- pour un $N$ et un $d$ donné -- que peut prendre le paramètre de tolérance $S$ tout en laissant le modèle converger.
 
-\paragraph{Paramétrage}Contrairement au modèle gravitaire, le modèle de Schelling est stochastique : les agents se déplacent aléatoirement quand non satisfaits. Dès lors, deux exécutions du modèle avec le même jeu de paramètres n’entraîneront pas forcément la même configuration spatiale. Qui plus est, pour certains jeux de paramètres, seules certaines exécutions convergeront. Le paramétrage de ce modèle ressemble donc à celui qui est réalisé pour le modèle SimFeodal. La manière \og traditionnelle\fg{}\footnote{C'est-à-dire manuelle, au contraire de méthodes automatiques plus rigoureuses et récentes.} consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge. Si le modèle converge pour tout $S$, on augmente la valeur de $d$ et on recommence à chercher la valeur maximale possible pour $S$. De part la nature stochastique du modèle, chaque jeu de paramètres doit être simulé plusieurs fois, le nombre de ces réplications dépendant de la part d'aléa dans le comportement du modèle.
+\paragraph{Paramétrage.}
+Contrairement au modèle gravitaire, le modèle de Schelling est stochastique :
+ 	les agents se déplacent aléatoirement quand non satisfaits.
+Dès lors, deux exécutions du modèle avec le même jeu de paramètres n’entraîneront pas forcément la même configuration spatiale.
+Qui plus est, pour certains jeux de paramètres, seules certaines exécutions convergeront.
+Le paramétrage de ce modèle ressemble donc à celui qui est réalisé pour le modèle SimFeodal.
+La manière \og traditionnelle\fg{}\footnote{
+	C'est-à-dire manuelle, au contraire de méthodes automatiques plus rigoureuses et récentes.
+} consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge.
+Si le modèle converge pour tout $S$, on augmente la valeur de $d$ et on recommence à chercher la valeur maximale possible pour $S$.
+De part la nature stochastique du modèle, chaque jeu de paramètres doit être simulé plusieurs fois, le nombre de ces réplications dépendant de la part d'aléa dans le comportement du modèle.
 Un modèle de Schelling calibré, c'est-à-dire dont le paramétrage est achevé,
 donnera pour un $N$ fixé les valeurs maximales de $d$ et de $S$ atteignables.
 
-\paragraph{}A travers ces deux exemples ayant traits à des méthodes différentes, on retrouve deux approches de paramétrage que l'on souhaite ici voire confondues : dans le premier cas, le paramétrage du modèle gravitaire tend à sa calibration, à la recherche d'une solution optimale, c'est-à-dire meilleure que toute autre. Pour un phénomène donné (un jeu de données précis par exemple) et un formalisme donné (l'expression la plus simple du modèle, ici sans contrainte), seule un couple de paramètres $\alpha$ et $k$ permet ainsi d'obtenir des flux modélisés proches des flux observés.
-Dans le cas du modèle de Schelling, il n'y a pas de recherche d'optimum : le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence. Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quel est la valeur maximale de $d$ permettant cette convergence (et réciproquement).
+\paragraph{}A travers ces deux exemples ayant traits à des méthodes différentes, on retrouve deux approches de paramétrage que l'on souhaite ici voire confondues :
+	dans le premier cas, le paramétrage du modèle gravitaire tend à sa calibration, à la recherche d'une solution optimale, c'est-à-dire meilleure que toute autre.
+Pour un phénomène donné (un jeu de données précis par exemple) et un formalisme donné (l'expression la plus simple du modèle, ici sans contrainte), seule un couple de paramètres $\alpha$ et $k$ permet ainsi d'obtenir des flux modélisés proches des flux observés.
+Dans le cas du modèle de Schelling, il n'y a pas de recherche d'optimum :
+	le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence.
+Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quel est la valeur maximale de $d$ permettant cette convergence (et réciproquement).
 
 \subsubsection{Paramétrer un ou des modèles ? \label{sssec:parametrer-un-des-modeles}}
 
@@ -1312,14 +1342,17 @@ Ces auteurs plaident pour une construction modulaire de modèles, chacun des mé
 
 Nous reprendrons de leur discours une vision moins ambitieuse, en considérant (\toChange{ref Rey}{à chercher il en parlait à sa soutenance je crois}) simplement qu'en fait d'un modèle, la modélisation passe par plusieurs modèles, ayant chacun différentes implémentations d'un mécanisme conceptuellement identique et chacun se devant dès lors d'être adapté par un paramétrage dédié.
 
-Pour illustrer ce propos, on peut prendre l'exemple d'une modification qui a eu lieu sur notre modèle au cours de son développement. On considérait jusque là que pour prendre en compte la population rurale (hors Tours donc), $1000$ foyers paysans donnaient une bonne idée de la situation en 800 pour l'espace considéré.
+Pour illustrer ce propos, on peut prendre l'exemple d'une modification qui a eu lieu sur notre modèle au cours de son développement.
+On considérait jusque là que pour prendre en compte la population rurale (hors Tours donc), $1000$ foyers paysans donnaient une bonne idée de la situation en 800 pour l'espace considéré.
 Lors d'une réunion, les thématiciens se sont rendus compte que ce nombre sous-estimait très largement la population réelle, et qu'il valait mieux passer ce paramètre à $4000$ foyers paysans.
-Les autres paramètres, fixés en bonne partie empiriquement, n'avaient visiblement aucune raison d'évoluer du fait de ce changement. Les mécanismes  et effets de seuil étaient en effet conçus de manière à être relatifs aux masses manipulées, et le changement attendu était une augmentation linéaire des indicateurs de sortie.
+Les autres paramètres, fixés en bonne partie empiriquement, n'avaient visiblement aucune raison d'évoluer du fait de ce changement.
+Les mécanismes  et effets de seuil étaient en effet conçus de manière à être relatifs aux masses manipulées, et le changement attendu était une augmentation linéaire des indicateurs de sortie.
 
 \begin{figure}[H]
 	\includegraphics[width = \linewidth]{img/plotComits.pdf}
 	\caption{Temporalité du paramétrage du modèle.\\
-		Chaque \og enregistrement\fg{} (\textit{comit}) correspond à une version modifiée et sauvegardée du modèle, contenant un ou plusieurs changements. On a ici rapporté le nombre de changements de chaque type (modification de mécanisme ou de valeur de paramètre) au nombre total de changements de chaque \textit{comit} afin de figurer l'évolution des types de modification au cours de la construction du modèle.}
+		Chaque \og enregistrement\fg{} (\textit{comit}) correspond à une version modifiée et sauvegardée du modèle, contenant un ou plusieurs changements.
+		On a ici rapporté le nombre de changements de chaque type (modification de mécanisme ou de valeur de paramètre) au nombre total de changements de chaque \textit{comit} afin de figurer l'évolution des types de modification au cours de la construction du modèle.}
 	\label{fig:comits-periodes}
 \end{figure}
 
@@ -1334,7 +1367,9 @@ La première version avait été paramétré aussi correctement que possible, ma
 
 \subsubsection{Désambiguïsation}
 
-De nombreux termes sont utilisés dans la littérature, souvent sans réelle distinction, pour désigner cette opération qui consister à choisir un jeu de paramètres pour un modèle. Pêle-mêle, on y retrouve le paramétrage, la validation, l'évaluation ou encore la calibration. Nous définissons dans l'\cref{enc:termes-calibration} le sens donné à chacun de ces termes dans le cadre de ce manuscrit.
+De nombreux termes sont utilisés dans la littérature, souvent sans réelle distinction, pour désigner cette opération qui consister à choisir un jeu de paramètres pour un modèle.
+Pêle-mêle, on y retrouve le paramétrage, la validation, l'évaluation ou encore la calibration.
+Nous définissons dans l'\cref{enc:termes-calibration} le sens donné à chacun de ces termes dans le cadre de ce manuscrit.
 \bigskip
 
 \begin{encadre}{Calibration, évaluation, validation\ldots}{termes-calibration}
@@ -1342,13 +1377,20 @@ De nombreux termes sont utilisés dans la littérature, souvent sans réelle dis
 		\item[Calibration] On réserve souvent, et nous nous y tiendrons, ce terme à la dernière étape dans l'aboutissement d'un modèle.
 		Une fois les mécanismes fixés et des objectifs définis, on peut procéder à la calibration, c'est-à-dire à une exploration de l'espace des paramètres ayant pour but de stabiliser les paramètres afin de se rapprocher autant que possible de ces objectifs.
 		Cette étape, quelques soient les moyens employés, s'approche de la résolution utilisée dans le cadre de systèmes d'équations.
-		Le contexte des systèmes complexes, et donc d'une non-linéarité des effets des paramètres, rend toutefois difficile l'obtention d'une unique configuration de \hl{paramètres optimale}\footnote{Lena : il faut partir d'une def plus basique en intro}, et la calibration aboutit donc souvent à un ensemble de configurations possibles, constituant par exemple un optimum de Pareto (\fixref{Trouver ref}).
+		Le contexte des systèmes complexes, et donc d'une non-linéarité des effets des paramètres, rend toutefois difficile l'obtention d'une unique configuration de \hl{paramètres optimale}\footnote{
+			\hl{Lena : il faut partir d'une def plus basique en intro}
+		}, et la calibration aboutit donc souvent à un ensemble de configurations possibles, constituant par exemple un optimum de Pareto (\fixref{Trouver ref}).
 		
 		\item[Évaluation] On emploie majoritairement ce mot pour décrire les méthodes permettant de comprendre le comportement du modèle et sa réaction aux différents paramètres.
 		Là où la calibration cherche une configuration de paramètres optimale, l'évaluation tend surtout à caractériser la stabilité du modèle face à l'aléa ou a des configurations exceptionnelles.
 		On vise ainsi à s'assurer que le modèle reproduise \hl{les faits stylisés}\footnote{Lena : pas introduits avant} voulus quelque soient son réglage, ou au moins à quantifier les intervalles de paramètres qui y satisfont.
 		
-		\item[Validation] La validation (refs Seb) tire son origine de sciences plus nomothétiques, et correspond donc à la démonstration qu'un modèle reproduit correctement ce qu'il représente. Au delà de l'évaluation, le terme amène une logique de preuve formelle que le modèle réagit bien ainsi et pas autrement quelque soient les conditions d'exécution. Cette démonstration formelle peut être effectuée sur des modèles à faible nombre de paramètres et mécanismes, mais le terme n'est jamais (à vérifier) employé dès lors que les modèles se complexifient.\footnote{Lena : cf. JASSS : Faire un rappel du sens classique, par ex. en stats.}
+		\item[Validation] La validation (refs Seb) tire son origine de sciences plus nomothétiques, et correspond donc à la démonstration qu'un modèle reproduit correctement ce qu'il représente.
+		Au delà de l'évaluation, le terme amène une logique de preuve formelle que le modèle réagit bien ainsi et pas autrement quelque soient les conditions d'exécution.
+		Cette démonstration formelle peut être effectuée sur des modèles à faible nombre de paramètres et mécanismes, mais le terme n'est jamais (à vérifier) employé dès lors que les modèles se complexifient.
+		\footnote{
+			Lena : cf. JASSS : Faire un rappel du sens classique, par ex. en stats.
+		}
 	\end{description}
 \end{encadre}
 
@@ -1368,15 +1410,21 @@ De nombreux termes sont utilisés dans la littérature, souvent sans réelle dis
 \subsection{Avant propos sur le paramétrage d'un modèle complexe}
 
 
-Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent. Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que l'explicitation de chacune de ces étapes permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
+Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent.
+Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que l'explicitation de chacune de ces étapes permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
 
-Notons que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014}. Nous ne détaillerons pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, en guise d'exemples illustratifs, dans les chapitres 6 et 7 \hl{(Partie 3)}.
+Notons que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014}.
+Nous ne détaillerons pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, en guise d'exemples illustratifs, dans les chapitres 6 et 7 \hl{(Partie 3)}.
 
 \subsubsection{De manière générale}
 
 \subsection{Les étapes du paramètrage de SimFeodal}
 
-Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction. Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté ces modifications du modèle. L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation. Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes. La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
+Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction.
+Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté ces modifications du modèle.
+L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation.
+Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes.
+La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
 
 \begin{center}
 	\hl{Faire tableau des versions de SimFeodal}
