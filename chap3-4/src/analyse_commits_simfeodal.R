@@ -1,8 +1,12 @@
 library(tidyverse)
 library(gitsum)
 
-commits_simfeodal <- gitsum::parse_log_detailed(path = "~/SimFeodal/") %>%
-  mutate(jour = lubridate::date(date)) %>%
+commits_simfeodal_raw <- gitsum::parse_log_detailed(path = "~/SimFeodal/") %>%
+  mutate(jour = lubridate::date(date))
+
+saveRDS(commits_simfeodal_raw, "commits_simfeodal_raw.RDS")
+
+commits_simfeodal <- commits_simfeodal_raw %>%
   select(hash, message, total_files_changed, total_insertions, total_deletions, commit_nr) %>%
   mutate(diff_lines = abs(total_insertions - total_deletions)) %>%
   mutate(taille_commit = case_when(
@@ -12,6 +16,8 @@ commits_simfeodal <- gitsum::parse_log_detailed(path = "~/SimFeodal/") %>%
     TRUE ~ ">100")
     ) %>%
   mutate(taille_commit = factor(taille_commit, levels = c("<10", "10-50", "50-100", ">100")))
+
+
 
 ggplot(commits_simfeodal) +
   aes(commit_nr, colour = taille_commit, fill = taille_commit) +
