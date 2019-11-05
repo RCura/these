@@ -159,8 +159,10 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 % ###### CREATION D'ENCADRES ###### %
 
 % Encadré pris dans la thèse de Seb Rey
-\usepackage[most]{tcolorbox}
-\newtcbtheorem[number within=chapter]{encadre}{Encadré}{
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems, skins, breakable}
+%\newtcb
+\newtcbtheorem[auto counter, number within=chapter, Crefname={Encadré}{Encadré}, crefname={encadré}{encadré}, list inside={listencadres}]{encadre}{Encadré}{
 	outer arc=0pt,
 	arc=0pt,
 	breakable,
@@ -172,11 +174,12 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 	fonttitle=\normalcolor\itshape}{enc}
 
 % A utiliser avec \usepackage{cleveref}
-\crefformat{tcb@cnt@encadre}{encadré~#2#1#3}
-\Crefformat{tcb@cnt@encadre}{Encadré~#2#1#3}
+%\crefformat{tcb@cnt@encadre}{encadré~#2#1#3}
+%\Crefformat{tcb@cnt@encadre}{Encadré~#2#1#3}
 
 %%% UTILISATION %%%
 % \begin{encadre}{Titre de l'encadré}{label-de-lencadre}
+% \renewcommand{\thempfootnote}{\alph{mpfootnote}} % permet d'avoir des ndbp en lettres, sans affecter le reste des ndbp
 % Contenu de l'encadré
 %\end{encadre}
 % Référence interne dans le texte :\cref{enc:label-de-lencadre}

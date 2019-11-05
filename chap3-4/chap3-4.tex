@@ -89,6 +89,7 @@ Par soucis d'homogénéité et de compréhension par un plus grand nombre de ce 
 
 \clearpage
 \begin{encadre}{Évaluation, validation interne et externe}{lexique-eval-amblard}
+\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 
 Pour \textcite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textcite{balci_validation_1994}, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que \citeauthor{balci_validation_1994} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
 
@@ -697,8 +698,10 @@ L'étude de la dispersion des agrégats et pôles peut ainsi se révéler plus i
 \bigskip
 
 \begin{encadre}{Incrémentalité des indicateurs}{incrementalite-indicateurs}
-
-De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnotemark{} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
+\renewcommand{\thempfootnote}{\alph{mpfootnote}}
+De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnote{
+	De manière incrémentielle et itérative, voir \hl{dans le chapitre x?} et \cite[\url{http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}]{thomas_revisiting_2012}
+} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
 
 Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique.
 Par exemple, quand on observe le phénomène de polarisation dans les sorties de SimFeodal, l'indicateur du nombre d'agrégats est extrêmement synthétique et informatif jusqu'à ce que l'objectif soit atteint ou que les modifications ne parviennent plus à le faire évoluer.
@@ -721,7 +724,6 @@ Dès lors, les analyses basées sur les choix de déplacement des foyers paysans
 
 Ces éléments expliquent que dans les résultats de chaque étape du paramétrage du modèle, on ne présente pas systématiquement l'ensemble des indicateurs, y compris quand ceux-ci pourraient être plus pertinents que les indicateurs présentés.
 \end{encadre}
-\footnotetext{De manière incrémentielle et itérative, voir \hl{dans le chapitre x?} et \cite[\url{http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}]{thomas_revisiting_2012} }
 
 \clearpage
 \subsection{Les indicateurs et dimensions de SimFeodal}
@@ -1302,7 +1304,7 @@ De même, un paramètre pourra passer de paramètre de mécanisme à paramètre 
 %\end{encadre}
 
 \begin{encadre}{Quatre types de paramètres}{types-parametres}
-
+\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 	\begin{description}
 		\item[Paramètres d'\textit{input}]
 		
@@ -1384,9 +1386,9 @@ Nous définissons dans l'\cref{enc:termes-calibration} le sens donné à chacun 
 \bigskip
 
 \begin{encadre}{Construction, paramétrage et calibrage}{termes-calibration}
-	
+	\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 	\begin{center}
-		\hl{Reprendre en \og les mots de la construction : paramétrage, construction, calibrage}
+		\hl{Reprendre !}
 	\end{center}
 	
 	\begin{description}[style=nextline]	
