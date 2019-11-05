@@ -2,7 +2,7 @@
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-11-04}}
+{\large Version \hl{2019-11-05}}
 \end{center}
 \begin{itemize}
 %	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
@@ -1116,36 +1116,108 @@ Nous ne pouvons donc souscrire à cette définition, ni à la vision qu'elle dé
 
 Dans le présent ouvrage, nous donnerons donc à ces termes des sens différents, voire opposés, qui nous semblent plus fréquents dans le champ de la modélisation en sciences humaines et se retrouvent partiellement dans le schéma de Balci (\cref{fig:parametres-Balci}).
 \begin{figure}[!h]
-	\includegraphics[width=.4\linewidth]{img/Balci1994a_Figure_Parametres.png}
-	\caption[Les variables d'un modèle de simulation selon \citeauthor{balci_validation_1994}]{Les variables d'un modèle de simulation selon \textcite[122]{balci_validation_1994}.\\
-		\textit{Nota bene} : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en mirroir à une partie \og système\fg{} représentant l'empirique.}
+	\centering
+	\includegraphics[width=.8\linewidth]{img/schema_parametres_balci.pdf}
+	\caption[Les variables d'un modèle de simulation selon \citeauthor{balci_validation_1994}]{Les variables d'un modèle de simulation, adapté depuis \textcite[122]{balci_validation_1994}.\\
+		\textit{Nota bene} : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en miroir à une partie \og système\fg{} représentant l'empirique.}
 	\label{fig:parametres-Balci} 
 \end{figure}
 
 Dans ce schéma et l'article associé, et bien qu'il n'en définisse nulle part explicitement le sens, \citeauthor{balci_validation_1994} esquisse la composition d'un modèle de simulation.
+Le modèle est alimenté par des variables en entrée (\textit{Model Input Variables}), qui sont globalement affectées par des paramètres (Model Parameters).
+Après passage dans la \og boîte noire\fg{} que représente ici le modèle de simulation ($m$), cela aboutit sur des variables de sortie (\textit{Model Output Variables}).
 
-\begin{center}
-\hl{
-	Décrire le schéma de Balci point par point.
-}
-\end{center}
-
+Notons que si l'auteur du schéma symbolise les entrées, paramètres et sorties au moyen de quatre flèches à chaque fois, leur nombre est variable et sans correspondance.
+Il y a ainsi $q$ variables en entrée, $r$ paramètres et $k$ variables en sortie.
+Ces nombres différents représentent bien qu'il n'y a pas de lien direct entre les variables en entrée et celles en sortie : la variable en entrée $I_{1}^m$ et la variable en sortie $O_{1}^m$ ne correspondent pas nécessairement.
+De même, \citeauthor{balci_validation_1994} n'indique pas de lien entre les paramètres et les variables (en entrée ou en sortie) : les paramètres agissent à l'échelle du modèle de simulation, sans détail des éléments affectés.
 
 \subsubsection{Paramètres, variables, indicateurs : un essai de définition graphique}
 \label{subsubsec:mes_definitions_params}
 
-Nous considèrerons donc plutôt les paramètres comme le sous-ensemble des entrées, qui peuvent s'exprimer sous forme numérique (excluant donc de fait certaines entrée telles que les configurations spatiales initiales), et que l'on fera varier, aussi bien dans la calibration du modèle que pour l'exploration de scénarios.
+
+Dans ce travail de thèse, nous rendons compte de la construction d'un modèle complexe, doté de très nombreux paramètres, variables d'entrée et variables de sortie (selon la définition de \citeauthor{balci_validation_1994}).
+Nous avons donc préféré développer notre propre \og ontologie\fg{} de ces termes, qui nous semble plus adapté à la description d'un modèle tel que SimFeodal.
+
+Comme chez \citeauthor{balci_validation_1994}, notre ontologie est organisée autour d'une opposition entre des \textbf{entrées} et des \textbf{sorties}.
+
+\paragraph{Les entrées.}
+
+La \cref{fig:parametres-these-entrees} représente notre proposition de définition des entrées, utilisée dans ce travail de thèse.
+Les entrées sont donc composées de deux types d'éléments, des variables et des paramètres.
+Les \textbf{variables} ($V_n$) sont des variables informatiques dont la valeur évolue tout au long de la simulation.
+Le nombre d'agrégats, par exemple, est une variable : une valeur est assignée à l'initialisation du modèle, puis à chaque pas de temps.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/schemas_params_1_entrees.pdf}
+	\caption{Les entrées : variables et paramètres.} 
+	\label{fig:parametres-these-entrees} 
+\end{figure}
+
+Ces variables sont potentiellement affectées par des \textbf{paramètres} ($P_n$), qui peuvent avoir des effets directs sur une unique variable ($P_1$, qui pourrait par exemple représenter le paramètre régulant le nombre d'agrégats à l'initialisation), ou sur plusieurs variables ($P_2$, nombre de foyers paysans par agrégat initial par exemple).
+Plusieurs paramètres peuvent aussi affecter la même variable : dans la figure, la variable $V_9$ est affectée conjointement par les paramètres $P_3$ et $P_4$.
+On peut illustrer ce type de cas avec l'exemple du nombre de foyers paysans, qui évoluera en fonction d'une part d'un paramètre définissant la population initiale et d'autre part en fonction d'un second paramètre définissant le taux de croissance.
+Le dernier type de paramètre ($P_5$), assez fréquent dans SimFeodal, correspond aux paramètres dont les valeurs peuvent changer au cours de la simulation.
+Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs décrivant les différentes dates où appliquer le changement ($P_{5_1}$, $P_{5_2}$, $P_{5_3}$), et les modalités que prendra alors la variable $V_{10}$.
 
 
-\begin{figure}[!h]
-	\includegraphics[width=\linewidth]{img/schemas_params.pdf}
-	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P).} 
+\paragraph{Les sorties.}
+À l'autre bout du modèle, dans la \cref{fig:parametres-these-sorties}, on retrouve encore les variables ($V_n$), mais certaines sont extraites du modèle sous forme d'\textbf{indicateurs de sortie}.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/schemas_params_2_sorties.pdf}
+	\caption{Les sorties : variables et indicateurs.} 
+	\label{fig:parametres-these-sorties} 
+\end{figure}
+
+Parmi ces indicateurs de sortie, on identifie là aussi plusieurs types.
+Certains indicateurs ($I_B$ et $I_D$) correspondent directement aux valeurs des variables correspondantes ($V_1$ et $V_{10}$ respectivement) en fin de simulation.
+Ces indicateurs sont donc d'une forme numérique (cf. \cref{fig:schema_indices}) simple, et renseignent par exemple sur le nombre de foyers paysans ou d'agrégats de population en fin de simulation.
+D'autres indicateurs sont dits \og multi-dimensionnels\fg{} (\cref{fig:schema_indices}) : ils correspondent soit à la combinaison de plusieurs variables en fin de simulation (indicateur \og composite\fg{}, $I_C$, qui peut par exemple représenter la courbe rang-taille issue des variables $V_2$ à $V_7$ qui seraient alors les populations des agrégats), soit à l'évolution temporelle d'une variable ($I_A$ et $I_E$).
+Ce sont dans ce cas des indicateurs de sortie multi-dimensionnels temporels, et ceux-ci sont très fortement mobilisés dans l'évaluation de SimFeodal : évolution du nombre d'agrégats, du taux de concentration des foyers paysans etc.
+
+Notons que si toutes les variables, par définition, varient au cours de la simulation, toutes ne sont pas utilisées pour former des indicateurs de sortie ($V_8$ et $V_9$ dans la figure).
+Elles ne sont pas \og inutiles\fg{} pour autant, parce qu'elles peuvent influencer/interagir avec d'autres variables par le biais des mécanismes des agents.
+Leur variation aura alors une influence sur d'autres variables, et donc potentiellement sur différents indicateurs de sortie.
+
+Dans la \cref{fig:parametres-these-sorties}, l'indicateur de sortie $I_E$, de type multi-dimensionnel et temporel, permet de garder à l'esprit que le lien entre variable et paramètre peut être étroit : la variable $V_{10}$, dont la valeur finale est extraite dans l'indicateur $I_D$, ne peut être étudiée dans son évolution ($I_E$) sans prendre en compte l'influence forte du paramètre évolutif $P_5$.
+On retrouve ainsi de fortes inflexions dans l'évolution des valeurs de $V_{10}$ au cours du temps simulé, quand les modalités $P_{5_2}$ et $P_{5_3}$ du paramètre $P_5$ changent.
+
+
+\paragraph{Entrées et sorties du modèle.}
+
+La \cref{fig:parametres-these-complet} constitue une synthèse de cette \og ontologie\fg{} lexicale mobilisée dans cette thèse.
+Un modèle de simulation comme SimFeodal contient donc en \textbf{entrée} des \textbf{variables}, dont la valeur peut changer au cours du déroulement d'une simulation.
+Ces variables peuvent être initialisées ou affectées par des \textbf{paramètres}, qui agissent conjointement et selon des modalités qui peuvent varier au cours du temps.
+En fin de simulation, on récupère des \textbf{sorties}, sous la forme d'\textbf{indicateurs de sortie} qui correspondent aux valeurs finales, combinées ou à l'évolution temporelle des \textbf{variables}.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/schemas_params_3_complet.pdf}
+	\caption{Organisation des entrées et sorties du modèle.} 
 	\label{fig:parametres-these-complet} 
 \end{figure}
 
-\begin{center}
-	\hl{Faire description de la figure, qui me permettra de mettre au clair le sens de chaque terme : variable, paramètre, indicateur de sortie}
-\end{center}
+\paragraph{Paramètres et expériences.}
+Les paramètres ont des valeurs pré-définies, par définition, pour l'exécution d'une simulation ou de ses réplications (dans lesquelles les valeurs des paramètres sont volontairement identiques).
+Quand bien même leurs modalités peuvent évoluer ($P_{5_{1}}$, $P_{5_{2}}$ ou $P_{5_{3}}$) au cours du temps simulé, c'est un choix effectué avant la simulation et les valeurs et dates d'applications de ces valeurs n'évolueront pas.
+
+Les valeurs des paramètres sont toutefois amenées à évoluer, non pas au sein des simulations, mais au sein d'expériences (\cref{fig:parametres-these-experiences}), dont le but est justement de faire varier ces paramètres pour en comparer les effets.
+Les paramètres variant ($P_2$, $P'_2$ ou $P''_2$ par exemple), il est ainsi attendu que les variables de chacune de ces expériences soit affectées différemment, et débouchent ainsi sur la production d'indicateurs de sortie qui montreront des variations entre les expériences.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{img/schemas_params_4_experiences.pdf}
+	\caption{Variation des paramètres entre les expériences.} 
+	\label{fig:parametres-these-experiences} 
+\end{figure}
+
+
+
+%
+%\begin{figure}[!h]
+%	\includegraphics[width=\linewidth]{img/schemas_params.pdf}
+%	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P).} 
+%	\label{fig:parametres-these-complet} 
+%\end{figure}
 
 %
 %\begin{figure}[!h]
@@ -1201,7 +1273,9 @@ distingue souvent deux types de paramètres :
 		Nous préférerons donc le terme de \og technique\fg{} pour éviter les confusions.
 	}, pour lesquels cette correspondance n'existe pas.
 Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes.
-Nous proposons donc une typologie en quatre classes (voir \cref{enc:types-parametres}), relatives au sens de ces paramètres vis-à-vis du fonctionnement du modèle.
+Comme les paramètres de SimFeodal sont nombreux et seraient trop sommairement distingués dans ces deux catégories, nous avons choisi de mobiliser une typologie en quatre classes (voir \cref{enc:types-parametres}), relatives au sens de ces paramètres vis-à-vis du fonctionnement du modèle.
+Cette typologie est mixte, entre d'une part le degré de connaissance empirique sur lesquels les paramètres reposent (paramètres techniques \textit{vs} les autres), l'usage qui en est fait dans le modèle (paramètre d'\textit{input} et de contexte \textit{vs} les autres), et enfin entre les paramètres qui représentent les influences exogènes ou endogènes (paramètres de contexte \textit{vs} les autres).
+Cette typologie est notamment appuyée sur celle de \textcite[45]{tannier_analyse_2017}.
 
 %Nous en proposons donc une troisième, que nous avons choisi de nommer \og paramètres commensurables\fg{}\footnote{
 %	La définition du dictionnaire \og Le Petit Robert\fg{} pour ce terme est celle-ci :  \og  Se dit d'une grandeur qui a, avec une autre grandeur, une commune mesure.\fg{}\autocite{robert_nouveau_1993}. \\Cf. aussi :			
