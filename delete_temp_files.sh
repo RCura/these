@@ -12,5 +12,9 @@ find . \( \
 	-name "*.toc" -o \
 	-name "*.fls" -o \
 	-name "*.fdb_latexmk" -o \
+	-name "*.lof" -o \
+	-name "*.lot" -o \
+	-name "*.encadre" -o \
+	-name "*.listencadres" -o \
 	-name "*-blx.bib" \
 	\) -type f -delete
