@@ -2,7 +2,7 @@
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-11-05}}
+{\large Version \hl{2019-11-07}}
 \end{center}
 \begin{itemize}
 %	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
@@ -10,6 +10,7 @@
 %	\item Janvier/Février 2019 : Corrections après commentaires de Lena sur 3.1 à 3.1.4
 	\item 31/10/2019 : Fusion anciens chapitre 3 (évaluation) et 4 (paramétrage)
 	\item 01/11/2019 : Réorganisation plan
+	\item 07/11/2019 : Fin reprise 3.1 et 3.2
 \end{itemize}
 
 
@@ -189,7 +190,7 @@ Dans le cas plus spécifique des modèles à base d'agent, cas dans lequel nous 
 On emploie généralement la modélisation à base d'agents parce qu'elle encourage une approche anthropomorphique, plus aisément compréhensible et requérant moins de connaissances mathématiques que d'autres approches, mais aussi car il est terriblement complexe d'exprimer des systèmes dotés de multiples interactions, qui plus est multi-scalaires, sous forme de réseaux d'équations.
 En un sens, on pourrait presque considérer qu'on fait appel à de la modélisation à base d'agents quand on ne peut mobiliser des modèles formels.
 Le processus qui tendrait à formaliser, mathématiquement, des modèles agents est alors intrinsèquement contre-intuitif et difficile, quand bien même certains pensent que ce n'est pas une fatalité mais une question de temps\footnote{
-	Par exemple Alain \textsc{Franc}, mathématicien :
+	Par exemple Alain \textsc{Franc}, mathématicien dans le projet TransMonDyn :
 	\og L’une des difficultés de l’acceptation des SMA comme modèles est que ces comportements sont très mal compris mathématiquement.
 	Il existe peu de résultats qui permettent de relier un type de règles avec un type de comportement, alors que de tels liens sont à la base du succès des systèmes dynamiques, où l’on connaît (parfois\ldots) les gammes de paramètres qui mènent à un comportement d’équilibre, cyclique ou chaotique, et l’on sait qu’il ne peut y en avoir d’autres.
 	[...]
@@ -198,11 +199,24 @@ Le processus qui tendrait à formaliser, mathématiquement, des modèles agents 
 	\autocite[Annexe 2, \og Retour sur les SMA comme outil et cadre conceptuel de modélisation.\fg{}, pp. 479-482 ]{ouriachi_lelaboration_2018}
 }.
 Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012}\footnote{
-	\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths. --> je ne trouve pas cette référence.}
-} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling (voir \cref{desc:schelling}).
+	\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths. --> \textbf{Je ne trouve pas cette référence}.}
+} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling (voir \cref{enc:param-schelling}).
 En dehors de l'intérêt que cela peut représenter pour la connaissance de ce modèle en particulier, rappelons tout de même que le modèle de Schelling a été énoncé à la fin des années 1960, que c'est un modèle particulièrement parcimonieux, et qu'il a tout de même fallu attendre le tournant des années 2010 afin d'y trouver une solution formelle.
-
-\hl{Regarder dans :} \textcite[1590-1591]{epstein2006remarks}
+Notons enfin que pour certains auteurs, dont l'un des pères de la modélisation à base d'agents informatiques \textcite{epstein2006remarks}, la résolution analytique de modèles de simulation à base d'agents n'est pas véritablement un enjeu, l'objectif étant d'utiliser le paradigme le plus \og éclairant\fg{} pour un problème donné :
+\begin{quotation}
+	\noindent \og
+	The oft-claimed distinction between computational agent models, and equation-based models is illusory.
+	Every agent model is, after all, a computer program (typically coded in a structured or object-oriented programming language).
+	As such, each is clearly Turing computable (computable by a Turing machine).
+	But, for every Turing machine, there is a unique corresponding and equivalent partial recursive function [see Hodel (1995)].\\
+	\textelp{}\\
+	So, in principle, one could cast any agent-based computational model as an explicit set of mathematical formulas (recursive functions).
+	In practice, these formulas might be extremely complex and difficult to interpret.
+	But, speaking technically, they surely exist.\textelp{}
+	In any case, the issue is not whether equivalent equations exist, but which representation (equations or programs) is most illuminating.
+	\fg{}\\
+	\mbox{}~ \hfill \textcite[1590-1591]{epstein2006remarks}
+\end{quotation}
 
 Dans l'absolu, en ce qui concerne les modèles à base d'agents, il est donc difficile d'aller vers une validation formelle totale, mais on peut tout de même gagner en connaissances en mobilisant des méthodes qui cherchent à \og résoudre \fg{} des modèles de simulation, de manière non formelle, par exemple autour des nombreux travaux actuels \autocite[par exemple][]{cherel_beyond_2015} qui visent à l'exploration complète des comportements possible d'un modèle\footnote{
 	C'est par exemple l'un des enjeux principaux, en matière de recherche, d'une plate-forme telle qu'OpenMOLE \autocite{reuillon_openmole_2013}
@@ -227,10 +241,10 @@ A contrario, un modèle très descriptif, ancré dans une approche \og KIDS\fg{}
 
 Pour illustrer l'écart entre ces approches en matière de possibilités de quantification de l'évaluation, prenons l'exemple d'une analyse de sensibilité :
 	cette technique consiste à faire co-varier les valeurs des paramètres afin d'observer les effets que, chacun ou conjoints, ils produisent sur les sorties du modèle.
-Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (cf. \cref{desc:schelling}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
+Avec un modèle de Schelling, dans lequel on identifie en général trois paramètres (cf. \cref{enc:param-schelling}), que l'on peut faire varier chacun selon une granularité de dix valeurs, et tenir compte de l'aléa en menant dix réplications, on peut mener une analyse de sensibilité basique au moyen de ($10^3 \times 10$) 10 000 simulations.
 Dans le cas d'un modèle doté d'une dizaine de paramètres, et avec le même type d'analyse basique, le nombre de simulations nécessaire dépasserait déjà le milliard\ldots
 
-Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou une calibration fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
+Pour de tels modèle, malgré tout assez peu complexe au regard de certains des tenants du genre KIDS, une analyse de sensibilité rigoureuse ou un calibrage fine ne sont en aucun cas envisageables selon les canons méthodologiques de l'évaluation.
 Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux, de tout de même mener les premières étapes d'un cycle d'évaluation \autocite[342]{petty2010verification} :
 	\og While moving beyond face validation to more objective and quantitative methods should always be a goal, face validation is clearly preferable to no validation at all.\fg{}
 
@@ -325,7 +339,7 @@ Pour l'auteur, ces trois approches d'évaluation sont complémentaires et s'insc
 Il nous semble que si les deux premières approches sont applicables à tout modèle, l'évaluation immersive comporte un postulat lourd sur la rationalité des comportements individuels qui n'est pas universelle dans les modèles à base d'agents.
 Cela se prête bien à de nombreux modèles où les agents représentent des humains dotés de comportements rationnels, ou encore des particules dont la trajectoire individuelle est prévisible en dehors des effets d'interaction.
 Toutefois, tout un pan de la modélisation en géographie repose sur des agents non anthropomorphiques, ou encore sur des entités primaires dont seules les interactions ont vocation à faire émerger un comportement d'ensemble.
-Dans le cas de SimFeodal par exemple (\hl{REF CHAP2}), les comportements individuels des foyers paysans ne reposent pas sur des hypothèses de vraisemblance : le foyer paysan qui se déplace de villes en villes, parfois en faisant des allers-retours, au cours des 300 ans modélisé, ne s'appuie sur aucune connaissance empirique, et tendrait même à contrevenir aux connaissances expertes de la mobilité résidentielle des foyers paysans médiévaux.
+Dans le cas de SimFeodal par exemple (\hl{ref chap2}), les comportements individuels des foyers paysans ne reposent pas sur des hypothèses de vraisemblance : le foyer paysan qui se déplace de villes en villes, parfois en faisant des allers-retours, au cours des 300 ans modélisé, ne s'appuie sur aucune connaissance empirique, et tendrait même à contrevenir aux connaissances expertes de la mobilité résidentielle des foyers paysans médiévaux.
 Le suivi d'un foyer paysan, isolé de ses co-agents, au cours du déroulement du modèle, par un expert thématicien, n'est donc pas sujet à évaluation, au contraire du suivi des structures spatiales de niveau macroscopique engendrées par cette accumulation de déplacements.
 
 L'évaluation immersive nous paraît donc peu adaptée à l'évaluation de plausibilité de tous les modèles.
@@ -420,7 +434,7 @@ La \textit{face validation} procède à la même démarche comparative :
 	\mbox{}~ \hfill \textcite[341]{petty2010verification}
 \end{quotation}
 Nous postulons que la démarche comparative que l'on retrouve dans l'évaluation statistique peut donc être appliquée sans recherche de quantification, c'est-à-dire en évaluant ces mêmes écarts de manière subjective et qualitative.
-Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que SimFeodal (\hl{REF chap 2}), la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
+Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que SimFeodal (\hl{ref chap 2}), la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
 De plus, les données empiriques qui permettraient de mener une comparaison sont trop lacunaires et incertaines pour être jugées suffisamment fiables pour évaluer le modèle.
 
 \subsubsection{Une démarche rigoureuse} Nous pensons toutefois que ces carences quantitatives peuvent être compensés par les connaissances expertes des différents thématiciens impliqués dans la construction et l'évaluation d'un modèle.
@@ -534,7 +548,9 @@ Il s'agit des \og \textbf{faits stylisés}\fg{}\footnote{
 	1) en partant du domaine empirique, on identifie des relations saillantes ; 2) on opère quelques simplifications qui permettent d'inclure formellement ces relations dans des modèles ; 3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
 }, qui rendent davantage compte d'une tendance dans la forme d'une relation ou d'une organisation que les ordres de grandeur.
 On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand on qualifie la tendance des systèmes de peuplement à se hiérarchiser.
-La valeur de la pente associée à la courbe rang-taille d'un système de villes tend ainsi vers $1$ (\hl{Trouver ref, sans doute Pumain/Saint-Julien}) à mesure que le système évolue et se hiérarchise.
+La valeur de la pente associée à la courbe rang-taille d'un système de villes a ainsi été décrite comme tendant vers $1$ à mesure que le système évolue et se hiérarchise (\cite{berry_city_2012}, in \cite[\S9]{pumain_multilevel_2015})\footnote{
+	Notons que les auteurs de \textcite{pumain_multilevel_2015} contestent justement cette affirmation, en montrant empiriquement que les pentes convergent des valeurs supérieures ou inférieures à 1 en fonction de l'ancienneté de l'intégration des systèmes de ville considérés \autocite{cura_old_2017}.
+}.
 De la même manière, le modèle de transition démographique d'Adolphe Landry est un fait stylisé, énoncé à partir de l'observation de nombreuses récurrences de l'évolution des populations d'un pays en fonction de leurs taux de natalité et de mortalité.
 Ces exemples montrent qu'au sein des faits stylisés, il y a une certaine diversité quant à la précision de leurs énoncés.
 On peut ainsi quantifier précisément la courbe d'une relation rang-taille et l'allure de son évolution dans le temps, au moyen de l'évolution du coefficient de sa pente, et ces indices empiriques sont le plus souvent communiqués dans la littérature.
@@ -610,7 +626,7 @@ On le trouve très souvent utilisé, parce qu'il permet de résumer le niveau de
 
 En renforçant cette logique de synthèse de plusieurs dimensions, on peut aller plus loin dans la définition d'un unique indicateur, parfois composite et synthétique, qui permet d'évaluer seul la qualité de représentation d'un modèle.
 On nomme d'ordinaire cet indicateur \og fonction objectif\fg{} (ou \og fonction de \textit{fitness}\fg{}).
-C'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (\hl{ref. à chap 2 là ou ce sera abordé}).
+C'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (\hl{ref. chap 1 ou 2}).
 Il s'agit alors de définir une \og fonction objectif\fg{}, parfois composée d'une pondération des quelques indicateurs composites qui auront été identifiés, ou plus simplement, basée sur une unique variable que l'on juge représentative de l'ensemble du modèle.
 
 Être en mesure d'évaluer un modèle à l'aide d'un unique indicateur a des avantages majeurs en pratique.
@@ -656,7 +672,7 @@ On peut vouloir quantifier la précision de ces données, par exemple à l'aide 
 Cette quantification de l'incertitude pourrait alors servir de base à l'établissement d'une hiérarchie des indicateurs :
 on analyserait en premier lieu l'écart entre les ordres de grandeurs empiriques bien connus (\hl{cf. tableau du niveau de certitude des objectifs}) et les indicateurs calculés sur les données simulées.
 Les ordres de grandeur plus incertains seraient analysés dans un second temps (augmentation de la charge fiscale entre 800 et 1100 par exemple), et les formes stylisées viendraient enfin clore cette hiérarchie d'indicateurs.
-Toutefois, SimFeodal se caractérise d'une part par une très forte hétérogénéité dans les niveaux de connaissance des ordres de grandeurs et faits stylisés modélisés, et d'autre part, se voulant un modèle théorique (\hl{ref dans chapitre 2, ou 1}), il n'y a pas d'obligation de \og coller aux données\fg{} à tout prix :
+Toutefois, SimFeodal se caractérise d'une part par une très forte hétérogénéité dans les niveaux de connaissance des ordres de grandeurs et faits stylisés modélisés, et d'autre part, se voulant un modèle théorique (\hl{ref dans chap1}), il n'y a pas d'obligation de \og coller aux données\fg{} à tout prix :
 la vraisemblance d'ensemble du modèle compte bien plus que la précision de chacune de ses composantes.
 
 

@@ -13,9 +13,7 @@
 \bibliography{%
 %	chap1/biblio_chap1.bib,
 %	chap2/biblio_chap2.bib,
-%	chap3/biblio_chap3.bib,
 	chap3-4/biblio_chap3-4.bib,
-%	chap4/biblio_chap4.bib,
 %	chap5/biblio_chap5.bib,
 %	chap6/biblio_chap6.bib,
 %	chap7/biblio_chap7.bib,
@@ -97,12 +95,20 @@
 %\include*{chap7/chap7}
 %
 
+
+
 \printbibliography[title={Références}]
 
-\listoffigures
+\begingroup
+\renewcommand{\cleardoublepage}{\medskip}
+\renewcommand{\clearpage}{\medskip}
 
-\listoftables
+\vspace*{-3em}\listoffigures
 
-\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
+\vspace*{-3em}\listoftables
+
+\vspace*{-3em}\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
+
+\endgroup
 
 \end{document}
