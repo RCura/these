@@ -71,7 +71,9 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 
 \usepackage{fontawesome}
 \usepackage{wrapfig}
-\usepackage[style=authoryear-icomp,
+\usepackage[
+%style=authoryear-icomp, % Permet d'avoir des ibid. en cas de répétition, mais parfois pas terrible avec les ndbp
+style=authoryear-comp,
 hyperref=true,
 backend=bibtex,
 isbn=false,
