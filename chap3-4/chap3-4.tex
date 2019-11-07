@@ -11,6 +11,7 @@
 	\item 31/10/2019 : Fusion anciens chapitre 3 (évaluation) et 4 (paramétrage)
 	\item 01/11/2019 : Réorganisation plan
 	\item 07/11/2019 : Fin reprise 3.1 et 3.2
+	\item 07/11/2019 : Création/reprise 3.3
 \end{itemize}
 
 
@@ -1025,7 +1026,11 @@ On s'attend à ce que l'indicateur ainsi produit augmente au cours du temps, à 
 	\hl{A rédiger comme conclusion intermédiaire évaluation SimFeodal}
 \end{center}
 
-\section{Paramétrer ? Quoi et comment ?}
+\section{Paramétrage du modèle SimFeodal}
+
+\begin{center}
+	\hl{Intro à reprendre.}
+\end{center}
 
 Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
 Dans ce chapitre, nous nous attacherons à présenter le travail de paramétrage réalisé à la suite, ayant abouti à une version plus adaptée aux questions des thématiciens. Le descriptif technique de cette version \og finale\fg{} se trouve dans l'annexe $n$ (\hl{Ref à l'annexe contenant le descriptif technique de la dernière version du modèle.})
@@ -1034,20 +1039,23 @@ Par paramétrage, nous entendons ici le processus visant à doter le modèle de 
 
 Avant de préciser le sens du terme \og paramétrage\fg{}, il semble important de définir précisément ce qu'est un paramètre. C'est en particulier nécessaire en ce que ce terme recouvre de nombreux sens selon les champs disciplinaires qui l'emploient, mais aussi, au sein même de ceux-ci, par les différents chercheurs.
 
-\subsection{Différents points de vue sur la définition d'un paramètre}
+\subsection{Les paramètres}
+
+\subsubsection{Différents points de vue sur la définition d'un paramètre}
 
 Au plus général, le nouveau petit Robert définit un paramètre en ces mots :
-\begin{quote}
-	\og 1. \textsc{math.} Quantité à fixer librement, maintenue constante, dont dépend une fonction de variables indépendantes, une équation ou une expression mathématique. --- Variable en fonction de laquelle on exprime chacune des variables d'une équation.\\
+\begin{quotation}
+	\noindent \og 1. \textsc{math.} Quantité à fixer librement, maintenue constante, dont dépend une fonction de variables indépendantes, une équation ou une expression mathématique. --- Variable en fonction de laquelle on exprime chacune des variables d'une équation.\\
 	2. \textsc{fig.} et \textsc{didact.} Élément important dont la connaissance explicite les caractéristiques essentielles de l'ensemble d'une question.\\
 	3. \textsc{par ext.} Élément nécessaire pour juger, évaluer, comprendre (qqch.).\fg{}\\
 	\mbox{}~ \hfill \autocite[\textbf{Paramètre}]{robert_nouveau_1993}
-\end{quote}
+\end{quotation}
 
 
 Seule la première définition correspond, à grands traits, à ce que l'on attend ici, mais elle est très généraliste, bien que ne correspondant pas pour autant à tous les usages du terme employés dans la littérature.
 
-\subsubsection{En mathématiques, une définition univoque}
+\paragraph{En mathématiques, une définition univoque.}
+
 L'acceptation mathématiques d'un paramètre est sans doute celle qui souffre le moins d'ambiguïté : il s'agit des termes fixes d'une équation simple, par opposition aux variables qui en constituent les éléments qui seront amenés à évoluer.
 Par exemple, dans la formulation d'une fonction affine, $f(x) = ax + b$, la valeur de $f(x)$ dépend de la variable $x$ et des paramètres fixés $a$ et $b$.
 Quelles que soient les valeurs empruntées par $x$, ces paramètres demeurent constants. Dans une famille d'équations plus complexes, par exemple le modèle de croissance logistique de population\footnote{
@@ -1055,34 +1063,40 @@ Quelles que soient les valeurs empruntées par $x$, ces paramètres demeurent co
 }, l'accroissement de population au cours du temps ($\frac{\text{d}y}{\text{d}t}$) dépend de la valeur de la variable $y$, population à cet instant, ainsi que de deux paramètres, $\alpha$, le taux de croissance, et $K$, la \og capacité d'accueil\fg{}, c'est-à-dire un potentiel maximum de population vers laquelle tend -- et ne peut donc dépasser -- le système modélisé.
 La définition mathématique est donc assez universelle et convient à la quasi-totalité des systèmes d'équations\footnote{A l'exclusion notable des systèmes d'équation paramétriques, où, à l'inverse, le terme de paramètre désigne alors les variables indépendantes.}.
 Il convient toutefois de noter que la différence entre variable et paramètre est une affaire de point de vue, une inversion de perspective menant à échanger les paramètres et variables, tel que décrit dans l'exemple suivant :
-\begin{quote}
-	\og For the function $f(x)=ax^2+bx+c$, could we learn something by leaving the expression in terms of the symbols $a$, $b$, and $c$ and seeing how $f(x)$ depends on the parameters? Maybe we could fix $x=2$ and look how $f(2)$ changes as we let $a$ vary.
+\begin{quotation}
+	\noindent \og
+	For the function $f(x)=ax^2+bx+c$, could we learn something by leaving the expression in terms of the symbols $a$, $b$, and $c$ and seeing how $f(x)$ depends on the parameters? Maybe we could fix $x=2$ and look how $f(2)$ changes as we let $a$ vary.
 	
-	If we do such manipulations and look at how the output of a function depends on varying a parameter, then we are treating the function as though the parameter were a input variable. But that's OK, as the difference between variables and parameters is really just a matter of perspective.\fg{}\\
+	\noindent If we do such manipulations and look at how the output of a function depends on varying a parameter, then we are treating the function as though the parameter were a input variable. But that's OK, as the difference between variables and parameters is really just a matter of perspective.
+	\fg{}\\
 	\mbox{}~ \hfill \autocite{nykamp_function_2015}
-\end{quote}
+\end{quotation}
 On peut donc en retenir qu'en mathématiques, ce qui différencie la variable du paramètre est l'aspect fixe de ce dernier, au moins pendant la durée d'exécution d'une fonction : 
-\begin{quote}
-	\og{}A parameter is a quantity that influences the output or behavior of a mathematical object but is viewed as being held constant. [\dots]
-	Variables are viewed as changing while parameters typically either don't change or change more slowly.\fg{}\\
+\begin{quotation}
+	\noindent \og
+	A parameter is a quantity that influences the output or behavior of a mathematical object but is viewed as being held constant. [\dots]
+	Variables are viewed as changing while parameters typically either don't change or change more slowly.
+	\fg{}\\
 	\mbox{}~ \hfill \autocite{nykamp_parameter_2015}
-\end{quote}
+\end{quotation}
 
 % Conserver pour experiences etc. \footnote{
 %		\og{}In some contexts, one can imagine performing multiple experiments, where the variables are changing through each experiment, but the parameters are held fixed during each experiment and only change between experiments.\fg{}\autocite{nykamp_parameter_2015}
 
 On propose donc une une définition sans doute plus spécifique que celle du nouveau petit Robert, mais aussi plus tournée vers l'usage : un paramètre est une variable maintenue constante durant l'ensemble de l'utilisation d'une fonction.
 
-\subsubsection{Une vision duale en statistiques}
-En statistiques, quand bien même cette discipline fait un large usage des formalismes mathématiques, les paramètres recouvrent un ensemble assez différent : il s'agit d'une \og grandeur mesurable qui permet de présenter de façon plus simple, plus abrégée les caractéristiques essentielles d'un ensemble statistique.\fg{} \autocite[Paramètre, \textsc{stat.} (calcul des probabilités)]{tresor1992}
-\begin{quote}
-	\textit{In statistics}, the most common use of \og parameter\fg{} is for a characteristic of a population, or of a distribution of scores, described by a statistic such as a mean or a standard deviation. For example, the mean (average) score of on the midterm exam in Psychology 201 is a parameter. It describes the population composed of all those who took the exam.\\
+\paragraph{Une vision duale en statistiques.}
+
+En statistiques, quand bien même cette discipline fait un large usage des formalismes mathématiques, les paramètres recouvrent un ensemble assez différent :
+	il s'agit d'une \og grandeur mesurable qui permet de présenter de façon plus simple, plus abrégée les caractéristiques essentielles d'un ensemble statistique.\fg{} \autocite[Paramètre, \textsc{stat.} (calcul des probabilités)]{tresor1992}
+\begin{quotation}
+	\noindent \og \textit{In statistics}, the most common use of \og parameter\fg{} is for a characteristic of a population, or of a distribution of scores, described by a statistic such as a mean or a standard deviation. For example, the mean (average) score of on the midterm exam in Psychology 201 is a parameter. It describes the population composed of all those who took the exam.\fg{}\\
 	\mbox{}~ \hfill \autocite[164]{vogt1993dictionary}
-\end{quote}
+\end{quotation}
 Ainsi, pour les statisticiens, la moyenne, l'écart-type ou encore le coefficient d'asymétrie sont des paramètres, que l'on symbolise alors au moyen de lettres grecques \autocite[ibid.]{vogt1993dictionary}.
 On peut toutefois y retrouver une logique commune avec les paramètres mathématiques quand on décrit une loi statistique avec ces valeurs, qui deviennent alors les éléments permettant de caractériser une variable. Ainsi, pour décrire les caractéristiques de la distribution théorique -- normale-- d'une variable $X$, on fera appel aux paramètres théoriques de cette loi que sont l'espérance\footnote{Il s'agit de la moyenne théorique. On réserve ainsi le terme de moyenne à une valeur calculée depuis des valeurs empiriques.} ($\mu$) et l'écart-type ($\sigma^{2}$): $X \hookrightarrow  \mathcal{N}(\mu,\,\sigma^{2})$.
 
-\subsubsection{Une absence de consensus en informatique}
+\paragraph{Une absence de consensus en informatique.}
 Dans le domaine informatique, la définition est bien plus floue et inclusive que dans les champs décrits auparavant, sans doute en raison d'une hétérogénéité bien supérieure dans les pratiques et construits informatiques. Comme dans les fonctions mathématiques, les paramètres sont les arguments des fonctions informatiques. Ces fonctions recouvrent toutefois un ensemble extrêmement vaste, bien plus hétérogène que dans les domaines mentionnés ci-dessus.
 On parle ainsi de fonction\footnote{On utilisera aussi indistinctement les termes de procédure, de (sub)routine ou encore de méthode. Notons que chacun de ces mots a normalement un sens précis. Par exemple, une méthode désigne une fonction qui peut être exécutée par une instance de classe en programmation orientée objet. Certaines définitions plus précises sont toutefois souvent utilisé à mauvais escient, provoquant alors des inversions de sens. Ainsi, une procédure est le plus souvent décrit comme une suite d'instructions ne retournant pas de valeur, au contraire d'une fonction. Mais, par exemple dans le langage SAS \autocite{sas1990sas}, toute fonction est nommée procédure, à l'instar de la moyenne par exemple (\texttt{PROC MEANS}).} pour toute suite d'instructions informatique ayant pour vocation -- ou pour capacité -- à être répétée, ré-exécutée.
 Ces fonctions appliquent ainsi, le plus fréquemment, cette suite d'instruction sur des données en entrée, et produisent ainsi des données en sortie, résultantes du traitement effectué sur les entrées\footnote{
@@ -1100,29 +1114,35 @@ Prenons l'exemple d'une fonction simple de conversion d'image, permettant par ex
 De plus, cette fonction accepte aussi d'autres \og paramètres\fg{}, permettant entre autre de redimensionner l'image pendant cette conversion, d'en modifier la résolution, ou encore d'en transformer les couleurs, par exemple en la convertissant en nuances de gris.
 Ces paramètres, facultatifs, agissent alors comme autant de nouvelles fonctions. Ils ne servent plus uniquement à \og paramétrer\fg{} le but premier de la fonction de conversion, mais en fait à y ajouter des fonctionnalités, des mécanismes de transformation de l'image source.
 
-On ne peut donc plus véritablement parler de variables qui seraient affectées ou transformées par des valeurs statiques de paramètres. On utilisera donc, dans ce contexte, davantage le terme de paramètre d'entrée ou encore d'argument dans ce cas. Notons qu'en anglais, la différence entre \textit{parameter} et \textit{argument} est plus formalisée qu'en français : ils se définissent par le lieu de leur utilisation. Lors de la définition d'une fonction, on fait appel à des paramètres qui seront utilisés au sein de la fonction. Lors de l'utilisation de cette fonction, l'utilisateur fournira des arguments, dont les valeurs seront alors utilisés en remplacement des paramètres dans la fonction.
-\begin{quote}
-	\og The terms parameter and argument are sometimes used interchangeably, and the context is used to distinguish the meaning. The term parameter (sometimes called formal parameter) is often used to refer to the variable as found in the function definition, while argument (sometimes called actual parameter) refers to the actual input passed. For example, if one defines a function as \texttt{def f(x): ...}, then \texttt{x} is the parameter, while if it [is] called by \texttt{a = ...; f(a)} then \texttt{a} is the argument.\fg{}\\
+On ne peut donc plus véritablement parler de variables qui seraient affectées ou transformées par des valeurs statiques de paramètres.
+On utilisera donc, dans ce contexte, davantage le terme de paramètre d'entrée ou encore d'argument dans ce cas.
+Notons qu'en anglais, la différence entre \textit{parameter} et \textit{argument} est plus formalisée qu'en français : ils se définissent par le lieu de leur utilisation.
+Lors de la définition d'une fonction, on fait appel à des paramètres qui seront utilisés au sein de la fonction.
+Lors de l'utilisation de cette fonction, l'utilisateur fournira des arguments, dont les valeurs seront alors utilisés en remplacement des paramètres dans la fonction.
+
+\begin{quotation}
+	\noindent \og The terms parameter and argument are sometimes used interchangeably, and the context is used to distinguish the meaning. The term parameter (sometimes called formal parameter) is often used to refer to the variable as found in the function definition, while argument (sometimes called actual parameter) refers to the actual input passed. For example, if one defines a function as \texttt{def f(x): ...}, then \texttt{x} is the parameter, while if it [is] called by \texttt{a = ...; f(a)} then \texttt{a} is the argument.\fg{}\\
 	\mbox{}~ \hfill \autocite{wiki_parameter2017} 
-\end{quote}
+\end{quotation}
 
 
-\subsubsection*{} Il apparaît donc que si les définitions mathématiques et statistiques d'un paramètre sont assez largement précises et explicites, il en est tout autre dans le champs disciplinaire informatique. Peut-être parce que ce champs est composé de bien plus de praticiens (les développeurs) que de chercheurs, on constate que les termes de variables, de paramètres, d'arguments ou encore d'entrées (\textit{inputs}) y sont assez régulièrement intervertis. Afin de préciser l'emploi que nous ferons de ces termes dans le cadre de la modélisation à base d'agents présentée dans le chapitre précédent, il convient donc de s'intéresser plus spécifiquement aux usages de ces termes dans le domaine de la simulation informatique en sciences humaines.
+\paragraph*{} Il apparaît donc que si les définitions mathématiques et statistiques d'un paramètre sont assez largement précises et explicites, il en est tout autre dans le champs disciplinaire informatique. Peut-être parce que ce champs est composé de bien plus de praticiens (les développeurs) que de chercheurs, on constate que les termes de variables, de paramètres, d'arguments ou encore d'entrées (\textit{inputs}) y sont assez régulièrement intervertis. Afin de préciser l'emploi que nous ferons de ces termes dans le cadre de la modélisation à base d'agents présentée dans le chapitre précédent, il convient donc de s'intéresser plus spécifiquement aux usages de ces termes dans le domaine de la simulation informatique en sciences humaines.
 
-\subsection{Les paramètres dans les modèles agents}
+\subsubsection{Les paramètres dans les modèles agents}
 
-\subsubsection{L'approche classique}
+\paragraph{L'approche classique.}
 
 Un premier point est à noter : nous n'avons trouvé que très peu de définitions spécifiques de ce qu'est un paramètre dans le champs de la simuation à base d'agents.
 C'est pourtant un terme employé dans la quasi-totalité de la littérature existante.
 Cela ne relèverait que d'un problème de jargon non explicité s'il y avait consensus que le sens donné à ce mot, mais au contraire, les acceptations, qui doivent être comprises par le contexte en l'absence de définitions formelles, varient fortement selon les auteurs.
 Par exemple, la définition que l'on peut extraire de l'un des manuels de référence en modélisation agent \autocite{treuil_modelisation_2008} s'éloigne fortement de ce que l'on a pu décrire ci-dessus :
-\begin{quote}
-	Un modèle dynamique renferme en effet deux composants distincts : une représentation de la structure du système de référence (exprimée dans le langage du méta-modèle), et une représentation des lois régissant sa dynamique. Ces deux représentations sont habituellement pourvues de données ou d'éléments d'information souvent numériques (le minimum pour un modèle dynamique étant d'être pourvu d'un élément représentant le temps) appelés \textbf{paramètres}. La \og perturbation\fg{} d'un modèle par simulation va donc signifier la modification contrôlée de la valeur de certains de ces paramètres, que l'on appelera \textbf{entrées} du modèle. Inversement, ce que l'on pourra mesurer dans une simulation sera décrit sous la forme d'autres paramètres qui seront appelé \textbf{sorties}.\\
+\begin{quotation}
+	\noindent \og
+	Un modèle dynamique renferme en effet deux composants distincts : une représentation de la structure du système de référence (exprimée dans le langage du méta-modèle), et une représentation des lois régissant sa dynamique. Ces deux représentations sont habituellement pourvues de données ou d'éléments d'information souvent numériques (le minimum pour un modèle dynamique étant d'être pourvu d'un élément représentant le temps) appelés \textbf{paramètres}. La \og perturbation\fg{} d'un modèle par simulation va donc signifier la modification contrôlée de la valeur de certains de ces paramètres, que l'on appelera \textbf{entrées} du modèle. Inversement, ce que l'on pourra mesurer dans une simulation sera décrit sous la forme d'autres paramètres qui seront appelé \textbf{sorties}.
 	
-	Les \textit{entrées} d'un modèle dynamique sont des paramètres dont la valeur est définie en dehors du modèle et qui représentent ce que le simulateur peut perturber. Les \textit{sorties} d'un modèle dynamique sont également des paramètres qui expriment ce que l'on cherche à mesurer en réponse à ces perturbations.\\
+	\noindent Les \textit{entrées} d'un modèle dynamique sont des paramètres dont la valeur est définie en dehors du modèle et qui représentent ce que le simulateur peut perturber. Les \textit{sorties} d'un modèle dynamique sont également des paramètres qui expriment ce que l'on cherche à mesurer en réponse à ces perturbations.\fg{}\\
 	\mbox{}~ \hfill \autocite[8]{treuil_modelisation_2008}
-\end{quote}
+\end{quotation}
 
 Nous trouvons plusieurs problèmes à cette définition.
 En premier lieu, l'acceptation très globale de ce qu'est un paramètre rappelle celle d'une variable en informatique.
@@ -1132,6 +1152,7 @@ De plus, le fait que les sorties d'un modèle soient considérées comme des par
 Nous ne pouvons donc souscrire à cette définition, ni à la vision qu'elle dépeint de ce qu'est un paramètre.
 
 Dans le présent ouvrage, nous donnerons donc à ces termes des sens différents, voire opposés, qui nous semblent plus fréquents dans le champ de la modélisation en sciences humaines et se retrouvent partiellement dans le schéma de Balci (\cref{fig:parametres-Balci}).
+
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.8\linewidth]{img/schema_parametres_balci.pdf}
@@ -1149,21 +1170,18 @@ Il y a ainsi $q$ variables en entrée, $r$ paramètres et $k$ variables en sorti
 Ces nombres différents représentent bien qu'il n'y a pas de lien direct entre les variables en entrée et celles en sortie : la variable en entrée $I_{1}^m$ et la variable en sortie $O_{1}^m$ ne correspondent pas nécessairement.
 De même, \citeauthor{balci_validation_1994} n'indique pas de lien entre les paramètres et les variables (en entrée ou en sortie) : les paramètres agissent à l'échelle du modèle de simulation, sans détail des éléments affectés.
 
-\subsubsection{Paramètres, variables, indicateurs : un essai de définition graphique}
-\label{subsubsec:mes_definitions_params}
-
+\paragraph{Paramètres, variables, indicateurs : un essai de définition graphique.}\label{subsubsec:mes_definitions_params}
 
 Dans ce travail de thèse, nous rendons compte de la construction d'un modèle complexe, doté de très nombreux paramètres, variables d'entrée et variables de sortie (selon la définition de \citeauthor{balci_validation_1994}).
 Nous avons donc préféré développer notre propre \og ontologie\fg{} de ces termes, qui nous semble plus adapté à la description d'un modèle tel que SimFeodal.
 
 Comme chez \citeauthor{balci_validation_1994}, notre ontologie est organisée autour d'une opposition entre des \textbf{entrées} et des \textbf{sorties}.
 
-\paragraph{Les entrées.}
-
+\subparagraph{Les entrées.}
 La \cref{fig:parametres-these-entrees} représente notre proposition de définition des entrées, utilisée dans ce travail de thèse.
 Les entrées sont donc composées de deux types d'éléments, des variables et des paramètres.
 Les \textbf{variables} ($V_n$) sont des variables informatiques dont la valeur évolue tout au long de la simulation.
-Le nombre d'agrégats, par exemple, est une variable : une valeur est assignée à l'initialisation du modèle, puis à chaque pas de temps.
+Le nombre d'agrégats, par exemple, est une variable : une valeur est assignée à l'initialisation du modèle, et cette valeur est ensuite susceptible de changer à chaque pas de temps.
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{img/schemas_params_1_entrees.pdf}
@@ -1178,7 +1196,7 @@ Le dernier type de paramètre ($P_5$), assez fréquent dans SimFeodal, correspon
 Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs décrivant les différentes dates où appliquer le changement ($P_{5_1}$, $P_{5_2}$, $P_{5_3}$), et les modalités que prendra alors la variable $V_{10}$.
 
 
-\paragraph{Les sorties.}
+\subparagraph{Les sorties.}
 À l'autre bout du modèle, dans la \cref{fig:parametres-these-sorties}, on retrouve encore les variables ($V_n$), mais certaines sont extraites du modèle sous forme d'\textbf{indicateurs de sortie}.
 
 \begin{figure}[H]
@@ -1201,12 +1219,11 @@ Dans la \cref{fig:parametres-these-sorties}, l'indicateur de sortie $I_E$, de ty
 On retrouve ainsi de fortes inflexions dans l'évolution des valeurs de $V_{10}$ au cours du temps simulé, quand les modalités $P_{5_2}$ et $P_{5_3}$ du paramètre $P_5$ changent.
 
 
-\paragraph{Entrées et sorties du modèle.}
-
+\subparagraph{Entrées et sorties du modèle.}
 La \cref{fig:parametres-these-complet} constitue une synthèse de cette \og ontologie\fg{} lexicale mobilisée dans cette thèse.
 Un modèle de simulation comme SimFeodal contient donc en \textbf{entrée} des \textbf{variables}, dont la valeur peut changer au cours du déroulement d'une simulation.
 Ces variables peuvent être initialisées ou affectées par des \textbf{paramètres}, qui agissent conjointement et selon des modalités qui peuvent varier au cours du temps.
-En fin de simulation, on récupère des \textbf{sorties}, sous la forme d'\textbf{indicateurs de sortie} qui correspondent aux valeurs finales, combinées ou à l'évolution temporelle des \textbf{variables}.
+En fin de simulation, on récupère des \textbf{sorties}, sous la forme d'\textbf{indicateurs de sortie} qui correspondent aux valeurs finales des \textbf{variables}, à leur combinaison, ou encore à leur évolution, temporelle, au cours de la simulation.
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{img/schemas_params_3_complet.pdf}
@@ -1214,7 +1231,7 @@ En fin de simulation, on récupère des \textbf{sorties}, sous la forme d'\textb
 	\label{fig:parametres-these-complet} 
 \end{figure}
 
-\paragraph{Paramètres et expériences.}
+\subparagraph{Paramètres et expériences.}
 Les paramètres ont des valeurs pré-définies, par définition, pour l'exécution d'une simulation ou de ses réplications (dans lesquelles les valeurs des paramètres sont volontairement identiques).
 Quand bien même leurs modalités peuvent évoluer ($P_{5_{1}}$, $P_{5_{2}}$ ou $P_{5_{3}}$) au cours du temps simulé, c'est un choix effectué avant la simulation et les valeurs et dates d'applications de ces valeurs n'évolueront pas.
 
@@ -1228,52 +1245,7 @@ Les paramètres variant ($P_2$, $P'_2$ ou $P''_2$ par exemple), il est ainsi att
 \end{figure}
 
 
-
-%
-%\begin{figure}[!h]
-%	\includegraphics[width=\linewidth]{img/schemas_params.pdf}
-%	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P).} 
-%	\label{fig:parametres-these-complet} 
-%\end{figure}
-
-%
-%\begin{figure}[!h]
-%	\includegraphics[width=\linewidth]{img/schemas_params_simple.pdf}
-%	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P).} 
-%	\label{fig:parametres-these-simple} 
-%\end{figure}
-%
-%\colorbox{pink}{\parbox{0.9\textwidth}{%
-%		\vskip5pt
-%		\leftskip5pt\rightskip5pt
-%		Ne pas oublier de préciser différence entre paramètres et situation initiale. Ex. de situation initiale : des variables déjà allouées, par ex. pop des villes.
-%		Il n'y en a pas vraiment dans mon modèle pk tout est endogénéisé : pas de situation initiale, mais des paramètres qui définissent la création de celle-ci.
-%		\vskip5pt
-%	}
-%}
-
-%\begin{figure}[!h]
-%	\includegraphics[width=\linewidth]{img/schemas_params_complet.pdf}
-%	\caption{Schématisation des définitions de variables (V), indicateurs de sortie (I) et paramètres (P) incorporant l'aspect temporel de certains indicateurs ($\text{I}_{\text{D}}$ et $\text{I}_{\text{E}}$).} 
-%	\label{fig:parametres-these-complet} 
-%\end{figure}
-
-
-%\subsubsection{Paramètres et variables}
-%
-%\begin{encadre}{Variables, entrées, paramètres\ldots}{termes-variables}
-%	Au sein des \textbf{variables}, constituées par l'ensemble des éléments d'un modèle ayant la capacité de changer, que ce soit au cours d'une simulation ou au travers de plusieurs expérimentations, nous distinguerons trois types spécifiques.
-%	\begin{description}[style=nextline]	
-%		\item[Entrées] Les \textbf{entrées} constituent l'ensemble des informations nécessaires à l'exécution d'un modèle en ce qu'elles en alimentent les mécanismes. Elles peuvent être constantes au cours d'une simulation (la date de fin d'exécution de notre modèle par exemple), ou évoluer de par l'action du modèle (le nombre d'églises paroissiale du modèle, qui est une entrée, et augmente tout au long de la simulation).
-%		
-%		\item[Paramètres] Certaines de ces entrées sont des \textbf{paramètres} : ce sont les entrées qui peuvent être mobilisées afin de modifier le comportement du modèle, et qui \og représentent ce que le simulateur peut perturber\fg{}\footnote{Pour reprendre les mots de Treuil et al. qu'ils appliquent aux entrées\autocite[8]{treuil_modelisation_2008}. }. Dans cet ouvrage, nous distinguerons plusieurs types de paramètres (\cref{enc:types-parametres}) selon leur ancrage dans l'empirique. Notons toutefois dès maintenant que le nombre de paramètres d'un modèle peut être bien supérieur au nombre de paramètres que l'on fera réellement varier dans les expérimentations.
-%		
-%		\item[Sorties] Les sorties d'un modèle représentent ce qui est produit par le modèle durant la simulation, et enregistré en fin de simulation.
-%		Ces sorties peuvent être très nombreuses, et concerner autant les variables individuelles (une liste des Foyers Paysans et de leur satisfaction au cours du temps par exemple) que des variables agrégées (quartiles de satisfaction des foyers paysans par exemple), moins coûteuses en temps d'écriture ainsi qu'en espace de stockage. De la même manière que pour les paramètres, sur l'infinité potentielle de sorties d'un modèle, seules quelques-unes seront effectivement générées et enregistrées afin de minimiser les données produites à celles que le modélisateur compte explorer.
-%	\end{description}
-%\end{encadre}
-
-\subsubsection{Différents types de paramètres}
+\subsubsection{Les paramètres dans SimFeodal}
 
 Les paramètres sont donc un sous-ensemble des entrées d'un modèle qui ont vocation à varier dans les différentes exécutions de ce modèle.
 Pour autant, c'est un sous-ensemble assez divers, et tous les paramètres n'apportent pas les mêmes connaissances, que ce soit par leur valeur ou par la manière dont ils varient.
@@ -1282,188 +1254,193 @@ Il convient donc d'identifier différents types de paramètres, non selon leur c
 %\footnote{
 %	En physique ou en mathématiques par exemple, une telle distinction n'existe pas, la définition d'un paramètre prenant une considération plus simple d'élément rendu constant dans une exécution d'un modèle. \hl{pas clair, prendre une définition quelconque reprenant cette idée.}
 %}
-distingue souvent deux types de paramètres :
-	les paramètres empiriques, dont la valeur a une correspondance directe dans le domaine empirique (on peut donc l'observer), et les paramètres techniques\footnote{
-		Mathian et Tannier \autocite{mathian_formalisation_2015} utilisent le terme de paramètre mécanique pour définir ce type de paramètres.
-		Nous trouvons l'usage du mot \og technique\fg{} plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait.
-		De plus, chaque paramètre, empirique, technique ou autre, a un impact sur les mécanismes du modèle, de par la définition que nous empruntons des paramètres \cref{enc:termes-variables}.
-		Nous préférerons donc le terme de \og technique\fg{} pour éviter les confusions.
-	}, pour lesquels cette correspondance n'existe pas.
+distingue souvent deux types de paramètres.
+D'un côté, des paramètres empiriques, dont la valeur a une correspondance directe dans le domaine empirique (on peut donc l'observer), et d'un autre, les paramètres techniques\footnote{
+		\textcite{mathian_formalisation_2015} utilisent le terme de paramètre mécanique pour définir ce type de paramètres.
+		Nous trouvons l'usage du mot \og technique\fg{} plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait et que le terme de \og mécanique\fg{} peut rappeler celui des mécanismes, alors même que les paramètres, empiriques ou non, ont une implication pour les mécanismes.
+}, pour lesquels cette correspondance n'existe pas.
 Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes.
 Comme les paramètres de SimFeodal sont nombreux et seraient trop sommairement distingués dans ces deux catégories, nous avons choisi de mobiliser une typologie en quatre classes (voir \cref{enc:types-parametres}), relatives au sens de ces paramètres vis-à-vis du fonctionnement du modèle.
-Cette typologie est mixte, entre d'une part le degré de connaissance empirique sur lesquels les paramètres reposent (paramètres techniques \textit{vs} les autres), l'usage qui en est fait dans le modèle (paramètre d'\textit{input} et de contexte \textit{vs} les autres), et enfin entre les paramètres qui représentent les influences exogènes ou endogènes (paramètres de contexte \textit{vs} les autres).
+Cette typologie est mixte, entre d'une part le degré de connaissance empirique sur lesquels les paramètres reposent (paramètres techniques \textit{vs} les autres), et d'autre part l'usage qui en est fait dans le modèle (\textit{input} et contexte \textit{vs} les autres).
 Cette typologie est notamment appuyée sur celle de \textcite[45]{tannier_analyse_2017}.
-
-%Nous en proposons donc une troisième, que nous avons choisi de nommer \og paramètres commensurables\fg{}\footnote{
-%	La définition du dictionnaire \og Le Petit Robert\fg{} pour ce terme est celle-ci :  \og  Se dit d'une grandeur qui a, avec une autre grandeur, une commune mesure.\fg{}\autocite{robert_nouveau_1993}. \\Cf. aussi :			
-%	\og Les mondes n'apparaissent commensurables ou incommensurables qu'à ceux qui s'attachent aux mesures mesurées. Or, toutes les mesures, en science dure comme en science souple, sont aussi des mesures mesurantes et celles-là construisent une commensurabilité qui n'existait pas avant leur mise au point.\fg{}\autocite[153]{latour_nous_2013}
-%}, qui nous semble à même caractériser des paramètres partiellement inscrits dans l'empirie, c'est-à-dire sans valeur empirique propre, mais permettant tout de même d'être mobilisés comme les paramètres empiriques, c'est-à-dire à même d'être comparés, que ce soit par les fluctuations de leurs propres valeurs ou en comparant des paramètres commensurables les uns avec les autres.
-Avec cette typologie des paramètres basées non sur la nature de ceux-ci mais sur leur utilisation dans un modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de Minsky\footnote{\hl{Cf. sans doute le chapitre 1, à faire.}} \autocite{minsky_matter_1965}.
-Selon l'usage que l'on fait du modèle, un même paramètre pourra donc être vu comme un paramètre d'\textit{input} ou de contexte (selon que l'on est dans la calibration d'un modèle ou dans son application à d'autres cas d'études par exemple).
-De même, un paramètre pourra passer de paramètre de mécanisme à paramètre de contexte selon l'état de connaissance empirique sur lequel il repose au moment de sa classification (si de nouvelles connaissances empiriques sont \og découvertes\fg{}).
-%Pour différents modélisateurs, un même paramètre pourra donc être considéré comme relevant du contexte ou des mécanismes, ou encore être  ou commensurable, ou encore comme commensurable ou technique.
-%\todobox{
-%	Ne pas oublier de préciser que selon le point de vue du modélisateur, un paramètre peut passer de empirique à commensurable, ou de commensurable à technique (et vice-versa), mais pas \og franchir\fg{} toutes les catégories.
-%}
-
-
-%\begin{encadre}{Typologie de paramètres}{typo-parametres}
-%	\begin{TAB}(b,3cm,3cm)[11pt]{|c|c|c|}{|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
-%		\thead{\diagbox{Par}{Paramètres}} & \thead{Endogène}  & \thead{Exogène}  \\
-%		
-%		\thead{Technique} & \makecell{Paramètre technique} & \makecell{---\\ (ou constante?)} \\
-%		
-%		\thead{Thématique} & \makecell{Paramètre\\thématique\\endogène\\(ex commensurable)} & \makecell{Paramètre\\thématique\\exogène\\(ex empirique)}
-%		
-%	\end{TAB}
-%\end{encadre}
 
 \begin{encadre}{Quatre types de paramètres}{types-parametres}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
-	\begin{description}
-		\item[Paramètres d'\textit{input}]
-		
-		\item[Paramètres de contexte]
-		
-		\item[Paramètres de mécanisme]
-		
-%		\item[Paramètres empiriques] Les paramètres empiriques sont les paramètres qui peuvent être fixés à l'aide d'une ou de valeur(s) empiriquement connue(s), ou à défaut, dont la valeur se réfère à une quantité directement identifiable par une personne ayant des connaissances thématiques sur ce qui est modélisé.
-%		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-%			Dans le modèle de Schelling (\ref{desc:schelling}), le paramètre \fixref{\texttt{S}} est un paramètre empirique : la valeur qui lui est donnée peut être interprétée empiriquement, quand bien même il serait difficile d'obtenir, par exemple d'un enquêté, une valeur exacte à utiliser.
-%		\end{mdframed}
-		\item[Paramètres techniques] Il s'agit des paramètres dont la valeur, ou même son ordre de grandeur, n'apportent aucune connaissance thématique au modélisateur.
-		Ces paramètres ont pour raison d'être de permettre à d'autres types de paramètres de s'exprimer en valeurs compréhensibles et exploitables.
-		Dès lors, leurs valeurs sont propres à chaque modèle formalisé, et une comparaison de ces valeurs entre les différents modèles n'apporte pas de connaissance.
-%		
-%		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-%			Dans le modèle gravitaire (\cref{desc:gravitaire}), $k$ est un paramètre technique : c'est un ratio qui varie afin d'ajuster l'ordre de grandeur des masses ($M_i$ et $M_j$) à celui des flux  échangés ($F_{ij}$). C'est une valeur d'ajustement, qui ne peut être comparée entre des modèles portant sur différents espaces et/ou thématiques\footnotemark.
-%		\end{mdframed}
-		
-%		\item[Paramètres \og commensurable \fg{}]
-%		
-%		Cette catégorie, forgée dans le cadre de cet ouvrage, permet de représenter les paramètres qui ne sont pas fondamentalement issus de l'empirique mais qui peuvent toutefois être interprétés, que ce soit par rapport à une valeur canonique, définissant alors un repère, ou alors par rapport à d'autres valeurs de ce même paramètre, créant dès lors une échelle d'analyse. Outre la calibration d'un modèle, les valeurs de ces paramètres ont donc un intérêt propre et peuvent être analysées. pour elles-mêmes.
-%		
-%		\begin{mdframed}[backgroundcolor=gray!10,footnoteinside=false]
-%			Dans le modèle gravitaire (\cref{desc:gravitaire}), le frein de la distance (paramètre $\alpha$) peut être considéré comme un paramètre commensurable. Sa valeur ne renvoit ainsi à aucune dimension empirique, mais son usage répandu permet de comparer les valeurs qu'il peut prendre à des valeurs bien connues. Par exemple, on utilise fréquemment des valeurs de $\alpha$ comprises entre $1$ et $2$ pour exprimer la friction de la distance dans les navettes domicile-travail. Une valeur inférieure à $1$ peut donc être interprétée comme laissant une part plus faible à la distance, par exemple dans le cas de déplacements de loisirs. A contrario, un paramètre $\alpha$ supérieur à $2$ montrera une plus forte friction de la distance, par exemple dans les choix d'une école élémentaire à proximité du foyer d'un ménage.
-%		\end{mdframed}
-	\end{description}
-%	\footnotetext{Dans le cas où $\alpha$ vaut $0$, ce paramètre peut être vu comme commensurable dans la mesure où il devient alors la part de la masse qui devient un flux.}
+
+Dans SimFeodal, nous avons choisi de différencier les paramètres en quatre \og types\fg{}, qui distinguent l'usage	qui est fait de chacun de ces paramètres dans le modèle, en particulier vis-à-vis des connaissances expertes sur lesquelles ils reposent ou non.\vspace*{-1em}
+	
+\subparagraph*{Paramètres d'\textit{input}.}
+	Ce sont les paramètres qui définissent l'état du monde simulé lors de son initialisation.
+	Ils sont fortement basés sur les connaissances empiriques, liés à la région qui est modélisée (la Touraine).
+	À ce titre, ces paramètres d'\textit{input} ne sont donc pas amenés à varier en dehors d'application du modèle à d'autres cas d'étude, ou si de nouvelles connaissances empiriques viennent les modifier.\\
+	\textit{Exemples : nombre de seigneurs, de villages, d'églises etc. à l'initialisation, dimensions du monde modélisé\ldots}\vspace*{-1em}
+
+\subparagraph*{Paramètres de contexte.}
+	Les paramètres de contexte ont un ancrage empirique moins appuyé, mais agissent de manière globale et continuelle sur le contexte de déroulement du modèle.
+	Ce sont les paramètres sur lesquels on peut s'appuyer majoritairement pour l'exploration des hypothèses thématiques du modèle.
+	Leurs variations entre des expériences différentes est nécessairement guidée par l'empirie.\\
+	\textit{Exemples : taux de croissance démographique, puissance des communautés, période de construction des châteaux\ldots}\vspace*{-1em}	
+
+\subparagraph*{Paramètres de mécanisme.}
+	Ces paramètres ont une assise empirique plus incertaine, s'appuyant plus sur des ordres de grandeur que les précédents.
+	Ils agissent au niveau des mécanismes des agents, et peuvent varier, tout en restant dans les mêmes ordres de grandeur, lors du paramétrage du modèle.\\
+	\textit{Exemples : seuils de distances aux églises et châteaux pour les foyers paysans, probabilité de dons de zones de prélèvement et de châteaux pour les seigneurs, attractivité relative des attracteurs qui composent les pôles\ldots}\vspace*{-1em}
+
+\subparagraph*{Paramètres techniques}
+	Il s'agit des paramètres dont les valeurs, ou même les ordres de grandeur, ne s'inscrivent sur aucune connaissance empirique.
+	Ces paramètres ont pour raison d'être de permettre à d'autres types de paramètres de s'exprimer en valeurs compréhensibles et exploitables.
+	Dès lors, leurs valeurs sont propres à chaque version, sous-version ou expérience du modèle formalisé, et une comparaison de ces valeurs entre les différents modèles n'apporte pas de connaissance.
+	Ils sont amenés à varier d'une manière uniquement guidée par l'évaluation du modèle lors du paramétrage, sans que cela n'ait le moindre ancrage ou répercussion empirique.\\
+	\textit{Exemples : distance de fusion entre les agrégats, pondération de la satisfaction matérielle des foyers paysans en fonction du nombre de droits acquittés, montants récupérés par les seigneurs selon les types de droits\ldots}
 \end{encadre}
 
+Avec cette typologie des paramètres basées non sur la nature de ceux-ci mais sur leur utilisation dans le modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de \citeauthor{minsky_matter_1965} (\hl{cf. chapitre 1}).
+Selon l'usage que l'on fait du modèle, un même paramètre pourra donc être vu comme un paramètre de contexte ou de mécanisme (par exemple selon l'état des connaissances empiriques liées à ce paramètre sur le cas d'étude traité).
 
-\subsubsection{Comment choisir les valeurs de paramètres ?}
+
+\paragraph*{Comment choisir les valeurs de paramètres ?}
 
 \hl{Ici, faire un court paragraphe de transition pour présenter rapidement l'approche générale du paramétrage : peut-être redondant avec ce qui suit, en particulier dans les présentations des paramètrages du modèle gravitaire et de Schelling.}
 
-\subsection{Le paramétrage, un processus d'amélioration du modèle.}
+
+\subsection{Le paramétrage}
 
 Le paramétrage d'un modèle est souvent réduit à l'un de ses aspects, le \og calibrage \fg, étape finale de la construction d'un modèle qui cherchera à reproduire autant que possible des données empirique en faisant varier les valeurs des paramètres jusqu'à ce qu'une combinaison de celles-ci soit satisfaisante.
 
-De nombreux auteurs ont montré que le paramétrage d'un modèle ne pouvait se réduire à cette étape, chacun employant des termes différents pour désigner le processus de paramétrage.
+De nombreux auteurs ont montré que le paramétrage d'un modèle ne pouvait se réduire à cette étape, chacun employant des termes différents pour désigner le processus de paramétrage, processus le plus souvent inscrit comme l'une des composantes de l'évaluation des modèles (chez \textcite{ngo_calibration_2012}, cf. \cref{fig:schema_ngo} par exemple).
 
-%%%% Pas adapté  %%%%
-Gilbert et Troitzsch \autocite{gilbert_simulation_2005} restent très flous en utilisant les termes de \textit{checking} et de \textit{debugging}, qu'ils inscrivent dans une démarche plus large de \textit{verification} correspondant à la \hl{validation interne}\footnote{\hl{Définir !}}.
-Osman Balci \autocite{balci_validation_1994} crée et emploie l'acronyme \og \textit{VV\&T}\fg{}\footnote{\textit{Validation, Verification and Testing}}, à portée plus large puisqu'il s'applique à chacune des étapes de la modélisation
-%%%%  %%%%
+%%%%% Pas adapté  %%%%
+%\textcite{gilbert_simulation_2005} restent très flous en utilisant les termes de \textit{checking} et de \textit{debugging}, qu'ils inscrivent dans une démarche plus large de \textit{verification} correspondant à la validation interne.
+%\textcite{balci_validation_1994} crée et emploie l'acronyme \og \textit{VV\&T}\fg{}\footnote{\textit{Validation, Verification and Testing}}, à portée plus large puisqu'il s'applique à chacune des étapes de la modélisation
+%%%%%  %%%%
 
-Le plus souvent (\fixref{ref Seb, Clem...}), une fois le modèle construit, le modélisateur s'attache à son \og calibrage\fg{}, en cherchant pour chaque paramètre la ou les valeurs qui permettront au modèle de s'approcher des données empiriques devant être reproduites.
-Cette étape, que l'on nomme généralement calibration, peut se faire de manière manuelle, par approximations successives (\fixref{C. Cottineau et/ou S. Rey, d'après Hermann}), par semi-automatisme, \toChange{exemple en effectuant des analyses de sensibilité}{Lena : trouver d'autres exemples plus classiques et lointains} (\fixref{C. Schmitt, J. Hirtzel}), ou encore de manière entièrement automatique (\fixref{C. Schmitt, S. Rey, C. Cottineau avec PSE}).
-L'approche souvent défendue, notamment dans les travaux les plus récents (\fixref{Rimbault?}), voudrait que cette étape soit obligatoire pour toute modélisation, permettant par une exploration systématique de comprendre l'entièreté du comportement d'un modèle, et d'en faire dès lors un outil complètement maitrisé \toChange{rendant possible l'établissement d'une loi}{Lena: expliciter}.
+Le plus souvent, une fois le modèle construit, le modélisateur s'attache à son \og calibrage\fg{}, en cherchant pour chaque paramètre la ou les valeurs qui permettront au modèle de s'approcher des données empiriques devant être reproduites, c'est-à-dire la conjugaison de \og valeurs optimales\fg{} de paramètres minimisant l'écart entre les données simulées et les données empiriques de contrôle.
+Cette étape, que l'on nomme aussi souvent calibration par anglicisme, peut se faire de manière manuelle, par approximations successives  -- \textcite[253]{crooks_agent-based_2019} nomme cela \og calibration qualitative\fg{} --, par semi-automatisme, par exemple en effectuant des analyses de sensibilité -- \textcite[\S2.3--2.4]{thiele_facilitating_2014} mobilisent ainsi l'analyse de sensibilité, via échantillonnage, pour faire de l'estimation de paramètres --, ou encore de manière entièrement automatique -- par exemple, pour \textcite{heppenstall_genetic_2007} ou \textcite[188]{ngo_calibration_2012}, en suivant une méthode d'optimisation à base d'\og{}algorithmes génétiques\fg{}.
+%L'approche souvent défendue, notamment dans les travaux les plus récents (\fixref{Rimbault?}), voudrait que cette étape soit obligatoire pour toute modélisation, permettant par une exploration systématique de comprendre l'entièreté du comportement d'un modèle, et d'en faire dès lors un outil complètement maitrisé \toChange{rendant possible l'établissement d'une loi}{Lena: expliciter}.
 
-Dans notre travail, nous souhaitons revenir sur cette approche de la modélisation, ancrant le paramétrage comme étape ultime de la construction d'un modèle, en particulier en ce que nous considérons que cette pratique de recherches de \toChange{valeurs optimales}{Lena : penser à bien l'introduire avant.} est un exercice qui devrait s'effectuer tout au long de la construction du modèle, de manière plus itérative que conclusive.
-
-
-\subsection{Qu'est-ce que le(s) paramétrage(s) ?}
+Dans notre travail, nous souhaitons revenir sur cette approche de la modélisation, ancrant le paramétrage comme étape ultime de la construction d'un modèle, en particulier en ce que nous considérons que cette pratique de recherches de valeurs optimales est un exercice qui devrait s'effectuer tout au long de la construction du modèle, de manière plus itérative que conclusive.
 
 \subsubsection{Définition}
 
-\toChange{Paramétrer (informatique): \og Programmer (un appareil complexe), en définissant les paramètres assurant son fonctionnement optimal. Ex. \textit{Paramétrer une imprimante}\fg{}\autocite{robert_nouveau_1993}.}{J'aime bien cette définition, c'est la seule à avoir le sens que j'entends dans paramétrage/paramétrer. Et elle introduit une logique d'optimalité.}
-
-Le terme recouvre deux sens différents, dont la distinction peut se faire selon qu'on l'utilise pour définir un processus ou pour caractériser une configuration.
+Le terme de paramétrage recouvre deux sens différents, dont la distinction peut se faire selon qu'on l'utilise pour définir un processus ou pour caractériser une configuration.
 Ici, nous emploierons plutôt le premier cas, définissant dès lors le paramétrage comme le processus, manuel ou automatique, visant à constituer cette configuration de paramètres.
 Dans ce deuxième cas, le paramétrage désigne un ensemble de valeurs de paramètres, par exemple quand on mentionne un paramétrage par défaut, ou un paramétrage optimal.
-Pour ne pas risquer de contre-sens, nous préférerons le terme de configuration de paramètres.
+Pour ne pas risquer de contre-sens, nous préférerons le terme de configuration de paramètres ou de \og jeu de valeurs de paramètres\fg{}.
 
-On tend à distinguer le paramétrage -- passage obligé ne nécessitant pas d'être évoqué -- de la calibration, processus systématique qui inscrirait le modèle comme un outil scientifique et incontestable.
-Nous choisissons ici de confondre ces approches, non pas en considérant le paramétrage comme un outil d'évaluation du modèle, mais comme une composante inhérente à la construction d'un modèle, quelque soient les formes et les temporalités que le paramétrage adopte.
+On tend à distinguer le paramétrage -- passage obligé ne nécessitant pas d'être évoqué -- du calibrage, processus systématique qui inscrirait le modèle comme un outil scientifique et incontestable.
+Nous choisissons ici de confondre ces approches, non pas en considérant le paramétrage comme un outil d'évaluation du modèle, mais comme une composante inhérente à la construction d'un modèle, quelles que soient les formes et les temporalités que le paramétrage adopte.
 Le paramétrage est en effet une pratique utile dans la construction du modèle, car les résultats auxquels il aboutit, c'est-à-dire les valeurs de paramètres qui semblent mieux adaptés, renseignent aussi bien sur les biais des mécanismes adoptés que sur leur efficacité réelle.
-Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que des variations dans les valeurs de paramètres ne changent pas réellement les sorties du modèle, cela peut être l'occasion de repenser le mécanisme dans son ensemble, ou plus souvent, la manière dont le paramètre est mobilisé dans ce mécanisme. On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant sa calibration plus complexe et instable :
-\begin{quote}
-	Au dessous du seuil des 150 pas de simulation pour le paramétrage de InnovationLife, le calibrage du modèle est très difficile voire impossible. Au dessus de ce seuil, le mécanisme associé au paramètre InnovationLife n’a plus d’effet sur le calibrage du modèle. Dans un soucis de parcimonie du nombre et de la complexité des mécanismes simulés dans le modèle SimpopLocal, il est justifiable de retirer du modèle ce mécanisme qui n’est pas nécessaire à la simulation de la dynamique de croissance recherchée.\\
-	\mbox{}~ \hfill \autocite[224]{schmitt_modelisation_2014}
-\end{quote}
+Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que des variations dans les valeurs de paramètres ne changent pas réellement les sorties du modèle, cela peut être l'occasion de repenser le mécanisme dans son ensemble, ou plus souvent, la manière dont le paramètre est mobilisé dans ce mécanisme.
+On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant son calibrage plus complexe et instable :
+\begin{quotation}
+\noindent\og
+	Au dessous du seuil des 150 pas de simulation pour le paramétrage de InnovationLife, le calibrage du modèle est très difficile voire impossible. Au dessus de ce seuil, le mécanisme associé au paramètre InnovationLife n’a plus d’effet sur le calibrage du modèle. Dans un soucis de parcimonie du nombre et de la complexité des mécanismes simulés dans le modèle SimpopLocal, il est justifiable de retirer du modèle ce mécanisme qui n’est pas nécessaire à la simulation de la dynamique de croissance recherchée.
+	\fg{}\\
+	\mbox{}~ \hfill \textcite[224]{schmitt_modelisation_2014}
+\end{quotation}
 
-\subsubsection{Désambiguïsation}
+\paragraph{Désambiguïsation.}
 
 De nombreux termes sont utilisés dans la littérature, souvent sans réelle distinction, pour désigner cette opération qui consister à choisir un jeu de paramètres pour un modèle.
-Pêle-mêle, on y retrouve le paramétrage, la validation, l'évaluation ou encore la calibration.
-Nous définissons dans l'\cref{enc:termes-calibration} le sens donné à chacun de ces termes dans le cadre de ce manuscrit.
+Pêle-mêle, on y retrouve le paramétrage, le calibrage, l'ajustement\ldots.
+Nous définissons dans l'\cref{enc:termes-calibration} le sens donné à ces termes dans le cadre de ce manuscrit.
 \bigskip
 
 \begin{encadre}{Construction, paramétrage et calibrage}{termes-calibration}
-	\renewcommand{\thempfootnote}{\alph{mpfootnote}}
-	\begin{center}
-		\hl{Reprendre !}
-	\end{center}
+\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 	
-	\begin{description}[style=nextline]	
-		\item[Construction]
+La \cref{fig:etapes-modelisation} représente l'enchevêtrement des différentes étapes du processus de modélisation, dont nous allons brièvement détailler les parties relatives à la construction ici.
+	
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{img/schema_definition_parametrage.pdf}
+\caption{Étapes du processus de modélisation.} 
+\label{fig:etapes-modelisation} 
+\end{figure}
+
+\subparagraph{Construction.}
+Par construction, nous définissons l'ensemble des étapes relatives à la création du modèle, c'est-à-dire la conception du modèle conceptuel, son implémentation sous forme d'un modèle de simulation et le paramétrage du modèle.
+À force d'allers-retours entre ses composantes, la construction aboutit sur un modèle \og finalisé\fg{}, qui peut être évalué de manière globalement (chacune des composantes de la construction pouvant être évaluée individuellement : l'implémentation est par exemple évaluée au moyen des méthodes de validation interne).\vspace{-1em}
 		
-		\item[Paramétrage]
+\subparagraph{Paramétrage.}
+Le paramétrage du modèle est l'étape où l'on vérifie la cohérence empirique et simulée du modèle.
+Lors du paramétrage, on ajuste les valeurs de paramètres, leur utilisation par les mécanismes et le détail du fonctionnement technique de ces mécanismes.
+On cherche par cela à obtenir un modèle plus satisfaisant du point de vue des dynamiques et résultats qu'il produit.
+Une des définitions du nouveau petit Robert \autocite{robert_nouveau_1993} nous semble particulièrement représentative de cela :\\
+\og Paramétrer (informatique): \og Programmer (un appareil complexe), en définissant les paramètres assurant son fonctionnement optimal.
+Ex. \textit{Paramétrer une imprimante}\fg{}.
+\vspace{-1em}
 		
-		\item[Calibrage] On réserve souvent, et nous nous y tiendrons, ce terme à la dernière étape dans l'aboutissement d'un modèle.
-		Une fois les mécanismes fixés et des objectifs définis, on peut procéder au calibrage (aussi nommé, par anglicisme, \og calibration\fg{}), c'est-à-dire à une exploration de l'espace des paramètres ayant pour but de stabiliser les paramètres afin de se rapprocher autant que possible de ces objectifs.
-		Cette étape, quelques soient les moyens employés, s'approche de la résolution utilisée dans le cadre de systèmes d'équations.
-		Le contexte des systèmes complexes, et donc d'une non-linéarité des effets des paramètres, rend toutefois difficile l'obtention d'une unique configuration de \hl{paramètres optimale}\footnote{
-			\hl{Lena : il faut partir d'une def plus basique en intro}
-		}, et le calibrage aboutit donc souvent à un ensemble de configurations possibles, constituant par exemple un optimum de Pareto (\fixref{Trouver ref}).
-		
-		%		\item[Évaluation] On emploie majoritairement ce mot pour décrire les méthodes permettant de comprendre le comportement du modèle et sa réaction aux différents paramètres.
-		%		Là où la calibration cherche une configuration de paramètres optimale, l'évaluation tend surtout à caractériser la stabilité du modèle face à l'aléa ou a des configurations exceptionnelles.
-		%		On vise ainsi à s'assurer que le modèle reproduise \hl{les faits stylisés}\footnote{Lena : pas introduits avant} voulus quelque soient son réglage, ou au moins à quantifier les intervalles de paramètres qui y satisfont.
-		%		
-		%		\item[Validation] La validation (refs Seb) tire son origine de sciences plus nomothétiques, et correspond donc à la démonstration qu'un modèle reproduit correctement ce qu'il représente.
-		%		Au delà de l'évaluation, le terme amène une logique de preuve formelle que le modèle réagit bien ainsi et pas autrement quelque soient les conditions d'exécution.
-		%		Cette démonstration formelle peut être effectuée sur des modèles à faible nombre de paramètres et mécanismes, mais le terme n'est jamais (à vérifier) employé dès lors que les modèles se complexifient.
-		%		\footnote{
-		%			Lena : cf. JASSS : Faire un rappel du sens classique, par ex. en stats.
-		%		}
-	\end{description}
+\subparagraph{Calibrage.}
+On réserve souvent, et nous nous y tiendrons, ce terme à la dernière étape dans l'aboutissement d'un modèle.
+Une fois les mécanismes fixés et des objectifs définis, on peut procéder au calibrage (aussi nommé, par anglicisme, \og calibration\fg{}), c'est-à-dire à une exploration de l'espace des paramètres ayant pour but de stabiliser les paramètres afin de se rapprocher autant que possible de ces objectifs.
+Dans cette thèse, nous inscrivons le calibrage comme une des étapes, finale, du paramétrage.\vspace{-1em}
+	
+\subparagraph{Co-construction.}
+La co-construction, définie dans le \hl{chapitre 1}, est l'approche mise en place pour réaliser chacune de ces étapes.
+L'approche de co-construction, dans ce travail de thèse, concerne donc aussi bien la \og construction\fg{} que l'évaluation du modèle.
+
+\medskip
+\noindent Notons que toutes ces étapes sont représentées de manière linéaire et chronologique, le paramétrage marquant la fin de la construction du modèle et l'évaluation la fin de l'\og{}évolution\fg{} du modèle.
+Pour autant, les allers-retours entre ces étapes sont extrêmement nombreux (flèches grises), et la \cref{fig:etapes-modelisation} aurait aussi pu être représentée (en perdant en simplicité) sous forme d'une spirale, voire d'une hélice, comme la \og vis sans fin\fg{} d'Archimède.
+
 \end{encadre}
 
-\paragraph{}Afin d'illustrer ces propos, on peut s'appuyer sur des modèles bien connus de la littérature, issus de deux champs disciplinaires différents.
+\clearpage
+\subsubsection{Paramétrer des modèles, illustrations}
+Afin d'illustrer ces propos, on peut s'appuyer sur des modèles bien connus de la littérature, issus de deux champs disciplinaires différents : le modèle gravitaire (\cref{enc:param-gravitaire}) et le modèle de Schelling (\cref{enc:param-schelling}).
 
-\subsubsection{Illustration : le modèle gravitaire.\label{desc:gravitaire}}
 
-\paragraph{Description.}
-Ce modèle statistique\footnote{Pour une description plus complète, se référer à l'ouvrage de Pumain et Saint-Julien \autocite{pumain_les_2001}.}, dans la formulation qu'en a faite Stewart \autocite{stewart_demographic_1948}, vise à prédire des flux (démographiques, marchands etc.) potentiels entre des lieux à partir d'une analogie avec la loi physique de la gravitation. Dans le formalisme le plus simple, \og sans contrainte\fg{} \autocite{pumain_les_2001}, on peut l'exprimer ainsi :
-$$
+\begin{encadre}{Paramétrage du modèle gravitaire}{param-gravitaire}
+	\renewcommand{\thempfootnote}{\alph{mpfootnote}}
+\subparagraph{Description.}
+Ce modèle statistique
+%\footnote{
+%	Pour une description plus complète, se référer à l'ouvrage de \textcite{pumain_les_2001}.
+%}
+, dans la formulation qu'en a faite \textcite{stewart_demographic_1948}, vise à prédire des flux (démographiques, marchands etc.) potentiels entre des lieux à partir d'une analogie avec la loi physique de la gravitation.
+Dans le formalisme le plus simple, \og sans contrainte\fg{} \autocite{pumain_les_2001}, on peut l'exprimer ainsi :
+\vspace*{-.5em}
+\begin{equation*}
 F_{ij} = \frac{k \times M_{i} \times M_{j}}{d_{ij}{}^\alpha}
-$$
-Ce modèle présente trois valeurs empiriques ($M_i$, $M_j$ et $d_{ij}$) et deux paramètres ($k$ et $\alpha$). $k$ est un paramètre technique (\cref{enc:types-parametres}), puisque bien que basée sur l'empirique, sa valeur -- et les fluctuations de celle-ci -- ne donne aucune information sur le système étudié. $\alpha$ est un paramètre commensurable pour les raisons explicités dans l'\cref{enc:types-parametres}.
+\end{equation*}
+
+\vspace*{-.75em}Ce modèle présente trois valeurs empiriques ($M_i$, $M_j$ et $d_{ij}$) et deux paramètres ($k$ et $\alpha$).
+$k$ est un paramètre technique (\cref{enc:types-parametres}), puisque bien que basée sur l'empirique, sa valeur -- et les fluctuations de celle-ci -- ne donne aucune information sur le système étudié.
+$\alpha$ est un paramètre commensurable pour les raisons explicités dans l'\cref{enc:types-parametres}.
 
 À partir des valeurs empiriques $M_i$ et $M_j$ qui caractérisent les masses (populations, ou stocks de  marchandise par exemple) des lieux $i$ et $j$, et de la distance qui les sépare $d_{ij}$, on peut ainsi prédire $F_{ij}$, le flux entre ces lieux.
 
-\paragraph{Objectif.}
+\subparagraph{Objectif.}
 Afin que ce modèle donne des ordres de grandeur réalistes quand aux quantités échangées, il faut le paramétrer en définissant une valeur de $k$, permettant dès lors d'obtenir un rapport entre les masses d'origine et les quantités échangées.
 La valeur de ce paramètre est conditionnée par celle de $\alpha$, que l'on nomme fréquemment \og frein de la distance\fg{}, en ce qu'il permet de quantifier l'impact qu'aura un éloignement plus ou moins important sur la quantité de flux échangés.
 
-\paragraph{Paramétrage.}
-Pour \og ajuster\fg{}\footnote{C'est le terme employé par \autocite{pumain_les_2001}, que l'on peut ici retenir comme équivalent de paramétrer. François Durand-Dastès  \autocite[298]{durand1995modeles} utilise pour sa part le terme de calibration à propos du même modèle.} le modèle, il faut donc en réaliser le paramétrage en s'appuyant sur les éléments connus de l'équation (les valeurs empiriques).
+\subparagraph{Paramétrage.}
+Pour \og ajuster\fg{}\footnote{
+	C'est le terme employé par \textcite{pumain_les_2001}, que l'on peut ici retenir comme équivalent de paramétrer.
+	\textcite[298]{durand1995modeles} utilise pour sa part le terme de calibration à propos du même modèle.
+} le modèle, il faut donc en réaliser le paramétrage en s'appuyant sur les éléments connus de l'équation (les valeurs empiriques).
 $\alpha$ et $k$ étant liés dans l'équation, la valeur de chacun de ces paramètres dépend de celle choisie pour l'autre, et un changement dans l'un des paramètres entraînera la nécessité de modifier l'autre.
 
 Le paramétrage le plus simple consiste à réaliser une régression linéaire sur les logarithmes décimaux des distances et des flux observés, $k$ prenant alors la valeur du logarithme de l'ordonnée à l'origine et $\alpha$ celle du coefficient directeur de la courbe.	
 Le modèle est alors calibré (voir \cref{enc:termes-calibration}), mais si l'on souhaite donner une valeur spécifique à l'un des paramètres, par exemple pour utiliser une valeur classique de 2 au frein de la distance ($\alpha$) \autocite{pumain_modegravitaire_2004}, il faudra alors le re-soumettre à paramétrage pour adapter $k$. De même si l'on modifie les lieux et/ou les masses sur lesquels il s'applique.
+\end{encadre}
 
 
-\subsubsection{Illustration : le modèle de ségrégation de Schelling.\label{desc:schelling}}
+\begin{encadre}{Paramétrage du modèle de ségrégation de Schelling}{param-schelling}
+\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 
-\paragraph{Description.}
-Le modèle de Schelling\footnote{Une description plus poussée accompagnée d'une description de l'exploration du modèle peut être lue dans \autocite{daude_comparaison_2006}} est un modèle de simulation décrit par Thomas Schelling \autocite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état intégré à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle.
+\subparagraph{Description.}
+Le modèle de Schelling\footnote{Une description plus poussée accompagnée d'une description de l'exploration du modèle peut être lue dans \autocite{daude_comparaison_2006}} est un modèle de simulation décrit par l'économiste \textcite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état intégré à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle.
 Il montre en particulier qu'on peut parvenir à un état ségrégé même quand les comportements individuels sont majoritairement tolérants.
 
-L'espace du modèle est défini comme une grille carrée composée de $N$\footnote{Nous reprenons ici la notation $M(N, d, n, S)$ proposée par \autocite[433]{daude_comparaison_2006} en n'explicitant toutefois pas le paramètre $n$ décrivant le type de voisinage (4 ou 8) utilisé.} cellules.
-Au début de la simulation, des agents de deux types, en proportions similaires, sont distribués aléatoirement dans l'espace du modèle. Chaque agent occupe une cellule, et le nombre total de cellules occupées (et donc d'agents) dépend d'un paramètre de densité $d$ qui représente la part (entre $0\%$ et $100\%$) du nombre de cellule qui sera occupé\footnote{Il y a donc $N \times d$ agents, et donc $\frac{N \times d}{2}$ agents de chaque type.}.
+L'espace du modèle est défini comme une grille carrée composée de $N$\footnote{
+	Nous reprenons ici la notation $M(N, d, n, S)$ proposée par \textcite[433]{daude_comparaison_2006} en n'explicitant toutefois pas le paramètre $n$ décrivant le type de voisinage (4 ou 8) utilisé.
+} cellules.
+Au début de la simulation, des agents de deux types, en proportions similaires, sont distribués aléatoirement dans l'espace du modèle. Chaque agent occupe une cellule, et le nombre total de cellules occupées (et donc d'agents) dépend d'un paramètre de densité $d$ qui représente la part (entre $0\%$ et $100\%$) du nombre de cellule qui sera occupée
+%\footnote{
+%	Il y a donc $N \times d$ agents, et donc $\frac{N \times d}{2}$ agents de chaque type.
+%}
+.
 Chaque agent est défini par une satisfaction. Celle-ci correspond à la part de cellules voisines occupées par des agents \og étrangers\fg{}, c'est-à-dire d'un autre type : plus le voisinage contient d'étrangers, moins l'agent est satisfait.
 Si cette satisfaction est inférieure à un paramètre de tolérance $S$, l'agent est considéré comme insatisfait et se déplace aléatoirement dans une cellule non occupée.
 A terme, Schelling montre que même en considérant des valeurs de $S$ assez élevées, c'est-à-dire un comportement plutôt tolérant, la succession de choix individuels entraîne la mise en place d'une distribution spatiale très ségrégée.
@@ -1474,38 +1451,43 @@ Les deux premier sont des paramètres techniques (\cref{enc:types-parametres}), 
 $S$ est un paramètre empirique.
 Bien que le modèle soit théorique, ce paramètre se réfère toutefois à une comportement ayant un sens empirique fort.
 
-\paragraph{Objectif.}
+\subparagraph{Objectif.}
 Le paramétrage de ce modèle consiste à fixer un $N$ constant et à faire varier $d$ et $S$ afin d'en trouver des valeurs permettant la convergence vers une situation stable.
-Quand $d$ est très faible ($30\%$ dans l'exemple de \autocite{daude_comparaison_2006}), quelles que soient les valeurs de $S$, le modèle converge rapidement :
+Quand $d$ est très faible ($30$\% dans l'exemple de \textcite{daude_comparaison_2006}), quelles que soient les valeurs de $S$, le modèle converge rapidement :
 	quand l'espace du modèle dispose d'une faible densité d'agents, il est facile pour ceux-là de créer des agrégats homogènes distants d'agrégats de l'autre type d'agents.
-Quand $d$ est plus important ($\geq66\%$), l'espace disponible étant limité, toutes les valeurs de $S$ ne permettent pas la convergence du modèle.
+Quand $d$ est plus important ($\geq66$\%), l'espace disponible étant limité, toutes les valeurs de $S$ ne permettent pas la convergence du modèle.
 Le paramétrage du modèle aura donc pour objectif de trouver la valeur maximale possible -- pour un $N$ et un $d$ donné -- que peut prendre le paramètre de tolérance $S$ tout en laissant le modèle converger.
 
-\paragraph{Paramétrage.}
+\subparagraph{Paramétrage.}
 Contrairement au modèle gravitaire, le modèle de Schelling est stochastique :
  	les agents se déplacent aléatoirement quand non satisfaits.
 Dès lors, deux exécutions du modèle avec le même jeu de paramètres n’entraîneront pas forcément la même configuration spatiale.
 Qui plus est, pour certains jeux de paramètres, seules certaines exécutions convergeront.
 Le paramétrage de ce modèle ressemble donc à celui qui est réalisé pour le modèle SimFeodal.
-La manière \og traditionnelle\fg{}\footnote{
-	C'est-à-dire manuelle, au contraire de méthodes automatiques plus rigoureuses et récentes.
-} consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge.
+La manière \og traditionnelle\fg{}, c'est-à-dire manuelle,
+%\footnote{
+%	C'est-à-dire manuelle, au contraire de méthodes automatiques plus récentes.
+%}
+consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge.
 Si le modèle converge pour tout $S$, on augmente la valeur de $d$ et on recommence à chercher la valeur maximale possible pour $S$.
 De part la nature stochastique du modèle, chaque jeu de paramètres doit être simulé plusieurs fois, le nombre de ces réplications dépendant de la part d'aléa dans le comportement du modèle.
 Un modèle de Schelling calibré, c'est-à-dire dont le paramétrage est achevé,
 donnera pour un $N$ fixé les valeurs maximales de $d$ et de $S$ atteignables.
+\end{encadre}
 
-\paragraph{}A travers ces deux exemples ayant traits à des méthodes différentes, on retrouve deux approches de paramétrage que l'on souhaite ici voire confondues :
-	dans le premier cas, le paramétrage du modèle gravitaire tend à sa calibration, à la recherche d'une solution optimale, c'est-à-dire meilleure que toute autre.
+À travers ces deux exemples ayant traits à des méthodes différentes, on retrouve deux approches de paramétrage que l'on souhaite ici voire confondues :
+	dans le premier cas, le paramétrage du modèle gravitaire tend à son calibrage, à la recherche d'une solution optimale, c'est-à-dire meilleure que toute autre.
 Pour un phénomène donné (un jeu de données précis par exemple) et un formalisme donné (l'expression la plus simple du modèle, ici sans contrainte), seule un couple de paramètres $\alpha$ et $k$ permet ainsi d'obtenir des flux modélisés proches des flux observés.
 Dans le cas du modèle de Schelling, il n'y a pas de recherche d'optimum :
 	le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence.
-Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quel est la valeur maximale de $d$ permettant cette convergence (et réciproquement).
+Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quelle est la valeur maximale de $d$ permettant de parvenir, le plus souvent (en tenant compte de l'aléa) à cette convergence (et réciproquement).
 
-\subsubsection{Paramétrer un ou des modèles ? \label{sssec:parametrer-un-des-modeles}}
+\subsubsection{Paramétrer SimFeodal}
 
-\toChange{\fixref{Cottineau, Reuillon et Rey} ont montré qu'on construisait plus souvent des familles de modèles que des modèles uniques.}{Lena : trop endogame, prendre exemples modèles modulaires dans JASSS}
-Ces auteurs plaident pour une construction modulaire de modèles, chacun des mécanismes et complexifications devant être autonomes afin de pouvoir les assembler en autant de combinaisons que nécessaire à une exploration d'ensemble de leurs interactions.
+\paragraph{Un ou des modèles à paramétrer ?} \label{sssec:parametrer-un-des-modeles}
+
+%\toChange{\fixref{Cottineau, Reuillon et Rey} ont montré qu'on construisait plus souvent des familles de modèles que des modèles uniques.}{Lena : trop endogame, prendre exemples modèles modulaires dans JASSS}
+Certains auteurs \autocite{} plaident pour une construction modulaire de modèles, chacun des mécanismes et complexifications devant être autonomes afin de pouvoir les assembler en autant de combinaisons que nécessaire à une exploration d'ensemble de leurs interactions.
 
 Nous reprendrons de leur discours une vision moins ambitieuse, en considérant (\toChange{ref Rey}{à chercher il en parlait à sa soutenance je crois}) simplement qu'en fait d'un modèle, la modélisation passe par plusieurs modèles, ayant chacun différentes implémentations d'un mécanisme conceptuellement identique et chacun se devant dès lors d'être adapté par un paramétrage dédié.
 
@@ -1530,94 +1512,76 @@ Tous les mécanismes de régulation de ce comportement étaient dès lors rendus
 La première version avait été paramétré aussi correctement que possible, mais ce paramétrage était entièrement à refaire avec la nouvelle version (modifications de la période B, \cref{fig:comits-periodes}).
 \toChange{On pourrait dès lors différencier le modèle pré-existant et celui qui a suivi ce changement, et les considérer comme deux modèles puisque réagissant de manière extrêmement différente.}{Lena : à discuter plus profondément}
 
-\toChange{Cet exemple renforce le caractère nécessaire du paramétrage, et qui plus est, de la continuité de cette étape, qui ne peut être pensée que comme une calibration finale d'un modèle abouti, auquel on ne peut en fait parvenir que par des paramétrages réguliers de modèles successifs moins aboutis.}{Lena: Pas clair et pas assez logique}
+\toChange{Cet exemple renforce le caractère nécessaire du paramétrage, et qui plus est, de la continuité de cette étape, qui ne peut être pensée que comme un calibrage finale d'un modèle abouti, auquel on ne peut en fait parvenir que par des paramétrages réguliers de modèles successifs moins aboutis.}{Lena: Pas clair et pas assez logique}
 
+\paragraph{Historique de SimFeodal.}
 
-\section{Paramétrage de SimFeodal}
-
-\subsection{Historique de SimFeodal}
-
-\subsection{Exploration de l'évolution d'un modèle exploratoire}
- -> Quand paramétrer ?
- 	-> Allers-retours params/indicateurs
- -> méthodo d'analyse exploratoire
- 	-> graphique
- 	-> analyse phases
-
-
-\subsection{Avant propos sur le paramétrage d'un modèle complexe}
-
-
-Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent.
-Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que l'explicitation de chacune de ces étapes permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
-
-Notons que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014}.
-Nous ne détaillerons pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, en guise d'exemples illustratifs, dans les chapitres 6 et 7 \hl{(Partie 3)}.
-
-\subsubsection{De manière générale}
-
-\subsection{Les étapes du paramètrage de SimFeodal}
-
-Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction.
-Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté ces modifications du modèle.
-L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation.
-Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes.
-La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
 
 \begin{center}
 	\hl{Faire tableau des versions de SimFeodal}
 \end{center}
 
-\pagebreak
-\begin{footnotesize}
-	\begin{longtable}{ m{.05\textwidth} m{.08\textwidth} m{.12\textwidth} m{.65\textwidth}}
-		Étape & Version & Type & Modifications \\
-		\endhead \hline
-		0 & Base & Création & Création du modèle. \fixref{Cf. tableau 14 de Tannier 2017} \\
-		\hline
-		1 & Base2 & paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
-		Modification des critères de création de nouvelles paroisses. \newline
-		Réduction de la distance maximale de déplacement local. \newline
-		Assouplissement des règles de promotion d'un château en gros château. \\
-		\hline
-		2 & Base2 compo5 2bis & modélisation et paramétrage & Assouplissement des règles de création d'une paroisse.\newline
-		Réduction de la distance maximale de déplacement local. \newline
-		Modification des règles de calcul de la probabilité de construire un château.\newline
-		Modification du calcul de la satisfaction matérielle des foyers paysans. \\
-		\hline
-		3 & Base2 compo5 2quat & modélisation et paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
-		Facilitation de la construction de châteaux. \newline
-		Rationnalisation du déplacement des foyers paysans. \newline
-		Ajout d'un nouveau type d'attracteur, les communautés. \\
-		\hline
-		4 & Base3 2 & modélisation et paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
-		Modification des critères de création de nouvelles paroisses. \newline
-		Augmentation de la distance maximale de déplacement local. \newline
-		Modification de la procédure d'identification des agrégats et des pôles. \\
-		\hline
-		5 & Base4 1 & modélisation et paramétrage & 
-		Modification de la répartition initiale des foyers paysans.\newline
-		Simplification de la procédure d'identification d'héritage des agrégats.
-		Amélioration de la définition des pôles d'attraction et de leur enveloppe. \\
-		\hline
-		6 & Base4 2 & modélisation et paramétrage & \colorbox{yellow}{Hiérarchisation} des valeurs d'attraction des attracteurs. \newline
-		Modification de l'ordonnancement des actions dans le modèle.\newline
-		Modification de la procédure d'identification des agrégats. \\
-		\hline
-		7 & Base4 3ter & modélisation et paramétrage &
-		Dynamisation de la distance maximale de déplacement local.
-		\newline
-		Modification du calcul de satisfaction des foyers paysans. \\
-		\hline
-		8 & Base4 4A & modélisation & Modification de l'ordonnancement des actions dans le modèle. \newline
-		Modification du mécanisme de déplacement local des foyers paysans. \\
-		\hline
-		\caption{Tableau récapitulatif des étapes de construction du modèle. Conception : C. Tannier (\fixref{Tannier 2017, HDR}) et R. Cura, 2017}
-		\label{table:etapes-construction}
-	\end{longtable}
-\end{footnotesize}
 
+\paragraph{Exploration de l'évolution d'un modèle exploratoire.}
+ -> Quand paramétrer ?
+ 	-> Allers-retours params/indicateurs
+ -> méthodo d'analyse exploratoire
+ 	-> graphique
+ 	-> analyse phases
+ 	
+ 	
+Décrire méthodo construction plot :
+- on analyse chaque \textit{commit} du code = enregistrement (pour historicisation) des changements
+- dans chaque commit, on observe le nombre de lignes de code de chacun des fichiers,  (du modèle uniquement, exclusion de la documentation et des tests) qui ont changé 
+- on agrège par jour (parfois, plusieurs commits qui viennent corriger des erreurs ou des oublis du commit précédent)
+- on dans cette agrégation, on calcule la taille médiane des changements (en lignes de codes modifiées) et la taille totale (somme des lignes modifiées)
+- pour la représentation, on normalise (réduction sans centrage) pour que les sommes et médianes soient comparables (en fait : max médiane $\approx$ 300 lignes, max somme $\approx$ 1500 lignes)
+
+
+\begin{figure}[H]
+	\includegraphics[width=1.2\linewidth]{img/explo_edits_code_clean.pdf}
+	\caption[Temporalité du paramétrage du modèle.]{Une exploration visuelle du rythme des changements de SimFeodal.}
+	\label{fig:explo-edits-code}
+\end{figure}
+
+La \cref{fig:explo-edits-code} fait apparaître plusieurs types de changements :
+phases successives de construction et d'évaluation, + feedback paramétrage
+- phases assez nettes : plein de petites modifs (somme et médiane) précèdent les changements conséquents dans le modèle : 
+- petites modifs : souvent des modifs successives de paramètres : médianes faibles = quelques lignes changées : calibrage
+- modifs moyennes : changement des mécanismes : paramétrage sur mécanismes
+- grosses modifs (médiane) : changement des sorties, création des expériences d'exploration + nettoyage des anciennes versions (très gros changements)
+
+-> on retrouve les versions (exemple de 6.2 à 6.5) dans le rythme des modifications du code : chaque pic (en somme) = sous-version : 6.1, 6.2, 6.3, 6.4, 6.5
+
+
+\paragraph{Avant propos sur le paramétrage d'un modèle complexe.}
+%Le tableau suivant (\cref{table:etapes-construction}) se veut être un point de repère autant qu'une table des matières synthétique pour la compréhension des étapes qui suivent.
+%Si la description de chacune de celles-ci revêt une forme assez factuelle et systématique, nous pensons toutefois que l'explicitation de chacune de ces étapes permet de saisir la démarche proposée ainsi que l'intérêt de celle-ci.
+
+Notons que l'étape 0 ici présentée correspond à une première version \og exploitable\fg{} du modèle, c'est-à-dire contenant \textit{a minima} l'ensemble des agents et mécanismes identifiés dans un premier temps par l'équipe de modélisation \autocite{tannier_ontologie_2014}.
+Nous ne détaillerons pas ici les différentes phases de construction précédentes. Nous reviendrons toutefois sur plusieurs d'entre elles, en guise d'exemples illustratifs, dans le \hl{chapitre 7}.
+
+
+\paragraph{Les étapes du paramètrage de SimFeodal}
+
+%Comme préconisé ci-dessus, le modèle SimFeodal a été paramétré tout au long de sa construction.
+%Dans cette partie, nous reviendrons en détail sur chacune des étapes de ce paramétrage, en retraçant les choix et questionnements qui ont orienté ces modifications du modèle.
+L'énumération est en ordre chronologique, et l'on a essayé d'organiser ces étapes en grands blocs-type de paramétrisation.
+Pour autant, le paramétrage et la construction d'un modèle, et du notre en particulier, sont un travail constant d'allers-retours entre l'identification et la résolution de problèmes.
+La structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée qui suit.
+
+\clearpage
+\input{chap3-4/img/tableau_versions_simfeodal}
+\clearpage
+
+test\footnote{
+BLOB
+}
 \section*{Conclusion}
 \label{sec:chap3-conclu}
 \addcontentsline{toc}{section}{Conclusion}
+
+\begin{center}
+	\hl{À écrire}
+\end{center}
 
