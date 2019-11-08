@@ -25,18 +25,18 @@ bracketsGrob <- function(...){
   }, e)
 }
 
-thisPlot <- ggplot(comits %>% filter(Type != "NbRefactoring_ratio"), aes(comitNb, Nb, fill = Type)) +
-  geom_col(data = comits %>% filter(Type == "NbMécanisme_ratio")) +
-  geom_col(data = comits %>% filter(Type == "NbParams_ratio"), aes(y = -Nb)) +
+thisPlot <- ggplot(comits %>% filter(Type != "NbRefactoring_ratio")) +
+  geom_col(data = comits %>% filter(Type == "NbMécanisme_ratio"), aes(comitNb, Nb, fill = Type)) +
+  geom_col(data = comits %>% filter(Type == "NbParams_ratio"), aes(x = comitNb, y = -Nb, fill = Type)) +
   scale_fill_grey(name = "Type de modification",start = .1, end = .6,
-                      labels = c("Ajout de mécanisme", "Modification du paramètrage")) +
+                      labels = c("Ajout de mécanisme", "Modification des valeurs de paramètre")) +
   scale_y_continuous(name = "Composition de chaque modification",
                      breaks = c(-1, -.5, 0, .5, 1), 
                      labels = paste0(c(100, 50, 0, 50, 100), "%")) +
   scale_x_continuous(name = "Modifications du modèle") +
-  labs(title = "Évolution de la composition des modifications\napportées au code du modèle",
-       subtitle = "Parmi les comits ayant amené une modification fonctionnelle au modèle",
-       caption = 'Relevés effectués le 06/03/2017 ') +
+  labs(title = "Évolution de la composition des modifications apportées au code du modèle",
+       subtitle = "Parmi les commits ayant amené une modification fonctionnelle au modèle",
+       caption = 'Relevés effectués le 06/03/2017, sur les versions 0 à 3 de SimFeodal - Commit #76372d0') +
   annotation_custom(bracketsGrob(0.22, .25, 0.04, .25, h=0.05, lwd=2, col="black")) + # Période A 
   annotate("text", x = 10.75, y = -0.775, label = "A",  size = 6) +
   annotation_custom(bracketsGrob(0.31, .51, .37, .51, h=0.05, lwd=2, col="black")) + # Période B 
@@ -47,12 +47,15 @@ thisPlot <- ggplot(comits %>% filter(Type != "NbRefactoring_ratio"), aes(comitNb
   annotate("text", x = 68, y = 0.22, label = "D",  size = 6) +
   annotation_custom(bracketsGrob(0.695, .49, .675, .49, h=0.05, lwd=2, col="black")) + # Période E 80-82
   annotate("text", x = 78.5, y = -0.25, label = "E",  size = 6) +
+  geom_segment(x = 26, y = -1, xend = 26, yend = 1, linetype = "dashed", colour = "grey30", alpha = .2) +
+  annotate("text", x = 27.5, y = 0, label = "Passage de 1000 à 4000 FP",  size = 3, angle = 90) +
   theme_light() +
   theme_minimal() +
   theme(legend.position="bottom")
 
+thisPlot
 
-ggsave(thisPlot, filename = "plotComits.pdf",  width = 15, height = 10, units = "cm")
+ggsave(thisPlot, filename = "plotComits.pdf",  width = 20, height = 10, units = "cm")
 
 
 

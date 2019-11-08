@@ -100,6 +100,19 @@ commits_plot <- commits_and_tags %>%
   mutate(number = if_else(type_edit == "sum", number, -number))
 
 library(extrafont)
+
+library(pBrackets) 
+
+bracketsGrob <- function(...){
+  l <- list(...)
+  e <- new.env()
+  e$l <- l
+  grid:::recordGrob(  {
+    do.call(grid.brackets, l)
+  }, e)
+}
+
+
 ggplot(commits_plot) +
   geom_col( aes(row_nr, number, fill = type_edit)) +
 #  facet_wrap(~type_edit, ncol = 1, scales = "free_y") +
@@ -113,15 +126,15 @@ ggplot(commits_plot) +
   ) +
   geom_label_repel(data = tags_ranked,
                    aes(x = row_nr, y = 8, label = tag), force = .05, box.padding = .1,
-                   size = 4, direction = "y",segment.color = NA) +
-  theme_minimal() +
+                   size = 4, direction = "y",segment.color = NA, lineheight = 0) +
+  ggdark::dark_theme_minimal() +
   scale_x_continuous(breaks = NULL, name = NULL, expand = c(0,1),  limits= c(0, 310)) +
   scale_y_continuous(breaks = NULL, name = NULL, expand = c(0,0), limits = c(-8, 8.5)) +
   theme(panel.grid.major.x = element_blank()) +
   labs(caption = "Relevé effectué le 22/09/2019 - Commit #595f788",
        y = "Nombre de lignes modifiées\n(normalisé)") +
-  geom_text(x = 80, y = -4, label = "Nombre médian\nde modifications", colour = "#F8766D", size = 5) +
-  geom_text(x = 80, y = 4, label = "Nombre total (somme)\ndes modifications", colour = "#00BFC4", size = 5) +
+  annotate("text", x = 80, y = -5, label = "Nombre médian\nde modifications", colour = "#F8766D", size = 5) +
+  annotate("text", x = 80, y = 5, label = "Nombre total (somme)\ndes modifications", colour = "#00BFC4", size = 5) +
   geom_label_repel(data = tags_ranked %>%
                      select(date, tag, row_nr) %>%
                      filter(tag %in% c("v0","v2.0", "v4.0", "v5.0", "v6.0","v6.6.0")) %>%
@@ -129,9 +142,11 @@ ggplot(commits_plot) +
                      mutate(dateFr = paste0(lubridate::day(date),
                                      "/", lubridate::month(date),
                                      "\n", lubridate::year(date))),
-            aes(x = row_nr, label = dateFr), y = -14, size = 3, segment.color = NA) +
+            aes(x = row_nr, label = dateFr), y = -14, size = 3, segment.color = NA, label.size = NA) +
   scale_fill_discrete(guide = FALSE) +
-  theme(text = element_text(family = "Charis SIL", face = "plain"))
+  theme(text = element_text(family = "Charis SIL", face = "plain")) +
+  annotation_custom(bracketsGrob(0.2, .37, .25, .37, h=-0.03, lwd=2, col="white")) +
+  annotate("text", x = 69.5, y = -2.7, label = "B&C",  size = 4)
   
   ggsave(plot = last_plot(), filename = "explo_edits_code.pdf", width = 20, height = 10, units = "cm",
          scale = 1)
