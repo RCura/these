@@ -126,7 +126,7 @@ ggplot(commits_plot) +
   ) +
   geom_label_repel(data = tags_ranked,
                    aes(x = row_nr, y = 8, label = tag), force = .05, box.padding = .1,
-                   size = 4, direction = "y",segment.color = NA, lineheight = 0) +
+                   size = 4, direction = "y",segment.color = NA,  label.size = NA) +
   ggdark::dark_theme_minimal() +
   scale_x_continuous(breaks = NULL, name = NULL, expand = c(0,1),  limits= c(0, 310)) +
   scale_y_continuous(breaks = NULL, name = NULL, expand = c(0,0), limits = c(-8, 8.5)) +
