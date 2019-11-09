@@ -4,6 +4,7 @@
 \begin{center}
 {\large Version \hl{2019-11-09}}
 \end{center}
+
 \begin{itemize}
 %	\item N.B. : Commentaires de Lena (Mars et Avril 2018) sur les parties 3.2 et 3.3 non pris en compte
 %	\item Décembre 2018 / Février 2019 : Ajout de la partie 3.1
@@ -13,11 +14,12 @@
 	\item 07/11/2019 : Fin reprise 3.1 et 3.2
 	\item 07/11/2019 : Création/reprise 3.3
 	\item 08/11/2019 : finalisation contenu et impression Lena
-	\item 09/11/2019 : reprises commentaires Lena du 24/11/2017
-	\item TODO : intro + conclusion du chapitre, + micro-transitions dans chapitre
+	\item 09/11/2019 : reprises commentaires Lena du 24/11/2017 + dernière partie + ajout petites transitions.
+	\item TODO : intro + conclusion du chapitre
 \end{itemize}
 
-
+\setcounter{minitocdepth}{3}
+\clearpage
 \minitoc
 \clearpage
 
@@ -112,11 +114,11 @@ Pour \textcite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évalua
 	Parmi ces bonnes propriétés, on considère par exemple la robustesse ou des études de sensibilité pour vérifier si les réponses sont bien différenciées sur l'espace des paramètres.
 	Cette phase de validation interne concerne de fait une validation dans le contexte ou la logique propre du modèle.
 
-	\item La deuxième phase de validation, la \textbf{validation externe}, correspond à l’évaluation de l’adéquation entre le modèle et le phénomène réel dont il est censé rendre compte.
+	\item La deuxième phase de validation, la \textbf{validation externe}, correspond à l'évaluation de l'adéquation entre le modèle et le phénomène réel dont il est censé rendre compte.
 	Pour cette dernière phase, la comparaison aux données empiriques ou le fait que le modèle soit capable d'exhiber des faits stylisés identifiés sur le système modélisé sont des critères clés.
 \end{itemize}
-Ainsi, ce qui est étudié au travers des simulations, ce sont tout d’abord les propriétés systémiques (structurelles et dynamiques) du modèle, les formes qui peuvent apparaître du fait des hypothèses posées (validation interne) ;
-ensuite est évaluée la pertinence du modèle vis-à-vis de situations que l’on souhaite représenter ou prévoir (validation externe).\fg{}\\
+Ainsi, ce qui est étudié au travers des simulations, ce sont tout d'abord les propriétés systémiques (structurelles et dynamiques) du modèle, les formes qui peuvent apparaître du fait des hypothèses posées (validation interne) ;
+ensuite est évaluée la pertinence du modèle vis-à-vis de situations que l'on souhaite représenter ou prévoir (validation externe).\fg{}\\
 	\mbox{}~ \hfill \cite[110-111]{amblard_evaluation_2006}
 \end{quotation}
 \end{encadre}
@@ -201,11 +203,11 @@ On emploie généralement la modélisation à base d'agents parce qu'elle encour
 En un sens, on pourrait presque considérer qu'on fait appel à de la modélisation à base d'agents quand on ne peut mobiliser des modèles formels.
 Le processus qui tendrait à formaliser, mathématiquement, des modèles agents est alors intrinsèquement contre-intuitif et difficile, quand bien même certains pensent que ce n'est pas une fatalité mais une question de temps\footnote{
 	Par exemple Alain \textsc{Franc}, mathématicien dans le projet TransMonDyn :
-	\og L’une des difficultés de l’acceptation des SMA comme modèles est que ces comportements sont très mal compris mathématiquement.
-	Il existe peu de résultats qui permettent de relier un type de règles avec un type de comportement, alors que de tels liens sont à la base du succès des systèmes dynamiques, où l’on connaît (parfois\ldots) les gammes de paramètres qui mènent à un comportement d’équilibre, cyclique ou chaotique, et l’on sait qu’il ne peut y en avoir d’autres.
+	\og L'une des difficultés de l'acceptation des SMA comme modèles est que ces comportements sont très mal compris mathématiquement.
+	Il existe peu de résultats qui permettent de relier un type de règles avec un type de comportement, alors que de tels liens sont à la base du succès des systèmes dynamiques, où l'on connaît (parfois\ldots) les gammes de paramètres qui mènent à un comportement d'équilibre, cyclique ou chaotique, et l'on sait qu'il ne peut y en avoir d'autres.
 	[...]
-	Il existe donc une tension entre, d’un côté, les systèmes dynamiques qui forment une théorie riche et solide de modélisation mathématique, mais pour un nombre assez restreint de situations (bien des difficultés apparaissent dans le cadre non linéaire, que l’on peut lire dans la richesse des travaux sur la modélisation de la turbulence par exemple) et, d’un autre côté, les SMA qui permettent des simulations à partir de règles plus riches et diversifiées, mais pour des résultats dont la compréhension mathématique très souvent nous échappe (il y a peu de théorèmes).
-	On peut donc dire en résumé que les SMA sont « en avance » sur la compréhension mathématique des systèmes dynamiques et peuvent proposer des cas d’études aux mathématiciens.\fg{}
+	Il existe donc une tension entre, d'un côté, les systèmes dynamiques qui forment une théorie riche et solide de modélisation mathématique, mais pour un nombre assez restreint de situations (bien des difficultés apparaissent dans le cadre non linéaire, que l'on peut lire dans la richesse des travaux sur la modélisation de la turbulence par exemple) et, d'un autre côté, les SMA qui permettent des simulations à partir de règles plus riches et diversifiées, mais pour des résultats dont la compréhension mathématique très souvent nous échappe (il y a peu de théorèmes).
+	On peut donc dire en résumé que les SMA sont « en avance » sur la compréhension mathématique des systèmes dynamiques et peuvent proposer des cas d'études aux mathématiciens.\fg{}
 	\autocite[Annexe 2, \og Retour sur les SMA comme outil et cadre conceptuel de modélisation.\fg{}, pp. 479-482 ]{ouriachi_lelaboration_2018}
 }.
 Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012}\footnote{
@@ -560,7 +562,7 @@ La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthét
 
 \subsubsection{Les indices empiriques.}
 
-Afin d’évaluer la capacité du modèle à reproduire un phénomène observé, il est nécessaire de disposer dans le domaine empirique, de \og points de repère\fg{}.
+Afin d'évaluer la capacité du modèle à reproduire un phénomène observé, il est nécessaire de disposer dans le domaine empirique, de \og points de repère\fg{}.
 Selon les modèles, ceux-ci peuvent revêtir de multiples formes et relever de l'ensemble des échelles spatiales et temporelles que l'on choisit de mettre en scène dans le modèle.
 Leur point commun est qu'ils doivent pouvoir être mesurés, au sens le plus large, c'est-à-dire être en capacité d'être reproduits et comparables avec d'autres mesures.
 Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}.
@@ -621,18 +623,18 @@ Par exemple, du point de vue empirique, on connaît à peu près les populations
 Dans SimFeodal cependant, on ne modélise pas des individus en tant que tels, mais des foyers paysans.
 Le nombre de foyers paysans simulé n'est pas directement comparable à la population estimée, mais en supposant une moyenne de 4 ou 5 habitants par foyer paysan, il est possible d'en déduire un nombre d'habitants.
 
-Dans d’autres cas enfin, le décalage entre indicateurs et indices est plus important.
-Il s’agit notamment de caractéristiques du système féodal que l’on sait importantes mais pour lesquelles on ne dispose pas de données facilement quantifiables.
+Dans d'autres cas enfin, le décalage entre indicateurs et indices est plus important.
+Il s'agit notamment de caractéristiques du système féodal que l'on sait importantes mais pour lesquelles on ne dispose pas de données facilement quantifiables.
 La puissance militaire des seigneurs, par exemple, est complexe à quantifier.
-On sait d’après connaissances expertes que la hiérarchie des puissances était forte à l’époque étudiée, majoritairement dominée par deux seigneurs (les comtes de Tours et de Blois) et assortie d’une grande quantité de petits chevaliers.
-On sait de plus qu’avec les liens de vassalité, les grands seigneurs disposaient des forces militaires des seigneurs qui leur étaient assujettis.
-Dans le domaine empirique on ne dispose pas d’éléments plus précis pour quantifier la puissance militaire des seigneurs.
-Dans le domaine du modèle, en revanche, on a défini un indicateur \og proxy\fg{} de cette puissance à partir du nombre de foyers paysans s’acquittant de droits à chaque seigneur.
+On sait d'après connaissances expertes que la hiérarchie des puissances était forte à l'époque étudiée, majoritairement dominée par deux seigneurs (les comtes de Tours et de Blois) et assortie d'une grande quantité de petits chevaliers.
+On sait de plus qu'avec les liens de vassalité, les grands seigneurs disposaient des forces militaires des seigneurs qui leur étaient assujettis.
+Dans le domaine empirique on ne dispose pas d'éléments plus précis pour quantifier la puissance militaire des seigneurs.
+Dans le domaine du modèle, en revanche, on a défini un indicateur \og proxy\fg{} de cette puissance à partir du nombre de foyers paysans s'acquittant de droits à chaque seigneur.
 De cette manière, on peut observer précisément en sortie de simulation la hiérarchie implicite entre les seigneurs reproduite par le modèle, avec une quantification de leurs puissances respectives.
 Ces éléments peuvent être comparés aux connaissances empiriques sur ces rapports de puissance entre les seigneurs à différents moments de l'époque féodale.
 
 Les correspondances entre indicateurs de sortie et indices empiriques sont ainsi de nature multiple, reflétant différents niveaux de proximité entre le concept mobilisé dans le modèle et ce qui est observable dans le domaine empirique :
-	les châteaux, entités d’intérêt dans le modèle, ont un équivalent direct dans le domaine empirique (il s’agit d’entités facilement observables et des données historiques les concernant sont disponibles) alors que la puissance militaire des seigneurs, élément moteur dans le modèle, a conduit à utiliser une variable dans le modèle pour laquelle on ne dispose pas d’observations empiriques.
+	les châteaux, entités d'intérêt dans le modèle, ont un équivalent direct dans le domaine empirique (il s'agit d'entités facilement observables et des données historiques les concernant sont disponibles) alors que la puissance militaire des seigneurs, élément moteur dans le modèle, a conduit à utiliser une variable dans le modèle pour laquelle on ne dispose pas d'observations empiriques.
 
 La création d'indicateurs de sortie correspondant aux indices empirique permet donc de quantifier une information qui n'est pas forcément aisément quantifiable dans le domaine empirique.
 
@@ -1007,7 +1009,7 @@ On s'attend à ce que l'indicateur ainsi produit augmente au cours du temps, à 
 
 \begin{center}
 	\hl{Ajout de cette petite conclusion intermédiaire.\\
-	Le saut de page était présent pour en \og garder la place\fg{}, mais n'est pas nécessaire.}
+	Le saut de page était présent pour en \og garder la place\fg{}, mais sera supprimé.}
 \end{center}
 
 La mise en place de critères d'évaluation est indispensable pour un modèle.
@@ -1016,23 +1018,24 @@ En effet, c'est en évaluant le modèle après chacune des modifications apport�
 
 La construction de SimFeodal a été entièrement guidée par ces étapes récurrentes et systématiques de paramétrage : l'approche d'évaluation visuelle a ainsi été mise au service du processus de co-construction du modèle.
 
-Dans la dernière partie de ce chapitre, nous montrerons donc comment le paramétrage a rythmé et déterminé la progression du modèle vers la version présentée dans le \hl{chapitre 2}, en commençant par définir ce terme
-
+Dans la dernière partie de ce chapitre, nous montrerons donc comment le paramétrage a rythmé et déterminé la progression du modèle vers la version présentée dans le \hl{chapitre 2}, en commençant par définir ce terme, peu usité, qui est construit à partir de la notion de paramètre.
 
 
 \clearpage
 \section{Paramétrage du modèle SimFeodal}
 
 \begin{center}
-	\hl{Intro à reprendre.}
+	\hl{Reprise de l'intro.\\
+	Idem pour saut de page, à supprimer après inclusion dans version de Lena.}
 \end{center}
 
-Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
-Dans ce chapitre, nous nous attacherons à présenter le travail de paramétrage réalisé à la suite, ayant abouti à une version plus adaptée aux questions des thématiciens.
-Le descriptif technique de cette version \og finale\fg{} se trouve dans l'annexe $n$ (\hl{Ref à l'annexe contenant le descriptif technique de la dernière version du modèle.})
-Par paramétrage, nous entendons ici le processus visant à doter le modèle de paramètres (empiriques, \og commensurables\fg{} et techniques (\cref{enc:types-parametres})) lui permettant de mieux répondre aux objectifs fixé en termes de comportements attendus ou d'objectifs quantitatifs.
-Nous nous attacherons dans un premier temps à expliciter et spécifier ce sens.
+Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, présenté en tant que \og version 6.3\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
+Cette version 6.3 implique que de nombreuses versions précédentes ont été développée, testées, puis modifiées et ajustées jusqu'à obtenir une nouvelle version plus satisfaisante du point de vue des objectifs.
 
+L'évaluation de la \og satisfaction\fg{} ressentie pour une version du modèle a été présentée dans les premières parties de ce chapitre, et nous décrivons maintenant l'étape qui suit (ou précède, dans une logique faite d'allers-retours nombreux) cette évaluation, et vise à ajuster les valeurs de paramètres du modèle et le détail des mécanismes afin d'augmenter la qualité du modèle du point de vue de l'évaluation définie.
+
+Dans cette thèse, nous proposons l'usage du terme de \og paramétrage\fg{}, peu fréquent, et, à notre connaissance, forgé récemment \autocite{hirtzel2015exploration,tannier_analyse_2017}, pour décrire ce processus d'\og amélioration\fg{} itérative du modèle, répété systématiquement durant le cycle de vie du modèle SimFeodal.
+Nous nous attacherons ainsi à présenter le travail de paramétrage réalisé depuis la version 0 jusqu'à la version \og finale\fg{} du modèle dont les résultats sont présentés dans le \hl{chap6}, en passant par la version présentée dans le \hl{chapitre 2}, chacune de ces itérations ayant abouti à une version plus adaptée aux questions des thématiciens.
 
 Avant de préciser le sens du terme \og paramétrage\fg{}, il semble important de définir précisément ce qu'est un paramètre.
 C'est en particulier nécessaire en ce que ce terme recouvre de nombreux sens selon les champs disciplinaires qui l'emploient, mais aussi, au sein même de ceux-ci, par les différents chercheurs.
@@ -1273,7 +1276,7 @@ Les paramètres variant ($P_2$, $P'_2$ ou $P''_2$ par exemple), il est ainsi att
 \end{figure}
 
 
-\subsubsection{Les paramètres dans SimFeodal}
+\subsubsection{Les paramètres dans SimFeodal \label{sssec:types-parametres}}
 
 Les paramètres sont donc un sous-ensemble des entrées d'un modèle qui ont vocation à varier dans les différentes exécutions de ce modèle.
 Pour autant, c'est un sous-ensemble assez divers, et tous les paramètres n'apportent pas les mêmes connaissances, que ce soit par leur valeur ou par la manière dont ils varient.
@@ -1288,7 +1291,7 @@ D'un côté, des paramètres empiriques, dont la valeur a une correspondance dir
 		Nous trouvons l'usage du mot \og technique\fg{} plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait et que le terme de \og mécanique\fg{} peut rappeler celui des mécanismes, alors même que les paramètres, empiriques ou non, ont une implication pour les mécanismes.
 }, pour lesquels cette correspondance n'existe pas.
 Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes.
-Comme les paramètres de SimFeodal sont nombreux et seraient trop sommairement distingués dans ces deux catégories, nous avons choisi de mobiliser une typologie en quatre classes (voir \cref{enc:types-parametres}), relatives au sens de ces paramètres vis-à-vis du fonctionnement du modèle.
+Comme les paramètres de SimFeodal sont nombreux (\hl{voir l'annexe N, tableau de tous les paramètres}) et seraient trop sommairement distingués dans ces deux catégories, nous avons choisi de mobiliser une typologie en quatre classes (voir \cref{enc:types-parametres}), relatives au sens de ces paramètres vis-à-vis du fonctionnement du modèle.
 Cette typologie est mixte, entre d'une part le degré de connaissance empirique sur lesquels les paramètres reposent (paramètres techniques \textit{vs} les autres), et d'autre part l'usage qui en est fait dans le modèle (\textit{input} et contexte \textit{vs} les autres).
 Cette typologie est notamment appuyée sur celle de \textcite[45]{tannier_analyse_2017}.
 
@@ -1325,10 +1328,16 @@ Dans SimFeodal, nous avons choisi de différencier les paramètres en quatre \og
 Avec cette typologie des paramètres basées non sur la nature de ceux-ci mais sur leur utilisation dans le modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de \citeauthor{minsky_matter_1965} (\hl{cf. chapitre 1}).
 Selon l'usage que l'on fait du modèle, un même paramètre pourra donc être vu comme un paramètre de contexte ou de mécanisme (par exemple selon l'état des connaissances empiriques liées à ce paramètre sur le cas d'étude traité).
 
-
 \paragraph*{Comment choisir les valeurs de paramètres ?}
 
-\hl{Ici, faire un court paragraphe de transition pour présenter rapidement l'approche générale du paramétrage : peut-être redondant avec ce qui suit, en particulier dans les présentations des paramètrages du modèle gravitaire et de Schelling.}
+\begin{center}
+\hl{Ajout de cette petite conclusion intermédiaire.\\
+	Le saut de page était présent pour en \og garder la place\fg{}, mais sera supprimé.}
+\end{center}
+
+Après avoir présenté notre définition des paramètres, nous pouvons désormais revenir sur le processus qui les mobilise et a demandé cette explicitation : le paramétrage.
+
+Cette étape, que nous allons maintenant définir et illustrer, consiste ainsi notamment à \og ajuster\fg{} les valeurs des paramètres, ou plus exactement de certains des paramètres, en se basant notamment sur la typologie mise en place dans ces pages (paramètres d'\textit{input}, de contexte, de mécanisme, techniques).
 
 \clearpage
 \subsection{Le paramétrage}
@@ -1342,7 +1351,7 @@ Cette étape, que l'on nomme aussi souvent calibration par anglicisme, peut se f
 
 Dans notre travail, nous souhaitons revenir sur cette approche de la modélisation, ancrant le paramétrage comme étape ultime de la construction d'un modèle, en particulier en ce que nous considérons que cette pratique de recherches de valeurs optimales est un exercice qui devrait s'effectuer tout au long de la construction du modèle, de manière plus itérative que conclusive.
 
-\subsubsection{Définition}
+\subsubsection{Définition \label{sssec:definition-parametrage}}
 
 Le terme de paramétrage recouvre deux sens différents, dont la distinction peut se faire selon qu'on l'utilise pour définir un processus ou pour caractériser une configuration.
 Ici, nous emploierons plutôt le premier cas, définissant dès lors le paramétrage comme le processus, manuel ou automatique, visant à constituer cette configuration de paramètres.
@@ -1356,10 +1365,43 @@ Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que de
 On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant son calibrage plus complexe et instable :
 \begin{quotation}
 \noindent\og
-	Au dessous du seuil des 150 pas de simulation pour le paramétrage de InnovationLife, le calibrage du modèle est très difficile voire impossible. Au dessus de ce seuil, le mécanisme associé au paramètre InnovationLife n’a plus d’effet sur le calibrage du modèle. Dans un soucis de parcimonie du nombre et de la complexité des mécanismes simulés dans le modèle SimpopLocal, il est justifiable de retirer du modèle ce mécanisme qui n’est pas nécessaire à la simulation de la dynamique de croissance recherchée.
+	Au dessous du seuil des 150 pas de simulation pour le paramétrage de InnovationLife, le calibrage du modèle est très difficile voire impossible.
+	Au dessus de ce seuil, le mécanisme associé au paramètre InnovationLife n'a plus d'effet sur le calibrage du modèle.
+	Dans un soucis de parcimonie du nombre et de la complexité des mécanismes simulés dans le modèle SimpopLocal, il est justifiable de retirer du modèle ce mécanisme qui n'est pas nécessaire à la simulation de la dynamique de croissance recherchée.
 	\fg{}\\
 	\mbox{}~ \hfill \textcite[224]{schmitt_modelisation_2014}
 \end{quotation}
+
+\begin{center}
+	\hl{Ajout des paragraphes de définition suivants, qui s'insèrent donc entre ce message et le paragraphe \og Désambiguïsation\fg{}, page 55 dans l'impression.}
+\end{center}
+
+Dans ce travail de thèse, nous reprenons ainsi le sens du terme paramétrage tel qu'initialement employé par \textcite{hirtzel2015exploration}\footnote{
+	\og
+	La notion de paramétrage d'un modèle est souvent associée à celle de calibrage, et ces deux notions, bien que différentes, sont parfois confondues dans la littérature (Richiardi et al., 2006).
+	Le calibrage consiste à tester plusieurs jeux de paramètres possibles pour une variable et à choisir l'un d'eux pour l'exécution des simulations, selon sa capacité à atteindre les objectifs définis.
+	Il constitue ainsi une étape du paramétrage d'un modèle.
+	Cette étape n'est pas forcément indispensable : si les valeurs initialement affectées permettent d'atteindre les objectifs du modélisateur, celui-ci n'a pas besoin de procéder à un calibrage.\fg{} \autocite[136]{hirtzel2015exploration}.
+} et ensuite explicité par \textcite{tannier_analyse_2017} :
+\begin{quotation}
+\noindent \og 
+Le paramétrage d'un modèle consiste à fixer les valeurs des variables et paramètres de mécanisme, au moyen d'analyses spatiales ou statistiques de données empiriques, de transcriptions de dires d'experts, ou de simulations avec le modèle.
+Le paramétrage comprend une phase d'estimation (statistique ou autre) des valeurs des paramètres et variables, et une phase de calibrage si celle-ci est nécessaire.
+\fg{}\\
+\mbox{}~ \hfill \textcite[52]{tannier_analyse_2017}
+\end{quotation}
+
+Nous ajoutons à cette définition une composante d'implémentation, quand celle-ci est minime, qui consiste à adapter l'implémentation des mécanismes de manière à en rendre le résultat plus satisfaisant.
+Cela n'implique pas de changer le modèle conceptuel, et n'est pas non plus véritablement un changement dans l'implémentation du modèle.
+Par exemple, changer l'ordonnancement du détail d'un mécanisme relève à notre sens du paramétrage.
+
+On peut illustrer cela avec l'exemple du mécanisme de définition du contour spatial des agrégats (cf. \hl{méca, 2.7.2.1, chap2}): un \textit{buffer} est actuellement appliqué autour de l'enveloppe convexe formée par les foyers paysans membres d'un agrégat afin de fusionner d'éventuels agrégats très proches.
+On peut adapter ce mécanisme en appliquant ce \textit{buffer} à la fin du mécanisme plutôt qu'au milieu, une fois que l'héritage des agrégats précédents a été transféré par exemple.
+
+Cela n'aurait pas un impact important sur le plan conceptuel, ni même d'ailleurs lors de l'observation agrégée de tous les agrégats.
+Toutefois, au niveau local, cela peut avoir un impact non négligeable sur l'historique des agrégats.
+À notre sens, il s'agit d'une adaptation du modèle du même ordre qu'un changement de valeur de paramètre, et nous incluons ainsi ce type de modifications dans le processus de paramétrage.
+
 
 \paragraph{Désambiguïsation.}
 
@@ -1384,7 +1426,7 @@ Par construction, nous définissons l'ensemble des étapes relatives à la créa
 À force d'allers-retours entre ses composantes, la construction aboutit sur un modèle \og finalisé\fg{}, qui peut être évalué de manière globalement (chacune des composantes de la construction pouvant être évaluée individuellement : l'implémentation est par exemple évaluée au moyen des méthodes de validation interne).\vspace{-1em}
 		
 \subparagraph{Paramétrage.}
-Le paramétrage du modèle est l'étape où l'on vérifie la cohérence empirique et simulée du modèle.
+Le paramétrage du modèle est l'étape où l'on adapte le modèle après avoir vérifié sa cohérence vis-à-vis des éléments empiriques qu'il cherche à reproduire.
 Lors du paramétrage, on ajuste les valeurs de paramètres, leur utilisation par les mécanismes et le détail du fonctionnement technique de ces mécanismes.
 On cherche par cela à obtenir un modèle plus satisfaisant du point de vue des dynamiques et résultats qu'il produit.
 Une des définitions du nouveau petit Robert \autocite{robert_nouveau_1993} nous semble particulièrement représentative de cela :\\
@@ -1497,7 +1539,7 @@ Le paramétrage du modèle aura donc pour objectif de trouver la valeur maximale
 \subparagraph{Paramétrage.}
 Contrairement au modèle gravitaire, le modèle de Schelling est stochastique :
  	les agents se déplacent aléatoirement quand non satisfaits.
-Dès lors, deux exécutions du modèle avec le même jeu de paramètres n’entraîneront pas forcément la même configuration spatiale.
+Dès lors, deux exécutions du modèle avec le même jeu de paramètres n'entraîneront pas forcément la même configuration spatiale.
 Qui plus est, pour certains jeux de paramètres, seules certaines exécutions convergeront.
 Le paramétrage de ce modèle ressemble donc à celui qui est réalisé pour le modèle SimFeodal.
 La manière \og traditionnelle\fg{}, c'est-à-dire manuelle,
@@ -1522,7 +1564,7 @@ Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, 
 
 \subsubsection{Paramétrer SimFeodal}
 
-\paragraph{Un ou des modèles à paramétrer ?} \label{sssec:parametrer-un-des-modeles}
+\paragraph{Que ou quand paramétrer ?} \label{sssec:parametrer-un-des-modeles}
 
 Ce dernier exemple montre l'importance des allers-retours entre évaluation et paramétrage, et illustre la démarche itérative et incrémentale du paramétrage.
 Parmi les étapes du paramétrage, le calibrage devrait ainsi être mené à chaque \og version\fg{} du modèle.
@@ -1569,9 +1611,43 @@ Cet exemple renforce le caractère nécessaire du paramétrage, et qui plus est,
 Dans un modèle exploratoire comme SimFeodal (\hl{cf. chap1 ou chap2}), on ne peut ainsi penser le paramétrage que sous la forme d'un calibrage qui serait l'étape ultime de construction du modèle avant validation.
 Si le paramétrage n'est pas régulier, alors chacune des versions et sous-versions successives ne pourra pas être évaluée de manière comparable, et on cours le risque de disqualifier une version du modèle qui aurait pu être plus plausible que les suivantes mais n'a pas été ajustée comme elle aurait pu l'être.
 
+\paragraph{Quels paramètres ?} \label{sssec:quels-parametres}
+
+\begin{center}
+	\hl{Ajout de cette sous-sous-sous-partie ici.\\
+	S'insère entre la fin de \og Un ou des modèles à paramétrer ?\fg{} et le début de \og Historique de SimFeodal.\fg{}, page 62 dans l'impression.}
+\end{center}
+
+Dans la partie précédente, nous avons distingué plusieurs types de paramètres (voir l'\cref{enc:types-parametres} dans la \cref{sssec:types-parametres}), selon leur usage dans le modèle et leur niveau d'inscription dans les connaissances empiriques.
+Cette distinction nous semble particulièrement utile pour dresser une hiérarchie des paramètres sur lesquels jouer pour adapter le modèle.
+
+Les \textbf{paramètres d'\textit{input}}, pour commencer, n'ont pas vocation à changer lors de l'évolution du modèle : ils ont été définis de manière empirique, et ne peuvent donc revêtir d'autres valeurs uniquement pour améliorer l'ajustement du modèle.
+Toutefois, si les connaissances expertes évoluent, les phases de paramétrage du modèle sont l'occasion de répercuter ces nouvelles connaissances.
+Les changements de ces paramètres peuvent résulter d'un besoin de préciser la mise en œuvre des connaissances empiriques\footnote{
+	Un exemple d'un tel choix est présenté dans le \hl{chapitre 6} (\hl{partie 6.1.1.1}), où l'on a choisi de faire passer les dimensions du monde simulé de 100×100 km à 80×80 km.
+}, ou simplement de la correction d'approximations inexactes\footnote{
+	Comme c'est le cas dans l'exemple du passage de 1000 à 4000 foyers paysans présenté plus haut.
+}.
+Dans tous les cas, le paramétrage de ces paramètres n'est pas guidé directement par les résultats d'une version du modèle, mais par les connaissances qui y sont injectées.
+Il en va de même pour les \textbf{paramètres de contexte} : ils peuvent être précisés ou corrigés, mais leur paramétrage ne doit pas être guidé par l'évaluation du modèle.
+
+Le cas des \textbf{paramètres de mécanisme} est plus emblématique du processus de paramétrage : ils reposent sur des ordres de grandeur plus incertains, et leur valeur peut donc assez librement être modifiée.
+Lors du paramétrage, il faut naturellement s'assurer de ne pas les faire varier en dehors des intervalles définis empiriquement, mais ils se prêtent très bien à des ajustements manuels.
+On peut ainsi sans crainte procéder à des modifications successives, par allers-retours entre l'évaluation des sorties du modèle et le changement de valeur de ces paramètres.
+On pourra de cette manière figer, temporairement -- en attendant de nouveaux ajustements dus au paramétrage d'autres paramètres --, des valeurs dont l'effet combiné sera plus satisfaisant sur le déroulement et l'aboutissement des simulations.
+
+Les \textbf{paramètres techniques}, enfin, sont les candidats les plus évidents au paramétrage, et plus spécifiquement à sa composante de calibrage.
+Puisqu'ils ne reposent sur aucune connaissance empirique, ils constituent ainsi les \og leviers\fg{} naturels sur lesquels on pourra mener le paramétrage, y compris de manière automatisée pour ces paramètres dont on peut faire varier les valeurs de plusieurs ordres de grandeur sans conséquence conceptuelle ou empirique sur le modèle.
+Comme dans l'exemple du paramétrage du modèle gravitaire (\cref{enc:param-gravitaire}), la modification de ces paramètres est extrêmement pratique pour compenser le paramétrage des autres types.
+Ainsi, si de nouvelles connaissances viennent pousser à modifier un paramètre de contexte par exemple (comme le paramètre de frein de la distance $\alpha$), on peut espérer parvenir à compenser cette variation, sur les sorties, en modifiant un paramètre technique ($k$ dans le modèle gravitaire) en conséquence.
+
+Rappelons aussi, comme indiqué lors de la définition (\cref{sssec:definition-parametrage}), qu'en dehors des valeurs des paramètres, le paramétrage est aussi l'occasion de modifier, d'une manière modérée, le détail de l'implémentation de certains mécanismes.
+
+
+\clearpage
 \paragraph{Historique de SimFeodal.}
 
-Dans le paragraphe précédent, de la même manière que dans le \hl{chapitre 2}, nous avons plusieurs fois mentionné les versions et sous-versions de SimFeodal.
+Dans les paragraphe précédent, de la même manière que dans le \hl{chapitre 2}, nous avons plusieurs fois mentionné les versions et sous-versions de SimFeodal.
 Il nous paraît important ici de les exposer (\cref{tab:historique-versions-simfeodal}) ainsi que de décrire la logique de leur distinction.
 
 \input{chap3-4/img/tableau_versions_simfeodal}
@@ -1628,33 +1704,58 @@ On a ensuite caractérisé le contenu de ces agrégations de \textit{commits} jo
 La somme des modifications étant par nature d'un ordre de grandeur bien plus élevé que la médiane\footnote{
 	Le changement médian maximal représente un changement de 300 lignes de codes, alors que la somme concerne elle plus de 1500 lignes\ldots
 }, on a normalisé (réduction sans centrage) les valeurs afin qu'elles soient comparables graphiquement.
-La \cref{fig:explo-edits-code} est une représentation de cette analyse, qui permet de visualiser le \og rythme\fg{} des changements de SimFeodal et d'en tirer quelques remarques.
+La \cref{fig:explo-edits-code} est une représentation de cette analyse\footnote{
+	Dans cette figure, les modifications regroupées dans l'accolade \og B\&C\fg{} correspondent aux phases B et C identifiées dans la  \cref{fig:comits-periodes}.
+}, qui permet de visualiser le \og rythme\fg{} des changements de SimFeodal et d'en tirer quelques remarques.
+
+\begin{center}
+	\hl{Les paragraphes suivants (+conclusion) constituent la suite et fin du chapitre et n'étaient pas présents dans la version imprimée.}
+\end{center}
 
 \begin{figure}[H]
-	\includegraphics[width=1.2\linewidth]{img/explo_edits_code_clean.pdf}
+	\includegraphics[width=1\linewidth]{img/explo_edits_code_clean.pdf}
 	\caption[Temporalité du paramétrage du modèle.]{Une exploration visuelle du rythme des changements de SimFeodal.\\
-		\textit{N.B. : les modifications regroupées dans l'accolade \og B\&C\fg{} correspondent aux phases B et C identifiées dans la  \cref{fig:comits-periodes}.}}
+		\textit{N.B. : L'axe des abscisses n'est pas linéaire du point de vue temporel : l'ordre chronologique y est respecté, mais le temps n'y est pas régulier.}
+	}
 	\label{fig:explo-edits-code}
 \end{figure}
 
+On y remarque en premier lieu un certain motif, qui pourrait presque s'apparenter aux pulsations cardiaques, où l'on note des changements majeurs, espacés, entre lesquels de plus faibles phases de modifications surviennent.
+Ce \og rythme\fg{} est avant tout une scorie de la manière dont le modèle a évolué, autour des versions représentées sur le graphique.
 
-La \cref{fig:explo-edits-code} fait apparaître plusieurs types de changements :
-\begin{itemize}
-	\item phases successives de construction et d'évaluation, + feedback paramétrage
-	\item phases assez nettes : plein de petites modifs (somme et médiane) précèdent les changements conséquents dans le modèle
-	\item petites modifs : souvent des modifs successives de paramètres : médianes faibles = quelques lignes changées : calibrage
-	\item modifs moyennes : changement des mécanismes : paramétrage sur mécanismes
-	\item grosses modifs (médiane) : changement des sorties, création des expériences d'exploration + nettoyage des anciennes versions (très gros changements)
-	\item -> on retrouve les versions (exemple de 6.2 à 6.5) dans le rythme des modifications du code : chaque pic (en somme) = sous-version : 6.1, 6.2, 6.3, 6.4, 6.5
-\end{itemize}
+Les phases de plus intenses modifications, concrétisées ou précédées par des changements de version, sont ainsi intimement liées au rythme de ce travail de co-construction interdisciplinaire : les pics marquent en général la préparation, l'exécution, et les résultats immédiats des séances de travail collectives.
+Ces réunions étaient ainsi l'occasion d'évaluer le modèle, que ce soit en analysant ses sorties (évaluation externe) ou en ré-exposant les choix d'implémentation (évaluation interne), et en conséquence d'en mener le paramétrage, en faisant évoluer les paramètres et mécanismes.
+Certains pics correspondent aussi à des moments de production de \og livrables\fg{}, que ce soit à l'occasion de publications ou de communications, où il fallait stabiliser le modèle pour en communiquer les résultats.
 
+À un niveau d'observation plus fin, on peut noter, aussi bien sur la somme des modifications que sur leur médiane, que les pics principaux sont le plus souvent précédés par une augmentation de la taille et de la quantité totale de modifications, puis suivis d'une diminution de ces deux indicateurs.
+Sur le plan \og temporel\fg{}, cela correspond aux phases de préparation des réunions, faite de petites explorations locales du comportement du modèle en vu de l'adapter, puis aux phases collectives résultants sur des choix de modifications plus importantes, modifications ensuite ajustées et finalement validées, jusqu'à la réunion suivante.
 
-\begin{center}
-	Ne pas oublier de mobiliser le paramétrage vis-à-vis des types de paramètre...
-\end{center}
+Sur le plan conceptuel, cela correspond à différentes phases de construction du modèle : les modifications qui précèdent les changements de version sont d'abord assez modérées, en médiane comme en somme.
+Cela correspond à du paramétrage assez modéré, portant sur la modification marginale de quelques valeurs de paramètres.
+À mesure que la taille des \textit{commits} augmente, ces modifications sont de plus en plus importantes, et consistent ainsi à l'ajustement de plus de paramètres, à la modification plus fréquente de détails de mécanismes etc.
 
+Les changements de version résultent le plus souvent d'une insatisfaction vis-à-vis de l'aboutissement de ces phases de paramétrage : même en poussant le paramétrage, même en menant un calibrage approfondi on ne parvient pas à obtenir un modèle assez satisfaisant.
+Il est alors nécessaire de revenir sur le modèle conceptuel et son implémentation (flèches grises de la \cref{fig:etapes-modelisation}), et donc de mener des modifications plus conséquentes, par exemple en transformant véritablement le fonctionnement de certains mécanismes.
+Les mécanismes étant modifiés, avec ajout ou suppression de paramètres par exemple, la rétro-compatibilité des sorties du modèle n'est plus assurée\footnote{
+	Sans même considérer d'ajout/suppression de paramètre, les modifications du sens et de l'utilisation effective de certains paramètres peuvent rendre leurs valeurs non comparables avec celles des versions précédentes.
+}, et l'on change alors de version.
 
-\clearpage
+Après ces changements de version, la taille des modifications diminue, jusqu'à atteindre des niveaux très faibles : la somme des modifications devient négligeable (à mi-chemin entre les versions 4 et 5 dans la \cref{fig:explo-edits-code} par exemple)  et la médiane des \textit{commits} est elle aussi très faible.
+Cela correspond exactement aux phases de paramétrages qui suivent les changements majeurs : le nombre de changements diminue, jusqu'à aboutir sur des modifications difficilement discernables qui correspondent au calibrage.
+Dans cette étape, seules une ou deux lignes de code changent en général, ce qui correspond aux modification d'une valeur de paramètre.
+
+On retrouve donc dans cette figure, et donc dans l'évolution effective de SimFeodal, l'ensemble des étapes décrites dans ce chapitre.
+Des phases de construction et d'évaluation se succèdent, avec à chaque fois un travail de paramétrage, parfois suivi de nouvelles phases d'implémentation voire de conception.
+On notera aussi que les versions sont assez visibles sur ce graphique, correspondant aux pics principaux, de même que les sous-versions, où les pics sont plus modérés : entre la version 6 et la fin du graphique (version 6.6), on arrive même sans difficulté à identifier chacune des sous-versions intermédiaires (6.1, 6.2\ldots).
+
+\paragraph{Aboutissement du paramétrage.}
+
+Avec cette analyse exploratoire et l'exercice d'interprétation qui l'accompagne, nous avons voulu illustrer d'une part le processus de paramétrage mis en œuvre dans le modèle SimFeodal, mais surtout, d'autre part appuyer notre proposition de démarche de co-construction de modèles.
+Qui plus est dans un contexte interdisciplinaire, l'évolution du modèle ne peut ainsi passer que par des allers-retours fréquents entre son évaluation et sa modification.
+
+Le paramétrage, et notamment sa composante de calibrage, ne peut dès lors être considéré que comme un exercice ultime et unique, qui viserai à \og finaliser\fg{} un modèle avant son emploi.
+Au contraire, l'application fréquente et régulière de phases d'évaluation et de paramétrage permet de garantir que les différentes pistes de modélisation explorées sont bien comparables, car justement comparées sur des versions aussi finement ajustées que possible à chaque fois.
+
 \section*{Conclusion}
 \label{sec:chap3-conclu}
 \addcontentsline{toc}{section}{Conclusion}
@@ -1663,3 +1764,16 @@ La \cref{fig:explo-edits-code} fait apparaître plusieurs types de changements :
 	\hl{À écrire}
 \end{center}
 
+Bilan éval : ça peut être fait de manière visuelle et propre.
+Basée sur de nombreux indicateurs.
+
+
+Bilan param :
+Cette forte diversité d'indicateurs constitue une aide au paramétrage :
+-> plus facile de trouver les paramètres qui peuvent/doivent être adaptés quand on dispose de rapports détaillés sur le comportement du modèle plutôt que d'un indicateur quantifié unique qui demanderait un passage systématique par une exploration de l'impact des paramètres (analyse sensib).
+
+L'éval visuelle permet donc de faciliter le paramétrage, et avec lui les connaissances de chacun des membres impliqués dans la modélisation.
+
+Il faut cependant que cette éval et param soient effectués fréquemment, en multipliant les allers-retours entre ces étapes du processus de modélisation.
+-> param facilité par éval visuelle, mais éval visuelle en elle même longue à effectuer, surtout vis-à-vis de modèles que l'on peut évaluer avec des critères quantitatifs.
+Pour permettre la fréquence de l'aller-retour, il faut alors disposer d'outils permettant de faciliter cette évaluation visuelle.
