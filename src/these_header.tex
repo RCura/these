@@ -6,6 +6,7 @@
 \usepackage[left=1.5cm, right=5cm, bottom = 1cm, top = 2cm, headheight=16pt,
 headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \setlength{\marginparwidth}{4.5cm}
+\setlength{\parindent}{0pt}
 \usepackage{marginnote}
 
 \usepackage{fontspec}
@@ -28,6 +29,10 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \captionsetup[figure]{belowskip=-1.5em, skip=0.25em}
 \captionsetup[lstlisting]{belowskip=-1em}
 \captionsetup[table]{position=below, aboveskip=1em, belowskip=-1.5em, skip=0.25em}
+\captionsetup[figure]{font={small}, labelfont={bf,sc}}
+\captionsetup[lstlisting]{font=small, labelfont={bf,sc}}
+\captionsetup[table]{font=small, labelfont={bf,sc}}
+
 \usepackage{rotating}
 \usepackage{rotfloat}
 \def\frenchtablename{\textsc{Tableau}}
@@ -272,3 +277,18 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 % Citer juste le prénom + nom d'une référence
 \newrobustcmd*{\citeauteur}{\AtNextCite{\DeclareNameAlias{labelname}{first-last}}\citeauthor}
 % \citeauteur{ref}
+
+
+% PAGES BLANCHES
+\usepackage{afterpage}
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+% Usage : \afterpage{\null\newpage}
+
+
+% ######### COULEURS POUR REPRISE #########
+\newfontfamily\blueroman[Color=blue]{Charis SIL}
+\newfontfamily\redroman[Color=red]{Charis SIL}

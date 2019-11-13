@@ -8,7 +8,7 @@
 \usepackage{newclude} % Ce package ne fonctionne que quand placé juste après le documentclass
 
 \input{src/these_header.tex}
-\setlength\parindent{0pt}
+
 
 \bibliography{%
 %	chap1/biblio_chap1.bib,
@@ -19,9 +19,7 @@
 %	chap7/biblio_chap7.bib,
 }
 
-% ######### COULEURS POUR REPRISE #########
-\newfontfamily\blueroman[Color=blue]{Charis SIL}
-\newfontfamily\redroman[Color=red]{Charis SIL}
+
 
 
 
@@ -40,7 +38,7 @@
 \setcounter{minitocdepth}{2}
 \setcounter{secnumdepth}{3}
 \dominitoc
-\faketableofcontents
+%\faketableofcontents
 %# Pour TOC plus complète, commenter ligne précédente et décommenter titlepage
 
 % ############################################
@@ -98,6 +96,10 @@
 
 
 \printbibliography[title={Références}]
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
 
 \begingroup
 \renewcommand{\cleardoublepage}{\medskip}
