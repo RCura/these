@@ -18,7 +18,7 @@
 %\subsection{Modèle spatiaux et modèles spatialisés}
 %\subsection{Modéliser en géographe, ne pas modéliser pour les géographes}
 
-\chapter{Modélisation et visualisation comme interfaces disciplinaires}
+\chapter{Modélisation et visualisation à l'interface entre les disciplines}
 \label{chap:chap1}
 \begin{center}
 	{\large Version \hl{2019-10-22}}
@@ -26,9 +26,9 @@
 
 \begin{itemize}
 	\item 10/10/2019 : Nouveau plan
-	\item 14/10/2019 : fin 1.1
-	\item 16/10/2019 : fin 1.2
-	\item 18/10/2019 : fin 1.3
+	\item 22/10/2019 : fin écriture + relecture + rendu Lena
+	\item 11/11/2019 : début reprises Lena
+	\item 12/11/2019 : reprises 1.1 et 1.2
 	\item 21/10/2019 : fin 1.4
 	\item 22/10/2019 : relecture + rendu Lena
 \end{itemize} 
@@ -62,7 +62,7 @@ Depuis une formation classique de géographie humaine et urbaine jusqu'à l'exer
 Ce travail de recherche s'inscrit avant tout, tant administrativement que conceptuellement, dans le champ disciplinaire de la géographie.
 Cette discipline, consacrée à l'étude de la dimensions spatiale de phénomènes sociaux, constitue les fondements de ma formation initiale.
 En sortant de classes préparatoires littéraires généralistes, j'avais ainsi été frappé par l'exercice du commentaire de cartes, à visée tant verticale (cartes géologiques) qu'horizontale (cartes topographiques).
-On pouvait décrire et expliquer le fonctionnement humain d'un lieu par la seule observation de ses structures et contextes spatiaux.
+On pouvait décrire et expliquer le fonctionnement économique et social d'un lieu par la seule observation de ses structures et des contextes spatiaux dans lesquels il s'inscrit.
 
 \paragraph{Géographie urbaine.}
 
@@ -71,17 +71,17 @@ Avec un intérêt pour l'aménagement et l'urbanisme, la géographie urbaine, da
 Il ne s'agissait plus simplement de décrire un état, mais d'expliquer les processus spatiaux et sociaux y ayant mené.
 Au regard des enseignements d'urbanisme et de politiques de la ville, ces approches permettaient ainsi de comparer le résultat de différentes politiques publiques, et de mener un début de mesure objective de l'écart entre leur objectif exprimé et leur action effective.
 
-En master, j'ai voulu appliquer ces approches en initiant, sous la co-direction de Renaud Le Goix et Antonine Ribardière, un mémoire sur le thème de la comparaison de l'intégration spatiale des migrants entre les politiques francophones et anglophones.
+En master, j'ai voulu appliquer ces approches en initiant, sous la co-direction de Renaud Le Goix et Antonine Ribardière, un mémoire sur la comparaison de l'intégration spatiale des migrants entre les politiques francophones et anglophones.
 Les politiques migratoires francophones, nourries du modèle jacobin français, menaient-elles à une plus forte inclusion et mixité sociale que les modèles anglophones, fondés sur l'image d'un \og \textit{salad-bowl}\fg{} communautaire ?
-Le cas d'étude choisi portait sur le Canada, pays ayant l'avantage de présenter ces deux communautés linguistiques et culturelles, et d'avoir une forte culture -- et attractivité -- migratoire, aussi bien pour les pays les plus développés que pour les Suds.
+Le cas d'étude choisi portait sur le Canada, pays ayant l'avantage de présenter ces deux communautés linguistiques et culturelles -- francophones jacobines et anglophones communautaires --, et d'avoir une forte culture -- et attractivité -- migratoire, aussi bien pour les pays les plus développés que pour les Suds.
 Le recensement canadien, enfin, permettait les études ethniques et communautaires en offrant des statistiques ethniques rares dans les autres pays.
 
 \paragraph{Géographie Théorique et Quantitative.}
 
-Dans un contexte de découverte de l'analyse spatiale, de la modélisation graphique, des systèmes d'information géographiques (SIG) et d'approches plus systémiques et horizontales de description et d'explication de phénomènes socio-spatiaux, ce travail s'est assez rapidement orienté vers une démarche quantitative et à visée plus généralisante.
-Le mémoire qui en a résulté, intitulé \og Ségrégation spatiale et origines ethniques dans les métropoles canadiennes\fg{}, illustre ce tournant vers la géographie théorique et quantitative (GTQ).
-Il montre une volonté d'approche très quantifiée, en faisant la part belle à la comparaison des différents indices de ségrégation caractérisant les distributions spatiales de la population urbaine canadienne.
-Pour être en mesure de mener cette comparaison systématique, une auto-formation poussée avait été nécessaire, notamment sur les techniques d'analyse de données, de réduction de dimensionalité (les recensements canadiens contiennent des centaines de catégorie qui ne pouvaient toutes êtres traitées individuellement) et sur une première approche d'automatisation de traitements (via SAS).
+Dans un contexte de découverte de l'analyse spatiale, de la modélisation graphique, des systèmes d'information géographiques (SIG) et d'approches plus systémiques et horizontales de description et d'explication de phénomènes socio-spatiaux, ce travail de Master s'est assez rapidement orienté vers une démarche quantitative et à visée plus généralisante.
+Le mémoire qui en a résulté, intitulé \og Ségrégation spatiale et origines ethniques dans les métropoles canadiennes\fg{}, consiste alors en un tournant vers la géographie théorique et quantitative (GTQ).
+L'approche se veut très quantifiée, et fait la part belle à la comparaison des différents indices de ségrégation caractérisant les distributions spatiales de la population urbaine canadienne.
+Pour être en mesure de mener cette comparaison de manière systématique, une auto-formation poussée avait été nécessaire, notamment sur les techniques d'analyse de données, de réduction de dimensionalité (les recensements canadiens contiennent des centaines de catégorie qui ne pouvaient toutes être traitées individuellement) et sur une première approche d'automatisation de traitements (via SAS).
 Il fallait être en mesure de tester rapidement différentes hypothèses sur les quelques milliers de \og secteurs de recensement\fg{} impliqués dans l'étude.
 
 Du point de vue méthodologique, cette première expérience d'exploration systématique d'un jeu de données m'avait montré la nécessité de parvenir à une certaine automatisation de la chaîne de traitement, depuis la sélection des données, le calcul de tel ou tel indice, jusqu'à leur représentation (carto)graphique.
@@ -96,28 +96,38 @@ Les connaissances, méthodologiques et techniques, que j'y ai acquis sont nombre
 \paragraph{Programmation, automatisation et interfaces graphiques.}
 
 En premier lieu, Carthagéo m'a permis de découvrir des méthodes d'automatisation de chaînes de traitement de données spatiales.
-Avec ces initiations à la programmation, une vision algorithmique, systématique et processuelle devenait un pré-supposé obligatoire :
-	pour automatiser un traitement, il fallait avant tout pouvoir le formaliser, sur papier d'abord, de manière à pouvoir en réaliser une implémentation informatique.
-C'est, pour moi, la découverte de la conception de modèles graphiques, non plus dédiés à la description d'un lieu mais à l'explicitation d'un processus.
-Avec l'automatisation permise par l'implémentation de ces chaînes de traitement, il devenait aussi possible de mener des études systématiques, reproductibles et paramétrables.
+Avec l'initiation à la programmation, il devenait important d'acquérir une vision algorithmique, systématique et processuelle des analyses que je menais jusque là de manière manuelle et répétitive.
+Par exemple, les successions de calculs de CAH menés sur les données canadiennes, réalisées pour chaque métropole, pour chaque origine ethnique, et à plusieurs niveaux d'agrégation spatiale, pouvaient être automatisés une fois la démarche précisément explicitée.
+En préalable à l'automatisation d'une démarche, il fallait avant tout pouvoir la formaliser, sur papier d'abord, de manière à pouvoir en réaliser une implémentation informatique dans un second temps.
+C'est, pour moi, la découverte de la conception de modèles graphiques, non plus dédiés à la description d'un lieu comme dans la chorématique que j'avais découverte les années précédentes, mais à l'explicitation d'un processus d'analyse.
+Avec l'automatisation permise par l'implémentation de ces chaînes de traitement, il devenait possible de mener des études systématiques, reproductibles et paramétrables.
 
-Dans le cadre d'un projet de programmation SIG, j'ai aussi dû réaliser un outil -- un \textit{plugin} SIG --, permettant une comparaison visuelle et mesurée de la qualité de géocodage de différents services.
+Dans le cadre d'un projet de programmation SIG, j'ai aussi dû réaliser un outil -- un \textit{plugin} SIG --, permettant une comparaison visuelle et mesurée de la qualité de différents services de géocodage.
+Ce projet, réalisé au sein de l'École Nationales des Sciences Géographiques, institution gérée par l'Institut Géographique National (IGN\footnote{
+	L'IGN a depuis été renommé en \og Institut National de l'information géograpihque et forestière\fg{}.
+}), visait notamment à comparer le géocodage proposé par une société internationale -- Google Maps -- et par un service public national -- l'IGN et la BD TOPO --.
 En dehors de l'aspect technique, cette première expérience de projet de programmation appliqué a surtout été l'occasion de réfléchir à des questions d'interface homme-machine.
-Comment rendre intuitif, pour un évaluateur détaché du sujet, l'usage d'un outil interactif pensé pour vérifier la cohérence de géocodage de différentes adresses ? Fallait-il privilégier la présentation de l'indicateur quantitatif  -- la distance entre les points issus du géocodage -- ou plutôt donner une idée plus contextuelle de la localisation spécifique des résultats du géocodage ?
-Paradoxalement, cet apprentissage de la programmation et de l'automatisation débouchait sur des questionnements relatifs au développement et à l'usage d'une interface graphique.
-Cette sensibilité à l'\og usabilité\fg{} d'un logiciel a été très présente dans la suite, et me paraît fortement visible dans le présent travail de thèse (voir \hl{partie 5.4}).
+Comment rendre intuitif, pour un utilisateur n'ayant pas participé à sa conception, l'usage d'un outil interactif pensé pour vérifier la cohérence de géocodage de différentes adresses tirées de manière aléatoire dans l'espace francilien ?
+Fallait-il privilégier la présentation de l'indicateur quantitatif  -- la distance entre les points issus du géocodage -- ou plutôt donner une idée plus contextuelle de la localisation spécifique des résultats du géocodage ?
+%Paradoxalement, cet apprentissage de la programmation et de l'automatisation débouchait sur des questionnements relatifs au développement et à l'usage d'une interface graphique.
+Cette sensibilité à l'\og usabilité\fg{}\footnote{
+	L'usabilité est définie selon le standard \textcite{iso20189241} comme la combinaison de trois propriétés que sont \og l'efficacité\fg{} d'une interface (précision et qualité des résultats obtenus en l'employant), son \og efficience\fg{} (coût temporel et concentration que cela demande à l'utilisateur) et la satisfaction éprouvée par l'utilisateur suite à son usage \autocite[39]{zheng_interactive_2019}.
+} d'un logiciel a été très présente dans la suite, et me paraît fortement visible dans le présent travail de thèse (voir \hl{partie 5.4}).
 
 \paragraph{Approches géométriques.}
 
 Une autre approche extrêmement mobilisée dans cette thèse, est la vision processuelle \og géométrique\fg{} des traitements de données spatiales.
-Dans ce type d'approches, caractérisées par les recours aux opérateurs spatiaux, les agrégations, extractions et filtrages de données sont réalisés de manières surtout spatiales.
+Dans ce type d'approches, caractérisées par les recours aux opérateurs spatiaux, les agrégations, extractions et filtrages de données sont réalisés de manières surtout spatiales plutôt qu'attributaires.
+Par exemple, plutôt que de définir des voisinages comme la co-appartenance à une même structure territoriale (les communes d'un département par exemple), on aura plutôt tendance à définir ces voisinages à partir de contiguïtés spatiales d'ordre \textit{n}.
+De la même manière, pour confondre des maillages différents (bureaux de vote et IRIS par exemple), on peut procéder à une agrégation au niveau administratif supérieur (la commune), mais aussi effectuer une intersection géométrique et re-ventiler les populations dans le maillage résultant.
+
 Il s'agit de prendre en compte le contexte spatial, topologique, pour réaliser les opérations sur les données.
 En somme, cela revient à mobiliser la dimension spatiale des données dans les différentes chaînes de traitement mises en œuvre, et la différencier fortement des autres dimensions, attributaires.
 Ces approches sont nécessaires à la réalisation d'analyses portant sur des données de différentes granularités, de différents maillages : elles permettent en effet d'homogénéiser des informations dont la dimension spatiale est primordiale.
 En tant que telle, cette vision \og géométrique\fg{} nous a été fortement recommandée et transmise dans le cadre d'enseignements d'analyse spatiale.
 
-Dans le modèle présenté dans cette thèse (\hl{chap2}), une large partie des mécanismes est caractérisé par des processus géométriques, qu'il s'agisse de la mise en place de zones tampons, de prises en compte du voisinage, de logiques de distances euclidiennes, d'intersections et unions spatiales etc.
-L'influence de mon parcours me semble indéniable sur ces choix de modélisation où l'espace est traité de manière continue, assez peu répandus dans les modèles de dynamiques spatiales.
+Dans le modèle présenté dans cette thèse (\hl{chap2}), une large partie des mécanismes est caractérisé par des processus géométriques, qu'il s'agisse de la mise en place de zones tampons autour d'agrégats ou de pôles, de prises en compte du voisinage -- définition des agrégats --, de logiques de distances euclidiennes -- satisfaction de protection dépendant de la distance au château --, d'intersections et unions spatiales -- héritage des agrégats -- etc.
+L'influence de mon parcours me semble indéniable sur ces choix de modélisation où l'espace est traité de manière continue, démarche assez peu répandue dans les modèles de dynamiques spatiales.
 
 \paragraph{Représentations (carto)graphiques.}
 
@@ -140,7 +150,7 @@ Il s'agissait, de \og prendre part à toutes les étapes de la modélisation\fg{
 \item la création d'un outil d'exploration cartographique des résultats de simulation \autocite[12-13]{cura_conception_2011}.
 \end{compactenum}\vspace*{-.5em}
 Ce stage de six mois, et les deux années de contrats d'ingénieur d'étude qui l'ont suivi et ont permis d'en prolonger les recherches (au sein des projets GeoDiverCity, MIRO² puis TransMonDyn)\footnote{
-	Respectivement portés par Denise Pumain (ERC GeoDiverCity), Arnaud Banos (ANR MIRO²) et Lena Sanders (ANR TransMonDyn).
+	Respectivement portés par Denise Pumain (ERC GeoDiverCity), Arnaud Banos (ANR MIRO2) et Lena Sanders (ANR TransMonDyn).
 } ont durablement marqué mon rapport à la modélisation, à l'utilité de ses méthodes et à la manière de construire un modèle de façon collective.
 
 \paragraph{Découverte de la modélisation à base d'agents.}
@@ -149,7 +159,7 @@ Ce stage a marqué ma découverte du domaine de la modélisation, et en particul
 Par coïncidence, le premier modèle que j'ai eu à comprendre et à enrichir était un modèle de simulation de l'émergence et de la hiérarchisation d'un système de peuplement sur le temps long, au néolithique : SimpopLocal \autocite{schmitt_modelisation_2014,rey-coyrehourcq_plateforme_2015}.
 Il s'agissait de tester des hypothèses issues de la géographie théorique et quantitative en les éprouvant, \textit{in silico}, à l'aide d'un outil informatique permettant de simuler des dynamiques spatiales.
 
-Pour que je parvienne à comprendre et à m'approprier le modèle, mes encadrants m'avaient demandé d'ajouter un mécanisme exogène de perturbation du système simulé, sous la forme d'incidences de catastrophes naturelles. 
+Pour que je parvienne à comprendre et à m'approprier le modèle, mes encadrants m'avaient demandé d'ajouter un mécanisme exogène de perturbation du système simulé, afin de prendre en compte l'effet d'incidences de catastrophes naturelles. 
 L'idée de mon implication était de me permettre de me former, par la pratique, aux notions sous-jacentes de la modélisation de systèmes complexes : émergence, interactions entre agents, processus endogènes et exogènes etc.
 
 Ces éléments ont été mis en pratique dans la participation à la conception et à l'implémentation d'un second modèle de simulation, \og SimpopNet-Réseaux\fg{}, \og modèle-jouet\fg{} servant de prototype pour le modèle SimpopNet développé plus tard \autocite{schmitt_modelisation_2014}.
@@ -160,11 +170,11 @@ Il s'agissait cette fois-ci de modéliser la co-évolution entre systèmes de vi
 Pour rendre compte de ces deux modèles -- SimpopLocal et SimpopNet --, il m'avait été demandé de développer des outils de visualisation et d'exploration de leurs comportements.
 Les outils de visualisation intégrés à la plateforme de modélisation, NetLogo, n'étaient en effet pas suffisants pour rendre compte des différentes dynamiques produites par ces modèles.
 Dans un premier temps, pour étudier l'effet des perturbations sur SimpopLocal, j'ai implémenté un type de représentation utilisé pour montrer l'évolution des rangs des villes d'un système, en m'appuyant sur les \og rank clocks\fg{} de \textcite{batty_rank_2006}.
-Cette visualisation \textit{ad hoc} était très adaptée, mais ne permettait d'évaluer qu'une unique dimension (la stabilité des rangs) des processus modélisés.
+Cette visualisation d'une itération à la suivante était très adaptée, mais ne permettait d'évaluer qu'une unique dimension (la stabilité des rangs) des phénomènes modélisés.
 De plus, il était nécessaire de re-générer manuellement ces graphiques à chaque nouvelle sortie du modèle.
 
 C'est par le biais de la recherche d'automatisation et de proposition de plusieurs modes de représentation que j'ai été amené à découvrir le langage R et ses possibilités de création de rapports automatiquement produits à partir de jeux de données.
-L'outil qui en a découlé, intitulé TrajPop (analyse des trajectoires de population), a été en premier lieu mobilisé sur les populations simulées de SimpopLocal.
+L'outil qui en a découlé, intitulé TrajPop (analyse des trajectoires de population), a été en premier lieu mobilisé pour catégoriser et représenter les populations simulées de SimpopLocal.
 Cela marquait ainsi un premier pas vers une évaluation systématique des sorties de simulation, permettant de plus d'archiver de manière systématisée les résultats de simulation.
 Par la suite, TrajPop a été employé et amélioré pendant plusieurs années pour caractériser l'évolution des populations de systèmes de villes empiriques et non plus simulés (par exemple dans \textcite{pumain_multilevel_2015}).
 
@@ -178,30 +188,30 @@ par affinité et historique de collaboration, par importance bibliométrique, pa
 
 Le modèle issu de cette co-construction, SearchNet, a été élaboré pendant près de deux ans, en requérant une forte perméabilité de ses concepteurs aux thématiques et usages de l'autre.
 Par faute de temps consacré à sa finalisation, ce modèle n'a finalement jamais été achevé et mobilisé dans une publication scientifique.
-Cette expérience, que l'on pourrait qualifier d'avortée, m'a pourtant permis de réaliser que pour mener à terme un projet de modélisation fortement collectif, il était nécessaire de disposer de beaucoup de temps, de motivation, et qu'une partie non négligeable de ces deux ressources rares devait être dédiée à l'accoutumance, des deux côtés, aux thématiques et méthodologies mobilisées dans un modèle.
+Cette expérience, que l'on pourrait qualifier d'avortée, m'a pourtant permis de réaliser que pour mener à terme un projet de modélisation fortement collectif, il était nécessaire de disposer de beaucoup de temps, de motivation, et qu'une partie non négligeable de ces deux ressources rares devait être dédiée à l'apprentissage, des deux côtés, des thématiques et méthodologies mobilisées dans un modèle : le modélisateur devait pleinement s'accoutumer au sujet thématique traité, et le thématicien s'intéresser aux aspects méthodologiques pour être en mesure de comprendre les implications de l'implémentation informatique du modèle.
 
 \bigskip
 \paragraph[Conclusion intermédiaire]{}
 
 Ma formation académique et mes expériences passées de modélisation à base d'agent, entre géographie et géomatique, ont considérablement influencé la manière dont le présent travail de recherche a été abordé.
-Ces éléments n'expliquent pas, seuls, l'ensemble des choix faits dans cette thèse, mais peut-être permettent-ils de mieux les comprendre, qui plus est au regard du contexte dans lequel cette thèse a été conçue et réalisée.
+Ces éléments n'expliquent pas, à eux seuls, l'ensemble des choix faits dans cette thèse, mais peut-être permettent-ils de mieux les comprendre, qui plus est au regard du contexte dans lequel cette thèse a été conçue et réalisée.
 
-\section{Dans quel contexte s'inscrit ce travail ? \label{sec:contexte}}
+\section{Contexte d'inscription du travail \label{sec:contexte}}
 
 Le sujet initial de cette thèse a été conçu alors que j'étais ingénieur d'étude en analyse de données et représentations cartographiques, sous l'encadrement de Lena Sanders, pour le projet ANR TransMonDyn\footnote{
-Programme \og Blanc\fg{} de l'Agence Nationale de la Recherche (ANR), sous le code \mbox{ANR-10-BLAN-1805},  \href{http://www.transmondyn.parisgeo.cnrs.fr/}{www.transmondyn.parisgeo.cnrs.fr}
+	Programme \og Blanc\fg{} de l'Agence Nationale de la Recherche (ANR), sous le code \mbox{ANR-10-BLAN-1805},  \href{http://www.transmondyn.parisgeo.cnrs.fr/}{www.transmondyn.parisgeo.cnrs.fr}
 }.
-Ce projet interdisciplinaire, officiellement mené entre 2011 et 2014, visait à \og modéliser les grandes transitions de l'évolution du peuplement dans l'Ancien et le Nouveau Monde: contraintes environnementales, interactions spatiales et innovations sociales dans la dynamique multi-échelles de systèmes complexes\fg{}.
+Ce projet interdisciplinaire, officiellement mené de 2011 à 2014, visait à \og modéliser les grandes transitions de l'évolution du peuplement dans l'Ancien et le Nouveau Monde: contraintes environnementales, interactions spatiales et innovations sociales dans la dynamique multi-échelles de systèmes complexes\fg{}.
 
-C'est au sein de ce projet que s'est constitué le groupe de travail qui a donné lieu à SimFeodal, et c'est dans TransMonDyn que ce modèle, les hypothèses sur lesquelles il repose et les grandes lignes conceptuelles qui l'animent ont été conçu.
-Il me paraît donc indispensable de préciser les cadres conceptuels et pratiques de ce projet, et en particulier ceux qui ont ébauché les grandes directions empruntées dans cette thèse.
+C'est au sein de ce projet que s'est constitué le groupe de travail qui a donné lieu à SimFeodal, et c'est dans TransMonDyn que ce modèle, les hypothèses sur lesquelles il repose et les grandes lignes conceptuelles qui l'animent ont été conçues.
+Il me paraît donc indispensable de préciser les cadres conceptuels et pratiques de ce projet, et en particulier ceux qui ont servi de base aux grandes directions empruntées dans cette thèse.
 
 \subsection{Modélisation de processus spatiaux}
 
 L'entrée principale de TransMonDyn était résolument spatiale.
 Le projet cherchait à identifier et à modéliser de grandes transformations dans les systèmes de peuplements.
-En préalable au lancement du projet, la quarantaine de participants initiaux avaient identifiés douze cas d'études (\cref{tab:transitions-tmd}) où les systèmes de peuplement, dans leur dimension spatiale, avaient été profondément et durablement modifiés.
-Ces cas d'études portaient sur des régions et échelles spatiales variées -- d'une région nord-américaine au monde entier --, sur des périodes et étendues temporelles variées -- de milliers d'années à la préhistoire à un siècle contemporain --, mais avaient en commun, comme le descriptif du projet\footnote{
+Dans une première phase de travail, la quarantaine de participants initiaux ont identifié douze cas d'études (\cref{tab:transitions-tmd}) où les systèmes de peuplement avaient été profondément et durablement modifiés dans leur dimension spatiale.
+Ces cas d'études portaient sur des régions et échelles spatiales variées -- d'une micro-région nord-américaine ou française jusqu'au monde entier --, sur des périodes et étendues temporelles variées -- de milliers d'années à la préhistoire à un unique siècle ) l'époque contemporaine --, mais avaient en commun, comme le descriptif du projet\footnote{
 	Accessible sur le site de l'ANR -  \href{https://anr.fr/Projet-ANR-10-BLAN-1805}{https://anr.fr/Projet-ANR-10-BLAN-1805}
 } le mentionne, \og un “avant” et un “après” radicalement différents du point de vue de l'occupation de l'espace par les sociétés\fg{}.
 
@@ -234,15 +244,16 @@ Ces cas d'études portaient sur des régions et échelles spatiales variées -- 
 
 \paragraph{Des processus génériques : la recherche de faits stylisés.}
 
-L'une des ambitions principales était de parvenir à identifier des grands types génériques de transformations spatiales (migrations, concentration, dispersion, sédentarisation, hiérarchisation\ldots).
+L'une des ambitions principales était de parvenir à identifier des grands types génériques de transformations spatiales (concentration, dispersion, sédentarisation, hiérarchisation\ldots).
 On cherchait à caractériser ces transformations, matérialisations spatiales de processus sociaux, sous forme de \og faits stylisés\fg{}, c'est-à-dire de \og présentation[s] simplifiée[s] (sous la forme d'une relation entre phénomènes, d'une structure temporelle ou spatiale) d'une régularité empirique sur l'observation de laquelle il y a un assez large consensus dans la communauté scientifique\fg{} \autocite[70]{nuninger_cadre_2017}.
 
-Une fois les faits stylisés relatifs aux changements structurels identifiés, le projet ambitionnait de parvenir à caractériser les principaux leviers et catalyseurs de ces évolutions, et ainsi de proposer des faits stylisés explicatifs et génériques.
-Par exemple, on souhaitait comprendre les effets spatiaux d'une période de violence sur un système de peuplement : ce système tendrait-il à se disperser, à se concentrer, à se hiérarchiser ?
+Une fois les faits stylisés relatifs aux changements structurels identifiés, le projet ambitionnait de parvenir à caractériser les principaux leviers et catalyseurs de ces évolutions, et ainsi de proposer des processus explicatifs et génériques.
+Par exemple, quels étaient les effets spatiaux d'une période de violence sur un système de peuplement ?
+Ce système tendrait-il à se disperser, à se concentrer, à se hiérarchiser ?
 
 \paragraph{Modéliser avec des systèmes complexes.}
 
-Afin de conceptualiser et formaliser ces faits stylisés liés à des processus spatio-temporels, l'approche choisie était d'en modéliser les systèmes en tenant compte de leur nature complexe.
+Afin de conceptualiser et formaliser ces faits stylisés liés à des processus spatio-temporels, il avait été choisi de les modéliser en tenant compte de leur nature complexe.
 Pour arriver à une description systémique aussi parcimonieuse que possible de ces transformations, les membres de TransMonDyn avaient ainsi décidé de modéliser les systèmes affectés et leur évolution, en cherchant à \og endogénéiser\fg{} autant que possible les éléments déclencheurs des changements.
 Cette endogénéisation consiste à provoquer les transformations spatiales de manière endogène, c'est-à-dire en les expliquant par les dynamiques propres d'un système plutôt que par une perturbation extérieure au système (on parle alors d'élément exogène).
 Une fois conçues de manière endogènes, les dynamiques menant aux transformations peuvent être exprimées sous la forme de phénomènes émergents, les inscrivant dans le paradigme de la modélisation de systèmes complexes que \citeauteur{banos_pour_2013} exprime ainsi :
@@ -262,7 +273,7 @@ Ces propriétés sont dites émergentes et leur identification constitue l'un de
 
 Une particularité importante du projet TransMonDyn et des systèmes complexes modélisés en son sein est leur inscription dans le temps long, et pour la plupart, dans un temps long situé dans un passé lointain relativement aux thèmes habituellement traités en géographie.
 
-\paragraph{Identifier des \og régimes\fg{} et \og transitions\fg{}.}
+\paragraph{Identifier des \og régimes\fg{} et des \og transitions\fg{}.}
 
 Ce recul historique, tant en termes de position que d'étendue temporelle, s'exprime notamment par la manière dont les transformations spatiales sont décrites.
 On les décrit comme des \og transitions\fg{} dans le système de peuplement, selon une logique qui rappelle les transitions de phase chimiques\footnote{
@@ -270,42 +281,45 @@ On les décrit comme des \og transitions\fg{} dans le système de peuplement, se
 }.
 Ces transitions occurrent de manière brusque relativement aux \og régimes\fg{} qui les précèdent (\og régime 1\fg{}) et en découlent (\og régime 2\fg{}).
 
-Pour décrire ces termes, on peut s'appuyer sur l'une de ces transitions, originellement dénommée \og Transition 8\fg{} (de son rang dans l'ordre chronologique des cas d'étude) ou \og 800-1100 : polarisation et territorialisation en Europe du Nord-Ouest\fg{} (voir le \cref{tab:transitions-tmd}), qui constitue aussi le cas d'étude sur lequel ce travail de thèse repose.
+Pour décrire ces termes, on peut s'appuyer sur l'une de ces transitions, originellement dénommée \og Transition 8\fg{} (de son rang dans l'ordre chronologique des cas d'étude) ou \og 800-1100 :
+	polarisation et territorialisation en Europe du Nord-Ouest\fg{} (voir le \cref{tab:transitions-tmd}), qui constitue aussi le cas d'étude sur lequel ce travail de thèse repose.
 
 Dans cette transition \footnote{
-La description originale peut être consultée sur le site internet du projet \mbox{TransMonDyn} : \href{http://www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques/t8}{www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques/t8}
+	La description originale peut être consultée sur le site internet du projet \mbox{TransMonDyn} : \href{http://www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques/t8}{www.transmondyn.parisgeo.cnrs.fr/transitions-etudiees/cas-empiriques/t8}
 }, le régime 1, hérité de l'antiquité tardive, est caractérisé par un pouvoir centralisé et un habitat majoritairement dispersé et constitué de villages de faible population.
 La transition en tant que telle est caractérisée par un émiettement des pouvoirs seigneuriaux, l'essor urbain, une polarisation de l'habitat rural et par une stabilisation de l'habitat.
 Après cette transition, dans le régime 2, le système féodal a été mis en place, l'habitat est polarisé autour des églises paroissiales et socialement structuré par des communautés rurales.
 
 \paragraph{Longue durée et modélisation.}
 
-L'inscription passée et sur la longue durée pose plusieurs problèmes à la modélisation.
+L'inscription dans le passé et sur la longue durée pose plusieurs problèmes à la modélisation.
 En premier lieu, sur le plan conceptuel, l'étude d'un système sur le temps long impose d'en caractériser les composantes de manière pérenne.
 L'exemple des \og villes \og en est caractéristique :
 	la définition de ces entités socio-spatiales varie selon les disciplines, mais aussi selon les époques considérées.
 Pour certains, parler de villes pour caractériser les agglomérations secondaires héritées de l'antiquité constitue ainsi un anachronisme complet.
-La première difficulté d'un projet tel que l'étude d'une transition est donc déjà de formaliser, de manière ontologique, des objets valides sur l'ensemble de la période étudiée, alors même que presque par définition, ces objets sont amenés à évoluer et potentiellement à se transformer d'un régime à l'autre.
+La première difficulté d'un projet tel que l'étude d'une transition est donc déjà de formaliser, de manière ontologique, des objets valides sur l'ensemble de la période étudiée, alors même que presque par définition, ces objets sont amenés à, potentiellement, se transformer d'un régime à l'autre, jusqu'à parfois même changer d'identité.
 
 \paragraph{Longue durée et sources : le problème des \og connaissances expertes\fg{}}
 
 Une autre difficulté majeure auquel le projet TransMonDyn devait faire face, intrinsèquement à la volonté de modéliser des transitions sur la longue durée, est la nature forcément lacunaire des sources empiriques sur lesquelles reposent les connaissances de ces transitions.
-Plus l'on remonte dans le passé, moins les données empiriques sont nombreuses (voir \cref{fig:champignon-kaplan}), et plus elles sont incomplètes et incertaines.
+Plus l'on remonte dans le passé, moins les données empiriques sont nombreuses (voir \cref{fig:champignon-kaplan}-A), et plus elles sont incomplètes et incertaines.
+Pour augmenter la quantité de données, on peut alors procéder à de la numérisation de sources anciennes (B), ou simuler les processus anciens pour produire des données (C).
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/champignon_informationnel_kaplan.pdf}
-	\caption{Le \og champignon informationnel\fg{} de \textcite{kaplan_lancement_2013}.}
+	\caption{Le \og champignon informationnel\fg{}, d'après \textcite{kaplan_lancement_2013}.}
 	\label{fig:champignon-kaplan}
 \end{figure}
 
-L'exercice de la modélisation demande pourtant une quantité substantielle de données, et surtout que ces données soient homogènes en terme de couverture spatio-temporelle et en terme de certitude au risque que des \og effets de source\fg{} ne biaisent les résultats.
+L'exercice de la modélisation demande pourtant une quantité substantielle de données, et surtout que ces données soient homogènes en terme de couverture spatio-temporelle et en terme de certitude face au risque que des \og effets de source\fg{} ne biaisent les résultats.
 Afin d'augmenter la couverture spatio-temporelle, on a recours à des sources variées -- matérielles, écrites, voire biologiques --, par nature hétérogènes.
 
 Les éléments empiriques ne peuvent dès lors reposer que sur une connaissance large et diversifiée des périodes et régions étudiées.
 Cette connaissance, que l'on peut qualifier d'experte, est l'apanage des \og thématiciens\fg{} du projet.
 Le modélisateur, qui ne peut imaginer acquérir l'ensemble des connaissances expertes des thématiciens, doit accepter de leur faire entièrement confiance quant aux éléments empiriques mobilisés dans le modèle et par les biais desquels les modèles seront ensuite évalués.
 
-Cela mène à une double implication en matière d'illégitimité.
+Cela mène à une double implication en matière de légitimité.
 Pour le modélisateur, cela implique qu'il sera toujours nécessaire de s'en remettre à la connaissance experte d'une personne (ou d'un groupe), sans possibilité d'ailleurs d'enrichir ces connaissances de son côté :
 	mobiliser une référence scientifique dans une thématique de recherche inconnue ou distante, c'est risquer de citer des travaux non reconnus par la communauté, dépassés, ou encore anecdotiques.
 Dans cette thèse, les tentations de référencer certains éléments empiriques en menant des recherches bibliographiques ont été nombreuses, mais sans vision d'ensemble de l'historiographie de ces sujets, cela n'ajouterait en fait aucun gage de scientificité.
@@ -323,33 +337,36 @@ Pierre \textsc{Garmy} le résume ainsi à propos de son expérience en tant que 
 
 L'interdisciplinarité est le dernier élément marquant du contexte dans lequel ce travail de thèse a été initié, et qui l'aura influencé et guidé jusqu'à son terme.
 Celle-ci est au cœur d'un projet tel que TransMonDyn, où collaboraient des géographes, archéologues et historiens, informaticiens et géomaticiens, épistémologues, linguistes, mathématiciens\ldots{}
-Une expérience précédente, Archeomedes \autocite{durand1998archaeomedes}, avait déjà posé les bases d'une certaine interdisciplinarité entre géographes et archéologues\footnote{
+Une expérience précédente, Archaeomedes \autocite{durand1998archaeomedes}, avait déjà posé les bases d'une certaine interdisciplinarité entre géographes et archéologues\footnote{
 	On se réfère ici aux chercheurs en géographie humaine et/ou urbaine.
 	En géomorphologie, géophysique et géographie environnementale, les collaborations entre géographes et archéologues, sur des questions techniques notamment, sont plus fréquentes et anciennes.
-}, et plusieurs de ses membres historiques se sont donc retrouvés dans TansMonDyn.
-Ce \og noyau dur\fg{} a constitué le pôle auxquels se sont agrégés d'autres chercheurs des disciplines mentionnées, et y compris, en archéologie, des chercheurs qui avaient marqué une franche opposition aux approches très empruntes de systémique d'Archéomedes \autocite[voir][par exemple]{ferdiere_modelisation_2000}.
+}, et plusieurs de ses membres historiques se sont donc retrouvés dans TransMonDyn.
+Ce \og noyau dur\fg{} a constitué le pôle auxquels se sont agrégés d'autres chercheurs des disciplines mentionnées, et y compris en archéologie, des chercheurs qui avaient exprimé un désaccord quant aux approches très empruntes de systémique d'Archaeomedes \autocite[voir][par exemple]{ferdiere_modelisation_2000}.
 
-Au regard des enjeux du projet TransMonDyn, l'interdisciplinarité qui le caractérise s'exprime et contraint son ambition au moins de deux manières, que l'on pourrait rapporter aux domaines thématiques et méthodologiques.
+
+Dans le projet TransMonDyn, on a souvent distingué les rôles des participants selon qu'ils étaient \og thématiciens\fg{}, porteurs de connaissance experte vis-à-vis des processus étudiés, ou \og modélisateurs\fg{}, porteurs d'une connaissance experte vis-à-vis de la manière de modéliser ces processus.
+Au sein même de ces catégories, l'interdisciplinarité était fortement présente et a orienté les approches mises en place dans le projet.
+%Au regard des enjeux du projet TransMonDyn, l'interdisciplinarité qui le caractérise s'exprime et contraint son ambition au moins de deux manières, que l'on pourrait rapporter aux domaines thématiques et méthodologiques.
 
 \paragraph{Interdisciplinarité et thématique.}
 
-En premier lieu, et au plus évident, une forte interdisciplinarité implique des points de vue thématiques très différents.
-Il me semble que ceux-ci sont fortement liés aux sources manipulées.
+En premier lieu, de manière évidente, une forte interdisciplinarité résulte nécessairement en des points de vue disciplinaires différents sur des thématiques communes.
+Il me semble que ces points de vue sont fortement liés aux sources manipulées.
 Les données statistiques et issues d'enquêtes contemporaines de la géographie urbaine, les textes et la littérature grise historiques ou les traces et matériaux archéologiques, tous ces éléments sur lesquels les disciplines se constituent influencent fortement la manière de considérer un thème commun, comme par exemple celui de l'étude d'un système de villes donné.
-Les géographes en analyseront les interactions et populations au moyen de données de recensement ou d'analyses des acteurs territoriaux.
-Les historiens se référeront aux sources historiques, le plus souvent issues des élites ou structures dominantes, qui donneront sans doute des liens politiques ou religieux très détaillés entre les villes.
-Les archéologues chercheront dans les traces matérielles des points communs en terme de nature de construction, de répartitions spatiales à l'échelle des lieux de fouilles etc.
-Ces descriptifs, certes caricaturaux, montrent bien que pour une thématique commune, la disponibilité et couverture spatio-temporelle des sources privilégiés par telle ou telle discipline orientera nécessairement l'approche.
+Les géographes en analyseront les interactions et populations au moyen de données de recensement ou d'analyses des comportements des acteurs territoriaux.
+Les historiens se référeront aux sources historiques, le plus souvent issues des élites ou structures dominantes, qui donneront sans doute des informations précises sur les liens politiques ou religieux entre les villes.
+Les archéologues chercheront dans les traces matérielles des points communs en terme de nature de construction, de répartitions spatiales à l'échelle des lieux de fouilles afin d'identifier par exemple l'existence d'échanges entre les agglomérations.
+Ces descriptifs, certes caricaturaux, montrent bien que pour une thématique commune, la disponibilité et la couverture spatio-temporelle des sources privilégiées par telle ou telle discipline orienteront nécessairement l'approche.
 
 Ces sources et perspectives différentes orientent aussi fortement les ontologies et lexiques utilisés.
 On a donné l'exemple des villes, mais au-delà, chaque discipline use de son propre jargon et y attribue des concepts spécifiques.
 Un des défis de l'interdisciplinarité, du point de vue des thématiques, est alors de parvenir à tout expliciter, en usant d'un formalisme commun (définitions, ontologies\ldots), de manière à ne pas laisser de place à l'implicite disciplinaire.
 
-Une approche nécessairement variée, en termes de recherche d'explication des processus observés, découle nécessairement de ces différences de vocabulaire et de sources considérées.
+Une approche variée, en termes de recherche d'explication des processus observés, découle nécessairement de ces différences de vocabulaire et de sources considérées.
 Dans cette thèse, il me semble que c'est assez visible, on a essayé de concilier les explications en intégrant l'ensemble des éléments constitutifs du système modélisé qui semblaient, pour l'un ou l'autre des thématiciens, pouvoir apporter une part d'explication.
 Il fallait ainsi concilier la vision d'une géographe modélisatrice qui cherchait à expliquer la polarisation aux moyens d'attractions différenciées, la vision d'une archéologue pour qui les effets de lignages seigneuriaux et la territorialisation due aux paroisses permettaient de comprendre cette même polarisation et fixation, ou encore un historien pour qui les communautés rurales/agraires/paysannes émergentes étaient un facteur indispensable de la fixation de l'habitat rural.
 
-Ce dernier point est aussi l'occasion d'estomper une différenciation, forte dans TransMonDyn, entre \og thématiciens\fg{}, porteurs de connaissance experte vis-à-vis des processus étudiés, et \og modélisateurs\fg{}, porteurs eux aussi d'une connaissance experte vis-à-vis de la manière de modéliser ces processus.
+Ce dernier point est aussi l'occasion d'estomper la différenciation, forte dans TransMonDyn, entre \og thématiciens\fg{} et \og modélisateurs\fg{}.
 A mon sens, l'un des accomplissements de ce projet est aussi d'avoir montré que la frontière entre ces \og rôles\fg{} est fine, et extrêmement dépendante d'un positionnement particulier dans le cadre d'un projet particulier.
 Au-delà du poncif qui reviendrait à dire que chacun est tour à tour modélisateur ou thématicien selon son interlocuteur, il me semble ainsi pouvoir retirer de l'expérience TransMonDyn que pour modéliser en interdisciplinarité, chacun doit en même temps adopter ces deux postures, devenant un \og modélicien\fg{} selon les termes d'Arnaud \textsc{Banos} :
 \begin{quotation}
@@ -363,7 +380,7 @@ Je crois que c'est là l'une des conditions permettant à un projet de passer de
 
 \paragraph{Interdisciplinarité et méthodologie.}\label{par:interdisciplinarite-methodo}
 
-Au-delà des difficultés thématiques qu'elle implique, une interdisciplinarité large a aussi des retentissements en termes méthodologiques, très visibles dans le projet TransMonDyn.
+Au-delà des difficultés que l'interdisciplinarité implique sur le plan thématique, on peut aussi en constater des retentissements en termes méthodologiques, très visibles dans le projet TransMonDyn.
 La présence de géographes-modélisateurs, de géomaticiens, d'informaticiens, de mathématiciens ou encore de philosophes dans un projet génère nécessairement des approches diversifiées en matière de modélisation.
 Le mathématicien favorisera en effet des formalismes mathématiques tels que les systèmes dynamiques ou la théorie des jeux, les philosophes préfèreront une modélisation ontologique des processus à l'œuvre, le géographe préfèrera une entrée spatiale, potentiellement statistique par exemple autour de modèles gravitaires, et l'informaticien usera de ses habitudes en modélisation à base d'agents, proches de la programmation à base d'objets communicants.
 
@@ -374,11 +391,17 @@ Ces approches ont en commun une vision systémique des processus, mais les modal
 
 Au sein même des modèles implémentés au travers de systèmes multi-agents, l'hétérogénéité est forte : entre un modèle KISS\footnote{
 Caractérisés ainsi par \textcite[110]{amblard_evaluation_2006} : 
-\og Un premier courant, qui est une application directe du rasoir d'Occam, aussi appelé  ``principe de parcimonie'', le mouvement KISS (Keep It Simple, Stupid !) recommande de construire des modèles qui soient analysables par la suite, suffisamment simples pour être disséqués par un humain qui observe les simulations attentivement \textelp{}.
-Le positionnement de ce courant peut se résumer ainsi : rien ne sert de concevoir des modèles dont on ne pourrait étudier sérieusement les propriétés et oublier ainsi la validation interne, définie comme l'existence des bonnes propriétés du modèle dans le cadre formel de ce dernier
-\fg{}.
-}, un modèle descriptif, voire un modèle comportemental individu-centré, les paradigmes mobilisés sont entièrement différents et surtout ont des implications diamétralement opposées en matière de conception et d'évaluation.
-Du point de vue méthodologique, l'interdisciplinarité dans la conception de modèles requiert, comme pour les aspects thématiques, une forte explicitation des concepts et méthodes employés afin que l'ensemble des parties prenantes soient d'une part satisfaits des modèles produits, et d'autre part en capacité de comprendre les hypothèses et biais intrinsèques qui découlent du choix du type de modélisation.
+	\og Un premier courant, qui est une application directe du rasoir d'Occam, aussi appelé  ``principe de parcimonie'', le mouvement KISS (Keep It Simple, Stupid !) recommande de construire des modèles qui soient analysables par la suite, suffisamment simples pour être disséqués par un humain qui observe les simulations attentivement \textelp{}.
+	Le positionnement de ce courant peut se résumer ainsi : rien ne sert de concevoir des modèles dont on ne pourrait étudier sérieusement les propriétés et oublier ainsi la validation interne, définie comme l'existence des bonnes propriétés du modèle dans le cadre formel de ce dernier
+	\fg{}.
+}, un modèle descriptif, ou encore un modèle comportemental individu-centré, les paradigmes mobilisés sont entièrement différents et surtout ont des implications diamétralement opposées en matière de conception et d'évaluation.
+L'interdisciplinarité, de manière générale, requiert une forte explicitation des concepts et méthodes employés.
+Dans le cadre de projet collectifs de modélisation, c'est vrai pour l'aspect thématique -- chacun doit comprendre ce qui est modélisé afin de ne pas en mésinterpréter les résultats -- aussi bien que pour l'aspect méthodologique -- chacun doit comprendre la manière dont les objets sont modélisés pour les mêmes raisons.
+L'interdisciplinarité, sur le plan méthodologique, demande donc aussi une forte explicitation afin d'assurer la compréhension partagée des méthodes mises en places, des biais qu'elles impliquent, et des limites qu'elles comportent.
+
+%
+%C'est vrai aussi bien pour l'aspect thé
+%Du point de vue méthodologique, l'interdisciplinarité dans la conception de modèles requiert, comme pour les aspects thématiques, une forte explicitation des concepts et méthodes employés afin que l'ensemble des parties prenantes soient d'une part satisfaits des modèles produits, et d'autre part en capacité de comprendre les hypothèses et biais intrinsèques qui découlent du choix du type de modélisation.
 
 \bigskip
 \paragraph[Conclusion intermédiaire]{}
@@ -399,7 +422,7 @@ Au regard de ces objectifs, on comprendra aisément les similarités avec TransM
 
 Dans les faits, ce groupe de travail \og temps long\fg{}, dans lequel je me suis inscrit tout au long de mon travail de thèse, a surtout œuvré à la résolution d'une des difficultés de l'interdisciplinarité décrite plus haut : la mise en place d'un vocabulaire commun et explicite sur les concepts et notions liés à la description et à la modélisation des systèmes de peuplement sur le temps long.
 La réalisation d'un \og lexique spatio-temporel illustré\fg{} -- nom provisoire qui a par la suite été abandonné -- qui en résulte, intitulé \og « Les concepts-clés des systèmes de peuplement sur le temps long » (\hl{ajouter ref, voir avec Lena}), a nourri l'ensemble de cette thèse, en contribuant largement à mettre au clair les concepts employés.
-À ce titre, le groupe de travail du LabEx a aussi constitué un contexte fort, en mettant en place des discussions interdisciplinaires, autour des mêmes disciplines mais avec des communautés de chercheurs et d'approches de ces disciplines très différentes de celles de TransMonDyn.
+À ce titre, le groupe de travail du LabEx a aussi constitué un contexte fort, en mettant en place des discussions interdisciplinaires, autour des mêmes disciplines mais avec des communautés de chercheurs et d'approches de ces disciplines distinctes de celles de TransMonDyn.
 
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
