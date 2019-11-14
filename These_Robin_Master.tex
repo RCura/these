@@ -2,8 +2,6 @@
 % !TeX encoding = UTF-8
 % !TEX TS-program = xelatex
 
-%% !TeX TXS-program:xelatex = xelatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex % A décommenter quand utilisation de minted (coloration syntaxique)
-
 \documentclass[12pt, a4paper, oneside, notitlepage,french]{book}
 \usepackage{newclude} % Ce package ne fonctionne que quand placé juste après le documentclass
 
@@ -19,27 +17,11 @@
 %	chap7/biblio_chap7.bib,
 }
 
-
-
-
-
-% ######### TITRE #########
-\usepackage{titling}
-\title{Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles}
-\author{Robin Cura}
-\date{\vspace{-5ex}}
-\makeatletter
-\newcommand*{\toccontents}{\@starttoc{toc}}
-\makeatother
-
-
 \begin{document}
 \setcounter{tocdepth}{1}
 \setcounter{minitocdepth}{2}
 \setcounter{secnumdepth}{3}
 \dominitoc
-%\faketableofcontents
-%# Pour TOC plus complète, commenter ligne précédente et décommenter titlepage
 
 % ############################################
 % # Page de titre principale + plan détaillé #
@@ -72,13 +54,10 @@
 %\afterpage{\null\newpage}
 %\afterpage{\null\newpage}
 %\afterpage{\null\newpage}
-
+%
 \graphicspath{{chap1/}}
 \setcounter{chapter}{0}
 \include*{chap1/chap1}
-%
-%\setcounter{part}{0}
-%\part{Accompagner la modélisation d'une transformation dans le système de peuplement de l'Europe médiévale}
 %
 %\graphicspath{{chap2/}}
 %\setcounter{chapter}{1}
@@ -88,9 +67,6 @@
 %\setcounter{chapter}{2}
 %\include*{chap3-4/chap3-4}
 %
-%\setcounter{part}{1}
-%\part{L'analyse visuelle exploratoire au service de la compréhension de phénomènes spatiaux} 
-%
 %\graphicspath{{chap5/}}
 %\setcounter{chapter}{4}
 %\include*{chap5/chap5}
@@ -99,9 +75,6 @@
 %\setcounter{chapter}{5}
 %\include*{chap6/chap6}
 %
-%\setcounter{part}{2}
-%\part{Du cas d'étude à un retour sur les pratiques disciplinaires collectives de modélisation et d'exploration de données} 
-
 %
 %\graphicspath{{chap7/}}
 %\setcounter{chapter}{6}

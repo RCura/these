@@ -6,9 +6,8 @@
 \usepackage[left=1.5cm, right=5cm, bottom = 1cm, top = 2cm, headheight=16pt,
 headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \setlength{\marginparwidth}{4.5cm}
-\setlength{\parindent}{0pt}
-\usepackage{marginnote}
 
+\usepackage{marginnote}
 \usepackage{fontspec}
 \setmainfont{Charis SIL}
 \usepackage{setspace}
@@ -58,6 +57,11 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 	listparindent=\parindent,
 	parsep=0pt,
 }
+
+\newskip\bigskipamount   \bigskipamount =20pt plus 4pt minus 4pt
+\setlength{\parskip}{0.75em}
+\setlength{\parindent}{0em}
+\setlength{\footnotesep}{.75\baselineskip}
 
 
 \usepackage{varioref}
@@ -123,7 +127,7 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 \crefformat{lstlisting}{code~#2#1#3}
 \Crefformat{lstlisting}{Code~#2#1#3}
 
-\usepackage[lofdepth,lotdepth]{subfig}
+\usepackage[list=false,lofdepth,lotdepth]{subfig}
 \usepackage{sparklines}
 
 % ------------------------------------- %
@@ -150,7 +154,6 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 
 \usepackage{upgreek}
 
-\setcounter{secnumdepth}{6}
 \crefname{paragraph}{paragraphe}{paragraphes}
 \Crefname{paragraph}{Paragraphe}{Paragraphes}
 
@@ -224,16 +227,6 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 }
 }
 
-
-
-
-
-
-\newskip\bigskipamount   \bigskipamount =20pt plus 4pt minus 4pt
-\setlength{\parskip}{0.75em}
-\setlength{\parindent}{2em}
-\setlength{\footnotesep}{.75\baselineskip}
-
 \usepackage{titlesec} % Pose problème avec les headers
 % Corrigé avec ce code, à mettre pour chaque section
 %\let\orisectionmark\sectionmark
@@ -292,3 +285,13 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 % ######### COULEURS POUR REPRISE #########
 \newfontfamily\blueroman[Color=blue]{Charis SIL}
 \newfontfamily\redroman[Color=red]{Charis SIL}
+
+
+% ######### TITRE #########
+\usepackage{titling}
+\title{Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles}
+\author{Robin Cura}
+\date{\vspace{-5ex}}
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
