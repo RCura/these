@@ -228,7 +228,7 @@ Il aura une probabilité d'autant plus forte de migrer qu'il sera insatisfait, q
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/agents_interactions.pdf}
-	\caption{Interactions des agents : seigneurs (\textbf{A}) et foyers paysans (\textbf{B}).}
+	\caption[Interactions des agents : seigneurs et foyers paysans.]{Interactions des agents : seigneurs (\textbf{A}) et foyers paysans (\textbf{B}).}
 	\label{fig:interactions-agents}
 \end{figure}
 
@@ -269,7 +269,7 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/agents_paroisses_poles.pdf}
-	\caption{Constitution des pôles d'attraction (\textbf{A}) et des paroisses (\textbf{B})\\
+	\caption[Constitution des pôles d'attraction et des paroisses.]{Constitution des pôles d'attraction (\textbf{A}) et des paroisses (\textbf{B}).\\
 		\textit{Exemple de lecture : un pôle d'attraction est composé de 1 ou plusieurs attracteurs ;
 			un attracteur peut être une église paroissiale, un château ou un agrégat contenant une communauté paysanne ;
 			un pôle d'attraction est ainsi composé d'un ou plusieurs de ces agents.}}
@@ -282,7 +282,7 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/agents_constitution.pdf}
-	\caption{Héritages et compositions des agents de SimFeodal.\\
+	\caption[Héritages et compositions des agents de SimFeodal.]{Héritages et compositions des agents de SimFeodal.\\
 		\textit{Exemple de lecture :\\
 			- un agrégat est composé de 5 ou plus foyers paysans,\\
 			- un foyer paysan appartient à 0 ou 1 agrégat.}}
@@ -383,7 +383,8 @@ Cette dernière peut ainsi prendre la forme de changements datés (par exemple l
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/frise_chrono_tmd.pdf}
-	\caption{Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal. \hl{Figure issue de Peupler la Terre, à corriger/adapter.}}
+	\caption[Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal.]{Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal.\\
+		\hl{Figure issue de Peupler la Terre, à corriger/adapter.}}
 	\label{fig:frise-chrono}
 \end{figure}
 
@@ -1180,12 +1181,12 @@ On peut alors disperser, de manière entièrement aléatoire, tous les foyers pa
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.98\linewidth]{img/init_fp.pdf}
-	\caption{Étapes successives de l'initialisation des foyers paysans agrégés (petites villes et villages).\\
-	(A) On génère un foyer paysan qui est positionné de manière aléatoire ;\\
+	\caption[Étapes successives de l'initialisation des foyers paysans agrégés (petites villes et villages).]{Étapes successives de l'initialisation des foyers paysans agrégés (petites villes et villages).\\
+	(\textit{A) On génère un foyer paysan qui est positionné de manière aléatoire ;\\
 	(B) on génère un nouveau foyer paysan dans un rayon donné du premier ;\\
 	(C) et (D) on continue à générer de nouveaux foyers paysans dans le rayon de n'importe lequel des foyers existants ;\\
 	(E) la géométrie d'un agrégat correspond à l'enveloppe convexe des foyers paysans ;\\
-	(F) en fin d'initialisation, les étapes A à E ont été répétées pour le nombre d'agrégats initiaux défini, et l'ensemble des agrégats sont donc dispersés dans l'espace actif (voir \cref{fig:espace-simfeodal}) du modèle.}
+	(F) en fin d'initialisation, les étapes A à E ont été répétées pour le nombre d'agrégats initiaux défini, et l'ensemble des agrégats sont donc dispersés dans l'espace actif (voir \cref{fig:espace-simfeodal}) du modèle.}}
 	\label{fig:init-fp}
 \end{figure}
 
@@ -1395,7 +1396,7 @@ On peut alors calculer leur attractivité en se reportant au \cref{tab:attractio
 		& 4+ & 0.6 \\ \hline
 		\multicolumn{2}{|l|}{Agrégat (doté d'une communauté)} & 0.15 \\ \hline
 	\end{tabular}}
-\caption{Attractivité ($\in [0,1]$) conférée aux pôles par leurs attracteurs.}
+\caption[Attractivité conférée aux pôles par leurs attracteurs.]{Attractivité ($\in [0,1]$) conférée aux pôles par leurs attracteurs.}
 \label{tab:attraction-poles}
 \end{table}
 
