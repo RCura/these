@@ -29,8 +29,8 @@
 	\item 22/10/2019 : fin écriture + relecture + rendu Lena
 	\item 11/11/2019 : début reprises Lena
 	\item 12/11/2019 : reprises 1.1 et 1.2
-	\item 21/10/2019 : fin 1.4
-	\item 22/10/2019 : relecture + rendu Lena
+	\item 14/11/2019 : reprises 1.3
+	\item 14/11/2019 : reprises 1.4.1
 \end{itemize} 
 
 \minitoc
@@ -430,62 +430,86 @@ La réalisation d'un \og lexique spatio-temporel illustré\fg{} -- nom provisoir
 \orisectionmark{Évolution du questionnement}
 \let\sectionmark\orisectionmark
 
-Entre mon projet de recherche initial, proposé au LabEx DynamiTe et validé, et le présent rendu, le sujet, les questionnements et surtout les approches mises en places pour y répondre ont fortement évolué.
+Entre mon projet de recherche initial, proposé au LabEx DynamiTe, et le présent rendu, le sujet, les questionnements et surtout les approches mises en places pour y répondre ont fortement évolué.
 Les grands axes du positionnement sont eux restés constants, de même que la thématique d'ensemble.
 Le titre initial de ce projet montre qu'il s'agit plus d'un changement de point de vue sur les approches à mobiliser que sur le thème en lui même.
 Ce projet s'intitulait en effet originellement \og Exploration et analyse de données spatio-temporelles : application à la modélisation des transformations des systèmes de peuplement sur le temps long\fg{}.
 On notera que les principales idées sont communes au titre actuel (\og Accompagner la modélisation des systèmes de peuplement par l'exploration interactive de données spatio-temporelles \fg{}\footnote{
 	\hl{A corriger avec titre définitif.}
-}), mais que l'ordre en a été bouleversé et que certaines composantes ont été spécifiées.
+}), mais que l'ordre en a été bouleversé, que la logique d'accompagnement a été ajoutée (même si elle était dans le projet de recherche, cf. \textit{infra}) et que certaines composantes ont été spécifiées.
 
 Le programme de recherche initial était orienté autour de trois tâches :
 
 \begin{compactenum}\vspace*{-.5em}
-	\item Mise en place d'une démarche d'accompagnement des thématiciens dans la modélisation ;
-	\item développement d'une plateforme d'exploration de données spatio-temporelles : application à des transitions dans le système de peuplement ;
-	\item analyse des transitions modélisées pour parvenir à un méta-modèle de transitions des systèmes de peuplement.
+	\item \og Mise en place d'une démarche d'accompagnement des thématiciens dans la modélisation\fg{} ;
+	\item \og développement d'une plateforme d'exploration de données spatio-temporelles : application à des transitions dans le système de peuplement\fg{} ;
+	\item \og analyse des transitions du système de peuplement modélisées\fg{}.
 \end{compactenum}\vspace*{-.5em}
 
-Ces grandes dimensions d'analyses sont toujours présentes dans la présente thèse.
-Sans faire un retour complet et exhaustif sur les évolutions de ma recherche, il me semble utile ici de revenir sur ces éléments, les obstacles qu'ils ont rencontrés et les solutions choisies pour les résoudre.
+Ces grandes dimensions d'analyses sont toujours présentes dans la présente thèse, quand bien même largement ré-organisées et hiérarchisées différemment.
+Sans faire un retour complet et exhaustif sur les évolutions de ma recherche, il me semble utile ici de revenir sur ces éléments\footnote{
+	Les titres des sous-parties reprennent les trois tâches du projet initial, mais ont été renommées pour une meilleure correspondance au contenu réel du projet.
+}, les obstacles qu'ils ont rencontrés et les solutions choisies pour les résoudre.
 Cela permettra de mieux cerner le positionnement de ce travail dans le champ de la modélisation en géographie.
 
 
-\subsection{Accompagner la modélisation}
+
+\subsection[Accompagner la modélisation]{Accompagner la modélisation}
 
 L'ambition d'origine était d'accompagner la modélisation des transitions en \og [extrayant] les connaissances des thématiciens et [en les décryptant] afin d'en tirer des processus de causalité, de dépendance et d'inter-relations\fg{}.
-Il me semble maintenant que le terme de \og guider la modélisation\fg{} aurait plus fidèlement représenté l'approche sous-jacente.
+Il me semble maintenant que le terme de \og guider\fg{} la modélisation aurait plus fidèlement représenté l'approche prévue.
 
-\paragraph{Guider la modélisation de cas d'études.}
+\paragraph{Guider la modélisation de cas d'études avec une approche unique.}
 
-Dans les faits, en matière d'accompagnement, je cherchais à formaliser les discours experts des thématiciens en vue de leur modélisation.
-Cette formalisation se serait appuyée sur des méthodes graphiques à l'aide de \og briques de bases\fg{}, modèles schématiques d'un type de processus ou d'interaction.
-Pour être généralisable à toutes les transitions identifiées dans TransMonDyn, il aurait fallu que celles-ci atteignent une certaine homogénéité dans le degré de maturité de leur conceptualisation, mais aussi que l'ensemble des thématiciens soient en accord avec ce type très généralisant et essentialisant de modélisation.
+Dans les faits, en matière d'accompagnement, le projet visait à formaliser les discours experts des thématiciens en vue de leur modélisation.
+Cette formalisation devait s'appuyer sur des méthodes graphiques à l'aide de \og briques de bases\fg{}, modèles schématiques d'un type de processus ou d'interaction.
+Pour que cette approche soit généralisable à toutes les transitions identifiées dans TransMonDyn, il fallait alors que celles-ci atteignent une certaine homogénéité dans le degré de maturité de leur conceptualisation, et donc que l'ensemble des thématiciens acceptent ce type de modélisation très simple et généralisant.
+Il s'agissait donc de modéliser, à partir des connaissances expertes et données empiriques, voire à partir de modèles déjà réalisés par les groupes de travail, chacune des transitions selon un paradigme commun et générique.
 
-D'une part, on le constate à la lecture de l'ouvrage collectif issu du projet, les modèles ont atteint des niveaux très variés d'avancement, mais ils ont aussi été réalisés selon des paradigmes tout aussi variés, voire opposés dans leur démarche (cf. \nameref{par:interdisciplinarite-methodo}, p. \pageref{par:interdisciplinarite-methodo}).
-Un type générique de modélisation, ou de ré-expression des modèles générés par les groupes de travail, n'aurait donc pas été applicable du tout à l'ensemble des transitions.
-Il fallait nécessairement en sélectionner un sous-ensemble homogène, ce qui n'est foncièrement possible que quand les modélisateurs impliqués dans l'accompagnement à la modélisation sont identiques et mettent en place la même approche.
-Au regard du seul exemple de TransMonDyn où un même modélisateur a collaboré à deux transitions différentes  -- Alain \textsc{Franc}, mathématicien, qui a participé aux transitions 9 \autocite{ouriachi_transition_2018} et 12 \autocite{bretagnolle_transition_2018}, voir \cref{tab:transitions-tmd} --, on ne peut que noter que les types de modélisation sont très différentes (théorie des jeux dans un cas, modèle descriptif statistique dans l'autre).
-Matériellement, il paraissait dès lors illusoire de mener une expérience de modélisation sur plusieurs transitions.
+D'une part, on le constate à la lecture de l'ouvrage collectif issu du projet, les modèles ont atteint des niveaux très variés d'avancement.
+D'autre part, ils ont aussi été réalisés selon des paradigmes tout aussi variés, voire opposés dans leur démarche (cf. \nameref{par:interdisciplinarite-methodo}, p. \pageref{par:interdisciplinarite-methodo}).
+Un type générique de modélisation, même en demeurant au niveau conceptuel n'était donc pas applicable à l'ensemble des transitions.
+Il était alors nécessaire d'en sélectionner un sous-ensemble homogène, ce qui est difficilement possible quand les modélisateurs impliqués dans la modélisation présentent une diversité d'approches (cf. \cref{par:interdisciplinarite-methodo}).
 
-Surtout, cette posture de modélisateur \og imposant\fg{} ses propres outils et approches de modélisation ne pouvait s'inscrire dans un projet à volonté réellement interdisciplinaire tel que TransMonDyn.
-D'une part, parce que \og le modélisateur n'est pas omni-compétent\fg{} \autocite[77]{banos_pour_2013}, et d'autre part parce que le \og le modélisateur doit cesser de proposer des solutions uniques et optimales à des problèmes complexes\fg{} \autocite[79]{banos_pour_2013}.
-Cela interroge le positionnement du modélisateur vis-à-vis des thématiciens \og avec\fg{} lesquels il cherche à concevoir un modèle.
-Sa posture doit-elle être dirigeante, prescriptive, accompagnante ou encore se borner à une simple assistance technique ?
+En allant plus loin, on peut noter que même dans le cas du projet TransMonDyn où un même modélisateur a collaboré à plusieurs transitions, il a choisi de développer des types de modèles très différents.
+Alain \textsc{Franc}, mathématicien, qui a participé aux transitions 9 \autocite{ouriachi_transition_2018} et 12 \autocite{bretagnolle_transition_2018}, voir \cref{tab:transitions-tmd} --, a ainsi choisi d'utiliser la théorie des jeux dans le premier cas, et de réaliser un modèle descriptif statique dans le second.
+Cet exemple met en exergue l'obstacle qui nous paraît désormais majeur dans l'homogénéisation de modèles différents : le type de modèle est un choix collectif des membres impliqués, mais il n'est pas pour autant réalisé de manière entièrement indépendante.
+
+En premier lieu, le parcours méthodologique et scientifique de chacun des participants joue un large rôle, chaque modélisateur ayant naturellement tendance à approcher un problème avec les outils qu'il a l'habitude d'utiliser.
+Un statisticien habitué aux systèmes dynamiques à base d'équations différentielles aura du mal à concevoir un modèle conceptuel en termes d'agents et de mécanismes, et un adepte des modèles à base d'agents très parcimonieux sera sans doute frustré par un choix collectif de modèle descriptif.
+Cela explique qu'Alain \textsc{Franc} n'ait pas mené de modélisation à base d'agents dans ces exemples.
+
+En second lieu, il nous semble que la combinaison du questionnement initial et la nature des données disponibles conditionne aussi très largement le choix du type de modélisation.
+Selon que le questionnement repose sur l'observation de dynamiques individuelles ou au contraire agrégées, on se tournera ainsi soit vers des méthodes où l'individu peut être suivi (modèles agents, théorie des jeux, etc.), soit vers des méthodes plus agrégeantes (systèmes dynamiques par exemple).
+Selon que le questionnement porte sur le déroulement des \og transitions\fg{} ou au contraire sur la caractérisation des \og régimes\fg{}, on choisira aussi différentes méthodes.
+Au niveau des données empiriques, plus celles-ci sont nombreuses, plus le type de modélisation pourra être \og \textit{data-driven}\fg, résultant peut-être en des modèles plus parcimonieux donnant une forte importance à la validation.
+Au contraire, en présence de peu de données empiriques mais de nombreuses connaissances expertes, des modèles \og theory-driven\fg{} seront sans doute privilégiés, évalués et mobilisés de manière plus qualitative.
+
 
 \paragraph{De la prescription à l'accompagnement.}
 
+Au delà de la question de la faisabilité effective d'un tel projet d'accompagnement global à la modélisation d'un ensemble de transitions, rendu difficile dans le contexte très interdisciplinaire et multi-approches de TransMonDyn, la réalisation de cet \og accompagnement à la modélisation\fg{} posait question en matière de méthode d'accompagnement.
+Dans un tel contexte, la proposition d'un cadre conceptuel commun et générique de modélisation était-elle la manière la plus adaptée de réellement \og accompagner\fg{} la modélisation ?
+Dans un parcours, un accompagnateur peut ainsi être devant, au même niveau, ou derrière ceux qu'ils accompagnent.
+La position que j'avais initialement prévue me plaçait \og devant\fg{}, c'est-à-dire en guide chargé d'orienter le marche des suivants en proposant un et un seul itinéraire, c'est-à-dire une approche commune et unique de modélisation.
+Cela n'a pas été possible pour une raison chronologique triviale -- le projet TransMonDyn avait commencé avant le début effectif de cette thèse --, mais aussi vis-à-vis des discussions collectives relatives à la position des modélisateurs, unanimement choisie comme une position d'accompagnement \og au même niveau\fg{} pour reprendre la métaphore précédente.
+%Surtout, cette posture de modélisateur \og imposant\fg{} ses propres outils et approches de modélisation ne pouvait s'inscrire dans un projet à volonté réellement interdisciplinaire tel que TransMonDyn.
+%D'une part, parce que \og le modélisateur n'est pas omni-compétent\fg{} \autocite[77]{banos_pour_2013}, et d'autre part parce que le \og le modélisateur doit cesser de proposer des solutions uniques et optimales à des problèmes complexes\fg{} \autocite[79]{banos_pour_2013}.
+Cela interroge le positionnement du modélisateur vis-à-vis des thématiciens \og avec\fg{} lesquels il cherche à concevoir un modèle, et qui voulait, dans TransMonDyn, être celui d'un \og accompagnateur\fg{} et co-acteur plus quelle celle d'un prescripteur ou d'un assistant technique.
+
+
 J'ai très vite réalisé que la proposition d'un cadre commun de modélisation ne pouvait fonctionner au regard des spécificités de chacune des approches mises en places pour décrire les transitions.
-Pour que chacun investisse son temps et son énergie dans une expérience de modélisation, qui peut se montrer extrêmement frustrante pour les thématiciens \autocite[470]{ouriachi_lelaboration_2017}, il faut avant tout veiller à répondre aux attentes vis-à-vis de l'usage du modèle.
+Pour que chacun investisse son temps et son énergie dans une expérience de modélisation, qui peut se montrer frustrante pour les thématiciens \autocite[470]{ouriachi_lelaboration_2017}, il faut avant tout veiller à répondre aux attentes de ces derniers vis-à-vis de l'usage du modèle.
 En d'autres termes, pour que des chercheurs consacrent du temps à un travail, encore faut-il que celui-ci leur apporte quelque chose.
 L'identification de qui \og profite\fg{} d'un modèle\footnote{
 \og who benefits in what manner from the simulation\fg{} selon les mots de \textcite[260]{lake_trends_2014}
-} est claire dans le cadre commun de la modélisation d'accompagnement \autocite[voir][par exemple]{etienne_modelisation_2015}, où l'on cherche à sensibiliser une population aux dangers et risques qu'elle encoure.
+} est claire dans le cadre commun de la \og modélisation d'accompagnement\fg{} \autocite[voir][par exemple]{etienne_modelisation_2015}, où l'on cherche à sensibiliser une population aux dangers et risques qu'elle encoure.
 Dans le cadre d'un projet de recherche où les objectifs des modèles sont plus théoriques, où les attentes vis-à-vis des modèles sont plus diversifiées, voire où des réticences vis-à-vis de la modélisation peuvent être présentes, il me semble qu'une conception collective du modèle et de l'approche de modélisation est la seule susceptible de rassembler les énergies nécessaires.
 
 Dès lors, la modélisation ne pouvait se faire qu'en gardant à l'esprit, constamment et tout au long, les attentes et envies de chacune des parties prenantes.
-Cela n'est pas possible dans une approche prescriptrice de \og modélisateur éclairé\fg{}, et ne peut se construire que dans un consensus permanent sur la manière de procéder, sous risque de voir l'expérience échouer avant son terme.
-Pour que le projet de modélisation interdisciplinaire aboutisse, le modélisateur doit y investir au moins autant de temps que le thématicien, participer à toutes les étapes de modélisation, depuis la conceptualisation jusqu'à l'évaluation et l'analyse des résultats.
+Cela n'est pas possible dans une approche prescriptrice de \og modélisateur éclairé\fg{} \autocite[484]{ouriachi_lelaboration_2017}.
+Un consensus permanent sur la manière de procéder est ainsi nécessaire, sous risque de voir l'expérience échouer avant son terme.
+Pour que le projet de modélisation interdisciplinaire aboutisse, le modélisateur ne peut être un simple \og implémenteur\fg{}, qui ne participerait qu'à la dernière phase -- l'implémentation informatique du modèle conceptuel.
 Comme le relate Arnaud \textsc{Banos} :
 \begin{quotation}
 	\noindent \og
@@ -498,10 +522,10 @@ Comme le relate Arnaud \textsc{Banos} :
 	\mbox{}~ \textsc{Banos} A., \og Annexe 3 - Petite typologie “empirique” des modélisateurs \fg{}, in \textcite[483,485]{ouriachi_lelaboration_2017}
 \end{quotation}
 L'\og intimité\fg{} et le temps nécessaire rendent impossible, dans le cadre d'un programme de recherche temporaire, la modélisation en profondeur de plusieurs transitions.
-J'ai ainsi considéré que mieux valait se concentrer sur la modélisation d'une unique transition, et y investir le temps qu'il faudrait, plutôt que de chercher à multiplier les expériences de modélisation de plusieurs transitions, ce qui n'aurait débouché au mieux que sur des prototypes inachevés, nécessairement frustrants pour les thématiciens et modélisateurs impliqués.
+J'ai ainsi considéré que mieux valait se concentrer sur la modélisation d'une unique transition, et y investir le temps qu'il faudrait, plutôt que de chercher à multiplier les expériences de modélisation de plusieurs transitions, ce qui aurait pu être frustrant pour les thématiciens et autres modélisateurs impliqués.
 
 
-\subsection{Exploration et confrontation de données empiriques et simulées}
+\subsection{Explorer et confronter données empiriques et simulées}
 
 La deuxième tâche du projet initial de thèse était de construire une plate-forme interactive dédiée conjointement à l'exploration des données empiriques sur lesquelles sont fondées les modèles, à l'exploration des données simulées produites par ces modèles, et enfin à la confrontation de ces données empiriques et simulées.
 
@@ -512,37 +536,53 @@ Je savais que les archéologues, en particulier, du projet TransMonDyn s'appuyai
 Les transitions portées par des géographes, elles-aussi, pouvaient compter sur des données exhaustives et complètes sur le territoire et les périodes étudiées.
 J'envisageais donc de créer un outil permettant à chacun, thématiciens compris, d'explorer les données compilées pour chaque transition, et ainsi de contribuer à y trouver des corrélations, des récurrences spatio-temporelles ou autres motifs dans les données qui auraient pu enrichir et faciliter la conception des modèles.
 
-C'était sans compter sur l'état réel de la documentation de la majorité des transitions : quand les données existaient, elles n'étaient ni harmonisées ni homogènes et surtout très lacunaires.
+Dans les faits, et c'est aussi une limite qui n'est visible qu'une fois l'exercice entamé, l'utilisation des données archéologiques est bien plus complexe que je ne pouvais le prévoir en tant que géographe habitué aux sources de données contemporaines, institutionnelles et souvent exhaustives.
+De nombreuses \og données\fg{} existent, mais elles ne sont par forcément harmonisées ou homogènes, et surtout, elles sont très lacunaires sur les dimensions temporelles (des périodes entières ne sont pas couvertes) et spatiales (les données ne couvrent que rarement l'ensemble du territoire étudié).
 À une exception près, les modèles finalement issus de TransMonDyn sont d'ailleurs tous \og \textit{theory-driven}\fg{} plutôt que \og \textit{data-driven}\fg{}\footnote{
 	Pour une bonne comparaison de ces approches, voir \textcite[120--122]{mathian_objets_2014}.
 } :
-	ils reposent sur des connaissances expertes et des hypothèses thématiques plutôt que sur une information quantifiée qui serait directement injectée dans les modèles
-Il aurait été vain de vouloir explorer ces données, hétérogènes au sein même des transitions, pour espérer en tirer une quelconque connaissance qui aurait complétée l'expertise thématique de chercheurs ayant étudié des thématiques localisées et datées pendant des dizaines d'années.
+	ils reposent sur des connaissances expertes et des hypothèses thématiques plutôt que sur une information quantifiée qui serait directement injectée dans les modèles.
+Dans la plupart des cas\footnote{
+	À l'exception de la transition 9 (cf. \cref{tab:transitions-tmd}) où les auteurs \autocite{bretagnolle_transition_2018} ont justement mené un travail de modélisation \og statique\fg{} à partir des données disponibles, en modélisant les états successifs des échanges inter-urbains plutôt que de modéliser les causes de leur émergence. 
+}, les données en tant que telles ont été mobilisées comme des moyens d'évaluer les modèles plutôt que comme des bases de construction.
+L'usage des données empiriques, dans ma thèse, s'inscrit pleinement dans cette approche empruntée collectivement par les participants du projet TransMonDyn.
+%Il aurait été vain de vouloir explorer ces données, hétérogènes au sein même des transitions, pour espérer en tirer une quelconque connaissance qui aurait complétée l'expertise thématique de chercheurs ayant étudié des thématiques localisées et datées pendant des dizaines d'années.
 
 \paragraph{Exploration de modèles et confrontations de données.}
 
-Pour explorer les modèles, c'est-à-dire les comportements auxquels ils pouvaient aboutir, et mener ainsi une validation de ces modèles, je comptais mobiliser les dernières méthodes d'exploration automatisée de modèles, qui étaient notamment en cours de développement au sein du projet ERC GeoDiverCity\footnote{
+Pour \og explorer les modèles\fg{}, c'est-à-dire analyser l'étendue des dynamiques simulées et des sorties auxquels ils pouvaient aboutir, et mener ainsi une validation de ces modèles, je comptais mobiliser des méthodes d'exploration automatisée de modèles.
+Le projet ERC GeoDiverCity\footnote{
 	ERC Advanced Grant 269826 GeoDiverCity, dirigé par Denise \textsc{Pumain} - \\ \href{http://geodivercity.parisgeo.cnrs.fr/blog/}{http://geodivercity.parisgeo.cnrs.fr}
-} auquel je contribuais aussi.
-Fondamentalement, le présupposé de telles méthodes (\hl{déjà renvoyer au chapitre 7 ?}) est que les modèles construits soient aussi parcimonieux que possibles, dotés d'une quantité minime de paramètres et d'indicateurs de sortie.
+}, auquel je contribuais par ailleurs, comportait en effet un axe de recherche portant sur le développement de telles méthodes et avait déjà proposé des outils et algorithmes d'exploration automatisée lors de la rédaction de mon projet initial de thèse.
+Dans la lignée des travaux de thèse de \textcite{rey-coyrehourcq_plateforme_2015}, membre lui-aussi du projet TransMonDyn, 
+
+Fondamentalement, le présupposé de telles méthodes (\hl{cf chap7}) est que les modèles construits soient aussi parcimonieux que possibles, dotés d'une quantité minime de paramètres et d'indicateurs de sortie.
 En automatisant les analyses, il aurait été aisé de confronter ces sorties aux données empiriques disponibles, la simulation informatique ayant l'énorme avantage de laisser au modélisateur choisir le format, le type et la quantité des données générées.
 
-Pourtant, le choix d'un compromis de pratique entre modélisateurs et thématiciens ne pouvait pas déboucher sur des modèles KISS :
-	ceux-ci demandent au thématicien de faire preuve d'une forte abstraction quant aux processus et entités modélisés, ce qui demande d'ordinaire \og un apprentissage, une familiarisation progressive avec un mode de pensée qui n'est pas génétiquement le sien\fg{} (\textsc{Garmy} in \cite[477]{ouriachi_lelaboration_2017}).
+Le contexte effectif de co-construction du modèle a pourtant invalidé, ou au moins freiné, ce type d'approche.
+Ces méthodes d'exploration automatiques sont en effet pensées comme permettant l'exploration de modèles plutôt KISS.
+Pour mener une exploration complète, il faut minimiser le nombre de paramètres en entrées et le nombre d'indicateurs en sortie.
+Dans le cas inverse, l'\og explosion combinatoire\fg{} qui résulte de leurs combinaisons empêche de mener une exploration complète.
 
-Avec des modèles plutôt descriptifs mieux adaptés à des premières expériences de modélisation, la tâche d'exploration est plus complexe, sans parler même d'une éventuelle validation.
-Cette exploration des modèles, à partir des données issues de simulation, ne peut alors être que manuelle.
+Pourtant, la réalisation de modèles KISS demande aux thématiciens de faire preuve d'une forte abstraction quant aux processus et entités modélisés.
+Dans un contexte de premières expérience de modélisation pour une large part des thématiciens du projet TransMonDyn, cela rendait difficile l'adoption de ce type de modélisation qui demande \og un apprentissage, une familiarisation progressive avec un mode de pensée qui n'est pas génétiquement le sien\fg{} (\textsc{Garmy} in \cite[477]{ouriachi_lelaboration_2017}).
+Pour des néo-modélisateurs, le choix de modèles KIDS est alors plus aisé, et le travail de \og parcimonisation\fg{} qu'implique ce type de modèle dans un second temps aide justement à cette \og familiarisation progressive\fg{}.
+
+Avec des modèles plutôt descriptifs, la tâche d'exploration est plus complexe, sans parler même d'une éventuelle validation.
+Cette exploration des modèles, à partir des données issues de simulation, ne peut être que manuelle.
 À ce titre, la plate-forme interactive de confrontation des données pouvait avantageusement être repensée pour servir à l'exploration des données simulées.
 Au lieu de comparer des données empiriques et des données de simulation, elle servirait à explorer des données simulées, et à les confronter à d'autres données simulées afin de pouvoir comparer différents modèles ou versions de modèles par l'entremise de l'exploration interactive de données.
 
 \subsection{D'un méta-modèle à un retour sur expérience de modélisation}
 
 Le projet initial visait enfin à aller vers l'expression d'un modèle générique de transition dans les systèmes de peuplement -- un méta-modèle --, qui serait issu d'une analyse comparée des différents modèles.
-La conception d'un tel méta-modèle ne pouvait reposer que sur une analyse poussée de plusieurs modèles de transitions, formalisés de la même manière et avec des approches KISS homogènes.
-En d'autres mots, sans la complétion des deux premières tâches du projet initial, cette étape de méta-modélisation était irréalisable.
+La conception d'un tel méta-modèle ne pouvait se passer d'analyses poussées de plusieurs modèles de transitions, formalisés de la même manière et avec des approches homogènes.
+En d'autres mots, sans avoir \og guidé\fg{} la modélisation de plusieurs cas d'études, ou sans intervenir \textit{a posteriori} du projet TransMonDyn (une fois que toutes les transitions auraient déjà été modélisées), il était invraisemblable d'aboutir à un tel résultat.
 
-Pour parvenir à cet objectif, toutefois, j'identifiais l'importance de \og la mise en place d'une démarche facilitant le dialogue et la compréhension interdisciplinaire\fg{}.
-C'est finalement dans cette direction que j'ai orienté mon travail de thèse, en cherchant à concevoir des \og interfaces\fg{}, méthodologiques et techniques, en vue d'aider à la modélisation de ces transitions d'une manière qui soit satisfaisante pour chacun des acteurs impliqués, modélisateurs compris.
+Cet objectif s'avérant peu réalisable au regard du contexte effectif de cette thèse, et au fur et à mesure du travail collectif de modélisation dans lequel je me trouvais impliqué, j'accordais une importance de plus en plus sensible à l'un des moyens de parvenir au méta-modèle qui avait été identifié dans le projet de thèse initial.
+Il s'agissait de la \og la mise en place d'une démarche facilitant le dialogue et la compréhension interdisciplinaire\fg{}.
+À force de ré-ajustements de ce travail de thèse, c'est en définitive dans cette direction que j'ai dirigé mon travail, en cherchant à concevoir des \og interfaces\fg{}, méthodologiques et techniques, à la modélisation.
+Ces interfaces, détaillées par la suite (\cref{subsec:interfaces}), ambitionnent d'aider à la modélisation des transitions d'une manière qui soit satisfaisante pour chacun des acteurs impliqués, modélisateurs compris.
 C'est cette démarche qui est précisée dans la partie suivante et que l'ensemble de la thèse cherche à définir sur la base d'un retour sur une expérience fructueuse de modélisation interdisciplinaire.
 Elle permet de définir mon positionnement dans le champ de la modélisation géographique.
 
@@ -555,26 +595,27 @@ Elle permet de définir mon positionnement dans le champ de la modélisation gé
 
 Les parties précédentes ont permis de définir et de préciser l'objet de recherche de ce travail de thèse, la modélisation de transitions dans le système de peuplement.
 
-Le contexte dans lequel cette recherche s'est déroulée (\cref{sec:contexte}), entre les projets TransMonDyn et le groupe de travail \og temps long\fg{} du LabEx DynamiTe, a amené ce thème et montré les enjeux de la modélisation des transitions comme thématique interdisciplinaire, faite de l'étude de processus spatiaux complexes et de leur inscription dans le temps long.
+Le contexte dans lequel la thèse s'est déroulée (\cref{sec:contexte}), entre les projets TransMonDyn et le groupe de travail \og temps long\fg{} du LabEx DynamiTe, a amené ce thème et montré les enjeux de la modélisation des transitions comme objet de recherche interdisciplinaire, fait de l'étude de processus spatiaux complexes et de leur inscription dans le temps long.
 
 Ma formation initiale et son extension en tant qu'ingénieur d'étude à l'UMR Géographie-cités (\cref{sec:formation}) ont orienté le choix des méthodes :
 	mobiliser le cadre méthodologique des modèles à base d'agent, en donnant une forte place aux mécanismes géographiques et géométriques, et veiller à l'importance de la représentation graphique dans leur usage.
 
-Le questionnement initial et son évolution (\cref{sec:evolution}) ont permis de recentrer l'ambition d'ensemble de cette recherche : d'une volonté de créer un méta-modèle à celle de documenter et promouvoir l'approche d'ensemble mise en place tout au long de cette thèse.
+Le questionnement initial et son évolution (\cref{sec:evolution}) ont permis de recentrer le sujet d'ensemble de cette recherche.
+Depuis la volonté initiale de créer un méta-modèle, il s'agissait désormais de documenter et promouvoir l'approche d'ensemble mise en place tout au long de ce travail collectif et interdisciplinaire.
 
-Dans cette dernière partie, je souhaite préciser et justifier cette approche de modélisation interdisciplinaire qui est résolument inscrite dans la co-construction (1), s'appuie sur la mise en places d'interfaces disciplinaires (thématiques et méthodologiques) pour parvenir à faciliter cette co-construction interdisciplinaire (2), et s'exprime sous la forme d'une démarche exploratoire, aussi bien pour la conception du modèle que pour son exploration (3).
+Dans cette dernière partie, je souhaite préciser et justifier cette approche de modélisation interdisciplinaire qui est résolument inscrite dans la co-construction (1), s'appuie sur la mise en places d'interfaces disciplinaires (thématiques et méthodologiques) pour faciliter cette co-construction interdisciplinaire (2), et s'exprime sous la forme d'une démarche délibérément exploratoire, aussi bien pour la conception du modèle que pour son analyse (3).
 
 
 \subsection{Favoriser une co-construction interdisciplinaire}
 
-Quand on cherche à initier une démarche de modélisation collective, qui plus est en situation d'interdisciplinarité, les approches de modélisation d'accompagnement (\og ComMod\fg{}, pour \textit{companion modelling}) paraissent incontournables dans le champ francophone de l'étude des systèmes complexes.
+Quand on cherche à initier une démarche de modélisation collective, qui plus est en situation d'interdisciplinarité, les approches de \og modélisation d'accompagnement\fg{} (\og ComMod\fg{}, pour \textit{companion modelling}) paraissent incontournables dans le champ francophone de l'étude des systèmes complexes.
 Il me semble dès lors important de positionner l'approche défendue dans cette thèse vis-à-vis de la modélisation d'accompagnement, et d'en identifier les points communs et de divergence.
 
 \paragraph{Animer un projet interdisciplinaire.}
 
 L'approche ComMod est définie par ses créateurs comme \og une démarche permettant de faciliter des processus collectifs de décision, en proposant un travail d'explicitation des points de vue et des critères subjectifs auxquels se réfèrent implicitement, voire inconsciemment, les différentes parties prenantes\fg{} \autocite[167]{commod_modelisation_2005}.
 Les partisans de cette approche utilisent la modélisation de systèmes complexes comme un outil d'interface entre les différents acteurs d'une problématique souvent environnementale.
-Cette modélisation est pensée comme véritablement collaborative, le modèle servant de support de discussion et de négociation entre les acteurs parfois opposés.
+Cette modélisation est pensée comme véritablement collaborative, le modèle servant de support de discussion et de négociation entre des acteurs parfois opposés.
 La démarche mobilisée, bien ancrée dans le paysage de la modélisation de systèmes complexes, se fonde autour de \og cinq étapes incontournables\fg{} \autocite[41-132]{etienne_modelisation_2015} :
 \begin{compactenum}\vspace*{-0.5em}
 	\item Identifier et formuler une question clé initiale partagée
@@ -589,17 +630,18 @@ Les modélisateurs y sont d'ailleurs présentés comme des \og animateurs\fg{}\f
 	Dans la méthode \og ARDI \fg{} (Acteurs, Ressources, Dynamiques et Interactions) \autocite{etienne_co-construction_2009} qui est au cœur de la démarche ComMod.
 }, dont l'objectif est de pousser au dialogue les \og participants\fg{}, décideurs politiques, acteurs de la société civile ou encore population potentiellement à risque dans les programmes de sensibilisation.
 
-Cette dichotomie entre \og animateurs\fg{} et \og participants\fg{} peut rappeler celle que l'on fait entre \og thématiciens\fg{} et \og modélisateurs\fg{}, mais elle y ajoute une hiérarchie en termes de maîtrise du processus de modélisation dans son ensemble.
+Cette dichotomie entre \og animateurs\fg{} et \og participants\fg{} peut rappeler celle que l'on fait entre \og modélisateurs\fg{} et \og thématiciens\fg{}, mais elle y ajoute une hiérarchie en termes de maîtrise du processus de modélisation dans son ensemble.
 Dans cette thèse, nous défendons une approche \og démocratique\fg{}, où le modélisateur n'a pas pour vocation de guider les thématiciens, mais bien de construire avec eux, de manière collective, c'est-à-dire de co-construire.
 
-L'utilité d'un \og animateur\fg{} est toutefois incontestable, notamment pour initier réellement le projet collectif et, de prime abord, réussir à concilier les intérêts thématiques et méthodologiques de chacun des membres impliqués -- animateur compris -- autour d'un objectif consensuel commun.
-Dans le groupe de travail de la \og transition 8\fg{} de TransMonDyn, c'est Cécile \textsc{Tannier} qui a joué ce rôle, en mobilisant son expérience de modélisation pour amener les thématiciens à concevoir collectivement un premier modèle conceptuel de la transition, sous la forme d'une ontologie \autocite{tannier_ontologie_2014}.
+L'utilité d'un \og animateur\fg{}, qui peut être modélisateur comme dans la démarche ComMod mais aussi thématicien, est toutefois incontestable, notamment pour initier réellement le projet collectif et, de prime abord, réussir à concilier les intérêts thématiques et méthodologiques de chacun des membres impliqués -- animateur compris -- autour d'un objectif consensuel commun.
+Dans le groupe de travail de la \og transition 8\fg{} de TransMonDyn, c'est Cécile \textsc{Tannier} qui a joué ce rôle d'animatrice, en mobilisant son expérience de modélisation pour amener les thématiciens à concevoir collectivement un premier modèle conceptuel de la transition, sous la forme d'une ontologie \autocite{tannier_ontologie_2014}.
 
 \paragraph{Un projet collectif et intégrateur.}
 
 Dans l'approche ComMod, l'implémentation informatique des modèle conceptualisés est une option, concurrente au développement d'un jeu de rôle, qui peut être mieux adaptée aux problématiques modélisées \autocite[96-97]{etienne_modelisation_2015}.
 Le modèle de simulation joue donc le rôle de compagnon dans le processus de modélisation, mais n'est pas un objectif en soi.
-Le développement du modèle de simulation demande ainsi des compétences informatiques particulières, difficiles ou peu stimulantes à acquérir dans le cadre d'un projet caractérisé par le \og peu de temps disponible et l'hétérogénéité des savoir-faire informatiques des participants et la diversité de leurs attentes en la matière\fg{} \autocite[29]{etienne_modelisation_2015}.
+Le développement du modèle de simulation demande ainsi des compétences informatiques particulières.
+Celles-ci sont difficiles ou peu stimulantes à acquérir dans le cadre d'un projet caractérisé par le \og peu de temps disponible et l'hétérogénéité des savoir-faire informatiques des participants et la diversité de leurs attentes en la matière\fg{} \autocite[29]{etienne_modelisation_2015}.
 
 D'après ma compréhension de la démarche ComMod, l'implémentation est alors  le plus souvent réalisée par des modélisateurs externes au projet et le modèle permet de tester les hypothèses des participants ou de les faire évoluer.
 Cela place le modélisateur-informaticien dans une position extérieure mais aussi surplombante.
@@ -614,27 +656,35 @@ Cela place les participants dans une démarche clientéliste, plus proche de la 
 \end{quotation}
 
 Pour la conception et l'implémentation de SimFeodal, nous avons cherché à suivre une approche plus intégratrice, en séparant moins nettement les rôles de thématicien, de modélisateur, voire d'\og{}implémenteur\fg{}.
-Si chacun de ces rôles a des compétences particulières peu accessibles aux autres, l'idée était tout de même d'échanger au maximum sur chacun des aspects du modèle de manière à les rendres plus compréhensibles.
-Les explications thématiques à un choix de valeur de paramètre devaient être explicités et justifiés, de même que les partis-pris et biais de telle logique d'interaction entre agents, ou encore à l'instar de choix d'implémentation, par exemple dans le point de vue adopté dans un mécanisme via-à-vis des actions d'un type d'agent (cf. \hl{encadré chap2 ?}).
+Si chacun de ces rôles a des compétences particulières peu accessibles aux autres, l'idée était tout de même d'échanger au maximum sur chacun des aspects du modèle de manière à les rendres plus compréhensibles pour tous.
+Par exemple, on souhaitait que les raisons thématiques d'un choix de valeur de paramètre soient explicitées, justifiées et partagées par les thématiciens auprès les modélisateurs.
+À l'inverse, les modélisateurs devaient expliciter les partis-pris, biais ou encore alternatives des choix d'implémentation effectués, par exemple en détaillant le point de vue adopté dans l'implémentation d'un mécanisme concernant les actions d'un type d'agent (cf. \hl{encadré chap2}).
 
-Sans chercher à ce que chacun des chercheurs impliqués dans la construction de SimFeodal ne devienne omnicompétent, notre approche visait toutefois, dans la mesure de possible, à ce que chacun soit en mesure de comprendre et donc de défendre, au moins dans les grandes lignes, les choix de modélisation et d'implémentation qui seraient à réaliser.
+Sans chercher à ce que chacun des chercheurs impliqués dans la construction de SimFeodal ne devienne omnicompétent, notre approche visait toutefois, dans la mesure du possible, à ce que chacun soit en mesure de comprendre et donc de défendre, au moins dans les grandes lignes, les choix de modélisation et d'implémentation qui seraient réalisés.
 
 \paragraph{Une position de \og modélisateur-géographe\fg{}.}
 
 Dans cette approche de co-construction, on essaie de faire en sorte que chacun partage un socle de connaissances commun de manière à pouvoir comprendre les implications des différentes décisions, conceptuelles, méthodologiques ou techniques.
-Thématiciens et modélisateurs devaient donc tendre vers l'objectif, théorique et inaccessible, de devenir des \og modéliciens\fg{}.
+Thématiciens et modélisateurs doivent donc tendre vers un objectif idéal de transdisciplinarité, où les points de vue disciplinaires s'effacent et se confondent \autocite[14]{gravier_deux_2018}.
+Pour reprendre l'expression de \textsc{Banos} (in \textcite[]{ouriachi_lelaboration_2017}), dans un processus de co-construction absolu, chacun devrait devenir \og modélicien\fg{}.
 
 En pratique, chacun a toutefois ses compétences et connaissances spécifiques et ne cherche pas à acquérir entièrement celles des autres.
-La position de co-construction est donc celle de l'interdisciplinarité, complémentaire autour de sujets communs, plutôt que celle de la transdisciplinarité où les points de vue disciplinaires s'effacent \autocite[14]{gravier_deux_2018}.
+La position de co-construction effective est donc bien celle de l'interdisciplinarité, complémentaire autour de sujets communs, et non celle de la transdisciplinarité.
 
-Il me semble en effet que ces points de vue disciplinaires sont d'une part difficilement solubles dans des rôles donnés, et d'autre part extrêmement enrichissants dans un projet de co-construction.
+Il me semble en effet que ces points de vue disciplinaires sont d'une part difficilement oubliables -- ou effaçables dans des rôles donnés --, et d'autre part extrêmement enrichissants dans un projet de co-construction.
 Ma position, en tant que modélisateur-\og{}implémenteur\fg{}, n'est pas celle d'un informaticien distancié qui réaliserait sur commande les lignes de code correspondant au modèle conceptuel.
-Cette implémentation n'est qu'une partie, non négligeable certes, du travail attendu, mais surtout, elle n'est pas automatique et indiscutable, et elle est profondément influencée par mes propres expériences, envies et connaissances.
+Cette implémentation n'est qu'une partie, non négligeable certes, du travail attendu, mais surtout, elle n'est pas automatique et indiscutable, et elle est profondément influencée par mes propres expériences, envies, connaissances et surtout interactions avec les membres du projet.
 
-Plutôt que celle de pur modélisateur, ma position dans la co-construction de SimFeodal est donc tout à la fois celle de géographe, de modélisateur, d'informaticien, et enfin celle de géomaticien pour une large partie des moyens mis en œuvre pour l'évaluation du modèle.
+Ma position dans la construction de SimFeodal n'est donc pas celle d'un pur modélisateur.
+C'est une position de géographe, soucieux des dynamiques spatiales observées et impressionné par leur généricité.
+C'est une position de modélisateur, attentif aux choix de modélisation de ces dynamiques et curieux de l'éventail des possibles qui peut en surgir.
+C'est une position d'informaticien, prudent face aux biais d'implémentations du modèle et attiré par la flagrante esthétique d'un code parcimonieux, explicite et performant.
+C'est une position de géomaticien, appliqué sur les détails des mécanismes géométriques mis en œuvre et enthousiaste quant à la représentation de leurs effets.
+C'est une position tout à la fois composée de toutes celles-ci, et qui ajoute une certaine forme d'inter-positionnement à l'interdisciplinarité de ce projet de co-construction.
 
 
-\subsection{Mettre en place des interfaces disciplinaires}
+
+\subsection{Mettre en place des interfaces disciplinaires\label{subsec:interfaces}}
 
 Dans les projets interdisciplinaires, il est courant qu'un des membres, doté de connaissances dans les disciplines impliquées, joue le rôle de médiateur de par sa position d'interface entre les disciplines.
 Dans le groupe de travail constitué autour de SimFeodal, il n'y a pas de tel chercheur, et l'interface disciplinaire ne peut se faire qu'au travers d'une construction commune.
