@@ -21,7 +21,7 @@
 \chapter{Modélisation et visualisation à l'interface entre les disciplines}
 \label{chap:chap1}
 \begin{center}
-	{\large Version \hl{2019-10-22}}
+	{\large Version \hl{2019-11-17}}
 \end{center}
 
 \begin{itemize}
@@ -29,6 +29,7 @@
 	\item 22/10/2019 : fin écriture + relecture + rendu Lena
 	\item 11/11/2019 : début reprises Lena
 	\item 15/11/2019 : fin reprises
+	\item 17/11/2019 : ajout partie reproductibilité
 \end{itemize} 
 
 \minitoc
@@ -472,13 +473,13 @@ Il était alors nécessaire d'en sélectionner un sous-ensemble homogène, ce qu
 
 En allant plus loin, on peut noter que même dans le cas du projet TransMonDyn où un même modélisateur a collaboré à plusieurs transitions, il a choisi de développer des types de modèles très différents.
 Alain \textsc{Franc}, mathématicien, qui a participé aux transitions 9 \autocite{ouriachi_transition_2018} et 12 \autocite{bretagnolle_transition_2018}, voir \cref{tab:transitions-tmd} --, a ainsi choisi d'utiliser la théorie des jeux dans le premier cas, et de réaliser un modèle descriptif statique dans le second.
-Cet exemple met en exergue l'obstacle qui nous paraît désormais majeur dans l'homogénéisation de modèles différents : le type de modèle est un choix collectif des membres impliqués, mais il n'est pas pour autant réalisé de manière entièrement indépendante.
+Cet exemple met en exergue l'obstacle qui me paraît désormais majeur dans l'homogénéisation de modèles différents : le type de modèle est un choix collectif des membres impliqués, mais il n'est pas pour autant réalisé de manière entièrement indépendante.
 
 En premier lieu, le parcours méthodologique et scientifique de chacun des participants joue un large rôle, chaque modélisateur ayant naturellement tendance à approcher un problème avec les outils qu'il a l'habitude d'utiliser.
 Un statisticien habitué aux systèmes dynamiques à base d'équations différentielles aura du mal à concevoir un modèle conceptuel en termes d'agents et de mécanismes, et un adepte des modèles à base d'agents très parcimonieux sera sans doute frustré par un choix collectif de modèle descriptif.
 Cela explique qu'Alain \textsc{Franc} n'ait pas mené de modélisation à base d'agents dans ces exemples.
 
-En second lieu, il nous semble que la combinaison du questionnement initial et la nature des données disponibles conditionne aussi très largement le choix du type de modélisation.
+En second lieu, il me semble que la combinaison du questionnement initial et la nature des données disponibles conditionne aussi très largement le choix du type de modélisation.
 Selon que le questionnement repose sur l'observation de dynamiques individuelles ou au contraire agrégées, on se tournera ainsi soit vers des méthodes où l'individu peut être suivi (modèles agents, théorie des jeux, etc.), soit vers des méthodes plus agrégeantes (systèmes dynamiques par exemple).
 Selon que le questionnement porte sur le déroulement des \og transitions\fg{} ou au contraire sur la caractérisation des \og régimes\fg{}, on choisira aussi différentes méthodes.
 Au niveau des données empiriques, plus celles-ci sont nombreuses, plus le type de modélisation pourra être \og \textit{data-driven}\fg, résultant peut-être en des modèles plus parcimonieux donnant une forte importance à la validation.
@@ -602,7 +603,8 @@ Ma formation initiale et son extension en tant qu'ingénieur d'étude à l'UMR G
 Le questionnement initial et son évolution (\cref{sec:evolution}) ont permis de recentrer le sujet d'ensemble de cette recherche.
 Depuis la volonté initiale de créer un méta-modèle, il s'agissait désormais de documenter et promouvoir l'approche d'ensemble mise en place tout au long de ce travail collectif et interdisciplinaire.
 
-Dans cette dernière partie, je souhaite préciser et justifier cette approche de modélisation interdisciplinaire qui est résolument inscrite dans la co-construction (1), s'appuie sur la mise en places d'interfaces disciplinaires (thématiques et méthodologiques) pour faciliter cette co-construction interdisciplinaire (2), et s'exprime sous la forme d'une démarche délibérément exploratoire, aussi bien pour la conception du modèle que pour son analyse (3).
+Dans cette dernière partie, je souhaite préciser et justifier cette approche de modélisation interdisciplinaire qui est (1) résolument inscrite dans la co-construction  et (2) s'appuie sur la mise en places d'interfaces disciplinaires (thématiques et méthodologiques) pour faciliter cette co-construction interdisciplinaire.
+Cette approche est (3) délibérément exploratoire, aussi bien pour la conception du modèle que pour son analyse, tout en visant à (4) assurer une reproductibilité des moyens, méthodologiques et techniques, mis en œuvre.
 
 
 \subsection{Favoriser une co-construction interdisciplinaire}
@@ -630,7 +632,7 @@ Les modélisateurs y sont d'ailleurs présentés comme des \og animateurs\fg{}\f
 }, dont l'objectif est de pousser au dialogue les \og participants\fg{}, décideurs politiques, acteurs de la société civile ou encore population potentiellement à risque dans les programmes de sensibilisation.
 
 Cette dichotomie entre \og animateurs\fg{} et \og participants\fg{} peut rappeler celle que l'on fait entre \og modélisateurs\fg{} et \og thématiciens\fg{}, mais elle y ajoute une hiérarchie en termes de maîtrise du processus de modélisation dans son ensemble.
-Dans cette thèse, nous défendons une approche \og démocratique\fg{}, où le modélisateur n'a pas pour vocation de guider les thématiciens, mais bien de construire avec eux, de manière collective, c'est-à-dire de co-construire.
+Dans cette thèse, je défends une approche \og démocratique\fg{}, où le modélisateur n'a pas pour vocation de guider les thématiciens, mais bien de construire avec eux, de manière collective, c'est-à-dire de co-construire.
 
 L'utilité d'un \og animateur\fg{}, qui peut être modélisateur comme dans la démarche ComMod mais aussi thématicien, est toutefois incontestable, notamment pour initier réellement le projet collectif et, de prime abord, réussir à concilier les intérêts thématiques et méthodologiques de chacun des membres impliqués -- animateur compris -- autour d'un objectif consensuel commun.
 Dans le groupe de travail de la \og transition 8\fg{} de TransMonDyn, c'est Cécile \textsc{Tannier} qui a joué ce rôle d'animatrice, en mobilisant son expérience de modélisation pour amener les thématiciens à concevoir collectivement un premier modèle conceptuel de la transition, sous la forme d'une ontologie \autocite{tannier_ontologie_2014}.
@@ -782,7 +784,7 @@ Cette approche de modélisation exploratoire constitue dès lors, elle aussi, un
 }.
 Elle permet d'oublier, par moments, les \textit{a priori} disciplinaires sur les causes de tel ou tel processus spatio-temporel, pour en proposer de nouvelles interprétations issues du modèle, de son exploration, et des discussions collectives entretenues autour de cette exploration.
 
-\subsection{Démarche exploratoire}
+\subsection{Une démarche exploratoire}
 
 Dans la dernière sous-partie, je mentionnais l'interêt d'une démarche exploratoire en ce qu'elle favorise l'abduction et donc l'interdisciplinarité.
 De manière plus générale, l'approche exploratoire est essentielle au raisonnement tenu tout au long de ce travail de thèse.
@@ -803,7 +805,7 @@ Il distingue trois types de modèles de simulation, selon\footnote{
 \end{compactenum}\vspace*{-0.5em}	
 
 
-Ce troisième type nous paraît plus distant de notre usage, l'objectif de SimFeodal n'étant pas de proposer des méthodes innovantes dans le champ de la modélisation à base d'agents.
+Ce troisième type me paraît plus distant de notre usage, l'objectif de SimFeodal n'étant pas de proposer des méthodes innovantes dans le champ de la modélisation à base d'agents.
 Au contraire, les objectifs de SimFeodal l'inscrivent tout à fait dans les deux premiers types, que \citeauthor{lake_trends_2014} explicite ainsi :
 \begin{quotation}
 \noindent \og 
@@ -862,11 +864,73 @@ De manière globale, c'est toute l'exploration du modèle qui a été menée de 
 Les \og résultats\fg{} du modèle, de même que sa sensibilité, n'ont pas été analysés au crible d'objectifs pré-définis stricts et hiérarchisés.
 Les modalités de l'évaluation, telles que présentés dans ce manuscrit, résultent de nombreux allers-retours entre thématiciens et modélisateurs, et d'encore plus nombreux allers-retours entre le modèle et l'exploration de ses sorties.
 
+
+\subsection{Une démarche reproductible}
+
+La démarche d'ensemble poursuivie dans cette thèse est très exploratoire, et l'ensemble de ses composants ou étapes ont largement évolué durant les 6 années de cette expérience de co-construction interdisciplinaire.
+Pour autant, afin que cette expérience puisse avoir une portée supérieure à celle d'un projet ponctuel, nous avons collectivement porté attention à lui garantir une certaine reproductibilité.
+L'objectif, ce faisant, était que le modèle mis en place, et la démarche liée, puissent servir à d'autres chercheurs, notamment en histoire et archéologie, pour les accompagner à leur tour vers la modélisation de processus spatio-temporels sur le temps long.
+Dans les paragraphes suivants, je détaille les méthodes mises en places dans ce projet pour appuyer la reproductibilité technique, méthodologique et conceptuelle de l'approche de co-construction de SimFeodal.
+
+\paragraph{Réplicabilité technique.}
+
+\textcite{reycoyrehourcq:hal-01677950} différencient reproductiblité, répétabilité et reproductibilité en ces termes :
+\begin{quotation}
+	\noindent \og
+	Les définitions les plus courantes de ces notions sont ancrées dans le vocabulaire de la métrologie et des sciences computationnelles.
+	Elles se rapportent donc au contrôle d'un ensemble de mesures.
+	Dans le cas de la répétabilité, il s'agit d'effectuer des mesures répétées sur un même objet ou des objets similaires dans des conditions spécifiques.
+	Dans un contexte de reproductibilité, ces mesures sont réalisées avec des instruments différents et dans des conditions variables (lieu, opérateur) qui doivent alors être spécifiées.
+	La réplicabilité a été étudiée dans le domaine informatique et désigne la capacité de reproduire à l'identique les résultats d'une analyse.
+	\fg{}\\
+	\mbox{}~ \hfill \cite[411]{reycoyrehourcq:hal-01677950}
+\end{quotation}
+
+Nous avons veillé à garantir la \textbf{réplicabilité} de tout ce qui est décrit dans cette thèse en en partageant les sources.
+Cela concerne bien sûr le modèle SimFeodal en lui-même (\href{https://github.com/SimFeodal/SimFeodal}{https://github.com/SimFeodal/SimFeodal}), mais aussi les expériences qui ont été effectuées dessus (dossier \textsf{/experiments/}) et les outils permettant leur exploration (\href{https://github.com/RCura/SimEDB}{https://github.com/RCura/SimEDB}).
+
+À chaque fois que possible, les différentes versions des logiciels et \textit{packages} utilisés sont précisées dans les sources, et ce faisant, on approche ainsi d'une complétion de l'ensemble des \og paliers de réplicabilité\fg{} décrits dans la \cref{fig:paliers-replicabilite}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/schema_reproductibilite.pdf}
+	\caption[Les paliers de réplicabilité d’un modèle de simulation et de son exploration.]{\og Les paliers de réplicabilité d’un modèle de simulation et de son exploration \fg{} in \textcite[fig. 3, \ppno~427]{reycoyrehourcq:hal-01677950}.}
+	\label{fig:paliers-replicabilite}
+\end{figure}
+
+Pour renforcer cette réplicabilité technique et lui donner une dimension universelle, c'est-à-dire pour que chacun puisse répliquer les expériences et résultats produits avec SimFeodal, nous avons de plus fait le choix, militant, de ne mobiliser que des outils sous licences libres.
+C'est le cas de la plateforme de simulation Gama \autocite{taillandier_building_2018} avec laquelle SimFeodal a été conçue, c'est aussi le cas du langage de programmation R \autocite{r_core_team_r_2019} utilisé pour toutes les analyses, de la base de données OmniSciDB utilisée dans la plate-forme d'exploration des données \autocite{root_mapd_2016}, et des outils utilisés pour construire cette plateforme \autocite[par exemple]{chang_shiny_2017}.
+
+Au delà des productions \og logicielles\fg{} liées à SimFeodal et à son exploration, notons que dans le cadre de ce manuscrit de thèse, les outils mobilisés sont eux aussi libres : ce manuscrit est rédigé avec \LaTeX, les figures ont été produites avec R\footnote{
+	Les données et codes-sources en sont alors disponibles dans le dépôt logiciel de ce manuscrit.
+} ou avec le logiciel libre de dessin vectoriel Inkscape, le tout en utilisant un système d'exploitation libre pour la rédaction comme pour l'exécution des simulations.
+
+\paragraph{Reproductibilité méthodologique et conceptuelle.}
+
+Les solutions techniques, et la publication de leurs sources, présentées dans ce travail de thèse garantissent une réplicabilité technique.
+Cette dernière n'est pourtant qu'un des composants, et sans doute le plus simple, de la reproductibilité plus large que nous visons.
+
+Nous souhaitons ainsi que l'expérience qui est la nôtre puisse servir ou inspirer d'autres projets, et avons pour cela tenter de communiquer autant que possible sur SimFeodal.
+Ces communications, orales ou écrites, visaient différents publics, représentatifs des concepteurs du modèle.
+Il s'agissait ainsi d'une part d'inspirer des archéologues et historiens à se lancer dans l'expérience de la modélisation, au moyen du paradigme de modélisation à base d'agents qui nous semble porteur et accessible.
+Pour que ces restitutions de notre travail trouvent une résonance, et donc un public adapté, elles ont été effectuées devant un public d'archéologues et d'historiens sensibles aux méthodes (Journées Informatique et Archéologies de Paris, Séminaire TransMonDyn à Washington State University, organisation en cours d'un séminaire de restitution à destination d'historiens).
+
+Il s'agissait aussi de convaincre des chercheurs pratiquant déjà la modélisation de l'interêt de l'étude des dynamiques spatiales sur le temps long, par exemple à travers des chapitres d'ouvrages interdisciplinaires (\autocite{tannier_ontologie_2014,cura_transition_2017}), en ciblant notamment la communauté de la géographie théorique et quantitative, que ce soit à l'occasion de colloques (ThéoQuant 2015 et 2017, ECTQG 2015, 2017 et 2019) ou de journées d'études liées à d'autres projets de modélisation.
+
+En dehors des publications et communications qui marquent des \og points d'étape\fg{} de la construction du modèle et de son exploration, nous avons fait le choix d'en \og versionner\fg{} l'évolution, dans un dépôt logiciel de versionnement adapté, afin que celle-ci puisse être retracée et analysée à posteriori.
+C'est aussi le cas de la plateforme d'exploration des sorties du modèle, SimEDB, dont le dépôt retrace l'ensemble des évolutions décrites dans le \hl{chapitre 5}.
+
+De manière plus large, ce manuscrit s'inscrit dans la volonté de replacer le modèle SimFeodal dans le cadre plus large des modèles descriptifs, exploratoires et conçus dans un cadre interdisciplinaire.
+Ces dépôts logiciels concourent à l'intention de retracer le raisonnement -- générique et spécifique -- qui a amené au modèle SimFeodal tel que présenté dans le \hl{chapitre 2}.
+En cherchant à documenter les alternatives disponibles qui ont été rencontrées tout au long de la conception du modèle et de la plateforme d'exploration de ses sorties, en cherchant à justifier les choix effectués, qu'ils soient conceptuels (\hl{chapitres 2 et 3}), méthodologiques (\hl{chapitre 3, 5 et 6}) ou parfois techniques (\hl{chapitre 5}), en suivant des modes de descriptions standards (ODD pour le modèle, MCD pour la base de données), je suis convaincu d'accroître le potentiel de reproductibilité du modèle, et plus largement, de la démarche mise en place pour le construire et l'évaluer.
+
+Cette thèse prend ainsi la forme d'une retour d'experience, partial mais argumenté, et surtout documenté autant que possible.
+L'ambition est d'ouvrir la voie à d'autres expériences de ce type et de tenter de convaincre de l'intérêt, pour les projets interdisciplinaires, tout à la fois, de la modélisation à base d'agents, d'une démarche de co-construction, et de la commodité des approches visuelles pour les accompagner.
+
+
 \bigskip
 \paragraph[Conclusion intermédiaire]{}
 \hl{Conclusion intermédiaire de la partie 1.4}
-
-\subsection{Démarche reproductible}
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
