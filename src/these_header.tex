@@ -25,13 +25,9 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 
 \usepackage{float}
 \usepackage{caption}
-\captionsetup[figure]{belowskip=-1.5em, skip=0.25em}
-\captionsetup[lstlisting]{belowskip=-1em}
-\captionsetup[table]{position=below, aboveskip=1em, belowskip=-1.5em, skip=0.25em}
-\captionsetup[figure]{font={small}, labelfont={bf,sc}}
-\captionsetup[lstlisting]{font=small, labelfont={bf,sc}}
-\captionsetup[table]{font=small, labelfont={bf,sc}}
-
+\captionsetup[figure]{belowskip=-1.5em, skip=0.25em, font={small}, labelfont={bf,sc}}
+\captionsetup[lstlisting]{belowskip=-1em, font=small, labelfont={bf,sc}}
+\captionsetup[table]{position=below, aboveskip=1em, belowskip=-1.5em, skip=0.25em, font=small, labelfont={bf,sc}}
 \usepackage{rotating}
 \usepackage{rotfloat}
 \def\frenchtablename{\textsc{Tableau}}

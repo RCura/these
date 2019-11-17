@@ -28,13 +28,12 @@
 	\item 10/10/2019 : Nouveau plan
 	\item 22/10/2019 : fin écriture + relecture + rendu Lena
 	\item 11/11/2019 : début reprises Lena
-	\item 12/11/2019 : reprises 1.1 et 1.2
-	\item 14/11/2019 : reprises 1.3
-	\item 14/11/2019 : reprises 1.4.1
+	\item 15/11/2019 : fin reprises
 \end{itemize} 
 
 \minitoc
 
+\phantomsection
 \clearpage
 \section*{Introduction}
 \addcontentsline{toc}{section}{\protect\numberline{}Introduction}
@@ -390,7 +389,7 @@ En considérant l'historique des approches de modélisation du projet, on pourra
 Ces approches ont en commun une vision systémique des processus, mais les modalités de leurs mises en place s'effectuent selon des langages (informatiques ou formels) et des paradigmes (mathématiques, statistiques ou informatiques) très différents.
 
 Au sein même des modèles implémentés au travers de systèmes multi-agents, l'hétérogénéité est forte : entre un modèle KISS\footnote{
-Caractérisés ainsi par \textcite[110]{amblard_evaluation_2006} : 
+	Caractérisés ainsi par \textcite[110]{amblard_evaluation_2006} : 
 	\og Un premier courant, qui est une application directe du rasoir d'Occam, aussi appelé  ``principe de parcimonie'', le mouvement KISS (Keep It Simple, Stupid !) recommande de construire des modèles qui soient analysables par la suite, suffisamment simples pour être disséqués par un humain qui observe les simulations attentivement \textelp{}.
 	Le positionnement de ce courant peut se résumer ainsi : rien ne sert de concevoir des modèles dont on ne pourrait étudier sérieusement les propriétés et oublier ainsi la validation interne, définie comme l'existence des bonnes propriétés du modèle dans le cadre formel de ce dernier
 	\fg{}.
@@ -686,12 +685,30 @@ C'est une position tout à la fois composée de toutes celles-ci, et qui ajoute 
 
 \subsection{Mettre en place des interfaces disciplinaires\label{subsec:interfaces}}
 
-Dans les projets interdisciplinaires, il est courant qu'un des membres, doté de connaissances dans les disciplines impliquées, joue le rôle de médiateur de par sa position d'interface entre les disciplines.
-Dans le groupe de travail constitué autour de SimFeodal, il n'y a pas de tel chercheur, et l'interface disciplinaire ne peut se faire qu'au travers d'une construction commune.
-Ce rôle d'interface, nécessaire à une communication explicite et transparente entre les participants d'un projet interdisciplinaire, est assuré par trois éléments de la démarche mobilisée dans la co-construction de SimFeodal :
-le processus de modélisation en lui-même;
-le choix de faire reposer l'évaluation du modèle sur la représentation graphique, la visualisation interprétant cette fonction ;
-la démarche résolument exploratoire, à toutes les étapes de ce processus de co-construction.
+Dans les projets interdisciplinaires, il est utile qu'un des membres, doté de connaissances dans les disciplines impliquées, joue le rôle de médiateur de par sa position d'interface entre les disciplines.
+Dans le groupe de travail constitué autour de SimFeodal, il n'y a pas eu de tel chercheur, et la médiation n'a pu se faire qu'au travers une vision collective et partagée d'un objet commun, le modèle.
+
+Dans ma thèse, j'ai mis en place différentes \og interfaces\fg{}, entre les disciplines et entre les chercheurs, visant à faciliter la co-construction de ce modèle.
+Le terme d'interface me paraît adapté car il est polysémique, et certains de ses sens correspondent tout à fait à la démarche de ce travail.
+Pour les épistémologues, l'interface interdisciplinaire renvoie aux concepts et outils partagés par plusieurs disciplines, tel qu'illustré par \textcite{gravier_deux_2018} dans la \cref{fig:interfaces-julie}, où cette chercheuse se situe elle-même à l'interface entre géographie et archéologie.
+En reprenant une définition grand-public, l'interface est donc ici une \og limite commune à deux systèmes, permettant des échanges entre ceux-ci\fg{} \autocite{larousse_interface_2019}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/interfaces_disciplinaires_julie.png}
+	\caption[Le \og positionnement d'interface disciplinaire entre l'archéologie urbaine et la géographie théorique et quantitative \fg{} de \textcite{gravier_deux_2018}]{Le \og positionnement d'interface disciplinaire entre l'archéologie urbaine et la géographie théorique et quantitative \fg{} de \textcite[fig. 1.3, \ppno~18]{gravier_deux_2018}.}
+	\label{fig:interfaces-julie}
+\end{figure}
+
+Dans notre cas, c'est le modèle SimFeodal qui s'inscrit précisément dans cette même interface disciplinaire, et non l'un des chercheurs qui le co-construit.
+En informatique, une interface peut aussi être un \og ensemble de règles, de conventions permettant un échange d’informations entre deux systèmes, deux éléments d’un système, ou entre l’utilisateur et la machine\fg{} \autocite{academie_francaise_interface_2019}.
+La dernière définition est souvent employée, sous la forme \og d'interfaces utilisateur\fg{} (Interfaces Homme-Machine, IHM), qui peuvent notamment prendre une forme graphique, on parle alors d'interfaces graphiques ou, en anglais, de \og \textit{Graphical User Interface}\fg{} ou GUI.
+
+Dans cette thèse, ces usages épistémologies et informatiques se confondent.
+SimFeodal est un outil informatique, mais il constitue à ce titre une interface interdisciplinaire au sens épistémologique.
+La démarche graphique mise en place, autour de l'évaluation visuelle, est bien une interface, c'est-à-dire une \og convention qui permet un échange\fg{} entre les utilisateurs.
+Enfin, cette démarche est rendue possible par la création d'interfaces graphiques, au sens informatique, qui facilitent la visualisation des sorties du modèle, et permettent dès lors d'appréhender le modèle de manière exploratoire.
+
 
 \paragraph{Une interface via la modélisation.}
 
@@ -704,7 +721,7 @@ L'approche ontologique, par l'explicitation qu'elle implique, joue un rôle de m
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/schema_phan.pdf}
-	\caption{\og L'ontologie comme médiateur d'un dialogue \fg{} de \textcite[fig. 2.7, \ppno~68]{phan_ontologies_2014}.}
+	\caption[\og L'ontologie comme médiateur d'un dialogue \fg{} de \textcite{phan_ontologies_2014}]{\og L'ontologie comme médiateur d'un dialogue \fg{} de \textcite[fig. 2.7, \ppno~68]{phan_ontologies_2014}.}
 	\label{fig:ontologie-mediateur}
 \end{figure}
 
@@ -712,31 +729,34 @@ Il me semble que l'on peut aller plus loin dans ce raisonnement, et le général
 L'explicitation des connaissances est en effet une nécessité pour parvenir au modèle conceptuel, mais elle me semble encore plus importante lors du développement :
 	dans un programme informatique, il ne peut y avoir aucune place au flou parce que l'ordinateur exécute sans chercher à interpréter.
 Les lignes de code-source sont à ce titre un formalisme non ambigu, elles expriment précisément ce que la plateforme de simulation exécutera.
-L'étape d'implémentation, depuis le modèle conceptuel jusqu'au modèle de simulation, force donc plus encore à expliciter tous les choix effectués dans la modélisation.
+L'étape d'implémentation, qui aboutit sur un modèle de simulation, force donc plus encore que la modélisation conceptuelle à expliciter tous les choix effectués dans la modélisation.
 
 Les quelques 2 500 lignes de code qui définissent le fonctionnement de SimFeodal ne sont pas exemptes de bugs ou d'erreurs d'implémentation, mais chacune d'elles répond à l'obligation de trancher la manière dont un mécanisme fonctionne.
 Chacune de ces lignes entérine l'explicitation, par la formalisation informatique, des entités et interactions du modèle.
-En cela, le développement d'un modèle de simulation émanant du modèle conceptuel ne me paraît pas revêtir d'importance uniquement en matière d'une hypothétique validation, uniquement en matière d'une potentielle utilisation effective du modèle (prédiction etc.), mais aussi et surtout parce qu'il prolonge et renforce l'effet d'interface interdisciplinaire qu'entraîne la conception collective d'un modèle.
+En cela, le développement d'un modèle de simulation émanant du modèle conceptuel constitue un apport qui ne se restreint pas à la possibilité de validation ou d'utilisation effective (à but prédictif par exemple) du modèle.
+L'implémentation permet surtout de prolonger et renforcer l'explicitation, pousse à l'échange interdisciplinaire, et à ce titre, constitue aussi une méthode qui sert d'interface interdisciplinaire.
 
 \paragraph{Une interface via la visualisation.}
 
-Dans cette thèse, nous mettons en place une approche fortement basée sur la représentation graphique et l'exploration visuelle.
-Cette approche caractérise presque chacune des phases du cycle de développement d'un modèle.
+Dans cette thèse, nous mettons en place une approche basée sur la représentation graphique et l'exploration visuelle, qui est employée tout au long du cycle de construction du modèle.
 Le modèle est évalué en menant une analyse visuelle des sorties de simulation au travers des indicateurs de sortie majoritairement graphiques.
 La comparaison entre différentes versions du modèle se fait aussi par le biais d'une comparaison visuelle entre les sorties correspondantes.
 La sensibilité du modèle, enfin, est elle aussi analysée de manière visuelle, au moyen de représentations de la variabilité des indicateurs de sortie en fonction des réplications et valeurs de paramètres choisies.
 
-Dans un chapitre d'ouvrage à paraître \autocite{cura_visualisation_2020}, je développe notamment le parallèle entre modélisation et visualisation en termes d'approches facilitant l'interdisciplinarité.
+De manière générale, je défends l'idée que les apports de la modélisation comme outil d'interdisciplinarité s'appliquent tout autant à la visualisation\footnote{
+	Cette position est explicitée et détaillée dans \textcite{cura_visualisation_2020}.
+}.
 Comme la modélisation à base d'agents, la visualisation est un \og langage\fg{} compréhensible par le plus grand nombre, ne reposant pas sur une formalisme mathématique parfois excluant.
 Comme la modélisation, la réalisation d'une représentation graphique pousse à l'explicitation de ce qui est représenté, de l'origine et des particularités des données mobilisées.
 Comme la modélisation, la visualisation permet ainsi de créer une interface interdisciplinaire -- la représentation graphique d'un ensemble de données --  qui favorise alors le dialogue interdisciplinaire en le provoquant autour d'un élément accessible à tous les participants à un projet.
 
-Pour ces raisons, les indicateurs de sortie de SimFeodal, les représentations graphiques permettant l'analyse de la sensibilité du modèle, ou encore, plus largement, SimEDB, la plateforme d'exploration des données issues de simulation, remplissent tous le rôle d'interface entre les disciplines du projet, permettant aux géographes, archéologues et historiens de dialoguer autour de représentations explicites, accessibles et intelligibles.
+Pour ces raisons, les indicateurs de sortie de SimFeodal, les représentations graphiques permettant l'analyse de la sensibilité du modèle, ou encore, plus largement, SimEDB, la plateforme d'exploration des données issues de simulation, remplissent tous le rôle d'interface entre les disciplines du projet.
+Ces interfaces permettent aux géographes, archéologues et historiens de dialoguer autour de représentations explicites, accessibles et intelligibles.
 
 
 \paragraph{Une interface via l'exploration.}
 
-Un dernier aspect de la démarche d'ensemble choisie pour ce travail de thèse me paraît en mesure de constituer une interface disciplinaire.
+Un dernier aspect de la démarche d'ensemble choisie pour ce travail de thèse me paraît en mesure de favoriser l'interdisciplinarité, en constituant une nouvelle interface disciplinaire.
 Il s'agit de la nature fondamentalement exploratoire du processus (de co-construction et d'évaluation collective du modèle) mis en œuvre dans cette recherche.
 La sous-partie suivante du chapitre détaille cette approche, mais on peut déjà en exprimer l'intérêt dans un cadre interdisciplinaire.
 
@@ -747,18 +767,27 @@ On parle alors d'\textit{Exploratory Data Analysis} ou \og EDA\fg{}, d'après \t
 }, ou encore spatio-temporelles\footnote{
 	On retrouve notamment cette approche, de manière très interactive, dans le champ des \textit{geovisual analytics} \autocite{andrienko_exploratory_2006}.
 } permet de favoriser un raisonnement abductif \autocite{banos2005voie}.
-La modélisation, elle aussi, peut être guidée ou influencée par un principe d'abduction \autocite[77]{banos_pour_2013}.
-Pour \textcite{morin1994interdisciplinarite}, une approche abductive, par \og l'invention d'hypothèses explicatives nouvelles\fg{}, peut créer \og des articulation, organisatrices ou structurelles, entre des disciplines séparées et [permettre] de concevoir l'unité de ce qui était alors disjoint\fg{}.
+Pour \citeauthor{yu_abduction_1994} (\citeyear{yu_abduction_1994}, in \textcite[2]{banos2005voie}) l'abduction désigne la \og capacité de l'être humain à générer des hypothèses temporaires à partir de l'information qu'il reçoit\fg{}.
+En tant que position scientifique, \textcite[2]{banos2005voie} interprète l'abduction comme \og la capacité du scientifique à se mettre en position d’étonnement, à se laisser guider par la recherche de l'inattendu\fg{}.
 
-L'approche exploratoire que nous entretenons dans ce travail collectif sert ainsi, en favorisant l'abduction, d'interface entre les disciplines.
+L'abduction est très liée à l'analyse exploratoire de données, car fortement liée à la logique exploratoire : le raisonnement abductif survient quand on accepte de raisonner sur la seule base des données disponibles, sans chercher à les interpréter en fonction d'hypothèses pré-conçues auparavant.
+
+La modélisation peut être guidée ou influencée par un principe d'abduction \autocite[77]{banos_pour_2013}, d'autant plus quand elle s'inscrit dans une logique exploratoire, acceptant là aussi de se fier \og uniquement\fg{} au modèle sans chercher forcément à interpréter ses écarts à l'empirie comme des erreurs qui devraient être corrigées.
+
+\textcite{morin1994interdisciplinarite} note qu'une une approche abductive, par \og l'invention d'hypothèses explicatives nouvelles\fg{}, peut créer \og des articulation, organisatrices ou structurelles, entre des disciplines séparées et [permettre] de concevoir l'unité de ce qui était alors disjoint\fg{}.
+
+L'approche exploratoire que nous entretenons dans ce travail collectif, en favorisant l'abduction, va aussi dans le sens d'une facilitation de l'interdisciplinarité.
+Cette approche de modélisation exploratoire constitue dès lors, elle aussi, une interface disciplinaire : il s'agit bien d'une limite commune à l'archéologie et à la géographie qui permet les échanges entre ces disciplines\footnote{
+	Pour paraphraser les termes de la définition du \textsc{Larousse} donnée plus haut.
+}.
 Elle permet d'oublier, par moments, les \textit{a priori} disciplinaires sur les causes de tel ou tel processus spatio-temporel, pour en proposer de nouvelles interprétations issues du modèle, de son exploration, et des discussions collectives entretenues autour de cette exploration.
 
 \subsection{Démarche exploratoire}
 
 Dans la dernière sous-partie, je mentionnais l'interêt d'une démarche exploratoire en ce qu'elle favorise l'abduction et donc l'interdisciplinarité.
 De manière plus générale, l'approche exploratoire est essentielle au raisonnement tenu tout au long de ce travail de thèse.
-Elle est ainsi mobilisée dans chacune des étapes de co-construction et d'évaluation de SimFeodal, et constitue dans chacune de ces étapes l'approche principalement suivie.
-Dans cette dernière partie de définition du positionnement de ce travail de thèse, il me paraît important de revenir sur la manière dont cette démarche exploratoire s'exprime dans cette expérience de modélisation interdisciplinaire.
+Elle est ainsi mobilisée lors de chacune des étapes de la co-construction et de l'évaluation de SimFeodal, et constitueà chaque fois l'approche principalement suivie.
+Dans cette dernière partie de définition du positionnement de ce travail de thèse, il me paraît important de préciser la manière dont cette démarche exploratoire s'exprime dans cette expérience de modélisation interdisciplinaire.
 
 \paragraph{Un modèle exploratoire.}
 
@@ -773,11 +802,14 @@ Il distingue trois types de modèles de simulation, selon\footnote{
 	\item qu'ils soient conçus pour épauler le développement de nouvelles méthodes.
 \end{compactenum}\vspace*{-0.5em}	
 
-Dans la citation suivante, \citeauthor{lake_trends_2014} donne une définition des deux premiers types, qui nous semblent mieux convenir à l'usage recherché pour le modèle SimFeodal :
+
+Ce troisième type nous paraît plus distant de notre usage, l'objectif de SimFeodal n'étant pas de proposer des méthodes innovantes dans le champ de la modélisation à base d'agents.
+Au contraire, les objectifs de SimFeodal l'inscrivent tout à fait dans les deux premiers types, que \citeauthor{lake_trends_2014} explicite ainsi :
 \begin{quotation}
 \noindent \og 
 When simulation models are used to test hypotheses the aim is usually to determine what actually happened in the past by comparing the output of a simulated process against the archaeological evidence.
-In contrast, the use of simulation models to support theory building -- so-called heuristic modelling -- does not necessarily, or even usually, involve detailed comparison of output against the archaeological record; in this case the purpose is not to test what happened in the past, but rather to understand how certain processes work and what sort of changes could plausibly have occurred.\\
+In contrast, the use of simulation models to support theory building -- so-called heuristic modelling -- does not necessarily, or even usually, involve detailed comparison of output against the archaeological record;
+in this case the purpose is not to test what happened in the past, but rather to understand how certain processes work and what sort of changes could plausibly have occurred.\\
 \textelp{} \\
 ~[It] is important to recognise that the distinction between hypothesis-testing and theory-building simulation as conceived by Mithen is not always so clear cut in practice.
 %On the one hand, comparing simulation output with archaeological evidence can ultimately contribute to theory building (e.g. Kohler and Varien 2012), while on the other hand simulation can be used to directly test hypothesis which are more about possible processes (e.g. the effect of parameters on model dynamics) than about what actually happened in the past (see Premo 2010, pp. 29–30).
@@ -789,36 +821,52 @@ In contrast, the use of simulation models to support theory building -- so-calle
 
 À mon sens, SimFeodal s'inscrit précisément dans le cas identifié où la distinction entre ces deux approches n'est pas tranchée.
 La conception du modèle s'appuie ainsi autant sur des théories que sur des données empiriques, en un continuum que nous appelons \og connaissance experte\fg{}.
-Il s'agit bien de tester des hypothèses, mais sans nécessairement comparer les sorties du modèle à des données empiriques très lacunaires et hétérogènes.
+Il s'agit bien de tester des hypothèses, mais sans nécessairement comparer les sorties du modèle à des données empiriques.
+Cette confrontation de données empiriques et simulées est d'autant moins adaptée dans notre cas que les données empiriques sont très hétérogènes et lacunaires.
 
-L'usage principal du modèle est donc expérimental : on cherche tant à explorer les résultats d'interactions complexes entre agents, entre comportements, qu'à expérimenter les structures et processus que le modèle en fait émerger, potentiellement sous l'influence de \og scénarios thématiques\fg{}.
-Finalement, le modèle sert surtout le rôle de support de dialogue, collectif et interdisciplinaire, mais il permet aussi, individuellement, pour chacun des participants, de repenser ou réorganiser la compréhension de la transition et des processus spatiaux modélisés.
+L'usage principal du modèle est donc expérimental.
+On cherche bien à explorer les résultats d'interactions complexes entre agents, entre comportements pour accompagner la construction théorique.
+On cherche toutefois tout autant à expérimenter les structures et processus que le modèle fait émerger, potentiellement sous l'influence de \og scénarios thématiques\fg{}, ce qui nous permet de tester des hypothèses.
+Finalement, le modèle sert surtout de support au dialogue collectif et interdisciplinaire, mais il permet aussi, individuellement, pour chacun des participants, de repenser ou réorganiser la compréhension de la transition étudiée et des processus spatiaux modélisés.
 En cela, c'est l'expérience de modélisation de SimFeodal, plus encore que le modèle en lui-même, qui se révèle intrinsèquement exploratoire.
 
 \paragraph{Construit de manière exploratoire.}
 
 La manière dont SimFeodal a été conçu, implémenté puis paramétré, pourrait sembler proche du \og bricolage\fg{} à certains modélisateurs chevronnés.
-Par exemple, le fait que certains mécanismes et indicateurs de sortie de simulation aient évolué au cours de la vie du modèle peut sembler caractéristique d'un modèle conceptuel défectueux ou incomplètement conçu.
+Par exemple, le fait que certains indicateurs de sortie de simulation -- ou pire, de mécanismes -- aient évolué au cours de la vie du modèle peut sembler caractéristique d'un modèle conceptuel défectueux ou incomplètement conçu.
 
 Je souhaite au contraire défendre ce choix de modélisation, dans lequel priment les itérations entre le modèle, les résultats qu'il produit et les connaissances expertes sur lesquelles il s'appuie.
-Ce mode de développement, où tout élément du modèle implémenté peut être amené à évoluer, faisant alors évoluer l'élément équivalent dans le modèle conceptuel, permet au fur et à mesure de consolider ou d'invalider la représentation que l'on a du système modélisé.
+Dans ce mode de développement, tout élément du modèle implémenté peut être amené à évoluer, faisant alors évoluer l'élément équivalent dans le modèle conceptuel.
+Si l'exploration du comportement du modèle montre qu'un type d'agent est peu utile, ou au contraire, qu'il serait judicieux de mieux distinguer des sous-types d'agents et de les doter de mécanismes propres, alors nous adapterons le modèle conceptuel.
+Si les thématiciens, à l'occasion de nouvelles lectures, décident que le modèle conceptuel doit être modifié, alors il sera changé et donnera lieu à une nouvelle implémentation.
+Ce aller-retour constant, où l'on accepte que les éléments, conceptuels ou implémentés, sont susceptibles de changer permet au fur et à mesure de consolider ou d'invalider la représentation que l'on a du système modélisé.
 
 Cela rend la démarche de construction de SimFeodal profondément exploratoire :
 dans une construction \og en spirale\fg{} \autocite[157]{mathian_objets_2014}, ce sont les connaissances acquises au travers de la modélisation qui guident la suite du processus de modélisation, et non directement les données empiriques ou la théorie initiale.
 SimFeodal est donc un modèle que l'on pourrait qualifier d'\og auto-construit\fg{} -- en référence à l'auto-organisation --, l'expérience exploratoire de sa construction influant sur sa forme finale de manière performative.
 
 \paragraph{Évalué et analysé de manière exploratoire.}
-De manière plus classique, l'approche exploratoire est enfin appliqué aux données de sortie du modèle, selon le cadre méthodologique déjà mentionné de l'analyse exploratoire de données (EDA).
+De manière plus classique, l'approche exploratoire est enfin appliquée aux données de sortie du modèle, selon le cadre méthodologique déjà mentionné de l'analyse exploratoire de données (EDA).
+L'impermanence des indicateurs de sortie (cf. \hl{encadré incrémentalité indicateur}) en est une conséquence directe.
+C'est en menant des analyses de ces indicateurs que l'on peut réaliser leurs défauts, ou leur incapacité parfois à départager.
+C'est aussi en menant ces analyses que l'on peut constater le besoin de créer de nouveaux indicateurs, qui donneront une vision plus précise, ou légèrement différente, d'un phénomène quelconque.
 
-Les indicateurs de sortie sur lesquels on se base pour évaluer le modèle sont eux aussi très classiques, mais le choix de faire reposer l'évaluation uniquement sur l'analyse visuelle de ces indicateurs me semble quant à elle assez hétérodoxe.
-L'approche proposée dans cette thèse, nommée \og évaluation visuelle\fg{} (\hl{ref vers chapitre 3}), contrevient en effet à l'approche classique où la visualisation n'est mobilisée qu'au début du processus d'évaluation, lors de la phase de \og \textit{face validation}\fg{}.
+Dans l'EDA, ce sont les données -- et les motifs qui en surgissent-- qui guident l'analyse et orientent vers l'étude de variantes ou transformations de ces mêmes données (normalisation des données, transformation en logarithmes, etc.)
+Dans l'exploration de SimFeodal, ces \og données\fg{}, c'est-à-dire les indicateurs de sortie, guident elles-aussi l'évaluation du modèle, et leur étude entraîne de par là même des transformations de ces indicateurs (précision, distinction de catégories, changement de la méthode de calcul, etc.)
 
-De manière globale, c'est toute l'exploration du modèle qui a été menée de manière visuelle, en faisant appel à une plateforme -- SimEDB -- qui a fortement évoluée tout au long de cette recherche.
-Les \og résultats\fg{} du modèle, de même que sa sensibilité, n'ont pas été analysés au crible d'objectifs pré-définis stricts et hiérarchisés : les critères de ces évaluations qui sont finalement présentés dans ce manuscrit résultent de nombreux allers-retours entre thématiciens et modélisateurs, et d'encore plus nombreux allers-retours entre le modèle et l'exploration de ses sorties.
+Dans l'approche classique, la visualisation n'est mobilisée qu'au début du processus d'évaluation, lors de la phase de \og \textit{face validation}\fg{}.
+L'approche proposée dans cette thèse, nommée \og évaluation visuelle\fg{} (\hl{ref vers chapitre 3}), contrevient à cette pratique.
+Les indicateurs de sortie sur lesquels on se base pour évaluer le modèle sont potentiellement classiques, mais le choix de faire reposer l'évaluation uniquement sur l'analyse visuelle de ces indicateurs me semble quant à elle assez hétérodoxe et profondément exploratoire.
+
+De manière globale, c'est toute l'exploration du modèle qui a été menée de manière visuelle, en faisant appel à une plateforme -- SimEDB -- qui, comme les indicateurs et la méthode d'évaluation, a fortement évoluée tout au long de cette recherche.
+Les \og résultats\fg{} du modèle, de même que sa sensibilité, n'ont pas été analysés au crible d'objectifs pré-définis stricts et hiérarchisés.
+Les modalités de l'évaluation, telles que présentés dans ce manuscrit, résultent de nombreux allers-retours entre thématiciens et modélisateurs, et d'encore plus nombreux allers-retours entre le modèle et l'exploration de ses sorties.
 
 \bigskip
 \paragraph[Conclusion intermédiaire]{}
 \hl{Conclusion intermédiaire de la partie 1.4}
+
+\subsection{Démarche reproductible}
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
