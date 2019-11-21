@@ -76,6 +76,7 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 
 \usepackage{fontawesome}
 \usepackage{wrapfig}
+
 \usepackage[
 %style=authoryear-icomp, % Permet d'avoir des ibid. en cas de répétition, mais parfois pas terrible avec les ndbp
 style=authoryear-comp,
@@ -86,9 +87,10 @@ doi=true,
 url=true,
 date=year,
 sortcites=false,  % Ne pas changer l'ordre des citations multiples
-sorting=nyt, % Citations dans biblio : NameYearTitle
+sorting=nyvt, % Citations dans biblio : NameYearTitle
 %backref=true
 ]{biblatex}
+
 
 
 %%%% Styles chapitres %%%%
@@ -235,6 +237,7 @@ sorting=nyt, % Citations dans biblio : NameYearTitle
 \titlespacing\subsection{0pt}{11pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsubsection{0pt}{11pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\paragraph{2em}{6pt plus 2pt minus 2pt}{8pt plus 0pt minus 0pt}
+\newcommand{\sectionbreak}{\clearpage} % Clearpage avant chaque nouvelle section
 
 
 
