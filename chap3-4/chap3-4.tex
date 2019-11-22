@@ -2,7 +2,7 @@
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-11-21}}
+{\large Version \hl{2019-11-22}}
 \end{center}
 
 \begin{itemize}
@@ -12,6 +12,7 @@
 	\item 11/11/2019 : reprises commentaires Lena du 24/11/2017 + finalisation
 	\item 19/11/2019 : début dernier round reprises Lena
 	\item 21/11/2019 : fin reprise 3.1 et 3.2
+	\item 22/11/2019 : fin reprise 3.1.1
 \end{itemize}
 
 \setcounter{minitocdepth}{2}
@@ -1132,10 +1133,6 @@ Dans la dernière partie de ce chapitre, nous montrerons donc comment le paramé
 
 \section{Paramétrage du modèle SimFeodal}
 
-%\begin{center}
-%	\hl{Reprise de l'intro.\\
-%	Idem pour saut de page, à supprimer après inclusion dans version de Lena.}
-%\end{center}
 
 Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, présenté en tant que \og version 6.3\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
 Cette version 6.3 implique que de nombreuses versions précédentes ont été développée, testées, puis modifiées et ajustées jusqu'à obtenir une nouvelle version plus satisfaisante du point de vue des objectifs.
@@ -1172,7 +1169,7 @@ Par exemple, dans la formulation d'une fonction affine, $f(x) = ax + b$, la vale
 Quelles que soient les valeurs empruntées par $x$, ces paramètres demeurent constants.
 Dans une famille d'équations plus complexes, par exemple le modèle de croissance logistique de population\footnote{
 	$\frac{\text{d}y}{\text{d}t} = \alpha y \times (1 - \frac{y}{K})$ d'après \autocite{verhulst1838notice}
-}, l'accroissement de population au cours du temps ($\frac{\text{d}y}{\text{d}t}$) dépend de la valeur de la variable $y$, population à cet instant, ainsi que de deux paramètres, $\alpha$, le taux de croissance, et $K$, la \og capacité d'accueil\fg{}, c'est-à-dire un potentiel maximum de population vers laquelle tend -- et ne peut donc dépasser -- le système modélisé.
+}, l'accroissement de la population au cours du temps ($\frac{\text{d}y}{\text{d}t}$) dépend de la valeur de la variable $y$, population à cet instant, ainsi que de deux paramètres, $\alpha$, le taux de croissance, et $K$, la \og capacité d'accueil\fg{}, c'est-à-dire un potentiel maximum de population vers laquelle tend -- et ne peut donc dépasser -- le système modélisé.
 La définition mathématique est donc assez universelle et convient à la quasi-totalité des systèmes d'équations\footnote{
 	À l'exclusion notable des systèmes d'équation paramétriques, où, à l'inverse, le terme de paramètre désigne alors les variables indépendantes.
 }.
@@ -1207,13 +1204,13 @@ En statistiques, quand bien même cette discipline fait un large usage des forma
 	il s'agit d'une \og grandeur mesurable qui permet de présenter de façon plus simple, plus abrégée les caractéristiques essentielles d'un ensemble statistique\fg{} \autocite[Paramètre, \textsc{stat.} (calcul des probabilités)]{tresor1992}.
 \begin{quotation}
 	\noindent \og \textit{In statistics}, the most common use of \og parameter\fg{} is for a characteristic of a population, or of a distribution of scores, described by a statistic such as a mean or a standard deviation.
-	For example, the mean (average) score of on the midterm exam in Psychology 201 is a parameter.
+	For example, the mean (average) score on the midterm exam in Psychology 201 is a parameter.
 	It describes the population composed of all those who took the exam.\fg{}\\
 	\mbox{}~ \hfill \autocite[164]{vogt1993dictionary}
 \end{quotation}
 Ainsi, pour les statisticiens, la moyenne, l'écart-type ou encore le coefficient d'asymétrie sont des paramètres, que l'on symbolise alors au moyen de lettres grecques \autocite[ibid.]{vogt1993dictionary}.
-On peut toutefois y retrouver une logique commune avec les paramètres mathématiques quand on décrit une loi statistique avec ces valeurs, qui deviennent alors les éléments permettant de caractériser une variable.
-Ainsi, pour décrire les caractéristiques de la distribution théorique -- normale -- d'une variable $X$, on fera appel aux paramètres théoriques de cette loi que sont l'espérance\footnote{
+On peut toutefois y retrouver une logique commune avec les paramètres mathématiques quand on décrit une loi statistique avec ces valeurs, qui deviennent alors les éléments permettant de caractériser la distribution d'une variable.
+Pour décrire les caractéristiques de la distribution théorique, par exemple normale, d'une variable $X$, on fera appel aux paramètres théoriques de cette loi que sont l'espérance\footnote{
 	Il s'agit de la moyenne théorique.
 	On réserve ainsi le terme de moyenne à une valeur calculée depuis des valeurs empiriques.
 } ($\mu$) et l'écart-type ($\sigma^{2}$): $X \hookrightarrow  \mathcal{N}(\mu,\,\sigma^{2})$.
@@ -1227,7 +1224,7 @@ On parle ainsi de fonction\footnote{
 	Notons que chacun de ces mots a normalement un sens précis.
 	Par exemple, une méthode désigne une fonction qui peut être exécutée par une instance de classe en programmation orientée objet.
 	Certaines définitions plus précises sont toutefois souvent utilisé à mauvais escient, provoquant alors des inversions de sens.
-	Ainsi, une procédure est le plus souvent décrit comme une suite d'instructions ne retournant pas de valeur, au contraire d'une fonction.
+	Ainsi, une procédure est le plus souvent décrite comme une suite d'instructions ne retournant pas de valeur, au contraire d'une fonction.
 	Mais, par exemple dans le langage SAS \autocite{sas1990sas}, toute fonction est nommée procédure, à l'instar de la moyenne par exemple (\texttt{PROC MEANS}).
 } pour toute suite d'instructions informatiques ayant pour vocation -- ou pour capacité -- à être répétée, ré-exécutée.
 Ces fonctions appliquent ainsi, le plus fréquemment, cette suite d'instruction sur des données en entrée, et produisent ainsi des données en sortie, résultantes du traitement effectué sur les entrées\footnote{
@@ -1303,27 +1300,27 @@ Dans le présent ouvrage, nous donnerons donc à ces termes des sens différents
 	\centering
 	\includegraphics[width=.8\linewidth]{img/schema_parametres_balci.pdf}
 	\caption[Les variables d'un modèle de simulation selon \citeauthor{balci_validation_1994}]{Les variables d'un modèle de simulation, adapté depuis \textcite[122]{balci_validation_1994}.\\
-	\textit{N.B : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en miroir à une partie \og système\fg{} représentant l'empirique.}}
+	\textit{N.B : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en miroir à une partie \og système\fg{} représentant les éléments du domaine empirique.}}
 	\label{fig:parametres-Balci} 
 \end{figure}
 
 Dans ce schéma et l'article associé, et bien qu'il n'en définisse nulle part explicitement le sens, \citeauthor{balci_validation_1994} esquisse la composition d'un modèle de simulation.
-Le modèle est alimenté par des variables en entrée (\textit{Model Input Variables}), qui sont globalement affectées par des paramètres (Model Parameters).
+Le modèle est alimenté par des variables en entrée (\textit{Model Input Variables}), qui sont globalement altérées par des paramètres (Model Parameters).
 Après passage dans la \og boîte noire\fg{} que représente ici le modèle de simulation ($m$), cela aboutit sur des variables de sortie (\textit{Model Output Variables}).
 
 Notons que si l'auteur du schéma symbolise les entrées, paramètres et sorties au moyen de quatre flèches à chaque fois, leur nombre est variable et sans correspondance.
 Il y a ainsi $q$ variables en entrée, $r$ paramètres et $k$ variables en sortie.
-Ces nombres différents représentent bien qu'il n'y a pas de lien direct entre les variables en entrée et celles en sortie : la variable en entrée $I_{1}^m$ et la variable en sortie $O_{1}^m$ ne correspondent pas nécessairement.
-De même, \citeauthor{balci_validation_1994} n'indique pas de lien entre les paramètres et les variables (en entrée ou en sortie) : les paramètres agissent à l'échelle du modèle de simulation, sans détail des éléments affectés.
+Ces nombres différents représentent bien qu'il n'y a pas de lien direct entre les variables en entrée et celles en sortie : la variable en entrée $I_{1}^m$ et la variable en sortie $O_{1}^m$ ne se correspondent pas nécessairement.
+De même, \citeauthor{balci_validation_1994} n'indique pas de lien entre les paramètres et les variables (en entrée ou en sortie) : les paramètres agissent à l'échelle du modèle de simulation, sans que les éléments affectés soient précisés.
 
 \paragraph{Paramètres, variables, indicateurs : un essai de définition graphique.}\label{subsubsec:mes_definitions_params}
 
 Dans ce travail de thèse, nous rendons compte de la construction d'un modèle complexe, doté de très nombreux paramètres, variables d'entrée et variables de sortie (selon la définition de \citeauthor{balci_validation_1994}).
-Nous avons donc préféré développer notre propre \og ontologie\fg{} de ces termes, qui nous semble plus adapté à la description d'un modèle tel que SimFeodal.
+Nous avons donc préféré développer notre propre \og ontologie\fg{} de ces termes, qui nous semble plus adaptée à la description d'un modèle tel que SimFeodal.
 
 Comme chez \citeauthor{balci_validation_1994}, notre ontologie est organisée autour d'une opposition entre des \textbf{entrées} et des \textbf{sorties}.
 
-\subparagraph{Les entrées.}
+\subparagraph{Les entrées du modèle.}
 La \cref{fig:parametres-these-entrees} représente notre proposition de définition des entrées, utilisée dans ce travail de thèse.
 Les entrées sont donc composées de deux types d'éléments, des variables et des paramètres.
 Les \textbf{variables} ($V_n$) sont des variables informatiques dont la valeur évolue tout au long de la simulation.
@@ -1335,15 +1332,16 @@ Le nombre d'agrégats, par exemple, est une variable : une valeur est assignée 
 	\label{fig:parametres-these-entrees} 
 \end{figure}
 
-Ces variables sont potentiellement affectées par des \textbf{paramètres} ($P_n$), qui peuvent avoir des effets directs sur une unique variable ($P_1$, qui pourrait par exemple représenter le paramètre régulant le nombre d'agrégats à l'initialisation), ou sur plusieurs variables ($P_2$, nombre de foyers paysans par agrégat initial par exemple).
+Ces variables sont potentiellement affectées par des \textbf{paramètres} ($P_n$), qui peuvent avoir des effets directs sur une unique variable ($P_1$, qui pourrait par exemple représenter le paramètre régulant le nombre d'agrégats à l'initialisation), ou sur plusieurs variables ($P_2$, nombre de foyers paysans par agglomération secondaire antique dans la configuration initiale par exemple).
 Plusieurs paramètres peuvent aussi affecter la même variable : dans la figure, la variable $V_9$ est affectée conjointement par les paramètres $P_3$ et $P_4$.
 On peut illustrer ce type de cas avec l'exemple du nombre de foyers paysans, qui évoluera en fonction d'une part d'un paramètre définissant la population initiale et d'autre part en fonction d'un second paramètre définissant le taux de croissance.
 Le dernier type de paramètre ($P_5$), assez fréquent dans SimFeodal, correspond aux paramètres dont les valeurs peuvent changer au cours de la simulation.
-Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs décrivant les différentes dates où appliquer le changement ($P_{5_1}$, $P_{5_2}$, $P_{5_3}$), et les modalités que prendra alors la variable $V_{10}$.
+Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs, correspondant aux pas de temps où appliquer les différentes modalités prises par le paramètre (voir \cref{sec:inputs}, \hl{chap 2, section 2.6}).
+Dans la \cref{fig:parametres-these-entrees}, $P_{5_1}$, $P_{5_2}$ et $P_{5_3}$ correspondent par exemple à l'évolution du seuil de distance acceptable aux châteaux.
 
 
-\subparagraph{Les sorties.}
-À l'autre bout du modèle, dans la \cref{fig:parametres-these-sorties}, on retrouve encore les variables ($V_n$), mais certaines sont extraites du modèle sous forme d'\textbf{indicateurs de sortie}.
+\subparagraph{Les sorties du modèle.}
+À l'autre bout du modèle, dans la \cref{fig:parametres-these-sorties}, on retrouve encore les variables ($V_n$), dont certaines sont utilisées pour construire des \textbf{indicateurs de sortie} ($I_N$).
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{img/schemas_params_2_sorties.pdf}
@@ -1352,16 +1350,17 @@ Par exemple, le besoin de protection des foyers paysans évolue au cours du temp
 \end{figure}
 
 Parmi ces indicateurs de sortie, on identifie là aussi plusieurs types.
-Certains indicateurs ($I_B$ et $I_D$) correspondent directement aux valeurs des variables correspondantes ($V_1$ et $V_{10}$ respectivement) en fin de simulation.
+Certains indicateurs (ici, c'est le cas de $I_B$ et $I_D$) correspondent directement aux valeurs des variables correspondantes ($V_1$ et $V_{10}$ respectivement) en fin de simulation.
 Ces indicateurs sont donc d'une forme numérique (cf. \cref{fig:schema_indices}) simple, et renseignent par exemple sur le nombre de foyers paysans ou d'agrégats de population en fin de simulation.
-D'autres indicateurs sont dits \og multi-dimensionnels\fg{} (\cref{fig:schema_indices}) : ils correspondent soit à la combinaison de plusieurs variables en fin de simulation (indicateur \og composite\fg{}, $I_C$, qui peut par exemple représenter la courbe rang-taille issue des variables $V_2$ à $V_7$ qui seraient alors les populations des agrégats), soit à l'évolution temporelle d'une variable ($I_A$ et $I_E$).
-Ce sont dans ce cas des indicateurs de sortie multi-dimensionnels temporels, et ceux-ci sont très fortement mobilisés dans l'évaluation de SimFeodal : évolution du nombre d'agrégats, du taux de concentration des foyers paysans, etc.
+D'autres indicateurs sont dits \og multi-dimensionnels\fg{} (\cref{fig:schema_indices}) : ils correspondent soit à la combinaison de plusieurs variables en fin de simulation (indicateur $I_C$, qui peut par exemple représenter la courbe rang-taille issue, dans l'exemple de la \cref{fig:parametres-these-sorties}, des variables $V_2$ à $V_7$ qui seraient alors les populations des agrégats), soit à l'évolution temporelle d'une variable (ici ,c'est le cas de $I_A$ et $I_E$).
+Ce sont dans ce cas des indicateurs de sortie multi-dimensionnels temporels.
+Ceux-ci sont très fortement mobilisés dans l'évaluation de SimFeodal : évolution du nombre d'agrégats, du taux de concentration des foyers paysans, etc.
 
 Notons que si toutes les variables, par définition, varient au cours de la simulation, toutes ne sont pas utilisées pour former des indicateurs de sortie ($V_8$ et $V_9$ dans la figure).
 Elles ne sont pas \og inutiles\fg{} pour autant, parce qu'elles peuvent influencer/interagir avec d'autres variables par le biais des mécanismes des agents.
-Leur variation aura alors une influence sur d'autres variables, et donc potentiellement sur différents indicateurs de sortie.
+Leur variation aura alors une influence sur d'autres variables, et par conséquent sur différents indicateurs de sortie.
 
-Dans la \cref{fig:parametres-these-sorties}, l'indicateur de sortie $I_E$, de type multi-dimensionnel et temporel, permet de garder à l'esprit que le lien entre variable et paramètre peut être étroit : la variable $V_{10}$, dont la valeur finale est extraite dans l'indicateur $I_D$, ne peut être étudiée dans son évolution ($I_E$) sans prendre en compte l'influence forte du paramètre évolutif $P_5$.
+Dans la \cref{fig:parametres-these-sorties}, l'indicateur de sortie $I_E$, de type multi-dimensionnel et temporel, permet de garder à l'esprit que le lien entre variable et paramètre peut être étroit : la variable $V_{10}$, dont la valeur finale est utilisée dans l'indicateur $I_D$, ne peut être étudiée dans son évolution ($I_E$) sans prendre en compte l'influence forte du paramètre évolutif $P_5$.
 On retrouve ainsi de fortes inflexions dans l'évolution des valeurs de $V_{10}$ au cours du temps simulé, quand les modalités $P_{5_2}$ et $P_{5_3}$ du paramètre $P_5$ changent.
 
 
@@ -1379,10 +1378,12 @@ En fin de simulation, on récupère des \textbf{sorties}, sous la forme d'\textb
 
 \subparagraph{Paramètres et expériences.}
 Les paramètres ont des valeurs pré-définies, par définition, pour l'exécution d'une simulation ou de ses réplications (dans lesquelles les valeurs des paramètres sont volontairement identiques).
-Quand bien même leurs modalités peuvent évoluer ($P_{5_{1}}$, $P_{5_{2}}$ ou $P_{5_{3}}$) au cours du temps simulé, c'est un choix effectué avant la simulation et les valeurs et dates d'applications de ces valeurs n'évolueront pas.
+Quand bien même leurs modalités peuvent évoluer (c'est le cas de $P_{5_{1}}$, $P_{5_{2}}$ ou $P_{5_{3}}$ dans la \cref{fig:parametres-these-complet}) au cours du temps simulé, c'est un choix effectué avant la simulation et les valeurs et dates d'applications de ces valeurs n'évolueront pas.
 
-Les valeurs des paramètres sont toutefois amenées à évoluer, non pas au sein des simulations, mais au sein d'expériences (\cref{fig:parametres-these-experiences}), dont le but est justement de faire varier ces paramètres pour en comparer les effets.
-Les paramètres variant ($P_2$, $P'_2$ ou $P''_2$ par exemple), il est ainsi attendu que les variables de chacune de ces expériences soit affectées différemment, et débouchent ainsi sur la production d'indicateurs de sortie qui montreront des variations entre les expériences.
+Les valeurs des paramètres sont toutefois amenées à évoluer, non pas au sein d'une même simulation, ni même des réplications d'une simulation, mais au sein d'expériences (\cref{fig:parametres-these-experiences}), dont le but est justement de faire varier ces paramètres pour en comparer les effets.
+Comme les paramètres varient ($P_2$, $P'_2$ ou $P''_2$ par exemple), il est attendu que les variables de chacune de ces expériences soient affectées différemment.
+En faisant varier les paramètres selon les expériences, les indicateurs de sortie tirés de ces variables varieront aussi.
+C'est à partir de ces indicateurs de sortie et leurs écarts d'une expérience à l'autre que l'on pourra qualifier les effets des paramètres sur le modèle.
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{img/schemas_params_4_experiences.pdf}
@@ -1391,10 +1392,10 @@ Les paramètres variant ($P_2$, $P'_2$ ou $P''_2$ par exemple), il est ainsi att
 \end{figure}
 
 
-\subsubsection{Les paramètres dans SimFeodal \label{sssec:types-parametres}}
+\subsubsection{Les paramètres dans le modèle SimFeodal \label{sssec:types-parametres}}
 
 Les paramètres sont donc un sous-ensemble des entrées d'un modèle qui ont vocation à varier dans les différentes exécutions de ce modèle.
-Pour autant, c'est un sous-ensemble assez divers, et tous les paramètres n'apportent pas les mêmes connaissances, que ce soit par leur valeur ou par la manière dont ils varient.
+Pour autant, c'est un sous-ensemble assez divers, que ce soit par leur valeur ou par la manière dont ils varient.
 Il convient donc d'identifier différents types de paramètres, non selon leur caractéristique propre (c'est-à-dire leurs propriétés, qui permettent de les différencier des sorties par exemple), mais selon leur usage et donc la manière dont on pourra les mobiliser.
 À ce titre, la littérature en sciences humaines et sociales
 %\footnote{
@@ -1403,11 +1404,11 @@ Il convient donc d'identifier différents types de paramètres, non selon leur c
 distingue souvent deux types de paramètres.
 D'un côté, des paramètres empiriques, dont la valeur a une correspondance directe dans le domaine empirique (on peut donc l'observer), et d'un autre, les paramètres techniques\footnote{
 		\textcite{mathian_formalisation_2015} utilisent le terme de paramètre mécanique pour définir ce type de paramètres.
-		Nous trouvons l'usage du mot \og technique\fg{} plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait et que le terme de \og mécanique\fg{} peut rappeler celui des mécanismes, alors même que les paramètres, empiriques ou non, ont une implication pour les mécanismes.
+		Nous trouvons l'usage du mot \og technique\fg{} plus approprié, en ce qu'il se différencie plus de l'empirique sur le pan de l'usage qui en est fait et que le terme de \og mécanique\fg{} peut rappeler celui de mécanisme, alors même que les paramètres, empiriques ou non, ont une implication pour les mécanismes.
 }, pour lesquels cette correspondance n'existe pas.
 Comme dans la plupart des typologies ayant trait à la catégorisation de valeurs numériques, de nombreux paramètres peuvent se trouver à l'interface de ces deux classes.
 Comme les paramètres de SimFeodal sont nombreux (\hl{voir l'annexe N, tableau de tous les paramètres}) et seraient trop sommairement distingués dans ces deux catégories, nous avons choisi de mobiliser une typologie en quatre classes (voir \cref{enc:types-parametres}), relatives au sens de ces paramètres vis-à-vis du fonctionnement du modèle.
-Cette typologie est mixte, entre d'une part le degré de connaissance empirique sur lesquels les paramètres reposent (paramètres techniques \textit{vs} les autres), et d'autre part l'usage qui en est fait dans le modèle (\textit{input} et contexte \textit{vs} les autres).
+Cette typologie est mixte, entre d'une part le degré de connaissance empirique sur lequel chaque paramètre repose (paramètres techniques \textit{vs} les autres), et d'autre part l'usage qui en est fait dans le modèle (\textit{input} et contexte \textit{vs} les autres).
 Cette typologie est notamment appuyée sur celle de \textcite[45]{tannier_analyse_2017}.
 
 \begin{encadre}{Quatre types de paramètres}{types-parametres}
@@ -1435,26 +1436,21 @@ Dans SimFeodal, nous avons choisi de différencier les paramètres en quatre \og
 \subparagraph*{Paramètres techniques}
 	Il s'agit des paramètres dont les valeurs, ou même les ordres de grandeur, ne s'inscrivent sur aucune connaissance empirique.
 	Ces paramètres ont pour raison d'être de permettre à d'autres types de paramètres de s'exprimer en valeurs compréhensibles et exploitables.
-	Dès lors, leurs valeurs sont propres à chaque version, sous-version ou expérience du modèle formalisé, et une comparaison de ces valeurs entre les différents modèles n'apporte pas de connaissance.
+	Dès lors, leurs valeurs sont propres à chaque version, sous-version ou expérience du modèle formalisé, et une comparaison de ces valeurs entre les différentes versions d'un modèle n'apporte pas de connaissance.
 	Ils sont amenés à varier d'une manière uniquement guidée par l'évaluation du modèle lors du paramétrage, sans que cela ait le moindre ancrage ou répercussion empirique.\\
 	\textit{Exemples : distance de fusion entre les agrégats, pondération de la satisfaction matérielle des foyers paysans en fonction du nombre de droits acquittés, montants récupérés par les seigneurs selon les types de droits\ldots}
 \end{encadre}
 
-Avec cette typologie des paramètres basées non sur la nature de ceux-ci mais sur leur utilisation dans le modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de \citeauthor{minsky_matter_1965} (\hl{cf. chapitre 1}).
+Avec cette typologie des paramètres basée non sur la nature de ceux-ci mais sur leur utilisation dans le modèle, nous nous inscrivons dans une vision fonctionnaliste et donc très subjective, rappelant la définition d'un modèle de \citeauthor{minsky_matter_1965}.
 Selon l'usage que l'on fait du modèle, un même paramètre pourra donc être vu comme un paramètre de contexte ou de mécanisme (par exemple selon l'état des connaissances empiriques liées à ce paramètre sur le cas d'étude traité).
 
 \paragraph*{Comment choisir les valeurs de paramètres ?}
-%
-%\begin{center}
-%\hl{Ajout de cette petite conclusion intermédiaire.\\
-%	Le saut de page était présent pour en \og garder la place\fg{}, mais sera supprimé.}
-%\end{center}
+
 
 Après avoir présenté notre définition des paramètres, nous pouvons désormais revenir sur le processus qui les mobilise et a demandé cette explicitation : le paramétrage.
 
 Cette étape, que nous allons maintenant définir et illustrer, consiste ainsi notamment à \og ajuster\fg{} les valeurs des paramètres, ou plus exactement de certains des paramètres, en se basant notamment sur la typologie mise en place dans ces pages (paramètres d'\textit{input}, de contexte, de mécanisme, techniques).
-%
-%\clearpage
+
 \subsection{Le paramétrage}
 
 Le paramétrage d'un modèle est souvent réduit à l'un de ses aspects, le \og calibrage \fg, étape finale de la construction d'un modèle qui cherchera à reproduire autant que possible des données empirique en faisant varier les valeurs des paramètres jusqu'à ce qu'une combinaison de celles-ci soit satisfaisante.
