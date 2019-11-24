@@ -38,6 +38,14 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
+
+%\renewcommand{\chaptermark}[1]{%
+%	\ifnum\value{chapter}>0
+%	\markboth{Chapter \thechapter{}: #1}{}%
+%	\else
+%	\markboth{#1}{}%
+%	\fi}
+
 \fancyhead[L]{Chapitre \thechapter}
 \fancyhead[C]{}
 \fancyhead[R]{\rightmark}
@@ -81,13 +89,13 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 %style=authoryear-icomp, % Permet d'avoir des ibid. en cas de répétition, mais parfois pas terrible avec les ndbp
 style=authoryear-comp,
 hyperref=true,
-backend=bibtex,
+backend=biber,
 isbn=false,
 doi=true,
 url=true,
 date=year,
 sortcites=false,  % Ne pas changer l'ordre des citations multiples
-sorting=nyvt, % Citations dans biblio : NameYearTitle
+sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 %backref=true
 ]{biblatex}
 
@@ -193,38 +201,6 @@ sorting=nyvt, % Citations dans biblio : NameYearTitle
 % Référence interne dans le texte :\cref{enc:label-de-lencadre}
 
 
-
-% ###### COMMENTAIRES ###### %
-
-
-% Surlignement texte (1) + commentaire en marge (2)
-
-\DeclareRobustCommand{\hlorange}[1]{{\sethlcolor{Dandelion}\hl{#1}}}
-\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{Cyan}\hl{#1}}}
-
-\newcommandx{\toChange}[2]{%
-	\colorbox{Dandelion}{#1}\marginnote{\small\hlorange{#2}}%
-}
-
-\newcommandx{\Lena}[2]{%
-	\colorbox{Cyan}{#1}\marginnote{\small\hlcyan{Lena:\\ #2}}%
-}
-
-% Highlight
-\newcommandx{\fixref}[1]{\hl{#1}}
-
-% ToDoBox
-\newcommandx{\todobox}[2][1=]{%
-	\vspace*{-1.5em}~\\
-		\colorbox{pink}{\parbox{0.9\textwidth}{%
-		\vskip5pt
-		\leftskip5pt\rightskip5pt
-		#2
-		\vskip5pt
-	}~\\
-}
-}
-
 \usepackage{titlesec} % Pose problème avec les headers
 % Corrigé avec ce code, à mettre pour chaque section
 %\let\orisectionmark\sectionmark
@@ -280,12 +256,6 @@ sorting=nyvt, % Citations dans biblio : NameYearTitle
 	\newpage}
 % Usage : \afterpage{\null\newpage}
 
-
-% ######### COULEURS POUR REPRISE #########
-\newfontfamily\blueroman[Color=blue]{Charis SIL}
-\newfontfamily\redroman[Color=red]{Charis SIL}
-
-
 % ######### TITRE #########
 \usepackage{titling}
 \title{Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles}
@@ -294,3 +264,11 @@ sorting=nyvt, % Citations dans biblio : NameYearTitle
 \makeatletter
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
+
+% ############ POUR QUE L'INTRO ET LA CONCLUSION NE SOIENT PAS DES CHAPITRES 0/N  ############
+\renewcommand{\chaptermark}[1]{%
+	\ifnum\value{chapter}>0
+	\markboth{Chapter \thechapter{}: #1}{}%
+	\else
+	\markboth{#1}{}%
+	\fi}

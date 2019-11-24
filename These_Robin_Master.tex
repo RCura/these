@@ -7,21 +7,20 @@
 
 \input{src/these_header.tex}
 
-
-\bibliography{%
-%	chap1/biblio_chap1.bib,
-%	chap2/biblio_chap2.bib,
-	chap3-4/biblio_chap3-4.bib,
-%	chap5/biblio_chap5.bib,
-%	chap6/biblio_chap6.bib,
-%	chap7/biblio_chap7.bib,
-}
+\addbibresource{chap0-2-Intro/biblio-intro.bib}
+%\addbibresource{chap1/biblio-chap1.bib}
+%\addbibresource{chap2/biblio-chap2.bib}
+%\addbibresource{chap3/biblio-chap3.bib}
+%\addbibresource{chap4/biblio-chap4.bib}
+%\addbibresource{chap5/biblio-chap5.bib}
+%\addbibresource{chap6/biblio-chap6.bib}
+%\addbibresource{chap7-Conclusion/biblio-conclu.bib}
 
 \begin{document}
-\setcounter{tocdepth}{1}
-\setcounter{minitocdepth}{2}
-\setcounter{secnumdepth}{3}
-\dominitoc
+%\setcounter{tocdepth}{1}
+%\setcounter{minitocdepth}{2}
+%\setcounter{secnumdepth}{3}
+\dominitoc% Initialization
 
 % ############################################
 % # Page de titre principale + plan détaillé #
@@ -40,58 +39,22 @@
 % # CONTENU DE LA THÈSE #
 % #######################
 
-%\include*{chap0_0_Remerciements}
-%\include*{chap0_1_Préambule}
-%\include*{chap0_2_Intro}
-%\blankpage
-%\chapter*{Introduction générale}
-%\addcontentsline{toc}{chapter}{\protect\numberline{}Introduction générale}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%
-%\graphicspath{{chap1/}}
-%\setcounter{chapter}{0}
+\frontmatter
+%\include*{chap0-0-Remerciements}
+%\include*{chap0-1-Préambule}
+
+
+\mainmatter
+\include*{chap0-2-Intro/intro}
 %\include*{chap1/chap1}
-%
-%\graphicspath{{chap2/}}
-%\setcounter{chapter}{1}
 %\include*{chap2/chap2}
-%
-\graphicspath{{chap3-4/}}
-\setcounter{chapter}{2}
-\include*{chap3-4/chap3-4}
-%
-%\graphicspath{{chap5/}}
-%\setcounter{chapter}{4}
+%\include*{chap3/chap3}
+%\include*{chap4/chap4}
 %\include*{chap5/chap5}
-%
-%\graphicspath{{chap6/}}
-%\setcounter{chapter}{5}
 %\include*{chap6/chap6}
-%
-%
-%\graphicspath{{chap7/}}
-%\setcounter{chapter}{6}
-%\include*{chap7/chap7}
-%
-%\include*{chap8_Conclusion}
-%\blankpage
-%\chapter*{Conclusion}
-%\addcontentsline{toc}{chapter}{\protect\numberline{}Conclusion générale}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
+%\include*{chap7-Conclusion/conclusion}
+
+\backmatter
 
 \printbibliography[title={Références}]
 

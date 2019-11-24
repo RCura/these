@@ -1,4 +1,8 @@
 % !TEX root = ../These_Robin_Master.tex
+\setcounter{chapter}{2}
+\graphicspath{{chap3/}}
+
+
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
@@ -21,8 +25,8 @@
 \setcounter{minitocdepth}{2}
 \minitoc
 \clearpage
-
 \phantomsection
+
 \section*{Introduction}
 \label{sec:chap3-4-intro}
 \addcontentsline{toc}{section}{Introduction}
@@ -1773,7 +1777,7 @@ Rappelons aussi, comme indiqué lors de la définition (\cref{sssec:definition-p
 Tout au long de cette thèse, nous avons souvent mentionné les versions et sous-versions de SimFeodal.
 Il nous paraît important ici de les exposer (\cref{tab:historique-versions-simfeodal}) ainsi que de décrire la logique de leur distinction.
 
-\input{chap3-4/img/tableau_versions_simfeodal}
+\input{chap3/img/tableau_versions_simfeodal}
 
 À partir de la version \og 2\fg{} de SimFeodal nous avons partiellement suivi les règles de \og versionnement sémantique\fg{} (ou \og SemVer\fg{}\footnote{
 	\og \textit{Semantic versioning}\fg{}, voir \href{https://semver.org/}{https://semver.org/}.
