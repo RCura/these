@@ -2,21 +2,23 @@
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'inter-disciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-11-22}}
+{\large Version \hl{2019-11-24}}
 \end{center}
 
 \begin{itemize}
 	\item 31/10/2019 : Fusion anciens chapitre 3 (évaluation) et 4 (paramétrage)
-	\item 07/11/2019 : Fin reprise (3.1 et 3.2)+ création (3.3)
-	\item 08/11/2019 : Impression Lena
-	\item 11/11/2019 : reprises commentaires Lena du 24/11/2017 + finalisation
-	\item 19/11/2019 : début dernier round reprises Lena
-	\item 21/11/2019 : fin reprise 3.1 et 3.2
-	\item 22/11/2019 : fin reprise 3.1.1
+	\item 08/11/2019 : Fin reprise + Impression Lena
+	\item 11/11/2019 : Reprises commentaires Lena du 24/11/2017 + finalisation
+	\item 19/11/2019 : Dernier round reprises Lena
+	\item 24/11/2019 : Fin reprise + envoi relecture :
+		\begin{itemize}
+			\item Seb : Intro + 3.1 + 3.2.1 et 3.2.2 (pas la 3.2.3) + Conclusion
+			\item Clem : Intro + Partie 3.3 + Conclusion
+			\item Paul G. : 3.2.3
+			\item => \hl{Retour si possible le jeudi 05/12/2019}
+		\end{itemize}
 \end{itemize}
-
 \setcounter{minitocdepth}{2}
-
 \minitoc
 \clearpage
 
@@ -1170,6 +1172,7 @@ Quelles que soient les valeurs empruntées par $x$, ces paramètres demeurent co
 Dans une famille d'équations plus complexes, par exemple le modèle de croissance logistique de population\footnote{
 	$\frac{\text{d}y}{\text{d}t} = \alpha y \times (1 - \frac{y}{K})$ d'après \autocite{verhulst1838notice}
 }, l'accroissement de la population au cours du temps ($\frac{\text{d}y}{\text{d}t}$) dépend de la valeur de la variable $y$, population à cet instant, ainsi que de deux paramètres, $\alpha$, le taux de croissance, et $K$, la \og capacité d'accueil\fg{}, c'est-à-dire un potentiel maximum de population vers laquelle tend -- et ne peut donc dépasser -- le système modélisé.
+
 La définition mathématique est donc assez universelle et convient à la quasi-totalité des systèmes d'équations\footnote{
 	À l'exclusion notable des systèmes d'équation paramétriques, où, à l'inverse, le terme de paramètre désigne alors les variables indépendantes.
 }.
@@ -1453,25 +1456,36 @@ Cette étape, que nous allons maintenant définir et illustrer, consiste ainsi n
 
 \subsection{Le paramétrage}
 
-Le paramétrage d'un modèle est souvent réduit à l'un de ses aspects, le \og calibrage \fg, étape finale de la construction d'un modèle qui cherchera à reproduire autant que possible des données empirique en faisant varier les valeurs des paramètres jusqu'à ce qu'une combinaison de celles-ci soit satisfaisante.
-
-De nombreux auteurs ont montré que le paramétrage d'un modèle ne pouvait se réduire à cette étape, chacun employant des termes différents pour désigner le processus de paramétrage, processus le plus souvent inscrit comme l'une des composantes de l'évaluation des modèles (chez \textcite{ngo_calibration_2012}, cf. \cref{fig:schema_ngo} par exemple).
+Le paramétrage d'un modèle est souvent réduit à l'un de ses aspects, le \og calibrage \fg, étape finale de la construction d'un modèle qui cherchera à reproduire autant que possible un ensemble de données observées dans le domaine empirique en faisant varier les valeurs des paramètres jusqu'à ce qu'une combinaison de celles-ci soit satisfaisante.
 
 Le plus souvent, une fois le modèle construit, le modélisateur s'attache à son \og calibrage\fg{}, en cherchant pour chaque paramètre la ou les valeurs qui permettront au modèle de s'approcher, au plus près, des données empiriques devant être reproduites, c'est-à-dire la conjugaison de \og valeurs optimales\fg{} de paramètres minimisant l'écart entre les données simulées et les données empiriques de contrôle.
-Cette étape, que l'on nomme aussi souvent calibration par anglicisme, peut se faire de manière manuelle, par approximations successives  -- \textcite[253]{crooks_agent-based_2019} nomme cela \og calibration qualitative\fg{} --, par semi-automatisme, par exemple en effectuant des analyses de sensibilité -- \textcite[\S2.3--2.4]{thiele_facilitating_2014} mobilisent ainsi l'analyse de sensibilité, via échantillonnage, pour faire de l'estimation de paramètres --, ou encore de manière entièrement automatique -- par exemple, pour \textcite{heppenstall_genetic_2007} ou \textcite[188]{ngo_calibration_2012}, en suivant une méthode d'optimisation à base d'\og{}algorithmes génétiques\fg{}.
+Cette étape, que l'on nomme aussi souvent calibration par anglicisme, peut se faire de manière manuelle, par approximations successives, et on parle alors de  méthode \og essais-erreurs\fg{} (\textit{trial-and-error}), par exemple chez des auteurs tels que \textcite{batty_spatial_1973}\footnote{
+	Les auteurs définissent ainsi cette méthode : \og
+	The trial and error method of calibration involves running the model under different parameter values which are fixed systematically within some predetermined range.
+	The performance of the model is assessed during each run and the range is gradually narrowed as the search homes in on what appears to be the best level of performance\fg{} \autocite[356]{batty_spatial_1973}.
+	Notons que récemment, certains auteurs ont utilisé la dénomination de \og calibration qualitative\fg{} pour définir cette approche \autocite[253]{crooks_agent-based_2019}.
+}.
+Le calibrage peut aussi être effectué de manière semi-automatique, par exemple en effectuant des analyses de sensibilité.
+\textcite[\S2.3--2.4]{thiele_facilitating_2014} mobilisent ainsi l'analyse de sensibilité, via échantillonnage, pour faire de l'estimation de paramètres.
+Enfin, il est possible de mener le calibrage de manière entièrement automatique, souvent à l'aide de méthodes mathématiques d'optimisation.
+\textcite{heppenstall_genetic_2007} et \textcite[188]{ngo_calibration_2012}, par exemple, effectuent le calibrage de leurs modèles à l'aide de d'une famille de méthodes informatiques nommées \og algorithmes génétiques\fg{}.
+
+De nombreux auteurs ont montré que le paramétrage d'un modèle ne pouvait se réduire à cette étape, chacun employant des termes différents pour désigner le processus de paramétrage, processus le plus souvent inscrit comme l'une des composantes de l'évaluation des modèles (chez \textcite{ngo_calibration_2012}, cf. \cref{fig:schema_ngo} par exemple).
 
 Dans notre travail, nous souhaitons revenir sur cette approche de la modélisation, ancrant le paramétrage comme étape ultime de la construction d'un modèle, en particulier en ce que nous considérons que cette pratique de recherches de valeurs optimales est un exercice qui devrait s'effectuer tout au long de la construction du modèle, de manière plus itérative que conclusive.
 
 \subsubsection{Définition \label{sssec:definition-parametrage}}
 
 Le terme de paramétrage recouvre deux sens différents, dont la distinction peut se faire selon qu'on l'utilise pour définir un processus ou pour caractériser une configuration.
-Ici, nous emploierons plutôt le premier cas, définissant dès lors le paramétrage comme le processus, manuel ou automatique, visant à constituer cette configuration de paramètres.
-Dans ce deuxième cas, le paramétrage désigne un ensemble de valeurs de paramètres, par exemple quand on mentionne un paramétrage par défaut, ou un paramétrage optimal.
-Pour ne pas risquer de contre-sens, nous préférerons le terme de configuration de paramètres ou de \og jeu de valeurs de paramètres\fg{}.
+Ici, nous emploierons plutôt le premier cas, définissant dès lors le paramétrage comme le processus, manuel ou automatique, visant à constituer une configuration optimale de paramètres.
+Dans ce deuxième cas, le paramétrage désigne un ensemble de valeurs de paramètres, par exemple dans l'expression \og paramétrage par défaut\fg{}, ou un paramétrage optimal.
+Pour ne pas risquer de contre-sens, nous réserverons le terme de paramétrage au processus, et nous utiliserons l'expression de \og jeu de valeurs de paramètres\fg{} pour désigner la seconde acceptation.
 
-On tend à distinguer le paramétrage -- passage obligé ne nécessitant pas d'être évoqué -- du calibrage, processus systématique qui inscrirait le modèle comme un outil scientifique et incontestable.
-Nous choisissons ici de confondre ces approches, non pas en considérant le paramétrage comme un outil d'évaluation du modèle, mais comme une composante inhérente à la construction d'un modèle, quelles que soient les formes et les temporalités que le paramétrage adopte.
-Le paramétrage est en effet une pratique utile dans la construction du modèle, car les résultats auxquels il aboutit, c'est-à-dire les valeurs de paramètres qui semblent mieux adaptés, renseignent aussi bien sur les biais des mécanismes adoptés que sur leur efficacité réelle.
+Le terme de paramétrage est très employé dans la littérature, le plus souvent comme un synonyme \og faible\fg{} de calibrage, c'est-à-dire sans l'aspect quantifié et \og final\fg{} que ce dernier terme contient.
+Nous choisissons ici de nous distinguer de ces approches, en différenciant calibrage et paramétrage.
+Dans un premier temps, cependant, il nous paraît important de re-situer le paramétrage (et le calibrage), en les incluant dans la construction du modèle plutôt que dans son évaluation, au contraire donc de l'approche de  \textcite{klugl_validation_2008} et \textcite{ngo_calibration_2012} visible dans les \cref{fig:schema_kluegl,fig:schema_evaludationl}.
+
+Le paramétrage est en effet une pratique utile dans la construction du modèle, car les résultats auxquels il aboutit, c'est-à-dire les valeurs de paramètres qui semblent les mieux adaptées, renseignent aussi bien sur les biais des mécanismes adoptés que sur leur efficacité réelle.
 Par exemple, quand, après avoir ajouté un mécanisme, on se rend compte que des variations dans les valeurs de paramètres ne changent pas réellement les sorties du modèle, cela peut être l'occasion de repenser le mécanisme dans son ensemble, ou plus souvent, la manière dont le paramètre est mobilisé dans ce mécanisme.
 On retrouve cette logique dans l'exploration par Clara Schmitt du modèle SimpopLocal \autocite{schmitt_modelisation_2014}, qui a permis de réaliser que la variation de l'un des paramètres ($InnovationLife$) n'avait que peu d'impact sur les sorties du modèle, tout en rendant son calibrage plus complexe et instable :
 \begin{quotation}
@@ -1483,9 +1497,6 @@ On retrouve cette logique dans l'exploration par Clara Schmitt du modèle Simpop
 	\mbox{}~ \hfill \textcite[224]{schmitt_modelisation_2014}
 \end{quotation}
 
-%\begin{center}
-%	\hl{Ajout des paragraphes de définition suivants, qui s'insèrent donc entre ce message et le paragraphe \og Désambiguïsation\fg{}, page 55 dans l'impression.}
-%\end{center}
 
 Dans ce travail de thèse, nous reprenons ainsi le sens du terme paramétrage tel qu'initialement employé par \textcite{hirtzel2015exploration}\footnote{
 	\og
@@ -1502,7 +1513,7 @@ Le paramétrage comprend une phase d'estimation (statistique ou autre) des valeu
 \mbox{}~ \hfill \textcite[52]{tannier_analyse_2017}
 \end{quotation}
 
-Nous ajoutons à cette définition une composante d'implémentation, quand celle-ci est minime, qui consiste à adapter l'implémentation des mécanismes de manière à en rendre le résultat plus satisfaisant.
+Nous ne retiendrons pas dans ce travail la notion de phase d'estimation, mais trouvons nécessaire d'ajouter à cette définition une composante d'implémentation qui consiste à adapter l'implémentation des mécanismes de manière à en rendre le résultat plus satisfaisant.
 Cela n'implique pas de changer le modèle conceptuel, et n'est pas non plus véritablement un changement dans l'implémentation du modèle.
 Par exemple, changer l'ordonnancement du détail d'un mécanisme relève à notre sens du paramétrage.
 
@@ -1514,19 +1525,19 @@ Toutefois, au niveau local, cela peut avoir un impact non négligeable sur l'his
 À notre sens, il s'agit d'une adaptation du modèle du même ordre qu'un changement de valeur de paramètre, et nous incluons ainsi ce type de modifications dans le processus de paramétrage.
 
 
-\paragraph{Désambiguïsation.}
+\paragraph{Les étapes du processus de modélisation.}
 
 De nombreux termes sont utilisés dans la littérature, souvent sans réelle distinction, pour désigner cette opération qui consister à choisir un jeu de paramètres pour un modèle.
-Pêle-mêle, on y retrouve le paramétrage, le calibrage, l'ajustement\ldots.
-Nous proposons une représentation graphique, dans la \cref{fig:etapes-modelisation}, de notre usage de ces termes, et en donnons des définitions dans l'\cref{enc:termes-calibration}.
+Pêle-mêle, on y retrouve le paramétrage, le calibrage, l'ajustement, l'estimation, etc.
+Nous proposons une représentation graphique, dans la \cref{fig:etapes-modelisation}, de notre usage du sous-ensemble de ces termes mobilisé dans cette thèse, et en donnons des définitions dans l'\cref{enc:termes-calibration}.
 
 \begin{figure}[H]
-	\includegraphics[width=1.2\textwidth]{img/schema_definition_parametrage.pdf}
+	\includegraphics[width=1\textwidth]{img/schema_definition_parametrage.pdf}
 	\caption{Étapes du processus de modélisation.} 
 	\label{fig:etapes-modelisation} 
 \end{figure}
 
-\clearpage
+
 \begin{encadre}{Construction, paramétrage et calibrage}{termes-calibration}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
 	
@@ -1534,25 +1545,22 @@ La \cref{fig:etapes-modelisation} représente l'enchevêtrement des différentes
 	
 \subparagraph{Construction.}
 Par construction, nous définissons l'ensemble des étapes relatives à la création du modèle, c'est-à-dire la conception du modèle conceptuel, son implémentation sous forme d'un modèle de simulation et le paramétrage du modèle.
-À force d'allers-retours entre ses composantes, la construction aboutit sur un modèle \og finalisé\fg{}, qui peut être évalué de manière globalement (chacune des composantes de la construction pouvant être évaluée individuellement : l'implémentation est par exemple évaluée au moyen des méthodes de validation interne).\vspace{-1em}
+À force d'allers-retours entre ses composantes, la construction aboutit à un modèle \og finalisé\fg{}, qui peut être évalué de manière globale (chacune des composantes de la construction pouvant être évaluée individuellement : l'implémentation est par exemple évaluée au moyen des méthodes de validation interne).\\
+\textit{N.B. : Le terme de co-construction est d'un niveau de généricité supérieur à celui de la construction ici définie.
+La co-construction, définie dans le \hl{chapitre 1}, désigne l'approche mise en place lors de chacune des étapes du modèle, et s'applique donc aussi bien à la construction qu'à l'évaluation.}
 		
 \subparagraph{Paramétrage.}
 Le paramétrage du modèle est l'étape où l'on adapte le modèle après avoir vérifié sa cohérence vis-à-vis des éléments empiriques qu'il cherche à reproduire.
 Lors du paramétrage, on ajuste les valeurs de paramètres, leur utilisation par les mécanismes et le détail du fonctionnement technique de ces mécanismes.
-On cherche par cela à obtenir un modèle plus satisfaisant du point de vue des dynamiques et résultats qu'il produit.
+On cherche à obtenir un modèle plus satisfaisant du point de vue des dynamiques et résultats qu'il produit.
 Une des définitions du nouveau petit Robert \autocite{robert_nouveau_1993} nous semble particulièrement représentative de cela :\\
 \og Paramétrer (informatique): \og Programmer (un appareil complexe), en définissant les paramètres assurant son fonctionnement optimal.
 Ex. \textit{Paramétrer une imprimante}\fg{}.
-\vspace{-1em}
 		
 \subparagraph{Calibrage.}
 On réserve souvent, et nous nous y tiendrons, ce terme à la dernière étape dans l'aboutissement d'un modèle.
-Une fois les mécanismes fixés et des objectifs définis, on peut procéder au calibrage (aussi nommé, par anglicisme, \og calibration\fg{}), c'est-à-dire à une exploration de l'espace des paramètres ayant pour but de stabiliser les paramètres afin de se rapprocher autant que possible de ces objectifs.
-Dans cette thèse, nous inscrivons le calibrage comme une des étapes, finale, du paramétrage.\vspace{-1em}
-	
-\subparagraph{Co-construction.}
-La co-construction, définie dans le \hl{chapitre 1}, est l'approche mise en place pour réaliser chacune de ces étapes.
-L'approche de co-construction, dans ce travail de thèse, concerne donc aussi bien la \og construction\fg{} que l'évaluation du modèle.
+Une fois les mécanismes fixés et des objectifs définis, on peut procéder au calibrage (aussi nommé, par anglicisme, \og calibration\fg{}), c'est-à-dire à une exploration de l'espace des paramètres ayant pour but de stabiliser les paramètres afin de se rapprocher autant que possible des objectifs.
+Dans cette thèse, nous inscrivons le calibrage comme une des étapes, finale, du paramétrage.
 
 \medskip
 \noindent Notons que toutes ces étapes sont représentées de manière linéaire et chronologique, le paramétrage marquant la fin de la construction du modèle et l'évaluation la fin de l'\og{}évolution\fg{} du modèle.
@@ -1560,7 +1568,6 @@ Pour autant, les allers-retours entre ces étapes sont extrêmement nombreux (fl
 
 \end{encadre}
 
-\clearpage
 \subsubsection{Paramétrer des modèles, illustrations}
 Afin d'illustrer ces propos, on peut s'appuyer sur des modèles bien connus de la littérature, issus de deux champs disciplinaires différents : le modèle gravitaire (\cref{enc:param-gravitaire}) et le modèle de Schelling (\cref{enc:param-schelling}).
 
@@ -1574,17 +1581,16 @@ Ce modèle, formalisé mathématiquement,
 %}
 , dans la formulation qu'en a faite \textcite{stewart_demographic_1948}, vise à prédire des flux ($F_ij$) potentiels (démographiques, marchands, etc.) entre des lieux à partir d'une analogie avec la loi physique de la gravitation.
 Dans le formalisme le plus simple, \og sans contrainte\fg{} \autocite{pumain_les_2001}, on peut l'exprimer ainsi :
-\vspace*{-.5em}
 \begin{equation*}
 F_{ij} = \frac{k \times M_{i} \times M_{j}}{d_{ij}{}^\alpha}
 \end{equation*}
 
-\vspace*{-.75em}Ce modèle présente trois ensembles de valeurs empiriques ($M_i$, $M_j$ et $d_{ij}$), que l'on qualifierait de variables dans notre typologie, et deux paramètres ($k$ et $\alpha$).
-$k$ est un paramètre technique (\cref{enc:types-parametres}), puisque bien que basée sur l'empirique, sa valeur -- et les fluctuations de celle-ci -- ne donne aucune information sur le système étudié.
+Le modèle comprend deux paramètres ($k$ et $\alpha$).
+$k$ est un paramètre technique (\cref{enc:types-parametres}), ses fluctuations ne donnent aucune information supplémentaire sur le système étudié.
 $\alpha$ est un paramètre de contexte : il est basé sur une logique empirique, et conditionne fortement le modèle (et notamment les valeurs du paramètre $k$).
-En faisant varier $\alpha$, on explore des hypothèses thématiques relatives à l'importance de la distance dans les interactions entre les composantes d'un système.
+En faisant varier $\alpha$, on explore des hypothèses thématiques relatives à l'importance de la distance dans l'intensité des interactions entre les composantes du système modélisé.
 
-À partir des valeurs empiriques $M_i$ et $M_j$ qui caractérisent les masses (populations, ou stocks de  marchandise par exemple) des lieux $i$ et $j$, et de la distance qui les sépare $d_{ij}$, on peut ainsi prédire $F_{ij}$, le flux entre ces lieux.
+À partir des variables empiriques $M_i$ et $M_j$ qui caractérisent les masses (populations, ou stocks de  marchandise par exemple) des lieux $i$ et $j$, et de la distance qui les sépare $d_{ij}$, on peut ainsi prédire $F_{ij}$, le potentiel d'interaction entre ces lieux.
 
 \subparagraph{Objectif.}
 Afin que ce modèle donne des ordres de grandeur réalistes quant aux quantités échangées, il faut le paramétrer en définissant une valeur de $k$, permettant dès lors d'obtenir un rapport entre les masses d'origine et les quantités échangées.
@@ -1597,8 +1603,10 @@ Pour \og ajuster\fg{}\footnote{
 } le modèle, il faut donc en réaliser le paramétrage en s'appuyant sur les éléments connus de l'équation (les valeurs empiriques).
 $\alpha$ et $k$ étant liés dans l'équation, la valeur de chacun de ces paramètres dépend de celle choisie pour l'autre, et un changement dans l'un des paramètres entraînera la nécessité de modifier l'autre.
 
-Le paramétrage le plus simple consiste à réaliser une régression linéaire sur les logarithmes décimaux des distances et des flux observés, $k$ prenant alors la valeur du logarithme de l'ordonnée à l'origine et $\alpha$ celle du coefficient directeur de la courbe.	
-Le modèle est alors calibré (voir \cref{enc:termes-calibration}), mais si l'on souhaite donner une valeur spécifique à l'un des paramètres, par exemple pour utiliser une valeur classique de 2 au frein de la distance ($\alpha$) \autocite{pumain_modegravitaire_2004}, il faudra alors le re-soumettre à paramétrage pour adapter $k$. De même si l'on modifie les lieux et/ou les masses sur lesquels il s'applique.
+La technique la plus simple pour paramétrer le modèle consiste à réaliser une régression linéaire sur les logarithmes décimaux des distances et des flux observés, $k$ prenant alors la valeur du logarithme de l'ordonnée à l'origine et $\alpha$ celle du coefficient directeur de la courbe.	
+Le modèle est alors calibré (voir \cref{enc:termes-calibration}).
+Si on souhaite donner une valeur spécifique à l'un des paramètres, par exemple pour utiliser une valeur classique de 2 au frein de la distance ($\alpha$) \autocite{pumain_modegravitaire_2004}, il faudra alors le re-soumettre au paramétrage pour adapter $k$.
+De même si l'on modifie les lieux et/ou les masses sur lesquels il s'applique.
 \end{encadre}
 
 La manière classique de mener le paramétrage du modèle gravitaire est donc directe et déterministe.
@@ -1612,18 +1620,14 @@ Le paramétrage de ce modèle se résume donc à l'étape de calibrage.
 \subparagraph{Description.}
 Le modèle de Schelling\footnote{
 	Une description plus poussée accompagnée d'une description de l'exploration du modèle peut être lue dans \autocite{daude_comparaison_2006}
-} est un modèle de simulation décrit par l'économiste \textcite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état aléatoire, potentiellement intégré, à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle.
+} est un modèle de simulation décrit par l'économiste \textcite{schelling_dynamic_1971} qui vise à montrer comment un espace peut passer d'un état correspondant à une répartition aléatoire, potentiellement intégrée, à un état ségrégé ethniquement à travers une succession de comportements individuels de mobilité résidentielle.
 Il montre en particulier qu'on peut parvenir à un état ségrégé même quand les comportements individuels sont majoritairement tolérants à la présence d'individus d'un autre groupe.
 
 L'espace du modèle est défini comme une grille carrée composée de $N$\footnote{
 	Nous reprenons ici la notation $M(N, d, n, S)$ proposée par \textcite[433]{daude_comparaison_2006} en n'explicitant toutefois pas le paramètre $n$ décrivant le type de voisinage (4 ou 8) utilisé.
 } cellules.
 Au début de la simulation, des agents de deux types, en proportions similaires, sont distribués aléatoirement dans l'espace du modèle.
-Chaque agent occupe une cellule, et le nombre total de cellules occupées (et donc d'agents) dépend d'un paramètre de densité $d$ qui représente la part (entre $0\%$ et $100\%$) du nombre de cellules qui sera occupée
-%\footnote{
-%	Il y a donc $N \times d$ agents, et donc $\frac{N \times d}{2}$ agents de chaque type.
-%}
-.
+Chaque agent occupe une cellule, et le nombre total de cellules occupées (et donc d'agents) dépend d'un paramètre de densité $d$ qui représente la part (entre $0\%$ et $100\%$) du nombre de cellules qui sera occupée.
 Chaque agent est défini par une satisfaction, fonction du voisinage des agents.
 Ce voisinage correspond à la part de cellules voisines occupées par des agents \og étrangers\fg{}, c'est-à-dire d'un autre type : plus le voisinage contient d'étrangers, moins l'agent est satisfait.
 Si cette satisfaction est inférieure à un paramètre de tolérance $S$, qui représente un seuil à ne pas dépasser, l'agent est considéré comme insatisfait et se déplace aléatoirement dans une cellule non occupée.
@@ -1641,20 +1645,19 @@ Le dernier paramètre, $d$, peut être vu comme un paramètre technique puisqu'i
 Avec un modèle conceptuel très proche, où les agents seraient capables \og d'échanger\fg{} leur position plutôt que de rejoindre une cellule non occupée, ce paramètre n'aurait pas de sens.
 
 \subparagraph{Objectif.}
-Le paramétrage de ce modèle consiste à fixer un $N$ constant et à faire varier $d$ et $S$ afin d'en trouver des valeurs permettant la convergence vers une situation stable.
+Le paramétrage de ce modèle consiste à fixer un $N$ constant et à faire varier $d$ et $S$ afin de trouver des valeurs permettant la convergence vers une situation stable.
 Quand $d$ est très faible ($30$\% dans l'exemple de \textcite{daude_comparaison_2006}), quelles que soient les valeurs de $S$, le modèle converge rapidement :
 	quand l'espace du modèle dispose d'une faible densité d'agents, il est facile pour ceux-là de créer des agrégats homogènes distants d'agrégats de l'autre type d'agents.
 Quand $d$ est plus important ($\geq66$\%), l'espace disponible étant limité, toutes les valeurs de $S$ ne permettent pas la convergence du modèle.
 Le paramétrage du modèle aura donc pour objectif de trouver la valeur maximale possible -- pour un $N$ et un $d$ donné -- que peut prendre le paramètre de tolérance $S$ tout en laissant le modèle converger.
 
 \subparagraph{Paramétrage.}
-Contrairement au modèle gravitaire, le modèle de Schelling est stochastique :
- 	les agents se déplacent aléatoirement quand non satisfaits.
+Contrairement au modèle gravitaire, le modèle de Schelling est stochastique.
+Les agents se déplacent en effet de manière aléatoire quand ils ne sont pas satisfaits.
 Dès lors, deux exécutions du modèle avec le même jeu de paramètres n'entraîneront pas forcément la même configuration spatiale.
 Qui plus est, pour certains jeux de paramètres, seules certaines exécutions convergeront.
 Le paramétrage de ce modèle ressemble donc à celui qui est réalisé pour le modèle SimFeodal.
-La manière \og traditionnelle\fg{}, c'est-à-dire manuelle,
-consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge.
+La manière \og traditionnelle\fg{}, c'est-à-dire manuelle et basée sur une méthode d'essais-erreurs, consiste à fixer un $d$, puis à essayer d'augmenter le $S$ tant que le modèle converge.
 Si le modèle converge pour tout $S$, on augmente la valeur de $d$ et on recommence à chercher la valeur maximale possible pour $S$.
 De part la nature stochastique du modèle, chaque jeu de paramètres doit être simulé plusieurs fois, le nombre de ces réplications dépendant de la part d'aléa dans le comportement du modèle.
 Un modèle de Schelling calibré, c'est-à-dire dont le paramétrage est achevé,
@@ -1662,15 +1665,17 @@ donnera pour un $N$ fixé les valeurs maximales de $d$ et de $S$ atteignables.
 \end{encadre}
 
 Le paramétrage du modèle de Schelling est donc très différent de celui du modèle gravitaire.
-Il nous semble plus représentatif de la démarche classique de paramétrage des modèles de simulation à base d'agents.
+Pour ce dernier, il s'agit d'un calcul résultant d'une estimation statistique, alors que dans le cas du modèle de Schelling, on mobilise l'approche d'essais-erreurs.
+Cette approche nous semble plus représentative de la démarche classique de paramétrage des modèles de simulation à base d'agents.
 Contrairement au modèle gravitaire, le paramétrage est ainsi exécuté de manière itérative et répétée : à chaque augmentation de la valeur de $d$, il faut ré-exécuter le calibrage du paramètre $S$, voire de $N$ si on choisit de faire varier ce paramètre aussi.
 
 
 À travers ces deux exemples ayant traits à des méthodes différentes, on retrouve deux approches de paramétrage que l'on souhaite ici voire confondues :
 	dans le premier cas, le paramétrage du modèle gravitaire tend à son calibrage, à la recherche d'une solution optimale, c'est-à-dire meilleure que toute autre.
-Pour un phénomène donné (un jeu de données précis par exemple) et un formalisme donné (l'expression la plus simple du modèle, ici sans contrainte), seule un couple de paramètres $\alpha$ et $k$ permet ainsi d'obtenir des flux modélisés proches des flux observés.
-Dans le cas du modèle de Schelling, il n'y a pas de recherche d'optimum :
-	le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence.
+Pour un phénomène donné (un jeu de données précis par exemple) et un formalisme donné (l'expression la plus simple du modèle, ici sans contrainte), seul un couple de paramètres $\alpha$ et $k$ permet ainsi d'obtenir des flux modélisés proches des flux observés.
+Dans le cas du modèle de Schelling, il n'y a pas de recherche d'optimum.
+On ne cherche en effet pas à reproduire, terme à terme, une répartition observée de deux populations.
+Le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence.
 Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quelle est la valeur maximale de $d$ permettant de parvenir, le plus souvent (en tenant compte de l'aléa) à cette convergence (et réciproquement).
 
 \subsubsection{Paramétrer SimFeodal}
@@ -1679,57 +1684,66 @@ Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, 
 
 Ce dernier exemple montre l'importance des allers-retours entre évaluation et paramétrage, et illustre la démarche itérative et incrémentale du paramétrage.
 Parmi les étapes du paramétrage, le calibrage devrait ainsi être mené à chaque \og version\fg{} du modèle.
-Ces versions, dans le modèle de Schelling, pourraient correspondre à un changement de valeur de $S$ ou de $N$.
+Ces versions, dans le modèle de Schelling, pourraient correspondre à un changement de valeur de $N$ ou de $d$, qui définissent le contexte du modèle.
 Quand ces paramètres évoluent, il est ainsi nécessaire d'évaluer le modèle qui en résulte (y a-t-il convergence ?), et en fonction du résultat, de calibrer les autres paramètres de manière à obtenir une configuration optimale.
 
-Sans aller jusqu'à voir dans ces versions successives des modèles à part entière -- ce que les tenant de la modélisation modulaire \autocite{grimm_pattern-oriented_2005} ou multi-modélisation \autocite{pumain_chapter_2017} peuvent considérer --, on peut tout de même considérer que chacune de ces versions requiert des cycles de construction et d'évaluations indépendants les uns des autres (cf. \cref{fig:etapes-modelisation}).
+Sans aller jusqu'à voir dans ces versions successives des modèles à part entière -- ce que les tenant de la modélisation modulaire \autocite{grimm_pattern-oriented_2005,grimm_pattern-oriented_2012} ou multi-modélisation \autocite{pumain_chapter_2017} peuvent laisser entendre --, on peut tout de même considérer que chacune de ces versions requiert des cycles de construction et d'évaluations indépendants les uns des autres (cf. \cref{fig:etapes-modelisation}).
 Chacune de ces versions devra dès lors être adaptée par un paramétrage dédié.
 
 C'est, à notre sens, d'autant plus important que certaines versions de modèles peuvent donner lieu à des évolutions majeures, conceptuelles, méthodologiques ou techniques.
 Le paramétrage est dans ce cas à \og re-faire\fg{} entièrement, c'est-à-dire que les étapes précédentes de paramétrages ne peuvent plus forcément aider à réduire l'amplitude des valeurs parmi lesquels fixer les paramètres par exemple.
 
 Pour illustrer ce propos, on peut prendre l'exemple d'une modification qui a eu lieu sur SimFeodal au cours de son développement (dans la version \og 0\fg{}, cf. \cref{tab:historique-versions-simfeodal}).
-On considérait jusque-là que pour prendre en compte la population rurale (hors Tours donc), une population de $1000$ foyers paysans correspondant à une estimation probable de la situation en 800 de l'espace considéré.
+On considérait jusque-là que pour prendre en compte la population rurale (hors Tours donc), une population de 1 000 foyers paysans correspondant à une estimation probable de la situation en 800 de l'espace considéré.
 Lors d'une réunion, les thématiciens ont ré-évalué ce nombre, remarquant d'après d'autres connaissances expertes qu'il sous-estimait très largement la population réelle.
 En menant de nouvelles estimations, ils ont conclu que le nombre de foyers paysans devait finalement être fixé à 4 000, et que le paramètre dédié devait ainsi être ajusté à cette valeur.
 
-Les autres paramètres, fixés en bonne partie empiriquement, n'avaient visiblement aucune raison d'évoluer du fait de ce changement.
+Les autres paramètres, fixés en bonne partie empiriquement, n'avaient \textit{a priori} aucune raison d'évoluer du fait de ce changement.
 Les mécanismes  et effets de seuil étaient en effet conçus de manière à être relatifs aux masses manipulées, et le changement attendu était une augmentation linéaire des indicateurs de sortie.
 
+Dans les faits, cette légère modification a cependant entraîné une obligation de repenser la quasi-totalité des autres paramètres et d'ajuster une bonne part des mécanismes, de la même manière qu'un changement de $N$ dans le modèle de Schelling (\cref{enc:param-schelling}) demande de revoir $d$ et $S$.
 
-Dans les faits, cette légère modification a entraîné une obligation de repenser la quasi-totalité des autres paramètres et d'ajuster une bonne part des mécanismes, de la même manière qu'un changement de $N$ dans le modèle de Schelling (\cref{enc:param-schelling}) demande de revoir $d$ et $S$.
-
-La concentration des foyers paysans était en effet bien trop rapide avec autant d'individus, et le modèle convergeait en quelques pas de temps vers une configuration presque statique et très concentrée.
+La concentration des foyers paysans était en effet bien trop rapide par un effet mécanique dû au nombre plus important d'individus, et donc à une densité accrue.
+Le modèle convergeait en quelques pas de temps vers une configuration presque statique et très concentrée.
 Tous les mécanismes de régulation de ce comportement étaient dès lors rendus ineptes, et il a fallu changer en profondeur la manière dont chaque paramètre et mécanisme interagissait avec les autres.
+
+On peut illustrer les effets de ce changement de valeur de paramètre en analysant, de manière visuelle, l'évolution du modèle qui en a suivi.
+Une étude des \og \textit{commits}\fg{} de SimFeodal a été menée à cet effet.
+Les \textit{commits} sont des enregistrements de l'état d'un ensemble de fichiers, et contiennent en tant que telle la liste des changements apportés depuis l'enregistrement (\textit{commit}) précédent.
+Les \textit{commits} peuvent contenir plusieurs modifications : un même \textit{commit} peut porter sur le changements de plusieurs valeurs de paramètres par exemple.
+Les \textit{commits} peuvent aussi contenir des modifications situées dans plusieurs fichiers différents.
+Comme le modèle SimFeodal est composé d'une dizaine de fichiers correspondant entre autre aux différents types d'agents, les \textit{commits} concernent souvent plusieurs fichiers : le changement de mécanisme d'un type d'agent sera souvent matérialisé dans le fichier de l'agent correspondant, dans le fichier gérant les \textit{outputs} du modèle, et par exemple dans le fichier régulant l'ordonnancement des mécanismes.
+
+Ici, on a catégorisé, manuellement, les \textit{commits} des premières versions de SimFeodal selon les modifications conceptuelles apportées : ajout de mécanisme, modification de valeurs de paramètres ou autre (nouvelles expériences, documentation, débuggage, nettoyage de code, etc.)
+Un même \textit{commit} peut contenir plusieurs ajouts de mécanismes, et/ou plusieurs modifications de valeurs de paramètres, et/ou encore plusieurs autres changements dans le code-source du modèle.
+Dans la \cref{fig:comits-periodes}, on a représenté ces \textit{commits} selon la part de modifications relatives à chacune de ces catégories : une barre 100\% noire signifie que le \textit{commit} n'a porté que sur de l'ajout de mécanisme, une barre 50\% noire et 50\% grise correspond à un \textit{commit} qui a autant porté sur l'ajout de mécanisme que sur la modification de valeurs de paramètres, et une absence de barre indique un \textit{commit} dont tous les changements relèvent de la catégorie \og autre\fg{}.
 
 \begin{figure}[H]
 	\includegraphics[width = \linewidth]{img/plotComits_clean.pdf}
-	\caption[Temporalité du paramétrage du modèle.]{Temporalité du paramétrage du modèle.\\
-\textit{	Chaque \og enregistrement\fg{} (\textit{commit}) correspond à une version modifiée et sauvegardée du modèle, contenant un ou plusieurs changements.
-	On a ici rapporté le nombre de changements de chaque type (modification de mécanisme ou de valeur de paramètre) au nombre total de changements de chaque \textit{commit} afin de figurer l'évolution des types de modification au cours de la construction du modèle.}
-	}
+	\caption[Temporalité du paramétrage du modèle.]{Temporalité du paramétrage du modèle.}
 	\label{fig:comits-periodes}
 \end{figure}
 
-C'est un changement majeur, que l'on peut constater dans la \cref{fig:comits-periodes} entre les périodes \og A\fg{} et \og B\fg{} :
-le premier paramètre qui évolue est la population initiale, et on constate que de nombreuses modifications suivantes (B) portent sur l'ajustement de valeurs de paramètres.
-Malgré ce calibrage, on note que les résultats n'ont pas suffi et qu'il a donc fallu modifier aussi des mécanismes (période C), que ce soit au niveau du détail de leur implémentation ou au niveau conceptuel.
+La \cref{fig:comits-periodes} permet de constater un changement majeur suite à la modification du nombre de foyers paysans, entre les périodes \textbf{A} et \textbf{B} de l'évolution du modèle.
+Après le passage de 1000 à 4000 foyers paysans, suit ainsi une période intense de changements de valeurs de paramètres (\textbf{B}).
+C'est une phase de calibrage, où l'on essaye d'ajuster les valeurs de chaque paramètre de manière à obtenir des résultats satisfaisants en sortie de simulation, résultats qui ont été bouleversés par le changement du nombre initial de foyers paysans.
 
-La première version (fin de la période A) avait été paramétré aussi correctement que possible, mais ce paramétrage était entièrement à refaire avec la nouvelle version (modifications de la période B, \cref{fig:comits-periodes}).
+L'étape \textbf{C} montre une succession d'ajouts et de changements dans les mécanismes : le calibrage des paramètres n'a pas été suffisant pour que le modèle produise une situation acceptable.
+Le calibrage ne suffisant pas, on revient en effet à d'autres phases de paramétrages, en modifiant les mécanismes de manière itérative.
+Entre les étapes \textbf{C} et \textbf{D}, on note quelques modifications de paramètres, quelques ajouts de mécanismes, et de nombreux \textit{commits} catégorisés comme \og autre\fg{} (il n'y a pas de barre) : cela correspond à des modifications plus substantielles dans le modèle.
 
-Cet exemple renforce le caractère nécessaire du paramétrage, et qui plus est, montre que ce processus doit être mené de manière continue et répétée.
-Dans un modèle exploratoire comme SimFeodal (\hl{cf. chap1 ou chap2}), on ne peut ainsi penser le paramétrage que sous la forme d'un calibrage qui serait l'étape ultime de construction du modèle avant validation.
-Si le paramétrage n'est pas régulier, alors chacune des versions et sous-versions successives ne pourra pas être évaluée de manière comparable, et on cours le risque de disqualifier une version du modèle qui aurait pu être plus plausible que les suivantes mais n'a pas été ajustée comme elle aurait pu l'être.
+L'enchainement des étapes \textbf{D} et \textbf{E} ressemblent à celui de \textbf{B} et \textbf{C} : on recommence ainsi un cycle de calibrage-paramétrage-changements d'implémentation de manière à améliorer le modèle de manière itérative, selon le principe classique de l'essai-erreur.
+En catégorisant l'ensemble des \textit{commits} du modèle jusqu'à la dernière version en date, nous sommes convaincus que ce motif réapparaîtrait de manière fréquente et régulière.
+
+Cet exemple, construit sur l'évolution effective de SimFeodal, illustre le caractère nécessaire du paramétrage, et qui plus est, montre que ce processus doit être mené de manière continue et répétée.
+Dans un modèle exploratoire comme SimFeodal (\hl{cf. chap1 ou chap2}), le paramétrage ne peut pas être considéré comme une étape ultime, restreinte au calibrage, qui donnerait lieu à validation du modèle.
+Un paramétrage répété, régulier, donnant lieu à des évaluations systématiques, est ainsi la seule manière de garantir la comparabilité des différentes versions et sous-versions successives d'un modèle.
+Dans le cas contraire, on court le risque de disqualifier une version du modèle qui aurait pu être plus plausible que les suivantes mais n'a pas été ajustée comme elle aurait pu l'être.
 
 \paragraph{Quels paramètres ?} \label{sssec:quels-parametres}
 
-%\begin{center}
-%	\hl{Ajout de cette sous-sous-sous-partie ici.\\
-%	S'insère entre la fin de \og Un ou des modèles à paramétrer ?\fg{} et le début de \og Historique de SimFeodal.\fg{}, page 62 dans l'impression.}
-%\end{center}
-
 Dans la partie précédente, nous avons distingué plusieurs types de paramètres (voir l'\cref{enc:types-parametres} dans la \cref{sssec:types-parametres}), selon leur usage dans le modèle et leur niveau d'inscription dans les connaissances empiriques.
-Cette distinction nous semble particulièrement utile pour dresser une hiérarchie des paramètres sur lesquels jouer pour adapter le modèle.
+Cette distinction nous semble particulièrement utile pour dresser une hiérarchie des paramètres sur lesquels jouer pour ajuster le modèle.
 
 Les \textbf{paramètres d'\textit{input}}, pour commencer, n'ont pas vocation à changer lors de l'évolution du modèle : ils ont été définis de manière empirique, et ne peuvent donc revêtir d'autres valeurs uniquement pour améliorer l'ajustement du modèle.
 Toutefois, si les connaissances expertes évoluent, les phases de paramétrage du modèle sont l'occasion de répercuter ces nouvelles connaissances.
@@ -1741,43 +1755,40 @@ Les changements de ces paramètres peuvent résulter d'un besoin de préciser la
 Dans tous les cas, le paramétrage de ces paramètres n'est pas guidé directement par les résultats d'une version du modèle, mais par les connaissances qui y sont injectées.
 Il en va de même pour les \textbf{paramètres de contexte} : ils peuvent être précisés ou corrigés, mais leur paramétrage ne doit pas être guidé par l'évaluation du modèle.
 
+Les \textbf{paramètres techniques} sont des candidats naturels au paramétrage, et plus spécifiquement à sa composante de calibrage.
+Puisqu'ils ne reposent sur aucune connaissance empirique, ils constituent ainsi des \og leviers\fg{} sur lesquels on pourra mener le paramétrage, y compris de manière automatisée pour ces paramètres dont on peut faire varier les valeurs de plusieurs ordres de grandeur sans conséquence conceptuelle ou empirique sur le modèle.
+Le paramétrage des paramètres techniques est aisé mais n'apporte rien, d'un point de vue heuristique, en termes de connaissances supplémentaires sur le modèle où sur ce qui est modélisé.
+Ces paramètres sont toutefois très \og pratiques\fg{} pour compenser le paramétrage des autres types de parmètres, comme dans l'exemple du modèle gravitaire (\cref{enc:param-gravitaire}).
+Si de nouvelles connaissances viennent pousser à modifier un paramètre de contexte par exemple (comme le paramètre de frein de la distance $\alpha$), on peut espérer parvenir à compenser cette variation, sur les sorties, en modifiant un paramètre technique ($k$ dans le modèle gravitaire) en conséquence.
+
 Le cas des \textbf{paramètres de mécanisme} est plus emblématique du processus de paramétrage : ils reposent sur des ordres de grandeur plus incertains, et leur valeur peut donc assez librement être modifiée.
 Lors du paramétrage, il faut naturellement s'assurer de ne pas les faire varier en dehors des intervalles définis empiriquement, mais ils se prêtent très bien à des ajustements manuels.
 On peut ainsi sans crainte procéder à des modifications successives, par allers-retours entre l'évaluation des sorties du modèle et le changement de valeur de ces paramètres.
 On pourra de cette manière figer, temporairement -- en attendant de nouveaux ajustements dus au paramétrage d'autres paramètres --, des valeurs dont l'effet combiné sera plus satisfaisant sur le déroulement et l'aboutissement des simulations.
 
-Les \textbf{paramètres techniques}, enfin, sont les candidats les plus évidents au paramétrage, et plus spécifiquement à sa composante de calibrage.
-Puisqu'ils ne reposent sur aucune connaissance empirique, ils constituent ainsi les \og leviers\fg{} naturels sur lesquels on pourra mener le paramétrage, y compris de manière automatisée pour ces paramètres dont on peut faire varier les valeurs de plusieurs ordres de grandeur sans conséquence conceptuelle ou empirique sur le modèle.
-Comme dans l'exemple du paramétrage du modèle gravitaire (\cref{enc:param-gravitaire}), la modification de ces paramètres est extrêmement pratique pour compenser le paramétrage des autres types.
-Ainsi, si de nouvelles connaissances viennent pousser à modifier un paramètre de contexte par exemple (comme le paramètre de frein de la distance $\alpha$), on peut espérer parvenir à compenser cette variation, sur les sorties, en modifiant un paramètre technique ($k$ dans le modèle gravitaire) en conséquence.
-
 Rappelons aussi, comme indiqué lors de la définition (\cref{sssec:definition-parametrage}), qu'en dehors des valeurs des paramètres, le paramétrage est aussi l'occasion de modifier, d'une manière modérée, le détail de l'implémentation de certains mécanismes.
 
+\paragraph{Historique de SimFeodal.}\label{par:historique-versions-simfeodal}
 
-\paragraph{Historique de SimFeodal.}
-
-Dans les paragraphes précédent, de la même manière que dans le \hl{chapitre 2}, nous avons plusieurs fois mentionné les versions et sous-versions de SimFeodal.
+Tout au long de cette thèse, nous avons souvent mentionné les versions et sous-versions de SimFeodal.
 Il nous paraît important ici de les exposer (\cref{tab:historique-versions-simfeodal}) ainsi que de décrire la logique de leur distinction.
 
 \input{chap3-4/img/tableau_versions_simfeodal}
 
-À partir de la version \og 2\fg{} de SimFeodal\footnote{
-	Dans le \cref{tab:historique-versions-simfeodal}, on peut remarquer que les sous-versions ne sont pas dénombrées pour la version 0.
-	Si le code était bien historisé à l'époque, la logique de versionnement n'était pas encore véritablement à l'œuvre.
-	
-	\noindent La version 0 est marquée par une forte instabilité et par de très fréquents changements.
-	On notera d'ailleurs qu'il n'y a pas de version 1.
-	En effet, si la version 0 est la première version \og complète\fg{} du modèle, c'est-à-dire intégrant tous les agents et mécanismes identifiés pour le modèle conceptuel, c'est la version 2 qui est la première a avoir été un tant soit peu satisfaisante du point de vue de l'évaluation.
-}, nous avons partiellement suivi les règles de \og versionnement sémantique\fg{}\footnote{
-\og \textit{Semantic versioning}\fg{} ou \og SemVer\fg{}, voir \href{https://semver.org/}{https://semver.org/}.
-}, c'est-à-dire la numérotation des versions selon une logique de \og VersionMajeure.SousVersion.Patch\fg{}.
+À partir de la version \og 2\fg{} de SimFeodal nous avons partiellement suivi les règles de \og versionnement sémantique\fg{} (ou \og SemVer\fg{}\footnote{
+	\og \textit{Semantic versioning}\fg{}, voir \href{https://semver.org/}{https://semver.org/}.
+}), c'est-à-dire la numérotation des versions selon une logique de \og VersionMajeure.SousVersion.Patch\fg{}.
 
-On différencie ainsi des versions selon leur rétro-compatibilité, notamment au niveau de leurs sorties : entre la version 5 et la version 6 de SimFeodal, on retrouve de très nombreuses modifications du code (paramètres, mécanismes, sorties), mais le passage à la version 6 occurre quand les paramètres sont renommés et que les données en sortie de la version 6 ne sont donc plus directement organisées de la même manière que celles de la version 5.
+On différencie ainsi des versions selon leur rétro-compatibilité, notamment au niveau de leurs sorties : entre la version 5 et la version 6 de SimFeodal, on retrouve de très nombreuses modifications du code (paramètres, mécanismes, sorties) qui sont organisées selon des versions 5.0, 5.0.1, 5.1, 5.1.1, etc.
+Le modèle passe à la version 6 quand les paramètres sont renommés et que les données en sortie ne sont donc plus directement organisées de la même manière qu'auparavant.
+Il y a alors rupture dans la rétro-compatibilité, et on passe de la version 5.1.2 à la version 6.0.
 
 Au sein de chaque version, on retrouve plusieurs sous-versions (appelées \og versions mineures\fg{} dans le modèle de versionnement SemVer), qui apportent toutes des changements suffisants pour justifier un changement de version (évolution de plusieurs paramètres et/ou mécanismes), mais dont la compatibilité avec les versions précédentes est totale.
 
 Au sein de ces sous-versions, on peut encore distinguer des \og sous-sous-versions\fg{} (\og \textit{patchs}\fg{} en SemVer), qui concernent cette fois des modifications plus restreintes.
-Dans l'évolution de SimFeodal par exemple, les sous-sous-versions correspondent à différents essais de changement de paramètres que nous ne sommes pas certains de conserver par la suite.
+Dans l'évolution de SimFeodal par exemple, les sous-sous-versions correspondent à différents essais de changement de paramètres qui s'inscrivent dans la démarche d'essais-erreurs définie auparavant.
+Ces sous-sous-versions ne constituent donc pas nécessairement une étape supplémentaire dans l'évolution \og linéaire\fg{} du modèle : les sous-sous-versions 5.0.1 et 5.0.2 sont concurrentes et correspondent à des essais.
+L'itération suivante du modèle (la version 5.1 par exemple) pourra s'appuyer sur n'importe laquelle de ces sous-sous-versions, par exemple la 5.0.1 plutôt que la 5.0.2.
 
 Au niveau de la granularité la plus fine enfin, chaque version, sous-version et sous-sous-version est composée de \og \textit{commits}\fg{}, c'est-à-dire d'enregistrements historisés du code du modèle à un instant \textit{t}.
 Ces \textit{commits} contiennent un intitulé qui renseigne sur le contenu des modifications apportées, et surtout, ils intègrent une liste précise de ces modifications : les modifications de chaque ligne (de chaque fichier) modifiée sont ainsi conservées.
@@ -1785,31 +1796,50 @@ Souvent, les \textit{commits} de SimFeodal \footnote{
 	Il y en a plus de 400 à l'approche du rendu de ce travail, consultables dans le dépôt logiciel de SimFeodal :\\
 	\faGithub~ \href{https://github.com/SimFeodal/SimFeodal/commits/master}{https://github.com/SimFeodal/SimFeodal/commits/master}
 } sont \og atomiques\fg{}, c'est-à-dire qu'ils ne contiennent et ne documentent qu'un seul changement : paramètre modifié, modification d'un mécanisme, ajout d'une expérience\ldots
-Cette atomicité n'est pourtant pas constantes, et un \textit{commit} peut contenir des centaines de modifications aussi bien qu'une seule.
+Cette atomicité n'est pourtant pas constante, et un \textit{commit} peut contenir des centaines de modifications aussi bien qu'une seule.
 
-Cette forte hétérogénéité des \textit{commits} renforce un dernier point qui nous paraît important.
-L'énumération menée dans cette thèse des versions, des sous-version ou encore de tout changement du modèles, est exprimée selon un ordre chronologique, organisées au sein de la hiérarchie des versions, sous-versions et patchs.
+Cette forte hétérogénéité des \textit{commits} met en évidence un dernier point qui nous paraît important.
+L'énumération menée dans cette thèse des versions, des sous-version ou encore de tout changement du modèles, est exprimée selon un ordre chronologique, organisé au sein de la hiérarchie des versions, sous-versions et patchs.
 Pour autant, comme indiqué dans le \hl{chapitre 1}, la réalité de la construction d'un modèle, qui plus est dans un contexte exploratoire et collectif, ne peut s'inscrire nettement dans cette linéarité et dans cet emboitement de versions.
 Le paramétrage et la construction d'un modèle, et du nôtre en particulier, représentent en effet un travail constant d'allers-retours entre l'identification et la résolution de problèmes.
-Par conséquent, la structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie organisée présentée dans le \cref{tab:historique-versions-simfeodal}.
-Par exemple, dans les faits, une sous-version 5.3 peut avoir précédé la sous-version 5.1.
-Ce qui est ici présenté résulte d'une certaine ré-organisation ou re-construction narrative de l'évolution réelle de SimFeodal.
+Par conséquent, la structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie reconstruite visible dans le \cref{tab:historique-versions-simfeodal}.
+De la même manière que la version 5.1 pouvait être basée sur la 5.0.1 plutôt que que la 5.0.2, la version 6.3 peut correspondre à une amélioration de la version 6.1, sans ré-utilisation de ce qui avait été modifié en 6.2.
 
 \paragraph{Exploration de l'évolution d'un modèle exploratoire.}
 
-Afin d'appuyer notre discours relatif à la nécessité de mener l'évaluation et le paramétrage de manière continuelle et systématique à l'évolution d'un modèle de simulation, il nous a semblé approprié d'illustrer ce discours autour de l'analyse de l'évolution d'un modèle de simulation.
+Afin d'appuyer notre discours relatif à la nécessité de mener l'évaluation et le paramétrage de manière continuelle et systématique, il nous a semblé approprié d'illustrer ce discours autour de l'analyse \textit{a posteriori} de l'évolution d'un modèle de simulation.
 Le cas de SimFeodal, modèle exploratoire, nous semble tout à fait convenir à une telle analyse exploratoire.
 
-Le travail de qualification de chaque modification du modèle réalisé pour la \cref{fig:comits-periodes} étant difficilement extensible à l'ensemble des \textit{commits} de SimFeodal (la figure en présente une centaine, à relativiser vis-à-vis des plus de 400 existants pour lesquels il aurait été nécessaire, de manière systématique, de regarder le contenu et de le catégoriser manuellement entre modifications de paramètres, de mécanismes, d'expériences, etc.), il nous a toutefois semblé intéressant d'en mener une analyse plus naïve et exploratoire.
+Le travail de qualification de chaque modification du modèle réalisé pour la \cref{fig:comits-periodes} était difficilement extensible à l'ensemble des \textit{commits} de SimFeodal\footnote{
+	La \cref{fig:comits-periodes} résulte de la classification manuelle d'une centaine de \textit{commits}.
+	Pour chacun, il a été nécessaire d'en regarder le contenu a posteriori, de vérifier les mécanismes affectés, les paramètres ajoutés, modifiés, renommés, etc.
+	A la date de la version 6.5 du modèle, l'historique de versionnement est composé de plus de 400 commits, et il aurait donc été nécessaire de reproduire ce travail méticuleux et coûteux en temps sur plus de 300 \textit{commits} supplémentaires.
+}.
+Il nous cependant semblé intéressant et innovant, de mener une analyse exploratoire, moins détaillée (sans catégoriser manuellement chaque \textit{commit}) mais plus étendue, de l'évolution du modèle SimFeodal sur la durée complète, de plus de 5 ans, de son cycle de co-construction.
 
 Pour mener cette analyse, nous avons analysé de manière automatique chacun des \textit{commits} de SimFeodal, en observant, pour chacun, le nombre de lignes de code qui avaient été modifiées.
-Un changement d'une ligne de code, par exemple, correspond souvent à la modification de valeur d'un paramètre, alors que la modification d'un mécanisme entraîne le changement d'une dizaine à une cinquantaine de lignes.
+Un changement d'une ligne de code, par exemple, correspond souvent à la modification de la valeur d'un paramètre, alors que la modification d'un mécanisme entraîne le changement d'une dizaine à une cinquantaine de lignes.
 Pour ne pas biaiser l'analyse avec les changements de la documentation du modèle, ou encore avec les fichiers relatifs à l'exécution d'expériences, nous n'avons conservé que les changements de code effectués dans les fichiers relatifs au cœur du modèle.
 
-Le \textit{commit} est une unité \og atomique\fg{} mais pas nécessairement homogène, comme dit plus haut, et à ce titre, il arrive souvent qu'un \textit{commit} soit suivi rapidement après d'un second, voir d'un troisième \textit{commit} venant en corriger un tout petit aspect (faute de syntaxe dans le code, oubli de répercussion d'une modification dans les sorties\ldots).
+Le \textit{commit} est une l'unité \og atomique\fg{} du versionnement, mais n'est pas nécessairement homogène pour autant, comme indiqué précédemment.
+A ce titre, il arrive souvent qu'un \textit{commit} soit suivi rapidement après d'un second, voir d'un troisième \textit{commit} venant en corriger un tout petit aspect (faute de syntaxe dans le code, oubli de répercussion d'une modification dans les sorties\ldots).
 Nous avons donc aussi agrégé ces \textit{commits} à l'échelle de la journée, en considérant que les commits d'une même journée de travail formaient un ensemble cohérent.
+On aurait aussi pu agréger les commits sur une période plus longue, par exemple de deux ou trois jours.
+Cela correspond dans les faits plus souvent au temps réel d'implémentation ou de test d'une changement dans le modèle.
+Cette durée représente cependant aussi celle des sessions de travail collectif avec l'ensemble des concepteurs de SimFeodal, sessions pendant lesquelles l'activité est plus intense et le nombre de changements et d'allers-retours aussi.
+L'agrégation à la journée nous a ainsi semblé la moins biaisée.
+C'est un raccourci assez important, sans doute peu adapté pour de nombreux \textit{commits}, mais cela nous paraît utile d'une part pour diminuer le nombre d'éléments à analyser, et d'autre part pour diminuer la part des \textit{commits} négligeables correspondant aux oublis et corrections décrits auparavant.
 
-On a ensuite caractérisé le contenu de ces agrégations de \textit{commits} journaliers en mesurant la taille médiane (en nombre de lignes de code modifiées) et la somme de ces modifications pour chaque jour.
+On a ensuite caractérisé le contenu de ces agrégations de \textit{commits} journaliers en mesurant la taille médiane (en nombre de lignes de code modifiées) et la somme de ces modifications pour chaque jour (total des nombres de lignes de codes modifiées).
+La \cref{fig:methodo-agreg-commits} présente un exemple de ces agrégations.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.75\linewidth]{img/tableau_exemple_commits.pdf}
+	\caption[Méthodologie d'agrégation des \textit{commits}.]{Méthodologie d'agrégation des \textit{commits}.}
+	\label{fig:methodo-agreg-commits}
+\end{figure}
+
 La somme des modifications étant par nature d'un ordre de grandeur bien plus élevé que la médiane\footnote{
 	Le changement médian maximal représente un changement de 300 lignes de codes, alors que la somme concerne, elle, plus de 1500 lignes\ldots
 }, on a normalisé (réduction sans centrage) les valeurs afin qu'elles soient comparables graphiquement.
@@ -1817,9 +1847,6 @@ La \cref{fig:explo-edits-code} est une représentation de cette analyse\footnote
 	Dans cette figure, les modifications regroupées dans l'accolade \og B\&C\fg{} correspondent aux phases B et C identifiées dans la  \cref{fig:comits-periodes}.
 }, qui permet de visualiser le \og rythme\fg{} des changements de SimFeodal et d'en tirer quelques remarques.
 
-%\begin{center}
-%	\hl{Les paragraphes suivants (+conclusion) constituent la suite et fin du chapitre et n'étaient pas présents dans la version imprimée.}
-%\end{center}
 
 \begin{figure}[H]
 	\includegraphics[width=1\linewidth]{img/explo_edits_code_clean.pdf}
@@ -1838,22 +1865,23 @@ Certains pics correspondent aussi à des moments de production de \og livrables\
 
 À un niveau d'observation plus fin, on peut noter, aussi bien sur la somme des modifications que sur leur médiane, que les pics principaux sont le plus souvent précédés par une augmentation de la taille et de la quantité totale de modifications, puis suivis d'une diminution de ces deux indicateurs.
 Sur le plan \og temporel\fg{}, cela correspond aux phases de préparation des réunions, faite de petites explorations locales du comportement du modèle en vu de l'adapter, puis aux phases collectives résultant sur des choix de modifications plus importantes, modifications ensuite ajustées et finalement validées, jusqu'à la réunion suivante.
+Cette figure donne ainsi à voir un aperçu concret du processus de co-construction qui a été privilégié dans notre groupe de travail.
 
 Sur le plan conceptuel, cela correspond à différentes phases de construction du modèle : les modifications qui précèdent les changements de version sont d'abord assez modérées, en médiane comme en somme.
 Cela correspond à du paramétrage assez modéré, portant sur la modification marginale de quelques valeurs de paramètres.
 À mesure que la taille des \textit{commits} augmente, ces modifications sont de plus en plus importantes, et consistent ainsi à l'ajustement de plus de paramètres, à la modification plus fréquente de détails de mécanismes, etc.
 
-Les changements de version résultent le plus souvent d'une insatisfaction vis-à-vis de l'aboutissement de ces phases de paramétrage : même en poussant le paramétrage, même en menant un calibrage approfondi on ne parvient pas à obtenir un modèle assez satisfaisant.
+Les changements de version résultent le plus souvent d'une insatisfaction vis-à-vis de l'aboutissement de ces phases de paramétrage : même en poussant le paramétrage, même en menant un calibrage approfondi on ne parvient pas à obtenir des résultats de simulation assez satisfaisants.
 Il est alors nécessaire de revenir sur le modèle conceptuel et son implémentation (flèches grises de la \cref{fig:etapes-modelisation}), et donc de mener des modifications plus conséquentes, par exemple en transformant véritablement le fonctionnement de certains mécanismes.
 Les mécanismes étant modifiés, avec ajout ou suppression de paramètres par exemple, la rétro-compatibilité des sorties du modèle n'est plus assurée\footnote{
 	Sans même considérer d'ajout/suppression de paramètre, les modifications du sens et de l'utilisation effective de certains paramètres peuvent rendre leurs valeurs non comparables avec celles des versions précédentes.
 }, et l'on change alors de version.
 
 Après ces changements de version, la taille des modifications diminue, jusqu'à atteindre des niveaux très faibles : la somme des modifications devient négligeable (à mi-chemin entre les versions 4 et 5 dans la \cref{fig:explo-edits-code} par exemple)  et la médiane des \textit{commits} est elle aussi très faible.
-Cela correspond exactement aux phases de paramétrages qui suivent les changements majeurs : le nombre de changements diminue, jusqu'à aboutir sur des modifications difficilement discernables qui correspondent au calibrage.
+Cela correspond exactement aux phases de paramétrages qui suivent les changements majeurs : le nombre de changements diminue, jusqu'à aboutir à des modifications difficilement discernables qui correspondent au calibrage.
 Dans cette étape, seules une ou deux lignes de code changent en général, ce qui correspond aux modifications d'une valeur de paramètre.
 
-On retrouve donc dans cette figure, et donc dans l'évolution effective de SimFeodal, l'ensemble des étapes décrites dans ce chapitre.
+On retrouve donc dans cette figure, et dans l'évolution effective de SimFeodal, l'ensemble des étapes décrites dans ce chapitre.
 Des phases de construction et d'évaluation se succèdent, avec à chaque fois un travail de paramétrage, parfois suivi de nouvelles phases d'implémentation voire de conception.
 On notera aussi que les versions sont assez visibles sur ce graphique, correspondant aux pics principaux, de même que les sous-versions, où les pics sont plus modérés : entre la version 6 et la fin du graphique (version 6.6), on arrive même sans difficulté à identifier chacune des sous-versions intermédiaires (6.1, 6.2\ldots).
 
@@ -1862,21 +1890,23 @@ On notera aussi que les versions sont assez visibles sur ce graphique, correspon
 Avec cette analyse exploratoire et l'exercice d'interprétation qui l'accompagne, nous avons voulu illustrer d'une part le processus de paramétrage mis en œuvre dans le modèle SimFeodal, mais surtout, d'autre part appuyer notre proposition de démarche de co-construction de modèles.
 Qui plus est dans un contexte interdisciplinaire, l'évolution du modèle ne peut ainsi passer que par des allers-retours fréquents entre son évaluation et sa modification.
 
-Le paramétrage, et notamment sa composante de calibrage, ne peut dès lors être réduit à un exercice ultime et unique, qui viserai à \og finaliser\fg{} un modèle avant son emploi.
-Au contraire, l'application fréquente et régulière de phases d'évaluation et de paramétrage permet de garantir que les différentes pistes de modélisation explorées sont bien comparables, car justement comparées sur des versions aussi finement ajustées que possible à chaque fois.
-
 \section*{Conclusion}
 \label{sec:chap3-conclu}
 \addcontentsline{toc}{section}{Conclusion}
 
-Dans ce chapitre, nous avons présenté et proposé une approche originale en matière d'évaluation de modèle de simulation à base d'agents, l'évaluation visuelle, qui nous paraît très adaptée à l'évaluation de modèles exploratoires construits dans un contexte interdisciplinaire.
-En proposant une évaluation basée sur la multiplication des points de vue, au moyen de nombreux indicateurs de sortie, nous pensons en effet que les différents acteurs de la modélisation peuvent chacun observer et analyser les points qui relèvent de leur expertise thématique propre.
-La mise en place d'une grille d'évaluation, a priori, et la hiérarchisation des critères permet de plus de garantir une vision globale de la capacité d'un modèle à produire et faire émerger les faits stylisés que l'on cherche à modéliser au sein d'une approche générative.
+Le paramétrage, et notamment sa composante de calibrage, ne peuvent être réduit à un exercice ultime et unique, qui viserai à \og finaliser\fg{} un modèle avant son emploi.
+Au contraire, l'application fréquente et régulière de phases d'évaluation et de paramétrage permet de garantir que les différentes pistes de modélisation explorées sont bien comparables, car justement comparées sur des versions aussi finement ajustées que possible à chaque fois.
+
+Dans ce chapitre, nous avons présenté et proposé une approche originale pour mener ces phases d'évaluation d'un modèle de simulation à base d'agents.
+Cette approche, que nous nommons évaluation visuelle, nous paraît très adaptée à l'évaluation de modèles exploratoires construits dans un contexte interdisciplinaire.
+L'évaluation visuelle propose une évaluation basée sur la multiplication des points de vue, au moyen de nombreux indicateurs de sortie.
+Nous pensons en effet que l'apport des différents acteurs de la modélisation, chacun avec son expertise thématique propre, permet une évaluation approfondie d'un modèle et que cette étape participe pleinement de la dimension heuristique de la modélisation.
+La mise en place d'une grille d'évaluation, \textit{a priori}, et la hiérarchisation des critères permet de plus de garantir une vision globale de la capacité d'un modèle à produire et faire émerger les faits stylisés que l'on cherche à modéliser au sein d'une approche générative.
 
 La forte profusion et diversité des indicateurs de sortie identifiés constitue de plus une aide précieuse au paramétrage d'un modèle : en multipliant les perspectives d'analyse des sorties d'un modèle, on facilite l'identification des mécanismes les moins satisfaisants.
 Avec des rapports détaillés sur le comportement d'un modèle, il est ainsi plus aisé de déterminer les composantes du modèle qui doivent être améliorés.
 C'est un avantage indéniable face à l'utilisation d'un indicateur quantifié unique, qui requerrait un passage systématique par une exploration globale de l'influence des paramètres et mécanismes.
-L'évaluation visuelle que nous proposons dans ce travail permet donc de faciliter, sur un plan conceptuel, le paramétrage, et avec lui les connaissances de chacun des membres impliqués dans la modélisation.
+L'approche d'évaluation, visuelle, que nous proposons dans ce travail permet donc de faciliter, sur un plan conceptuel, le paramétrage, et avec lui les connaissances de chacun des membres impliqués dans la modélisation.
 
 Nous avons toutefois aussi identifié le besoin impératif de mener cette étape de paramétrage aussi fréquemment que possible, à chaque modification du modèle.
 Cela implique la nécessité de mener tout aussi fréquemment une évaluation du modèle, car c'est par les allers-retours entre l'évaluation et le paramétrage que le modèle progresse.
