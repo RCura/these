@@ -1,0 +1,54 @@
+%% Please add the following required packages to your document preamble:
+%
+%\documentclass[10pt, a4paper, oneside, notitlepage]{article}
+%\usepackage{graphicx}
+%\usepackage[utf8]{inputenc}
+%\usepackage[french]{babel}
+%\usepackage[babel=true]{csquotes}
+%\pagestyle{empty}
+%
+%\usepackage{array}
+%\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+%\newcolumntype{N}{@{}m{0pt}@{}}
+%\usepackage{makecell}
+%\usepackage{array}%
+%\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+%
+%
+%\usepackage{tikz}
+%\usetikzlibrary{calc,arrows}
+%
+%\newcommand{\tikzmark}[1]{%
+%	\tikz[overlay,remember picture] \node (#1) {};}
+%
+%\begin{document}
+\begin{table}[H]
+\raggedleft 	
+\resizebox{.85\textwidth}{!}{%
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{N|P{3cm}|M{2.5cm}|M{2cm}|M{3cm}|M{3.5cm}|M{3.5cm}|N}
+	\hline
+ & \multirow{2}{=}{\centering \textbf{Intitulé}} & \multicolumn{2}{c|}{\textsc{\textbf{Données}}} & \multicolumn{2}{c|}{\textsc{\textbf{Indicateurs}}} & \multirowcell{2}{\textit{\textbf{Type de question}}} \\ \cline{3-6}
+\tikzmark{hautgauche} & & \textbf{Quantité} & \textbf{Poids} & \textbf{Type} & \textbf{Quantité} & \\ \hline
+\tikzmark{a} & Un agent & \makecell{1 ligne} & $\approx$ 200 octets & Visualisation en direct & Attributs de l'agent & \textit{Le comportement individuel des agents semble-t-il plausible ?} &\\ \hline
+\tikzmark{b} & Un pas de temps & \makecell{5 000\\lignes} & $\approx$ 1 Mo & Visualisations en direct & 3-4 indicateurs directs & \multirow{2}{=}{\centering \textit{Le déroulé d'une simulation semble-t-il correct ?}} & \\ \cline{1-6}
+\tikzmark{c} & Une simulation & \makecell{100 000\\lignes} & $\approx$ 20 Mo & Visualisations en direct & $\approx$ 10 indicateurs & \\ \hline
+\tikzmark{d} & Une expérience & 2 millions de lignes & $\approx$ 400 Mo & Indicateurs de sortie &  $\approx$ 30 indicateurs (variabilité des réplications) & \textit{Quel est le comportement agrégé du modèle ?} &\\ \hline
+\tikzmark{e} & Un modèle paramétré ou calibré & 100 millions de lignes & $\approx$ 10 Go & Indicateurs de sortie &  $\approx$ 3000 indicateurs (à comparer entre les expériences) & \textit{Peut-on obtenir un meilleur ajustement du modèle ?} &\\ \hline
+\tikzmark{f} & \makecell{Un modèle\\exploré/connu} & 10 milliards de lignes & $\approx$ 1 To & Indicateurs numériques synthétiques & --- & \textit{Comment le modèle réagit-il aux variations de ses paramètres ?} &\\ \hline
+
+\end{tabular}%
+\begin{tikzpicture}[overlay,remember picture]
+\node[below left] at (hautgauche.north west) {\makecell{\textbf{Facteur} \\ \textbf{multiplicatif}}};
+\draw[->, >=latex', bend right=90, thick, dashed] (a.west) to node[pos=.55, left, align=right, xshift=0pt]{×5000 \\ {[agents]}} (b.west) ;
+\draw[->, >=latex', bend right=90, thick, dashed] (b.west) to node[pos=.55, left, align=right, xshift=0pt]{×20 \\{[pas de temps]}} (c.west) ;
+\draw[->, >=latex', bend right=90, thick, dashed] (c.west) to node[pos=.55, left, align=right, xshift=0pt]{×20 \\ {[réplications]}} (d.west) ;
+\draw[->, >=latex', bend right=90, thick, dashed] (d.west) to node[pos=.55, left, align=right, xshift=0pt]{×25 \\ {[expériences]}} (e.west) ;
+\draw[->, >=latex', bend right=90, thick, dashed] (e.west) to node[pos=.55, left, align=right, xshift=0pt]{×100 \\ {[explorations]}} (f.west) ;
+\end{tikzpicture}
+}}
+\caption[Multiplication des données et indicateurs selon la hiérarchie des simulations.]{Synthèse des questionnements liés à l'exploration de données issues de modèle et de la multiplication des données et indicateurs selon la hiérarchie des simulations.}
+\label{tab:tab-accroissement}
+\end{table}
+%
+%\end{document}

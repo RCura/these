@@ -16,5 +16,6 @@ find . \( \
 	-name "*.lot" -o \
 	-name "*.encadre" -o \
 	-name "*.listencadres" -o \
+	-name "*.bcf" -o \
 	-name "*-blx.bib" \
 	\) -type f -delete

@@ -1,1 +1,0 @@
-suppressWarnings(library(tidyverse));read_csv("analyse_sensibilite_nb_tirages_chateaux_gs.csv") %>% select(-seed_sensib, -sim_name, -annee_sensib, -nb_fp, -sensibility_parameter) %>% group_by(sensibility_value) %>% {. ; print(tally(.)) ; .} %>%summarise_all(~mean(.,na.rm = TRUE)) %>% print(., width = 500)
