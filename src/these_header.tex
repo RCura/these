@@ -3,8 +3,17 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[left=1.5cm, right=5cm, bottom = 1cm, top = 2cm, headheight=16pt,
-headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
+%%%% REPRISES %%%%
+\usepackage[left=2cm, right=5cm,
+bottom = 2cm, foot = 3cm, footskip = 1cm,
+top = 2cm, headsep = .5cm
+]{geometry}
+%%%% FINAL %%%%
+%\usepackage[left=2.5cm, right=3.5cm,
+%bottom = 2cm, foot = 3cm, footskip = 1cm,
+%top = 2cm, headsep = .5cm
+%]{geometry}
+
 \setlength{\marginparwidth}{4.5cm}
 
 \usepackage{marginnote}
@@ -39,18 +48,33 @@ headsep = 0.5cm, foot = 16pt, footskip = 0.5cm]{geometry}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 
-%\renewcommand{\chaptermark}[1]{%
-%	\ifnum\value{chapter}>0
-%	\markboth{Chapter \thechapter{}: #1}{}%
-%	\else
-%	\markboth{#1}{}%
-%	\fi}
-
-\fancyhead[L]{Chapitre \thechapter}
+%\fancyhead[L]{Chapitre \thechapter}
 \fancyhead[C]{}
-\fancyhead[R]{\rightmark}
+\fancyhead[R]{}
+\fancyhead[L]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\fancyfoot[LO]{\thepage}
+\fancyfoot[RE]{\thepage}
+%\fancyhead[R]{\nouppercase{\rightmark}}
+
+
+
+\newcommand{\FancyNotChapter}[1]{%
+	\fancyhead[LO]{\textsc{#1}}
+}
+\newcommand{\FancyChapter}[0]{%
+	\fancyhead[LO]{\makebox[\linewidth][s]{\leftmark}}
+	\fancyhead[RE]{\textsc{\rightmark}}
+}
+
 
 \usepackage{epigraph}
+\setlength{\epigraphrule}{0pt}
+\setlength{\epigraphwidth}{0.85\textwidth}
+\renewcommand\textflush{flushepinormal}
+\renewenvironment{flushepinormal}{}{\vspace*{-\baselineskip}}
 
 \newcounter{savefootnote}
 \renewcommand{\thempfootnote}{\arabic{footnote}}%
@@ -264,11 +288,3 @@ sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 \makeatletter
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
-
-% ############ POUR QUE L'INTRO ET LA CONCLUSION NE SOIENT PAS DES CHAPITRES 0/N  ############
-\renewcommand{\chaptermark}[1]{%
-	\ifnum\value{chapter}>0
-	\markboth{Chapter \thechapter{}: #1}{}%
-	\else
-	\markboth{#1}{}%
-	\fi}
