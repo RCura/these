@@ -7,8 +7,8 @@
 
 \input{src/these_header.tex}
 
-\addbibresource{chap0-2-Intro/biblio-intro.bib}
-%\addbibresource{chap1/biblio-chap1.bib}
+%\addbibresource{chap0-2-Intro/biblio-intro.bib}
+\addbibresource{chap1/biblio-chap1.bib}
 %\addbibresource{chap2/biblio-chap2.bib}
 %\addbibresource{chap3/biblio-chap3.bib}
 %\addbibresource{chap4/biblio-chap4.bib}
@@ -17,9 +17,10 @@
 %\addbibresource{chap7-Conclusion/biblio-conclu.bib}
 
 \begin{document}
-%\setcounter{tocdepth}{1}
-%\setcounter{minitocdepth}{2}
-%\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+\setcounter{minitocdepth}{2}
+\setcounter{secnumdepth}{3}
+\faketableofcontents
 \dominitoc% Initialization
 
 % ############################################
@@ -45,9 +46,9 @@
 
 
 \mainmatter
-\include*{chap0-2-Intro/intro}
+%\include*{chap0-2-Intro/intro}
 \FancyChapter
-%\include*{chap1/chap1}
+\include*{chap1/chap1}
 %\include*{chap2/chap2}
 %\include*{chap3/chap3}
 %\include*{chap4/chap4}
