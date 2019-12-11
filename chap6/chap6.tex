@@ -4,16 +4,18 @@
 
 \chapter{Retours sur la co-construction et l'exploration d'un modèle en situation d'inter-disciplinarité}
 \label{chap:chap6}
+\vspace*{-2.5em}
 \begin{center}
-	{\large \hl{Version 2019-09-26}}\\
-	\textbf{N.B. : Ce chapitre 7 correspond à l'ancien chapitre 8 + éléments du 7.}
+	{\large \hl{Version 2019-12-11}}
 \end{center}
-
-
+\vspace*{-1em}
 \begin{itemize}
-	\item 07/09/2019 : Reprise plan et insertion parties tirées du chapitre 6 du manuel de modélisation ISTE
-	\item 12/09/2019 : ISTE beaucoup trop long : reprise du plan et on fera des références à ISTE
+	\item 26/09/2019 : fin 6.1 + envoi à Lena
+	\item 07/12/2019 : début 6.2
+	\item 11/12/2019 : fin 6.2 + envoi à Lena\\
+	 \hl{\faWarning~~La partie 6.1 n'a pas été reprise !~~\faWarning}
 \end{itemize} 
+\vspace*{-1em}
 \setcounter{minitocdepth}{2}
 \minitoc
 \clearpage
@@ -21,6 +23,10 @@
 
 \section*{Introduction}
 \addcontentsline{toc}{section}{\protect\numberline{}Introduction}
+
+\begin{center}
+	\hl{Repasser à la première personne dans ce chapitre, le justifier, et modifier la ndbp du chapitre 1 où je dis que c'est le seul chap où je le fais.}
+\end{center}
 
 Dans les chapitres précédents, nous avons décrit l'approche suivi pour la co-construction et l'évaluation du modèle SimFeodal.
 Il nous semble, en accord avec le positionnement exposé dans le chapitre 1, que cette démarche est porteuse quand effectuée de manière véritablement collective et interdisciplinaire, et, au moins dans le cas du groupe de travail constitué autour de SimFeodal, fructueuse.
@@ -357,11 +363,11 @@ Dans une temporalité ultérieure à celle du présent travail, un séminaire es
 Là encore, pour le dialogue interdisciplinaire et inter-régional, l'utilisation de représentations graphiques interactives comme interface entre les chercheurs présenterait sans doute les mêmes avantages discutés dans ce travail de thèse.
 
 
-\paragraph{Conclusion : Pour un recours systématique à la visualisation dans l'analyse de modèles}
+\subsection{Conclusion : Pour un recours systématique à la visualisation dans l'analyse de modèles}
 Dans cette partie, nous somme revenus sur les nombreux bénéfices que l'analyse exploratoire visuelle, largement reconnue vis-à-vis des données classiques, a pu apporter dans le cadre de notre expérience interdisciplinaire de conception et de développement de modèle, dont SimFeodal est est le résultat.
 Plus largement, ce retour d'expérience nous conforte dans l'idée que la modélisation pourrait profiter d'un recours plus systématique à l'analyse visuelle des données produites.
 Cela nous semble résonner d'autant plus dans le cas des modèles spatiaux tant la pratique de la représentation graphique est ancrée dans la culture disciplinaire des géographes.
-Nous ne pouvons pourtant, parallèlement, que constater la faiblesse de la production (carto)graphique dans le domaine de la modélisation \autocite[introduction, \ppno~N--N+2]{cura_visualisation_2020}, quand bien même les plateformes de simulation multi-agents rivalisent de possibilités en ce sens.
+Nous ne pouvons pourtant, parallèlement, que constater la faiblesse de la production (carto)graphique dans le domaine de la modélisation \autocite[Introduction]{cura_visualisation_2020}, quand bien même les plateformes de simulation multi-agents rivalisent de possibilités en ce sens.
 
 \noindent Afin d’encourager les modélisateurs à s’emparer de la question de la visualisation, nous avons montré que tout au long du cycle de développement d'un modèle, la visualisation peut aider le modélisateur et les spécialistes thématiciens qui l’entourent  :
 dès sa conception, en participant à la co-construction et au travail collaboratif (la visualisation comme interface interdisciplinaire, comme formalisme d'explicitation des composantes et sorties d'un modèle\ldots) ;
@@ -378,8 +384,8 @@ Donner les moyens aux géographes et, au delà, aux chercheurs en sciences humai
 \clearpage
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
-\section{Retours sur la co-construction et l'évaluation collective d'un modèle}
-\orisectionmark{Retours sur la co-construction et l'évaluation}
+\section{Retours sur la co-construction d'un modèle de simulation descriptif}
+\orisectionmark{Retours sur la co-construction d'un modèle de simulation descriptif}
 \let\sectionmark\orisectionmark
 
 Tout au long de ce travail de thèse, nous avons choisi de tenir -- et essayé de maintenir -- un positionnement réellement collectif et collaboratif.
@@ -388,66 +394,294 @@ Le travail de modélisation qui a abouti à SimFeodal a été initié au sein du
 Ce travail de modélisation n'est pas achevé : son cadre dépasse celui de la thèse, et des projets en cours voire à l'état d'initialisation sont encore prévus pour faire vivre ce modèle et la démarche qui en a animé la construction, l'évaluation et l'utilisation.
 Le rendu de ce manuscrit est l'occasion de réaliser un point d'étape dans ce processus de modélisation qui s'inscrit résolument sur la longue durée, relativement à l'échelle de la recherche.
 
-Ce point d'étape, présenté sous la forme d'un retour d'expérience structuré plutôt que chronologique, 
+Ce point d'étape, présenté sous la forme d'un retour d'expérience structuré plutôt que chronologique, me pousse à réaliser un bilan réflexif sur les conditions souhaitées mais aussi concrètement réalisées de construction du modèle SimFeodal.
 
-, nous pousse à réaliser un bilan réflexif sur les conditions souhaitées mais aussi concrètement réalisées de construction du modèle SimFeodal.
+Dans le \hl{chapitre 1} (1.4.1), j'ai présenté l'approche ComMod (Modélisation d'accompagnement) en identifiant ses différences avec la démarche que nous souhaitions emprunter dans cette expérience de modélisation collective.
+Les points de divergence présumés étaient notamment la volonté forte d'aller jusqu'au modèle implémenté dans notre projet, ce qui n'est pas systématiquement fait dans l'approche ComMod, de même que la séparation entre \og animateurs\fg{} et \og participants\fg{} dans l'approche ComMod, qui mène une distinction des rôles que nous souhaitions effacer dans un processus de co-construction.
+Dans cette partie, je reviens sur ces deux points de divergence prévus, en discutant de leur validité réelle \og \textit{a posteriori}\fg{}\footnote{
+	Cet \textit{a posteriori} est en fait temporaire, comme indiqué plus haut.
+} de cette expérience de co-construction de modèle.
+Dans un retour sur les deux premiers chapitres, qui présentaient SimFeodal comme un modèle exploratoire et descriptif et le justifiaient, je pourrai alors discuter du positionnement final du modèle, ce qui permettra aussi de revenir sur l'évolution de ce positionnement.
 
 
-\subsection{Co-construction d'un modèle complexe : un retour d'expérience critique}
+\subsection{Un retour d'expérience critique sur l'usage de modèles de simulation descriptifs : les limites de l'implémentation}
 
-\paragraph{Accompagnement à la modélisation et modélisation d'accompagnement}
+L'expérience constituée par ces nombreuses années de travail sur le modèle SimFeodal pourrait aller dans le même sens que l'approche ComMod, au regard des nombreuses limites qui me semblent désormais apparentes quant à l'utilité du modèle implémenté en lui-même.
+Dès le départ, nous avions fixé un rôle exploratoire au modèle, en en faisant avant tout un support à la pensée.
+Nous ambitionnions cependant de pouvoir tester les hypothèses thématiques, non pas pour les (in)valider, mais pour être en mesure de vérifier s'il était possible que ces hypothèses puissent être nécessaires et suffisantes pour reproduire les processus empiriques étudiés.
 
-- Rapide biblio sur démarche ComMod
-- Public différent
-- Approche comparable jusqu'au modèle implémenté : participation (faible mais rélle) au détail de certains mécanismes
-- Processus sur la longue durée à l'échelle de la recherche vs \og besoin/reponse/sensibilisation\fg{}
+\paragraph{Quel usage pour un modèle de simulation descriptif et exploratoire ?}
 
-\paragraph{Quelle prise en compte de l'hétérogénéité des pratiques et des besoins ?}
+Après coup, cette ambition ne me paraît pas entièrement -- ou pas encore -- satisfaite.
+Au delà de l'équifinalité, c'est-à-dire du fait qu'une infinité potentielle de modèles de toutes formes permettent de reproduire les mêmes données ou motifs, il me semble ainsi que le choix d'un modèle exploratoire et descriptif augmente les biais possibles quant à l'éventuelle utilisation d'un modèle en vue de prouver un phénomène.
+En effet, dans un modèle, chaque mécanisme peut être conçu, puis implémenté de plusieurs manières différentes.
+En multipliant les mécanismes, on augmente d'autant le nombre de solutions alternatives possibles, et on augmente exponentiellement le nombre de combinaisons potentielles résultants de ces alternatives possibles.
+Dans un modèle statistique, à mesure que l'on ajoute des variables, on augmente presque mécaniquement l'ajustement global du modèle aux données étudiées.
+Même sans ajouter de variables explicatives, on peut renforcer l'ajustement d'un modèle quelconque en en complexifiant la formulation.
+Par exemple, pour une même série de point que l'on chercherait à décrire par une régression polynomiale, plus le degré de ce polynôme augmente, plus l'ajustement est amélioré lui aussi.
+Est-ce pour autant que la variable explicative est plus valide qu'avec une régression polynomiale de degré 1, c'est-à-dire une régression linéaire ?
 
-- Des diagrammes sagitaux à des exemples précis de résultat : donner au thématicien ce qu'il veut et comprend
+Dans un modèle très stylisé où seuls quelques mécanismes sont présents, on est capable d'affirmer que la conjonction de ces mécanismes est un candidat potentiel à l'explication, voire d'éliminer d'autres candidats potentiels à l'explication.
+Dans un modèle plus descriptif, l'accumulation de choix me semble rendre plus difficile cette affirmation.
+Dans l'exemple de SimFeodal, on cherchait à pouvoir affirmer que la polarisation et la hiérarchie du système de peuplement pouvaient être expliquée par des dynamiques liées d'émiettement des pouvoirs, d'augmentation de la violence et d'augmentation de l'encadrement religieux.
+Dans l'état actuel du modèle, le risque est que ce soient les conditions particulières d'implémentation du modèle conceptuel, c'est-à-dire la somme des choix techniques d'implémentation, qui aboutissent en un modèle dont les résultats sont satisfaisants.
 
-\paragraph{Se positionner en modélisateur et en thématicien}
+\paragraph{Validité interne d'un modèle complexe.}
+Ce constat est aggravé par la nature complexe (en termes de complexité algorithmique) de l'implémentation informatique, qui en rend nécessairement l'évaluation interne plus difficile.
+Avec un modèle composé de plus de 2 000 lignes de code comme SimFeodal, le risque d'erreur -- méthodologiques ou techniques -- est infiniment plus important que sur un modèle-jouet composé de quelques dizaines de lignes de code.
+Lors du paramétrage de SimFeodal, de très nombreuses erreurs ont été détectées et corrigées : parfois le code ne correspondait méthodologiquement pas au mécanisme tel qu'il avait été défini, parfois, le choix de telle ou telle fonction informatique ne retournait pas le résultat décrit dans la documentation, parfois, un mécanisme était court-circuité par un autre, etc.
+Il est habituel, et presque attendu, qu'un programme informatique contienne des erreurs ou \textit{bugs}, mais en complexifiant ce programme, on augmente fortement ce risque d'erreur.
 
-- Cf. Arnaud : modélicien
+Ces erreurs sont le plus souvent de la responsabilité de ceux qui implémentent du modèle, mais parfois, elles dépendent aussi d'éléments difficiles à contrôler, telle que la présence d'erreurs au sein même des outils utilisés pour mener la modélisation.
+C'est un risque inhérent à l'utilisation de plateformes de modélisation \og de recherche\fg{} : les développeurs de ces outils sont tout autant susceptibles de commettre des erreurs d'implémentation que les modélisateurs.
+Ils en commettront sans doute moins proportionnellement qu'un géographe non informaticien, mais la complexité du code n'est pas du même ordre de grandeur non plus.
+La plateforme de simulation Gama, par exemple, repose sur plus de 500 000 lignes de code.
+Parmi celle-ci, la probabilité qu'il n'y ait aucune erreur est quasi-nulle, en dépit des très nombreux et réguliers \textit{commits} qui viennent justement corriger les \textit{bugs}.
+Une bonne partie de ces \textit{bugs} sont en fait peu dommageables dans le cas de SimFeodal, pouvant porter sur des fonctions que nous n'utilisons pas, ou sur des conjonctions de cas non rencontrés dans notre modèle.
+Pourtant, une erreur importante concernant l'ordonnancement des agents a été détectée et corrigée sur la plateforme Gama en mai 2016, qui était alors en version 1.7, c'est-à-dire jugée stable.
+Cette erreur, survenue entre les version 3 et 4 de SimFeodal (cf. \hl{tableau des versions}) a eu des conséquences majeures sur les résultats du modèle, et une large partie des expériences réalisées précédemment a du être ré-exécutée pour en vérifier les sorties une fois le \textit{bug} corrigé.
 
-\paragraph{Les limites de l'implémentation}
+Lors du passage du modèle conceptuel au modèle implémenté, il y a donc de fortes chances que des erreurs -- introduites lors de l'implémentation ou lattentes à la plateforme utilisée -- viennent invalider les résultats thématiques proposés à grâce au modèle.
+Même dans un modèle parfaitement implémenté, l'équifinalité face aux choix techniques d'implémentation peuvent aussi largement restreindre la qualité démonstrative du modèle : ce ne sont pas les hypothèses intégrées dans le modèle qui pourront constituer des candidats à l'explication thématique.
+Ces candidats à l'explication seront toujours dépendants de la manière dont le modèle est implémenté.
 
-- Logiciels de recherche, + équifinalité de l'implémentation + effets de bug + effets d'erreurs
+\paragraph{De l'importance de l'implémentation.}
+Ce bilan n'est pas pour autant véritablement négatif.
+Dans l'\hl{introduction générale}, je décrivais la simulation informatique comme un moyen de mener des expérimentations \textit{in silico} quand cela n'était pas possible \textit{in vivo}.
+L'écart entre les deux, surtout quand on modélise des processus sociaux (spatiaux ou non) me paraît au final assez faible en matière de capacité de démonstration.
+En expérimentation sociale, il est indispensable de chercher à identifier les biais potentiels d'une étude, et d'en estimer les effets pour parvenir à contrôler les paramètres d'une expérience.
+En simulation informatique, ces biais sont aussi présents, sous la forme d'erreurs potentielles, et il est tout aussi difficile de les contrôler qu'en sciences sociales expérimentales.
+Tous les biais décrits comme \og limites de l'implémentation\fg{} dans cette sous-partie me semblent donc au final assez banals et inhérents aux méthodes expérimentales, quel qu'en soit le support, informatique ou social.
 
-\subsection{Un modèle exploratoire, descriptif, générique, parsimonieux ?}
-\paragraph{Positionnement de SimFeodal dans une (Trans)Modélographie}
+Dans le cadre d'une démarche collective de modélisation, ces quelques limites ne remettent dans les faits aucunement en cause les principaux atouts introduits dans le \hl{chapitre 1}.
+L'implémentation informatique du modèle a nettement renforcé le besoin d'explicitation des hypothèses introduites.
+Plus le formalisme employé est précis et non ambigu (ce qui est le cas des formalismes informatiques et non des modèles \og rhétoriques\fg{} ou \og graphiques\fg{} évoqués dans l' introduction générale), plus son utilisation oblige à désambigüiser le discours.
+En allant jusqu'à l'implémentation informatique, nous avons collectivement été amenés à trancher des centaines de choix, à expliciter à de multiples reprises le contenu de chacun des nombreux mécanismes, et donc à élaborer ensemble une compréhension partagée de ce modèle, sur l'ensemble des domaines qui le caractérisent.
+De plus, un modèle de simulation descriptif est un outil dont la complexité permet aussi d'incessantes modifications, que ce soient des corrections ou des améliorations.
+Un tel modèle constitue ainsi un support à la discussion dont la \og durée de vie\fg{} me paraît supérieure à celle d'un modèle plus simple, parce que les possibilités de raffinement sont nombreuses, ce qui contribue à inscrire la réflexion collective autour du modèle dans la durée.
 
-- Exercice de positionnement dans axes Clara + dire qu'une démarche avait été entreprise mais abandonnée par manque de temps à l'approche de la fin de TransMonDyn.
+\subsection{Quelle part effective du collectif dans la conception et l'implémentation du modèle ?}
 
-\paragraph{Une trajectoire de modélisation complexe }
+Tout au long de cette thèse, j'ai insisté sur la dimension collective, de co-construction, qui a permis d'aboutir au modèle SimFeodal présenté dans ce manuscrit.
+On pourrait objecter, au regard des \textit{commits} du modèle, que seules deux personnes ont effectivement apporté des modifications dans le dépôt logiciel.
+En regardant plus en détail l'historique de ce dépôt, on pourrait même constater que Cécile \textsc{Tannier}, l'autre contributrice du dépôt, n'est intervenue \og que\fg{} dans de nombreuses modifications de la documentation du modèle.
+Le code-source de SimFeodal n'a donc été implémenté, en tant que telle, que par moi seul.
 
-- Évolutions du modèle : de + générique à + détaillé, puis - détaillé etc.
-- Exemple des règles et indicateurs liés aux lignages seigneuriaux
+Cela signifie-t-il pour autant que la volonté de co-construction globale, du modèle conceptuel jusqu'au modèle implémenté, n'a finalement pas été respectée ?
+Avant de répondre à cette question, je crois important de justifier la décision de cette implémentation mono-participante, qui pourrait largement accréditer la distinction entre \og participant\fg{} et \og animateur\fg{} (ou \og implémenteur\fg{}, voir \hl{chap1, section 1.1.4 p. 26}).
 
-\paragraph{Modèles et trajectoires dans un espace en \og fer à cheval\fg{}}
+\paragraph{Compétences spécifiques nécessaires pour l'implémentation d'un modèle de simulation.}
+Le développement informatique d'un modèle de simulation demande des compétences particulières.
+En premier lieu, des compétences méthodologiques, bien sûr, qui concernent la capacité à transcrire sous forme algorithmique les mécanismes et interactions exprimées dans un modèle conceptuel.
+Ces compétences sont l'une des caractéristiques attendues d'un \og modélisateur\fg{}, et assez répandues dans les sous-domaines quantitatifs des sciences humaines et sociales.
+En second lieu, au-delà de ces compétences méthodologiques, le développement d'un modèle de simulation requiert aussi des compétences techniques assez spécifiques et détaillées.
+Les algorithmes et fonctions doivent en effet nécessairement être \og implémentés\fg{}, informatiquement, dans un langage de programmation.
+Cette implémentation demande donc d'effectuer du \og développement informatique\fg{}, et à ce titre, exige la connaissance de ces langages de programmation.
+Dans le monde de la simulation à base d'agents, les différentes plateformes disponibles mobilisent de nombreux langages de programmation.
+Dans une étude globale, \textcite{kravari_survey_2015} montrent ainsi que sur les 24 plateformes analysées, on retrouve 14 langages de programmation différents \autocite[table 7, \S 4.3]{kravari_survey_2015}.
+Certains sont très génériques (Java, C/C++, Python, etc.), tandis que d'autres ont créés spécifiquement pour la plateforme de simulation correspondante (langage Logo pour NetLogo, langage GAML pour GAMA, etc.).
 
-- Discussion avec Arnaud + schéma résultant : le coût de transition entre les cadrants est-il plus important dans certains sens ? 
+Un modélisateur formé dans l'un de ces langages de programmation, et en particulier ceux spécifiques à la simulation multi-agents, aura indéniablement plus de facilités à en apprendre un autre, mais cela demande tout de même un apprentissage conséquent, le plus souvent réalisé en auto-formation.
+SimFeodal a été développé sur la plateforme GAMA, en langage GAML, qu'aucun des membres du projet ne maitrisait réellement.
+L'acquisition par tous les participants de la connaissance de ce langage aurait donc demandé un temps important et pas forcément utile au regard de l'enjeu du projet.
 
-\subsection{Construire et utiliser un modèle, deux approches et positions différentes}
-\paragraph{Modèle comme finalité, modèle comme apprentissage}
+\paragraph{Des compétences à entretenir et à développer.}
+En plus du coût temporel de formation initiale, l'utilisation d'une plateforme de simulation \og de recherche\fg{} requiert aussi une formation continue.
+De la même manière qu'un modèle évolue au fur et à mesure de ses versions, la plateforme de simulation sur laquelle le modèle est bâti évolue aussi.
+Pendant le développement de SimFeodal, par exemple, ce sont trois versions \og majeures\fg{} successives de Gama qui ont été employées (1.6, puis 1.7 et finalement 1.8).
+Chacune de ces versions apporte des améliorations qui permettent par exemple de gagner en performance, en stabilité, ou d'amener de nouvelles fonctions qui permettront une meilleure expressivité du code.
+On peut faire le choix de construire le modèle à partir d'une seule et unique version, quand bien même celle-ci serait obsolète au bout d'un moment, mais c'est se couper de toutes ces améliorations.
+Qui plus est dans un contexte où les nouvelles versions de la plateforme viennent corriger des erreurs latentes, et où l'on doit alors absolument mettre à jour ce logiciel.
 
-- On ressort l'argumentaire léna-esque habituel : enrichissement du à la formalisation et donc à l'explicitation.
--> En plus, apport de l'implémentation et de l'évaluation : il faut trancher, il faut (parfois) quantifier, 
+L'implémentation informatique d'un modèle, qui plus est quand elle s'inscrit dans la longue durée, demande alors un travail incessant de mise à jour, de correction et d'optimisation du code-source du modèle.
+Cela requiert à nouveau un coût temporel important de formation, de veille technologique, mais aussi de retours d'expériences aux développeurs de la plateforme, de rapports de \textit{bug} (\textit{issues}) et de demande d'améliorations (\textit{enhancements}), sans même aborder le temps nécessaire à l'implémentation effective.
+Même si, dans notre groupe de travail, Cécile \textsc{Tannier} s'est formée en Gama pendant le développement de SimFeodal, ou que Samuel \textsc{Leturcq} a suivi des formations MAPS pour apprendre le NetLogo, la participation effective à l'écriture du code de SimFeodal aurait ainsi demandé un temps important.
+Temps d'autant plus important si l'on considère que le développement collectif (par opposition au développement individuel) requiert encore d'autres compétences :
+	maîtrise d'outils collaboratifs (versionnement collaboratif par exemple), bonne connaissance du langage pour comprendre le code développé par les autres, et plus encore pour en comprendre l'intention et la logique d'organisation\ldots
+Ce dernier point est d'autant plus valide quand le modèle est déjà, initialement, complexe : le temps nécessaire à la compréhension du code augmente.
 
-\paragraph{Créateur et utilisateur : comment concilier des intérêts antagonistes ?}
+\paragraph{Une construction effectivement collective.}
+Pour autant, le développement collectif apporte un avantage indéniable en matière d'évaluation interne du modèle développé : en multipliant les points de vue sur le code, on multiplie d'autant les probabilités de débusquer les erreurs d'implémentation.
+Dans les faits, le regard extérieur que permet le développement collectif peut aussi être apporté par d'autres usages que la programmation en tant que telle.
+C'est par exemple au fondement de la méthode de validation interne du \og \textit{rubber duck}\fg{} \autocite{noauthor_methode_2019}, où l'on explique à un objet (un \og canard en plastique\fg{} classiquement) son code en le commentant ligne par ligne.
+L'objectif de cette oralisation du code est de le présenter d'une autre manière, et donc potentiellement d'y voir les erreurs qui auraient échappé à sa \og lecture\fg{}.
 
-- attaquer par visions classiquement opposées du thématicien demandant détail et de l'informaticien-modélisateur cherchant parsimonie.
-- Solution optimale est forcément intermédiaire : approche SimFeodal : pas linéaire, mais tout de même du détail vers la parsominie.
-- Opposée à approche inverse cf. RIN ATP (publi ?) de multi-modelling, = commencer par le plus simple et complexifier jusqu'à atteindre satisfaction des thématiciens
+Dans le cas de SimFeodal, et cela constitue un début de réponse à l'interrogation sur l'effectivité de la co-construction du modèle, nous avons trouvé oreille bien plus attentive en la personne de l'ensemble des participants au projet.
+De manière systématique, chacune lignes de code correspondant aux mécanismes du modèle ont été oralisées, explicitées et discutées, au moins par les deux \og modélisateurs\fg{} du groupe.
+Au-delà de cette vérification, la conception algorithmique de ces mécanismes en elle-même a été un travail véritablement collectif, toujours de la part des deux modélisateurs.
+La manière de concevoir et d'implémenter les mécanismes de SimFeodal résulte de décisions unanimes et fréquentes vis-à-vis de la meilleure manière de rendre compte des intuitions collectives, thématiciens compris.
+Les \textit{commits} du code, qui me sont tous attribués, ne représentent qu'un artéfact du travail effectif, artéfact biaisé par le fait que même en cas de décision collective en présentiel, c'est sur mon ordinateur qu'était écrit et enregistré le code du modèle.
 
-\paragraph{Des gains, certes, mais pour qui ?}
+La participation des thématiciens au modèle implémenté en lui-même est plus ténue, quoi que tout aussi réelle.
+D'une part, en cas de doute entre des mécanismes alternatifs possibles, ce sont le plus souvent eux qui ont tranché à partir de leur connaissance experte des phénomènes.
+D'autre part, comme dans la technique du \textit{rubber duck}, les mécanismes leur ont tous été décrits de manière précise, c'est-à-dire en explicitant leur contenu à partir du code-source, que ce soit verbalement ou à l'aide de représentation graphiques (schémas, diagrammes d'activité, etc.).
+Ces pratiques ont contribué à la validation interne (explicitation et multiplication des points de vue) autant qu'à la validation externe (par le jugement des thématiciens sur les détails d'implémentation du modèle) du modèle.
 
-- Question principale : quelle discipline/champ scientifique veut-on faire avancer ?
--> objectif théorique d'un projet interdisciplinaire : chacune des disciplines
 
-\paragraph{Conclusion : Modéliser avec et pour les autres}
-- rubber duck, \og gardien de la vérité éprouvée\fg{}, 
-- Objectifs collectifs + objectifs individuels pour chacun
+\paragraph{Un processus de co-construction inscrit dans la durée.}
+Au regard de cette expérience, il me semble donc que la volonté d'ensemble de co-construction du modèle, impliquant chaque membre du projet sur chacune de ses étapes, a été relativement respectée.
+Comme prévu dans le \hl{chapitre 1}, les \og thématiciens\fg{} ne sont pas devenus pour autant des experts en implémentation de modèle de simulation, et les \og modélisateurs\fg{} n'ont pas acquis l'ensemble des compétences disciplinaires de leurs collègues.
+La recherche d'une posture -- idéale -- de \og modélicien\fg{} (\textsc{Banos}, in \cite[484]{ouriachi_lelaboration_2017}) n'est pas complète, mais le temps long de ce processus de modélisation collective a toutefois permis à chacun de participer à chacune des phases de ce projet.
+Les thématiciens, qui ne sont pas les simples \og participants\fg{} de l'approche ComMod, ont ainsi fortement contribué à la construction en tant que telle du modèle implémenté, fournissant de plus de nombreux retours sur celui-ci.
+Il me semble que c'est justement ce temps long qui a permis la construction collective de SimFeodal, en laissant à chacun le temps de s'acclimater aux positions et demandes des autres.
+L'implication collective sur ce temps long, relativement au temps cours et parfois urgent de certaines expériences de modélisation dans un contexte de recherche-action, a elle été facilitée par l'organisation très horizontale qui a toujours caractérisé notre groupe de travail, horizontalité aussi autorisée par l'absence de besoins réels vis-à-vis de l'utilisation du modèle.
+Il n'y avait ainsi ni sensibilisation à un aléa, ni besoin de conciliation entre des acteurs, mais simplement une curiosité scientifique sur l'importance qu'un modèle de simulation pourrait constituer comme support à la pensée d'un ensemble de processus sociaux inscrits dans l'espace et la durée.
+En cela, l'expérience SimFeodal a effectivement été -- et continuera sans doute de l'être après le rendu de ce manuscrit -- mue par une démarche de co-construction profondément exploratoire et abductive, les résultats et discussions intermédiaires guidant la suite de l'évolution du modèle.
+
+\subsection{La trajectoire du modèle SimFeodal}
+
+La démarche exploratoire qui a guidé la co-construction de SimFeodal a aussi entrainé une forte évolution du modèle.
+Dans le \hl{chapitre 3} (3.3.2.3, tableau 3.1), j'ai déjà présenté l'historique des versions du modèle, de même qu'une analyse quantitative rétrospective de son mode de progression méthodologique.
+En allant au-delà du modèle implémenté, et donc d'une vision quantitative de cette évolution, il me semble intéressant de revenir sur la matérialisation de cette démarche exploratoire, que l'on peut retracer au travers de l'évolution du modèle sous-jacent au modèle implémenté, c'est-à-dire au niveau du modèle conceptuel.
+
+\paragraph{Référentiel de la trajectoire.}
+Pour décrire une trajectoire, il faut définir deux éléments : un référentiel et un point d'origine.
+Comme référentiel, on peut utiliser le cadre du \og fer à cheval\fg{}, développé par \textcite{banos2012vers} et explicité par les mêmes auteurs l'année suivante \autocite{banos2013modeliser}.
+Ce cadre vise à la représentation des modèles et de leurs trajectoires dans un référentiel constitué de deux axes.
+L'axe des abscisses est un gradient du \og niveau de simplification du modèle\fg{}, et s'étend de modèles jugés \og KISS\fg{} \autocite{}, c'est-à-dire très simplifiés, jusqu'aux modèles \og KIDS\fg{}, peu simplifiés \autocite[840-841]{banos2013modeliser}.
+L'axe des ordonnées correspond au \og niveau d'abstraction du phénomène empirique que l'on cherche à modéliser\fg{}, qui peut être résumé en \og phénomène particulier ou fait stylisé\fg{} \autocite[839-840]{banos2013modeliser}.
+Pour les auteurs, l'intersection de ces deux axes de description permet de positionner et de différencier les modèles de systèmes spatiaux.
+
+Pour illustrer l'usage de ce référentiel, le travail de \og modélographie\fg{} de \textcite{schmitt_modelographie_2013} constitue un bon exemple.
+Dans cet article, les autrices décrivent et comparent six modèles multi-agents géographiques qui simulent des interactions entre des sociétés et leur environnement spatial.
+Chacun des modèles est présenté selon une grille de description commune\footnote{
+	Les autrices justifient de ne pas utiliser le formalisme ODD \autocite[\S 5-6]{schmitt_modelographie_2013} et proposent une grille personnelle : \og contexte de recherche\fg{}, \og enjeux de modélisation\fg{}, \og dynamiques simulées\fg{} et \og sorties de simulations et résultats\fg{}.
+}, et l'un des aboutissements est notamment constitué par une comparaison graphique des modèles dans le référentiel du \og fer à cheval\fg{} (\cref{fig:modelographie}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.725\linewidth]{img/modelographie_fer-a-cheval.png}
+	\caption[Une \og classification des approches de modélisation\fg{} de modèles géographiques.]{Une \og classification des approches de modélisation\fg{} de modèles géographiques, mobilisée pour une approche \og modélographique\fg{}.
+	Tiré de \textcite[Figure 1]{schmitt_modelographie_2013}}
+	\label{fig:modelographie}
+\end{figure}
+
+
+\paragraph{Origine de la trajectoire.}
+
+La définition du point d'origine d'un modèle dans ce référentiel est plus difficile car éminemment subjective.
+Selon le point de vue de celui qui positionnera le modèle, qu'il participe ou non à sa construction, la position peut ainsi assez largement varier.
+On peut le montrer en s'appuyant sur un exercice qui avait réalisé à la fin du projet TransMonDyn, où un groupe de travail avait cherché à mener une \og TransModélographie\fg{}, c'est-à-dire une comparaison systématique des différents modèles construits au sein du projet.
+Pour mener ce travail, nous avions commencé par présenter notre démarche aux différents participants du projet, et particulièrement en proposant une classification \og naïve\fg{} des modèles de chacun (\cref{fig:transmodelographie})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/transmodelographie.png}
+	\caption[Une proposition de \og TransModélographie\fg{}.]{Une proposition de \og TransModélographie\fg{}.\\
+	Figure issue d'une communication à un séminaire interne du projet TransMonDyn à Tours, Octobre 2014, par Robin \textsc{Cura}, Hélène \textsc{Mathian} et Clara \textsc{Schmitt}.\\
+	\textit{N.B. : Le modèle \og FixPol\fg{} (fixation et polarisation) est un ancien nom de SimFeodal.}}
+	\label{fig:transmodelographie}
+\end{figure}
+
+À la suite de cette présentation, nous avons demandé aux participants de remplir un questionnaire\footnote{
+	Toujours visible à cette adresse : \href{http://193.55.107.5/html/limesurvey/index.php/647837?lang=fr}{http://193.55.107.5/html/limesurvey/index.php/647837}
+} visant justement à décrire, selon leur point de vue, le positionnement du modèle auquel ils participaient.
+Faute de temps, ce projet n'a pas pu être mené à son terme, mais suite au dépouillement des premières réponses, nous avions noté la forte hétérogénéité des descriptions d'un même modèle, selon le rôle de l'intervenant (thématicien, modélisateur), mais aussi au sein de chaque rôle.
+Les modèles ne changeaient pas réellement de cadran, mais en leur sein, la position déclarée par chacun variait fortement.
+
+La définition du point d'origine de la trajectoire de SimFeodal est donc très subjective.
+Par cohérence, je repartirai du positionnement affecté lors de cet expérience de \og TransModélographie\fg{}, ce qui correspond à un modèle résolument KIDS, mais situé dans un entre-deux entre le particulier et le stylisé (voir la position du modèle FixPol dans la \cref{fig:transmodelographie}). 
+
+\paragraph{Qualifier la trajectoire de SimFeodal : l'exemple de la modélisation des seigneurs.}
+
+De la même manière qu'il est difficile de définir l'origine du modèle, la caractérisation de sa trajectoire est un exercice périlleux.
+En effet, un modèle peut présenter des composantes hétérogènes, c'est-à-dire que la description de tel mécanisme peut être très détaillée alors qu'un autre sera plus simple.
+De même, le comportement d'un type d'agent peut être très stylisé quand celui d'un autre sera entièrement guidé par des données.
+
+Dans le cas de SimFeodal, je prendrai alors l'exemple d'un mécanisme qui a fortement évolué durant le cycle de vie du modèle et a occupé une large part des discussions collectives : la modélisation des seigneurs, et notamment les mécanismes liés à la mise en place de réseaux de lignages seigneuriaux.
+Lors de la réalisation du modèle conceptuel (visible dans \textcite[fig. 13.1, p. 297]{tannier_ontologie_2014}), il avait été décidé de différencier les seigneurs laïcs des seigneurs monastiques, dont on sait empiriquement que les logiques de constitution de lignages par le patrimoine, le don et la vassalité ne sont pas les mêmes.
+
+\subparagraph{Origine - Étape 1.}Dans les premières versions du modèle implémenté, il y avait donc des agents de type \og seigneur laïque\fg{}, dotés de mécanismes proches de ceux des \og seigneurs\fg{} dans le modèle actuel (\hl{ref chap 2}).
+Les agents \og seigneurs monastiques\fg{} étaient prévus mais il avait été choisi de commencer l'implémentation de manière incrémentale, en privilégiant d'abord d'autres agents.
+
+\subparagraph{Étape 2.}Au fur et à mesure du développement du modèle, alors que certains types d'agents voyaient leurs mécanismes se complexifier dans une logique itérative, le modèle a atteint un premier stade de maturité et produit des résultats prometteurs.
+Il a alors été choisi, par les thématiciens notamment, de délaisser la distinction entre seigneurs laïcs et seigneurs monastiques, ces derniers étant moins nombreux et représentatifs de la période.
+Les seigneurs monastiques ont donc été enlevés du modèle conceptuel, qui n'a plus alors distingué que des \og seigneurs\fg{}, sans particularisation de type.
+SimFeodal est ainsi progressé dans l'axe particulier-stylisé, en approchant plus d'une situation intermédiaire.
+
+\subparagraph{Étape 3.}Quelques versions plus tard, alors que les dynamiques reproduites par le modèle devenaient plus satisfaisantes, nous avons voulu re-complexifier les mécanismes liés aux seigneurs.
+La dimension polarisation était ainsi plutôt correcte, mais la hiérarchie des châteaux et des seigneurs était trop uniforme.
+Pour faire apparaître une hiérarchisation plus forte et surtout pouvoir mieux l'observer, nous avons ajouté des indicateurs de sortie relatifs à la vassalité des seigneurs, et nous avons aussi adapté les mécanismes de dons de zones de prélèvement et de châteaux.
+L'objectif était de reproduire le fait stylisé qui montre que les seigneurs distribuaient une partie de leurs possessions à des seigneurs de moindre importance en échange de loyauté, et donc de la mise en place de liens de vassalité.
+De plus, pour que les réseaux de vassalité ainsi constitués aient une cohérence empirique, les seigneurs vérifiaient les liens des récipiendaires potentiels des dons : étaient écartés tous les petits seigneurs ayant, par succession de liens, des relations avec un autre grand seigneur.
+Les lignages seigneuriaux prenaient ainsi la forme de deux arbres hiérarchiques, un grand seigneur concurrent étant à la tête de chaque arbre, dont nous pouvions alors mesurer le degré, le diamètre, la somme des puissances, etc.
+Avec ces modifications, la trajectoire du modèle a d'une part été particularisé (axe Stylisé-Particulier), et d'autre part complexifié (axe KISS-KIDS).
+
+\subparagraph{Étape 4.}La concentration, en termes de modélisation, s'est ensuite portée à nouveau sur la polarisation et la hiérarchisation du peuplement, notamment en introduisant le concept de l'agent \og pole d'attraction\fg{}, composé d'agents-attracteurs, qui permettait de réduire la complexité du modèle via ce type d'agent générique alors qu'auparavant, chaque type d'attracteur avait ses propres logiques.
+Ce faisant, nous avons peu à peu accordé de moins en moins d'intérêt à l'évaluation visuelle de ces lignages seigneuriaux, jusqu'à ce qu'ils ne soient plus jamais pris en compte dans l'évaluation.
+Pour acter cette évolution, dans la version 6 de SimFeodal (voir \hl{chap 3, tableau 3.1}), les thématiciens ont, d'eux-mêmes, suggéré de supprimer toute logique de constitution de réseau de vassalité : les dons des seigneurs sont désormais, comme décrit dans le \hl{chapitre 2}, effectués sans aucune distinction d'appartenance à un réseau seigneurial.
+C'est maintenant une logique plus spatiale, liée à la distance entre les petits seigneurs, qui conditionne les potentiels récipiendaires de dons.
+Cette suppression de distinction a ainsi donné une trajectoire inverse à la précédente dans le référentiel du fer à cheval : le modèle redevenait plus stylisé et moins descriptif.
+Sur l'aspect seigneurial, le modèle devenait même plus stylisé et simple qu'il ne l'avait jamais été au cours de sa construction.
+
+La \cref{fig:trajectoire-simfeodal} reprend graphiquement ces étapes, qui sont spécifiques au cas de la modélisation des seigneurs dans SimFeodal, mais permettent toutefois d'illustrer plus généralement la trajectoire d'ensemble du modèle.
+En premier lieu, on peut noter que cette trajectoire ne s'inscrit pas dans les formes \og en fer à cheval\fg{} présentées par \textcite{banos2013modeliser} : les étapes intermédiaires ont \og déplacé\fg{} le modèle dans potentiellement toutes les directions, sans respecter une forme spécifique.
+En second lieu, remarquons que SimFeodal, que je présente depuis l'introduction générale comme un modèle descriptif et exploratoire, ne semble plus si ancré dans l'approche KIDS dans sa version actuelle.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\linewidth]{img/trajectoire_simfeodal.pdf}
+	\caption[La trajectoire du modèle SimFeodal, dans le \og fer à cheval\fg{} de \textcite{banos2013modeliser}.]{La trajectoire du modèle SimFeodal, dans le \og fer à cheval\fg{} de \textcite{banos2013modeliser}.\\
+	\textit{N.B.: cette trajectoire correspond à la position des mécanismes liés aux seigneurs dans le modèle.}}
+	\label{fig:trajectoire-simfeodal}
+\end{figure}
+
+Il me semble que ces deux éléments peuvent s'expliquer par la nature de SimFeodal et de sa co-construction, qui est plus exploratoire et abductive que véritablement descriptive.
+On peut ainsi noter des allers-retours fréquents entre augmentation et diminution de la complexité (axe KISS-KIDS) dans l'historique de développement du modèle.
+Une partie de ces évolutions sont prévues dans la démarche KIDS \autocite{edmonds_kiss_2005}, qui vise à débuter par un modèle \og complexe\fg{}, descriptif, qui sera ensuite progressivement rendu plus simple si cela n'en diminue pas l'utilité.
+La \og simplification\fg{} de SimFeodal s'inscrit donc nettement dans cette démarche.
+La complexification de certains agents et mécanismes va pourtant à l'encontre de cette logique, et \textit{a posteriori}, j'aurais tendance à ne caractériser SimFeodal que comme un modèle exploratoire, sans le positionner véritablement sur l'axe KISS-KIDS, sinon en explicitant qu'on ne cherche pas particulièrement à ce que ce modèle soit KISS.
+
+Ce sont avant tout les envies du groupe de travail qui guident le développement du modèle, influencées par les résultats successifs du modèle et par leur exploration.
+Ces envies varient, s'accompagnent d'abandon de questionnements initiaux et de nouvelles questions, peuvent évoluer en sens inverse des choix passés, voire correspondre à de véritables \og retours en arrière\fg{} comme dans le cas des lignages seigneuriaux, abandonnés après avoir été très spécifiés.
+SimFeodal est un modèle complexe, et sa trajectoire l'est aussi.
+Cette trajectoire peut sembler irréfléchie et inexplicable, mais résulte en fait des multiples interactions entre les concepteurs de SimFeodal, et n'est que la matérialisation du processus abductif qui a guidé sa co-construction de SimFeodal.
+À l'instar d'un mouvement brownien, la trajectoire de SimFeodal pourrait être modélisée par une marche aléatoire, et comme celle-ci, convergerait, à long terme, vers une exploration complète des possibilités de modélisation de ces dynamiques spatio-temporelles.
+
+\subsection{Conclusion : Modéliser avec et pour les autres.}
+
+Dans cette sous-partie, dédiée à un retour sur le processus de modélisation effectivement mené autour de SimFeodal, nous avons montré que le modèle, en tant qu'outil informatique, a constitué un support à la discussion interdisciplinaire et à l'explicitation des hypothèses et connaissances plus qu'à véritablement évaluer la capacité de ces hypothèses à reproduire les dynamiques empiriques de polarisation, de hiérarchisation et de fixation du peuplement.
+La construction de SimFeodal n'a pas été trans-disciplinaire, dans le sens où les connaissances et compétences propres de chacun des participants ont été mutualisées dans les tâches qui y correspondaient le mieux, plutôt que de laisser chacun réaliser \og un peu de tout\fg{}.
+De la même manière qu'on ne peut acquérir une connaissance thématique approfondie d'un sujet complètement inconnu en quelques années, on ne peut pas non plus acquérir les compétences techniques avancées nécessaires à l'implémentation de modèles de simulation complexes et détaillés.
+
+Pour autant, je crois qu'on peut tout de même caractériser cette construction interdisciplinaire et collective comme une co-construction, car chacun est intervenu, à mesure de ses possibilités, sur chacune des étapes de la construction et de l'évaluation du modèle.
+Ces interventions ont été de formes diverses, depuis la conception algorithmique des mécanismes jusqu'à leur implémentation technique, depuis leur validation interne par relecture du code jusqu'à leur validation externe par discussion et explicitation en groupe.
+Il résulte de cette co-construction un modèle à la trajectoire chaotique, faite de fréquents allers-retours, et au positionnement final (et initial) difficile à caractériser tant ses composantes sont hétérogènes.
+L'état \og final\fg{} de SimFeodal tout autant que son évolution, me paraissent inhérents au mode de co-construction résolument exploratoire qui a été suivi, le modèle servant alors d'outil de facilitation de mise en œuvre du processus abductif qui en résulte.
+
+La satisfaction collective qui ressort de cette expérience de modélisation co-construite me paraît autant due à la volonté de chaque participant de s'inscrire pleinement dans cette expérience interdisciplinaire, d'accepter de passer outre les habitudes disciplinaires, qu'à l'horizontalité du processus et au temps long qui y a été consacré par chacun.
+
+%\subsection{Construire et utiliser un modèle, deux approches et positions différentes}
+%\paragraph{Modèle comme finalité, modèle comme apprentissage.}
+%
+%- On ressort l'argumentaire léna-esque habituel : enrichissement du à la formalisation et donc à l'explicitation.
+%-> En plus, apport de l'implémentation et de l'évaluation : il faut trancher, il faut (parfois) quantifier, 
+
+%\paragraph{Créateur et utilisateur : comment concilier des intérêts antagonistes ?}
+%
+%- attaquer par visions classiquement opposées du thématicien demandant détail et de l'informaticien-modélisateur cherchant parsimonie.
+%- Solution optimale est forcément intermédiaire : approche SimFeodal : pas linéaire, mais tout de même du détail vers la parsimonie.
+%- Opposée à approche inverse cf. RIN ATP (publi ?) de multi-modelling, = commencer par le plus simple et complexifier jusqu'à atteindre satisfaction des thématiciens
+
+%\paragraph{Des gains, certes, mais pour qui ?}
+%
+%- Question principale : quelle discipline/champ scientifique veut-on faire avancer ?
+%-> objectif théorique d'un projet interdisciplinaire : chacune des disciplines
+%
+%\paragraph{Conclusion : Modéliser avec et pour les autres.}
+%- rubber duck, \og gardien de la vérité éprouvée\fg{}, 
+%- Objectifs collectifs + objectifs individuels pour chacun
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
+
+Ce chapitre \og pré-conclusif\fg{} a présenté deux retours réflexifs, assez isolés au premier regard, sur la spécificité de l'exploration de données de simulation et sur les modalités du processus de co-construction mis en œuvre dans le cadre de la construction et de l'évaluation de SimFeodal.
+Chacune de ces sous-parties a déjà donné lieu à une conclusion intermédiaire, et je ne reviendrai ici que sur leur complémentarité.
+
+Que ce soit sur le plan méthodologique de l'exploration de données issues de simulation, ou sur le plan conceptuel de la construction de modèle, l'élaboration d'une démarche exploratoire ressort comme un moyen fonctionnel de favoriser l'interdisciplinarité.
+Cette démarche peut pour cela être bâtie autour d'un objet commun -- car partagé -- et neutre -- car à l'interface entre les disciplines --. 
+L'objet commune que constitue le modèle et les données qu'il produit permettent de faire en sorte que le processus de modélisation ne soit pas qu'une expérience de pensée.
+Cet objet matérialisé, parce qu'il peut être exploré, guide l'expérience collective et constitue ainsi une interface commune support au dialogue, en laissant l'exploration guider ce dialogue.
+
+C'est en cela que la démarche mise en place autour de la construction et de l'évaluation peut être considérée comme facilitant la \og mise en situation d'étonnement\fg{} \autocite[241]{banos2005voie}.
+L'exploration des hypothèses thématiques, par le modèle, et du modèle, par ses sorties, stimulent ainsi le cheminement abductif qui permet de dépasser les \textit{a priori} et implicites disciplinaires et d'aboutir à la réalisation d'un modèle utile à tous ses concepteurs.

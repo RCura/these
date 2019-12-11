@@ -5,8 +5,8 @@
 \usepackage{graphicx}
 %%%% REPRISES %%%%
 \usepackage[left=1.5cm, right=5cm,
-bottom = 2cm, foot = 3cm, footskip = 1cm,
-top = 2cm, headsep = .5cm, headheight=16pt
+bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
+top = 2.25cm, headsep = .5cm, headheight=30pt
 ]{geometry}
 %%%% FINAL %%%%
 %\usepackage[left=2.5cm, right=3.5cm,
@@ -65,7 +65,7 @@ top = 2cm, headsep = .5cm, headheight=16pt
 	\fancyhead[LO]{\textsc{#1}}
 }
 \newcommand{\FancyChapter}[0]{%
-	\fancyhead[LO]{\makebox[\linewidth][s]{\leftmark}}
+	\fancyhead[LO]{\leftmark}
 	\fancyhead[RE]{\textsc{\rightmark}}
 }
 
@@ -110,8 +110,8 @@ top = 2cm, headsep = .5cm, headheight=16pt
 \usepackage{wrapfig}
 
 \usepackage[
-%style=authoryear-icomp, % Permet d'avoir des ibid. en cas de répétition, mais parfois pas terrible avec les ndbp
-style=authoryear-comp,
+style=authoryear-icomp, % Permet d'avoir des ibid. en cas de répétition, mais parfois pas terrible avec les ndbp
+%style=authoryear-comp,
 hyperref=true,
 backend=biber,
 isbn=false,
@@ -122,6 +122,11 @@ sortcites=false,  % Ne pas changer l'ordre des citations multiples
 sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 %backref=true
 ]{biblatex}
+
+% Forcer non ibid (nouveau compte) :
+% \citereset  : juste avant deuxième occurence pour remettre à 0 le compteur
+% \citetrackerfalse [...] \citetrackertrue : par exemple pour exclure ndbp
+% \mancite : comme \cite{} si ça déconne
 
 
 
