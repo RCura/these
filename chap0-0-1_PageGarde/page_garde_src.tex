@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Page de garde (Pagedegarde.tex)   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dorian Depriester, 2014
+
+\makeatletter
+\def\@ecole{école}
+\newcommand{\ecole}[1]{
+	\def\@ecole{#1}
+}
+
+\def\@specialite{Spécialité}
+\newcommand{\specialite}[1]{
+	\def\@specialite{#1}
+}
+
+\def\@ED{\'{E}cole Doctorale}
+\newcommand{\ED}[1]{
+	\def\@ED{#1}
+}
+
+\def\@doctorat{Doctorat}
+\newcommand{\doctorat}[1]{
+	\def\@doctorat{#1}
+}
+
+\def\@subtitle{Sous-titre}
+\newcommand{\subtitle}[1]{
+	\def\@subtitle{#1}
+}
+
+\def\@adresse{Adresse}
+\newcommand{\adresse}[1]{
+	\def\@adresse{#1}
+}
+
+\def\@directeur{directeur}
+\newcommand{\directeur}[1]{
+	\def\@directeur{#1}
+}
+
+\def\@encadrant{encadrant}
+\newcommand{\encadrant}[1]{
+	\def\@encadrant{#1}
+}
+\def\@jurya{}{}{}
+\newcommand{\jurya}[3]{
+	\def\@jurya{#1	& #2	& #3\\}
+}
+\def\@juryb{}{}{}
+\newcommand{\juryb}[3]{
+	\def\@juryb{#1	& #2	& #3\\}
+}
+\def\@juryc{}{}{}
+\newcommand{\juryc}[3]{
+	\def\@juryc{#1	& #2	& #3\\}
+}
+\def\@juryd{}{}{}
+\newcommand{\juryd}[3]{
+	\def\@juryd{#1	& #2	& #3\\}
+}
+\def\@jurye{}{}{}
+\newcommand{\jurye}[3]{
+	\def\@jurye{#1	& #2	& #3\\}
+}
+\def\@juryf{}{}{}
+\newcommand{\juryf}[3]{
+	\def\@juryf{#1	& #2	& #3\\}
+}
+\def\@juryg{}{}{}
+\newcommand{\juryg}[3]{
+	\def\@juryg{#1	& #2	& #3\\}
+}
+\makeatother
+
+\newcommand\BackgroundPic{%
+	\put(0,0){%
+		\parbox[b][\paperheight]{\paperwidth}{%
+			\includegraphics[height=0.45\paperheight]{bordure.png}%
+			\vfill
+		}
+	}
+}
+
+\makeatletter
+\newcommand{\pagedegarde}{
+	\newgeometry{top=1.5cm, bottom=1cm, left=1cm, right=1cm}
+	%\AddToShipoutPicture*{\BackgroundPic}
+	%\AddToShipoutPicture*{\EtiquetteThese}
+	\begin{titlepage}
+		\centering
+		{\Large \@ED}\\
+		\vspace{1cm}
+		{\LARGE {\bfseries \@doctorat}}\\
+		\vspace{.5cm}
+		{\bfseries pour obtenir le grade de docteur délivré par}\\
+		\vspace{.5cm}
+		{\Large\bfseries \@ecole}\\
+		\vspace{0.5cm}
+		{\Large{\bfseries Discipline : \@specialite}}\\
+		\vspace{1cm}
+		{\Huge \bfseries{\@title}} \\
+		\setstretch{2}
+		%{\LARGE \bfseries{\@subtitle}}\\
+		\vfill
+		\textit{présentée et soutenue publiquement par}\\
+		\vspace{0.25cm}
+		{\LARGE {\bfseries \@author}} \\
+		%\vspace{0.25cm}
+		le \@date \\
+		\vspace{0.5cm}
+		\setstretch{1}
+		\vspace{.5cm}
+		Sous la co-direction de {\bfseries \@directeur}\\
+		%Co-encadrant de thèse : {\bfseries \@encadrant}\\
+		\vfill
+		\setstretch{.75}
+		\begin{tabular}{>{\bfseries}lll}
+			\large Composition du Jury : \\
+			\@jurya
+			\@juryb
+			\@juryc
+			\@juryd
+			\@jurye
+			\@juryf
+			\@juryg
+		\end{tabular}
+		\vfill
+		\includegraphics[height=4em]{chap0-0-1_PageGarde/logo_P1.png}
+		\hspace{1cm}
+		\includegraphics[height=5em]{chap0-0-1_PageGarde/logo_GeoCites.png}
+		\hspace{2cm}
+		\includegraphics[height=5em]{chap0-0-1_PageGarde/logo_LabEx.png}
+		\hspace{2cm}
+		\includegraphics[height=4em]{chap0-0-1_PageGarde/logo_ED.png}
+		
+		%	\@adresse
+		\pagestyle{empty}
+		\cleardoublepage
+	\end{titlepage}
+	
+	\restoregeometry  
+}
