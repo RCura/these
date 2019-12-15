@@ -9,9 +9,9 @@ bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
 top = 2.25cm, headsep = .5cm, headheight=30pt
 ]{geometry}
 %%%% FINAL %%%%
-%\usepackage[left=2.5cm, right=3.5cm,
-%bottom = 2cm, foot = 3cm, footskip = 1cm,
-%top = 2cm, headsep = .5cm
+%\usepackage[left=2.5cm, right=1.5cm,
+%bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
+%top = 2.25cm, headsep = .5cm, headheight=30pt
 %]{geometry}
 
 \setlength{\marginparwidth}{4.5cm}
@@ -53,10 +53,10 @@ top = 2.25cm, headsep = .5cm, headheight=30pt
 \fancyhead[R]{}
 \fancyhead[L]{}
 \fancyfoot[L]{}
-\fancyfoot[C]{}
+\fancyfoot[C]{\thepage}
 \fancyfoot[R]{}
-\fancyfoot[LO]{\thepage}
-\fancyfoot[RE]{\thepage}
+%\fancyfoot[LO]{\thepage}
+%\fancyfoot[RE]{\thepage}
 %\fancyhead[R]{\nouppercase{\rightmark}}
 
 
@@ -148,6 +148,7 @@ sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 \renewcommand\theadgape{\Gape[4pt]}
 \renewcommand\cellgape{\Gape[4pt]}
 
+\usepackage{shorttoc}
 \usepackage[french, tight]{minitoc}
 \dominitoc
 
@@ -293,3 +294,5 @@ sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 \makeatletter
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
+
+\usepackage{blindtext}

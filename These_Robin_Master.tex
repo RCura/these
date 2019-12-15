@@ -13,67 +13,50 @@
 %\addbibresource{chap3/biblio-chap3.bib}
 %\addbibresource{chap4/biblio-chap4.bib}
 %\addbibresource{chap5/biblio-chap5.bib}
-\addbibresource{chap6/biblio-chap6.bib}
-%\addbibresource{chap7-Conclusion/biblio-conclu.bib}
+%\addbibresource{chap6/biblio-chap6.bib}
+\addbibresource{chap7-Conclusion/biblio-conclu.bib}
 
+\input{chap0-0-1_PageGarde/page_garde_src.tex}
+\input{chap0-0-1_PageGarde/page_garde_content.tex}
 \begin{document}
 \setcounter{tocdepth}{1}
-\setcounter{minitocdepth}{2}
+\setcounter{minitocdepth}{1}
 \setcounter{secnumdepth}{3}
-\faketableofcontents
+%\faketableofcontents
 \dominitoc% Initialization
-
-% ############################################
-% # Page de titre principale + plan détaillé #
-% ############################################
-
-%\begin{titlepage}
-%	\maketitle
-%
-%	\begin{NoHyper} % ne pas mettre de liens dans la toc
-%		\toccontents
-%	\end{NoHyper}
-%\end{titlepage}
-
 
 % #######################
 % # CONTENU DE LA THÈSE #
 % #######################
 
-\frontmatter
-%\include*{chap0-0-Remerciements}
-%\include*{chap0-1-Préambule}
-
+%\frontmatter
+%\pagedegarde
+%\include*{chap0-1-Préambule/preambule}
+%\include*{chap0-0-Remerciements/remerciements}
+%\cleardoublepage
+%\shorttoc{Sommaire}{0}
 
 \mainmatter
 %\include*{chap0-2-Intro/intro}
-\FancyChapter
+%\FancyChapter
 %\include*{chap1/chap1}
 %\include*{chap2/chap2}
 %\include*{chap3/chap3}
 %\include*{chap4/chap4}
 %\include*{chap5/chap5}
-\include*{chap6/chap6}
-%\include*{chap7-Conclusion/conclusion}
+%\include*{chap6/chap6}
+\include*{chap7-Conclusion/conclusion}
 
 %\backmatter
-
 \printbibliography[title={Références}]
-%
 %\setcounter{tocdepth}{2}
 %\tableofcontents
-%\clearpage
-%
-%\begingroup
-%\renewcommand{\cleardoublepage}{\medskip}
-%\renewcommand{\clearpage}{\medskip}
-%
-%\vspace*{-3em}\listoffigures
-%
-%\vspace*{-3em}\listoftables
-%
-%\vspace*{-3em}\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
-%
-%\endgroup
+%\cleardoublepage
+%\listoffigures
+%\listoftables
+%\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
+%\cleardoublepage
+%\newgeometry{top=1.5cm, bottom=1.5cm, left=2cm, right=2cm}
+%\include*{chap8-Resumes/resume}
 
 \end{document}
