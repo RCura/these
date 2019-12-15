@@ -1,43 +1,83 @@
 % !TEX root = ../These_Robin_Master.tex
 \graphicspath{{chap7-Conclusion/}}
 
-%\let\orichaptermark\chaptermark
-%\renewcommand\chaptermark[1]{}%
-%\chapter*{Introduction générale \label{chap:intro}}
-%\orichaptermark{Évolution du questionnement}
-%\let\chaptermark\orichapternmark
-
-
+\FancyNotChapter{Conclusion générale}
 \chapter*{Conclusion générale}
 \label{chap:conclu}
 \mtcaddchapter[Conclusion générale]
+\vspace*{-5em}
 \begin{center}
-{\large Version \hl{2019-11-24}}
+	{\large Version \hl{2019-12-15}}
 \end{center}
+\vspace*{-1em}
+\begin{itemize}
+	\item 14/12/2019 : début réflexion plan
+	\item 15/12/2019 : partie synthèse
+\end{itemize}
+
+Dans cette thèse, nous avons proposé et illustré une approche engagée de modélisation de dynamiques spatiales sur le temps long.
+Cette approche s'appuie sur un contexte interdisciplinaire, et plaide pour la co-construction de modèles de simulation à base d'agents, par le recours à des méthodes qui en facilitent la démarche.
+Le dernier chapitre effectuait un retour réflexif, méthodologique et conceptuel, sur le travail mené dans cette expérience de modélisation interdisciplinaire.
+Dans cette conclusion, nous reviendrons plus généralement sur la progression globale de cette thèse, ce qui lui donne sa cohérence, et sur les nombreuses perspectives, chacune liées aux différentes disciplines et sous-disciplines mobilisées, qui peuvent en prolonger l'étude.
+
+\subsection*{Synthèse du travail}
+
+Dans le \cref{chap:chap1}, nous décrivons le contexte, personnel et collectif, de mise en œuvre de ce travail.
+Cela permet d'en établir le positionnement, à l'interface entre la géographie, la géomatique, les sciences historiques, les sciences de la complexité et l'informatique.
+À partir de ce positionnement hybride, nous sommes en mesure de spécifier l'objet de la thèse et de justifier le cas d'étude choisi.
+C'est depuis les spécificités de ce cas d'étude que sont proposées les approches principales défendues dans cette thèse, en la matière d'un choix de modélisation informatique à base d'agents.
+Pour permettre cette réalisation, nous basons notre approche sur la co-construction interdisciplinaire, facilitée à la fois par le recours constant à la représentation graphique et par une démarche résolument exploratoire.
+Ces deux approches méthodologiques sont proposées comme permettant d'établir des interfaces entre les disciplines.
+
+L'approche proposée est mise en œuvre dans le \cref{chap:chap2}.
+Dans ce chapitre, nous présentons plus amont le cas d'étude, fondé sur la modélisation des dynamiques de polarisation, de hiérarchisation et de fixation de l'habitat rural entre 800 et 1200 dans la région Touraine.
+Nous décrivons ensuite le modèle qui en résulte, SimFeodal, en suivant le formalisme ODD \autocite{grimm_odd_2010}.
+SimFeodal est un modèle de simulation à base d'agents à visée exploratoire et heuristique.
+Ce modèle suit l'approche KIDS de \textcite{edmonds_kiss_2005}, se classe alors dans la catégorie des modèles descriptifs, et voit ainsi interagir de nombreux types d'agents (foyers paysans, seigneurs, églises paroissiales, pôles d'attraction, etc.).
+
+Le \cref{chap:chap3} présente une synthèse de l'évaluation de modèles de simulations, et constitue à partir de celle-ci une proposition de méthode d'évaluation adaptée à l'évaluation collective et interdisciplinaire de modèles complexes.
+Cette méthode, \og l'évaluation visuelle\fg{}, se situe dans le prolongement de la \textit{face validation} et s'appuie sur la création d'\og{}indicateurs de sortie de simulation\fg{}, représentations numériques et graphiques des dynamiques générées par le modèle.
+Pour évaluer le modèle, on compare ces indicateurs à des \og ordres de grandeur\fg{} et à des \og formes stylisées\fg{}, c'est-à-dire à des \og indices empiriques\fg{}, selon une grille d'évaluation fixée \textit{a priori}.
+Par la réalisation de fréquentes phases d'évaluation, on peut procéder au \og paramétrage\fg{} du modèle, c'est-à-dire à son amélioration par l'intermédiaire de l'ajustement des paramètres et de modifications des mécanismes.
+Nous défendons une approche exploratoire du modèle, guidée par de nombreux allers-retours entre le construction du modèle et son évaluation, et illustrons cette approche par une analyse rétrospective de l'évolution de SimFeodal.
+
+Pour faciliter l'exercice de cette évaluation visuelle, nous présentons dans le \cref{chap:chap4} un outil interactif dédié à l'exploration des données de sortie de SimFeodal, la plateforme SimEDB.
+Cette plateforme résulte d'une succession de réponses aux contraintes génériques et spécifiques posées par la nature volumineuse et hétérogène des données permettant la génération des indicateurs de sortie.
+Après avoir retracé l'historique des solutions choisies pour faciliter l'évaluation de SimFeodal à chaque phase de la construction du modèle, nous justifions le choix d'organisation des données qui en sont issues, sous forme de bases de données relationnelle analytique. 
+Une telle structuration est nécessaire à une capacité d'interrogation robuste, performante et évolutive de ces données.
+La plateforme SimEDB est alors décrite en explicitant d'une part les contraintes qu'elle doit dépasser, et d'autre part les solutions techniques mises en œuvre pour assurer une exploration interactive, intuitive et rapide des sorties de SimFeodal.
+
+Dans le \cref{chap:chap5}, en utilisant la plateforme SimEDB, nous présentons le calibrage du modèle SimFeodal, et les indicateurs de sortie du modèle issu de ce calibrage.
+Ces résultats sont alors analysés au regard de la grille d'évaluation fixée dans le \cref{chap:chap3}.
+Le modèle étant globalement satisfaisant du point de vue thématique, nous identifions les limitations qui entravent la poursuite du calibrage et menons une analyse visuelle de la sensibilité du modèle.
+Celle-ci contribue à l'évaluation générale du modèle et permet d'identifier des points potentiels d'amélioration de SimFeodal.
+
+Sous une forme \og pré-conclusive\fg{} et en réponse au \cref{chap:chap1}, le \cref{chap:chap6} est l'occasion d'effectuer un retour réflexif sur les spécificités du travail mené au cours de cette thèse.
+En premier lieu, nous revenons sur les spécificités, méthodologiques et techniques, qu'imposent l'analyse exploratoire de données de simulation.
+En marquant la différence de ces ces dernières vis-à-vis de données plus classiques manipulées en sciences humaines et sociales, nous appuyons le besoin du recours à la visualisation pour explorer ces \og données intermédiaires\fg{}.
+Dans un second temps, nous exprimons un retour d'expérience critique sur la posture de co-construction interdisciplinaire suivie dans la construction et l'évaluation du modèle.
+En analysant \textit{a posteriori} de cette expérience collective les implications de chacun et la trajectoire de SimFeodal, nous étayons l'importance d'une implication de chaque participant à chaque étape de la modélisation.
+
+%- modélisation : un agenda de co-construction interdisciplinaire
+%	- démarche proposée et cas d'application (chap1)
+%	- Mise en oeuve par :
+%		- modélisation (chap2)
+%		- évaluation (chap3)
+%- Pour accompagner cette évaluation, proposition d'une application interactive
+%		- contraintes spécifiques, liées au contexte plus général des \og données intermédiaires\fg{}, ie. pas bug data, mais trop massives et complexes pour être traitées avec les solutions classiques
+%		- + contraintes interactivité : besoin de fluidité
+%	- utilisation de cette plateforme pour présenter les résultats du modèle
+%	- + exploration du modèle (analyse sensib + début scénarios)
+
+\subsection*{Perspectives}
 
 \begin{itemize}
-	\item 24/11/2019 : début réflexion plan
+	\item Archéo et histoire : évaluation et cross-validation + scénarios thématiques avec données
+	\item Modélisation : + parsimonie ? + calibrage (depuis ana sensib) + éval visuelle autres modèles
+	\item Géomatique et analyse spatiale : indicateurs + complexes, en particulier pour l'aspect spatio-temporel ?
+	\item Simulation : exploration automatique
+	\item Visu-technique : PVA ou APQ ?
+	\item Visu-eval : évaluation outil + visu
+	\item Visu-IA : utilisation
+	\item Géographie (TQ) : Polarisation et hiérarchisation : généricité + autres pistes explicatives ?
 \end{itemize}
-\setcounter{minitocdepth}{2}
-\minitoc
-\clearpage
-\phantomsection
-
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-%\afterpage{\null\newpage}
-
-\section*{Introduction}
-\label{sec:conclu-intro}
-\addcontentsline{toc}{section}{Introduction}
-
-Blablabla
-
-\section*{Conclusion}
-\label{sec:conclu-conclu}
-\addcontentsline{toc}{section}{Conclusion}
