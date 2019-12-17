@@ -7,12 +7,13 @@
 \mtcaddchapter[Conclusion générale]
 \vspace*{-5em}
 \begin{center}
-	{\large Version \hl{2019-12-15}}
+	{\large Version \hl{2019-12-17}}
 \end{center}
 \vspace*{-1em}
 \begin{itemize}
 	\item 14/12/2019 : début réflexion plan
 	\item 15/12/2019 : partie synthèse
+	\item 17/12/2019 : fin premier jet Conclusion
 \end{itemize}
 
 Dans cette thèse, nous avons proposé et illustré une approche engagée de modélisation de dynamiques spatiales sur le temps long.
@@ -54,7 +55,7 @@ Celle-ci contribue à l'évaluation générale du modèle et permet d'identifier
 
 Sous une forme \og pré-conclusive\fg{} et en réponse au \cref{chap:chap1}, le \cref{chap:chap6} est l'occasion d'effectuer un retour réflexif sur les spécificités du travail mené au cours de cette thèse.
 En premier lieu, nous revenons sur les spécificités, méthodologiques et techniques, qu'imposent l'analyse exploratoire de données de simulation.
-En marquant la différence de ces ces dernières vis-à-vis de données plus classiques manipulées en sciences humaines et sociales, nous appuyons le besoin du recours à la visualisation pour explorer ces \og données intermédiaires\fg{}.
+En marquant la différence de ces ces dernières vis-à-vis de données plus classiques manipulées en sciences humaines et sociales (SHS), nous appuyons le besoin du recours à la visualisation pour explorer ces \og données intermédiaires\fg{}.
 Dans un second temps, nous exprimons un retour d'expérience critique sur la posture de co-construction interdisciplinaire suivie dans la construction et l'évaluation du modèle.
 En analysant \textit{a posteriori} de cette expérience collective les implications de chacun et la trajectoire de SimFeodal, nous étayons l'importance d'une implication de chaque participant à chaque étape de la modélisation.
 
@@ -71,13 +72,84 @@ En analysant \textit{a posteriori} de cette expérience collective les implicati
 
 \subsection*{Perspectives}
 
-\begin{itemize}
-	\item Archéo et histoire : évaluation et cross-validation + scénarios thématiques avec données
-	\item Modélisation : + parsimonie ? + calibrage (depuis ana sensib) + éval visuelle autres modèles
-	\item Géomatique et analyse spatiale : indicateurs + complexes, en particulier pour l'aspect spatio-temporel ?
-	\item Simulation : exploration automatique
-	\item Visu-technique : PVA ou APQ ?
-	\item Visu-eval : évaluation outil + visu
-	\item Visu-IA : utilisation
-	\item Géographie (TQ) : Polarisation et hiérarchisation : généricité + autres pistes explicatives ?
-\end{itemize}
+Le dépôt de ce manuscrit de thèse clôt un retour sur expérience de plus de six années de travail, mais ouvre aussi la voie à de très nombreuses perspectives d'approfondissements et de prolongations.
+Cela est en premier lieu à la diversité des \og productions\fg{} de cette thèse, du modèle SimFeodal jusqu'à l'approche conceptuelle de co-construction, en passant par la proposition méthodologique qu'est l'évaluation visuelle.
+Dans un second temps, ces perspectives sont d'autant plus nombreuses que la thèse s'inscrit à l'interstice entre plusieurs disciplines, et plusieurs approches parmi celles-ci.
+Pour organiser ces perspectives, nous présenterons alors, pour chaque \og production\fg{} de la thèse, les pistes d'amélioration que nous inspirent chacune de ces approches disciplinaires.
+
+\paragraph{Poursuivre la modélisation de SimFeodal.}
+
+Dans le \cref{chap:chap5}, nous avons identifié certaines limites à la poursuite du calibrage de SimFeodal, et donc à son amélioration.
+L'analyse de sensibilité menée par la suite ouvrait de nouvelles perspectives d'amélioration, en isolant notamment certains paramètres inattendus sur lesquels le travail pourrait ensuite se concentrer.
+
+En nous basant sur les récentes avancées en simulation informatique distribuée, on pourrait chercher à prolonger l'exploration de SimFeodal.
+Pour cela, on peut faire appel à différentes méthodes d'optimisation, en identifiant des \og fonctions objectifs\fg{}, ou à des méthodes d'exploration automatique du paysage des sorties du modèle.
+Parmi celles-ci, il serait intéressant de tester l'influence réelle de la situation initiale de SimFeodal, qui est générée aléatoirement suivant les valeurs de paramètres d'\textit{input}.
+C'est un travail qui a été fait sur des modèles KISS \autocite{raimbault_space_2019}, et nous semble intéressant pour le modèle, en vue par exemple de tester l'hypothèse d'isotropie qui est au coeur de la conception de SimFeodal.
+En testant différentes situations initiales de manière plus quantitative, on pourrait éventuellement alors chercher à introduire une plus forte diversité de configurations initiales, et ainsi modéliser les dynamiques spatiales analysées sur d'autres régions d'étude.
+
+Toujours dans le domaine de la simulation, SimFeodal gagnerait sans doute à être \og modularisé\fg{}, c'est-à-dire en créant une structure plus générique de modèle sur laquelle on pourrait alors connecter (ou non) différents \og modules\fg{} correspondant aux spécificités du modèle.
+En s'engageant dans cette dynamique de multi-modélisation \autocite{cottineau_chapter_2019}, il serait par exemple possible de tester des situations avec ou sans églises paroissiales, en ajoutant d'autres types d'attracteurs dotés de mécanismes propres, en modifiant les mesures de satisfaction, etc.
+La nature très paramétrique de SimFeodal permet déjà d'effectuer certains de ces tests, mais des changements plus importants risquent de rompre la rétro-compatibilité du modèle.
+Avec un modèle véritablement modulaire, toutes les variantes qui ont été testées puis abandonnées au cours de la construction et du paramétrage du modèle pourraient véritablement être confrontées \textit{ceteris paribus}.
+
+Sur un plan plus thématique, du point de vue de la modélisation de la modélisation en archéologie et en histoire, on gagnerait nécessairement en connaissances sur ces processus spatiaux en menant une véritable \og validation croisée\fg{} du modèle, comme proposé dans le chapitre précédent (\cref{subsec:perspectives-validation}, p.~\pageref{par:validation-croisee}).
+Il s'agirait ainsi de tester la généricité du modèle en l'adaptant à d'autres cas d'études, par exemple à d'autres régions, où l'on retrouve les mêmes dynamiques spatiales que celles observées en Touraine.
+À l'inverse, tester le modèle sur des régions où les facteurs semblent comparables mais où les structures spatiales résultantes sont très différentes -- c'est pas exemple le cas du Quercy où il n'y a eu qu'une faible polarisation -- permettrait aussi de progresser dans la compréhension de la conjonction de facteurs nécessaires et suffisants pour qu'apparaissent la polarisation, la hiérarchisation et la fixation du peuplement étudiés dans cette thèse.
+
+Dans l'ensemble, toutes ces pistes héritées de la modélisation en sciences sociales et en sciences de la complexité permettraient, pour la géographie, d'éclairer les conditions d'émergence des phénomènes de polarisation et de hiérarchisation, constatés dans de bien plus nombreux systèmes géographiques que ceux de l'Europe du Nord-Ouest, et à bien plus de périodes, y compris récentes, qu'entre 800 et 1200.
+En développant et en élargissant l'analyse de ce cas d'étude, on contribuerait ainsi à étayer les différentes théories (auto-organisation \autocite{saint1989villes}, attachement préférentiel \autocite{albert_statistical_2002}, théorie évolutive des villes \autocite{pumain_pour_1997}, etc.) qui proposent d'expliquer l'organisation spatiale des systèmes sociaux.
+
+\paragraph{Développement et mise à l'épreuve de l'évaluation visuelle.}
+
+Dans le \cref{chap:chap3}, nous avons proposé une méthode d'évaluation des modèles basée sur l'analyse visuelle de nombreux et variés indicateurs de sortie de simulation.
+Dans le cas de SimFeodal, l'usage de cette méthode a été utile et fructueux.
+Pourtant, il nous semble que l'on pourrait aller plus loin dans l'usage de cette méthode, ne serait-ce que directement pour l'évaluation SimFeodal.
+
+Une première piste, largement inspirée par la géomatique et l'analyse spatiale, serait de chercher à mieux rendre compte, visuellement, des configurations spatiales produites par le modèle.
+Dans le \cref{chap:chap6} (\cref{subsec:genericite-donnees-simul}, p.~\pageref{par:specificites-donnees-simul}), nous présentions ainsi les difficultés de l'agrégation (réplicative notamment) de données géographiques issues d'un espace théorique et en bonne partie aléatoire.
+En faisant appel à de plus nombreux indicateurs issus de l'analyse spatiale et des géostatistiques, nous sommes convaincus de pouvoir permettre une meilleure et plus rapide évaluation des sorties d'une version de modèle qu'en démultipliant la représentation de configurations spatiales provenant d'une unique simulation.
+À l'aide d'indicateurs de dispersion, de méthodes de classification spatiale de l'espace, ou encore de résumés de lissages cartographiques, on serait ainsi en mesure de \og{}dé-spatialiser\fg{} des indicateurs relatifs à l'espace pour par exemple en montrer l'évolution moyenne au cours du temps simulé.
+
+Une autre limite, spécifique à la réalisation technique de la plateforme d'exploration des données SimEDB, est la difficulté croissante d'interrogation rapide des données à mesure que celles-ci augmentent.
+Comme la postface du \cref{chap:chap4} l'indique, nous n'avons finalement pas été en mesure de stocker et interroger les données individuelles des foyers paysans lors des dernières phases d'exploration du modèle.
+Avec la production de 20 millions de lignes de données pour chaque expérience, sur une bonne quinzaine d'expériences, on atteignait alors les limites techniques de l'environnement proposé, limites difficilement dépassables sans changer d'infrastructure informatique matérielle.
+En reprenant la typologie du \cref{chap:chap6} (\cref{tab:donnees-intermediaires}, p.~\pageref{tab:donnees-intermediaires}), on approchait ainsi assez largement d'une volumétrie de \textit{big data} et d'exigences de calcul intensif.
+Le champ scientifique de l'informatique graphique nous semble proposer deux approches opposées pour résoudre ce problème d'interrogation rapide de jeux de données toujours plus massifs, sans faire pour autant appel à des méthodes d'optimisation plus coûteuses matériellement \autocite{amirpour_amraii_human-data_2018}.
+Il s'agit, pour l'interrogation des données, de faire appel soit à l'approximation, soit à des requêtes incrémentales \autocite[28--33]{amirpour_amraii_human-data_2018}.
+
+L'approximation consiste à effectuer une requête rapide, quitte à ne renvoyer qu'une approximation heuristique du résultat.
+Cela dépend avant tout du système de gestion de base de données (SGBD) qui organise les données, et doit être capable de produire une approximation aussi exacte que précise au regard du temps maximal qu'on lui autorise pour retourner son résultat.
+C'est un enjeu majeur de la recherche en bases de données pour traiter des corpus de plus en plus importants de manière interactive.
+Selon les mots de \textcite[7]{fekete_visual_2013} : \og Providing the mechanisms for exploration in databases and analysis systems will benefit to all the situations when users are willing to trade accuracy for time, an important issue since time is becoming one of our most important resources\fg{}.
+De nouvelles solutions logicielles permettant de telles requêtes sont régulièrement proposées \autocite[par exemple EntropyDB, de ][]{orr_entropydb_2019}, mais la relative jeunesse de ce champ le rend encore instable.
+Pour exemple, la solution BlinkDB \autocite{agarwal_blinkdb_2013} présentée dans le \cref{chap:chap4} a depuis été abandonnée, notamment au profit de EntropyDB.
+
+La faculté de mener des requêtes incrémentales s'inscrit dans la recherche en informatique, autour de l'idée de \og \textit{progressive visual analytics}\fg{} \autocite{6876049}, de \og \textit{progressive analytics}\fg{} \autocite{fekete_progressive_2016}, ou encore de \og \textit{progressive data science}\fg{} \autocite{turkay_progressive_2018}.
+Plutôt que de demander à une base de données de renvoyer une unique approximation d'un résultat, il s'agit de récupérer régulièrement des résultats de plus en plus précis, correspondant à des approximations successives de plus en plus fines.
+Contrairement aux méthodes d'approximation, ces approches \og \textit{progressives}\fg{} ont l'avantage d'être déterministes (si on attend la dernière approximation, qui correspond en fait au résultat \og objectif\fg{} de la requête) et donc de permettre des comparaisons très rapides entre résultats de simulation, mais aussi de renvoyer des résultats précis au prix d'une attente un peu plus élevée.
+La principale difficulté d'intégration de telles méthodes à une plateforme existante telle que SimEDB est qu'il faut alors changer non seulement le SGBD, mais aussi le mode de requête afin que l'affichage des indicateurs de sortie soit actualisé régulièrement pour prendre en compte les nouvelles approximations.
+Cela demande donc d'importants développements informatiques, mais nous semble extrêmement stimulant comme possibilité d'interrogation de données très massives.
+
+Une autre piste d'amélioration de la plateforme, liée cette fois à l'analyse de données exploratoires, porte sur la collecte de retours utilisateurs automatisés en vue de fouille automatisée de données.
+Cette idée est présente dans notre travail depuis le début de la thèse, mais n'a pu être menée à bien par faute de temps.
+L'enjeu est de récupérer les \og notations\fg{} des indicateurs de chaque simulation (décrits dans la \cref{sssec:modes-interaction}, p.~\pageref{par:noter-simul}) et d'utiliser ces données comme une source d'analyse.
+Par exemple, avec des analyses factorielles sur les indicateurs, les expériences qu'ils décrivent, et les notes données par chacun, il devrait être possible d'identifier de manière quantitative les expériences les plus satisfaisantes, mais aussi les indicateurs qui sont les moins utiles, ou encore d'identifier des expériences qui auraient été peu évaluées visuellement mais au profil proche d'expériences notées positivement.
+
+De telles approches de \og fouille de données\fg{} (\textit{data mining}), voire d'apprentissage automatique, constitueraient de plus un premier pas vers une évaluation de SimEDB, qui constitue, avec l'évaluation plus générale de l'évaluation visuelle, une perspective importante de ce travail.
+L'évaluation des méthodes visuelles est ainsi au cœur de nombreuses pratiques de la communauté d'informatique graphique, et nous semble indispensable pour juger de la validité de l'approche mise en œuvre dans ce travail de thèse.
+Dans le cas de SimEDB, une telle analyse est difficile car les utilisateurs de la plateforme sont captifs, dans le sens où il n'ont pas d'alternative pour évaluer les sorties de SimFeodal.
+SimEDB ne s'adresse pas non plus à un grand public, et le recrutement de \og testeurs\fg{} externes, pour mesurer l'effectivité de notre plateforme à réaliser les tâches d'évaluation du modèle, serait aussi vain.
+L'évaluation de notre proposition de méthode d'évaluation visuelle est donc un chantier de recherche important, sans doute difficilement réalisable en tant que tel.
+Pour aller dans ce sens, cependant, l'application de méthodes d'évaluation visuelle à d'autres modèles serait sans doute un premier pas non négligeable et qui pourrait de plus être mené dans un délai raisonnable, par exemple sur des projets de modélisation interdisciplinaire déjà en cours.
+
+
+\paragraph{Généraliser l'approche de co-construction.}
+
+Cette \og conclusion\fg{} des perspectives d'évaluation de la méthode d'évaluation visuelle proposée dans cette thèse nous semble extrêmement importante, et dans les faits, applicable à l'ensemble des propositions énumérées dans ce travail.
+Cette thèse, comme indiqué dans l'\lowercase{\nameref{chap:intro}}, constitue avant tout une proposition méthodologique.
+À ce titre, la meilleure évaluation globale consiste en la reproduction, sur des cas d'études variés, des approches qui y sont promues.
+C'est d'autant plus vrai à propos du plaidoyer général qui y est fait de co-construction interdisciplinaire de modèle.
+En co-construisant de nouveaux modèle, potentiellement avec d'autres disciplines des sciences humaines et sociales, cette approche horizontale, fondée sur l'accompagnement à la modélisation, ne peut qu'être étayée et éprouvée.
+De la même manière que la formalisation de démarche de modélisation d'accompagnement (ComMod, \cite{commod_modelisation_2005}) résulte avant tout d'une somme d'expériences partagées et synthétisées par un collectif pluriel de chercheurs impliqués en recherche-action, il nous semble que la multiplication des expériences de co-construction interdisciplinaire de modèles en SHS serait le moyen privilégié de détailler ou de corriger les propositions de cette thèse.
+

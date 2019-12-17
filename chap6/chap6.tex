@@ -97,7 +97,7 @@ La phase d'analyse visuelle, plus précise, étudiait plus avant le détail de c
 \noindent Les démarches d'analyse exploratoire de données et de l'exploration de modèles sont donc très similaires, appliquant les mêmes méthodes à des objets différents.
 Dans les deux cas, les éléments observés sont au final des données numériques multi-variées, qui constituent des proxy de phénomènes sociaux et/ou spatiaux dans le premier cas, et des proxy des dynamiques modélisées dans le cas des données de sortie de simulation.
 
-\paragraph{Les données issues de simulation, des données spatio-temporelles \og \og intermédiaires\fg{}}
+\paragraph{Les données issues de simulation, des données spatio-temporelles \og intermédiaires\fg{}}
 En informatique, il est classique de différencier les types de bases de données selon la \og taille\fg{} ou la masse de données contenues, c'est-à-dire selon le nombre d'entités/lignes représentées ou selon l'espace disque effectivement occupé pour les stocker.
 Les données de faible taille et poids sont très classiques, et peuvent être traitées dans l'ensemble des solutions existantes, voire à la main pour les plus contenues (départements français par exemple).
 A l'opposé, les \og big data\fg{} représentent des données qui ne peuvent ni être stockées ni être traitées sur un ordinateur personnel classique, et requièrent alors de faire appel à des technologies informatiques avancées.
@@ -156,7 +156,7 @@ Les données issues de simulation s'inscrivent tout à fait dans les mêmes prob
 Les données issues de simulations ne sont pas des \textit{big data}, car elles ne sont ni véloces, variables ou imprévisibles, mais leur masse requiert tout de même des outils adaptés, tant pour leur archivage que pour leur interrogation.
 Les solutions mises en place pour leur analyse (\hl{chapitre 5}) sont d'ailleurs précisément des solutions pensées pour ces données intermédiaires, où les infrastructures de type \og bases de données analytiques\fg{} se distinguent.
 
-\paragraph{Quelles spécificités des données de simulation ?}
+\paragraph{Quelles spécificités des données de simulation ?}\label{par:specificites-donnees-simul}
 La similitude d'ensemble entre ces données intermédiaires et les données issues de simulation ne doit pas pour autant masquer les caractéristiques propres des données issues de simulation, lesquelles complexifient leur analyse et requièrent le développement ou au moins l'usage d'outils particuliers, tel qu'illustré dans le \hl{chapitre 5}.
 
 \noindent Contrairement aux big data, les données issues de simulation ne sont par essence ni incomplètes ni hétérogènes, puisqu'elles sont générées directement par le modélisateur.
@@ -272,7 +272,7 @@ Comme le résume \textcite{victor_simulation_2009} à propos de l'exploration vi
 \end{figure}
 
 
-\subsection{Comment passer de l'exploration à la validation ? Quelques perspectives}
+\subsection{Comment passer de l'exploration à la validation ? Quelques perspectives \label{subsec:perspectives-validation}}
 
 Dans le \hl{chapitre 3}, on définissait et décrivait les différents enjeux et méthodes de l'évaluation de modèle.
 Notre approche, sur lesquels les paragraphes précédents constituent quelques retours, s'ancrait profondément dans une approche exploratoire et graphique, que nous dénommions \og évaluation visuelle\fg{}.
@@ -345,7 +345,7 @@ Une solution serait donc d'ajuster le modèle sur des sous-ensembles témoins de
 Cette approche est fréquemment utilisée pour les modèles statistiques prédictifs (scénarios démographiques et climatiques entre autre), qui peuvent par exemple avoir pour point de départ temporel une période relativement récente, et où on cherche à ce que les \og rétro-prédictions\fg{} collent aux données empiriques déjà connues au moment de la création du modèle.
 
 
-\paragraph{Validation croisée : désancrer le modèle pour en évaluer la généricité}
+\paragraph{Validation croisée : désancrer le modèle pour en évaluer la généricité}\label{par:validation-croisee}
 Une dernière piste, évoquée\noindent  dès les prémices de ce travail de thèse, consisterait à mener une évaluation par le biais de \og scénarios régionaux\fg{}.
 Dans le chapitre précédent, nous présentions une analyse de scénarios thématiques qui nous paraissent intéressants au regard des questionnements des archéologues et historiens de notre groupe de travail.
 Ces scénarios sont plausibles et doivent aider aussi bien à tester la robustesse du modèle face à des changements de valeurs de paramètres nets qu'à évaluer la réaction des interactions entre mécanismes dans des contextes thématiques légèrement différents (augmentation de la part des foyers paysans dépendants -- serfs et esclaves --, hypothèses de croissance démographique\ldots).
@@ -359,7 +359,7 @@ Si l'on prend l'exemple d'un diocèse montagnard, on pourrait alors diminuer les
 Aboutirait-on à une concentration plus lente, moins nette, ou au contraire est-ce que ce processus serait accéléré et augmenté ?
 En travaillant avec des spécialistes historiques de ces régions, on pourrait ainsi tester la validité des hypothèses du modèle sur leurs propres terrains d'expertise.
 
-Dans une temporalité ultérieure à celle du présent travail, un séminaire est déjà prévu et vise à éprouver SimFeodal sur d'autres régions dans lesquelles les historiens trouvent des similarités générales de changement de structure spatiales et sur lesquelles les sources empiriques paraissent suffisantes (Normandie, Champagne, Lorraine, Alsace, Flandre, Poitou, Provence, Quercy\ldots).
+Dans une temporalité ultérieure à celle du présent travail, un séminaire est déjà prévu et vise à éprouver SimFeodal sur d'autres régions dans lesquelles les historiens trouvent des similarités générales de changement de structure spatiales -- ou au contraire des processus très différents -- et sur lesquelles les sources empiriques paraissent suffisantes (Normandie, Champagne, Lorraine, Alsace, Flandre, Poitou, Provence, Quercy\ldots).
 Là encore, pour le dialogue interdisciplinaire et inter-régional, l'utilisation de représentations graphiques interactives comme interface entre les chercheurs présenterait sans doute les mêmes avantages discutés dans ce travail de thèse.
 
 
