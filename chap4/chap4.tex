@@ -1103,7 +1103,6 @@ Dans le cas des données de SimFeodal, en tenant compte de cet inévitable compr
 Ce faisant, on se coupe immanquablement de solutions extrêmement intéressantes et performantes\footnote{
 	Par exemple BlinkDB \autocite{agarwal_blinkdb_2013}, qui permet de limiter une requête à un temps maximal d'exécution donné : quand la requête n'est pas complète, le SGBD renvoi une estimation du résultat, estimation qui gagne en précision quand on augmente la limite temporelle.
 	Un SGBD de ce type serait extrêmement précieux en \textit{visual analytics}, mais la jeunesse de cet outil ainsi que sa nature de projet de recherche rendent incertain la continuité de son développement dans le temps.
-	En 2018, le projet semble d'ailleurs avoir été abandonné\ldots
 }.
 Ce choix est toutefois en la large faveur d'une meilleure garantie de pérennité, et de robustesse en générale, des données de SimFeodal.
 
@@ -1989,7 +1988,7 @@ L'organisation des onglets en eux-mêmes pose aussi une question importante : va
 
 Les deux approches présentent des avantages, mais nous avons choisi de rendre l'utilisation de SimEDB plus intuitive à tous, c'est-à-dire en organisant les indicateurs par type d'agents, plutôt qu'efficace, pour les utilisateurs habitués qui auraient bénéficié d'une organisation structurée hiérarchiquement.
 
-\subsubsection{Choix des modes d'interactions}
+\subsubsection{Choix des modes d'interactions \label{sssec:modes-interaction}}
 
 Avant même la conception de SimEDB, avec la plate-forme SimVADB, nous avions décidé de baser la sélection des simulations sur des graphiques en coordonnées parallèles interactifs (\cref{subsec:explo-interactive} : \og \cnameref{subsec:explo-interactive}\fg{}).
 La logique d'ensemble du filtrage de simulations restant la même, il n'était pas nécessaire de modifier ce choix pour SimEDB.
@@ -2056,7 +2055,7 @@ Un autre élément répond à une demande forte des utilisateurs : dans une ré-
 Nous avons donc ajouté, sur les graphiques eux-mêmes, un résumé des expériences et valeurs de paramètres sélectionnées dans chacun des indicateurs.
 Cela permet d'en conserver une trace plus durable et augmente leur potentiel réutilisation.
 
-\paragraph{Noter les simulations.}
+\paragraph{Noter les simulations.}\label{par:noter-simul}
 
 Un dernier point d'interaction avec l'application a été prévu, sans pouvoir toutefois être mobilisé jusque là : il s'agissait d'aller vers une semi-automatisation de l'évaluation des simulations, par l'intermédiaire d'un outil graphique permettant de \og noter\fg{} les simulations sélectionnées.
 Pour ce faire, et parce que, on l'a vu, l'évaluation d'un ensemble de simulations ne peut se faire de manière unique, on a choisi de donner la possibilité aux utilisateurs experts de noter chacun des indicateurs de sortie, pour chacun des ensembles de simulations qu'ils exploreraient.
