@@ -2,23 +2,24 @@
 \setcounter{chapter}{1}
 \graphicspath{{chap2/}}
 
-\chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal}
+\chapter{Formaliser connaissances et hypothèses, vers un modèle de simulation co-construit : SimFeodal }
 \label{chap:chap2}
-\begin{center}
-	{\large Version \hl{2019-12-29}}
-\end{center}
-
-\begin{itemize}
-	\item 04/2019 : Nouveau départ pour le chapitre
-	\item 20/05/2019 : Reprise commentaires Lena
-	\item 28/06/2019 : Rendu à Lena des reprises de Intro à 2.4 (concepts de modélisation)
-	\item 05/07/2019 : Rendu à Lena de 2.4 et 2.5
-	\item 08/07/2019 : fin reprise (->2.7.2.3 inclus) + envoi doc à Lena
-	\item 26/10/2019 : début dernières reprises Lena
-	\item 29/10/2019 : rédaction parties manquantes
-	\item 30/10/2019 : dernière relecture + envoi à Thomas \& Julie
-	\item 27/12/2019 : reprise Julie
-\end{itemize}
+%\begin{center}
+%	{\large Version \hl{2019-12-29}}
+%\end{center}
+%
+%\begin{itemize}
+%	\item 04/2019 : Nouveau départ pour le chapitre
+%	\item 20/05/2019 : Reprise commentaires Lena
+%	\item 28/06/2019 : Rendu à Lena des reprises de Intro à 2.4 (concepts de modélisation)
+%	\item 05/07/2019 : Rendu à Lena de 2.4 et 2.5
+%	\item 08/07/2019 : fin reprise (->2.7.2.3 inclus) + envoi doc à Lena
+%	\item 26/10/2019 : début dernières reprises Lena
+%	\item 29/10/2019 : rédaction parties manquantes
+%	\item 30/10/2019 : dernière relecture + envoi à Thomas \& Julie
+%	\item 27/12/2019 : reprise Julie
+%	\item 29/12/2019 : fin reprise Julie + Thomas
+%\end{itemize}
 \setcounter{minitocdepth}{1}
 \minitoc
 \clearpage
@@ -31,8 +32,8 @@
 \begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
 \textbf{\hypertarget{avant-propos}{\textit{Avant-propos}}}
 
-Le présent chapitre décrit un modèle, SimFeodal, issu d'un travail profondément collectif et interdisciplinaire.
-La paternité de ce modèle est ainsi tout autant la mienne que celle des co-concepteurs du modèle :
+Ce chapitre décrit un modèle, \simfeodal{}, issu d'un travail profondément collectif et interdisciplinaire.
+La paternité de ce modèle est ainsi tout autant la mienne que celle de ses co-concepteurs :
 \begin{itemize}
 	\item Cécile \textsc{Tannier}, UMR 6049 ThéMA -- Besançon\\
 	Géographe et modélisatrice, Directrice de Recherche, CNRS
@@ -48,18 +49,18 @@ Ainsi qu'à ceux qui ont contribué au projet pendant ses premières années :
 	\item Xavier \textsc{Rodier}, UMR 7324 CITERES-LAT -- Tours\\
 	Archéologue, Ingénieur de Recherche HDR, CNRS
 \end{itemize}
-Ce chapitre de thèse constitue une reprise, individuelle et largement modifiée et retravaillée, d'un chapitre \autocite{cura_transition_2017} de l'ouvrage collectif \textit{Peupler la terre} \autocite{sanders2018peupler} issu du projet TransMonDyn\footnotemark.
+Ce chapitre de thèse constitue une reprise, individuelle et largement retravaillée, d'un chapitre \autocite{cura_transition_2017} de l'ouvrage collectif \textit{Peupler la terre} \autocite{sanders2018peupler} issu du projet TransMonDyn\footnotemark.
 
-Dans ce chapitre, SimFeodal est présenté dans une version différente (v6.3) de celle de l'ouvrage collectif (v3.1), et de nombreux mécanismes sont considérablement simplifiés.
+Dans ce chapitre, nous présentons une version de \simfeodal{} (v6.3) différente de celle présenté dans l'ouvrage collectif (v3.1), et de nombreux mécanismes sont considérablement simplifiés.
 %Les fondements du modèle, toutefois, restent très largement identiques entre ces deux versions, et à ce titre, ce chapitre de thèse reprend parfois des passages entiers du chapitre de l'ouvrage collectif.
 %Dans ces moments, nous avons préféré ne pas les identifier en tant que tel, notamment car l'entremêlement de modifications apportées rendrait difficile la lecture.\\
-En matière de forme, notons que contrairement au chapitre d'ouvrage et aux parties traitant du modèle dans l'HDR de Cécile \textsc{Tannier} \autocite{tannier_analyse_2017}, le modèle SimFeodal est ici présenté en suivant le protocole de description \og ODD\fg{} (\textit{Overview, Design concepts, and Details}) \autocite{grimm_odd_2010}, dans sa formulation la plus récente (\cite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).
+En matière de forme, notons que contrairement au chapitre d'ouvrage et aux parties traitant du modèle dans l'HDR de Cécile \textsc{Tannier} \autocite{tannier_analyse_2017}, le modèle \simfeodal{}{} est ici présenté en suivant le protocole de description \og ODD\fg{} (\textit{Overview, Design concepts, and Details}) \autocite{grimm_odd_2010}, dans sa formulation la plus récente (\cite{grimm_documenting_2017}, voir \cref{tab:proto-ODD}).
 
-SimFeodal ne se prête pas à toutes les catégories identifiées par les auteurs de ce standard, et ce dernier n'est de plus pas conçu pour une description aussi détaillée du modèle.
-Nous pensons tout de même que le suivi de ce protocole de description permettra d'accroître la reproductibilité de SimFeodal.
-Pour cette raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépôt de versionnement de SimFeodal :
+\simfeodal{} ne se prête pas à toutes les catégories identifiées par les auteurs de ce standard, et ce dernier n'est de plus pas conçu pour une description aussi détaillée que celle que nous proposons dans ce chapitre.
+Nous pensons néanmoins que le suivi de ce protocole de description permettra d'accroître la reproductibilité de \simfeodal{}.
+Pour cette raison, notons que l'implémentation du modèle, son historique ainsi que les différentes descriptions techniques sont disponibles dans le dépôt de versionnement de \simfeodal{} :
 \begin{center}
-	\href{https://github.com/SimFeodal/SimFeodal}{https://github.com/SimFeodal/SimFeodal}
+	\href{https://github.com/SimFeodal/SimFeodal}{https://github.com/SimFeodal /SimFeodal}
 \end{center}
 
 \end{mdframed}
@@ -77,36 +78,34 @@ Projet ANR (ANR-10-BLAN-1805), coordonné par Lena \textsc{Sanders}, entre 2011 
 \label{sec:chap2-intro}
 \addcontentsline{toc}{section}{Introduction}
 
-Le chapitre précédent (\hl{ref chap 1}) visait à présenter le positionnement de cette thèse, située entre géographie, modélisation et informatique.
+Dans le chapitre précédent (\cref{chap:chap1}) nous avons précisé le positionnement disciplinaire de cette thèse, située entre géographie, modélisation et informatique.
 Ce positionnement, pleinement ancré dans une approche méthodologique, met notamment en avant la construction d'une démarche complète de co-construction de modèle.
 Cette démarche sera mobilisée et commentée de manière systématique tout au long des chapitres à venir.
 Dans un premier temps, et avant de pouvoir commenter véritablement la méthode de construction, d'évaluation et de paramétrage d'un modèle, il est nécessaire de décrire le cas d'étude.
 Celui-ci permettra notamment d'illustrer et d'exemplifier, dans les chapitres suivants, les raisonnements et démarches de modélisation qui sont suivis.
-Dans ce chapitre, nous présentons donc de manière détaillée le modèle de simulation auquel notre groupe de travail a abouti : SimFeodal, acronyme de \og \textbf{Sim}ulation de la \textbf{F}ixation, de l'\textbf{É}mergence et de l'\textbf{O}rganisation \textbf{D}ynamique d'\textbf{A}grégats de population \textbf{L}ocalisés\fg{}.
+Dans ce chapitre, nous présentons donc de manière détaillée le modèle de simulation collectivement conçu : \simfeodal{}, acronyme de \og \textbf{Sim}ulation de la \textbf{F}ixation, de l'\textbf{É}mergence et de l'\textbf{O}rganisation \textbf{D}ynamique d'\textbf{A}grégats de population \textbf{L}ocalisés\fg{}.
 
-Dans un premier temps, on peut adresser une remarque au lecteur qui nous semble importante pour la compréhension de ce chapitre : SimFeodal est le résultat d'une expérience, innovante, de modélisation collaborative en contexte interdisciplinaire.
+Dans un premier temps, on peut adresser une remarque au lecteur qui nous semble importante pour la compréhension de ce chapitre : \simfeodal{} est le résultat d'une expérience, innovante, de modélisation collaborative en contexte interdisciplinaire.
 Le processus de modélisation poursuivi est très fortement exploratoire, et n'a en aucun cas été prévisible ou linéaire tout au long des plus de 6 ans de conception.
 La seule ligne directrice, relative aux concepts de modélisation, qui a été tenue durant ces années est la volonté d'inscrire la modélisation des phénomènes spatio-temporels considérés dans une approche descriptive, respectueuse du niveau de généralisation auquel consentaient les thématiciens du groupe.
-Ces choix ancrent SimFeodal dans une approche \og KIDS\fg{} \autocite{edmonds_kiss_2005}, caractérisée par une modélisation initialement détaillée, que l'on cherche à rendre plus parcimonieuse dans un second temps (\hl{voir chapitre 1}).
-Ce type de modélisation permet de concilier différentes formes de procéder dans l'élaboration de modèles, en épargnant en particulier aux experts thématiciens de mener des généralisations hâtives, sans ancrages empirique, qui ne peuvent que nuire à la qualité du modèle, tant du point de vue méthodologique que thématique.
+Ces choix ancrent \simfeodal{} dans une approche \og KIDS\fg{} \autocite{edmonds_kiss_2005}, caractérisée par une modélisation initialement détaillée, que l'on cherche à rendre plus parcimonieuse dans un second temps (voir \cref{chap:chap1}).
+Ce type de modélisation permet de concilier différentes formes de procéder dans l'élaboration de modèles, en épargnant en particulier aux experts thématiciens de mener des généralisations hâtives, sans ancrage empirique, qui nuiraient à la qualité du modèle, tant du point de vue méthodologique que thématique.
 
-Il résulte de cette démarche exploratoire un modèle fonctionnel et satisfaisant du point de vue de ses concepteurs : on reviendra dans le \hl{chapitre 7} sur les réponses qu'il a apportées d'un point de vue thématique.
+Il résulte de cette démarche exploratoire un modèle fonctionnel et satisfaisant du point de vue de ses concepteurs : on reviendra dans le \cref{chap:chap6} sur les réponses qu'il a apportées d'un point de vue thématique.
 Ce modèle, de type \og KIDS\fg{}, n'est ni épuré, ni parcimonieux et les différentes parties qui le constituent (agents, initialisation, mécanismes, sorties, etc.) sont caractérisées par une forte hétérogénéité dans le niveau de généralisation.
 L'enjeu a effectivement été de tenir compte des connaissances thématiques de la manière la plus complète et riche possible, il serait plutôt nécessaire de parler de niveaux de généralisation, au pluriel, tant ceux-ci peuvent varier.
-Comme indiqué dans le \hl{chapitre 1}, les experts thématiciens sont chacun spécialistes de tel ou tel aspect du modèle (lignages seigneuriaux, communautés, etc.), aspects qui seront dès lors modélisés de manière plus fine et détaillée.
-SimFeodal a de plus été construit de manière itérative et incrémentale (\hl{ref encadré}), ce qui renforce cette hétérogénéité de niveaux de généralisation.
+Comme indiqué dans le \cref{chap:chap1}, les experts thématiciens sont chacun spécialistes de différents aspects du modèle (lignages seigneuriaux, communautés, etc.), aspects qui seront dès lors modélisés de manière plus fine et détaillée.
+\simfeodal{} a de plus été construit de manière itérative et incrémentale, ce qui renforce cette hétérogénéité de niveaux de généralisation.
 
-Au delà de l'hétérogénéité du modèle due au mode de construction et à celle des connaissances expertes, qui rendent difficile la formation d'un produit fini entièrement homogène, il faut noter un aspect important de SimFeodal : ce modèle existe et évolue depuis des années.
+Au delà de l'hétérogénéité du modèle due au mode de construction et à celle des connaissances expertes, qui rendent difficile la formation d'un produit fini entièrement homogène, il faut noter un aspect important de \simfeodal{} : ce modèle existe et évolue depuis des années.
 C'est vrai aussi bien que l'on prenne en considération le premier diagramme conceptuel (entrepris il y a plus de 8 ans, en 2011, sans l'auteur de cette thèse), que le modèle implémenté, dont le premier \textit{commit}, c'est-à-dire la première version fonctionnelle, remonte au mois d'avril 2014\footnote{
 \href{https://github.com/SimFeodal/SimFeodal/commit/a85598682cda2350b08ea789b966e613dacb1b05}{https://github.com/SimFeodal/SimFeodal/commit/a8559868}}.
-On présente, dans ce chapitre, la version \og 6.3\fg{} du modèle\footnote{
-	\hl{Renvoyer au chapitre 4 sur tableau des versions.}
-}, ce qui donne une idée du nombre d'itérations et de modifications de SimFeodal depuis l'établissement des mécanismes d'ensemble qui marquent le début de son existence.
+On présente, dans ce chapitre, la version \og 6.3\fg{} du modèle (voir l'historique des versions dans le \cref{tab:historique-versions-simfeodal}), ce qui donne une idée du nombre d'itérations et de modifications de \simfeodal{} depuis l'établissement des mécanismes d'ensemble qui marquent le début de son existence.
 
-%En conclusion de cette introduction, et avant de reprendre le fil de la description de SimFeodal en suivant le protocole ODD, on notera que cette version 6.3 n'est vraisemblablement pas la dernière.
-%SimFeodal a une existence propre, au sein du groupe de travail présenté dans l'\hyperlink{avant-propos}{avant-propos}, qui dépasse fortement celle de la présente thèse.
+%En conclusion de cette introduction, et avant de reprendre le fil de la description de \simfeodal{} en suivant le protocole ODD, on notera que cette version 6.3 n'est vraisemblablement pas la dernière.
+%\simfeodal{} a une existence propre, au sein du groupe de travail présenté dans l'\hyperlink{avant-propos}{avant-propos}, qui dépasse fortement celle de la présente thèse.
 %Que le lecteur ne s'étonne donc pas de trouver des descriptions différentes de ce modèle, qu'elles soient antérieures ou postérieures au présent ouvrage.
-%On ne présente ici qu'un état, temporaire, de ce projet de longue haleine qu'est la co-construction de SimFeodal.
+%On ne présente ici qu'un état, temporaire, de ce projet de longue haleine qu'est la co-construction de \simfeodal{}.
 
 
 \let\orisectionmark\sectionmark
@@ -115,19 +114,15 @@ On présente, dans ce chapitre, la version \og 6.3\fg{} du modèle\footnote{
 \orisectionmark{Objectifs}
 \let\sectionmark\orisectionmark
 
-Le contexte de réalisation du modèle SimFeodal a été présenté dans le \hl{chapitre 1, partie contexte TransMonDyn}, de même qu'une première description, brève, des processus sociaux et spatiaux que l'on cherche à reproduire dans le modèle (\hl{chapitre 1, \og Identifier des régimes et transitions\fg{}}).
+Le contexte de réalisation du modèle \simfeodal{} a été présenté dans le \cref{chap:chap1} (\cref{sec:contexte}), de même qu'une première description, brève, des processus sociaux et spatiaux que l'on cherche à reproduire dans le modèle (\cref{subsec:processus-longue-duree}).
 
 Dans cette partie, une description plus approfondie du modèle permet de mettre en avant l'aspect thématique de ce dernier, tant dans les questions étudiées que dans le contexte historiographique dans lequel ces questions s'inscrivent.
 
 \subsection{Contexte historiographique \label{subsec:contexte-historio}}
 
-\begin{center}
-	\hl{Manque bout de commentaire de Julie dans le scan (bas droite) : à traiter plus tard.}
-\end{center}
-
-Le contexte historique et historiographique dans lequel s'inscrit le modèle SimFeodal est riche et très étudié par les médiévistes.
+Le contexte historique dans lequel s'inscrit le modèle \simfeodal{} est riche et très étudié par les médiévistes.
 Il est associé à un paysage scientifique qui cherche à comprendre les origines du féodalisme et les changements que ce système a provoqué autour de l'\og{}An Mil\fg{}~\autocite{duby1967mil}.
-Plutôt que de mener un exercice d'\og{}auto-paraphrase\fg{}, nous préférons ici mobiliser un texte collectif (\cref{enc:contexte-historio}), publié par les auteurs de SimFeodal \autocite[Introduction du chapitre]{cura_transition_2017}.
+Plutôt que de mener un exercice d'\og{}auto-paraphrase\fg{}, nous préférons ici mobiliser un texte collectif (\cref{enc:contexte-historio}), publié par les auteurs de \simfeodal{} \autocite[Introduction du chapitre]{cura_transition_2017}.
 L'analyse historiographique relève surtout des connaissances expertes thématiques, et à ce titre, n'aurait pas véritablement de sens à être ré-écrit par l'unique auteur de cette thèse.
 %Procéder à une citation, même aussi longue, permet de garantir la justesse de la description de ce contexte historiographique, et en assure de plus une validation par les co-auteurs, notamment thématiciens, de ce chapitre d'ouvrage.
 
@@ -163,7 +158,7 @@ Les hypothèses sont ainsi nombreuses, et il est difficile de trancher en faveur
 \citereset
 Dans ce contexte, nous avons cherché à étudier, avec une approche \og résolument géographique\fg{}~\autocite[302]{cura_transition_2017}, les causes et conditions des processus spatiaux à l'œuvre durant cette période : polarisation, fixation et hiérarchisation du système de peuplement rural.
 Les hypothèses qui sous-tendent l'approche modélisatrice sont multiples.
-On estime ainsi, d'après les connaissances expertes des thématiciens du projet, que ces processus spatiaux incombent à une triple dynamique sociale.
+On estime ainsi, d'après les connaissances expertes des thématiciens du projet, que ces processus spatiaux résultent d'une triple dynamique sociale.
 
 \begin{itemize}
 	\item Sur le plan des élites, la période est caractérisée par un émiettement des pouvoirs, en partie lié au démantèlement de l'empire carolingien.
@@ -202,18 +197,17 @@ En étudiant cette population à l'échelle d'une région, on cherche à éprouv
 %\end{tcolorbox}
 %\end{center}
 
-Dans le modèle SimFeodal, plusieurs types d'agents sont en interaction. Ces agents sont des implémentations informatiques des acteurs et entités identifiées dans le modèle conceptuel qui a donné lieu à SimFeodal \autocite[voir][Tableau 1, \ppno~309--310]{cura_transition_2017}.
+Dans le modèle \simfeodal{}, plusieurs types d'agents sont en interaction. Ces agents sont des implémentations informatiques des acteurs et entités identifiées dans le modèle conceptuel qui a donné lieu à \simfeodal{} \autocite[voir][Tableau 1, \ppno~309--310]{cura_transition_2017}.
 
  Au cœur du modèle, on trouve les \textbf{foyers paysans}\footnote{
 	Dans cette sous-partie, les premières mentions des \textbf{agents}, de leurs \textit{attributs} et de leurs \ul{mécanismes} sont identifiées par cette mise en forme (gras, italique, souligné).
 }.
-Ces agents sont une représentation des familles paysannes médiévales et de leur foyer de résidence.
+Chaque agent représente une famille paysanne médiévale et son foyer de résidence.
 Dans le modèle, l'agent représentant un foyer paysan peut perdurer de 800 à 1200, tout en changeant potentiellement de foyer de résidence à chaque pas de temps, celui-ci correspondant à une période de 20 ans.
 Les agents représentent ainsi plutôt des lignées que des familles au sens classique.
-Il s'agit ainsi de simuler les migrations résidentielles que peuvent traverser les générations successives de paysans d'une famille.
-Chaque foyer paysan est caractérisé par une \textit{localisation} (leur lieu de résidence à un instant \textit{t}) et par une \textit{satisfaction} qui va déterminer sa propension à migrer.
-
-La satisfaction d'un agent foyer paysan, et en conséquence son comportement migratoire, dépend de ses interactions avec les autres agents du modèle.
+Il s'agit ainsi de simuler les migrations résidentielles des générations successives de paysans d'une famille.
+Chaque foyer paysan est caractérisé par une \textit{localisation} (son lieu de résidence à un instant \textit{t}) et par une \textit{satisfaction} qui va déterminer sa propension à migrer.
+Cette satisfaction dépend de ses interactions avec les autres agents du modèle.
 Il aura une probabilité d'autant plus forte de migrer qu'il sera insatisfait, que ce soit sur le plan \textit{matériel} ou celui de l'accessibilité à une pratique \textit{religieuse} et à une \textit{protection} en cas de conflit (voir \cref{fig:interactions-agents}-\textbf{B}).
 
 \begin{figure}[H]
@@ -238,7 +232,7 @@ Les trois premiers sont liés à leur niveau de satisfaction, les deux derniers 
 	les agents \og églises\fg{} offrent aux foyers paysans les services religieux dont ils ont besoin.
 	Certaines de ces églises ont acquis des \textit{droits paroissiaux}, et ont le statut d'églises paroissiales, ce qui constitue une \ul{promotion} (voir \cref{fig:constitution-agents}).
 	La satisfaction religieuse des foyers paysans dépend de la distance à l'église paroissiale la plus proche (\cref{fig:interactions-agents}-\textbf{B}).
-	Le territoire est maillé par des agents-paroisses, qui constituent le pendant surfacique des églises paroissiales et visent à desservir la population (\cref{fig:constitution-poles-paroisses}-\textbf{B}).
+	Le territoire est maillé par des agents-paroisses, qui constituent le pendant surfacique des églises paroissiales (ponctuelles) et visent à desservir la population (\cref{fig:constitution-poles-paroisses}-\textbf{B}).
 	
 	\item Les agents \og \textbf{châteaux}\fg{} qui ont la capacité de protéger les foyers paysans face aux violences de l'époque (guerres, pillages, bandits, etc.).
 	La satisfaction relative à cette protection est mesurée en fonction de la distance au château le plus proche.
@@ -250,14 +244,14 @@ Les trois premiers sont liés à leur niveau de satisfaction, les deux derniers 
 	} composés d'un ensemble suffisant (5) de foyers paysans situés à proximité les uns des autres (\cref{fig:constitution-agents}).
 	Les agrégats sont des agents en tant que tel, composite puisque constitués par des foyers paysans, mais dotés de leurs propres attributs, telle que l'existence en leur sein d'une éventuelle \textit{communauté paysanne}.
 	L'agrégat n'a pas de pérennité propre : il émerge quand les migrations des foyers paysans débouchent sur des regroupements dans l'espace.
-	Si les foyers paysans qui le composent migrent ailleurs à un des pas de temps suivants, l'agrégat ne perdure pas.
+	Si les foyers paysans qui le composent migrent ailleurs à un des pas de temps suivants, l'agrégat disparaît.
 	
 	\item Les agents \og \textbf{pôles d'attraction}\fg{} : \\
 	il s'agit ici encore d'agents composites, cette fois constitués d'un ou de plusieurs \textbf{attracteurs}, c'est-à-dire des églises paroissiales, des châteaux ou des agrégats de foyers paysans (\cref{fig:constitution-poles-paroisses}-\textbf{A}).
 	C'est vers un tel pôle que se dirige le foyer paysan qui a pris la décision de migrer (\cref{fig:interactions-agents}-\textbf{B}).
 \end{itemize}
 
-Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des différents agents de SimFeodal.
+Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des différents agents de \simfeodal{}.
 
 	\begin{figure}[H]
 	\centering
@@ -275,7 +269,7 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/agents_constitution.pdf}
-	\caption[Héritages et compositions des agents de SimFeodal.]{Héritages et compositions des agents de SimFeodal.\\
+	\caption[Héritages et compositions des agents de \simfeodal{}.]{Héritages et compositions des agents de \simfeodal{}.\\
 		\textit{Exemple de lecture :\\
 			- un agrégat est composé de 5 ou plus foyers paysans,\\
 			- un foyer paysan appartient à 0 ou 1 agrégat.}}
@@ -296,27 +290,26 @@ Le \cref{tab:agents-simfeodal} résume les propriétés et caractéristiques des
 
 \subsubsection{Résolution et échelle spatiale \label{subsec:reso-spatiale}}
 
-SimFeodal prend appui sur un monde théorique \textbf{isotrope}, \textbf{continu}, symbolisé sous la forme d'un \textbf{carré de 80 km de côté}, strictement \textbf{endogène} au modèle, c'est-à-dire créé (et recréé) à chaque nouvelle simulation.
+L'espace du modèle est un monde théorique \textbf{isotrope}, \textbf{continu}, symbolisé sous la forme d'un \textbf{carré de 80 km de côté}, strictement \textbf{endogène} au modèle, c'est-à-dire créé (et recréé) à chaque nouvelle simulation.
 
 \paragraph[Isotrope]{} Le monde est \textbf{isotrope} car il ne présente aucune hétérogénéité de surface ou de topologie.
 La distance entre deux points est mesurée de manière euclidienne.
-Cet espace support se veut le plus neutre et générique possible.
+Cet espace support se veut le plus neutre et simple possible.
 Il est ainsi susceptible de représenter un cas très général, qui peut servir de support à toute la diversité des espaces de l'Europe du Nord-Ouest, par l'entremise de ce dessin théorique.
 
-\paragraph[Continu]{}Contrairement à un usage classique en simulation à base d'agents, nous avons aussi fait le choix de placer SimFeodal dans \textbf{un espace continu}, c'est-à-dire non discrétisé.
+\paragraph[Continu]{}Contrairement à ce qui se fait usuellement en simulation à base d'agents, nous avons aussi fait le choix de placer \simfeodal{} dans \textbf{un espace continu}, c'est-à-dire non discrétisé.
 La discrétisation de l'espace, sous forme de \og patchs\fg{} ou de \og cellules\fg{}, s'inscrit souvent dans l'héritage des modèles à base d'automates cellulaires.
 Les \textit{patchs} prennent d'ordinaire la forme d'agents : cela facilite l'attribution de caractéristiques, comme un certain niveau de ressource, une altitude, une population agrégée etc.
-Dans le cas de SimFeodal, l'espace n'est qu'un support: il ne possède aucune caractéristique propre.
+Dans le cas de \simfeodal{}, l'espace n'est qu'un support: il ne possède aucune caractéristique propre.
 Par sa nature isotropique, il n'est pas utile d'y différencier d'éventuelles cellules les unes des autres.
-Une large part des mécanismes de SimFeodal s'appuie sur la prise en compte de distances entre agents, à partir de seuils dont les ordres de grandeurs peuvent être très variables (de la centaine de mètres à plus de 10 km).
+Une large part des mécanismes de \simfeodal{} s'appuie sur la prise en compte de distances entre agents, à partir de seuils dont les ordres de grandeur peuvent être très variables (de la centaine de mètres à plus de 10 km).
 Nous avons préféré ne pas procéder à une discrétisation de l'espace, compte tenu de cette variabilité, afin de ne pas artificiellement réduire la précision des relations spatiales.
 
 
-\paragraph[Dimension]{}L'espace est formalisé sous la forme d'\textbf{un carré de 80 km de côté}.
-Le choix du carré s'inscrit dans la volonté d'isotropie, et l'espace ainsi défini est proche de l'ordre de grandeur des diocèses médiévaux, maillage territorial relativement stable dans le temps depuis cette époque médiévale jusqu'à aujourd'hui.
-Dans des versions précédentes de SimFeodal, le carré avait un côté de 100 km. Nous avons choisi de le réduire afin d'approcher de la superficie de la Touraine médiévale sur laquelle nous prenons appui pour le calibrage du modèle. 
-La superficie du département d'Indre-et-Loire actuel, ou encore du diocèse de Tours qui est à peu près équivalent à ce département, sont ainsi d'environ 6 000 km².
-En choisissant un espace support de 80 $\times$ 80 km de superficie (6 400 km²), on facilite l'estimation des densités et mesures d'écartements dans le modèle au regard des connaissances empiriques.
+\paragraph[Dimension]{}L'espace est formalisé sous la forme d'\textbf{un carré de 80 km de côté}, proche de l'ordre de grandeur des diocèses médiévaux, maillage territorial relativement stable dans le temps depuis cette époque médiévale jusqu'à aujourd'hui.
+Dans des versions précédentes de \simfeodal{}, le carré avait un côté de 100 km. Nous avons choisi de le réduire afin d'approcher de la superficie de la Touraine médiévale sur laquelle nous prenons appui pour le calibrage du modèle. 
+La superficie du département d'Indre-et-Loire actuel, ou encore du diocèse de Tours qui est à peu près équivalent à ce département, sont d'environ 6 000 km².
+En choisissant un espace support de 80 $\times$ 80 km (6 400 km²), on facilite l'estimation des densités et mesures d'écartements dans le modèle au regard des connaissances empiriques.
 Notons enfin que si l'espace support est bien un carré de 80 km de côté, on en retranche en réalité une partie (1 km de chaque côté, voir \cref{fig:espace-simfeodal}) pour définir un espace utile, ou \og espace actif\fg{}.
 On s'assure ainsi qu'aucune localisation ne soit située trop proche des limites de l'espace, ce qui pourrait avoir pour effet de produire des \og effets de bords\fg{}, aussi bien informatiques qu'en termes d'anomalies de voisinages.
 L'espace actif, utilisable dans le modèle, est donc de 79 $\times$ 79 km, soit 6 084 km².
@@ -325,7 +318,7 @@ L'espace actif, utilisable dans le modèle, est donc de 79 $\times$ 79 km, soit 
 
 \paragraph[Endogène]{} Notons enfin que l'espace est strictement \textbf{endogène} au modèle.
 On entend par là que le monde simulé ne résulte pas d'un \textit{input}\footnote{
-	Contrairement à de nombreux modèles utilisés en géographie \autocites[etc.]{white_use_1997,white_high-resolution_2000,dubos-paillard_analyse_2003,benenson_schelling_2009}, il n'y a pas de chargement de configurations initiales dans SimFeodal: la génération de l'espace support est un sous-modèle dans le modèle.
+	Contrairement à de nombreux modèles utilisés en géographie \autocites[etc.]{white_use_1997,white_high-resolution_2000,dubos-paillard_analyse_2003,benenson_schelling_2009}, il n'y a pas de chargement de configurations initiales dans \simfeodal{} : la génération de l'espace support est un sous-modèle dans le modèle.
 } : seul un paramètre, qui régit la taille des côtés, joue sur la géométrie globale de l'espace.
 %Il nous semble important de le préciser, en particulier parce que c'est, à notre connaissance, assez inhabituel dans la simulation de données géographiques, mêmes théoriques.
 Les agents sont en effet placés, à l'échelle de l'individu, de manière quasi-aléatoire dans l'espace du modèle.
@@ -334,24 +327,24 @@ Cette localisation des agents doit répondre à une double contrainte:
 \begin{itemize}
 	\item Au niveau des agents, la distribution spatiale doit être aléatoire, afin que les différentes situations spatiales générées présentent une large diversité.
 	Cette diversité, éprouvée par l'exécution de nombreuses réplications du modèle, est garante de la généricité du modèle.
-	\item Au niveau global, la structure du système de peuplement généré doit être partiellement configurable, c'est-à-dire répondre à certains paramètres macroscopiques qui agiront non sur la localisation individuelle des agents, mais sur leur degré de concentration ou de dispersion dans l'ensemble de l'espace \og actif\fg{}.
+	\item Au niveau global, la structure du système de peuplement généré doit être partiellement configurable, c'est-à-dire répondre à certains paramètres macroscopiques qui agiront sur le degré de concentration ou de dispersion dans l'ensemble de l'espace \og actif\fg{} des foyers paysans.
 \end{itemize}
 
 
 \subsubsection{Granularité temporelle}
 
-SimFeodal modélise des processus qui se déroulent sur le temps long, et à ce titre, la gestion de la temporalité est importante.
+\simfeodal{} modélise des processus qui se déroulent sur le temps long, et à ce titre, la gestion de la temporalité est importante.
 Le modèle inscrit son exécution dans une étendue de \textbf{400 ans}, \textbf{discrétisée} sous la forme de 20 pas de temps de \textbf{20 ans} chacun.
 
 \paragraph[Durée]{} La période d'étude, thématique, s'étend entre 800 après J.-C. et 1100, qui correspondent à des repères temporels entre lesquels on estime que la transition s'est déroulée (\cref{subsec:contexte-historio}).
 Pour modéliser ces évolutions, nous avons choisi de commencer à la même date, mais de prolonger l'exécution du modèle d'un siècle, soit de \textbf{de 800 à 1200}\footnote{
-	Dans les versions précédentes de SimFeodal (par exemple dans \textcite{cura_transition_2017}), cette date était fixée à 1160.
+	Dans les versions précédentes de \simfeodal{} (par exemple dans \textcite{cura_transition_2017}), cette date était fixée à 1160.
 	Nous avons choisi de prolonger de 40 ans la date de fin parce que cela 
 	permet de comparer l'état final du modèle au début du XIII$^e$ siècle, pour lequel certaines données empiriques supplémentaires sont disponibles.
 	On obtient de plus un nombre de pas de temps plus \og rond\fg{} (20) qu'auparavant (18), ce qui permet par exemple de représenter l'évolution d'une simulation de manière plus régulière.
 }.
-Prolonger cette date d'observation des résultats du modèle permet d'analyser le comportement du modèle après la période même de la transition identifiée, à une date où le système de peuplement est pleinement inscrit dans son régime post-transition (régime 2 -cf. \hl{chap1, contexte, transitions et régimes}).
-On peut ainsi, entre autre, voir si les processus à l'œuvre subissent bien un ralentissement, marquant par exemple la fin de la féodalité, plutôt qu'un accroissement constant.
+Prolonger cette date d'observation des résultats du modèle permet d'analyser le comportement du modèle après la période même de la transition identifiée, à une date où le système de peuplement est pleinement inscrit dans son régime post-transition (régime 2, cf. \cref{subsec:processus-longue-duree}).
+On peut ainsi, entre autres, voir si les processus à l'œuvre subissent bien un ralentissement, marquant par exemple la fin de la féodalité, plutôt qu'un accroissement constant.
 
 \paragraph[Discret]{} Contrairement à la gestion de l'espace, nous avons choisi de modéliser le temps sous forme \textbf{discrète}.
 Ce choix s'explique par deux raisons principales.
@@ -374,13 +367,13 @@ Dans l'ensemble, au vu des connaissances historiques, ces pas de temps doivent �
 Que les premiers châteaux apparaissent en 980 ou en 1000 n'a pas d'importance dans le modèle, tant que cela se déroule avant le milieu du XI$^e$ siècle par exemple.
 
 La \cref{fig:frise-chrono} illustre les processus et événements qui surviennent pendant l'ensemble de cette période.
-Elle donne à voir la correspondance floue entre les événements historiques, précis ou non, et leur implémentation dans SimFeodal.
+Elle donne à voir la correspondance floue entre les événements historiques, précis ou non, et leur implémentation dans \simfeodal{}.
 Cette dernière peut ainsi prendre la forme de changements datés (par exemple le début du mécanisme de don de châteaux), ou au contraire de mises en place graduelles de mécanismes (par exemple les gains de droits de haute justice par les grands seigneurs, qui sont progressifs).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/frise_chrono_tmd.pdf}
-	\caption[Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal.]{Frise chronologique des processus historiques observés en Touraine implémentés dans SimFeodal. D'après \textcite[fig. 2, p.~315]{cura_transition_2017}.}
+	\caption[Frise chronologique des processus historiques observés en Touraine implémentés dans \simfeodal{}.]{Frise chronologique des processus historiques observés en Touraine implémentés dans \simfeodal{}. D'après \textcite[fig. 2, p.~315]{cura_transition_2017}.}
 	\label{fig:frise-chrono}
 \end{figure}
 
@@ -392,7 +385,7 @@ Cette dernière peut ainsi prendre la forme de changements datés (par exemple l
 \orisectionmark{Fonctionnement général}
 \let\sectionmark\orisectionmark
 
-SimFeodal est un modèle qui s'inscrit plutôt dans une approche KIDS que KISS (\hl{voir chapitre 1}).
+\simfeodal{} est un modèle qui s'inscrit plutôt dans une approche KIDS que KISS (voir \cref{chap:chap1}, \cref{subsec:explorer-confronter}).
 Il est constitué d'une large variété d'agents (\cref{tab:agents-simfeodal}) dotés, pour certains, de nombreux comportements.
 Au total, ce sont près de quarante mécanismes particuliers (ici regroupés en une quinzaine de mécanismes généraux) qui font interagir les agents à chaque pas de temps.
 Dans cette partie, nous présentons une synthèse de ces mécanismes, sans entrer dans le détail, algorithmique ou mathématique, de chacun, en accord avec les spécifications du formalisme ODD (voir la \cref{sec:meca-specifiques} pour des descriptions plus précises des mécanismes les plus complexes et importants).
@@ -413,7 +406,7 @@ Certains de ces mécanismes peuvent être guidés par les connaissances expertes
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 	
-Dans SimFeodal, les mécanismes sont toujours appelés dans le même ordre (voir \cref{fig:ordonnancement}): l'ordonnancement ne change pas tout au long des 20 pas de temps du modèle.
+Dans \simfeodal{}, les mécanismes sont toujours appelés dans le même ordre (voir \cref{fig:ordonnancement}): l'ordonnancement ne change pas tout au long des 20 pas de temps du modèle.
 Certains mécanismes sont toutefois temporaires, c'est-à-dire rendus inactifs en fonction des pas de temps: la construction des châteaux, par exemple, n'est pas possible avant 940.
 Jusqu'au pas de temps correspondant, le mécanisme est alors désactivé par un paramètre réglable.
 Notons que si les mécanismes suivent un ordre déterminé, ce n'est pas le cas des agents qui y sont associés.
@@ -442,7 +435,7 @@ Ces zones de prélèvement sont matérialisées sous formes de cercles de rayons
 Dès le départ de la simulation, l'espace support constitue ainsi une contrainte pour les foyers paysans qui se verront prélever des droits dans ces zones.
 
 L'initialisation est enfin l'occasion de créer et de disperser dans l'espace des églises (150).
-Parmi celles-ci, quelques-unes (50), choisies suivant un tirage aléatoire, se verront dotées de droits paroissiaux.
+Parmi celles-ci, quelques-unes (50), choisies aléatoirement, se verront dotées de droits paroissiaux.
 Ces églises paroissiales constitueront ainsi le semis autour duquel sera organisé le premier maillage paroissial.
 \end{tcolorbox}
 
@@ -452,18 +445,18 @@ Ces églises paroissiales constitueront ainsi le semis autour duquel sera organi
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Plusieurs mécanismes de SimFeodal évoluent au cours du temps, c'est-à-dire qu'ils changent de mode de fonctionnement d'une période à l'autre.
+Plusieurs mécanismes de \simfeodal{} évoluent au cours du temps, c'est-à-dire qu'ils changent de mode de fonctionnement d'une période à l'autre.
 Telle est la possibilité, évoquée plus haut, pour les seigneurs de construire un château, mais aussi, l'évolution des distances que les foyers paysans sont prêts à parcourir pour se rendre à l'église, etc.
-La mise en place de mécanismes tributaires de dates nous permet ainsi de représenter des événements exogènes (voir \hl{chap 1}) au modèle, qui peuvent dès lors servir de déclencheurs ou de catalyseurs à des processus de longue durée.
+La mise en place de mécanismes tributaires de dates nous permet ainsi de représenter des événements exogènes au modèle, qui peuvent dès lors servir de déclencheurs ou de catalyseurs à des processus de longue durée.
 L'incrémentation de la date et les mises à jour des différentes variables temporelles constituent donc la première étape de chaque nouvelle itération du modèle.
 \end{tcolorbox}
 
 \subsection{Renouvellement des foyers paysans \label{meca-renouvellement}}
 
-SimFeodal est un modèle qui simule l'évolution d'un système spatial clôt.
+\simfeodal{} est un modèle qui simule l'évolution d'un système spatial clos.
 On entend par là qu'il n'y a pas d'échange ou d'interaction avec les régions voisines, situées hors du carré qui tient lieu de monde simulé.
 C'est une limite forte, par ailleurs fréquente dans la modélisation où l'espace joue un rôle, car empiriquement, les systèmes sont rarement entièrement fermés et isolés.
-Il est ainsi difficile de s'abstraire du contexte spatial, en particulier dans un modèle mettant en place des migrations.
+Il est ainsi difficile de s'abstraire du contexte spatial, en particulier dans un modèle simulant des migrations.
 Le monde modélisé constitue certes un système en lui-même, mais c'est aussi un système qui n'est qu'une des composantes d'un système de peuplement plus large (le royaume des Francs, voire l'Europe du Nord-Ouest anciennemnt romanisée).
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
@@ -477,7 +470,7 @@ Les 10\% restant seront placés dans les agrégats existant selon un tirage alé
 
 \end{tcolorbox}
 \footnotetext{
-	Cette logique d'attachement préférentiel (\hl{retrouver où j'en parle si c'est avant}) permet de modéliser l'attractivité qu'exercerait un agrégat peuplé, potentiellement plus connu, sur des foyers paysans venant de régions voisines.
+	Cette logique d'attachement préférentiel (voir \cref{subsec:basic-principles}) permet de modéliser l'attractivité qu'exercerait un agrégat peuplé, potentiellement plus connu, sur des foyers paysans venant de régions voisines.
 }
 
 \subsection{Mise à jour du maillage paroissial \label{meca-paroisses}}
@@ -486,19 +479,15 @@ Le Moyen Âge voit apparaître un maillage territorial dense, continu dans l'esp
 Les archéologues ne s'accordent pas sur la date de leur apparition (avant la période étudiée), ni sur le moment où elles constituent un maillage complet (vraisemblablement pendant la période modélisée).
 Ils s'accordent cependant sur le rôle de fixation du peuplement et de stabilisation du territoire qu'elles ont eu \autocite{zadora-rio_paroisses_2008}.
 On sait également, d'après les données et connaissances empiriques, que la répartition des églises paroissiales n'est pas homogène et qu'elle dessine des mailles de dimensions inégales.
-Dans les zones rurales, l'espacement des églises paroissiales est assez important (quelques kilomètres entre deux églises), tandis que dans les zones urbaines, plusieurs églises paroissiales coexistent au sein d'une même ville.
-
-\begin{center}
-	\hl{Manque prise en compte commentaire Julie en bas de page, coupé dans scan.}
-\end{center}	
+Dans les zones rurales, l'espacement des églises paroissiales est assez important (quelques kilomètres entre deux églises), tandis que dans les zones urbaines, plusieurs églises paroissiales coexistent au sein d'une même ville.	
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	Dans SimFeodal, le maillage paroissial est représenté à partir d'un diagramme de Voronoï autour des églises paroissiales.
+	Dans \simfeodal{}, le maillage paroissial est représenté par un diagramme de Voronoï autour des églises paroissiales.
 	À chaque pas de temps, de nouvelles églises paroissiales apparaissent, à travers des mécanismes de promotion ou de création.
-	Les diagrammes de Voronoï sont fortement sensibles à l'ajout où à la suppression de points.
-	Il est donc nécessaire, à chaque pas de temps, de ré-initialiser la construction du maillage, c'est-à-dire de répéter l'opération de création du diagramme de Voronoï, en repartant d'une situation \og neutre\fg{} d'où l'on aura supprimé le maillage pré-existant\footnotemark.
+	Par construction, une tesselation de Voronoï dépend du semis de point à partir duquel elle est calculée.
+	Il est donc nécessaire recalculer ce maillage à chaque fois que l'on ajoute ou supprime des points, en repartant d'une situation \og neutre\fg{} d'où l'on aura supprimé le maillage pré-existant\footnotemark.
 	Le mécanisme de \og mise à jour\fg{} du maillage comprend donc plusieurs étapes de délimitation des paroisses (les mailles) et la création et promotion de nouvelles églises paroissiales.
 \end{tcolorbox}
 \footnotetext{
@@ -512,7 +501,7 @@ Dans les zones rurales, l'espacement des églises paroissiales est assez importa
 		\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 		colback=gray!15,colframe=gray!15,width=\dimexpr0.94\textwidth\relax, 
 		enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-			Dans SimFeodal, le maillage paroissial est calculé et représenté sous la forme d'une partition de Voronoï autour des églises paroissiales.
+			Dans \simfeodal{}, le maillage paroissial est calculé et représenté sous la forme d'une partition de Voronoï autour des églises paroissiales.
 			On garantit ainsi un pavage complet du territoire.
 			Ce pavage sera lâche dans les zones les moins peuplées et dotées de 	moins d'églises paroissiales.
 			Dans les zones les plus peuplées, telles que celles contenant les agrégats les plus importants, au contraire, il sera plus dense.
@@ -525,20 +514,20 @@ Dans les zones rurales, l'espacement des églises paroissiales est assez importa
 	\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 		colback=gray!15,colframe=gray!15,width=\dimexpr0.94\textwidth\relax, 
 		enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	SimFeodal comprend, pour modéliser cela, un mécanisme de création de paroisses.
+	\simfeodal{} comprend, pour modéliser cela, un mécanisme de création de paroisses.
 	Selon une logique probabiliste, le modèle fait apparaître de nouvelles églises, directement dotées de droits paroissiaux, au sein des agrégats les plus peuplés.
-	Plus un agrégat est peuplé, plus il a de probabilités de voir apparaître, en son sein, une nouvelle église paroissiale dédiée à sa desserte.	
+	Plus un agrégat est peuplé, plus la probabilité est grande de voir apparaître, en son sein, une nouvelle église paroissiale dédiée à sa desserte.	
 	Afin d'éviter l'apparition exponentielle d'églises paroissiales au sein d'un agrégat, cette probabilité est pondérée par le nombre d'églises paroissiales déjà présentes dans l'agrégat.
 	La probabilité est donc fonction du nombre de foyers paysans par église paroissiale.
 \end{tcolorbox}
 	
-	\item \textbf{Promotion de paroisses \og rurales\fg{}} Tout au long de son développement et à mesure de l'importance sociale qu'il acquière, on sait que le maillage paroissial se densifie, pour parvenir en fin de période au maillage quasi-communal qui en est hérité aujourd'hui.
+	\item \textbf{Promotion de paroisses \og rurales\fg{}} Tout au long de son développement et à mesure de l'importance sociale qu'il acquiert, on sait que le maillage paroissial se densifie, pour parvenir en fin de période au maillage quasi-communal qui en est hérité aujourd'hui.
 	Cette densification est observée partiellement dans les zones denses, mais aussi très largement et de manière homogène sur l'ensemble du territoire, notamment dans les zones les moins peuplées, afin de garantir un accès facilité aux sacrements à l'ensemble des foyers paysans.
 	
 	\begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 		colback=gray!15,colframe=gray!15,width=\dimexpr0.94\textwidth\relax, 
 		enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	Dans le modèle SimFeodal, quand le nombre de foyers paysans de ces zones faiblement peuplé dépasse un seuil paramétré, de nouvelles églises paroissiales sont créées.
+	Dans le modèle \simfeodal{}, quand le nombre de foyers paysans de ces zones faiblement peuplé dépasse un seuil paramétré, de nouvelles églises paroissiales sont créées.
 	Quand c'est possible, ces nouvelles églises paroissiales peuvent s'appuyer sur les églises locales existantes non dotées de droits paroissiaux.
 	Quand il n'y a pas d'église non paroissiale à proximité, on construit de nouvelles églises qui deviendront centres paroissiaux.
 	Les spécificités de ce mécanisme sont détaillées dans la section dédiée (\cref{sssec:paroisses}).
@@ -552,7 +541,7 @@ Dans les zones rurales, l'espacement des églises paroissiales est assez importa
 %Dans les zones les plus peuplées, au contraire, il sera plus dense, comme par exemple dans les zones contenant les agrégats les plus importants.
 
 %\paragraph{Création de paroisses \og urbaines\fg{}} Dans les agrégats les plus peuplés, certaines paroisses peuvent être amenées à regrouper des centaines de paroissiens, ce qui ne correspondrait pas aux connaissances empiriques.
-%SimFeodal comprend donc un mécanisme de création de paroisses, via la construction d'églises dotées de droits paroissiaux, au sein des agrégats les plus peuplés, selon une logique probabiliste. 
+%\simfeodal{} comprend donc un mécanisme de création de paroisses, via la construction d'églises dotées de droits paroissiaux, au sein des agrégats les plus peuplés, selon une logique probabiliste. 
 %Plus un agrégat est peuplé, plus il a de probabilités de voir apparaître une nouvelle église paroissiale, dans son étendue, dédiée à sa desserte.
 %
 %Afin d'éviter l'apparition exponentielle d'églises paroissiales au sein d'un agrégat, cette probabilité est pondérée par le nombre d'églises paroissiales déjà présentes dans l'agrégat.
@@ -570,7 +559,7 @@ Dans les zones rurales, l'espacement des églises paroissiales est assez importa
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 	
-Dans SimFeodal, lorsque les foyers paysans migrent, ils sont attirés par des pôles d'attraction, qui sont des ensembles composites d'agents de type attracteur (voir \cref{subsec:entites} et en particulier la \cref{fig:constitution-poles-paroisses}-\textbf{A}).
+Dans le modèle, lorsque les foyers paysans migrent, ils sont attirés par des pôles d'attraction, qui sont des ensembles composites d'agents de type attracteur (voir \cref{subsec:entites} et en particulier la \cref{fig:constitution-poles-paroisses}-\textbf{A}).
 Les pôles sont caractérisés par une attractivité, elle-même fonction du nombre et du type d'attracteurs qui composent ces pôles.
 Plus l'attractivité d'un pôle est importante, plus il est susceptible d'attirer des foyers paysans lors de leur phase de migration.
 Les pôles jouent un rôle central dans le mécanisme de migration.
@@ -581,7 +570,7 @@ Dans le but de ne pas artificiellement diviser des pôles pré-existants, ou, au
 \end{tcolorbox}
 \footnotetext{
 	Cette proximité est configurable par le biais d'un paramètre.
-	Dans SimFeodal, on situe ce seuil à 200 mètres en prenant appui sur les espacements, observés empiriquement, entre les entités considérées dans le modèle comme des attracteurs.
+	Dans \simfeodal{}, on situe ce seuil à 200 mètres en prenant appui sur les espacements, observés empiriquement, entre les entités considérées dans le modèle comme des attracteurs.
 }
 %On considère par exemple qu'un agrégat, quelle que soit son importance, contient et fait partie d'un unique pôle.
 %
@@ -620,18 +609,18 @@ Ainsi, elles ne sont pas pondérées et la plus faible de ces satisfactions sert
 %
 %Le détail des calculs est donnée dans la partie dédiée (\cref{sssec:satisfaction}), mais on peut toutefois déjà expliciter les choix de modélisation de chacune des composantes de la satisfaction d'ensemble.
 
-\paragraph{Satisfaction matérielle}
+\paragraph{Satisfaction matérielle.}
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Dans SimFeodal, on considère que plus un foyer paysan doit régler de droits, moins il est satisfait.
+Dans \simfeodal{}, on considère que plus un foyer paysan doit régler de droits, moins il est satisfait.
 La satisfaction matérielle est une fonction des différentes redevances dont un foyer paysan doit s'acquitter.
 Comme pour la satisfaction générale, notons que l'appartenance ou non à une communauté intervient dans ce calcul.
 On estime en effet que les communautés (paysannes, rurales, villageoises, etc.) constituent un groupe suffisamment important pour exercer un véritable contre-pouvoir face à des seigneurs qui seraient trop exigeants.
 \end{tcolorbox}
 
-\paragraph{Satisfaction religieuse}
+\paragraph{Satisfaction religieuse.}
 
 Cette satisfaction représente la capacité d'un foyer paysan à se rendre facilement à l'église pour assister aux offices et recevoir les différents sacrements (baptêmes, mariages, eucharistie, etc.) qui rythment la vie spirituelle de l'époque.
 Tout au long de la période, la fréquentation de ces offices religieux augmente en fréquence tout aussi bien qu'en importance sociale, en particulier du fait des réformes grégoriennes.
@@ -639,12 +628,12 @@ Tout au long de la période, la fréquentation de ces offices religieux augmente
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Dans SimFeodal, la satisfaction religieuse est modélisée comme une fonction de la distance à l'église paroissiale la plus proche : plus on est éloigné d'une église paroissiale, moins la satisfaction est forte.
+Dans \simfeodal{}, la satisfaction religieuse est modélisée comme une fonction de la distance à l'église paroissiale la plus proche : plus on est éloigné d'une église paroissiale, moins la satisfaction est forte.
 La fonction de distance n'est pas continue : elle est bornée par des seuils, maximaux et minimaux, qui permettent de définir ce qui est considéré comme une distance à ne pas dépasser ou au contraire comme une distance garantissant une satisfaction maximale.
 Ces seuils de distance évoluent au cours des pas de temps du modèle, devenant plus restrictifs (les distances minimales et maximales diminuent), quand les obligations religieuses deviennent plus lourdes, impliquant de se rendre plus souvent à l'église.
 \end{tcolorbox}
 
-\paragraph{Satisfaction \og protection\fg{}} 
+\paragraph{Satisfaction \og protection\fg{}.} 
 Avec la diminution de l'autorité centrale carolingienne, assortie d'un émiettement des pouvoirs locaux, la région d'étude subit un regain de violences militaires.
 L'apparition et le développement progressif des châteaux forts en sont des résultats représentatifs.
 Ils assurent une protection à la population en cas d'attaques, protection qui devient de plus en plus indispensable au cours de la période.
@@ -652,20 +641,20 @@ Ils assurent une protection à la population en cas d'attaques, protection qui d
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	Dans SimFeodal, de la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère que la satisfaction \og protection\fg{} des foyers paysans dépend de la distance au château le plus proche.
+	Dans \simfeodal{}, de la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère que la satisfaction \og protection\fg{} des foyers paysans dépend de la distance au château le plus proche.
 	Cette distance est aussi segmentée par des seuils, eux aussi évolutifs au cours du temps de la simulation.
 	Le calcul de la satisfaction en termes de protection dépend d'un paramètre complémentaire, le \og besoin de protection\fg{}, qui permet de représenter l'importance du climat de violence, et notamment, la forme de son évolution temporelle.
 \end{tcolorbox}
 
 %\paragraph{Satisfaction religieuse}
 %La satisfaction religieuse représente la capacité d'un foyer paysan à se rendre facilement à l'église pour y assister aux différents sacrements (baptêmes, mariages, eucharistie\ldots) qui rythment la vie spirituelle de l'époque.
-%Dans SimFeodal, cette capacité est modélisée comme une fonction de la distance à l'église paroissiale la plus proche : plus on est éloigné d'une église paroissiale, plus la satisfaction est faible.
+%Dans \simfeodal{}, cette capacité est modélisée comme une fonction de la distance à l'église paroissiale la plus proche : plus on est éloigné d'une église paroissiale, plus la satisfaction est faible.
 %Les seuils de distance définissant le \og loin\fg{} et le \og proche\fg{} évoluent au cours du temps, afin de représenter l'alourdissement des obligations religieuses tout au long de la période, par exemple à l'occasion des réformes grégoriennes.
 %
 %\paragraph{Satisfaction de \og protection\fg{}}
 %Avec la diminution du pouvoir de l'autorité centrale carolingienne assortie d'un émiettement des pouvoirs locaux, la région d'étude subit un regain de violences militaires.
 %L'apparition des châteaux forts en est l'un des symptômes représentatifs.
-%De la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère dans SimFeodal que la satisfaction \og protection\fg{} des foyers paysans dépend de la distance au château le plus proche.
+%De la même manière que la satisfaction religieuse dépend de la distance aux églises, on considère dans \simfeodal{} que la satisfaction \og protection\fg{} des foyers paysans dépend de la distance au château le plus proche.
 %Un château assure ainsi une certaine protection à la population.
 %Cette protection se montre de plus en plus critique au fur et à mesure de l'avancement de la période et donc du modèle.
 %Comme pour la satisfaction religieuse, les seuils de distance évoluent au cours du temps, de même ici que le \og besoin de protection\fg{}, qui permet de renforcer l'augmentation nette du climat de violence au cours de la période.
@@ -675,27 +664,27 @@ Ils assurent une protection à la population en cas d'attaques, protection qui d
 
 Sur l'ensemble de la période considérée, les archéologues ont observé de \og fréquentes\fg{} relocalisations (relativement au temps long de 400 ans que nous étudions) des résidences des foyers paysans, c'est-à-dire la construction de nouvelles habitations et l'abandon des anciennes.
 Ces \og migrations\fg{} sont observées aussi bien sur des distances faibles (quelques centaines de mètres, voire kilomètres) que sur des distances longues (les foyers paysans changeant par exemple de région).
-Thématiquement, l'hypothèse émise pour expliquer ces migrations est qu'elles résultent de l'insatisfaction, pour les foyers paysans, de leurs principaux besoins, qu'ils soient d'ordre matériel, spirituel ou en termes d'intégrité physique.
+Thématiquement, l'hypothèse émise pour expliquer ces migrations est qu'elles résultent de l'insatisfaction, pour les foyers paysans, de leurs principaux besoins, qu'ils soient d'ordre matériel, spirituel ou d'intégrité physique.
 En changeant de lieu et éventuellement en se regroupant, les foyers paysans espèrent trouver un mode de vie plus clément que celui de la génération précédente, par exemple, dans le cas du regroupement, en mettant en commun leurs outils de production et en présentant une contestation collective face à d'éventuelles exactions ou demandes des seigneurs féodaux.
 
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Dans SimFeodal, une trop faible satisfaction des foyers paysans les poussent à migrer.
+Dans \simfeodal{}, une trop faible satisfaction des foyers paysans les poussent à migrer.
 Il ne s'agit pas ici de migrations résidentielles, quotidiennes ou saisonnières : ces migrations sont à entendre sur le temps long.
 Elles s'appuient d'ailleurs sur une satisfaction qui n'est mesurée qu'à chaque pas de temps du modèle, soit tous les 20 ans.
 La satisfaction est alors à comprendre comme une mesure globale de l'adéquation de la localisation d'un foyer paysan à l'issue de 20 ans d'installation.
-Il s'agit donc de modéliser le choix de relocalisation qui peut être réalisé tous les 20 ans, ou schématiquement, à chaque nouvelle génération.
+Il s'agit donc de modéliser le choix de relocalisation qui peut être réalisé tous les 20 ans ou, schématiquement, à chaque nouvelle génération.
 
 \medskip
 Le mécanisme simulé repose sur le principe que les foyers paysans suffisamment satisfaits ne sont pas amenés à migrer et que la migration répond à une insatisfaction des agents-foyers paysans.
 L'implémentation de cette logique suit un mécanisme probabiliste, où l'insatisfaction augmente la probabilité de migrer.
 Le mécanisme de migration est détaillé dans la \cref{sssec:migration}.
-Il s'agit sans doute du mécanisme le plus important et impactant du modèle SimFeodal : à ce titre, il a subit de très nombreux changements depuis le début de la conception du modèle, tel qu'illustré dans \hl{le chapitre 4}.
+Il s'agit sans doute du mécanisme le plus important et impactant du modèle \simfeodal{} : à ce titre, il a subit de très nombreux changements depuis le début de la conception du modèle.
 
 \medskip
-Dans la version de SimFeodal ici présentée (\hl{version 6.3}), la migration répond à une succession de conditions.
+Dans la version de \simfeodal{} ici présentée (version 6.3), la migration répond à une succession de conditions.
 Dans l'ensemble, quand les foyers paysans migrent, c'est nécessairement vers un pôle d'attraction (voir \cref{fig:constitution-poles-paroisses}-A), et, si possible, un pôle plus attractif pour ceux qui sont déjà localisés dans un pôle.
 Cette migration peut prendre deux formes :
 \begin{itemize}
@@ -712,7 +701,7 @@ Ces foyers paysans \og non mobiles\fg{} représentent les foyers paysans dépend
 
 \subsection{Gains de droits}
 
-Au fur et mesure de l'avancement de la période, les travaux empiriques montrent que le pouvoir central s'efface et que les ressorts locaux subissent un émiettement important.
+Les travaux empiriques montrent qu'au fur et mesure de l'avancement de la période, le pouvoir central s'efface et que les ressorts locaux subissent un émiettement important.
 On voit alors apparaître de nombreux seigneurs de moindre importance, par exemple les chevaliers.
 Ces seigneurs s'arrogent le prélèvement de nouveaux droits (droits banaux, droits de basse justice etc.), augmentant d'autant la charge fiscale dont doivent s'acquitter les foyers paysans.
 
@@ -720,7 +709,7 @@ Ces seigneurs s'arrogent le prélèvement de nouveaux droits (droits banaux, dro
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Dans SimFeodal, cela est modélisé sous la forme de l'apparition constante de nouvelles zones de prélèvement par l'intermédiaire desquelles les seigneurs pourront prélever de nouveaux droits (voir \cref{fig:interactions-agents}-A).
+Dans \simfeodal{}, cela est modélisé sous la forme de l'apparition constante de nouvelles zones de prélèvement par l'intermédiaire desquelles les seigneurs pourront prélever de nouveaux droits (voir \cref{fig:interactions-agents}-A).
 La création de ces zones de prélèvement peut concerner les nouveaux seigneurs apparus dans l'espace du modèle, ou se faire au bénéfice de seigneurs plus anciens.
 Du point de vue de l'implémentation, ce comportement est formalisé sous la forme d'une probabilité, pour les petits seigneurs, de créer une nouvelle zone de prélèvement autour de leur localisation, à chaque pas de temps.
 Ce mécanisme concerne uniquement les petits seigneurs.
@@ -733,21 +722,17 @@ Cette possibilité est matérialisée par la création de zones de prélèvement
 
 \subsection{Collecte des droits}
 
-Les seigneurs prélevaient des droits auprès de leurs sujets pour différentes raisons : droits de haute et moyenne justice -- taxes universelles dont chacun devait s'acquitter --, mais aussi droits d'usages, banaux par exemple, autour de l'utilisation de tel ou tel équipement collectif (le four à pain banal, le moulin, etc.).
+Historiquement, les seigneurs prélevaient des droits auprès de leurs sujets pour différentes raisons : droits de haute et moyenne justice -- taxes universelles dont chacun devait s'acquitter --, mais aussi droits d'usages, banaux par exemple, autour de l'utilisation de tel ou tel équipement collectif (le four à pain banal, le moulin, etc.).
 Contrairement aux sociétés actuelles, ces droits n'avaient pas nécessairement d'assise spatiale : deux habitants voisins étaient susceptibles de s'acquitter de droits à des seigneurs très différents.
 Cette répartition des droits pouvait être faite en fonction de l'usage d'un matériel, ou en fonction d'une appartenance familiale (la \og taille\fg{} personnelle) par exemple, sans que la localisation précise du foyer concerné entre en jeu.
 
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Dans SimFeodal, on a toutefois choisi de modéliser ces droits au travers de représentations géographiques agentifiées de l'emprise spatiale des droits, en l'occurence en créant des agents-zones de prélèvement.
-Cette simplification de la complexité empirique ne correspond pas nécessairement aux cas les plus usuels, mais est acceptable aux yeux des thématiciens impliqués dans la construction de SimFeodal.
+Dans \simfeodal{}, on a toutefois choisi de modéliser ces droits au travers de représentations géographiques agentifiées de l'emprise spatiale des droits, en l'occurence en créant des agents-zones de prélèvement.
+Cette simplification de la complexité empirique ne correspond pas nécessairement aux cas les plus usuels, mais est acceptable aux yeux des thématiciens impliqués dans la construction de \simfeodal{}.
 Cette vision s'inscrit par ailleurs dans une approche surfacique de l'espace continu où les relations sont notamment caractérisées par des inclusions et intersections géométriques.
-Une vision réticulaire, parfois privilégiée par les médiévistes (\hl{demander des sources à Julie}) serait sans doute plus appropriée, mais introduirait des paradigmes très différents dans un modèle déjà très complexe.
-
-\begin{center}
-	\hl{Ajouter refs via mail de Julie}
-\end{center}
+Une vision réticulaire, parfois privilégiée par les médiévistes (voir par exemple \cite{jegou_potentialites_2017}) serait sans doute plus appropriée, mais introduirait des paradigmes très différents dans un modèle déjà très complexe.
 
 \medskip
 Les zones de prélèvement sont de trois types (cf. \cref{fig:interactions-agents}-A \cref{tab:agents-simfeodal}), qui correspondent à trois grandes catégories de droits connus : les droits fonciers ; les droits de haute justice ; et les autres droits, qui regroupent une forte diversité de redevances locales (droits banaux, droits de basse et moyenne justice, droits locaux, etc.).
@@ -770,7 +755,7 @@ Dans le système féodal, à travers le don, les seigneurs constituaient ainsi d
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 	
-	Dans SimFeodal, nous représentons ces logiques par un mécanisme de dons entre seigneurs.
+	Dans \simfeodal{}, nous représentons ces logiques par un mécanisme de dons entre seigneurs.
 	Ce don, que nous nommons \og gardiennage\fg{}, consiste pour un seigneur à donner une partie de ses possessions à un autre seigneur.
 	Notons que dans le détail du mécanisme, il s'agit plutôt d'un prêt que d'un don : le seigneur donateur continue à percevoir des recettes sur les éléments donnés en gardiennage\footnotemark.
 	Propriétaire initial et gardien s'enrichissent donc simultanément, ce qui permet de modéliser le gain de puissance économique pour le gardien, et celui de puissance symbolique pour le donateur.
@@ -806,7 +791,7 @@ Les châteaux sont bâtis en bonne partie dans des villes déjà attractives, m�
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 	
-	Dans SimFeodal, on fait apparaître les châteaux de manière endogène, en considérant qu'il n'y en a aucun au début de la période.
+	Dans \simfeodal{}, on fait apparaître les châteaux de manière endogène, en considérant qu'il n'y en a aucun au début de la période.
 	À partir de 940, les seigneurs ont la possibilité de créer des châteaux.
 	Cette possibilité est fondée sur une probabilité, fonction de la puissance des seigneurs, c'est-à-dire de l'accumulation des redevances perçues à chaque pas de temps.
 	Plus la puissance d'un seigneur est importante, plus il a de chances de pouvoir créer un château.
@@ -827,7 +812,7 @@ D'après les connaissances historiques, on note toutefois que certains châteaux
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-	Dans SimFeodal, on a choisi de simplifier cette hiérarchie en distinguant deux types de châteaux : les \og petits châteaux\fg{} et les \og gros châteaux\fg{}, ces derniers ayant un pouvoir d'attraction plus développé que les petits.
+	Dans \simfeodal{}, on a choisi de simplifier cette hiérarchie en distinguant deux types de châteaux : les \og petits châteaux\fg{} et les \og gros châteaux\fg{}, ces derniers ayant un pouvoir d'attraction plus développé que les petits.
 	Ces châteaux renforcent l'attraction des pôles dont ils font partie et, par là même, accroissent la probabilité que des agrégats majeurs se développent à proximité.
 	Lors de leur création (voir \textit{infra}), les châteaux sont toujours des \og petits châteaux\fg{}.
 	Le mécanisme de promotion, probabiliste, permet à un château situé dans un pôle important (c'est-à-dire constitué de plusieurs attracteurs comme des agrégats ou des églises paroissiales) de devenir un \og gros château\fg{}, et renforce encore l'attrait de ce pôle déjà avantageux.
@@ -853,7 +838,7 @@ Ce choix a été fait pour symboliser la durée de construction des châteaux, b
 %	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 %	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 %	
-%	Dans SimFeodal, on fait apparaître les châteaux de manière endogène, en considérant qu'il n'y en a aucun au début de la période.
+%	Dans \simfeodal{}, on fait apparaître les châteaux de manière endogène, en considérant qu'il n'y en a aucun au début de la période.
 %	À partir de 940, les seigneurs ont la possibilité de créer des châteaux.
 %	Cette possibilité est basée sur une probabilité, fonction de la puissance des seigneurs, c'est-à-dire de l'accumulation des redevances perçues à chaque pas de temps.
 %	Plus la puissance d'un seigneur est importante, plus il a de chances de pouvoir créer un château.
@@ -882,7 +867,7 @@ Ces seigneurs sont détenteurs d'un faible pouvoir et ne possèdent généraleme
 \begin{tcolorbox}[breakable,left=0pt,right=0pt,top=0pt,bottom=0pt,
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
-Dans SimFeodal, l'accroissement des seigneurs est modélisé sous la forme de l'apparition régulière de nouveaux seigneurs.
+Dans \simfeodal{}, l'accroissement des seigneurs est modélisé sous la forme de l'apparition régulière de nouveaux seigneurs.
 À chaque pas de temps, un nombre quasiment constant\footnotemark{} de nouveaux seigneurs est ainsi créé.
 Parmi ces seigneurs, seule une faible proportion d'entre eux (10\%) est dotée de terres et collecte donc des droits fonciers.
 Les autres seigneurs constituent un vivier potentiel de récipiendaires de dons divers (voir \cref{meca-dons}).
@@ -907,7 +892,7 @@ On fait usage, dans son sens le plus littéral, du terme \og agrégat\fg{} de po
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 
-Dans SimFeodal, ces agrégats sont interprétés de manière morphologique, à l'instar des agglomérations de l'INSEE : est agrégat un regroupement d'au moins 5 foyers paysans, espacés l'un d'un autre d'au plus 100 mètres.
+Dans \simfeodal{}, ces agrégats sont interprétés de manière morphologique, à l'instar des agglomérations de l'INSEE : est agrégat un regroupement d'au moins 5 foyers paysans, espacés l'un d'un autre d'au plus 100 mètres.
 Cette définition permet de représenter des entités géographiques très diverses, depuis le petit agrégat composé de quelques foyers paysans à l'agrégat majeur, semblable à une petite ville, constitué de plusieurs centaines de foyers.
 L'agrégat est une entité spatiale au sens propre, dotée de ses propres attributs et de sa propre emprise spatiale, constituée par l'enveloppe convexe des foyers paysans qui le composent.
 C'est ainsi une entité individualisée mais composite.
@@ -919,12 +904,12 @@ Certains agrégats peuvent contenir une \og communauté\fg{} (voir \cref{fig:con
 	colback=gray!15,colframe=gray!15,width=\dimexpr\textwidth\relax, 
 	enlarge left by=0mm, boxsep=5pt,arc=0pt,outer arc=0pt]
 	
-Dans SimFeodal, les agrégats ont une probabilité, à chaque pas de temps, (20\%, paramétrable), de voir apparaître une communauté en leur sein.
+Dans \simfeodal{}, les agrégats ont une probabilité, à chaque pas de temps, (20\%, paramétrable), de voir apparaître une communauté en leur sein.
 D'un point de vue informatique, cela complexifie énormément la détection des agrégats :
 	dès lors que des agents ont des propriétés propres, celles-ci doivent en effet être transmissibles dans le temps, c'est-à-dire d'un pas de temps à l'autre.
 Pourtant, la détection des agrégats doit être renouvelée à chaque pas de temps, ce qui signifie qu'un agrégat détecté en 900, situé au même endroit qu'un agrégat de 880, ne peut que difficilement lui être associé.
 C'est un problème récurrent des méthodes de \textit{clustering} dynamique que de réussir à mener des associations entre les \textit{clusters} de différentes dates.
-Le mécanisme spécifique de détection, de constitution et de transmission des attributs des agrégats est donc particulièrement complexe, et fait l'objet d'une présentation détaillée  dans la \cref{sssec:agregats}.
+Le mécanisme spécifique de détection, de constitution et de transmission des attributs des agrégats est donc particulièrement complexe, et fait l'objet d'une présentation détaillée dans la \cref{sssec:agregats}.
 \end{tcolorbox}
 
 \subsection{Actualisation des pôles}
@@ -941,7 +926,7 @@ Pourtant, en vue de préparer et de sauvegarder les \textit{outputs}, il est né
 \medskip
 Cela permet par exemple, lors de l'enregistrement des sorties, de conserver un lien entre un agrégat et le pôle dans lequel il se situe, notamment en faciliter l'étude \textit{a posteriori}.
 %pour étudier les relations entre la composition des pôles et les populations des agrégats qui y sont attachées.
-Dans SimFeodal, nous sommes ainsi obligés de reconstruire les pôles en fin de tour afin d'avoir des sorties exploitables.
+Dans \simfeodal{}, nous sommes ainsi obligés de reconstruire les pôles en fin de tour afin d'avoir des sorties exploitables.
 Cette duplication d'un mécanisme est malheureusement peu optimale, mais elle est nécessaire en raison de la structure des différents mécanismes précédents et, en particulier, par l'interdépendance qui caractérise de nombreux types d'agents dans le modèle.
 \end{tcolorbox}
 
@@ -955,13 +940,13 @@ Cette duplication d'un mécanisme est malheureusement peu optimale, mais elle es
 Nous avons besoin d'enregistrer des données relatives à l'ensemble des agents, pris individuellement, et à leurs attributs.
 Les données produites par la simulation sont par conséquent assez massives et revêtent une importance particulière.
 Lors de cette phase, des variables globales et spécifiques sont actualisées, des indicateurs synthétiques sont calculés, et l'ensemble des données subit des traitements voués à en simplifier la conservation, par exemple en réduisant la précision des nombres décimaux\footnotemark.
-L'enregistrement des données d'un modèle est un problème complexe, dont les enjeux et difficultés sont discutés dans le chapitre 5 (\hl{section 5.1}).
+L'enregistrement des données d'un modèle est un problème complexe, dont les enjeux et difficultés sont discutés dans le \cref{chap:chap4} (\cref{sec:sorties-simfeodal}).
 
 \end{tcolorbox}
 
 \footnotetext{
 	Pour illustrer l'importance de ce traitement d'apparence anecdotique, on peut prendre l'exemple de l'enregistrement des géométries.
-	Celles-ci, dans la plate-forme utilisée pour SimFeodal, Gama \autocite{taillandier_building_2018}, sont exportées dans un format textuel normalisé, le \og Well-Known Text\fg{} (\textit{WKT}).
+	Celles-ci, dans la plate-forme utilisée pour \simfeodal{}, Gama \autocite{taillandier_building_2018}, sont exportées dans un format textuel normalisé, le \og Well-Known Text\fg{} (\textit{WKT}).
 	Par défaut, chaque géométrie est décrite avec une précision de 12 chiffres décimaux, soit une résolution spatiale proche du picomètre, l'ordre de grandeur des atomes.
 	Cette précision n'a strictement aucune utilité dans un modèle où les ordres de grandeur minimums tournent autour des dizaines et centaines de mètres.
 	D'un point de vue informatique, stocker 12 décimales au lieu d'entiers démultiplie considérablement la place nécessaire pour l'enregistrement des données.
@@ -970,7 +955,7 @@ L'enregistrement des données d'un modèle est un problème complexe, dont les e
 
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
-\section[Concepts de modélisation -- \textit{Design concepts}]{Concepts de modélisation -- \large{\textit{Design concepts}}}
+\section[Concepts de modélisation -- \textit{Design concepts}]{Concepts de modélisation -- \large{\textit{Design concepts}}}\label{sec:design-concepts}
 \orisectionmark{Concepts de modélisation}
 \let\sectionmark\orisectionmark
 
@@ -979,83 +964,82 @@ Les catégories du protocole ODD
 %\footnote{
 %		Le détail de ces \og concepts de conception\fg{} sont énumérées -- et illustrées avec des exemples de questionnement -- dans la partie 4 du \cref{tab:proto-ODD}, au début de ce chapitre.
 %}
-visent à l'exhaustivité, et l'ensemble des concepts décrits ne sont pas nécessairement utiles à mobiliser pour la description du modèle SimFeodal.
-Par soucis de clarté, on décrira d'abord les grands principes de modélisation qui nous semblent fondamentaux dans SimFeodal, et ensuite, le cas échéant, des ensembles de concepts plus secondaires.
+visent à l'exhaustivité, et l'ensemble des concepts décrits ne sont pas nécessairement utiles à mobiliser pour la description du modèle \simfeodal{}.
+Par soucis de clarté, on décrira d'abord les grands principes de modélisation qui nous semblent fondamentaux dans \simfeodal{}, et ensuite, le cas échéant, des ensembles de concepts plus secondaires.
 
-\subsection{Principes de base - \textit{Basic principles}}
+\subsection{Principes de base - \textit{Basic principles} \label{subsec:basic-principles}}
 
-SimFeodal a été pensé en s'appuyant sur trois principes importants qui ont fortement orienté son développement conceptuel autant que son implémentation. On souhaitait que le modèle (1) s'ancre et s'appuie résolument sur un espace géographique, (2) que l'évolution de la structure spatiale résulte de dynamiques multi-scalaires et (3) que la fixation de cette structure soit due à des mécanismes d'auto-renforcement spatial.
+\simfeodal{} a été pensé en s'appuyant sur trois principes importants qui ont fortement orienté son développement conceptuel autant que son implémentation. On souhaitait que le modèle (1) s'ancre et s'appuie résolument sur un espace géographique ; (2) que l'évolution de la structure spatiale résulte de dynamiques multi-scalaires et (3) que la fixation de cette structure soit due à des mécanismes d'auto-renforcement spatial.
 Ces principes constituent des choix forts, préalables à l'implémentation en tant que telle, et ont ensuite contribué à guider l'ajout et la spécification des mécanismes.
-Le profil, thématique et disciplinaire des co-concepteurs de SimFeodal, n'est certainement pas étranger à ces choix.
+L'origine thématique et disciplinaire des co-concepteurs de \simfeodal{}, n'est certainement pas étrangère à ces choix.
 En rassemblant archéologues et géographes modélisateurs dans un projet de modélisation spatiale, le résultat ne pouvait qu'être très influencé par l'approche systémique et l'analyse spatiale.
 
 
-\paragraph{\textit{Space Matters}}
+\paragraph{\og{}\textit{Space Matters}\fg{}.}
 
-SimFeodal est un modèle intrinsèquement spatial.
+\simfeodal{} est un modèle intrinsèquement spatial.
 De nombreux modèles agents \og mobilisent\fg{} l'espace, c'est-à-dire qu'ils s'appuient sur un espace euclidien pour représenter les interactions et émergences qu'ils décrivent.
 Pourtant, dans ces modèles, l'espace n'est souvent qu'un support qui tient lieu de référentiel dans lequel on pourra représenter et visualiser un processus quelconque.
 On parle d'ailleurs assez peu d'espace, mais le plus souvent de \og monde virtuel\fg{}, ce monde n'étant qu'un contenant des agents modélisés.
 Par exemple, on trouve de nombreux modèles de réseaux dans les bibliothèques classiques de modèles agents où l'espace support est une vue planaire plus qu'un support euclidien ou topographique réel.
 
-Dans SimFeodal, au contraire, une très large partie des (inter)actions dépendent des distances (modèles de types gravitaires pour le calcul de la satisfaction religieuse et de protection), des contextes spatiaux (évaluation de l'environnement local pour les migrations locales) ou encore des voisinages (constitution d'agrégats, détection des pôles etc.).
-SimFeodal n'est donc pas un modèle qui ne ferait que prendre appui sur un espace-contenant.
+Dans \simfeodal{}, au contraire, une très large partie des (inter)actions dépendent des distances (modèles de types gravitaires pour le calcul de la satisfaction religieuse et de protection), des contextes spatiaux (évaluation de l'environnement local pour les migrations locales) ou encore des voisinages (constitution d'agrégats, détection des pôles etc.).
+\simfeodal{} n'est donc pas un modèle qui ne ferait que prendre appui sur un espace-contenant, mais fait appel à des relations véritablement topologiques dans l'espace.
 C'est un modèle dont le fonctionnement inhérent est spatial, voire géométrique.
-\textit{Space matters}\ldots
 
-\paragraph{Dynamiques multi-scalaires et \textit{Push-Pull}}
+\paragraph{Dynamiques multi-scalaires et \textit{Push-Pull}.}
 
-L'évolution de la structure spatiale que l'on observe dans SimFeodal résulte de la migration des foyers paysans, qui tendent à se concentrer.
+L'évolution de la structure spatiale que l'on observe dans \simfeodal{} résulte de la migration des foyers paysans, qui tendent à se concentrer.
 En se concentrant, ils créent des agents de niveau supérieur (les agrégats), qui peuvent dès lors attirer de nouveaux foyers paysans, directement (attraction des agrégats) ou indirectement (une forte densité de foyers paysans pousse à la création d'églises paroissiales qui attireront alors à leur tour de nouveaux foyers).
 La migration des foyers paysans combine deux échelles d'agrégation :
 	les agents migrent à un niveau individuel, mais ils sont attirés par des agents composites de niveaux agrégés.
 
 La mise en place de ce principe de migration est fortement inspirée par et ancrée dans une certaine pratique de modélisation, courante dans le champ des études de mobilité résidentielle, que l'on peut qualifier de \og \textit{push-pull}\fg{} \autocite{tannier_analyse_2017}.
-On entend par là que les agents subissent un double mécanisme, répulsif, qui les pousse à déménager (ou migrer dans SimFeodal) : le \textit{push} ; et attractif, qui conditionne leur choix de destination à l'attractivité d'un lieu : le \textit{pull}.
+On entend par là que les agents subissent un double mécanisme, répulsif, qui les pousse à déménager (ou migrer dans \simfeodal{} ) : le \textit{push} ; et attractif, qui conditionne leur choix de destination à l'attractivité d'un lieu : le \textit{pull}.
 Ce modèle est d'ordinaire mobilisé dans l'étude de mobilités résidentielle, ou encore vis-à-vis de pratiques quotidiennes de l'espace.
-Son application nous semble inédite sur des processus opérant dans le passé et sur un temps long comme celui sur lequel SimFeodal s'appuie.
+Son application nous semble inédite sur des processus opérant dans le passé et sur un temps long comme celui sur lequel \simfeodal{} s'appuie.
 
-Si ce choix peut paraître surprenant, il résulte avant tout d'une certaine \og culture de modélisation\fg{}, l'une des co-conceptrices du modèle ayant une forte habitude de modélisation de dynamiques résidentielles (\textit{ibid.}).
-En dehors de l'importance de cette \og path-dependency\fg{} d'un modèle aux conceptions préalables de ses modélisateurs, notons tout de même que ce type de modélisation nous semble assez facilitateur de dialogue avec des thématiciens .
-Cette vision \og comportementaliste\fg{} et agent-centrée permet peut-être plus simplement que d'autres paradigmes de passer d'une connaissance experte spécifique à une modélisation plus générique.
+Si ce choix peut paraître surprenant, il résulte avant tout d'une certaine \og culture de modélisation\fg{}, l'une des co-conceptrices du modèle ayant une forte expérience de modélisation de dynamiques résidentielles (\textit{ibid.}).
+En dehors de l'importance de cette \og path-dependency\fg{} d'un modèle aux conceptions préalables de ses modélisateurs, notons tout de même que ce type de modélisation nous semble faciliter le dialogue avec des thématiciens.
+Cette vision \og comportementaliste\fg{} et individu-centrée permet peut-être plus simplement que d'autres paradigmes de passer d'une connaissance experte spécifique à une modélisation plus générique.
 
-\paragraph{Auto-renforcement par attachement préférentiel}
-L'auto-renforcement est le dernier grand principe sur lequel SimFeodal s'appuie.
+\paragraph{Auto-renforcement par attachement préférentiel.}
+L'auto-renforcement est le dernier grand principe sur lequel \simfeodal{} s'appuie.
 Dans le modèle, plus un élément (pôle d'attraction par exemple) est important, plus il va attirer et accroître son importance en retour.
 Cette logique est assez proche du principe de rétroaction positive, si ce n'est qu'il ne s'agit ici que de renforcer ce qui est fort, et non d'amoindrir, en valeurs absolues, ce qui est déjà faible.
 La forme de cet auto-renforcement s'apparente en fait assez largement aux mécanismes d'attachement préférentiel, où la croissance d'une entité est directement proportionnelle à sa taille \autocite{barabasi_emergence_1999}.
 
-Dans SimFeodal, l'attachement préférentiel est mobilisé, sous une forme faible, en matière de concentration : les pôles les plus importants attirent plus, et peuvent voir se développer des agrégats et des églises paroissiales qui à leur tour augmenteront leur attractivité.
-Cela concoure à des logiques de renforcement des plus forts.
+Dans \simfeodal{}, l'attachement préférentiel est mobilisé, sous une forme faible, en matière de concentration : les pôles les plus importants attirent plus, et peuvent voir se développer des agrégats et des églises paroissiales qui à leur tour augmenteront leur attractivité.
+Cela concourt à des logiques de renforcement des plus forts.
 %Notons qu'un mécanisme d'attachement préférentiel aboutit a une distribution log-normale de ses composantes, ce qui pourrait être le cas ici pour les tailles des agrégats.
-On notera toutefois que dans SimFeodal, la relation entre taille et attraction n'est pas continue mais bornée : à partir d'une certaine taille (un pôle contenant plus de 4 églises paroissiales par exemple), la croissance n'entraîne plus de hausse de l'attractivité.
+On notera toutefois que dans \simfeodal{}, la relation entre taille et attraction n'est pas continue mais bornée : à partir d'une certaine taille (un pôle contenant plus de 4 églises paroissiales par exemple), la croissance n'entraîne plus de hausse de l'attractivité.
 La forme de la hiérarchisation des tailles de pôles et agrégats n'est donc pas directement assimilable aux structures log-normales issues de l'application théorique de mécanismes d'attachement préférentiel.
-A ce titre, on ne peut prédire ou estimer les changements de hiérarchie dans le système depuis le simple énoncé des paramètres et mécanismes, et l'expérimentation par la simulation est alors nécessaire.
+%A ce titre, on ne peut prédire ou estimer les changements de hiérarchie dans le système depuis le simple énoncé des paramètres et mécanismes, et l'expérimentation par la simulation est alors nécessaire.
 
 \clearpage
 \subsection{Théories et concepts de la modélisation agents mobilisés}
 
 Le protocole ODD définit un ensemble de \textit{design concepts} qui peuvent être mobilisés dans la conception d'un modèle à base d'agents.
-Pour chacun de ces 10 concepts (voir \cref{tab:proto-ODD}
+Pour chacun de ces dix concepts (voir \cref{tab:proto-ODD}
 %\footnote{
 %	Il nous semble que les dénominations de ces concepts ne sont pas extrêmement claires et intuitives.
 %	Nous recommandons au lecteur de plutôt chercher à les comprendre en lisant les exemples de questions donnés dans la colonne de droite du tableau.
 %}
-), nous décrivons brièvement, le cas échéant, comment ils sont appliqués dans SimFeodal.
+), nous décrivons brièvement si ils sont appliqués dans \simfeodal{}, et le cas échéant, comment.
 
-\paragraph{Émergence} Ce mécanisme constitue l'un des fondements de nombreux modèles complexes, dont SimFeodal.
-La diversité des éléments analysés dans le modèle est trop importante pour établir une liste des éléments qui émergent (\hl{voir le chapitre 3, section 3.? par exemple}).
+\paragraph{Émergence.} Ce mécanisme constitue l'un des fondements de nombreux modèles de systèmes complexes, dont \simfeodal{}.
+La diversité des éléments analysés dans le modèle est trop importante pour établir une liste des éléments qui émergent (voir le \cref{chap:chap3}, \cref{subsec:indicateurs-simfeodal}, par exemple).
 On peut prendre pour exemple les modifications de structure spatiale des foyers paysans.
 Les foyers paysans ne communiquent ni n'interagissent directement les uns avec les autres, et pourtant ils tendent à se regrouper en formant des agrégats.
 Le système d'agrégats ainsi formé tend de plus à se hiérarchiser au fur et à mesure des migrations des foyers paysans.
-Il y a donc émergence d'un système de peuplement hiérarchisé à partir de choix de migrations individuels, sans que cette hiérarchie soit inscrite dans les intentions des agents-foyers paysans.
+Il y a donc émergence d'un système de peuplement hiérarchisé à partir de choix de migrations individuels, sans que cette hiérarchie et cette organisation spatiale ne soient inscrites dans les intentions des agents-foyers paysans.
 
-\paragraph{Adaptation et Objectifs} Dans SimFeodal, le concept d'adaptation n'est pas présent au sens littéral : les agents ne s'adaptent pas à un environnement en modifiant leur comportement.
+\paragraph{Adaptation et Objectifs.} Dans \simfeodal{}, le concept d'adaptation n'est pas présent au sens littéral : les agents ne s'adaptent pas à un environnement en modifiant leur comportement.
 Toutefois, le comportement, en lui-même, de certains agents est largement dépendant de l'environnement.
 Les foyers paysans, par exemple, sont caractérisés par une satisfaction qui dépend largement de leur localisation spatiale.
 Quand cette satisfaction est insuffisante, les foyers paysans migrent.
 De plus, le choix de la destination de la migration n'est pas anodin.
-Dans SimFeodal, un mécanisme stochastique pondéré est mobilisé de nombreuses fois pour établir la destination d'un foyer paysan, lors du renouvellement de population (voir \cref{meca-renouvellement}), ou encore dans les mécanismes de migration locale ou lointaine (\cref{meca-migration}) : 
+Dans \simfeodal{}, un mécanisme stochastique pondéré est mobilisé de nombreuses fois pour établir la destination d'un foyer paysan, lors du renouvellement de population (voir \cref{meca-renouvellement}), ou encore dans les mécanismes de migration locale ou lointaine (\cref{meca-migration}) : 
 la \og loterie pondérée\fg{}.
 Dans ce mécanisme, les foyers paysans \og choisissent\fg{} leur pôle de destination en fonction de l'attractivité de celui-ci :
 plus un pôle est attractif, plus il est susceptible d'attirer.
@@ -1069,14 +1053,14 @@ Les foyers paysans ont donc un comportement adaptatif : individuellement, ils fu
 Ce comportement est enrichi d'une logique d'objectif : en choisissant leur destination, ils visent à augmenter, à défaut de maximiser, leur satisfaction.
 Notons que dans ces deux cas, il ne s'agit pas d'intentionnalité consciente des agents, mais des mécanismes mis en places pour modéliser leur comportement à échelle agrégée.
 
-\paragraph{Learning \& Prediction} Ces deux concepts, apprentissage et prédiction, ne nous semblent pas adaptés à la description de SimFeodal.
+\paragraph{Learning \& Prediction.} Ces deux concepts, apprentissage et prédiction, ne nous semblent pas adaptés à la description de \simfeodal{}.
 
-\paragraph{Perception - \textit{Sensing}}
+\paragraph{Perception - \textit{Sensing}.}
 Perception et cognition sont des concepts fortement utilisés dans certains types de modèles\footnote{
 	On pourrait ainsi citer les modèles de type \og BDI\fg{} (\textit{Belief}-\textit{Desire}-\textit{Intention}, d'après \cite{bratman1988plans}), où le niveau de connaissance de l'environnement joue un rôle déterminant \autocite[183--184]{crooks_agent-based_2019}.
 } où la rationalité du comportement des agents présente un enjeu majeur.
 
-Dans SimFeodal, cette recherche de rationalité n'est pas présente, au moins sur un plan individuel.
+Dans \simfeodal{}, cette recherche de rationalité n'est pas présente, au moins sur un plan individuel.
 La logique de perception et de cognition est toutefois mobilisée, au moins en ce qui concerne les agents les plus réactifs du modèle, c'est-à-dire les foyers paysans.
 La manière dont leur satisfaction est mesurée se rapproche assez largement de questions cognitives : les foyers paysans ont une perception parfaite de la configuration spatiale qui les entourent (zones de prélèvement, églises et châteaux les plus proches etc.)
 
@@ -1084,12 +1068,12 @@ On trouve aussi une logique de perception inégale chez ces agents par la maniè
 En cas de migration locale, la recherche de destinations potentielles se fait dans le voisinage des foyers paysans.
 On peut y voir une notion de perception, et y considérer que ces foyers paysans (ou les foyers paysans \og dépendants\fg{}, tels les serfs) ont une perception uniquement locale de leur environnement, contrairement aux autres foyers paysans, qui effectuent des migrations lointaines et auraient alors une perception globale du monde modélisé.
 
-\paragraph{Interaction} L'interaction est un concept qui est presque indissociable de la plupart des modèles à base d'agents.
+\paragraph{Interaction.} L'interaction est un concept qui est presque indissociable de la plupart des modèles à base d'agents.
 On peut l'entendre dans le sens d'interactions entre des agents d'un même type, entre des agents de types différents, ou encore entre les agents et leur environnement.
 De plus, on peut aussi distinguer les interactions directes, où les agents interagissent les uns avec les autres, et des interactions indirectes, où les agents agissent sur un élément tiers (environnement, autre type d'agent), avec lequel d'autres agents interagiront ensuite.
 Il y a bien dans ce dernier cas une interaction entre les agents, mais elle se fait par l'intermédiaire d'un autre élément du modèle.
 
-Dans SimFeodal, les interactions directes entre agents de même type sont assez minimes : on peut y inscrire les logiques de dons entre seigneurs, qui ont donc une interaction directe à cette occasion, notamment encouragée par une proximité spatiale.
+Dans \simfeodal{}, les interactions directes entre agents de même type sont assez minimes : on peut y inscrire les logiques de dons entre seigneurs, qui ont donc une interaction directe à cette occasion, notamment encouragée par une proximité spatiale.
 De manière moins directe, on peut aussi voir une interaction entre foyers paysans dans la constitution des agrégats : c'est par leur co-présence que les agrégats sont définis, et ces agrégats influent à leur tour sur le comportement des foyers paysans (en leur apportant potentiellement une meilleure satisfaction).
 L'interaction entre les foyers paysans est donc indirecte, par le biais de l'entité de niveau supérieur qu'ils constituent, mais c'est une interaction effective, dont les éléments atomiques sont les foyers paysans.
 
@@ -1099,7 +1083,7 @@ Les modèles inspirés de \mbox{\og Sugarscape\fg{}} \autocite{epstein_growing_1
 Dans ces modèles, des agents mobiles (des fourmis) \og consomment\fg{} les ressources de leur environnement, lequel est représenté par des cellules contenants du \og sucre\fg{} qui \og pousse\fg{} régulièrement.
 Il y a interaction directe entre les agents et leur environnement.
 
-Dans SimFeodal, la forme des interactions entre les agents et leur environnement n'est pas aussi nette, puisqu'il n'y a pas d'environnement \og agentifié\fg{} en tant que tel.
+Dans \simfeodal{}, la forme des interactions entre les agents et leur environnement n'est pas aussi nette, puisqu'il n'y a pas d'environnement \og agentifié\fg{} en tant que tel.
 On peut cependant considérer comme environnement le contexte spatial dans lequel les foyers paysans évoluent :
 	l'environnement est alors composé des autres types d'agents (châteaux, églises paroissiales, zones de prélèvement etc.).
 La satisfaction des foyers paysans, et leur comportement, dépendent très largement de leur environnement.
@@ -1108,19 +1092,19 @@ En effet, les différentes composantes de la satisfaction sont affectées par le
 
 Les foyers paysans ont donc une interaction directe, et forte, avec leur environnement, ou avec d'autres types d'agents, selon le point de vue que l'on adopte.
 
-\paragraph{Stochasticité} Dans les parties précédentes de ce chapitre, on a plusieurs fois mentionné l'importance de la stochasticité dans SimFeodal.
+\paragraph{Stochasticité.} Dans les parties précédentes de ce chapitre, on a plusieurs fois mentionné l'importance de la stochasticité dans \simfeodal{}.
 Celle-ci est omniprésente : dès l'initialisation du monde (\cref{meca-init}), la distribution des foyers paysans, agrégats, églises et seigneurs est entièrement aléatoire.
-En parcourant l'ensemble du déroulement de SimFeodal (\cref{fig:ordonnancement}), on peut constater que tous les mécanismes comportent une part important de stochasticité\footnote{
+En parcourant l'ensemble du déroulement de \simfeodal{} (\cref{fig:ordonnancement}), on peut constater que tous les mécanismes comportent une part important de stochasticité\footnote{
 	À l'exception des mécanismes de \og délimitation\fg{} des entités spatiales (agrégats, pôles et paroisses) et de l'enregistrement des sorties.
 }.
 L'aléa est présent dès le départ, \textit{a minima} sur l'ordre d'appel des agents (\cref{meca-ordonancement}), et de manière bien plus importante dans d'autres mécanismes (loteries pondérées, probabilités de migration, probabilité de construction et de localisation de châteaux, etc.).
-Conjuguée avec la complexité du modèle, c'est-à-dire l'imbrication des mécanismes qui rend leur comportement non linéaire, la stochasticité concoure à faire de SimFeodal un modèle profondément complexe.
-On ne peut prédire le comportement du modèle, ni même l'effet de certains paramètres, sans le simuler (\hl{voir le chapitre 6, section analyse de sensibilité, ou chapitre 3 sur l'évaluation des params}).
+Conjuguée avec la complexité du modèle, c'est-à-dire l'imbrication des mécanismes qui rend leur comportement non linéaire, la stochasticité concoure à faire de \simfeodal{} un modèle profondément complexe.
+On ne peut prédire le comportement du modèle, ni même l'effet de certains paramètres, sans le simuler (cf. \cref{chap:chap5}, \cref{sec:ana-sensib} par exemple).
 
-\paragraph{Collectifs} Cette partie de la grille de lecture ODD interroge l'existence et la constitution de \og collectifs\fg{}, c'est-à-dire d'agrégats d'entités individuelles, ainsi que la manière dont ils sont implémentés : dotés d'attributs propres ou enrichissant les attributs des entités constituantes.
+\paragraph{Collectifs.} Cette partie de la grille de lecture ODD interroge l'existence et la constitution de \og collectifs\fg{}, c'est-à-dire d'agrégats d'entités individuelles, ainsi que la manière dont ils sont implémentés : dotés d'attributs propres ou enrichissant les attributs des entités constituantes.
 
 
-Dans SimFeodal, l'exemple le plus évident est celui des agrégats, entités composites constituées de foyers paysans.
+Dans \simfeodal{}, l'exemple le plus évident est celui des agrégats, entités composites constituées de foyers paysans.
 Les agrégats ont leurs attributs propres, qui dépendent toutefois largement des foyers paysans (attractivité, emprise spatiale) qui les composent.
 Les agrégats ont également une caractéristique propre, qui ne dépend pas des foyers paysans les composant : l'existence en leur sein d'une communauté paysanne, modélisée sous la forme d'un attribut des agrégats.
 Cette caractéristique joue, sous la forme d'une boucle de rétroaction, sur les foyers paysans qui composent l'agrégat puisque la présence d'une communauté augmente mécaniquement la satisfaction matérielle et générale des foyers paysans.
@@ -1135,16 +1119,16 @@ Par exemple, les quatre premières églises paroissiales qui font parti d'un pô
 
 %L'autre propriété des pôles, leur attractivité, dépend aussi directement des attracteurs qui les composent, sans toutefois que la relation soit strictement cumulative : une cinquième église paroissiale n'apportera pas d'attractivité au pôle dont elle fait partie (voir \cref{tab:attraction-poles}).
 
-\paragraph{Observation} Ce dernier \og design concept\fg{} nous semble différer fortement des autres concepts décrits dans le protocole ODD\footnote{
+\paragraph{Observation.} Ce dernier \og design concept\fg{} nous semble différer fortement des autres concepts décrits dans le protocole ODD\footnote{
 Il est décrit ainsi dans \textcite[354]{grimm_documenting_2017} :
 \og What data are collected from the ABM for testing, understanding, and analyzing it, and how are they collected ? \fg{}
 }.
 
 Il s'agit de définir les données produites et collectées par le modèle à base d'agents.
-Dans SimFeodal, la collecte d'un maximum de données est indispensable à la bonne évaluation du modèle, qui ne peut être exécutée qu'à posteriori et par l'intermédiaire d'une \og évaluation visuelle\fg{} basée sur l'étude de nombreux indicateurs de sortie hétérogènes\footnote{
-	Ces problématiques occupent une large partie du \hl{chapitre 5} et nous les y expliciterons à cette occasion.
+Dans \simfeodal{}, la collecte d'un maximum de données est indispensable à la bonne évaluation du modèle, qui ne peut être exécutée qu'à posteriori et par l'intermédiaire d'une \og évaluation visuelle\fg{} basée sur l'étude de nombreux indicateurs de sortie hétérogènes\footnote{
+	Ces problématiques occupent une large partie du \cref{chap:chap4} et nous les y expliciterons à cette occasion.
 }.
-SimFeodal est un modèle dont l'un des objectifs est de produire des données, lesquelles permettront de comprendre le modèle ultérieurement.
+\simfeodal{} est un modèle dont l'un des objectifs est de produire des données, lesquelles permettront de comprendre le modèle ultérieurement.
 Cette vision s'oppose à celle des modèles plus théoriques et parcimonieux, tel que celui de Schelling, qui peuvent être appréhendés directement pendant leur exécution. 
 
 \let\orisectionmark\sectionmark
@@ -1157,42 +1141,44 @@ Cette vision s'oppose à celle des modèles plus théoriques et parcimonieux, te
 
 \subsection{Une situation initiale théorique et générée de manière endogène}
 
-SimFeodal est un modèle qui prend appui sur un espace théorique, très générique et épuré.
+\simfeodal{} est un modèle qui prend appui sur un espace théorique, très générique et épuré.
 Dans cet espace, certains agents se déplacent et font émerger des configurations spatiales particulières que l'on cherche à étudier.
 Le choix de la configuration initiale, qui sera transformée au cours du modèle, revêt donc une importance considérable, puisqu'il conditionne (ou tout du moins influence) les structures spatiales qui en seront issues.
 
 Le \og monde\fg{} simulé n'est pas un espace géographique précis qui correspondrait à une observation empirique.
 La situation initiale ne correspond pas non plus à une organisation complètement aléatoire, comme c'est le cas dans le modèle de Schelling par exemple.
 Il s'agit d'un espace fictif, aléatoire, mais dont la structure a des propriétés précises au niveau macrogéographique, notamment à travers l'existence d’agrégats de deux types (villages et villes) dont le nombre et les effectifs sont fixés (et paramétrables).
-D'un point de vue thématique, il est en effet essentiel que la situation initiale du modèle SimFeodal corresponde à une configuration macrogéographique précise puisque l'objectif est de modéliser la transition à partir de cette situation initiale (voir \cref{subsec:reso-spatiale}).
+D'un point de vue thématique, il est en effet essentiel que la situation initiale du modèle \simfeodal{} corresponde à une configuration macrogéographique précise puisque l'objectif est de modéliser la transition à partir de cette situation initiale (voir \cref{subsec:reso-spatiale}).
 À l'inverse, il ne s'agit pas de simuler cette transition pour un espace géographique particulier où les villages et villes existant en 800 seraient positionnés.
 Le choix a donc été fait de fixer la macrostructure visée à partir d'un certain nombre de paramètres contraignant les positions des foyers paysans et des seigneurs, tout en les répartissant de manière aléatoire.
 Une infinité de situations initiales respectant les contraintes fixées au niveau macrogéographique sont ainsi possibles.
 Dans un souci de généricité il a été décidé d'intégrer la construction de la situation initiale en tant que première étape du modèle.
 
-L'initialisation du monde simulé constitue un premier \og sous-modèle\fg{} de SimFeodal, chargé de générer le monde dans lequel les agents évolueront.
+L'initialisation du monde simulé constitue un premier \og sous-modèle\fg{} de \simfeodal{}, chargé de générer le monde dans lequel les agents évolueront.
 Le sous-modèle d'initialisation consiste en l'exécution de 3 mécanismes dédiés chacun à la création d'un type d'agent : tout d'abord, création des églises, ensuite, création des foyers paysans et agrégats, et enfin, création des seigneurs.
 Dans l'ensemble, un principe commun oriente la création de ces agents : ils sont répartis de manière presque aléatoire (voir \cref{meca-init}) dans l'espace \og actif\fg{} simulé du modèle.
 
-\paragraph{Églises}
+\paragraph{Églises.}
 Empiriquement, on estime qu'environ 150 églises pré-existent à la période modélisée pour un espace de cette dimension, en Touraine.
 Elles sont réparties de manière assez irrégulière et dispersée, à proximité de villages et de petites villes, mais aussi isolées dans l'espace rural.
 
-Dans SimFeodal, on modélise cette configuration spatiale en répartissant ces 150\unskip\astfootnote{Ce nombre est paramétrable.\label{ftn:nombre-parametrable}} églises, de manière aléatoire dans l'espace du modèle.
-Pour représenter celles qui sont dotées des droits paroissiaux (environ une cinquantaine au début de la période), on procède à un tirage aléatoire d'un tiers\footref{ftn:nombre-parametrable} de ces églises auxquelles sont attribués ces droits.
+Dans \simfeodal{}, on modélise cette configuration spatiale en répartissant ces 150**\footnote{
+Dans la suite de cette partie, les astérisques indiquent que la valeur indiquée est paramétrable.
+} églises, de manière aléatoire dans l'espace du modèle.
+Pour représenter celles qui sont dotées des droits paroissiaux (environ une cinquantaine au début de la période), on procède à un tirage aléatoire d'un tiers** de ces églises auxquelles sont attribués ces droits.
 Le semis correspondant aux emplacements de ces églises paroissiales va déterminer le dessin du maillage paroissial (zonal).
 
 
-\paragraph{Foyers paysans et agrégats}
+\paragraph{Foyers paysans et agrégats.}
 La création des foyers paysans est plus complexe, notamment car elle doit être aléatoire au niveau individuel tout en respectant une structure macroscopique contrôlée par les modélisateurs via les paramètres.
 De manière empirique, on peut résumer la distribution spatiale initiale à une immense majorité de foyers paysans dispersés, et à la pré-existence de quelques villages (peu peuplés) et petites villes (les agglomérations secondaires antiques, plus importantes en termes de population).
 
 Pour générer la configuration initiale, l'objectif est donc de reproduire ces grandes lignes de manière aléatoire tout en faisant en sorte que ces villages et petites villes soient bien modélisées sous la forme d'agrégats plus ou moins peuplés.
 La première étape consiste donc à déterminer, par tirage aléatoire, l'emplacement des agrégats (les \og petites villes\fg{} empiriques).
 Le tirage se fait au niveau des foyers paysans et la localisation (aléatoire) du premier sélectionné détermine la localisation d'un premier agrégat.
-Les foyers paysans suivants (une trentaine\footref{ftn:nombre-parametrable}) sont localisés, de manière aléatoire, à l'intérieur d'un certain rayon du premier (voir \cref{meca-agregats} et \cref{fig:init-fp}).
+Les foyers paysans suivants (une trentaine**) sont localisés, de manière aléatoire, à l'intérieur d'un certain rayon du premier (voir \cref{meca-agregats} et \cref{fig:init-fp}).
 
-On répète cette démarche pour les \og villages\fg{}, en plaçant à nouveau quelques\footref{ftn:nombre-parametrable} agrégats dans l'espace, cette fois constitués d'une dizaine\footref{ftn:nombre-parametrable} de foyers paysans.
+On répète cette démarche pour les \og villages\fg{}, en plaçant à nouveau quelques** agrégats dans l'espace, cette fois constitués d'une dizaine** de foyers paysans.
 On peut alors disperser, de manière entièrement aléatoire, tous les foyers paysans qui n'ont pas encore été localisés dans l'espace du modèle, c'est-à-dire ceux qui ne font pas partie des agrégats précédemment créés.
 
 \begin{figure}[H]
@@ -1208,11 +1194,11 @@ On peut alors disperser, de manière entièrement aléatoire, tous les foyers pa
 \end{figure}
 
 
-\paragraph{Seigneurs}
+\paragraph{Seigneurs.}
 Parmi les seigneurs, on distingue deux types : les grands seigneurs, sans représentation spatiale, et les petits seigneurs, localisés dans l'espace du modèle, toujours au sein d'un agrégat.
-L'initialisation spatiale des seigneurs ne concerne donc que les petits seigneurs, dont on estime empiriquement le nombre initial à une vingtaine\footref{ftn:nombre-parametrable}.
+L'initialisation spatiale des seigneurs ne concerne donc que les petits seigneurs, dont on estime empiriquement le nombre initial à une vingtaine**.
 
-À l'initialisation de SimFeodal, on répartit ces seigneurs dans l'espace du modèle, d'une manière aléatoire contrainte dans la mesure où il s'agit de les positionner dans un des agrégats créés à l'étape précédente.
+À l'initialisation de \simfeodal{}, on répartit ces seigneurs dans l'espace du modèle, d'une manière aléatoire contrainte dans la mesure où il s'agit de les positionner dans un des agrégats créés à l'étape précédente.
 Pour chaque seigneur, un premier tirage aléatoire est donc effectué pour déterminer dans quel agrégat il est situé, et un deuxième tirage pour le placer au sein de la délimitation de cet agrégat.
 Plusieurs seigneurs peuvent ainsi être situés dans le même agrégat, et certains agrégats peuvent ne contenir aucun seigneur.
 
@@ -1222,8 +1208,8 @@ Plusieurs seigneurs peuvent ainsi être situés dans le même agrégat, et certa
 
 \subsection{Paramètres d'initialisation}
 
-Dans la partie précédente, on a plusieurs fois indiqué que certaines des valeurs numériques de l'initialisation étaient paramétrables, c'est-à-dire qu'on peut les faire varier afin de générer des structures spatiales initales différentes à l'échelle macrogéographique.
-Cela participe à la recherche de caractérisation de l'espace support initial de SimFeodal, où il n'y a pas d'\og \textit{input}\fg{} en tant que tel, mais un ensemble de paramètres qui influent sur les différents sous-modèles (voir \cref{sec:inputs}).
+Dans la partie précédente, on a plusieurs fois indiqué que certaines des valeurs numériques de l'initialisation étaient paramétrables, c'est-à-dire qu'on peut les faire varier afin de générer des structures spatiales initiales différentes à l'échelle macrogéographique.
+Cela participe à la recherche de caractérisation de l'espace support initial de \simfeodal{}, où il n'y a pas d'\og \textit{input}\fg{} en tant que tel, mais un ensemble de paramètres qui influent sur les différents sous-modèles (voir \cref{sec:inputs}).
 Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester différents scénarios sont précisés dans le \cref{tab:params-initiaux}.
 
 \input{chap2/img/tableau-parametres-init}
@@ -1234,12 +1220,12 @@ Pour l'initialisation, les paramètres sur lesquels on peut jouer pour tester di
 \orisectionmark{Données en entrée}
 \let\sectionmark\orisectionmark
 
-L'initialisation de SimFeodal constitue un sous-mécanisme à part entière, entièrement endogène au modèle.
+L'initialisation de \simfeodal{} constitue un sous-mécanisme à part entière, entièrement endogène au modèle.
 À ce titre, on ne peut dire que des données en entrée (\textit{inputs}) contrôlent l'état initial du modèle, tel que c'est la norme dans des modèles spatiaux classiques (cf. \cref{sec:initialisation}).
 Pour autant, on peut voir une forme d'\textit{inputs} dans les nombreux paramètres mobilisés pour l'initialisation et dans ceux, plus nombreux encore, qui influencent l'ensemble des mécanismes.
 
 Par exemple, pour mettre en place des comportements exogènes permettant de faire varier le modèle à différentes dates précises, on peut classiquement faire appel à des données de sortie d'un autre modèle, ou à un fichier de configuration.
-Dans SimFeodal, cette logique est bien présente, mais est gérée directement au sein du modèle, sans faire appel à des données externes.
+Dans \simfeodal{}, cette logique est bien présente, mais est gérée directement au sein du modèle, sans faire appel à des données externes.
 Certains paramètres prennent ainsi la forme de tableaux d'associations (aussi appelés dictionnaires, ou \og \texttt{map}\fg{} en informatique), qui mettent en correspondance des valeurs de paramètres à des dates précises (voir \cref{lst:maps-gama}).
 \medskip
 
@@ -1252,15 +1238,15 @@ map<int,int> dist_max_eglise <- [800::25000, 960::10000, 1060::5000];
 	\end{lstlisting}
 }
 
-%Comme indiqué, il n'y a pas véritablement d'\textit{inputs} dans SimFeodal : tout est paramètre, et dès lors dynamique.
+%Comme indiqué, il n'y a pas véritablement d'\textit{inputs} dans \simfeodal{} : tout est paramètre, et dès lors dynamique.
 %En même temps, le modèle comporte de très nombreux paramètres : entre une quarantaine et une soixantaine selon les définitions possibles de ce qu'est un paramètre, voir \hl{chapitre 4}.\\
 %On peut donc voir dans la multiplicité des paramètres une proximité avec la notion de données en entrée, qui ne s'expriment toutefois pas sous la forme traditionnelle.
 
-%Pour respecter le formalisme ODD que suit ce chapitre, on peut au final considérer que SimFeodal est un modèle qui ne repose sur aucune donnée en entrée.
+%Pour respecter le formalisme ODD que suit ce chapitre, on peut au final considérer que \simfeodal{} est un modèle qui ne repose sur aucune donnée en entrée.
 %Conceptuellement, le rôle joué par les paramètres du modèle s'en approche toutefois assez fortement.
 %Le \hl{chapitre 4} permet d'éclairer cette description en entrant plus en détail dans la définition et la nomenclature des paramètres.
 
-Quand bien même ce n'est pas le sens traditionnel d'\textit{inputs}, la multiplicité des paramètres et leur forte diversité remplit le même rôle (\hl{voir chapitre 4}).
+Quand bien même ce n'est pas le sens traditionnel d'\textit{inputs}, la multiplicité des paramètres et leur forte diversité remplit le même rôle (voir \cref{chap:chap3}, \cref{sssec:types-parametres}).
 Il s'agit de contrôler précisément l'initialisation du modèle, mais aussi des éléments et événements indispensables, sur le plan empirique, qui ne doivent pas émerger des interactions du modèle, mais au contraire, les conditionner.
 
 
@@ -1273,7 +1259,7 @@ Il s'agit de contrôler précisément l'initialisation du modèle, mais aussi de
 
 \subsection{Introduction}
 
-Cette partie du chapitre est plus technique et vise à présenter précisément différents mécanismes de SimFeodal évoqués dans la partie relative au fonctionnement général du modèle (\cref{sec:fonctionnement-general}).
+Cette partie du chapitre est plus technique et vise à présenter précisément différents mécanismes de \simfeodal{} évoqués dans la partie relative au fonctionnement général du modèle (\cref{sec:fonctionnement-general}).
 Nous avons fait le choix de présenter les mécanismes sous la forme, discursive et schématique, la plus courte et compréhensible possible, quand bien même cette forme n'est qu'un \og modèle\fg{} de la réalité de l'implémentation : les formalismes, souvent graphiques, empruntés ici ne peuvent entièrement correspondre à l'implémentation effective en lignes de code.
 De la même manière qu'une traduction d'une langue à une autre ne peut transcrire toutes les nuances originelles (\textit{traduttore}, \textit{traditore}), le passage d'une suite d'instruction algorithmiques à un formalisme plus accessible ne peut se faire sans quelques approximations.
 Ces écarts entre présentation discursive des mécanismes et implémentation effective sont discutés dans l'\cref{enc:polarite-implementation}.
@@ -1294,20 +1280,22 @@ On présentera d'abord les mécanismes \og globaux\fg{}, c'est-à-dire relevant 
 \begin{encadre}{Écarts entre présentation et implémentation}{polarite-implementation}
 		\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 La présentation des mécanismes d'un modèle ne suit pas toujours la manière dont ces mécanismes sont implémentés dans le code-source d'un modèle.
-C'est naturellement vrai entre deux \og domaines\fg{} d'un modèle (si l'on reprend la triade des domaines conceptuels, empirique et informatique de \textcite[\ppno~3, fig. 2]{sargent2009verification})\hl{(Lena : à reproduire quelque part dans la thèse)}, au vu des écarts qu'il peut y avoir par exemple entre le modèle conceptuel et le modèle implémenté.
+C'est naturellement vrai entre deux \og domaines\fg{} d'un modèle -- si l'on reprend la triade des domaines conceptuels, empirique et informatique de \textcite[\ppno~3, fig. 2]{sargent2009verification} --
+%\hl{(Lena : à reproduire quelque part dans la thèse)}
+, au vu des écarts qu'il peut y avoir par exemple entre le modèle conceptuel et le modèle implémenté.
 Toutefois, cela peut aussi se produire au sein d'un même domaine, par exemple ici pour le domaine du modèle informatique (\og computerized model\fg{} chez Sargent), notamment dans la phase de l'implémentation.
 La présentation discursive d'un modèle suit ses règles propres, par exemple la nécessité de suivre une progression linéaire.
 L'implémentation informatique, au contraire, ne suit pas forcément les mêmes règles, et tend même à requérir des logiques très différentes au nom d'une \og optimisation\fg{} du code-source, propre à chaque langage informatique.
 Dans cet encadré, nous souhaitons mettre en avant trois types de processus où la présentation discursive et l'implémentation effective sont différentes tout en menant à des aboutissements équivalents.
-Cette typologie ne vise pas l'exhaustivité, mais s'articule autour d'exemples rencontrés dans la présentation du modèle SimFeodal.
+Cette typologie ne vise pas l'exhaustivité, mais s'articule autour d'exemples rencontrés dans la présentation du modèle \simfeodal{}.
 
-\paragraph{Point de vue de l'implémentation} Quand un tirage aléatoire probabiliste est appliqué sur un grand nombre d'entités, son espérance théorique tend vers une fréquence empirique, en vertu de la loi des grands nombres.
+\paragraph{Point de vue de l'implémentation.} Quand un tirage aléatoire probabiliste est appliqué sur un grand nombre d'entités, son espérance théorique tend vers une fréquence empirique, en vertu de la loi des grands nombres.
 En simulation à base d'agents, cela signifie que choisir une proportion de 10\% d'une large population (ce que l'on pourrait qualifier de \og probabilité de groupe\fg{}) est quasi-équivalent à doter chacun des individus d'une probabilité de $0.1$ d'être choisis (ce qui correspond à une \og probabilité individuelle\fg{}).
-Cette équivalence est fortement mobilisée dans SimFeodal, le \og point de vue\fg{} -- probabilité individuelle ou de groupe -- changeant parfois à plusieurs reprises dans un même mécanisme, selon la praticité ou la performance (informatique) de l'une ou de l'autre.
+Cette équivalence est fortement mobilisée dans \simfeodal{}, le \og point de vue\fg{} -- probabilité individuelle ou de groupe -- changeant parfois à plusieurs reprises dans un même mécanisme, selon la praticité ou la performance (informatique) de l'une ou de l'autre.
 Dans la description du modèle, l'objectif, pour des raisons de clarté, est d'avoir la vision la plus \og agent-centrée\fg{} possible.
 On présentera préférentiellement les mécanismes comme faisant appel à des probabilités individuelles, quand bien même l'implémentation effective se fonde sur une approche proportionnelle, mobilisant des probabilités de groupe.
 
-\paragraph{Factorisation} Un autre écart entre description et implémentation tient à l'ordre d'exécution des sous-mécanismes par un ensemble d'agents.
+\paragraph{Factorisation.} Un autre écart entre description et implémentation tient à l'ordre d'exécution des sous-mécanismes par un ensemble d'agents.
 En mathématiques, $k\times (x+y)$ est égal, selon les règles de factorisation, à $k{\cdot}x + k{\cdot}y$.
 Dans un système multi-agents, la logique est la même.
 On considère ainsi que même si l'ordre d'appel des agents diffère lors de l'implémentation d'un sous-mécanisme donné, ce qui peut faire varier le résultat, les sous-mécanismes décrits sont équivalents (plutôt qu'égaux).
@@ -1318,17 +1306,17 @@ Le second est légèrement différent en ce qu'il demande d'abord à tous les ag
 \noindent\begin{minipage}[b]{.45\textwidth}
 	\begin{lstlisting}[caption={Factorisé},frame=tlrb, captionpos=b, label = {lst:facto1}]
 ask agents [
-  do A;
-  do B;
+ do A;
+ do B;
 ]
 	\end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}[b]{.45\textwidth}
 	\begin{lstlisting}[caption={Développé},frame=tlrb, captionpos=b, label = {lst:facto2}]
 ask agents [
-  do A; ]
+ do A; ]
 ask agents [
-  do B; ]
+ do B; ]
 	\end{lstlisting}
 \end{minipage}
 
@@ -1336,7 +1324,7 @@ En termes d'efficacité du code, l'alternance entre ces deux approches permet de
 On peut ainsi factoriser les calculs légers et au contraire développer les calculs plus lourds, par exemple pour faciliter l'enregistrement de variables intermédiaires liées à l'itération. 
 En revanche, dans le cadre d'une description discursive, il sera souvent plus aisé de présenter les sous-processus de manière développée plutôt que factorisée pour bien différencier les étapes successives.
 
-\paragraph{Optimisation} Les deux types de processus précédents peuvent être combinés, pour répondre à des questions d'optimisation informatique, par exemple pour permettre au modèle de fonctionner plus rapidement en fonction des spécificités des langages informatiques choisis.
+\paragraph{Optimisation.} Les deux types de processus précédents peuvent être combinés, pour répondre à des questions d'optimisation informatique, par exemple pour permettre au modèle de fonctionner plus rapidement en fonction des spécificités des langages informatiques choisis.
 Dans Gama, par exemple, il est plus lent, informatiquement, de calculer la distance depuis 1000 agents à 10 agents, que l'inverse, quand bien même les résultats sont strictement identiques.
 Le calcul de la satisfaction de protection des foyers paysans en offre un exemple.
 Il requiert de mesurer la distance de chaque agent concerné au château le plus proche.
@@ -1368,9 +1356,6 @@ Les foyers paysans inclus dans la surface d'un agrégat y sont ajoutés (\textbf
 	\caption{Détection des agrégats et identification de leur \og héritage\fg{}.}
 	\label{fig:detection-agregats}
 \end{figure}
-\begin{center}
-\hl{Dans étape E, pas sûr que les 2 buffers soient de la même couleur, à vérifier.}
-\end{center}
 
 On crée ensuite des \textit{buffers} de 100~m autour des agrégats et on y rattache à nouveau les foyers paysans inclus dans la surface (\textbf{E}).
 Dernière étape dans la détection des agrégats, pour ne pas multiplier les agrégats proches les uns des autres, on procède à une étape de fusion en réalisant l'union géométrique des agrégats qui s'intersectent (\textbf{F}).\\
@@ -1507,7 +1492,7 @@ L'équation \ref{eq:satisfaction-distance} permet de formaliser ce type de calcu
 	\label{fig:satisfaction-distance}
 \end{figure}
 
-\paragraph{Satisfaction religieuse}
+\paragraph{Satisfaction religieuse.}
 		
 Le calcul de la satisfaction religieuse s'inscrit rigoureusement dans cette logique.
 On peut le formuler ainsi :
@@ -1523,7 +1508,7 @@ avec des seuils de distance ($distance\_max$ et $distance\_min$) qui évoluent a
 Ces seuils, tenant compte de notamment de l'augmentation de la fréquence obligatoire de visite des églises paroissiales, ont été déterminés par les archéologues et historiens participant au projet.
 
 	
-\paragraph{Satisfaction \og protection\fg{}}	
+\paragraph{Satisfaction \og protection\fg{}.}	
 
 La satisfaction \og protection\fg{} mobilise une logique semblable, c'est-à-dire qu'elle est fonction de la distance au château le plus proche.
 Cette distance est ici pondérée par un paramètre ($besoin\_protection$) qui permet de prendre en compte la sensibilité des foyers paysans au climat de violence, lequel tend à augmenter pendant la période.
@@ -1546,7 +1531,7 @@ et un paramètre de sensibilité évoluant au cours du temps ($besoin\_protectio
 	\item après 1020 : $besoin\_protection = 1$
 \end{itemize}
 
-\paragraph{Satisfaction matérielle}
+\paragraph{Satisfaction matérielle.}
 
 La satisfaction matérielle ne prend aucune distance en compte : elle s'appuie sur le montant des taxes dont le foyer paysan doit s'acquitter ($redevance\_acquittees$).
 Ce montant est pondéré par un paramètre technique représentant un niveau \og acceptable\fg{} de taxation ($coef\_redevances$, qui vaut $15$ ici, c'est-à-dire qu'un foyer paysan s'acquittant de 15 droits ou plus aura une satisfaction matérielle de 0).
@@ -1570,7 +1555,7 @@ s_{redevance} = max \left[ \left( 1- \frac{redevances\_acquittees}{coef\_redevan
 \end{gathered}
 \end{equation*}
 
-\paragraph{Satisfaction générale}
+\paragraph{Satisfaction générale.}
 
 La satisfaction générale est mesurée à partir du minimum de ces satisfactions individuelles.
 Ce choix traduit l'hypothèse que ces satisfactions ne s'équilibrent pas.
@@ -1592,11 +1577,11 @@ avec $ \{satisfaction ; s_{materielle} ; s_ {religieuse} ; s_{protection}\} \in 
 
 	\subsubsection{Migration des foyers paysans \label{sssec:migration}}
 
-La migration des foyers paysans est sans doute le mécanisme le plus complexe et qui a été le plus modifié depuis la conception de SimFeodal.
+La migration des foyers paysans est sans doute le mécanisme le plus complexe et qui a été le plus modifié depuis la conception de \simfeodal{}.
 La règle d'ensemble est pourtant extrêmement simple : un foyer paysan a une probabilité de migrer qui est proportionnelle à son insatisfaction. 
 Autrement dit, $P \left( migration \right) = \left( 1 - satisfaction \right)$.
 Cette règle simple a été progressivement complexifiée afin d'augmenter la rationalité et l'ancrage empirique des choix de localisation.
-Cette complexification du mécanisme est inhérente au choix de modélisation, KIDS, dans lequel SimFeodal s'inscrit (cf. \hl{chapitre 1}), et où l'on cherche à suivre autant que possible les connaissances empiriques, quitte à complexifier plus que de nécessaire (par rapport au niveau de détail des autres mécanismes) certaines règles.
+Cette complexification du mécanisme est inhérente au choix de modélisation, KIDS, dans lequel \simfeodal{} s'inscrit (cf. \cref{subsec:explorer-confronter}), et où l'on cherche à suivre autant que possible les connaissances empiriques, quitte à complexifier plus que de nécessaire (par rapport au niveau de détail des autres mécanismes) certaines règles.
 
 Une première complexification a abouti à la distinction de migrations \og locales\fg{} et de migrations \og lointaines\fg{} (voir \cref{fig:migrations-locales-lointaines}).
 
@@ -1667,7 +1652,7 @@ Les prélèvements rapportent de la \og puissance\fg{} aux seigneurs, différenc
 \end{table}
 
 
-\paragraph{Foncier}
+\paragraph{Foncier.}
 
 Quelques petits seigneurs (tous ceux créés dès l'initialisation ainsi que $\approx 10\%$ de ceux créés pendant le déroulement de la simulation) possèdent des droits fonciers.
 À ce titre, ils peuvent collecter ces droits au sein d'une zone de prélèvement qu'ils créent lors de leur apparition.
@@ -1679,7 +1664,7 @@ Le mécanisme de collecte des droits fonciers est illustré par la \cref{fig:pre
 	\label{fig:prelevement-fonciers}
 \end{figure}
 
-\paragraph{Haute justice et autres droits}
+\paragraph{Haute justice et autres droits.}
 
 Les autres droits suivent un mécanisme plus générique : les seigneurs propriétaires collectent des droits auprès d'une partie des foyers paysans inclus dans la surface de la zone de prélèvement.
 Cette partie correspond aux \og taux de prélèvement\fg{} décrit plus haut. La \cref{fig:prelevement-droits} récapitule les différentes modalités de collecte de droits via les zones de prélèvement.
@@ -1717,7 +1702,7 @@ Les règles de localisation de château sont identiques et illustrées dans la \
 	\label{fig:construction-chateaux}
 \end{figure}
 
-\paragraph{Rayon des zones de prélèvement associées}
+\paragraph{Rayon des zones de prélèvement associées.}
 
 La construction d'un château implique systématiquement la création de zones de prélèvements qui lui sont associées, c'est-à-dire qu'elles appartiennent au seigneur qui crée le château.
 Si le château est donné en gardiennage, l'ensemble des zones de prélèvement qui lui sont associées seront aussi données en gardiennage au petit seigneur choisi.
@@ -1728,7 +1713,7 @@ Si le seigneur châtelain obtient les droits de haute justice, une zone de prél
 Contrairement aux zones de prélèvement habituelles, celles qui sont associées à un château ont un taux de prélèvement de $100\%$.
 Cette particularité est due à l'importance thématique des châteaux, qui remplissent un rôle de protection au prix d'un investissement important.
 Cela implique dès lors que les prélèvements y sont plus élevés et systématiques que dans les zones plus classiques.
-Dans SimFeodal, cela est modélisé sous la forme de ce taux de prélèvement supérieur à la norme et par à un rayon, lui aussi, supérieur.
+Dans \simfeodal{}, cela est modélisé sous la forme de ce taux de prélèvement supérieur à la norme et par à un rayon, lui aussi, supérieur.
 Ce dernier est variable et dépend de la puissance relative du seigneur qui construit le château.
 Plus précisément, le rayon varie entre un seuil minimal de 2 000 m ($rayon\_min\_zp\_chateau$) et un seuil maximal de 15 000 m ($rayon\_max\_zp\_chateau$).
 Entre ces deux seuils, la valeur du rayon dépend d'une fonction linéaire correspondant au ratio entre la puissance du seigneur constructeur et les puissances maximales et minimales de l'ensemble des seigneurs, tel que formalisé dans l'équation \ref{eq:rayon-zp-chateau}. 
@@ -1747,31 +1732,30 @@ Entre ces deux seuils, la valeur du rayon dépend d'une fonction linéaire corre
 \section*{Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
 
-\begin{center}
-	\hl{Reprendre la conclusion cf. remarques Julie}
-\end{center}
-
-La dernière partie de ce chapitre, consacrée à la présentation détaillée de certains mécanismes, montre à quel point le protocole de description ODD peut être difficile à mobiliser pour des modèles descriptifs et exploratoires comme SimFeodal.
-En particulier, ce protocole demande de suivre un niveau homogène de présentation des propriétés et règles d'un modèle.
+Le protocole de description ODD, suivi tout au long de ce chapitre, présente l'avantage indéniable de forcer les modélisateurs à harmoniser les présentations de leur modèle.
+Cette harmonisation est \og interne\fg{}, en ce que le protocole demande de suivre un niveau homogène de présentation des propriétés et règles d'un modèle.
 Il est ainsi nécessaire de présenter ces règles de manière simplifiée dans un premier temps (\textit{Process overview}, \cref{sec:fonctionnement-general}) puis détaillée par la suite (\textit{Submodels}, \cref{sec:meca-specifiques}).
-Cela complique la démarche d'explicitation de ces mécanismes : 
-en voulant en simplifier la présentation, on a vite fait d'en dénaturer le fonctionnement réel.
+Mais l'harmonisation est aussi \og externe\fg{}, chaque section poussant à positionner son modèle vis-à-vis d'autres modèles de simulation à base d'agents de la littérature, par exemple dans la partie des \og concepts de modélisation\fg{} (\cref{sec:design-concepts}), où le rapport des agents à l'environnement spatial ne peut être appréhendée qu'en comparaison avec des modèles connus.
 
+Le prix de cette généricité et de cette contextualisation est une certaine inadaptation à certains modèles.
+La dernière partie de ce chapitre, consacrée à la présentation détaillée de certains mécanismes, montre ainsi à quel point le protocole de description ODD peut être difficile à mobiliser pour des modèles descriptifs et exploratoires comme \simfeodal{}.
+%Cela complique la démarche d'explicitation de ces mécanismes : 
+%en voulant en simplifier la présentation, on a vite fait d'en dénaturer le fonctionnement réel.
 Cette difficulté de présentation du modèle dans le cadre d'ODD est renforcée par la forte hétérogénéité, en termes de complexité\footnote{
 Le terme complexité est ici employé au sens algorithmique, et non au sens des systèmes complexes.
 Une plus forte complexité désigne ici un mécanisme plus \og compliqué\fg{}, régit par un nombre de règles, d'étapes ou de conditions plus importantes qu'un autre.
-}, des mécanismes de SimFeodal.
+}, des mécanismes de \simfeodal{}.
 On en a déjà mentionné les raisons dans l'introduction :
-	les niveaux de précision des connaissances des différents objets modélisés sont très variables, et très liés aux parcours et sujets de recherche individuels des thématiciens impliqués.
+	les niveaux de précision des connaissances des différents objets modélisés sont très variables et liés aux parcours et sujets de recherche individuels des thématiciens impliqués dans la construction du modèle.
 Si l'on ajoute une \og longue durée\fg{} de conception et de développement du modèle, qui plus est caractérisée par des allers-retours entre des phases de simplification et des phases de complexification, on ne peut qu'obtenir un modèle difficile à homogénéiser.
-Tous ces éléments sont toutefois caractéristiques de la nature -- et de la vocation -- exploratoire de SimFeodal, dont le développement porte sans doute plus de résultats que l'utilisation d'un état \og final\fg{}.
+Tous ces éléments sont toutefois caractéristiques de la nature -- et de la vocation -- exploratoire de \simfeodal{}, dont le développement comporte sans doute plus de résultats que l'utilisation d'un état \og final\fg{}.
 
-En dépit de cette forte hétérogénéité dans les mécanismes, il nous semble toutefois important de pointer aussi la certaine généricité qui en caractérise les fondations.
+En dépit de cette forte hétérogénéité dans les mécanismes, il nous semble en revanche important de pointer aussi la certaine généricité qui en caractérise les fondations.
 Par exemple, le calcul des différentes composantes de la satisfaction générale est assez similaire, autour de logiques de seuils minimum et maximum entre lesquels la satisfaction suit une logique linéaire.
 Cette logique prédominait initialement dans de nombreux autres mécanismes (probabilité de construction de châteaux, probabilité de créer de nouvelles églises paroissiales\ldots), de même qu'une certaine logique gravitaire dans le choix des destinations de migration des foyers paysans.
 
 Les nombreuses versions successives du modèle ont entrainé des spécifications de ces mécanismes autrefois très génériques, spécifications qui peuvent en masquer une logique initiale qui demeure cependant bien présente et que nous avons parfois essayé de rappeler.
-Par exemple, les mécanismes de migration des foyers paysans (\cref{sssec:migration}) sont très particulier et semblent fortement variables d'un cas à l'autre (migrations locales ou lointaines, migrations des foyers paysans \og mobiles\fg{} ou \og dépendants\fg{}), alors que toutes ces particularités sont autant de variations complexes autour d'une logique commune et simple, dans laquelle la probabilité de migrer est directement proportionnelle à l'insatisfaction (ie. $1 - satisfaction$).
+Par exemple, les mécanismes de migration des foyers paysans (\cref{sssec:migration}) sont très particuliers et semblent fortement variables d'un cas à l'autre (migrations locales ou lointaines, migrations des foyers paysans \og mobiles\fg{} ou \og dépendants\fg{}), alors que toutes ces particularités sont autant de variations complexes autour d'une logique commune et simple, dans laquelle la probabilité de migrer est directement proportionnelle à l'insatisfaction (ie. $1 - satisfaction$).
 
 Au cours du temps, le modèle a donc été complexifié par ses auteurs.
 Cette complexification, ou spécification, visait d'une part à détailler des comportements pour les rendre plus représentatifs des connaissances thématiques, et d'autre part à en ajuster le fonctionnement en fonction des résultats sur lesquels ils aboutissaient.
@@ -1779,4 +1763,4 @@ Ce double objectif a défini le processus de \og paramétrage\fg{} qui a été r
 
 Cette \og amélioration\fg{} ne peut s'entendre qu'au regard des objectifs du modèle, c'est-à-dire du questionnement initial auquel il doit permettre de répondre.
 Pour cela, il est nécessaire de définir des critères permettant de qualifier la capacité du modèle à répondre à ces questions ainsi que la qualité de ces réponses.
-En somme, après avoir présenté le fonctionnement du modèle, il est indispensable de revenir sur les raisons de ce fonctionnement, et donc de présenter les modalités de ce qui a guidé le paramétrage de SimFeodal, à savoir son évaluation.
+En somme, après avoir présenté le fonctionnement du modèle, il est indispensable de revenir sur les raisons de ce fonctionnement, et aussi de présenter les modalités de ce qui a guidé le paramétrage de \simfeodal{}, à savoir son évaluation.
