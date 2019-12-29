@@ -14,13 +14,7 @@
 	\item 08/11/2019 : Fin reprise + Impression Lena
 	\item 11/11/2019 : Reprises commentaires Lena du 24/11/2017 + finalisation
 	\item 19/11/2019 : Dernier round reprises Lena
-	\item 24/11/2019 : Fin reprise + envoi relecture :
-		\begin{itemize}
-			\item Seb : Intro + 3.1 + 3.2.1 et 3.2.2 (pas la 3.2.3) + Conclusion
-			\item Clem : Intro + Partie 3.3 + Conclusion
-			\item Paul G. : 3.2.3
-			\item => \hl{Retour si possible le jeudi 05/12/2019}
-		\end{itemize}
+	\item 24/11/2019 : Fin reprise + envoi relecture : Seb \& Clem
 \end{itemize}
 \setcounter{minitocdepth}{2}
 \minitoc
@@ -31,7 +25,7 @@
 \label{sec:chap3-intro}
 \addcontentsline{toc}{section}{Introduction}
 
-Dans le chapitre précédent, nous avons présenté un modèle, SimFeodal, dont l'objectif est de répondre à un questionnement thématique (\hl{ref 2.1.2}) portant les phénomènes de polarisation, de hiérarchisation et de fixation de l'habitat paysan entre les IX$^e$ et XIII$^e$ siècles.
+Dans le chapitre précédent, nous avons présenté un modèle, SimFeodal, dont l'objectif est de répondre à un questionnement thématique (\cref{subsec:questionnement-modele}) portant les phénomènes de polarisation, de hiérarchisation et de fixation de l'habitat paysan entre les IX$^e$ et XIII$^e$ siècles.
 Pour juger de la capacité du modèle à reproduire ces processus empiriques, on on procède à une \og évaluation\fg{} du modèle.
 Ce type d'évaluation prend appui sur un ensemble de critères : plus ceux-ci sont remplis, meilleure sera l'évaluation, et plus le modèle sera jugé satisfaisant.
 
@@ -57,7 +51,7 @@ Nous décrirons ensuite le paramétrage du modèle, son articulation avec l'éva
 Depuis les travaux précurseurs en simulation informatique \autocite{naylor_verification_1967,hermann_validation_1967,sargent_validation_1979} jusqu'aux recherches contemporaines \autocite{amblard_evaluation_2006,banos_pour_2013,augusiak_merging_2014, rey-coyrehourcq_plateforme_2015}, la plupart des chercheurs ont toujours mis en avant qu'un modèle de simulation non évalué n'avait ni utilité -- pour \cite{naylor_verification_1967} notamment --, ni validité.
 Sans caricaturer ces écrits, on peut noter que tous cantonnent les modèles non évalués à des \og jeux\fg{} ou encore, pour les plus modérés, à des outils uniquement pédagogiques.
 
-Comme indiqué dans le \hl{chapitre 1}, nous considérons SimFeodal comme un modèle résolument exploratoire, en particulier par la dimension heuristique qui le caractérise : les résultats produits par le modèle n'ont pas vocation à être mobilisés directement, ce sont des supports à la synthèse et à la ré-organisation de connaissances expertes sur le cas d'étude analysé.
+Comme indiqué dans le \cref{chap:chap1}, nous considérons SimFeodal comme un modèle résolument exploratoire, en particulier par la dimension heuristique qui le caractérise : les résultats produits par le modèle n'ont pas vocation à être mobilisés directement, ce sont des supports à la synthèse et à la ré-organisation de connaissances expertes sur le cas d'étude analysé.
 On pourrait dès lors se passer d'en mener une évaluation quelconque.
 
 Il nous semble pour autant que l'exercice intellectuel que constitue la (co-)construction d'un modèle de simulation perdrait de son intérêt intrinsèque s'il ne donnait lieu à des procédures, quelles qu'elles soient, ayant pour objectif d'assurer une certaine qualité au modèle, à défaut de lui garantir une validation stricte.
@@ -184,7 +178,7 @@ Nous reviendrons plus longuement dans les pages suivantes (voir \cref{subsec:fac
 \paragraph{Analyse de sensibilité.}
 Quand une première version du modèle a été implémentée, il est recommandé de procéder à l'analyse de sa \og sensibilité \fg{}, entendue à l'égard des paramètres du modèle : en faisant varier, selon des méthodes plus ou moins complexes
 \footnote{
-	Un point plus précis y est consacré dans le \hl{chapitre 6}
+	Un point plus précis y est consacré dans le \cref{chap:chap5}, \cref{sec:ana-sensib}.
 }, les valeurs des différents paramètres du modèle, on peut observer l'influence de chaque paramètre sur le déroulement du modèle.
 Cette procédure, relative à la validation interne, intervient tôt, et doit être répétée lors de chaque modification majeure dans les mécanismes du modèle.
 L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté :
@@ -420,7 +414,7 @@ Elle encourage ainsi plutôt à mener l'évaluation des sorties après les deux 
 Il nous semble que si les deux premières approches sont applicables à tout modèle, l'évaluation immersive comporte un postulat lourd sur la plausibilité des trajectoires individuelles.
 Cela se prête bien à de nombreux modèles où les agents représentent des humains dotés de comportements rationnels, ou encore des particules dont la trajectoire individuelle est prévisible en dehors des effets d'interaction.
 Toutefois, tout un pan de la modélisation en géographie repose sur des agents non anthropomorphiques, ou encore sur des entités primaires dont seules les interactions ont vocation à faire émerger un comportement d'ensemble.
-Dans le cas de SimFeodal par exemple (\hl{ref chap2}), les comportements individuels des foyers paysans ne reposent pas sur des hypothèses de vraisemblance :
+Dans le cas de SimFeodal par exemple (cf. \cref{chap:chap2}), les comportements individuels des foyers paysans ne reposent pas sur des hypothèses de vraisemblance :
 	le foyer paysan qui se déplace de villes en villes, parfois en faisant des allers-retours, au cours des 300 ans modélisés, ne s'appuie sur aucune connaissance empirique, et tendrait même à contrevenir aux connaissances expertes de la mobilité résidentielle des foyers paysans médiévaux.
 On pourrait y voir une \og méta-plausibilité\fg{} inter-générationnelle, mais il serait difficile de l'interpréter et surtout de la différencier d'autres comportements de foyers paysans.
 Le suivi d'un foyer paysan, isolé de ses co-agents, au cours du déroulement du modèle, par un expert thématicien, n'est donc pas sujet à évaluation, au contraire du suivi des structures spatiales de niveau macroscopique engendrées par cette accumulation de déplacements.
@@ -455,7 +449,7 @@ Ces réserves nous semblent être autant de pistes pour justifier de l'intérêt
 	Cela est d'ailleurs applicable quelle que soit la méthode d'évaluation : une expertise ne vaut que par la qualité de l'expert.
 	De manière plus nuancée, on notera d'ailleurs que cette phrase montre ici l'absence d'un élément de définition de la \textit{face validation} partagé par les autres auteurs :
 	\citeauthor{hermann_validation_1967} considère par là que c'est au modélisateur uniquement de mener cette phase d'évaluation, alors que la littérature s'entend quant au fait que ce rôle échoit à des experts.
-	Ce faisant, \citeauthor{hermann_validation_1967} se positionne dans la logique de construction de modèles par des modélisateurs, sans apport des thématiciens, et donc dans l'approche classique de séparation forte entre ces deux acteurs indispensables du modèle (voir \hl{chapitre 1, prestation vs co-construction}).
+	Ce faisant, \citeauthor{hermann_validation_1967} se positionne dans la logique de construction de modèles par des modélisateurs, sans apport des thématiciens, et donc dans l'approche classique de séparation forte entre ces deux acteurs indispensables du modèle (voir \cref{chap:chap1}, \cref{subsec:position-modelisateur}).
 	
 	\item \textbf{Invraisemblance de certains comportements.}
 	\citeauthor{hermann_validation_1967} met en avant que dans un modèle, tous les mécanismes n'ont pas vocation à être vraisemblables.
@@ -521,7 +515,7 @@ En numérisant ces deux informations, relatives aux catégories des méthodes et
 
 Cette figure fait apparaître très nettement une \og hiérarchie\fg{} d'applicabilité des méthodes selon leur type : les méthodes informelles sont les plus souvent mobilisables, suivies par les méthodes statiques et certaines méthodes statiques.
 
-\subsection{Vers une évaluation visuelle}
+\subsection{Vers une évaluation visuelle \label{subsec:eval-visuelle}}
 
 Au regard de ces éléments, il nous semble que l'utilité des approches de \textit{face validation} est assez largement prouvée.
 C'est le cas que cette approche soit cantonnée à une phase préalable mineure ou au contraire à une bonne pratique plus générale, à mener lors de chacune des phases de construction et d'évaluation d'un modèle.
@@ -536,7 +530,7 @@ La \textit{face validation} procède à la même démarche comparative :
 	\mbox{}~ \hfill \textcite[341]{petty2010verification}
 \end{quotation}
 Nous postulons que la démarche comparative que l'on retrouve dans l'évaluation statistique peut donc être appliquée sans recherche de quantification, c'est-à-dire en évaluant ces mêmes écarts de manière subjective et qualitative.
-Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que SimFeodal (\hl{ref chap 2}), la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
+Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que SimFeodal, la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
 De plus, les données empiriques qui permettraient de mener une comparaison sont trop lacunaires et incertaines pour être jugées suffisamment fiables pour évaluer le modèle.
 
 \subsubsection{Une démarche rigoureuse} Nous pensons toutefois que ces carences quantitatives peuvent être compensés par les connaissances expertes des différents thématiciens impliqués dans la construction et l'évaluation d'un modèle.
@@ -564,9 +558,9 @@ Pour ce faire, ils insistent sur l'intégration d'experts dans le processus d'é
 \paragraph{Définition.} Il s'agit d'évaluer, visuellement, la plausibilité du comportement d'un modèle à partir des données qu'il produit.
 Cette plausibilité peut être entendue comme la correspondance entre le système modélisé et le modèle du système, correspondance s'exprimant en comparant les données en sortie de simulation -- et en les agrégeant au besoin pour tenir compte de la nécessaire réplication
 \footnote{
-	Cet aspect est discuté dans les chapitres \hl{1, 2 et 7}.
+	Cet aspect est discuté dans les \cref{chap:chap1,chap:chap2,chap:chap6}.
 	En matière d'évaluation, tel que pointé par la majorité des auteurs cités dans cette sous-partie de chapitre, il est ainsi nécessaire de tenir compte de la variabilité d'un modèle, variabilité intrinsèque dans un modèle stochastique.
-	Il n'est donc pas possible d'évaluer, visuellement ou non, un modèle stochastique sur la base d'une seule exécution. Au contraire, seule l'exécution d'un certain nombre de \textbf{réplications} (voir \hl{chapitre 1}) permet de s'assurer que le comportement évalué correspond bien au comportement habituel, ou tendanciel, du modèle.
+	Il n'est donc pas possible d'évaluer, visuellement ou non, un modèle stochastique sur la base d'une seule exécution. Au contraire, seule l'exécution d'un certain nombre de réplications permet de s'assurer que le comportement évalué correspond bien au comportement habituel, ou tendanciel, du modèle.
 } -- au comportement du système modélisé.
 Cette correspondance doit être qualifiée avant de mener cette phase d'évaluation, c'est-à-dire qu'il est nécessaire de spécifier les critères d'observation et les réponses attendues.
 Ces éléments, les critères d'évaluation, ne peuvent être formulés par n'importe qui : si le modélisateur autant qu'un expert externe peuvent les spécifier, il convient de s'assurer de l'expertise -- thématique et de la connaissance du système tel que modélisé -- de l'évaluateur.
@@ -579,7 +573,7 @@ C'est la capacité, humaine, à estimer semblable des configurations spatiales q
 Si l'on cherche par exemple à estimer l'écart entre un semis de point cible et un semis simulé, on peut mesurer l'écart comme, par exemple, une somme des écarts de chacun des points à celui qu'ils sont sensés représenter.
 Un décallage minime, par exemple obtenu par translation horizontales de quelques dizaines de mètre sur un semis régional, engendrera alors une démultiplication des erreurs, alors même qu'un œil humain aurait jugé ces deux semis quasi-identiques.
 En terme de configuration spatiale, la quantification peut ainsi amener à des contres interprétations dans l'analyse.
-Dans le cadre d'un modèle comme SimFeodal où l'espace est important et qui plus est, théorique et aléatoire, et donc difficilement agrégeable (\hl{cf. chapitre 7}), le recours systématique à l'évaluation visuelle nous paraît alors indispensable.
+Dans le cadre d'un modèle comme SimFeodal où l'espace est important et qui plus est, théorique et aléatoire, et donc difficilement agrégeable (cf. \cref{chap:chap6}, \cref{subsec:genericite-donnees-simul}), le recours systématique à l'évaluation visuelle nous paraît alors indispensable.
 
 \paragraph*{}Cette méthode, contrairement à d'autres, plus quantitatives, permet donc au final de tirer avantage des méthodes qualitatives telles que la \textit{face validation} -- par exemple la capacité d'évaluer un modèle qui ne reposerait que sur peu de données empiriques ou encore sur des données incertaines --, tout en se confortant à une démarche d'évaluation rigoureuse, loin de l'estimation \og au doigt mouillé\fg{} à laquelle peuvent donner lieu certaines méthodes reposant sur la plausibilité et l'estimation.
 
@@ -594,13 +588,13 @@ Pour finir de décrire la démarche d'évaluation de SimFeodal, il reste donc à
 
 \let\orisectionmark\sectionmark
 \renewcommand\sectionmark[1]{}%
-\section{Une grille d'analyse composée d'indicateurs de sortie}
+\section{Une grille d'analyse composée d'indicateurs de sortie \label{sec:indicateurs-sortie}}
 \orisectionmark{Les indicateurs de sortie}
 \let\sectionmark\orisectionmark
 
-Le modèle SimFeodal présenté dans le \hl{chapitre 2} correspond à la \og version 6.3 \fg{} du modèle, c'est-à-dire qu'il en constitue une version qui n'est ni la première, ni sans doute la dernière dans cette expérience de co-construction interdisciplinaire de modèle qui s'inscrit résolument dans le temps long.
+Le modèle SimFeodal présenté dans le \cref{chap:chap2} correspond à la \og version 6.3 \fg{} du modèle, c'est-à-dire qu'il en constitue une version qui n'est ni la première, ni sans doute la dernière dans cette expérience de co-construction interdisciplinaire de modèle qui s'inscrit résolument dans le temps long.
 L'ensemble des mécanismes figurant dans le modèle conceptuel ont été implémentés mais l'ensemble des liens, interactions et valeurs de paramètres ne sont pas encore stabilisés.
-De ce fait les résultats des simulations ne répondent pas toujours complètement aux attentes définies dans le \hl{chapitre 2}.
+De ce fait les résultats des simulations ne répondent pas toujours complètement aux attentes définies dans le \cref{chap:chap2}.
 
 Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
 Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
@@ -612,7 +606,7 @@ Il s'agira d'exprimer les attentes sous formes de critères relatifs à ces indi
 
 Dans cette partie, on explicitera d'abord le sens que l'on prête à ces \og indices empiriques \fg{} et \og d'indicateurs de sortie de simulation\fg{}.
 Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
-L'utilisation de ces méthodes permettra, seule, de décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit dans le chapitre précédent, avant d'en analyser les résultats par ce biais dans le \hl{chapitre 6}.
+L'utilisation de ces méthodes permettra, seule, de décrire et qualifier le comportement du modèle SimFeodal tel qu'il a été décrit dans le chapitre précédent, avant d'en analyser les résultats par ce biais dans le \cref{chap:chap5} (\cref{subsec:resultats}).
 
 \subsection{Indices et indicateurs}\label{subsec:indices-indicateurs}
 
@@ -757,7 +751,7 @@ On le trouve très souvent utilisé, parce qu'il permet de résumer le niveau de
 
 En renforçant cette logique de synthèse de plusieurs dimensions, on peut aller plus loin dans la définition d'un unique indicateur, parfois composite et synthétique, qui permet d'évaluer à lui seul la qualité de représentation d'un modèle.
 On nomme d'ordinaire cet indicateur \og fonction objectif\fg{} (ou \og fonction de \textit{fitness}\fg{}).
-C'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (\hl{ref. chap 1 ou 2}).
+C'est une pratique très fréquente, qui plus est dans le domaine de la simulation informatique en particulier sur des modèles de type \og KISS\fg{} (voir \cref{par:interdisciplinarite-methodo}).
 Il s'agit alors de définir une \og fonction objectif\fg{}, parfois composée d'une pondération des quelques indicateurs composites qui auront été identifiés, ou plus simplement, basée sur une unique variable que l'on juge représentative de l'ensemble du modèle.
 
 Être en mesure d'évaluer un modèle à l'aide d'un unique indicateur a des avantages majeurs en pratique.
@@ -785,12 +779,12 @@ On a donc fait le choix d'évaluer SimFeodal en conservant des indicateurs de so
 Ce choix a toutefois des implications majeures pour la méthodologie mise en place pour l'analyse des sorties de simulation.
 Il est en effet bien plus simple d'analyser quelques indicateurs composites plutôt qu'un grand nombre d'indicateurs hétérogènes.
 
-\subsection{Hiérarchiser et catégoriser les indicateurs}
+\subsection{Hiérarchiser et catégoriser les indicateurs \label{subsec:hierarchiser-indicateurs}}
 
 SimFeodal s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels.
 Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, le même niveau de précision sur les phénomènes modélisés.
 À chaque changement dans le modèle, pour une évaluation complète de la capacité de cette version à reproduire les indices empiriques, il faudrait donc observer et analyser chacun de ces nombreux et divers indicateurs.
-Dans le contexte du paramétrage d'un modèle s'appuyant sur une logique itérative et incrémentielle (voir \Cref{enc:incrementalite-indicateurs}), on imagine bien que cela n'est pas possible :
+Dans le contexte du paramétrage d'un modèle s'appuyant sur une logique itérative et incrémentielle (voir \cref{enc:incrementalite-indicateurs}), on imagine bien que cela n'est pas possible :
 le nombre d'indicateurs est bien trop élevé pour avoir rapidement une vision globale de la qualité de représentation du modèle.
 Il faut dès lors, comme pour toute analyse synthétique, concevoir une hiérarchie d'observation et d'utilisation des indicateurs :
 il ne sera pas nécessaire d'analyser chacun des indicateurs dans la plupart des cas, seuls les indicateurs jugés plus importants pourront être analysés.
@@ -805,7 +799,7 @@ Cette quantification de l'incertitude pourrait alors servir de base à l'établi
 on analyserait en premier lieu l'écart entre les ordres de grandeurs empiriques bien connus (\hl{cf. tableau du niveau de certitude des objectifs}) et les indicateurs calculés sur les données simulées.
 Les ordres de grandeur plus incertains seraient analysés dans un second temps (augmentation de la charge fiscale entre 800 et 1100 par exemple), et les formes stylisées viendraient enfin clore cette hiérarchie d'indicateurs.
 
-SimFeodal se caractérise d'une part par une très forte hétérogénéité dans les niveaux de connaissance des ordres de grandeurs et faits stylisés modélisés, et d'autre part, se voulant un modèle théorique (\hl{ref dans chap1}), \og coller aux données\fg{} à tout prix n'est pas la priorité.
+SimFeodal se caractérise d'une part par une très forte hétérogénéité dans les niveaux de connaissance des ordres de grandeurs et faits stylisés modélisés, et d'autre part, se voulant un modèle théorique, \og coller aux données\fg{} à tout prix n'est pas la priorité.
 La vraisemblance d'ensemble du modèle compte en effet bien plus que la précision de chacune de ses composantes.
 Pour l'évaluation de SimFeodal, nous ne tiendrons compte de l'incertitude des indicateurs qu'au cas par cas, sans la mesurer de manière systématique et donc sans établir de hiérarchie à partir de cette incertitude.
 
@@ -818,7 +812,7 @@ Ces hypothèses et objectifs sont multiples dans SimFeodal, et dès lors, une hi
 Il convient donc de catégoriser les indices empiriques -- et les indicateurs de sortie de simulation leur correspondant --, avant de chercher à hiérarchiser ces indicateurs de manière globale.
 La hiérarchisation des indicateurs se fera donc relativement à chacune de ces catégories.
 
-La dynamique du système de peuplement que l’on cherche à reproduire sur la période IX$^e$-XII$^e$ siècle comprend trois processus (\hl{cf. chapitre 2}), que nous nommerons dimensions (voir \cref{fig:schema_indices}) :
+La dynamique du système de peuplement que l’on cherche à reproduire sur la période IX$^e$-XII$^e$ siècle comprend trois processus (cf. \cref{subsec:questionnement-modele}), que nous nommerons dimensions (voir \cref{fig:schema_indices}) :
 (1) polarisation de l'habitat rural, (2) hiérarchisation du système de peuplement et (3) fixation des foyers paysans.
 On peut s'appuyer sur ces trois dimensions pour caractériser les sorties du modèle, c'est-à-dire mener la confrontation entre indices empiriques et indicateurs de sortie.
 
@@ -852,7 +846,7 @@ L'étude de la dispersion des agrégats et pôles peut en effet se révéler plu
 \begin{encadre}{Incrémentalité des indicateurs}{incrementalite-indicateurs}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
 De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnote{
-	De manière incrémentielle et itérative, voir \hl{dans le chapitre x?} et \cite[\url{http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}]{thomas_revisiting_2012}
+	De manière incrémentielle et itérative, voir \textcite[\url{http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}]{thomas_revisiting_2012}.
 } au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
 
 Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique.
@@ -880,7 +874,7 @@ Ces éléments expliquent que dans les résultats de chaque étape du paramétra
 \clearpage
 \subsection{Les indicateurs et dimensions de SimFeodal \label{subsec:indicateurs-simfeodal}}
 
-Dans cette sous-partie, nous présentons de manière synthétique mais exhaustive l'ensemble des indicateurs mobilisés pour l'évaluation de SimFeodal, et qui servirons à la présentation des résultats du modèle dans le \hl{chapitre 6}.
+Dans cette sous-partie, nous présentons de manière synthétique mais exhaustive l'ensemble des indicateurs mobilisés pour l'évaluation de SimFeodal, et qui servirons à la présentation des résultats du modèle dans le \cref{chap:chap5} (\cref{subsec:resultats}).
 Cette énumération suit l'ordre hiérarchique définit plus haut, et est organisée en reprenant les trois dimensions de la dynamique du système de peuplement étudié : polarisation, hiérarchisation et fixation.
 
 \subsubsection{Évaluer la polarisation des foyers paysans \label{subsub:polarisation}}
@@ -1037,8 +1031,8 @@ En effet, deux foyers paysans oscillant d'un agrégat à un autre, dans un mouve
 
 Pour observer la fixation des foyers paysans, il faut donc effectuer un changement de niveau d'observation, depuis les agrégats vers celui des foyers paysans.
 Cela pose un problème en termes de quantité d'observables :
-les foyers paysans sont très nombreux (4000 dans la version 6.3, \hl{ref chap 2, tableau 2.3}) et une bonne partie d'entre eux migrent.
-Ces migrations suivent, de plus, des modalités très différentes (\hl{ref chap2, méca. migration}), rendant complexe la caractérisation des mouvements de chacun et plus encore celle d'une agrégation de ces catégories.
+les foyers paysans sont très nombreux (4000 dans la dernière version) et une bonne partie d'entre eux migrent.
+Ces migrations suivent, de plus, des modalités très différentes (cf. \cref{sssec:migration}), rendant complexe la caractérisation des mouvements de chacun et plus encore celle d'une agrégation de ces catégories.
 
 Pour ces raisons, la production d'indicateurs agrégés spatiaux, même multi-dimensionnels (une ou plusieurs cartes par exemple), ne suffirait pas à communiquer une information intelligible sur l'éventuelle fixation des foyers paysans.
 Il nous faut donc faire appel à des \og proxys\fg{}, non spatiaux, pour évaluer la fixation des foyers paysans.
@@ -1067,13 +1061,13 @@ c'est par le déplacement individuel de chacun des foyers paysans que la configu
 Les migrations affectent donc chacun des processus modélisés -- polarisation, hiérarchisation et fixation --, mais c'est dans la dimension correspondant à ce dernier processus qu'il est le plus intéressant de les observer.
 Il est en effet attendu que de nombreuses migrations surviennent, afin que le système de peuplement puisse se structurer, mais pour autant, il est aussi attendu que ces migrations tendent à diminuer au cours du temps, une fois le système en voie de stabilisation.
 
-Les mécanismes de SimFeodal différencient deux types de migrations (\hl{ref chap2}) : les migrations locales et les migrations lointaines.
+Les mécanismes de SimFeodal différencient deux types de migrations : les migrations locales et les migrations lointaines.
 Les premières font émerger, par concentration des foyers paysans dispersés dans un rayon très local, de petits agrégats ruraux.
 Leur nombre devrait décroître avec le temps, à mesure que les foyers paysans dispersés sont polarisés localement.
 Les migrations lointaines, au contraire, doivent jouer tout au long de la simulation, en redistribuant les foyers paysans qui seraient déjà agrégés, en direction d'agrégats plus importants : leur nombre devrait être relativement constant.
 
 Rappelons que différentes contraintes temporelles viennent bouleverser, à dessein, le comportement des foyers paysans.
-En particulier, entre 950 et 1050, les modalités d'évaluation de la satisfaction deviennent plus strictes (\hl{Voir dans chap2, frise}).
+En particulier, entre 950 et 1050, les modalités d'évaluation de la satisfaction deviennent plus strictes (\cref{fig:frise-chrono}).
 Cela engendre nécessairement une plus forte propension des foyers à migrer.
 
 Les connaissances empiriques sont très imprécises au regard de la finesse des indicateurs, mais on peut tout de même estimer que l'évolution des migrations suive plusieurs rythmes au cours du temps :
@@ -1100,7 +1094,7 @@ Comme pour les déplacements, on attend, depuis les connaissances empiriques, qu
 
 \paragraph{Nombre et dispersion des paroisses.}
 
-Tout au long de la période, de nouvelles églises paroissiales sont créées (\hl{cf. mécanisme dans chap. 2}) et viennent renforcer l'encadrement des foyers paysans.
+Tout au long de la période, de nouvelles églises paroissiales sont créées (cf. \cref{meca-paroisses}) et viennent renforcer l'encadrement des foyers paysans.
 L'évolution du maillage constitué par les ressorts paroissiaux matérialise donc l'évolution de la structure spatiale des foyers paysans.
 Pour que les foyers paysans soient satisfaits, il est en effet nécessaire (à partir de 950) qu'ils soient suffisamment proches d'une église paroissiale
 Observer la croissance du nombre et la répartition des paroisses telles que simulées dans le modèle SimFeodal, constitue donc un bon moyen d'observer la la dissémination du peuplement.
@@ -1135,18 +1129,18 @@ En effet, c'est en évaluant le modèle après chacune des modifications apport�
 
 La construction de SimFeodal a été entièrement guidée par ces étapes récurrentes et systématiques de paramétrage : l'approche d'évaluation visuelle a ainsi été mise au service du processus de co-construction du modèle.
 
-Dans la dernière partie de ce chapitre, nous montrerons donc comment le paramétrage a rythmé et déterminé la progression du modèle vers la version présentée dans le \hl{chapitre 2}, en commençant par définir ce terme, peu usité, qui est construit à partir de la notion de paramètre.
+Dans la dernière partie de ce chapitre, nous montrerons donc comment le paramétrage a rythmé et déterminé la progression du modèle vers la version présentée dans le \cref{chap:chap2}, en commençant par définir ce terme, peu usité, qui est construit à partir de la notion de paramètre.
 
 \section{Paramétrage du modèle SimFeodal}
 
 
-Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, présenté en tant que \og version 6.3\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer pour répondre aux problèmes soulevés dans la dernière partie (\hl{Ref dernière section chap 2}).
+Le modèle, tel qu'il a été présenté dans le chapitre précédent, était un \og état\fg{}, présenté en tant que \og version 6.3\fg{}, c'est-à-dire que les mécanismes, paramètres et les valeurs de ceux-ci correspondent à une étape d'un modèle amené à évoluer.
 Cette version 6.3 implique que de nombreuses versions précédentes ont été développée, testées, puis modifiées et ajustées jusqu'à obtenir une nouvelle version plus satisfaisante du point de vue des objectifs.
 
 L'évaluation de la \og satisfaction\fg{} ressentie pour une version du modèle a été présentée dans les premières parties de ce chapitre, et nous décrivons maintenant l'étape qui suit (ou précède, dans une logique faite d'allers-retours nombreux) cette évaluation, et vise à ajuster les valeurs de paramètres du modèle et le détail des mécanismes afin d'augmenter la qualité du modèle du point de vue de l'évaluation définie.
 
 Dans cette thèse, nous proposons l'usage du terme de \og paramétrage\fg{}, peu fréquent, et, à notre connaissance, forgé récemment \autocite{hirtzel2015exploration,tannier_analyse_2017}, pour décrire ce processus d'\og amélioration\fg{} itérative du modèle, répété systématiquement durant le cycle de vie du modèle SimFeodal.
-Nous nous attacherons ainsi à présenter le travail de paramétrage réalisé depuis la version 0 jusqu'à la version \og finale\fg{} du modèle dont les résultats sont présentés dans le \hl{chap6}, en passant par la version présentée dans le \hl{chapitre 2}, chacune de ces itérations ayant abouti à une version plus adaptée aux questions des thématiciens.
+Nous nous attacherons ainsi à présenter le travail de paramétrage réalisé depuis la version 0 jusqu'à la version \og finale\fg{} du modèle dont les résultats sont présentés dans le \cref{chap:chap5} (\cref{subsec:resultats}), en passant par la version présentée dans le \cref{chap:chap2}, chacune de ces itérations ayant abouti à une version plus adaptée aux questions des thématiciens.
 
 Avant de préciser le sens du terme \og paramétrage\fg{}, il semble important de définir précisément ce qu'est un paramètre.
 C'est en particulier nécessaire en ce que ce terme recouvre de nombreux sens selon les champs disciplinaires qui l'emploient, mais aussi, au sein même de ceux-ci, par les différents chercheurs.
@@ -1343,7 +1337,7 @@ Ces variables sont potentiellement affectées par des \textbf{paramètres} ($P_n
 Plusieurs paramètres peuvent aussi affecter la même variable : dans la figure, la variable $V_9$ est affectée conjointement par les paramètres $P_3$ et $P_4$.
 On peut illustrer ce type de cas avec l'exemple du nombre de foyers paysans, qui évoluera en fonction d'une part d'un paramètre définissant la population initiale et d'autre part en fonction d'un second paramètre définissant le taux de croissance.
 Le dernier type de paramètre ($P_5$), assez fréquent dans SimFeodal, correspond aux paramètres dont les valeurs peuvent changer au cours de la simulation.
-Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs, correspondant aux pas de temps où appliquer les différentes modalités prises par le paramètre (voir \cref{sec:inputs}, \hl{chap 2, section 2.6}).
+Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs, correspondant aux pas de temps où appliquer les différentes modalités prises par le paramètre (voir \cref{sec:inputs}).
 Dans la \cref{fig:parametres-these-entrees}, $P_{5_1}$, $P_{5_2}$ et $P_{5_3}$ correspondent par exemple à l'évolution du seuil de distance acceptable aux châteaux.
 
 
@@ -1458,7 +1452,7 @@ Après avoir présenté notre définition des paramètres, nous pouvons désorma
 
 Cette étape, que nous allons maintenant définir et illustrer, consiste ainsi notamment à \og ajuster\fg{} les valeurs des paramètres, ou plus exactement de certains des paramètres, en se basant notamment sur la typologie mise en place dans ces pages (paramètres d'\textit{input}, de contexte, de mécanisme, techniques).
 
-\subsection{Le paramétrage}
+\subsection{Le paramétrage \label{subsec:parametrage-def}}
 
 Le paramétrage d'un modèle est souvent réduit à l'un de ses aspects, le \og calibrage \fg, étape finale de la construction d'un modèle qui cherchera à reproduire autant que possible un ensemble de données observées dans le domaine empirique en faisant varier les valeurs des paramètres jusqu'à ce qu'une combinaison de celles-ci soit satisfaisante.
 
@@ -1521,7 +1515,7 @@ Nous ne retiendrons pas dans ce travail la notion de phase d'estimation, mais tr
 Cela n'implique pas de changer le modèle conceptuel, et n'est pas non plus véritablement un changement dans l'implémentation du modèle.
 Par exemple, changer l'ordonnancement du détail d'un mécanisme relève à notre sens du paramétrage.
 
-On peut illustrer cela avec l'exemple du mécanisme de définition du contour spatial des agrégats (cf. \hl{méca, 2.7.2.1, chap2}): un \textit{buffer} est actuellement appliqué autour de l'enveloppe convexe formée par les foyers paysans membres d'un agrégat afin de fusionner d'éventuels agrégats très proches.
+On peut illustrer cela avec l'exemple du mécanisme de définition du contour spatial des agrégats (cf. \cref{sssec:agregats}): un \textit{buffer} est actuellement appliqué autour de l'enveloppe convexe formée par les foyers paysans membres d'un agrégat afin de fusionner d'éventuels agrégats très proches.
 On peut adapter ce mécanisme en appliquant ce \textit{buffer} à la fin du mécanisme plutôt qu'au milieu, une fois que l'héritage des agrégats précédents a été transféré par exemple.
 
 Cela n'aurait pas un impact important sur le plan conceptuel, ni même d'ailleurs lors de l'observation agrégée de tous les agrégats.
@@ -1551,7 +1545,7 @@ La \cref{fig:etapes-modelisation} représente l'enchevêtrement des différentes
 Par construction, nous définissons l'ensemble des étapes relatives à la création du modèle, c'est-à-dire la conception du modèle conceptuel, son implémentation sous forme d'un modèle de simulation et le paramétrage du modèle.
 À force d'allers-retours entre ses composantes, la construction aboutit à un modèle \og finalisé\fg{}, qui peut être évalué de manière globale (chacune des composantes de la construction pouvant être évaluée individuellement : l'implémentation est par exemple évaluée au moyen des méthodes de validation interne).\\
 \textit{N.B. : Le terme de co-construction est d'un niveau de généricité supérieur à celui de la construction ici définie.
-La co-construction, définie dans le \hl{chapitre 1}, désigne l'approche mise en place lors de chacune des étapes du modèle, et s'applique donc aussi bien à la construction qu'à l'évaluation.}
+La co-construction, définie dans le chapitre 1 (\cref{subsec:co-construction}), désigne l'approche mise en place lors de chacune des étapes du modèle, et s'applique donc aussi bien à la construction qu'à l'évaluation.}
 		
 \subparagraph{Paramétrage.}
 Le paramétrage du modèle est l'étape où l'on adapte le modèle après avoir vérifié sa cohérence vis-à-vis des éléments empiriques qu'il cherche à reproduire.
@@ -1682,7 +1676,7 @@ On ne cherche en effet pas à reproduire, terme à terme, une répartition obser
 Le paramétrage permet de comprendre le modèle en en définissant les limites en matière de convergence.
 Une configuration de paramètres $S$ et $d$ ne sera pas meilleure qu'une autre, mais pour un $S$ donné, on saura quelle est la valeur maximale de $d$ permettant de parvenir, le plus souvent (en tenant compte de l'aléa) à cette convergence (et réciproquement).
 
-\subsubsection{Paramétrer SimFeodal}
+\subsubsection{Paramétrer SimFeodal \label{subsubsec:parametrage-simfeodal}}
 
 \paragraph{Que ou quand paramétrer ?} \label{sssec:parametrer-un-des-modeles}
 
@@ -1740,7 +1734,7 @@ L'enchainement des étapes \textbf{D} et \textbf{E} ressemblent à celui de \tex
 En catégorisant l'ensemble des \textit{commits} du modèle jusqu'à la dernière version en date, nous sommes convaincus que ce motif réapparaîtrait de manière fréquente et régulière.
 
 Cet exemple, construit sur l'évolution effective de SimFeodal, illustre le caractère nécessaire du paramétrage, et qui plus est, montre que ce processus doit être mené de manière continue et répétée.
-Dans un modèle exploratoire comme SimFeodal (\hl{cf. chap1 ou chap2}), le paramétrage ne peut pas être considéré comme une étape ultime, restreinte au calibrage, qui donnerait lieu à validation du modèle.
+Dans un modèle exploratoire comme SimFeodal, le paramétrage ne peut pas être considéré comme une étape ultime, restreinte au calibrage, qui donnerait lieu à validation du modèle.
 Un paramétrage répété, régulier, donnant lieu à des évaluations systématiques, est ainsi la seule manière de garantir la comparabilité des différentes versions et sous-versions successives d'un modèle.
 Dans le cas contraire, on court le risque de disqualifier une version du modèle qui aurait pu être plus plausible que les suivantes mais n'a pas été ajustée comme elle aurait pu l'être.
 
@@ -1752,7 +1746,7 @@ Cette distinction nous semble particulièrement utile pour dresser une hiérarch
 Les \textbf{paramètres d'\textit{input}}, pour commencer, n'ont pas vocation à changer lors de l'évolution du modèle : ils ont été définis de manière empirique, et ne peuvent donc revêtir d'autres valeurs uniquement pour améliorer l'ajustement du modèle.
 Toutefois, si les connaissances expertes évoluent, les phases de paramétrage du modèle sont l'occasion de répercuter ces nouvelles connaissances.
 Les changements de ces paramètres peuvent résulter d'un besoin de préciser la mise en œuvre des connaissances empiriques\footnote{
-	Un exemple d'un tel choix est présenté dans le \hl{chapitre 6} (\hl{partie 6.1.1.1}), où l'on a choisi de faire passer les dimensions du monde simulé de 100×100 km à 80×80 km.
+	Un exemple d'un tel choix est présenté dans le \cref{chap:chap5} (\cref{sssec:calibrage-inputs}), où l'on a choisi de faire passer les dimensions du monde simulé de 100×100 km à 80×80 km.
 }, ou simplement de la correction d'approximations inexactes\footnote{
 	Comme c'est le cas dans l'exemple du passage de 1000 à 4000 foyers paysans présenté plus haut.
 }.
@@ -1804,7 +1798,7 @@ Cette atomicité n'est pourtant pas constante, et un \textit{commit} peut conten
 
 Cette forte hétérogénéité des \textit{commits} met en évidence un dernier point qui nous paraît important.
 L'énumération menée dans cette thèse des versions, des sous-version ou encore de tout changement du modèles, est exprimée selon un ordre chronologique, organisé au sein de la hiérarchie des versions, sous-versions et patchs.
-Pour autant, comme indiqué dans le \hl{chapitre 1}, la réalité de la construction d'un modèle, qui plus est dans un contexte exploratoire et collectif, ne peut s'inscrire nettement dans cette linéarité et dans cet emboitement de versions.
+Pour autant, comme indiqué dans le \cref{chap:chap1}, la réalité de la construction d'un modèle, qui plus est dans un contexte exploratoire et collectif, ne peut s'inscrire nettement dans cette linéarité et dans cet emboitement de versions.
 Le paramétrage et la construction d'un modèle, et du nôtre en particulier, représentent en effet un travail constant d'allers-retours entre l'identification et la résolution de problèmes.
 Par conséquent, la structure réelle de développement, que l'on peut retrouver dans l'historique des modifications du modèle (les \og \textit{commits}\fg{}), ne correspond donc pas exactement à la chronologie reconstruite visible dans le \cref{tab:historique-versions-simfeodal}.
 De la même manière que la version 5.1 pouvait être basée sur la 5.0.1 plutôt que que la 5.0.2, la version 6.3 peut correspondre à une amélioration de la version 6.1, sans ré-utilisation de ce qui avait été modifié en 6.2.

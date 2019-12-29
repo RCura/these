@@ -37,10 +37,10 @@
 	\sectionmark{Capter les sorties}}\label{sec:sorties-simfeodal}
 \sectionmark{Capter les sorties}
 
-Pour évaluer un modèle, on s'appuie sur plusieurs indicateurs de sortie de simulation, de types divers (indicateurs numériques, graphiques, cartographiques etc., \hl{cf. chapitre 3, partie théorique}).
-Quand le nombre d'indicateurs devient important, comme c'est le cas dans le modèle SimFeodal (\hl{chap 3, partie présentation des indicateurs}), la consultation des indicateurs pendant le déroulement d'une simulation devient difficile.
+Pour évaluer un modèle, on s'appuie sur plusieurs indicateurs de sortie de simulation, de types divers : indicateurs numériques, graphiques, cartographiques, etc. (cf. \cref{chap:chap3}, \cref{sec:indicateurs-sortie}).
+Quand le nombre d'indicateurs devient important, comme c'est le cas dans le modèle SimFeodal (\cref{subsec:indicateurs-simfeodal}), la consultation des indicateurs pendant le déroulement d'une simulation devient difficile.
 La complexité de ces indicateurs augmente dans le cas d'un modèle stochastique, où il est nécessaire de multiplier les réplications afin d'avoir une idée fiable des tendances simulées par le modèle.
-Le travail de paramétrage d'un modèle requiert de plus de mener différentes expériences, c'est-à-dire de faire varier les paramètres (\hl{chap 4}) du modèle, démultipliant encore la masse des sorties, et avec elle, la complexité de leur analyse.
+Le travail de paramétrage d'un modèle requiert de plus de mener différentes expériences, c'est-à-dire de faire varier les paramètres du modèle, démultipliant encore la masse des sorties, et avec elle, la complexité de leur analyse.
 
 Nous détaillons ici les contraintes qu'entraînent ces différentes spécificités des données issues de simulations.
 Ces contraintes sont transversales à plusieurs types de modèles, et on peut noter que certains autres types de modèles peuvent faire face à d'autres contraintes, propres ou génériques.
@@ -66,11 +66,11 @@ On obtiendrait ainsi en sortie de simulation un tableau contenant 20\footnote{
 	Il s'agit ici du nombre de pas de temps de SimFeodal.
 	On notera que ce nombre est particulièrement faible au regard de très nombreux modèles de simulation, en particulier vis-à-vis de ceux qui visent à provoquer l'émergence d'un phénomène.
 	Ces modèles sont en général théoriques, et n'ont qu'une faible correspondance entre pas de temps et durée réelle du phénomène modélisé.
-	Dans le cas de SimFeodal, où le temps est un élément crucial du modèle, la résolution temporelle du modèle ne peut être diminuée artificiellement (voir \hl{chap2, section 2.2.2.2}), et l'on se satisfait donc de ce nombre d'itérations relativement faible.
+	Dans le cas de SimFeodal, où le temps est un élément crucial du modèle, la résolution temporelle du modèle ne peut être diminuée artificiellement (voir \cref{chap:chap2}, \cref{sssec:granularite-temporelle}), et l'on se satisfait donc de ce nombre d'itérations relativement faible.
 } lignes et une cinquantaine de colonnes\footnote{Ce qui correspondrait par exemple à environ une colonne par indicateur, en plus des quelques colonnes de bases relatives à l'état d'ensemble de la simulation.}, ce qui serait assez raisonnable pour une unique simulation.
 
 \paragraph{Évolution des indicateurs.}
-Dans le cadre d'un modèle exploratoire (\hl{cf. chapitre 1}), cette solution doit être écartée car elle ne permet pas de faire face à d'éventuelles évolutions des indicateurs au fur et à mesure du cycle de vie du modèle.
+Dans le cadre d'un modèle exploratoire, cette solution doit être écartée car elle ne permet pas de faire face à d'éventuelles évolutions des indicateurs au fur et à mesure du cycle de vie du modèle.
 Au fur et à mesure que le calibrage d'un modèle progresse, par exemple, on peut chercher à raffiner les indicateurs utilisés.
 Les indicateurs utilisés au départ peuvent alors ne plus montrer assez de variabilité entre des versions très proches de modèles.
 En effet, quand l'ajustement des données produites par la simulation aux objectifs empiriques s'améliore, il peut être difficile de départager plusieurs versions concurrentes d'un modèle.
@@ -79,7 +79,7 @@ On peut alors chercher à créer de nouveaux indicateurs, qui donneront une info
 Cet exemple illustre le cas des ajouts d'indicateurs de sorties, mais on peut aussi être confronté à des modifications des indicateurs existants.
 Dans SimFeodal, par exemple, le nombre de paroissiens moyen à chaque pas de temps peut être un indicateur utile au départ, mais on peut être amené à faire évoluer cet indicateur en une étude de la médiane si les nouvelles étapes de paramétrage du modèle en augmentent la variabilité.
 
-Les indicateurs peuvent donc évoluer au cours du temps de vie du modèle (cf. \hl{encadré chap 3}), ou plus simplement, on peut être amené à réaliser une observation plus fine des sorties du modèle au fur et à mesure de l'analyse de ce dernier.
+Les indicateurs peuvent donc évoluer au cours du temps de vie du modèle (cf.  \cref{enc:incrementalite-indicateurs}), ou plus simplement, on peut être amené à réaliser une observation plus fine des sorties du modèle au fur et à mesure de l'analyse de ce dernier.
 On se trouverait alors dans une situation impossible requérant de ré-exécuter les simulations après avoir adapté ou mis en place l'indicateur voulu.
 
 \paragraph{Données agrégées et individuelles.}
@@ -107,8 +107,8 @@ La masse de données produite est de ce fait nécessairement conséquente, comme
 
 \paragraph{Coût temporel des simulations.}
 Un dernier aspect de l'exploration de données issues de simulations, primordial, vient finir invalider l'approche d'enregistrement direct des indicateurs: le coût temporel.
-L'exécution d'une simulation requiert un certain temps de calcul (3 à 4 minutes pour une exécution du modèle SimFeodal dans la version présentée dans le \hl{chapitre 2}).
-Ce temps de calcul ne peut être optimisé que dans des proportions faibles sans avoir à bouleverser l'implémentation des mécanismes, ce qui représenterait un coût temporel encore plus important (voir la succession d'étapes du \hl{chapitre 4}).
+L'exécution d'une simulation requiert un certain temps de calcul (3 à 4 minutes pour une exécution du modèle SimFeodal dans la version présentée dans le \cref{chap:chap2}).
+Ce temps de calcul ne peut être optimisé que dans des proportions faibles sans avoir à bouleverser l'implémentation des mécanismes, ce qui représenterait un coût temporel encore plus important.
 En l'état actuel du modèle, la production des données a donc un coût temporel élevé.
 
 Qui plus est, ce coût est fortement dépendant du nombre de simulations exécutées : si le modèle est exploratoire, donc sujet à de nombreux changements, et notamment à l'ajout ou à la modification des indicateurs observés, il peut donner lieu à d'encore plus nombreuses simulations.
@@ -123,14 +123,14 @@ Dans le cas contraire, pour chaque changement ou ajout d'indicateur, il faudrait
 \paragraph[Conclusion intermédiaire]{}
 Enregistrer l'ensemble des variables d'un modèle est aisé dans le cas d'un modèle théorique simple, par exemple dans le cas d'un modèle comme celui de Schelling \autocite{schelling_dynamic_1971}.
 Cela se complique quand il s'agit d'enregistrer les variables d'un modèle plus complexe comme SimFeodal.
-Celui-ci requiert en effet bien plus de variables globales (\hl{ref chapitre 4, dans distinctions variables, paramètres etc.}), pour représenter l'état du système dans son ensemble à chaque instant.
+Celui-ci requiert en effet bien plus de variables globales, pour représenter l'état du système dans son ensemble à chaque instant.
 Surtout, SimFeodal est un modèle qui voit interagir plusieurs sortes d'entités, chacune relatives à différents niveaux de granularité spatiale et sociale.
 Afin d'avoir tous les éléments en main une fois la simulation achevée, il est donc nécessaire d'enregistrer l'ensemble des variables non seulement globales, mais aussi afférentes à chacun des types d'agents.
 D'un unique tableau de données exhaustif en sortie du modèle de Schelling, on passe donc à plusieurs tableaux, dont les variables respectives seront propres à chaque type d'agent.
 
 De plus, pour que les résultats de simulations soient comparables tout au long du développement du modèle, en dépit de l'évolution des indicateurs qui les constituent, il est nécessaire d'enregistrer l'état individuel des agents, et pas seulement des données agrégées.
 Cela démultiplie la quantité d'informations qu'il est nécessaire de stocker (ligne \og simulation\fg{} du \cref{tab:tab-accroissement}), qui plus est quand le nombre d'agents est important\footnote{
-	Dans les dernières versions de SimFeodal, dont les résultats sont présentés dans le \hl{chapitre 6}, on est passé de 4 000 foyers paysans à 40 000. On peut donc décupler les valeurs des colonnes \og quantité\fg{} et \og poids\fg{}\ldots
+	Dans les dernières versions de SimFeodal, dont les résultats sont présentés dans le \cref{chap:chap5}, on est passé de 4 000 foyers paysans à 40 000. On peut donc décupler les valeurs des colonnes \og quantité\fg{} et \og poids\fg{}\ldots
 }.
 
 %A ce niveau, l'information en sortie est encore relativement contenue : SimFeodal mobilise cinq types d'agents, chacun étant caractérisé par une douzaine d'attributs.
@@ -166,9 +166,9 @@ Cela démultiplie la quantité d'informations qu'il est nécessaire de stocker (
 
 \paragraph{Un modèle stochastique.}
 
-Comme on l'a vu dans le \hl{chapitre 3}, une simulation ne suffit pas à évaluer le modèle.
+Comme on l'a vu dans le \cref{chap:chap3} (\cref{subsubsec:mes_definitions_params}), une simulation ne suffit pas à évaluer le modèle.
 SimFeodal est ainsi un modèle stochastique, c'est-à-dire qu'une large partie des mécanismes qui l'animent sont basés sur des tirages aléatoires.
-Cet aléa est évident dans les mécanismes faisant appel à un tirage aléatoire explicité, par exemple le choix de déplacement ou non d'un foyer paysan (\hl{cf. chap2, mécanisme déplacement}).
+Cet aléa est évident dans les mécanismes faisant appel à un tirage aléatoire explicité, par exemple le choix de déplacement ou non d'un foyer paysan (cf.  \cref{meca-migration}).
 Dans le cas de ce mécanisme, un foyer paysan mobile se déplacera selon une probabilité dépendant de sa satisfaction.
 Et s'il y a probabilité, il y a donc aléa.
 Même avec une forte satisfaction --- $99\%$ par exemple ---, il reste $1\%$ de chance qu'un foyer se déplace, ce qui, sur un grand nombre de tirages (chaque foyer paysan, à chaque pas de temps), aboutit à une probabilité de réalisation non négligeable.
@@ -179,7 +179,7 @@ L'aléa a un poids important dans ce type de mécanisme.
 
 Même dans le cas de mécanismes plus anodins, l'aléa est fortement présent, puisqu'il est au cœur de la conception de SimFeodal.
 L'ordre d'exécution, c'est-à-dire l'ordre aléatoire dans lequel les agent sont appelés pour exécuter leurs mécanismes, aura donc un impact important sur les indicateurs de sortie de simulation, sans que cet impact puisse être caractérisé au moyen d'indicateurs agrégés.
-Par exemple, les seigneurs peuvent créer des châteaux, sous condition de puissance (cf. \hl{chapitre 2, section 2.3.12}).
+Par exemple, les seigneurs peuvent créer des châteaux, sous condition de puissance (cf. \cref{meca-chateaux}).
 Pour créer ces châteaux, il faut que des agrégats soient \og disponibles\fg{}, c'est-à-dire ne comportent pas de château pré-existant à une certaine distance. Cette contrainte devient rapidement le facteur principal de la limitation de l'apparition de châteaux.
 Si un seigneur est plus souvent que les autres \og appelé\fg{} en premier pour exécuter ce mécanisme, il pourra profiter des nouveaux agrégats disponibles pour créer ses châteaux.
 A force de création de châteaux, il sera relativement plus puissant, et pourra donc créer d'autant plus de châteaux relativement aux autres seigneurs.
@@ -194,7 +194,7 @@ En corollaire, le comportement de chaque agent serait régulé par tant d'états
 Avec ces considérations, on pourrait justifier la robustesse probable des différentes exécutions de SimFeodal.
 
 SimFeodal n'est toutefois pas simplement un modèle stochastique, mais avant tout, un modèle complexe, c'est-à-dire s'inscrivant dans le champs des systèmes complexes.
-Sans vouloir ici entrer dans les détails des implications et raisons de ceci, on peut simplement en retenir qu'un modèle tel que SimFeodal est extrêmement sensible aussi bien aux conditions initiales qu'aux différents tirages aléatoires (voir l'analyse de sensibilité, \hl{chap 6, section 6.3}).
+Sans vouloir ici entrer dans les détails des implications et raisons de ceci, on peut simplement en retenir qu'un modèle tel que SimFeodal est extrêmement sensible aussi bien aux conditions initiales qu'aux différents tirages aléatoires (voir l'analyse de sensibilité, \cref{sec:ana-sensib}).
 
 Pour illustrer, on peut s'appuyer sur un exemple, caricatural mais possible : à l'initialisation, tous les foyers paysans, placés aléatoirement dans l'espace, seraient concentrés dans un espace d'étendue restreinte.
 Seul un énorme agrégat émergerait donc, et aucun pôle ne serait susceptible dès lors de diviser cet agrégat géant.
@@ -212,7 +212,7 @@ Pour distinguer ces réalisations aberrantes de ce que l'on pourrait caractéris
 
 \paragraph{Enregistrement des réplications.}
 
-On ne peut donc pas raisonner sur une unique simulation pour évaluer un jeu de paramètres (\hl{cf. chap 3}).
+On ne peut donc pas raisonner sur une unique simulation pour évaluer un jeu de paramètres.
 On ne peut pas non plus se contenter d'une agrégation des résultats des différentes réplications, sous la forme de moyennes ou d'écarts-types, selon qu'on s'intéresse par exemple à la tendance générale ou qu'on cherche à observer les variations que peut entraîner l'aléa.
 
 Pour ces raisons, et pour être en mesure d'embrasser l'entière diversité des sorties de simulations issues de variation de la graine aléatoire, il est donc nécessaire de mener plusieurs réplications de chaque simulation, et d'enregistrer l'entièreté des sorties de simulations dans chacun des cas.
@@ -224,9 +224,7 @@ La vingtaine de mégaoctets issue d'une simulation devient donc approximativemen
 
 \subsection{Des réplications aux expériences}\label{subsec:capter-experiences}
 
-Comme décrit dans le \hl{chapitre 4}, le paramétrage de SimFeodal a demandé plusieurs étapes\footnote{
-	\hl{Y mettre un tableau avec les versions + nombre de sous-version du modèle.}
-}.
+Comme décrit dans le \cref{chap:chap3} (\cref{tab:historique-versions-simfeodal}), le paramétrage de SimFeodal a demandé plusieurs étapes.
 De plus, chacune de ces étapes représente plusieurs sous-étapes -- les expériences -- faites d'essais et d'erreurs, en faisant varier à chaque fois les valeurs de paramètres de SimFeodal.
 Afin de construire le modèle, puis de l'explorer de manière plus systématique, il a été nécessaire de tester des dizaines de configurations de paramètres.
 Pour comparer, à chaque nouvelle version du modèle, les résultats produits par rapport aux résultats de la version précédente, il est indispensable de conserver, au minimum, l'ensemble des jeux de données de cette version précédente.
@@ -234,11 +232,11 @@ Pour comparer, à chaque nouvelle version du modèle, les résultats produits pa
 Cet archivage des résultats immédiatement précédents n'est pourtant pas suffisant, pour des raisons tenant à la reproductibilité et à traçabilité du modèle obtenu au final.
 On serait en effet tenté, à chaque nouvelle version \og majeure\fg{} du modèle, de ne conserver que les indicateurs de sorties des versions précédentes en considérant que le modèle a atteint une phase de maturité supérieure à chaque fois.
 Les étapes intermédiaires, reléguées au rang de brouillons ou d'esquisses, deviendraient alors inutiles.
-Le processus de conception et de paramétrage d'un modèle n'est pourtant pas linéaire (cf. \hl{chapitre 4}), et on peut avoir besoin de comparer une version intermédiaire \og actuelle\fg{} à une version intermédiaire précédente, quitte à réaliser qu'une modification erronée a été ajoutée au modèle.
+Le processus de conception et de paramétrage d'un modèle n'est pourtant pas linéaire, et on peut avoir besoin de comparer une version intermédiaire \og actuelle\fg{} à une version intermédiaire précédente, quitte à réaliser qu'une modification erronée a été ajoutée au modèle.
 
 La conservation des résultats de chacune des expériences joue donc à nouveau un rôle multiplicatif dans la masse de données à conserver (voir le \cref{tab:tab-accroissement}).\\
 En supposant que le modèle ait compté environ 25 versions\footnote{
-	Dans SimFeodal, par exemple, on distingue 6 versions \og majeures\fg{} (cf. \hl{tableau dans chap 4}, elles-mêmes composées de 4 à 10 sous-versions) \hl{à corriger quand tableau finalisé}.
+	Dans SimFeodal, par exemple, on distingue 6 versions \og majeures\fg{} (cf. \cref{tab:historique-versions-simfeodal}, elles-mêmes composées de 4 à 10 sous-versions).
 }, on obtient environ 500 simulations à stocker, puis à devoir analyser et comparer.
 Cela représente une somme considérable de données (voir \cref{tab:tab-accroissement}), qui se chiffrent en dizaines de millions d'enregistrement\footnote{
 	$20_{\text{\tiny ~[pas de temps]}} \times 5000_{\text{\tiny ~[agents]}} \times 20_{\text{\tiny ~[réplications]}} \times 25_{\text{\tiny ~[jeux de paramètres]}} \approx 100~000~000$ de lignes enregistrées pour les agents (4 000 foyers paysans et environ 1 000 autres agents).
@@ -257,9 +255,7 @@ Les phases suivantes, visant à l'exploration du comportement du modèle (analys
 
 Dans l'ensemble, l'enregistrement et la sauvegarde des données issues de simulations constituent, pour les modèles de simulations basés sur de nombreux agents et mécanismes, une contrainte importante vis-à-vis de l'exploration du comportement de ces modèles.
 
-C'est particulièrement le cas pour SimFeodal, où l'on ne peut se contenter de produire à la volée les indicateurs pour des raisons de reproductibilité\footnote{
-	\hl{La reproductibilité sera abordée dans le chapitre 1 (positionnement).}
-}. 
+C'est particulièrement le cas pour SimFeodal, où l'on ne peut se contenter de produire à la volée les indicateurs pour des raisons de reproductibilité. 
 
 
 \paragraph{Analyser une masse de données.}
@@ -274,7 +270,7 @@ Cela pose une contrainte dans l'accessibilité aux analyses : le traitement des 
 Dans un contexte interdisciplinaire caractérisé par une large hétérogénéité en matière de pratiques quantitatives, il n'est pas possible de se contenter d'envoyer les jeux de données produits aux thématiciens -- qui ne disposent le plus souvent pas de ces compétences -- : ils seraient alors en difficulté pour en tirer les analyses nécessaire à leur interprétation.
 
 \paragraph{Analyser une masse d'indicateurs.}
-D'un point de vue thématique, et c'est là l'objectif, cette masse de données doit servir à la production d'indicateurs, nombreux et divers aussi bien dans leur forme que dans les caractéristiques des processus qu'ils décrivent (\hl{ref. chap. 3, indicateurs}).
+D'un point de vue thématique, et c'est là l'objectif, cette masse de données doit servir à la production d'indicateurs, nombreux et divers aussi bien dans leur forme que dans les caractéristiques des processus qu'ils décrivent (\cref{subsec:indicateurs-simfeodal}).
 Les mêmes raisonnements, \og multiplicatifs\fg{}, que pour les données s'appliquent ainsi aux indicateurs.
 On peut rendre compte de la variabilité des réplications directement dans les indicateurs produits (par exemple avec des représentations graphiques de type \textit{box-plot}, utilisés ici pour une large partie des indicateurs).
 
@@ -285,7 +281,7 @@ Il est donc indispensable de générer, pour chaque expérience, l'ensemble des 
 	En considérant ainsi une trentaine d'indicateurs, on obtient donc $30{\text{\tiny ~[indicateurs]}} \times 25_{\text{\tiny ~[jeux de paramètres]}} \approx 750$ indicateurs uniques.
 } d'indicateurs (\cref{tab:tab-accroissement}).
 
-Le choix ayant été fait de mener une comparaison visuelle (\hl{ref. dans chapitre 3 : indicateurs uniques vs fonctions objectifs}), on imagine dès lors que celle-ci va être difficile en présence de tant d'indicateurs.
+Le choix ayant été fait de mener une comparaison visuelle (\cref{subsec:eval-visuelle}), on imagine dès lors que celle-ci va être difficile en présence de tant d'indicateurs.
 
 En sus de la contrainte de l'enregistrement et de la production des indicateurs, le verrou majeur à l'exploration du comportement attendu de SimFeodal est donc la simple capacité à visualiser et à explorer l'ensemble des indicateurs de sortie.
 Ce qui doit de plus être rendu accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
@@ -413,7 +409,7 @@ La production des indicateurs doit nécessairement être réalisée en aval de l
 Il faut pour cela disposer d'outils adaptés au traitement des données produites, c'est-à-dire répondant aux contraintes identifiées auparavant (\autoref{subsec:donnees-indicateurs}).
 La contrainte principale est d'être en mesure de gérer la masse de données produites.
 On l'a vu, cela élimine d'office les outils de type tableurs, ou encore les outils de manipulation graphique de données les plus courants.
-Pour les raisons évoquées dans le chapitre 1 (\hl{Positionnement : pourquoi utiliser des outils libres ?}), seules les solutions techniques libres étaient envisageables.
+Pour les raisons évoquées dans le \cref{chap:chap1} (\cref{subsec:demarche-reproductible}), seules les solutions techniques libres étaient envisageables.
 
 \paragraph{Interfaces graphiques (GUI) ou en lignes de commande (CLI)}
 Certains outils graphiques (\textit{GUI} -- \textit{Graphical User Interface}), basés sur des logiciels libres en arrière-plan (PSPP, R Commander, Orange), sont extrêmement aisés à prendre en main et auraient pu constituer un bon choix.
@@ -489,7 +485,7 @@ Ces indicateurs sont organisés par partie, en l'occurrence en fonction du type 
 
 On a donc fait le choix de se baser sur des rapports automatisés et minimalistes, ne contenant que les indicateurs dans une forme structurée.
 Ce choix s'appuie sur des raisons multiples, qui ont toutes en commun une recherche de reproductibilité des résultats et des analyses menées.
-Une reproductibilité théorique (\hl{encore une ref au positionnement}), puisque les résultats de simulation doivent pouvoir être analysés et reproduits par des chercheurs potentiellement intéressés.
+Une reproductibilité théorique (\cref{subsec:demarche-reproductible}), puisque les résultats de simulation doivent pouvoir être analysés et reproduits par des chercheurs potentiellement intéressés.
 Mais cette recherche de reproductibilité est aussi pratique, rendue aussi nécessaire par les méthodes de modélisation suivies.
 Tel qu'explicité auparavant (\cref{subsec:capter-replications,subsec:capter-experiences}), celles-ci s'appuient sur de nombreux allers-retours, ce qui requiert une capacité constante à reproduire et à affiner des résultats déjà observés.
 
@@ -500,7 +496,7 @@ Dans une telle situation, la création d'un rapport automatisé garantit une cal
 Cela permet un examen des sorties de simulation presque immédiatement après leur exécution.
 Cette automatisation permet aussi de mener une seconde évaluation -- après le pré-filtrage constitué par l'observation d'indicateurs en direct -- du bon déroulement \og interne \fg{}\footnote{
 	Au sens de l'évaluation interne, c'est-à-dire du bon fonctionnement, exempt de \textit{bugs}, du modèle de simulation implémenté.
-	Voir \hl{ref chap 3}.
+	Voir l'\cref{enc:lexique-eval-amblard}.
 }.
 Le caractère fixe d'un rapport automatisé se base ainsi sur une structure de données contraignante, par exemple constitués en \textit{n} fichiers dotés de plusieurs colonnes spécifiquement attendues.
 Les caractéristiques de ces données sont elles-mêmes contraignantes.
@@ -511,7 +507,7 @@ La présence ou non de cette erreur constitue donc un nouveau filtre de vérific
 Cela permet, là encore, de détecter des simulations qui présenteraient des comportements incomplets ou aberrants en terme de production de données.
 
 Un autre intérêt majeur des rapports, déjà pointé en avantage des outils de type \textit{CLI} est leur adaptabilité.
-On a vu (\hl{chap. 3}) que les indicateurs à examiner sont nombreux et surtout, évolutifs, dans le sens où ces indicateurs ont fortement été modifiés, remplacés, affinés, au cours des étapes de paramétrage de SimFeodal.
+On a vu que les indicateurs à examiner sont nombreux et surtout, évolutifs, dans le sens où ces indicateurs ont fortement été modifiés, remplacés, affinés, au cours des étapes de paramétrage de SimFeodal (\cref{enc:incrementalite-indicateurs}).
 L'utilisation de rapports automatiques permet de minimiser le nombre de modifications à effectuer en cas de changements d'indicateurs.
 Le programme informatique qui génère les rapports s'appuie ainsi sur un code-source unique, générique aux simulations de chaque modèle.
 Lors d'un changement d'indicateurs, il suffit alors de modifier ce code-source en une seule place, et tous les appels à ce programme seront alors modifiés en conséquence.
@@ -522,7 +518,7 @@ Par exemple, lors de certaines phases de paramétrage, on pouvait être amenés 
 Il fallait donc analyser les résultats de plusieurs expériences chaque jour, et régulièrement ajouter des indicateurs graphiques afin d'affiner l'évaluation.
 Ces indicateurs devaient aussi être ajoutés aux expériences des jours précédents, et au final, on re-générait parfois jusqu'à une plus d'une dizaine de rapports sur des cycles temporels courts de quelques jours.
 
-Par extension, cette même démarche d'automatisation, basée sur l'utilisation d'outils de type \textit{CLI}, devrait pouvoir s'appliquer à l'identique, avec les mêmes avantages, dans le cadre plus large de l'évaluation visuelle de modèles (\hl{ref chap 3, section 3.1.4}).
+Par extension, cette même démarche d'automatisation, basée sur l'utilisation d'outils de type \textit{CLI}, devrait pouvoir s'appliquer à l'identique, avec les mêmes avantages, dans le cadre plus large de l'évaluation visuelle de modèles (\cref{subsec:eval-visuelle}).
 
 %	\begin{encadre}{Générer les rapports avec \texttt{R} et \texttt{knitr}}{technique-rapports-knitr}
 %
@@ -532,10 +528,10 @@ Par extension, cette même démarche d'automatisation, basée sur l'utilisation 
 
 
 \paragraph{Dépasser les limites de la compatibilité d'ensemble.}
-La reproductibilité, de manière générale, est plus une démarche qu'un état final : on peut toujours trouver un nouvel élément à \og rendre reproductible\fg{} dans un travail (\hl{cf. chapitre 1, partie sur reproductibilité recherchée}).
+La reproductibilité, de manière générale, est plus une démarche qu'un état final : on peut toujours trouver un nouvel élément à \og rendre reproductible\fg{} dans un travail (cf. \cref{subsec:demarche-reproductible}).
 Dans le cas des rapports automatiques, la reproductibilité recherchée doit permettre de reproduire les analyses menées -- le calcul et la représentation des indicateurs de sortie -- sur les jeux de données issus des différentes versions du modèle.
 
-Comme explicité dans l'\hl{encadré 3.2, chap 3} sur l'incrémentalité des indicateurs, une limite forte empêche d'atteindre une reproductibilité absolue des analyses du comportement des différentes versions de SimFeodal.
+Comme explicité dans l'\cref{enc:incrementalite-indicateurs} sur l'incrémentalité des indicateurs, une limite forte empêche d'atteindre une reproductibilité absolue des analyses du comportement des différentes versions de SimFeodal.
 Les données générées par les différentes versions du modèle ne sont en effet pas systématiquement \og compatibles \fg{}.
 On entend par là qu'elles ne présentent pas toute exactement la même structure, à commencer par les variables enregistrées.
 Quand bien même il aurait été choisi dès le départ d'enregistrer le plus de sorties possibles, la reproductibilité de l'analyse échoue sur les données produites par le modèle et ses nombreuses versions : le modèle évolue, et avec lui, certaines variables apparaissent et d'autres deviennent caduques.
@@ -551,7 +547,7 @@ Cette approche suit les grandes lignes du développement logiciel général. Les
 }.
 
 Pour revenir aux rapports voués à l'évaluation d'un modèle, en inscrivant les différentes versions du modèle -- et des programmes générant les rapport correspondant -- dans des sous-ensemble de versions, les \og générations\fg{}, les différents rapports peuvent être considérés comme reproductibles et automatiques au sein de ces générations.
-Pour SimFeodal, cela implique d'organiser les différentes versions du modèle -- résultant des étapes de paramétrage, \hl{cf. chap4} -- au sein de grandes générations, à chaque changements structurels des mécanismes ou données produites par le modèle (voir \hl{chapitre 4, tableau des versions et sous-versions}).
+Pour SimFeodal, cela implique d'organiser les différentes versions du modèle -- résultant des étapes de paramétrage -- au sein de grandes générations, à chaque changements structurels des mécanismes ou données produites par le modèle (voir \cref{tab:historique-versions-simfeodal}).
 
 
 \paragraph{Les rapports, des instruments suffisants ?}
@@ -612,7 +608,7 @@ Inspiré autant par l'usage \textit{BI} que par l'usage géographique, nous cons
 Les enjeux sont en effet les mêmes : permettre à des thématiciens de comprendre et d'évaluer les sorties d'un modèle, à l'aide d'indicateurs nombreux et complexes présentés de manière transparente relativement à cette complexité.
 
 Ce positionnement méthodologique s'inscrit pleinement dans la démarche de co-construction interdisciplinaire de SimFeodal.
-On y retrouve ainsi la même logique qui anime les dashboards : une évaluation menée par des thématiciens qui s'appuient pour cela sur des indicateurs clefs (\hl{ref. aux indicateurs les plus importants dans le chap 3}) et précisent leur analyse à l'aide d'indicateurs secondaires présentés sous forme d'un panel varié de visualisations.
+On y retrouve ainsi la même logique qui anime les dashboards : une évaluation menée par des thématiciens qui s'appuient pour cela sur des indicateurs clefs (\cref{subsec:hierarchiser-indicateurs}) et précisent leur analyse à l'aide d'indicateurs secondaires présentés sous forme d'un panel varié de visualisations.
 Nous avons donc choisi de ré-organiser les rapports initialement produits pour leur donner une forme plus adaptée à ces enjeux, sous forme de \textit{dashboards}.
 
 \subsubsection{SimVADB}\label{subsubsec:simvadb}
@@ -631,7 +627,7 @@ On retrouve communément, par exemple, des indicateurs représentés sous forme 
 \end{figure}
 
 
-Pour SimFeodal, les indicateurs étant assez fortement conçus et structurés (\hl{chap. 3}), nous n'avons pas ressenti le besoin de faire appel à ce type de représentation.
+Pour SimFeodal, les indicateurs étant assez fortement conçus et structurés, nous n'avons pas ressenti le besoin de faire appel à ce type de représentation.
 Nous avons donc emprunté aux \textit{dashboards} la logique d'organisation visuelle des indicateurs plutôt que les modes de visualisation en eux-mêmes.
 Pour faciliter la transition pour l'utilisateur, on cherchait ainsi à produire un \textit{dashboard} au plus proche, visuellement, des rapports automatiques qui les précédaient.
 
@@ -709,7 +705,7 @@ Celles-ci voient varier plusieurs paramètres, potentiellement avec de multiples
 Elles constituent donc un ensemble d'expériences qui partagent des mécanismes et un jeu de paramètre par défaut communs.
 
 \subparagraph{Une interaction trop simple.}
-Avec le mode de sélection choisi dans SimVADB, basé sur le nom des expériences, il devenait plus difficile de sélectionner rapidement des ensembles d'expériences membres d'une même phase d'expérimentation (cf. \hl{tableau versions et sous-version, chap 4}).
+Avec le mode de sélection choisi dans SimVADB, basé sur le nom des expériences, il devenait plus difficile de sélectionner rapidement des ensembles d'expériences membres d'une même phase d'expérimentation.
 En effet, et comme illustré dans la \cref{fig:mockup_simvadb}, les noms d'expériences tendent à s'allonger, et avec leur masse augmentant, il est peu commode d'avoir à parcourir tout un long menu de sélection pour trouver les expériences souhaitées.
 De plus, malgré des tentatives de nommage régulières et explicites, la multiplication des expériences et expérimentations implique aussi une certaine confusion dans les types de mécanismes et valeurs de paramètres associés.
 Sans table de correspondance complète entre les noms des expériences et leurs valeurs de paramètres, il devenait impraticable de retrouver les différentes expériences mettant en avant, par exemple, des attractivités fortes par les pôles, une plus forte hiérarchisation des attracteurs ou encore des migrations lointaines facilitées.
@@ -718,14 +714,14 @@ Le choix méthodologique d'interaction avec la plate-forme d'affichage des indic
 \subparagraph{Dépasser le \og présentoir\fg{} de données.}
 Au delà du souci du mode d'interaction, qui aurait pu être amélioré, un autre problème apparaissait.
 Pour évaluer visuellement différentes configurations du modèle, on ne pouvait se contenter d'un simple affichage des données, au sein d'un outil de type présentoir interactif tel que SimVADB.
-Comme dit dans \hl{le chapitre 4}, le paramétrage de SimFeodal a ainsi reposé sur de nombreuses étapes d'évaluation des différentes version du modèle.
+Comme dit dans le \cref{chap:chap3}, le paramétrage de SimFeodal a ainsi reposé sur de nombreuses étapes d'évaluation des différentes version du modèle.
 L'approche d'analyse principale était donc la comparaison, point par point, entre les résultats des indicateurs de sortie de simulation des versions successives de SimFeodal.
 Un outil de présentation dynamique de résultats de sorties de simulations est certes plus adapté qu'un rapport statique, mais il ne constitue pas pour autant un outil adapté à la comparaison.
 S'il suffit pour de la restitution, par exemple dans le cadre du rapport systématique des résultats de SimFeodal, on ne peut s'appuyer uniquement sur une succession d'évaluations visuelles pour appréhender l'étendue des changements apportées par une modification des valeurs de paramètres.
 
 \subsection{Interagir avec les rapports : exploration interactive}\label{subsec:explo-interactive}
 
-Face à la démultiplication des expérimentations, consécutive aux nombreuses étapes de paramétrage de SimFeodal (\hl{cf. chap 4}), il a fallu repenser la plate-forme d'évaluation des résultats.
+Face à la démultiplication des expérimentations, consécutive aux nombreuses étapes de paramétrage de SimFeodal (\cref{subsubsec:parametrage-simfeodal}), il a fallu repenser la plate-forme d'évaluation des résultats.
 Pour cela, considérant que les simulations ne pouvaient être aisément appréhendées et sélectionnées par leur nom, numéro d'étape ou de version, il a été décidé d'adopter une posture plus proche de l'exploration du modèle en elle-même.
 C'est-à-dire de ne pas caractériser les simulations par un identifiant quelconque, mais plutôt par leur spécificité intrinsèque, c'est-à-dire la combinaison de valeurs de paramètres qui les rendent uniques.
 Ce faisant, au sein de la plate-forme d'exploration SimVADB, l'enjeu devenait plutôt la compréhension des effets des valeurs de paramètres sur les indicateurs que l'évaluation d'une simulation en particulier.
@@ -806,7 +802,7 @@ Afin de permettre aux utilisateurs de remarquer les particularités des simulati
 Cela permet, visuellement, d'être en mesure d'évaluer les sorties de simulation d'une expérience tout en ayant un référentiel visible.
 Les différentes expériences produisent des résultats sensiblement similaires\footnote{
 	Si chaque expérience, et chaque réplication, produisent des résultats uniques, le choix d'une évaluation par des indicateurs visuels peut prêter à confusion si l'on n'a pas de repère précis.
-	Les critères attendus, présentés dans \hl{le chapitre 3} sont ainsi assez précis pour départager une simulation très éloignée des attentes et une autre simulation plus conforme.
+	Les critères attendus, présentés dans \cref{chap:chap3} sont ainsi assez précis pour départager une simulation très éloignée des attentes et une autre simulation plus conforme.
 	Pour autant, par exemple quand les valeurs de paramètres varient faiblement, les résultats produits peuvent être assez similaires dans les grandes tendances qu'ils font ressortir.
 }, et on ne peut alors plus les comprendre sans les confronter à d'autres résultats similaires.
 Le choix d'une agrégation de l'ensemble des simulations effectuées est discutable, en ce qu'on aurait par exemple pu plutôt isoler des simulations \og de référence \fg{} afin de diminuer l'effet \og d'aplatissement \fg{} engendré par l'agrégation de résultats nombreux et hétérogènes.
@@ -814,7 +810,6 @@ Toutefois, la variabilité des résultats étant encore assez restreinte, au mom
 
 \subsection[Explorer en comparant : la plateforme SimEDB]{Explorer en comparant : la plateforme SimEDB\footnotemark}\label{subsec:explorer-simedb}
 \footnotetext{
-	\label{ftn:origine-simedb}
 La plate-forme d'exploration SimVADB (SimFeodal Visual Analysis Dashboard) a été renommée SimEDB ([...] Exploration Dashboard) par soucis de simplicité, le terme \og Exploration\fg{} nous semblant plus compréhensible et explicite que celui de Visual Analysis.
 Ce nom apporte de plus une cohérence sémantique entre plusieurs productions de l'auteur -- TimeLineEDB - \autocite{cura_timelineedb_2017}; RoadTrafficEDB et CitiBikeEDB - \autocite{cura_making_2017}.
 Cela inscrit cette plate-forme d'exploration de données issues de simulation dans une \og famille \fg{} d'outils d'exploration de données spatio-temporelles.
@@ -829,7 +824,7 @@ Les variations entre simulations sont trop fines pour être distinguables les un
 	Cela s'explique par la non-linéarité de l'influence des paramètres.
 	Dans l'exemple pris, pour ces $5\%$ de variation dans le nombre de foyers paysans, la majorité des indicateurs variera ainsi de moins de $1\%$.
 }.
-Cela s'entend quelque soit la manière dont ce référentiel est constitué, qu'il résulte d'une agrégation de simulations ou encore d'une version \og de base\fg{} du modèle (par exemple, dans le cas de SimFeodal, les versions principales identifiées dans le \hl{chapitre 4}).
+Cela s'entend quelque soit la manière dont ce référentiel est constitué, qu'il résulte d'une agrégation de simulations ou encore d'une version \og de base\fg{} du modèle (par exemple, dans le cas de SimFeodal, les versions principales identifiées dans le \cref{chap:chap3}).
 
 
 Pour pouvoir correctement évaluer les apports d'un nouveau jeu de valeurs de paramètres, et donc, dans une démarche itérative, pouvoir différencier deux expériences successives, il est nécessaire d'être en mesure de comparer directement les expériences les unes avec les autres, ou encore avec un référentiel facilement ajustable.
@@ -849,9 +844,7 @@ D'un point de vue méthodologique, cela requiert de pouvoir afficher conjointeme
 Cela implique aussi de laisser à l'utilisateur la responsabilité d'un choix supplémentaire puisqu'il faut désormais effectuer deux sélections : une pour chacun des points de comparaison.
 La sélection d'une expérience via l'usage de \textit{brushing} sur un graphique en coordonnées parallèles des valeurs de paramètres ayant montré son efficacité, il a été choisi d'étendre ce principe d'interactivité au choix du référentiel.
 
-Dans cette version remaniée de la plate-forme d'exploration (voir \cref{fig:simedb_villages}), renommée SimEDB\label{par:introduction-nom-simedb} (\textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard)\footnote{
-	Voir la note de bas de page \ref{ftn:origine-simedb}.
-}, l'accent est mis sur la comparaison de deux ensembles de résultats, chacun répondant à une sélection propre.
+Dans cette version remaniée de la plate-forme d'exploration (voir \cref{fig:simedb_villages}), renommée SimEDB\label{par:introduction-nom-simedb} (\textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard), l'accent est mis sur la comparaison de deux ensembles de résultats, chacun répondant à une sélection propre.
 L'utilisateur doit ainsi \og paramétrer\fg{} interactivement, via \textit{brushing}, les expériences à afficher pour le référentiel et pour les expériences à comparer.
 On dispose pour cela de deux outils de filtrage des simulations (partie de gauche dans la \cref{fig:simedb_villages}), qui peuvent être utilisés de concert, pour comparaison visuelle, ou par étapes successives\footnote{
 	En menant par exemple une première comparaison entre une expérience \og A\fg{} en haut et \og B\fg{} en bas, puis en sélectionnant \og C\fg{} en haut, puis \og D\fg{} en bas etc.
@@ -897,7 +890,7 @@ Au contraire, conditionne et contraint fortement aussi bien les modalités de cr
 
 
 
-\subsection{Assurer la capacité d'interrogation des données}\label{subsec:capacite-interrogation}
+\subsection{Assurer la capacité d'interrogation des données\label{subsec:capacite-interrogation}}
 
 Avant de se soucier du \og schéma\fg{} de la base de données\footnote{
 	On utilise souvent le terme de \og schéma\fg{} pour désigner la version implémentée, dans un SGBD spécifique, du Modèle Conceptuel de Données (MCD).
@@ -1037,8 +1030,8 @@ Ce point, dans les SGBD relationnels, constitue un filtre important : sur la cen
 
 Pourtant, au regard des indicateurs de sortie de simulation sur lesquels on s'appuie pour évaluer le comportement de SimFeodal, une grande majorité est non spatiale, en raison de la difficulté à agréger des données spatiales théoriques.
 Dans SimFeodal, la plupart des indicateurs de sortie sont non spatiaux, c'est-à-dire qu'ils mobilisent plus la dimension attributaire des données que leur dimension géographique\footnote{
-	Les raisons en sont multiples et on y reviendra largement dans le \hl{chapitre 7}.
-	Notons tout de même que les indicateurs résultent de l'agrégation des réplications, et que cette agrégation est extrêmement complexe sinon impossible sur des données spatiales majoritairement aléatoires (voir \hl{chapitre 2, section 2.2.2.1}).
+	Les raisons en sont multiples et on y reviendra largement dans le \cref{chap:chap6}.
+	Notons tout de même que les indicateurs résultent de l'agrégation des réplications, et que cette agrégation est extrêmement complexe sinon impossible sur des données spatiales majoritairement aléatoires.
 }.
 
 La gestion de données spatiales ne constitue donc pas une absolue nécessité, contrairement aux points évoqués auparavant.
@@ -1143,7 +1136,7 @@ C'est donc au pire un acte quotidien, mais dans ce cas, que la requête demande 
 La première colonne est donc un indicateur de performance peu adapté dans notre cas.
 
 Les deux colonnes suivantes, relatives à l'interrogation de données, se révèlent au contraire extrêmement importantes : à chaque action de l'utilisateur de SimEDB, une nouvelle requête est envoyée pour calculer un nouvel indicateur correspondant au jeu de données filtré manuellement (cf. \cref{subsec:explo-interactive}).
-À chaque affichage d'onglet, une nouvelle requête est donc émise et traitée. Même si tous les indicateurs ne sont pas systématiquement mobilisés -- et donc calculés -- (cf. \hl{chap 3}), cela signifie tout de même que pour chaque sélection, une bonne dizaine d'indicateurs seront observés, et donc, autant de requêtes.
+À chaque affichage d'onglet, une nouvelle requête est donc émise et traitée. Même si tous les indicateurs ne sont pas systématiquement mobilisés -- et donc calculés --, cela signifie tout de même que pour chaque sélection, une bonne dizaine d'indicateurs seront observés, et donc, autant de requêtes.
 Quand une requête demande 60 secondes (par exemple PostgreSQL en \og jointure\fg{}), cela implique que chaque indicateur requiert au moins une minute avant de s'afficher.
 Pour observer une dizaine indicateurs, l'utilisateur devra donc attendre patiemment une dizaine de minutes, sans même tenir compte du temps qu'il passera à les analyser visuellement.
 
@@ -1345,7 +1338,7 @@ Intégrer ces relations dans la table centrale aurait considérablement complexi
 La base de données résultant de ce modèle complexe l'est donc nécessairement aussi : on doit implémenter, dans la base de données, des relations entre les  tables pour chacune des interactions entre les agents du modèle.
 Ici, ces relations permettent par exemple d'étudier la composition des pôles autour de chaque agrégat, et ainsi d'étudier le lien entre poids du pôle (en nombre d'attracteurs) et poids de l'agrégat (en nombre de foyers paysans).
 
-Ces indicateurs, situés à l'intersection de différents types d'agents, sont toutefois moins utilisé que les indicateurs plus directs (\hl{ref à chapitre 3, indicateurs}).
+Ces indicateurs, situés à l'intersection de différents types d'agents, sont toutefois moins utilisé que les indicateurs plus directs (\cref{subsec:indicateurs-simfeodal}).
 Les requêtes correspondantes, moins fréquentes, ne perturbent pas les logiques et performances d'ensemble de SimEDB : elles auraient plus facilement exprimées dans un schéma \og en flocons\fg{}, mais leur relative rareté ne remet aucunement en cause l'organisation générale du MCD.
 
 
@@ -1395,7 +1388,7 @@ Il est important de noter qu'en l'absence de ces choix de conception de base de 
 
 La \cref{sec:explorer-sorties-simfeodal} (\cnameref{sec:explorer-sorties-simfeodal}) a décrit les étapes successives d'avancement dans l'exploration des données en sortie de SimFeodal, depuis l'observation en direct des simulations (\og pré-filtrage\fg{}) jusqu'au besoin d'une plate-forme permettant l'exploration et la comparaison interactive des sorties de simulation.
 La plate-forme proposée en réponse à ce besoin, SimEDB\footnote{
-	\textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard, voir la note de bas de page \ref{ftn:origine-simedb}, \cpageref{par:introduction-nom-simedb}.
+	\textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard.
 }, dans un objectif de généricité et d'adéquation, se devait aussi de répondre à de nombreuses contraintes, aussi bien liées aux possibilités offertes qu'à l'usage qui en serait fait.
 Dans cette partie, nous nous attacherons donc à présenter les contraintes qui ont guidé la conception de SimEDB, ainsi que les choix, méthodologiques et techniques, qui en ont résulté.\vspace{-0.5cm}
 
@@ -1713,7 +1706,7 @@ Le but n'est pas d'entrer dans les détails de l'implémentation\footnote{
 	À ce titre, les quelques lignes de codes présentes par la suite servent un but illustratif et descriptif, et nous semblent remplir ce rôle bien plus efficacement que n'importe quel schéma structurel ne le pourrait.
 }.
 Il nous paraît important d'entrer dans ces choix qui relèvent plus de la technique que de la méthodologie en ce qu'ils concourent de la volonté de reproductibilité de la thèse, et particulièrement de la reproductibilité de la démarche, conceptuelle et méthodologique, mise en place.
-Nous portons la conviction que l'ensemble de technologies assemblées ici dans notre \og chaîne de traitement\fg{} est très largement ré-utilisable, dans le cadre d'adaptations à d'autres cas d'études, mais aussi et surtout, pour une multitude de problématiques requérant une analyse visuelle de données massives (\hl{on y reviendra dans le chap 7}).
+Nous portons la conviction que l'ensemble de technologies assemblées ici dans notre \og chaîne de traitement\fg{} est très largement ré-utilisable, dans le cadre d'adaptations à d'autres cas d'études, mais aussi et surtout, pour une multitude de problématiques requérant une analyse visuelle de données massives (on y reviendra dans le \cref{chap:chap6}, \cref{subsec:genericite-donnees-simul}).
 
 \paragraph{Technologies webs \og natives\fg{}  et adaptativité.}
 
@@ -1739,9 +1732,7 @@ Nous avons donc fait le choix de nous concentrer sur des environnements standard
 
 À ce titre, le framework \texttt{Bootstrap}\footnote{\href{http://getbootstrap.com/}{http://getbootstrap.com/}} s'est révélé extrêmement utile dans le \textit{design} de l'interface de SimEDB (et des versions précédentes), tant il simplifie l'expressivité d'une mise en page à l'aide d'une grille graphique et de composants interactifs ré-utilisables.
 
-\paragraph{Le choix d'environnements de développement intermédiaires.}\footnote{
-	\hl{Ne pas oublier, dans le positionnement (chap1) de consacrer au moins un paragraphe (ou encadré) au choix \og militant\fg{} de ne se tourner QUE vers des outils libres, sans exception.}
-}
+\paragraph{Le choix d'environnements de développement intermédiaires.}
 Pour construire des applications interactives en lignes, de multiples choix sont possibles, et on peut les catégoriser selon le niveau de développement qu'ils demandent.
 Par exemple, il est tout à fait possible de s'appuyer sur des briques logicielles de bas niveau (ce que l'on appelle communément \textit{framework}), et de développer à partir de celles-ci toute l'interface et le fonctionnement d'une application.
 
@@ -1984,7 +1975,7 @@ L'encombrement visuel est alors atteint rapidement, et mieux vaut présenter un 
 %On aurait pu privilégier une vision globale, par exemple en affichant d'un coup, pour chaque type d'agents, l'ensemble des indicateurs concernés.
 %Sur des écrans de grande dimension, cela aurait permis d'embrasser du regard les résultats propres à chaque type d'agent bien plus rapidement, et d'accélérer d'autant l'évaluation de simulations ou leur comparaison.
 
-L'organisation des onglets en eux-mêmes pose aussi une question importante : vaut-il mieux organiser la consultation par type d'agent, ou plutôt, hiérarchiquement, selon la catégorie de processus examinée (\hl{à corriger une fois fixé sur le terme}, \hl{faire ref au chap3}), par exemple en respectant l'ordre de consultation des indicateurs déterminé ?
+L'organisation des onglets en eux-mêmes pose aussi une question importante : vaut-il mieux organiser la consultation par type d'agent, ou plutôt, hiérarchiquement, selon les \og dimensions\fg{} des indicateurs (\cref{subsec:indicateurs-simfeodal}), par exemple en respectant l'ordre de consultation des indicateurs déterminé ?
 
 Les deux approches présentent des avantages, mais nous avons choisi de rendre l'utilisation de SimEDB plus intuitive à tous, c'est-à-dire en organisant les indicateurs par type d'agents, plutôt qu'efficace, pour les utilisateurs habitués qui auraient bénéficié d'une organisation structurée hiérarchiquement.
 

@@ -111,7 +111,7 @@ Fallait-il privilégier la présentation de l'indicateur quantitatif  -- la dist
 %Paradoxalement, cet apprentissage de la programmation et de l'automatisation débouchait sur des questionnements relatifs au développement et à l'usage d'une interface graphique.
 Cette sensibilité à l'\og usabilité\fg{}\footnote{
 	L'usabilité est définie selon le standard \textcite{iso20189241} comme la combinaison de trois propriétés que sont \og l'efficacité\fg{} d'une interface (précision et qualité des résultats obtenus en l'employant), son \og efficience\fg{} (coût temporel et concentration que cela demande à l'utilisateur) et la satisfaction éprouvée par l'utilisateur suite à son usage \autocite[39]{zheng_interactive_2019}.
-} d'un logiciel a été fondatrice pour mes travaux ultérieurs, et structure largement le présent travail de thèse (voir \hl{chapitre 5, section 5.4}).
+} d'un logiciel a été fondatrice pour mes travaux ultérieurs, et structure largement le présent travail de thèse (voir \cref{chap:chap4}, \cref{sec:SimEDB}).
 
 \paragraph{Approches géométriques.}
 
@@ -125,7 +125,7 @@ En somme, cela revient à mobiliser la dimension spatiale des données dans les 
 Ces approches sont nécessaires à la réalisation d'analyses portant sur des données de différentes granularités, de différents maillages : elles permettent en effet d'homogénéiser des informations dont la dimension spatiale est primordiale.
 En tant que telle, cette vision \og géométrique\fg{} nous a été fortement recommandée et transmise dans le cadre d'enseignements en analyse spatiale.
 
-Dans le modèle présenté dans cette thèse (\hl{chap2}), une large partie des mécanismes est caractérisé par des processus géométriques, qu'il s'agisse de la mise en place de zones tampons autour d'agrégats ou de pôles, de prises en compte du voisinage -- définition des agrégats --, de logiques de distances euclidiennes -- satisfaction de protection dépendant de la distance au château --, d'intersections et unions spatiales -- héritage des agrégats --, etc.
+Dans le modèle présenté dans cette thèse (\cref{chap:chap2}), une large partie des mécanismes est caractérisé par des processus géométriques, qu'il s'agisse de la mise en place de zones tampons autour d'agrégats ou de pôles, de prises en compte du voisinage -- définition des agrégats --, de logiques de distances euclidiennes -- satisfaction de protection dépendant de la distance au château --, d'intersections et unions spatiales -- héritage des agrégats --, etc.
 L'influence de mon parcours semble indéniable sur ces choix de modélisation où l'espace est traité de manière continue, démarche assez peu répandue dans les modèles de dynamiques spatiales.
 
 \paragraph{Représentations (carto)graphiques.}
@@ -456,7 +456,7 @@ Il s'agit ici de revenir sur les obstacles et solutions rencontrées durant le t
 
 
 
-\subsection[Position du modélisateur : du guide au con-constructeur]{Position du modélisateur : du guide au con-constructeur}
+\subsection[Position du modélisateur : du guide au con-constructeur]{Position du modélisateur : du guide au con-constructeur \label{subsec:position-modelisateur}}
 
 L'ambition d'origine était d'accompagner la modélisation des transitions en \og [extrayant] les connaissances des thématiciens et [en les décryptant] afin d'en tirer des processus de causalité, de dépendance et d'inter-relations\fg{}.
 Il me semble maintenant que le terme de \og guider\fg{} la modélisation aurait plus fidèlement représenté l'approche qui était initialement prévue.
@@ -567,7 +567,7 @@ Le projet ERC GeoDiverCity\footnote{
 Dans ce cadre, des outils et algorithmes d'exploration automatisée de modèles avait déjà été développés lors de la rédaction de mon projet initial de thèse.
 Plusieurs thèses issues de ce projet ERC avaient ainsi privilégié ce type d'approches pour explorer les modèles \autocite{schmitt_modelisation_2014,cottineau_levolution_2014,rey-coyrehourcq_plateforme_2015}.
 
-Fondamentalement, le présupposé de telles méthodes (\hl{cf chap7}) est que les modèles construits soient aussi parcimonieux que possibles, dotés d'une quantité minime de paramètres et d'indicateurs de sortie.
+Fondamentalement, le présupposé de telles méthodes (voir \cref{chap:chap6}, \cref{subsec:perspectives-validation}) est que les modèles construits soient aussi parcimonieux que possibles, dotés d'une quantité minime de paramètres et d'indicateurs de sortie.
 En automatisant les analyses, il aurait été aisé de confronter ces sorties aux données empiriques disponibles, la simulation informatique ayant l'énorme avantage de laisser au modélisateur choisir le format, le type et la quantité des données générées.
 
 Le contexte effectif de co-construction du modèle a pourtant invalidé, ou au moins freiné, ce type d'approche.
@@ -618,7 +618,7 @@ Dans cette dernière partie, je souhaite préciser et justifier cette approche d
 Cette approche est (3) délibérément exploratoire, aussi bien pour la conception du modèle que pour son analyse, tout en visant à (4) assurer une reproductibilité des moyens, méthodologiques et techniques, mis en œuvre.
 
 
-\subsection{Favoriser une co-construction interdisciplinaire}
+\subsection{Favoriser une co-construction interdisciplinaire \label{subsec:co-construction}}
 
 Quand on cherche à initier une démarche de modélisation collective, qui plus est en situation d'interdisciplinarité, les approches de \og modélisation d'accompagnement\fg{} (\og ComMod\fg{}, pour \textit{companion modelling}) paraissent incontournables dans le champ francophone de l'étude des systèmes complexes.
 Il me semble dès lors important de positionner l'approche défendue dans cette thèse vis-à-vis de la modélisation d'accompagnement, et d'en identifier les points communs et de divergence.
@@ -670,7 +670,7 @@ Les participants sont ainsi inscrits dans une démarche clientéliste, plus proc
 Pour la conception et l'implémentation de \simfeodal{}, nous avons cherché à suivre une approche plus intégratrice, en séparant moins nettement les rôles de thématicien, de modélisateur, voire d'\og{}implémenteur\fg{}.
 Si chacun de ces rôles correspond à des compétences particulières peu accessibles aux autres, l'idée était tout de même d'échanger au maximum sur chacun des aspects du modèle de manière à les rendres plus compréhensibles pour tous.
 Par exemple, on souhaitait que les raisons thématiques d'un choix de valeur de paramètre soient explicitées, justifiées et partagées par les thématiciens auprès les modélisateurs.
-À l'inverse, les modélisateurs devaient expliciter les partis-pris, biais ou encore alternatives des choix d'implémentation effectués, par exemple en détaillant le point de vue adopté dans l'implémentation d'un mécanisme concernant les actions d'un type d'agent (cf. \hl{encadré chap2}).
+À l'inverse, les modélisateurs devaient expliciter les partis-pris, biais ou encore alternatives des choix d'implémentation effectués, par exemple en détaillant le point de vue adopté dans l'implémentation d'un mécanisme concernant les actions d'un type d'agent (cf. \cref{chap:chap2}, \cref{enc:polarite-implementation}).
 
 Sans chercher à ce que chacun des chercheurs impliqués dans la construction de \simfeodal{} ne devienne omnicompétent, notre approche visait toutefois, dans la mesure du possible, à ce que chacun soit en mesure de comprendre et donc de défendre, au moins dans les grandes lignes, les choix de modélisation et d'implémentation qui seraient réalisés.
 
@@ -859,7 +859,7 @@ dans une construction \og en spirale\fg{} \autocite[157]{mathian_objets_2014}, c
 
 \paragraph{Évalué et analysé de manière exploratoire.}
 De manière plus classique, l'approche exploratoire est enfin appliquée aux données de sortie du modèle, selon le cadre méthodologique déjà mentionné de l'analyse exploratoire de données (EDA).
-L'impermanence des indicateurs de sortie (cf. \hl{encadré incrémentalité indicateur}) en est une conséquence directe.
+L'impermanence des indicateurs de sortie (cf. \cref{chap:chap3}, \cref{enc:incrementalite-indicateurs}) en est une conséquence directe.
 C'est en menant des analyses de ces indicateurs que l'on peut réaliser leurs défauts, ou leur incapacité parfois à départager.
 C'est aussi en menant ces analyses que l'on peut constater le besoin de créer de nouveaux indicateurs, qui donneront une vision plus précise, ou légèrement différente, d'un phénomène quelconque.
 
@@ -867,7 +867,7 @@ Dans l'EDA, ce sont les données -- et les motifs qui en surgissent -- qui guide
 Dans l'exploration de \simfeodal{}, ces \og données\fg{}, c'est-à-dire les indicateurs de sortie, guident elles-aussi l'évaluation du modèle, et leur étude entraîne de par là même des transformations de ces indicateurs (précision, distinction de catégories, changement de la méthode de calcul, etc.).
 
 Dans l'approche classique, la visualisation n'est mobilisée qu'au début du processus d'évaluation, lors de la phase de \og \textit{face validation}\fg{}.
-L'approche proposée dans cette thèse, nommée \og évaluation visuelle\fg{} (\hl{ref vers chapitre 3}), accorde au contraire un rôle clé à la visualisation tout au long du processus d'évaluation.
+L'approche proposée dans cette thèse, nommée \og évaluation visuelle\fg{} (voir \cref{chap:chap3}, \cref{subsec:eval-visuelle}), accorde au contraire un rôle clé à la visualisation tout au long du processus d'évaluation.
 Les indicateurs de sortie sur lesquels on se base pour évaluer le modèle sont potentiellement classiques, mais le choix de faire reposer l'évaluation uniquement sur l'analyse visuelle de ces indicateurs me semble quant à elle assez hétérodoxe et profondément exploratoire.
 
 De manière globale, c'est toute l'exploration du modèle qui a été menée de manière visuelle, en faisant appel à une plateforme -- SimEDB -- qui, comme les indicateurs et la méthode d'évaluation, a fortement évoluée tout au long de cette recherche.
@@ -875,7 +875,7 @@ Les \og résultats\fg{} du modèle, de même que sa sensibilité, n'ont pas ét�
 Les modalités de l'évaluation, telles que présentés dans ce manuscrit, résultent de nombreux allers-retours entre thématiciens et modélisateurs, et d'encore plus nombreux allers-retours entre le modèle et l'exploration, visuelle, de ses sorties.
 
 
-\subsection{Une démarche reproductible}
+\subsection{Une démarche reproductible \label{subsec:demarche-reproductible}}
 
 La démarche d'ensemble poursuivie dans cette thèse est très exploratoire, et l'ensemble de ses composants ou étapes ont largement évolué durant les six années de cette expérience de co-construction interdisciplinaire.
 Pour autant, afin que cette expérience puisse avoir une portée supérieure à celle d'un projet ponctuel, nous avons collectivement porté attention à lui garantir une certaine reproductibilité.
@@ -935,11 +935,11 @@ Pour que ces restitutions de notre travail trouvent une résonance, et donc une 
 Il s'agissait aussi de convaincre des chercheurs pratiquant déjà la modélisation de l'intérêt de l'étude des dynamiques spatiales sur le temps long, par exemple à travers des chapitres d'ouvrages interdisciplinaires \autocite{tannier_ontologie_2014,cura_transition_2017}, en ciblant notamment la communauté de la géographie théorique et quantitative, que ce soit à l'occasion de colloques (ThéoQuant 2015 et 2017, ECTQG 2015, 2017 et 2019) ou de journées d'études liées à d'autres projets de modélisation.
 
 En dehors des publications et communications qui marquent des \og points d'étape\fg{} de la construction du modèle et de son exploration, nous avons fait le choix d'en \og versionner\fg{} l'évolution, dans un dépôt logiciel de versionnement adapté, afin que celle-ci puisse être retracée et analysée \textit{a posteriori}.
-C'est aussi le cas de la plateforme d'exploration des sorties du modèle, SimEDB, dont le dépôt retrace l'ensemble des évolutions décrites dans le \hl{chapitre 5}.
+C'est aussi le cas de la plateforme d'exploration des sorties du modèle, SimEDB, dont le dépôt retrace l'ensemble des évolutions décrites dans le \cref{chap:chap4} (\cref{sec:explorer-sorties-simfeodal}).
 
 De manière plus large, ce manuscrit s'inscrit dans la volonté de replacer le modèle \simfeodal{} dans le cadre plus large des modèles descriptifs, exploratoires et conçus dans un cadre interdisciplinaire.
-Ces dépôts logiciels concourent à l'intention de retracer le raisonnement -- générique et spécifique -- qui a amené au modèle \simfeodal{} tel que présenté dans le \hl{chapitre 2}.
-En cherchant à documenter les alternatives disponibles qui ont été rencontrées tout au long de la conception du modèle et de la plateforme d'exploration de ses sorties, en cherchant à justifier les choix effectués, qu'ils soient conceptuels (\hl{chapitres 2 et 3}), méthodologiques (\hl{chapitre 3, 5 et 6}) ou parfois techniques (\hl{chapitre 5}), en suivant des modes de descriptions standards (ODD pour le modèle, MCD pour la base de données), je suis convaincu d'accroître le potentiel de reproductibilité du modèle, et plus largement, de la démarche mise en place pour le construire et l'évaluer.
+Ces dépôts logiciels concourent à l'intention de retracer le raisonnement -- générique et spécifique -- qui a amené au modèle \simfeodal{} tel que présenté dans le \cref{chap:chap2}.
+En cherchant à documenter les alternatives disponibles qui ont été rencontrées tout au long de la conception du modèle et de la plateforme d'exploration de ses sorties, en cherchant à justifier les choix effectués, qu'ils soient conceptuels (\cref{chap:chap2,chap:chap3}), méthodologiques (\cref{chap:chap3,chap:chap4,chap:chap5}) ou parfois techniques (\cref{chap:chap4}), en suivant des modes de descriptions standards (ODD pour le modèle, MCD pour la base de données), je suis convaincu d'accroître le potentiel de reproductibilité du modèle, et plus largement, de la démarche mise en place pour le construire et l'évaluer.
 
 Cette thèse prend ainsi la forme d'un retour d'expérience, partial mais argumenté, et surtout documenté autant que possible.
 L'ambition est d'ouvrir la voie à d'autres expériences de ce type et de tenter de convaincre de l'intérêt, pour les projets interdisciplinaires, tout à la fois, de la modélisation à base d'agents, d'une démarche de co-construction, et de la commodité des approches visuelles pour les accompagner.
