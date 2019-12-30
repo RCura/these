@@ -6,7 +6,7 @@
 \chapter{Évaluer et paramétrer un modèle de simulation complexe en situation d'interdisciplinarité}
 \label{chap:chap3}
 \begin{center}
-{\large Version \hl{2019-11-24}}
+{\large Version \hl{2019-12-30}}
 \end{center}
 
 \begin{itemize}
@@ -15,6 +15,7 @@
 	\item 11/11/2019 : Reprises commentaires Lena du 24/11/2017 + finalisation
 	\item 19/11/2019 : Dernier round reprises Lena
 	\item 24/11/2019 : Fin reprise + envoi relecture : Seb \& Clem
+	\item 30/12/2019 : Reprises Seb
 \end{itemize}
 \setcounter{minitocdepth}{2}
 \minitoc
@@ -26,29 +27,29 @@
 \addcontentsline{toc}{section}{Introduction}
 
 Dans le chapitre précédent, nous avons présenté un modèle, \simfeodal{}, dont l'objectif est de répondre à un questionnement thématique (\cref{subsec:questionnement-modele}) portant les phénomènes de polarisation, de hiérarchisation et de fixation de l'habitat paysan entre les IX$^e$ et XIII$^e$ siècles.
-Pour juger de la capacité du modèle à reproduire ces processus empiriques, on on procède à une \og évaluation\fg{} du modèle.
+Pour juger de la capacité du modèle à reproduire ces processus empiriques, on procède à une \og évaluation\fg{} du modèle.
 Ce type d'évaluation prend appui sur un ensemble de critères : plus ceux-ci sont remplis, meilleure sera l'évaluation, et plus le modèle sera jugé satisfaisant.
 
 L'évaluation de modèle est un domaine incontournable et fortement étudié dans le champ de la modélisation, quel que soit le type de modèles sur cette évaluation porte.
 Dans le cas de \simfeodal{}, modèle descriptif et complexe, l'évaluation ne peut se faire de manière formelle, c'est-à-dire analytique, tant les interactions entre agents et mécanismes sont nombreuses, non linéaires, et donc non prédictibles.
 L'évaluation ne peut donc être qu'expérimentale, en analysant le comportement du modèle sur la base de ses sorties.
 
-\simfeodal{} pose de plus le problème d'être un modèle basé sur des connaissances expertes plutôt que sur des données directement intégrables ou confrontables.
+\simfeodal{} pose de plus le problème d'être un modèle basé entièrement sur des connaissances expertes plutôt que sur des données directement intégrables ou confrontables.
 Cela en complexifie l'évaluation, car les approches classiques sont peu adaptées à ce type de modélisation interdisciplinaire guidé par la théorie et où les données empiriques sont lacunaires.
 Il est en effet difficile de quantifier le comportement attendu du modèle.
 
-Les difficultés liées à l'évaluation du modèle sont renforcées par le type de construction mis en place pour \simfeodal{}, qui est un modèle exploratoire dans lequel l'évaluation n'a pas vocation à valider une version définitive et statique du modèle, mais au contraire à guider son amélioration par des ajustements successifs.
+Les difficultés liées à l'évaluation du modèle sont renforcées par le type de construction mis en place pour \simfeodal{}, qui est un modèle exploratoire dans lequel l'évaluation n'a pas vocation à valider une version \og définitive\fg{} et statique du modèle, mais au contraire à guider son amélioration par des ajustements successifs sans que ce processus n'ait nécessairement un terme.
 
 Dans le chapitre précédent, on décrivait par exemple une \og version\fg{} du modèle, intitulée \og version 6.3\fg{}, ce qui montre qu'auparavant, il y a nécessairement eu au moins 5 versions préalables, et sans doute bien plus de sous-versions.
 Ce chapitre vise à présenter le processus d'amélioration du modèle que nous nommons \og paramétrage\fg{}, c'est-à-dire l'approche théorique et empirique qui a guidé l'évolution de \simfeodal{}, à partir des retours réguliers de l'évaluation du modèle.
 
-Dans ce chapitre, nous présenterons en premier lieu la démarche globale d'évaluation, et en particulier une proposition de méthode fondée sur l'évaluation visuelle -- adaptée aux modèles du type de \simfeodal{}.
+Dans ce chapitre, nous présenterons en premier lieu la démarche globale d'évaluation, et en particulier une proposition de méthode fondée sur l'\og{}évaluation visuelle\fg{} de modèle au moyen d'une grille de critères -- adaptée aux modèles du type de \simfeodal{}.
 Nous spécifierons cette approche en l'appliquant au cas de \simfeodal{}, c'est-à-dire en présentant les critères retenus pour l'évaluation du modèle.
 Nous décrirons ensuite le paramétrage du modèle, son articulation avec l'évaluation, et nous mènerons une analyse rétrospective de l'évolution de \simfeodal{}.
 
 \section{Comment évaluer un modèle ?}\label{sec:evaluer-modele}
 
-Depuis les travaux précurseurs en simulation informatique \autocite{naylor_verification_1967,hermann_validation_1967,sargent_validation_1979} jusqu'aux recherches contemporaines \autocite{amblard_evaluation_2006,banos_pour_2013,augusiak_merging_2014, rey-coyrehourcq_plateforme_2015}, la plupart des chercheurs ont toujours mis en avant qu'un modèle de simulation non évalué n'avait ni utilité -- pour \cite{naylor_verification_1967} notamment --, ni validité.
+Depuis les travaux précurseurs en simulation informatique \autocite{naylor_verification_1967,hermann_validation_1967,sargent_validation_1979} jusqu'aux recherches contemporaines \autocite{amblard_evaluation_2006,banos_pour_2013,augusiak_merging_2014, rey-coyrehourcq_plateforme_2015}, la plupart des chercheurs ont avancé qu'un modèle de simulation non évalué n'avait ni utilité -- pour \cite{naylor_verification_1967} notamment --, ni validité.
 Sans caricaturer ces écrits, on peut noter que tous cantonnent les modèles non évalués à des \og jeux\fg{} ou encore, pour les plus modérés, à des outils uniquement pédagogiques.
 
 Comme indiqué dans le \cref{chap:chap1}, nous considérons \simfeodal{} comme un modèle résolument exploratoire, en particulier par la dimension heuristique qui le caractérise : les résultats produits par le modèle n'ont pas vocation à être mobilisés directement, ce sont des supports à la synthèse et à la ré-organisation de connaissances expertes sur le cas d'étude analysé.
@@ -73,11 +74,11 @@ Cela nous permettra en particulier de défendre et de promouvoir l'une de ces m�
 
 \subsection{Évaluation, validation, vérification\ldots}
 
-Il nous semble important de commencer cette partie par un point de définition et de clarification des concepts mobilisés, non pas par convention, mais parce que les usages en matière d'emploi des termes d'évaluation, de validation (méthodologique, formelle\ldots) ou encore de vérification sont particulièrement diffus et trompeurs dans la littérature relative à la modélisation, y compris dans le champ plus restreint de la simulation à base d'agents en sciences humaines et sociales.
+Il nous semble important de commencer cette partie par un point de définition et de clarification des concepts mobilisés, non pas par convention, mais parce que les usages en matière d'emploi des termes d'évaluation, de validation (méthodologique, formelle\ldots) ou encore de vérification sont particulièrement diffus et trompeurs dans la littérature relative à la modélisation, y compris dans le champ plus restreint de la simulation à base d'agents en sciences humaines et sociales (SHS).
 
 Depuis les travaux fondateurs, dans les années 1960, la logique qui consiste à éprouver un modèle -- c'est-à-dire à vérifier qu'il corresponde correctement d'une part (1) au système qu'il décrit, et d'autre part à
 (2) la manière dont il est décrit -- donne lieu à différentes terminologies.
-On notera en particulier que les deux articles considérés comme pionniers, tous deux parus en 1967, reposent pour l'un sur la notion de vérification (\textit{verification}) \autocite{naylor_verification_1967}, et pour l'autre sur celle de validation \autocite{hermann_validation_1967}, sans pour autant que la distinction entre les deux approches puisse être vue comme consistante.
+On notera en particulier que les deux articles considérés comme pionniers, tous deux parus en 1967, reposent pour l'un sur la notion de vérification (\textit{verification}) \autocite{naylor_verification_1967}, et pour l'autre sur celle de validation \autocite{hermann_validation_1967}, sans pour autant que la distinction entre les deux approches puisse être vue comme consistante si ce n'est que la \textit{verification} de \textsc{Naylor} comporte un aspect plus \og binaire\fg{} sur ce qui est ou non vérifié \autocite[137]{rey-coyrehourcq_plateforme_2015}.
 Quelques décennies plus tard, une fois la pratique de simulation informatique plus développée et mûre, un consensus de pratique a été adopté autour de l'expression englobante de \og Validation, Verification and Testing techniques (VV\&T)\fg{}, par l'entremise d'une proposition de \textcite{balci_validation_1994} de clarification et de définition de chacun de ces composants.
 Pour reprendre ses mots en une distinction devenue courante en simulation à base d'agent, la \textit{validation} consiste à concevoir le bon modèle 
 \footnote{
@@ -181,13 +182,13 @@ Quand une première version du modèle a été implémentée, il est recommandé
 	Un point plus précis y est consacré dans le \cref{chap:chap5}, \cref{sec:ana-sensib}.
 }, les valeurs des différents paramètres du modèle, on peut observer l'influence de chaque paramètre sur le déroulement du modèle.
 Cette procédure, relative à la validation interne, intervient tôt, et doit être répétée lors de chaque modification majeure dans les mécanismes du modèle.
-L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté :
-	si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre ou le mécanisme qui le mobilise.
+L'analyse de sensibilité permet en effet de simplifier le modèle conceptuel et son pendant implémenté.
+En effet, si l'analyse révèle qu'un paramètre, quelles que soient les valeurs qui lui sont attribuées, n'a qu'un effet minime voir négligeable sur les sorties du modèles, alors il peut être judicieux de supprimer ce paramètre ou le mécanisme qui le mobilise, ou au moins de le considérer comme un artefact thématique sans importance effective.
 Réduire le nombre de paramètres ou de mécanismes d'un modèle peut sensiblement l'améliorer, selon le principe de parcimonie qui voudrait qu'un modèle plus simple soit meilleur\footnote{
 	Les avis divergent nettement sur ce point, voir par exemple la définition de la \textit{simplicité} dans \textcite[120]{amblard_evaluation_2006}
 }.
-Même sans aller jusqu'à ce type de découvertes sur l'inutilité de certains paramètres, l'analyse de sensibilité permet de gagner en connaissance sur le fonctionnement d'un modèle complexe et/ou non-déterministe, ne serait-ce que parce qu'elle aide souvent le modélisateur à trouver une \og polarité \fg{} à l'effet des paramètres :
-	si tel indicateur de sortie (voir \cref{subsec:indices-indicateurs}) croît quand on diminue les valeurs d'un paramètre et décroît quand on les augmente, alors on peut prévoir l'effet d'une modification de ce paramètre, ce qui peut éclairer le fonctionnement thématique du modèle.
+Même sans aller jusqu'à ce type de découvertes sur l'inutilité de certains paramètres, l'analyse de sensibilité permet de gagner en connaissance sur le fonctionnement d'un modèle complexe et/ou non-déterministe, ne serait-ce que parce qu'elle aide souvent le modélisateur à trouver une \og polarité \fg{} à l'effet des paramètres.
+Si tel indicateur de sortie (voir \cref{subsec:indices-indicateurs}) croît quand on diminue les valeurs d'un paramètre et décroît quand on les augmente, alors on peut prévoir l'effet d'une modification de ce paramètre, ce qui peut éclairer le fonctionnement thématique du modèle.
 
 \paragraph{Calibrage.}
 Une fois le modèle mieux connu et surtout réduit à ses composantes nécessaires et suffisantes, on cherche à en améliorer la qualité de représentation, c'est-à-dire à faire en sorte, en jouant sur les valeurs de paramètres, que le modèle reproduise plus précisément le système qu'il décrit (validation externe) et qui correspond à l'observation empirique ou aux connaissances thématiques.
@@ -222,7 +223,7 @@ Cela requiert d'être en mesure de convertir un modèle exprimé dans un formali
 Dans l'évaluation de modèles au sens large, cette étape peut se révéler indispensable et assez directe, par exemple quand il apparaît nécessaire d'évaluer un modèle basé sur la théorie des jeux, que l'on traite alors sous forme d'analyse de graphes.
 
 Dans le cas plus spécifique des modèles à base d'agent, cas dans lequel nous nous inscrivons ici, la situation est plus difficile.
-On emploie généralement la modélisation à base d'agents parce qu'elle encourage une approche anthropomorphique, plus aisément compréhensible et requérant moins de connaissances mathématiques que d'autres approches, mais aussi car il est terriblement complexe d'exprimer des systèmes dotés de multiples interactions, qui plus est multi-scalaires, sous forme de réseaux d'équations.
+On emploie généralement la modélisation à base d'agents parce qu'elle encourage une approche anthropomorphique, plus aisément compréhensible et requérant moins de connaissances mathématiques que d'autres approches, mais aussi car il est extrêmement difficile d'exprimer des systèmes dotés de multiples interactions, qui plus est multi-scalaires, sous forme de réseaux d'équations.
 En un sens, on pourrait presque considérer qu'on fait appel à de la modélisation à base d'agents quand on ne peut mobiliser des modèles formels.
 Le processus qui tendrait à formaliser, mathématiquement, des modèles agents est alors intrinsèquement contre-intuitif et difficile, quand bien même certains pensent que ce n'est pas une fatalité mais une question de temps\footnote{
 	Par exemple Alain \textsc{Franc}, mathématicien dans le projet TransMonDyn :
@@ -234,11 +235,24 @@ Le processus qui tendrait à formaliser, mathématiquement, des modèles agents 
 	\autocite[Annexe 2, \og Retour sur les SMA comme outil et cadre conceptuel de modélisation.\fg{}, pp. 479-482 ]{ouriachi_lelaboration_2017}
 }.
 
-Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012}\footnote{
-	\hl{Lena : regarder Axelrod et Axtell, dans leur article sur les 4 modes d'utilisation d'un SMA, article très maths. --> \textbf{Je ne trouve pas cette référence}.}
-} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling (voir \cref{enc:param-schelling}).
+Si la nature même de cet exercice implique vraisemblablement que peu s'y essayent, on notera tout de même que quelques auteurs \autocite{zhang_tipping_2011,grauwin_dynamic_2012} sont parvenus à résoudre de manière analytique un modèle foncièrement pensé comme un modèle agent -- en automate cellulaire en l'occurrence --, le modèle de Schelling (voir \cref{enc:param-schelling}).
 En dehors de l'intérêt que cela peut représenter pour la connaissance de ce modèle en particulier, rappelons tout de même que le modèle de Schelling a été énoncé à la fin des années 1960, que c'est un modèle particulièrement parcimonieux, et qu'il a tout de même fallu attendre le tournant des années 2010 afin d'y trouver une solution formelle.
-Notons enfin que pour certains auteurs, dont l'un des pères de la modélisation à base d'agents informatiques \textcite{epstein2006remarks}, la résolution analytique de modèles de simulation à base d'agents n'est pas véritablement un enjeu, l'objectif étant d'utiliser le paradigme le plus \og éclairant\fg{} pour un problème donné :
+
+Remarquons tout de même que tout cet effort de résolution analytique n'invalide pas pour autant l'usage du modèle de simulation à base d'agents en lui-même.
+Ainsi, pour \textcite{axtell2000agents}, même quand un modèle est \og résolvable\fg{} analytiquement (ou partiellement résolvable), la simulation a base d'agents constitue tout de même un atout, notamment en matière de dissémination des résultats du modèle :
+\begin{quotation}
+	\noindent \og
+Yet another role for agent-based computing occurs in the (increasingly unusual) case in which a model of a social process can be solved explicitly. 
+Here it would seem that there is no role whatsoever for agent computing, since the solution is completely specified.
+However, even in this case there is utility for creating an agent-based implementation of the formal model.
+Most people outside academia have modest knowledge of mathematics and statistics, and therefore have a difficult time interpreting numerical model output, or understanding regression results, for example.
+But people are very good at pattern recognition and analogical reasoning.
+Because the output of agent models tends to be visual, such models can be very effective at depicting formal results from mathematical models.
+Such uses of agents are especially relevant for demonstrating technical results to policy-makers and business decision-makers.
+	\fg{}\\
+	\mbox{}~ \hfill \textcite[7]{axtell2000agents}
+\end{quotation}
+Notons enfin que pour certains auteurs, dont l'un des pionniers de la modélisation à base d'agents en SHS, \textcite{epstein2006remarks}, la résolution analytique de modèles de simulation à base d'agents n'est pas véritablement un enjeu, l'objectif étant d'utiliser le paradigme le plus \og éclairant\fg{} pour un problème donné :
 \begin{quotation}
 	\noindent \og
 	The oft-claimed distinction between computational agent models, and equation-based models is illusory.
@@ -283,7 +297,7 @@ Les étapes d'évaluation énumérées ci-dessus consistent autant en une approc
 \footnote{
 	\og [One] should start with cheap tests that allow fast rejection of the model and continue investing more and more effort when the model becomes more and more valid. \fg{}, \textcite[42]{klugl_validation_2008}, par exemple.
 }.
-Il est évident à la lecture des auteurs de références du champ (par exemple ceux référencés en \cref{sec:evaluer-modele}) que pour eux, \og plus\fg{} le modèle est évalué, c'est-à-dire se confronte aux étapes d'évaluation de plus en plus formelles, plus il sera digne de confiance et donc capable d'apporter des connaissances sur les objets qu'il tend à représenter.
+Il est évident à la lecture des auteurs historiques du champ (par exemple les précurseurs cités en \cref{sec:evaluer-modele}) que pour eux, \og plus\fg{} le modèle est évalué, c'est-à-dire se confronte aux étapes d'évaluation de plus en plus formelles, plus il sera digne de confiance et donc capable d'apporter des connaissances sur les objets qu'il tend à représenter.
 Robert \textsc{Sargent} par exemple différencie les méthodes d'évaluation selon que le système modélisé est observable ou non, c'est-à-dire \og s'il est possible ou non de collecter des données sur le comportement opérationnel de l'entité \fg{}
 \footnote{
 	\og The major attribute affecting operational validity is whether the problem entity (or system) is observable, where observable means it is possible to collect data on the operational behavior of the program entity.\fg{}, \textcite[6]{sargent2009verification}.
@@ -306,7 +320,7 @@ Dans ce cas, les théoriciens de l'évaluation recommandent, à défaut de mieux
 Nous ne partageons pas la réticence associée à cette recommandation.
 Au contraire, nous considérons que dans ce type de cas, des méthodes de \og \textit{face validation}\fg{} peuvent être utiles et suffisantes pour évaluer un modèle de simulation.
 Une des conditions est que ces méthodes soient menées de façon systématique et en suivant un protocole précis.
-Après avoir défini de manière plus approfondie ce qu'est la face validation, nous formulerons ensuite une proposition d'un tel protocole, intitulé \og évaluation visuelle\fg{}.
+Après avoir défini de manière plus approfondie ce qu'est la \textit{face validation}, nous formulerons ensuite une proposition d'un tel protocole, intitulé \og évaluation visuelle\fg{}.
 
 
 \subsection{Une évaluation de la plausibilité d'un modèle : la \og \textit{face validation}\fg{}}\label{subsec:face-validity}
@@ -314,7 +328,7 @@ Après avoir défini de manière plus approfondie ce qu'est la face validation, 
 Avant d'aller plus avant dans la justification de l'utilité des méthodes de \textit{face validation}, il convient de définir plus précisément ce à quoi la littérature réfère quand elle préconise cette méthode d'analyse de plausibilité d'un modèle.
 
 \subsubsection{Définition}
-Le terme semble avoir émergé dans les années 1940, en particulier dans le champ scientifique de la psychologie et des études pédagogiques \autocite{nevo_face_1985}.
+Le terme semble avoir émergé dans les années 1940, en particulier dans le champ scientifique de la psychologie et des sciences de l'éducation \autocite{nevo_face_1985}.
 Concept discuté et disputé dans ces domaines \autocite{mosier_critical_1947}, on y attribue un besoin pour les modèles, statistiques dans ce cas, de présenter à la fois une validité à l'épreuve des données, mais aussi de présenter une apparence de validité, c'est-à-dire de sembler plausibles
 \footnote{
 	\og
@@ -325,7 +339,7 @@ Concept discuté et disputé dans ces domaines \autocite{mosier_critical_1947}, 
 
 Pour illustrer ce besoin de \og plausibilité\fg{}, on peut prendre l'exemple des problèmes de corrélations fallacieuses (ou \og \textit{spurious correlations}\fg{}).
 À la suite d'un article \autocite{shaw_elevated_2017} liant utilisation de glyphosate et nombre d'enfants diagnostiqués autistes (\cref{fig:autisme-glyphosate}), plusieurs chercheurs ont renvoyé à l'analyse menée par un membre de l'espace de discussion \textit{reddit}\footnote{
-	Message posté par l'utilisateur \og jasonp55\fg{} en 2012 : \\ \href{https://www.reddit.com/r/skeptic/comments/14qbn9/rskeptic_i_was_practicing_graphpad_and_i_think_i/}{www.reddit.com/r/skeptic/comments/14qbn9/}
+	Message posté par l'utilisateur \og jasonp55\fg{} en 2012 : \\ \href{https://web.archive.org/web/20130105045416/https://www.reddit.com/r/skeptic/comments/14qbn9/rskeptic_i_was_practicing_graphpad_and_i_think_i/}{www.reddit.com/r/skeptic/comments/14qbn9/}
 }.
 Celui-ci qui proposait en effet-- de manière ironique -- une explication opposée, liant prévalence de l'autisme et vente de produits de  l'agriculture biologique (\cref{fig:autisme-bio}).
 
@@ -419,12 +433,12 @@ Dans le cas de \simfeodal{} par exemple (cf. \cref{chap:chap2}), les comportemen
 On pourrait y voir une \og méta-plausibilité\fg{} inter-générationnelle, mais il serait difficile de l'interpréter et surtout de la différencier d'autres comportements de foyers paysans.
 Le suivi d'un foyer paysan, isolé de ses co-agents, au cours du déroulement du modèle, par un expert thématicien, n'est donc pas sujet à évaluation, au contraire du suivi des structures spatiales de niveau macroscopique engendrées par cette accumulation de déplacements.
 
-L'évaluation immersive, bien que peu adaptée à certains types de modèles, peut toutefois s'avérer de manière universelle utile en matière d'évaluation interne, dans un aspect de \og débugage\fg{}.
+L'évaluation immersive, bien que peu adaptée à certains types de modèles, peut toutefois s'avérer utile, de manière universelle, en matière d'évaluation interne, vu alors comme un outil de \og débugage\fg{}.
 Même si les réactions et attributs des agents ne reproduisent pas une connaissance experte, leur observation peut toujours servir au modélisateur pour vérifier l'absence de valeurs aberrantes ou encore la juste activation de chacun des mécanismes.
 
 
 
-\subsubsection{Limites}
+\subsubsection{Limites \label{subsubsec:limites-face-validation}}
 
 Comme mentionné auparavant (\ref{par:quelle-eval-quel-modeles}), pour de nombreux auteurs \autocite{hermann_validation_1967, balci_validation_1994, kennedy_verification_2006}, la \textit{face validation} ne peut qu'être une étape préalable à des méthodes d'évaluation plus quantitatives et formelles.
 Les raisons données sont souvent le manque d'objectivité d'une démarche fondamentalement basée sur l'expertise et l'impression.
@@ -445,15 +459,17 @@ Parmi ces auteurs, \citeauthor{hermann_validation_1967} est sans doute celui qui
 Ces réserves nous semblent être autant de pistes pour justifier de l'intérêt d'une démarche scientifique de \textit{face validation}. En reprenant les critiques dans l'ordre énoncé par l'auteur, on peut y répondre ainsi :
 \begin{itemize}
 	\item \textbf{Manque de connaissance experte.}
-	Cette première remarque nous apparaît comme quelque peu biaisée : si l'on confie une évaluation experte à des non experts, naturellement, cela ne peut déboucher sur une évaluation correcte du modèle.
+	Cette première remarque nous apparaît comme quelque peu biaisée.
+	En effet, si l'on confie une évaluation experte à des non experts, naturellement, l'évaluation ne peut pas être considérée comme correcte.
 	Cela est d'ailleurs applicable quelle que soit la méthode d'évaluation : une expertise ne vaut que par la qualité de l'expert.
-	De manière plus nuancée, on notera d'ailleurs que cette phrase montre ici l'absence d'un élément de définition de la \textit{face validation} partagé par les autres auteurs :
-	\citeauthor{hermann_validation_1967} considère par là que c'est au modélisateur uniquement de mener cette phase d'évaluation, alors que la littérature s'entend quant au fait que ce rôle échoit à des experts.
+	De manière plus nuancée, on notera d'ailleurs que cette phrase montre ici l'absence d'un élément de définition de la \textit{face validation}, qui nous paraît aussi rarement spécifié par les autres auteurs.
+	En effet, dans les définitions citées précédement, il n'est pas explicité qui doit mener la \textit{face validation}.
+	\citeauthor{hermann_validation_1967}, dans ces propos, considère que c'est au modélisateur uniquement de mener cette phase d'évaluation, alors que la lecture des autres références laisse penser que ce rôle échoit à des experts.
 	Ce faisant, \citeauthor{hermann_validation_1967} se positionne dans la logique de construction de modèles par des modélisateurs, sans apport des thématiciens, et donc dans l'approche classique de séparation forte entre ces deux acteurs indispensables du modèle (voir \cref{chap:chap1}, \cref{subsec:position-modelisateur}).
 	
 	\item \textbf{Invraisemblance de certains comportements.}
 	\citeauthor{hermann_validation_1967} met en avant que dans un modèle, tous les mécanismes n'ont pas vocation à être vraisemblables.
-	Ainsi, en mentionnant ces \og propriétés de substitutions\fg{}, il rappelle un élément important d'une évaluation, quelle qu'en soit la méthode.
+	Ainsi, en mentionnant ces \og propriétés de substitutions\fg{}, il rappelle un élément important d'une évaluation de ce type, quelle qu'en soit la méthode.
 	On ne doit et ne peut en effet juger de la plausibilité que des aspects du modèle qui cherchent à reproduire un comportement plausible.
 	Il nous semble qu'ici aussi, la critique de l'auteur revient à ignorer l'importance du dialogue entre modélisateur et évaluateur, tout en présumant que l'évaluateur ne serait pas le modélisateur.
 	Si le modélisateur connaît les \og substitutions\fg{} opérées dans le modèle, il se gardera donc bien de juger de leur vraisemblance.
@@ -475,7 +491,7 @@ Ces réserves nous semblent être autant de pistes pour justifier de l'intérêt
 	
 \end{itemize}
 
-\subsubsection{Intérêts de la \textit{face validation}}
+\subsubsection{Intérêts de la \textit{face validation} \label{subsubsec:interets-face-validation}}
 
 En dépit des limites identifiées ci-dessus, qui nous semblent surpassables à condition de définir une grille d'évaluation avec précision en amont, la \textit{face validation} présente de nombreux atouts en dehors de la facilité de sa mise en œuvre traditionnelle.
 
@@ -503,6 +519,7 @@ Pour obtenir cette information, nous avons croisé plusieurs travaux de \textsc{
 Dans un premier article \autocite{balci_verification_1997}, cet auteur présente toutes les méthodes de VV\&T qu'il a identifié, et il les catégorise en quatre catégories.
 Chaque méthode peut ainsi être formelle, informelle, statique ou dynamique.
 Nous avons tiré d'un second article \autocite{balci1998verification} un tableau présentant l'applicabilité de chacune de ces méthodes à l'une des 18 étapes du \og cycle de vie\fg{} des modèles de simulation qu'il identifie.
+Nous définissons à partir de là un \og taux de couverture\fg{} des méthodes de VV\&T, c'est-à-dire la part des 18 étapes dans laquelle chaque méthode peut être mobilisée.
 En numérisant ces deux informations, relatives aux catégories des méthodes et à leur applicabilité, nous avons pu créer une représentation graphique (\cref{fig:taxonomy_balci}) qui les croise.
 
 \begin{figure}[H]
@@ -517,24 +534,24 @@ Cette figure fait apparaître très nettement une \og hiérarchie\fg{} d'applica
 
 \subsection{Vers une évaluation visuelle \label{subsec:eval-visuelle}}
 
-Au regard de ces éléments, il nous semble que l'utilité des approches de \textit{face validation} est assez largement prouvée.
-C'est le cas que cette approche soit cantonnée à une phase préalable mineure ou au contraire à une bonne pratique plus générale, à mener lors de chacune des phases de construction et d'évaluation d'un modèle.
+Au regard de ces éléments, il nous semble que l'utilité des approches de \textit{face validation} est assez largement démontrée.
+Cette utilité est effective quelle que soit l'usage de ces méthodes : que cette approche soit cantonnée à une phase préalable mineure ou au contraire à une bonne pratique plus générale, à mener lors de chacune des phases de construction et d'évaluation d'un modèle.
 
 \subsubsection{Une démarche comparative}
-Comme identifié en limites et en intérêts, il nous semble de plus que la \textit{face validation} souffre, en matière de réputation, d'un manque de clarification de la démarche qu'elle met en œuvre.
-Nous considérons que dotée d'un protocole d'évaluation rigoureux, cette méthode peux constituer une alternative crédible à des méthodes d'évaluation plus répandues, par exemple les méthodes statistiques.
-Ces dernières sont souvent basées sur l'analyse de l'écart entre des données empiriques et des données simulées, et cherchent à quantifier et à minimiser cet écart.
-La \textit{face validation} procède à la même démarche comparative :
+Comme identifié dans la partie sur les limites et intérêts de cette approche (\cref{subsubsec:limites-face-validation,subsubsec:interets-face-validation}), il nous semble de plus que la \textit{face validation} souffre, en matière de réputation, d'un manque de clarification de la démarche qu'elle met en œuvre.
+Dotée d'un protocole d'évaluation rigoureux, nous considérons que cette méthode peux constituer une alternative crédible à des méthodes d'évaluation plus répandues, par exemple les méthodes statistiques.
+Ces dernières sont souvent basées sur l'analyse de l'écart entre des données empiriques et des données simulées -- ou entre des observations empiriques et des comportements simulés plus généralement -- et cherchent à quantifier et à minimiser cet écart.
+La \textit{face validation} procède à un même démarche comparative :
 \begin{quotation}
 		\noindent \og Face validation is a validation method that compares simuland behavior to model results. [...] Based on their knowledge of the simuland, the observers subjectively compare the behavior of the simuland as reflected in the simulation results with their knowledge of the behavior of the actual simuland under the same conditions, and judge whether the former is acceptably accurate. Differences between the simulation results and the experts' expectations may indicate model accuracy issues.
 	\mbox{}~ \hfill \textcite[341]{petty2010verification}
 \end{quotation}
-Nous postulons que la démarche comparative que l'on retrouve dans l'évaluation statistique peut donc être appliquée sans recherche de quantification, c'est-à-dire en évaluant ces mêmes écarts de manière subjective et qualitative.
+Nous postulons que la démarche comparative que l'on retrouve dans l'évaluation statistique peut donc être appliquée sans recherche de quantification, c'est-à-dire en évaluant ces mêmes écarts de manière qualitative.
 Dans les modèles descriptifs dotés de nombreux indicateurs non résumables, tel que \simfeodal{}, la comparaison terme à terme entre des valeurs numériques est potentiellement possible, mais non ordonnable et ne peut donc déboucher sur un indicateur unique (voir \cnameref{par:indicateurs-simfeodal}, \cpageref{par:indicateurs-simfeodal}).
 De plus, les données empiriques qui permettraient de mener une comparaison sont trop lacunaires et incertaines pour être jugées suffisamment fiables pour évaluer le modèle.
 
 \subsubsection{Une démarche rigoureuse} Nous pensons toutefois que ces carences quantitatives peuvent être compensés par les connaissances expertes des différents thématiciens impliqués dans la construction et l'évaluation d'un modèle.
-Ainsi, dès lors que le processus d'évaluation est pensé en amont de son application, et qu'il est possible de parvenir à la création d'une grille d'analyse, c'est-à-dire à un protocole d'évaluation, il nous semble que la différence avec l'évaluation statistique est assez restreinte.
+Ainsi, dès lors que le processus d'évaluation est pensé en amont de son application, et qu'il est possible de parvenir à la création d'une grille d'analyse, c'est-à-dire à un protocole d'évaluation, il nous semble que la différence de \og validité\fg{} vis-à-vis de l'évaluation statistique se restreint fortement.
 Pour évaluer les modèles du type de \simfeodal{}, nous considérons dès lors qu'il est tout à fait possible de faire reposer cette démarche sur une évaluation experte, s'inscrivant dans les logiques de \textit{face validation}, et en particulier de sa composante d'évaluation des sorties (voir \cnameref{par:composantes-face-validation}, \cpageref{par:composantes-face-validation}).
 
 \subsubsection{Un nouveau terme ?} Dans la suite de cet ouvrage, nous nommerons cette approche \og \textbf{évaluation visuelle}\fg{}.
@@ -543,8 +560,8 @@ Le pendant anglophone, la \og \textit{visual evaluation}\fg{}, semble s'inscrire
 Dans l'usage qui en sera fait dans ce manuscrit, ce terme est forgé au regard de la \og \textit{face validation}\fg{} naturellement, et pourrait être confondu avec.
 Il s'agit toutefois de s'éloigner de l'aspect \og apparence\fg{} présent dans le terme -- qui insiste donc sur une validité de façade --, pour embrasser au contraire la méthode visuelle.
 Cette dernière a fait ses preuves -- dans de nombreux autres champs disciplinaires -- et constitue un pan non négligeable des méthodes d'analyse, et nous pensons donc adéquat d'en faire un usage argumenté dans le domaine de l'évaluation de modèles de simulations.
-On notera un usage proche de cette dernière, appliquée aux modèles aussi, mais statistiques cette fois-ci, visant à l'évaluation visuelle de modèles de \og \textit{Data Science}\fg{}.
-\textcite{eilers_its_2017} partagent le constat d'une utilité réelle de l'évaluation visuelle (intitulée \og Visual Model Evaluation\fg{} dans leur cas), et mettent une emphase particulière dans l'intérêt des intuitions que peuvent avoir les experts thématiques à la vue des résultats d'un modèle.
+On notera un usage proche de la \textit{face validation}, appliquée aux modèles aussi, mais statistiques cette fois-ci, visant à l'évaluation visuelle de modèles de \og \textit{Data Science}\fg{}.
+\textcite{eilers_its_2017}, à propos de modèles de \textit{machine learning}, partagent le constat d'une utilité réelle de l'évaluation visuelle (intitulée \og Visual Model Evaluation\fg{} dans leur cas), et mettent une emphase particulière dans l'intérêt des intuitions que peuvent avoir les experts thématiques à la vue des résultats d'un modèle.
 Pour ce faire, ils insistent sur l'intégration d'experts dans le processus d'évaluation, et sur le besoin de communications, lors de cette phase de travail, entre les modélisateurs et ces experts\footnote{
 	\og Integrating these expert groups [data scientists and domain experts] to follow a common objective is still a major challenge today for a successful data science project in the industry and therefore a suitable field for information systems research.
 	A collaborative analysis system addressing this issue should therefore focus on both aspects. It is important to most efficiently support human decision-makers with data-driven expert systems, and much research has been carried out in this area (Shim et al. 2002; Power 2008).
@@ -555,8 +572,11 @@ Pour ce faire, ils insistent sur l'intégration d'experts dans le processus d'é
 
 \subsubsection{Définir l'évaluation visuelle} Pour définir cette évaluation visuelle, nous repartirons de la définition de la \textit{face validation} sur laquelle cette méthode s'appuie.
 
-\paragraph{Définition.} Il s'agit d'évaluer, visuellement, la plausibilité du comportement d'un modèle à partir des données qu'il produit.
-Cette plausibilité peut être entendue comme la correspondance entre le système modélisé et le modèle du système, correspondance s'exprimant en comparant les données en sortie de simulation -- et en les agrégeant au besoin pour tenir compte de la nécessaire réplication
+\paragraph{Définition.} L'évaluation visuelle consiste à évaluer, visuellement, la plausibilité du comportement d'un modèle à partir des données qu'il produit.
+Cette plausibilité peut être entendue comme la correspondance entre le système modélisé et le modèle du système, correspondance s'exprimant en comparant les données en sortie de simulation\footnote{
+	L'utilisation de la \textit{face validation} pendant la durée de l'exécution des modèles, c'est-à-dire via l'inspection dynamique des comportements du modèle, n'est pas véritablement traitée dans cette thèse.
+	Ce choix, explicité dans la \cref{subsec:observation-a-posteriori}, n'invalide pas pour autant que l'évaluation visuelle proposée soit aussi menée, par exemple avec des modèles plus KIDS, \og en direct\fg{}, en fixant là aussi des critères spécifiques.
+} -- et en les agrégeant au besoin pour tenir compte de la nécessaire réplication
 \footnote{
 	Cet aspect est discuté dans les \cref{chap:chap1,chap:chap2,chap:chap6}.
 	En matière d'évaluation, tel que pointé par la majorité des auteurs cités dans cette sous-partie de chapitre, il est ainsi nécessaire de tenir compte de la variabilité d'un modèle, variabilité intrinsèque dans un modèle stochastique.
@@ -570,7 +590,10 @@ Il s'agit en effet plutôt d'ordonner différentes versions ou paramétrages d'u
 
 Un dernier point nous semble particulièrement appréciable dans ce recours à l'appréciation visuelle plutôt qu'à une mesure stricte de l'écart entre une situation estimée parfaite et une situation simulée.
 C'est la capacité, humaine, à estimer semblable des configurations spatiales qui seraient jugées très différentes par une méthode de calcul quelconque.
-Si l'on cherche par exemple à estimer l'écart entre un semis de point cible et un semis simulé, on peut mesurer l'écart comme, par exemple, une somme des écarts de chacun des points à celui qu'ils sont sensés représenter.
+Si l'on cherche par exemple à estimer l'écart entre un semis de point cible et un semis simulé, on peut mesurer l'écart comme, par exemple, une somme des écarts de chacun des points à celui qu'ils sont sensés représenter\footnote{
+	Il existe naturellement des méthodes d'analyse spatiale ou de géo-statistiques bien plus adaptées ou performantes.
+	Cet exemple n'a qu'un but de simplification.
+}.
 Un décallage minime, par exemple obtenu par translation horizontales de quelques dizaines de mètre sur un semis régional, engendrera alors une démultiplication des erreurs, alors même qu'un œil humain aurait jugé ces deux semis quasi-identiques.
 En terme de configuration spatiale, la quantification peut ainsi amener à des contres interprétations dans l'analyse.
 Dans le cadre d'un modèle comme \simfeodal{} où l'espace est important et qui plus est, théorique et aléatoire, et donc difficilement agrégeable (cf. \cref{chap:chap6}, \cref{subsec:genericite-donnees-simul}), le recours systématique à l'évaluation visuelle nous paraît alors indispensable.
@@ -598,24 +621,24 @@ De ce fait les résultats des simulations ne répondent pas toujours complèteme
 
 Si l'on a déjà décrit le principal objectif du modèle dans le chapitre précédent (celui de comprendre les mécanismes sous-jacents au processus de polarisation qui s'est déroulé entre 800 et 1100), il convient ici d'expliciter comment les résultats d'un tel processus peuvent être saisis.
 Ceux-ci sont en effet nombreux et hétérogènes, concernant aussi bien des concentrations de foyers paysans que l'émergence de pôles.
-Certains sont centraux, d'autres secondaires, et le modélisateur a des attentes relativement aux résultats qui devraient être obtenus en fin de simulation.
+Certains sont centraux, d'autres secondaires, mais les concepteurs du modèle ont des attentes spécifiques vis-à-vis de chacune des dynamiques produites par le modèle.
 La description précise de ces attentes se révèle importante dans le cadre du paramétrage -- et de l'ensemble des étapes de la vie du modèle -- de \simfeodal{}.
 
 Une telle description repose sur la construction d'\og{}indices empiriques\fg{} et d'\og{}indicateurs de sortie de simulation\fg{} qui vont permettre de rendre compte des résultats des simulations.
 Il s'agira d'exprimer les attentes sous formes de critères relatifs à ces indicateurs de sortie de simulation.
 
 Dans cette partie, on explicitera d'abord le sens que l'on prête à ces \og indices empiriques \fg{} et \og d'indicateurs de sortie de simulation\fg{}.
-Ces indices et indicateurs sont nombreux, certains sont multivariés, et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
+Ceux-ci prennent des formes diverses -- certains sont multivariés par exemple -- et il s'agira donc de présenter des méthodes visant à réduire la complexité de ces indicateurs de sortie, en adoptant une démarche proche de ce qui se fait en statistiques : réduction de dimensionnalité et/ou catégorisation et hiérarchisation de ces indicateurs.
 L'utilisation de ces méthodes permettra, seule, de décrire et qualifier le comportement du modèle \simfeodal{} tel qu'il a été décrit dans le chapitre précédent, avant d'en analyser les résultats par ce biais dans le \cref{chap:chap5} (\cref{subsec:resultats}).
 
 \subsection{Indices et indicateurs}\label{subsec:indices-indicateurs}
 
-On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique dont il est sensé rendre compte.
-Ces grands traits peuvent s'entendre de multiples manières, et se formaliser avec encore plus d'approches.
-Ici, nous avons souhaité proposer une dichotomie simple entre le domaine de l'empirique et celui de la simulation, en systématisant l'usage d'un vocabulaire qui est souvent employé de manière plurielle.
+%On attend d'un modèle, sans entrer encore dans le détail, qu'il reproduise au moins les grands traits de l'élément empirique dont il est sensé rendre compte.
+%Ces grands traits peuvent s'entendre de multiples manières, et se formaliser avec encore plus d'approches.
 Pour être en mesure d'évaluer la vraisemblance du comportement reproduit par le modèle sur le plan empirique, il est nécessaire de mettre en correspondance des éléments empiriques et des éléments issus de la simulation.
+Ici, nous avons souhaité proposer une dichotomie simple entre le domaine de l'empirique et celui de la simulation, en systématisant l'usage d'un vocabulaire qui est souvent employé de manière plurielle.
 Nous caractérisons ces éléments en deux grands ensembles :
-(1) \textbf{les indices empiriques}, éléments quantifiables ou au moins descriptibles émanant du domaine empirique, et (2) \textbf{les indicateurs de sortie}, variables informatiques produites par le modèle de simulation et devant pouvoir être comparés à chacun des indices empiriques.
+(1) \textbf{les indices empiriques}, éléments quantifiables ou au moins descriptibles émanant du domaine empirique, et (2) \textbf{les indicateurs de sortie}, données issues de variables informatiques produites par le modèle de simulation et devant pouvoir être comparés à chacun des indices empiriques.
 La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthétique, ces deux ensembles de mesures, explicitant le vocabulaire mobilisé dans cette partie.
 
 \begin{figure}[H]
@@ -637,6 +660,7 @@ La \cref{fig:schema_indices} reprend, sous forme de schéma ontologique synthét
 Dans cette figure, on représente au moyen d'une symétrie axiale la correspondance entre le \textbf{domaine empirique} et le \textbf{domaine de la simulation}.
 Les \textbf{indicateurs de sortie} sont donc la correspondance simulée des \textbf{indices} du domaine empirique.
 Indices et indicateurs de sortie sont catégorisés selon des \textbf{dimensions} (A, B, C) qui correspondent aux processus que l'on cherche à modéliser : la polarisation du système de peuplement, sa hiérarchisation, sa fixation, etc.
+Ils sont donc transverses aux entités modélisées, qui peuvent donner lieu à plusieurs dimensions selon le processus qu'elles produisent.
 Les dimensions sont donc composées\footnote{
 	Les losanges noirs marquent une relation de composition dans le formalisme UML, repris dans ce schéma.
 	La position du losange indique le sens de la relation : les indices sont composés d'ordres de grandeur et de formes stylisées.
@@ -657,7 +681,7 @@ Ces deux valeurs sont des indices empiriques, de type \og ordre de grandeur\fg{}
 Dans le modèle de simulation, on a un indicateur de sortie correspondant qui correspond au taux de foyers paysans isolés.
 Le taux de foyers paysans isolés en début de simulation est un indicateur numérique, de même que celui en fin de simulation.
 La forme de la courbe d'évolution du taux de foyers paysans isolés au cours de la simulation est un indicateur multi-dimensionnel : elle repose sur une succession d'indicateurs numériques que sont le relevé du taux à chaque pas de temps.
-Cette forme de courbe peut être évalué au regard de la forme stylisée, dans le domaine empirique, sur laquelle est s'appuie.
+Cette forme de courbe peut être évalué au regard de la forme stylisée, dans le domaine empirique, sur laquelle elle s'appuie.
 On sait que la part de l'habitat rural diminue régulièrement au cours du temps, et on évaluera donc, pour cette dimension (la polarisation), la capacité du modèle à reproduire un processus de polarisation semblable à celui observé par le biais de la forme stylisé \og diminution régulière de la part de l'habitat rural dispersé\fg{}.
 
 
@@ -665,23 +689,23 @@ On sait que la part de l'habitat rural diminue régulièrement au cours du temps
 
 Afin d'évaluer la capacité du modèle à reproduire un phénomène observé, il est nécessaire de disposer dans le domaine empirique, de \og points de repère\fg{}.
 Selon les modèles, ceux-ci peuvent revêtir de multiples formes et relever de l'ensemble des échelles spatiales et temporelles que l'on choisit de mettre en scène dans le modèle.
-Leur point commun est qu'ils doivent pouvoir être mesurés, au sens le plus large, c'est-à-dire être en capacité d'être reproduits et comparables avec d'autres mesures.
-Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits et non sur la précision de leur connaissance, cf. \cref{sssec:incertitude}.
+Leur point commun est qu'ils doivent pouvoir être estimés, au sens le plus large, c'est-à-dire être en capacité d'être reproduits et comparables avec d'autres mesures.
+Dans cette étude, on a décidé de qualifier ces points de repère d'\og\textbf{indices empiriques}\fg{} et de les regrouper en deux catégories basées sur la précision avec laquelle ils peuvent être décrits et non sur la précision des connaissances sur lesquels ils reposent, cf. \cref{sssec:incertitude}.
 La \cref{fig:schema_indices} illustre cette catégorisation entre la première catégorie -- les ordres de grandeur -- et la seconde -- les formes stylisées --.
 
 \paragraph{Ordres de grandeur.}
-La première catégorie est constituée d'\textbf{ordres de grandeurs} empiriques estimés -- avec une précision plus ou moins importante (\hl{cf. tableau 3 p. 317 du chap. TMD, à reproduire dans chap 2}).
-Certaines valeurs empiriques sont ainsi connues, que ce soit d'après des sources primaires ou secondaires, et peuvent ainsi constituer des indices.
+La première catégorie est constituée d'\textbf{ordres de grandeurs} empiriques estimés -- avec une précision plus ou moins importante (\hl{cf. tableau 3 p. 317 du chap. TMD, à reproduire en annexe}).
+Certaines valeurs empiriques sont connues, que ce soit d'après des sources primaires ou secondaires, et peuvent ainsi constituer des indices.
 Par exemple, on connaît avec quasi-certitude le nombre d'églises paroissiales de la région Touraine en 1100.
 D'autres valeurs empiriques sont en revanche issues d'estimations.
 Tel est le cas, par exemple, du taux de foyers paysans isolés en fin de période.
 Celui-ci ne peut être renseigné par des sources primaires et il a donc été nécessaire de l'estimer à partir de sources secondaires et en menant des extrapolations.
-Il est cependant possible de construire des indicateurs de sortie de simulation offrant une correspondance presque exacte avec ces différents indices observés ou estimés (cf. \cnameref{par:correspondance}, p. \pageref{par:correspondance}).
-Il est dès lors possible de mener une comparaison entre données observées/estimées et données simulées.
-Ces ordres de grandeur peuvent ainsi participer à l'évaluation du comportement du modèle simulé.
+%Il est cependant possible de construire des indicateurs de sortie de simulation offrant une correspondance presque exacte avec ces différents indices observés ou estimés (cf. \cref{subsubsec:indicateurs-sortie}, p. \pageref{par:correspondance}).
+%Il est dès lors possible de mener une comparaison entre données observées/estimées et données simulées.
+%Ces ordres de grandeur peuvent ainsi participer à l'évaluation du comportement du modèle simulé.
 
 \paragraph{Faits et formes stylisés.}
-La seconde catégorie d'indices empiriques est moins précise et ne repose pas sur une valeur observable ou estimable, mais plutôt sur la connaissance experte d'un phénomène.
+La seconde catégorie d'indices empiriques est moins formalisable et ne repose pas sur une valeur observable ou estimable, mais plutôt sur la connaissance experte d'un phénomène.
 Il s'agit des \og \textbf{faits stylisés}\fg{}\footnote{
 	Définis ainsi par \autocite{livet2014diversite}: \og
 	Un ``fait stylisé'' est une présentation simplifiée (i.e. taux, ratio ou écart, structure spatiale) d'une régularité empirique sur l'observation de laquelle il y a un large accord.
@@ -690,7 +714,9 @@ Il s'agit des \og \textbf{faits stylisés}\fg{}\footnote{
 	2) on opère quelques simplifications qui permettent d'inclure formellement ces relations dans des modèles ;
 	3) une fois admis que ces simplifications ne faussent pas trop les choses, on érige ces relations à la fois simplificatrices et formalisables au rang de `` faits stylisés'', dont les concepts théoriques doivent rendre compte.\fg{}
 }, qui rendent davantage compte d'une tendance dans la forme d'une relation ou d'une organisation que d'un ordre de grandeur.
-On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand on qualifie la tendance des systèmes de peuplement à se hiérarchiser.
+On fait un large usage de ces faits stylisés en économie, mais aussi en géographie, par exemple quand on qualifie la tendance des systèmes de peuplement à se hiérarchiser\footnote{
+	Voir par exemple la liste des \og faits stylisés de la dynamique des systèmes de villes\fg{} dressée dans \textcite[79-80]{schmitt_modelisation_2014}.
+}.
 La valeur de la pente associée à la courbe rang-taille d'un système de villes a ainsi été décrite comme tendant vers $1$ à mesure que le système évolue et se hiérarchise (\cite{berry_city_2012}, in \cite[\S9]{pumain_multilevel_2015})\footnote{
 	Notons que les auteurs de \textcite{pumain_multilevel_2015} nuancent cette affirmation, en montrant empiriquement que les pentes convergent vers des valeurs supérieures ou inférieures à 1 en fonction de l'ancienneté de l'intégration des systèmes de ville considérés \autocite{cura_old_2017}.
 }.
@@ -704,7 +730,7 @@ Dans notre cas d'étude, les faits stylisés sur lesquels on s'appuiera seront d
 Notons que ces formes stylisées relèvent le plus souvent d'une agrégation ou d'une composition d'ordres de grandeurs (comme figuré dans la \cref{fig:schema_indices}) :
 l'évolution dans le temps de la population, par exemple, correspond à un vecteur d'ordres de grandeur, c'est-à-dire à une succession de mesures de la quantité de population pour chaque date étudiée.
 
-\subsubsection{Les indicateurs de sortie de simulation}
+\subsubsection{Les indicateurs de sortie de simulation \label{subsubsec:indicateurs-sortie}}
 
 Les ordres de grandeur et formes stylisées évoqués  ci-dessus relèvent du domaine empirique, c'est-à-dire qu'on dispose de données ou de connaissances d'experts à leur sujet.
 Afin de pouvoir les mobiliser pour évaluer la capacité du modèle à reproduire le phénomène d'intérêt, il est nécessaire de définir des \textbf{indicateurs de sortie} dans le modèle de simulation, c'est-à-dire des variables informatiques que l'on enregistrera durant l'exécution du modèle et que l'on pourra ensuite comparer aux indices empiriques définis.
@@ -717,7 +743,7 @@ Chaque indice empirique doit ainsi se voir correspondre un indicateur de sortie 
 \paragraph{Correspondance entre indicateurs de sortie de simulation et indices empiriques.}\label{par:correspondance}
 
 La correspondance entre indicateurs et indices ne correspond pas toujours à une équivalence exacte.
-En effet, si certains indicateurs peuvent trouver un équivalent strict dans le domaine empirique-- le nombre de châteaux connus à chaque date a un sens strictement équivalent au nombre de châteaux simulés par le modèle --, d'autres correspondances sont moins directes.
+En effet, si certains indicateurs peuvent trouver un équivalent strict dans le domaine empirique -- le nombre de châteaux connus à chaque date a un sens strictement équivalent au nombre de châteaux simulés par le modèle --, d'autres correspondances sont moins directes.
 
 Il peut s'agir de correspondances ayant trait aux mêmes éléments de base et le passage de l'indicateur à l'indice résulte alors d'une simple conversion.
 Par exemple, du point de vue empirique, on connaît à peu près les populations de la région étudiée au début et à la fin de la période.
@@ -734,7 +760,9 @@ Dans le domaine du modèle, en revanche, on a défini un indicateur \og proxy\fg
 De cette manière, on peut observer précisément en sortie de simulation la hiérarchie implicite entre les seigneurs reproduite par le modèle, avec une quantification de leurs puissances respectives.
 Ces éléments peuvent être comparés aux connaissances empiriques sur ces rapports de puissance entre les seigneurs à différents moments de l'époque féodale.
 
-Les correspondances entre indicateurs de sortie et indices empiriques sont ainsi de nature multiple, reflétant différents niveaux de proximité entre le concept mobilisé dans le modèle et ce qui est observable dans le domaine empirique :
+Les correspondances entre indicateurs de sortie et indices empiriques sont ainsi de nature multiple, reflétant différents niveaux de proximité entre le concept mobilisé dans le modèle et ce qui est observable dans le domaine empirique\footnote{
+		\citeauthor{varenne2013modeles} (\citeyear{varenne2013modeles}, p.~18, d'après \cite[142]{rey-coyrehourcq_plateforme_2015}) utilise le terme d'\og{}engagement ontologique\fg{} pour désigner le rapport à l'empirique de chacune des hypothèses de modélisation.
+} :
 	les châteaux, entités d'intérêt dans le modèle, ont un équivalent direct dans le domaine empirique (il s'agit d'entités facilement observables et des données historiques les concernant sont disponibles) alors que la puissance militaire des seigneurs, élément moteur dans le modèle, a conduit à utiliser une variable dans le modèle pour laquelle on ne dispose pas d'observations empiriques.
 
 La création d'indicateurs de sortie correspondant aux indices empiriques permet donc de quantifier une information qui n'est pas forcément aisément quantifiable dans le domaine empirique.
@@ -761,7 +789,7 @@ Ces indicateurs composites et synthétiques résultent d'une quantification des 
 
 \paragraph{Quels types d'indicateurs pour SimFeodal ?}\label{par:indicateurs-simfeodal}
 
-\simfeodal{} n'est pas adapté à de tels indicateurs, parce qu'une large partie des faits stylisés et ordres de grandeur mobilisés proviennent de connaissances expertes, et les thématiciens qui les ont consolidées rechignent à créer de tels indicateurs composites.
+\simfeodal{} n'est pas adapté à de tels indicateurs, parce qu'une large partie des faits stylisés et ordres de grandeur mobilisés proviennent directement de connaissances expertes, qu'il est difficile de les préciser outre-mesure, et que les thématiciens qui les ont consolidées sont peu enclins à créer de tels indicateurs composites.
 Ces derniers demandent en effet de pondérer précisement l'importance de chacun des indicateurs par rapport aux autres.
 Pour pouvoir pondérer cette importance, il faudrait de plus que les différents indices empiriques mobilisés présentent le même niveau de certitude, et que les indicateurs de sortie aient des variabilités similaires.
 Cela n'est le cas ni des indices empiriques sur lesquels \simfeodal{} s'appuie, ni des indicateurs de sortie que le modèle produit.
@@ -782,7 +810,7 @@ Il est en effet bien plus simple d'analyser quelques indicateurs composites plut
 \subsection{Hiérarchiser et catégoriser les indicateurs \label{subsec:hierarchiser-indicateurs}}
 
 \simfeodal{} s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels.
-Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, le même niveau de précision sur les phénomènes modélisés.
+Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, la même capacité à rendre compte des phénomènes modélisés.
 À chaque changement dans le modèle, pour une évaluation complète de la capacité de cette version à reproduire les indices empiriques, il faudrait donc observer et analyser chacun de ces nombreux et divers indicateurs.
 Dans le contexte du paramétrage d'un modèle s'appuyant sur une logique itérative et incrémentielle (voir \cref{enc:incrementalite-indicateurs}), on imagine bien que cela n'est pas possible :
 le nombre d'indicateurs est bien trop élevé pour avoir rapidement une vision globale de la qualité de représentation du modèle.
@@ -806,8 +834,8 @@ Pour l'évaluation de \simfeodal{}, nous ne tiendrons compte de l'incertitude de
 
 \subsubsection{Catégoriser les indicateurs : définir des dimensions d'analyse}
 En présence de plus d'une quarantaine d'indicateurs, il est nécessaire, \textit{a minima}, d'organiser leur analyse.
-On a vu qu'il n'était pas justifié de mener cet ordonnancement à partir des propriétés intrinsèques des indicateurs du modèle.
-Au contraire, et cela nous semble plus adapté pour un modèle à forte visée exploratoire et heuristique, la hiérarchisation des sorties du modèle doit suivre la hiérarchie implicite qui structure les hypothèses et objectifs du modèle en lui-même.
+On a vu qu'il n'était pas justifié de mener cet ordonnancement à partir des propriétés intrinsèques (entités représentées, type d'indicateur, précision de la connaissance, etc.) des indicateurs du modèle.
+Au contraire, et cela nous semble plus adapté pour un modèle à forte visée exploratoire et heuristique, la hiérarchisation des sorties du modèle doit suivre la hiérarchie implicite qui structure les hypothèses et objectifs du modèle en lui-même, c'est-à-dire une hiérarchie thématique.
 Ces hypothèses et objectifs sont multiples dans \simfeodal{}, et dès lors, une hiérarchie globale ne peut être définie.
 Il convient donc de catégoriser les indices empiriques -- et les indicateurs de sortie de simulation leur correspondant --, avant de chercher à hiérarchiser ces indicateurs de manière globale.
 La hiérarchisation des indicateurs se fera donc relativement à chacune de ces catégories.
