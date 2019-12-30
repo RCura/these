@@ -123,6 +123,7 @@ isbn=false,
 doi=true,
 url=true,
 date=year,
+uniquename=false, % sinon, ajoute prénom quand plusieurs auteurs ont le même nom
 sortcites=false,  % Ne pas changer l'ordre des citations multiples
 sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 %backref=true
@@ -303,6 +304,15 @@ sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 \usepackage{blindtext}
 
 \newcommand{\simfeodal}{\textsc{SimFeodal}}
+\newcommand{\simedb}{\textsc{SimEDB}}
 
 
 \emergencystretch=1cm
+
+
+%%%%%%% ANNNEXES %%%%%%%
+\usepackage[toc,title]{appendix}
+\renewcommand{\appendixtocname}{Annexes}
+\renewcommand{\appendixpagename}{Annexes} 
+\crefname{appchap}{annexe}{annexes}
+\Crefname{appchap}{Annexe}{Annexes}
