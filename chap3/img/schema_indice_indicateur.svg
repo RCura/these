@@ -23,7 +23,7 @@
    inkscape:version="0.92.4 (unknown)"><metadata
    id="metadata489"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
    id="defs487">
 		
 	
@@ -452,15 +452,15 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="1920"
+   inkscape:window-width="1859"
    inkscape:window-height="1016"
    id="namedview485"
    showgrid="false"
    inkscape:zoom="0.88529019"
-   inkscape:cx="401.64006"
-   inkscape:cy="233.5405"
-   inkscape:window-x="0"
-   inkscape:window-y="27"
+   inkscape:cx="282.70139"
+   inkscape:cy="124.45669"
+   inkscape:window-x="61"
+   inkscape:window-y="1107"
    inkscape:window-maximized="1"
    inkscape:current-layer="Calque_1"
    units="mm"
@@ -520,6 +520,7 @@
      x="555.56354"
      id="tspan1193"
      sodipodi:role="line">Domaine de la simulation</tspan></text>
+
 
 <g
    clip-path="none"
@@ -1233,7 +1234,7 @@
      sodipodi:role="line"
      id="tspan2071"
      x="466.96146"
-     y="320.17188">Indicateur </tspan><tspan
+     y="320.17188">Indicateurs </tspan><tspan
      sodipodi:role="line"
      id="tspan2073"
      x="465.4823"
@@ -1241,7 +1242,8 @@
      sodipodi:role="line"
      id="tspan2075"
      x="465.4823"
-     y="346.83853">dimensionnel</tspan></text>
+     y="346.83853">dimensionnels</tspan></text>
+
 
 
 
@@ -1269,11 +1271,12 @@
      sodipodi:role="line"
      id="tspan2036"
      x="465.15939"
-     y="94.766144">Indicateur</tspan><tspan
+     y="94.766144">Indicateurs</tspan><tspan
      sodipodi:role="line"
      id="tspan2038"
      x="465.15939"
-     y="108.09948">numérique</tspan></text>
+     y="108.09948">numériques</tspan></text>
+
 
 
 
@@ -1416,12 +1419,13 @@
      id="tspan1318"
      sodipodi:role="line"
      style="line-height:0px"
-     dy="4">Indicateur</tspan><tspan
+     dy="4">Indicateurs</tspan><tspan
      y="225.06136"
      x="348.90012"
      id="tspan1320"
      sodipodi:role="line"
      style="line-height:0px">de sortie</tspan></text>
+
 
 
 
@@ -1451,6 +1455,7 @@
 
 
 
+
 				</g><rect
      transform="translate(140,745.51969)"
      style="clip-rule:evenodd;opacity:0;fill-rule:evenodd"
@@ -1469,6 +1474,7 @@
    font-size="12"
    x="414.21649"
    y="185.4063">A</text>
+
 
 
 
@@ -1497,6 +1503,7 @@
 
 
 
+
 				</g><rect
      transform="translate(140,745.51969)"
      style="clip-rule:evenodd;opacity:0;fill-rule:evenodd"
@@ -1515,6 +1522,7 @@
    font-size="12"
    x="413.7803"
    y="251.55659">C</text>
+
 
 
 
@@ -1549,11 +1557,12 @@
      y="285.79324"
      x="397.58591"
      id="tspan1306"
-     sodipodi:role="line">Forme</tspan><tspan
+     sodipodi:role="line">Formes</tspan><tspan
      y="299.12659"
      x="397.58591"
      id="tspan1308"
-     sodipodi:role="line">stylisée</tspan></text>
+     sodipodi:role="line">stylisées</tspan></text>
+
 
 <path
    clip-path="url(#SVGID_4_-0)"
@@ -1577,12 +1586,13 @@
      y="134.80583"
      x="398.76556"
      id="tspan1302"
-     sodipodi:role="line">Ordre de </tspan><tspan
+     sodipodi:role="line">Ordres de </tspan><tspan
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
      y="148.13916"
      x="397.28641"
      id="tspan1304"
      sodipodi:role="line">grandeur</tspan></text>
+
 
 <path
    mask="none"
@@ -1766,12 +1776,20 @@
    font-size="12"
    id="text32-0"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
-   x="255.90637"
-   y="962.50098"><tspan
+   x="305.14151"
+   y="953.151"><tspan
      sodipodi:role="line"
      id="tspan1310-4"
-     x="255.90637"
-     y="962.50098">Indice empirique</tspan></text>
+     x="305.14151"
+     y="953.151"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     dy="4">Indices</tspan><tspan
+     sodipodi:role="line"
+     x="305.14151"
+     y="969.81769"
+     id="tspan1046"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">empiriques</tspan></text>
+
 
 </g></g><text
    transform="rotate(90)"
@@ -1781,12 +1799,14 @@
    x="920.77032"
    y="-216.50529">Dimensions</text>
 
+
 <text
    font-size="12"
    id="text436-6"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
    x="232.37378"
    y="930.92596">A</text>
+
 
 <text
    font-size="12"
@@ -1795,12 +1815,14 @@
    x="232.37378"
    y="963.36438">B</text>
 
+
 <text
    font-size="12"
    id="text448-9"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
    x="232.37378"
    y="997.07629">C</text>
+
 
 </g><text
    y="19.423347"
@@ -1812,4 +1834,5 @@
      id="tspan1069"
      x="155.30838"
      y="19.423347">Domaine empirique</tspan></text>
+
 </svg>
