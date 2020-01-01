@@ -8,10 +8,11 @@
 {\large Version \hl{2019-01-01}}
 \end{center}
 \begin{itemize}
-	\item 19/05/2019 : Reprises Lena + Envoi à Hélène
-	\item 24/10/2019 : Reprises Hélène + Envoi à Anne \& Lucie
-	\item 27/10/2019 : Correction des mockups qui produisaient des pdf buggés
+%	\item 19/05/2019 : Reprises Lena + Envoi à Hélène
+%	\item 24/10/2019 : Reprises Hélène + Envoi à Anne \& Lucie
+%	\item 27/10/2019 : Correction des mockups qui produisaient des pdf buggés
 	\item 31/12/2019 : reprise Lucie
+	\item 01/01/2020 : reprise Anne + conclu + après-propos + intro
 \end{itemize} 
 \setcounter{minitocdepth}{2}
 \minitoc
@@ -20,20 +21,24 @@
 
 \section*{Introduction}
 \addcontentsline{toc}{section}{\protect\numberline{}Introduction}
-%TODO : Ecrire introduction
-\hl{À écrire une fois que le chapitre aura été découpé.}\\
--> Définir notamment la démarche :
-\begin{compactitem}
-	\item contraintes générales
-	\item + type explo SimFeodal
-	\item -> choix méthodos
-	\item + spécificités SimFeodal
-	\item -> choix méthodos/techniques
-\end{compactitem}
-		
 
+Dans le chapitre précédent, nous avons proposé et explicité une démarche d'évaluation de modèles basée sur une analyse qualitative d'indicateurs de sortie.
+Nous avons insisté sur le besoin de mener cette \og évaluation visuelle\fg{} de manière fréquente et itérative, tout au long du cycle de développement du modèle.
+Au regard de la quantité d'indicateurs de sortie de simulation mobilisés pour l'évaluation de \simfeodal{} (voir \cref{subsec:indicateurs-simfeodal}), cette tâche requiert de disposer d'un environnement adapté facilitant l'exécution de cette évaluation visuelle.
 
-\clearpage
+Dans ce chapitre, nous présentons la plateforme développée en réponse à ces besoins, \simedb{}.
+Cette plateforme dédiée à l'exploration interactive de données spatio-temporelles issues de simulation, a été conçue spécifiquement pour le cas des données issues de \simfeodal{}.
+Les raisonnements et choix effectués pour la concevoir et la construire, que ce soit en matière de structuration des données ou d'interface graphique finale, sont toutefois génériques et pourraient ainsi être reproduits dans d'autres contextes d'exploration de données spatio-temporelles.
+Nous avons dès lors choisi de présenter, dans ce chapitre, un raisonnement didactique, présentant à chaque fois les contraintes spécifiques imposées par les données issues de \simfeodal{}, les replaçant dans un contexte plus général, et exposant une large partie des solutions possibles pour dépasser ces contraintes.
+Ce n'est qu'à l'issu de cet exposé des possibles que nous présentons et justifions les choix, méthodologiques et techniques, qui ont été fait pour aboutir à la plateforme \simedb.	
+
+Ce chapitre, plus technique que les précédents, est organisé en quatre parties qui suivent chacune cette forme de présentation et alternent entre une perspective consacrée aux données et une perspective dédiée à leur exploration.
+La première partie (\cref{sec:sorties-simfeodal}) présente ainsi les contraintes, notamment en termes de masses, liées à l'enregistrement des données produites par un modèle de simulation stochastique, descriptif et exploratoire.
+Dans un second temps (\cref{sec:explorer-sorties-simfeodal}), nous nous interrogeons sur la manière la plus appropriée de mobiliser ces données, c'est-à-dire d'organiser les indicateurs de sortie qui en sont issus dans le but d'explorer le comportement de \simfeodal{} et de le comparer au travers des différentes expériences et versions de ce modèle.
+C'est aussi l'occasion de retracer l'historique des différentes pistes qui ont été suivies dans le cadre de cette thèse pour aboutir à la plateforme d'exploration \simedb{}.
+Les deux dernières parties sont consacrées à une présentation des besoins et contraintes techniques rencontrées pour la construction en tant que telle d'une telle plateforme d'exploration et pour que celle-ci soit aussi adaptée que possible aux besoins de ses utilisateurs, le groupe de travail qui a conçu et construit \simfeodal{}.
+Ces besoins et contraintes sont présentés selon qu'ils portent sur la nécessaire organisation des données (\cref{sec:organiser-donnees}), ou sur la plateforme interactive qui interroge ces données et permet d'en générer les indicateurs de sortie qui seront évalués (\cref{sec:SimEDB}).
+
 \section[Capter les sorties de SimFeodal]{{Capter les sorties de SimFeodal}%
 	\sectionmark{Capter les sorties}}\label{sec:sorties-simfeodal}
 \sectionmark{Capter les sorties}
@@ -74,11 +79,11 @@ On obtiendrait ainsi en sortie de simulation un tableau contenant 20\footnote{
 Dans le cadre d'un modèle exploratoire, il est très fréquent de faire évoluer les indicateurs au cours du cycle de vie du modèle.
 Au fur et à mesure que le calibrage d'un modèle progresse, par exemple, on peut chercher à raffiner les indicateurs utilisés.
 Les indicateurs utilisés au départ peuvent alors ne plus montrer assez de variabilité entre des versions très proches de modèles.
-En effet, quand l'ajustement des données produites par la simulation aux objectifs empiriques s'améliore, il peut être difficile de départager plusieurs versions concurrentes d'un modèle.
+En effet, à mesure que le modèle s'améliore, il peut être difficile d'en départager plusieurs versions concurrentes.
 On peut alors être amené à créer de nouveaux indicateurs, qui donneront une information plus détaillée sur l'un des résultats de simulation.
 
 Cet exemple illustre le cas des ajouts d'indicateurs de sorties, mais on peut aussi être confronté à des modifications des indicateurs existants.
-Dans \simfeodal{}, par exemple, le nombre de paroissiens moyen à chaque pas de temps peut être un indicateur utile au départ, mais on peut finalement lui préférer la médiane si les nouvelles étapes de paramétrage du modèle en augmentent la variabilité.
+Dans \simfeodal{}, par exemple, le nombre moyen de paroissiens à chaque pas de temps peut être un indicateur utile au départ, mais on peut finalement lui préférer la médiane si les nouvelles étapes de paramétrage du modèle en augmentent la variabilité.
 
 Les indicateurs peuvent donc évoluer au cours du temps de vie du modèle (cf. \cref{enc:incrementalite-indicateurs}), ce qui rend plus compliquée la mise en comparaison des différentes simulations.
 Avec une structure de données fixe et agrégée, l'introduction de nouveaux indicateurs ou la modification des indicateurs existants nécessiteraient alors de ré-exécuter systématiquement toutes les simulations précédentes pour obtenir les nouvelles valeurs souhaitées -- une situation qu'il faut à tout prix éviter au risque d'accroître excessivement le nombre de simulations.
@@ -109,7 +114,7 @@ Dans le cas des paroisses, le volume de données résultant reste contenu : on o
 	Les identifiants de la simulation (nom, graine aléatoire), le pas de temps, l'identifiant de la paroisse, puis les différents attributs et enfin la géométrie stockée dans une colonne textuelle.
 }.
 L'enregistrement systématique de l'état de chaque agent à chaque pas de temps est toutefois bien plus lourd dans le cas d'autres agents, par exemple les foyers paysans.
-Il est en effet nécessaire d'enregistrer les attributs de chacun d'entre eux pour être en mesure d'étudier les liens entre les valeurs de satisfactions et les choix de déplacement, ou encore d'observer la composition précise de la distribution des satisfactions. 
+Il est en effet nécessaire d'enregistrer les attributs de chacun d'entre eux pour être en mesure d'étudier les liens entre les valeurs de satisfaction et les choix de déplacement, ou encore d'observer la composition précise de la distribution des satisfactions. 
 Avec $4000$ foyers paysans au minimum à chaque pas de temps, les données changent d'ordre de grandeur\footnote{
 	$20_{\text{\tiny ~[pas de temps]}} \times 4000_{\text{\tiny ~[foyers paysans]}} \approx 80~000$ lignes pour une exécution du modèle.
 } : chaque simulation requiert de générer un fichier contenant des dizaines de milliers de lignes, pour un total, pour cet unique fichier, d'une dizaine de mégaoctets occupés.
@@ -140,7 +145,7 @@ En définitive, les objectifs d'analyse et d'interprétation que nous nous somme
 Enregistrer l'ensemble des variables d'un modèle est aisé dans le cas d'un modèle théorique simple, par exemple dans le cas d'un modèle comme celui de Schelling \autocite{schelling_dynamic_1971}.
 Cela se complique quand il s'agit d'enregistrer les variables d'un modèle plus complexe comme \simfeodal{}.
 Celui-ci requiert en effet bien plus de variables globales, pour représenter l'état du système dans son ensemble à chaque instant.
-Surtout, \simfeodal{} est un modèle qui voit interagir plusieurs sortes d'entités, chacune relatives à différents niveaux de granularité spatiale et sociale.
+Surtout, \simfeodal{} est un modèle qui voit interagir plusieurs sortes d'entités, chacune relative à différents niveaux de granularité spatiale et sociale.
 Afin d'avoir tous les éléments en main une fois la simulation achevée, il est donc nécessaire d'enregistrer l'ensemble des variables non seulement globales, mais aussi afférentes à chacun des types d'agents.
 D'un unique tableau de données exhaustif en sortie, on passe donc à plusieurs tableaux, dont les variables respectives seront propres à chaque type d'agent.
 
@@ -189,7 +194,7 @@ Dans le cas de ce mécanisme, un foyer paysan mobile se déplacera selon une pro
 L'existence d'une probabilité implique, par définition, qu'il y a aléa
 Même avec une forte satisfaction --- $99\%$ par exemple ---, il reste $1\%$ de chance qu'un foyer se déplace, ce qui, sur un grand nombre de tirages (chaque foyer paysan, à chaque pas de temps), aboutit à une probabilité de réalisation non négligeable.
 Cette probabilité de réalisation sera encore supérieure pour des foyers paysans ayant des niveaux de satisfaction légèrement moindre mais cependant globalement très élevés, supérieurs à $90\%$ par exemple.
-Les comportements issus de ces probabilités extrêmement faibles constitueront néanmoins des résultats contre-intuitifs dans le modèle : ce seront des \textit{outliers} qu'il sera nécessaire d'identifier comme tels dans l'analyse des sorties du modèle.
+Les comportements issus de ces probabilités extrêmement faibles constitueront néanmoins des résultats contre-intuitifs dans le modèle : ce seront des \textit{outliers} (cas singuliers) qu'il sera nécessaire d'identifier comme tels dans l'analyse des sorties du modèle.
 %En analysant les sortie du modèle, on aura donc la présence d'\textit{outliers}, qu'il sera important d'isoler.
 %Ils présenteront en effet des comportements contre-intuitifs puisque résultant d'une probabilité extrêmement faible.
 L'aléa a donc un poids important dans ce type de mécanisme.
@@ -197,7 +202,8 @@ L'aléa a donc un poids important dans ce type de mécanisme.
 De manière plus globale, par ailleurs, l'aléa est en fait au cœur de la conception du modèle \simfeodal{}, puisque l'ordre d'exécution, c'est-à-dire l'ordre dans lequel les agents sont appelés pour exécuter leurs mécanismes, est aléatoire.
 Or, l'ordre d'exécution a un impact important sur les indicateurs de sortie de simulation, sans que cet impact puisse être caractérisé au moyen d'indicateurs agrégés.
 Par exemple, les seigneurs peuvent créer des châteaux, sous condition de puissance (cf. \cref{meca-chateaux}).
-Pour créer ces châteaux, il faut que des agrégats soient \og disponibles\fg{}, c'est-à-dire ne comportent pas de château pré-existant à une certaine distance. Cette contrainte devient rapidement le facteur principal de la limitation de l'apparition de châteaux.
+Pour créer ces châteaux, il faut que des agrégats soient \og disponibles\fg{}, c'est-à-dire ne comportent pas de château pré-existant à une certaine distance.
+Cette contrainte devient rapidement le facteur principal de la limitation de l'apparition de châteaux.
 Si un seigneur est plus souvent que les autres \og appelé\fg{} en premier pour exécuter ce mécanisme, il pourra profiter des nouveaux agrégats disponibles pour créer ses châteaux.
 À force de création de châteaux, il sera relativement plus puissant, et pourra donc créer d'autant plus de châteaux relativement aux autres seigneurs.
 Il y aura donc une hiérarchie forte dans le nombre de châteaux possédés par seigneur.
@@ -210,7 +216,7 @@ En corollaire, le comportement de chaque agent serait régulé par tant d'états
 Avec ces considérations, on pourrait justifier la robustesse probable des différentes exécutions de \simfeodal{}.
 
 \simfeodal{} n'est toutefois pas simplement un modèle stochastique, mais avant tout, un modèle complexe, c'est-à-dire s'inscrivant dans le champs des systèmes complexes.
-Sans entrer ici dans les détails des implications et raisons de ceci (voir l'analyse de sensibilité, \cref{sec:ana-sensib}), on peut simplement retenir qu'un modèle tel que \simfeodal{} est extrêmement sensible aussi bien aux conditions initiales qu'aux différents tirages aléatoires .
+Sans entrer ici dans les détails des implications et raisons de ceci (voir l'analyse de sensibilité, \cref{sec:ana-sensib}), on peut simplement retenir qu'un modèle tel que \simfeodal{} est extrêmement sensible aussi bien aux conditions initiales qu'aux différents tirages aléatoires.
 
 À titre d'illustration, on peut s'appuyer sur un exemple caricatural mais possible : à l'initialisation, tous les foyers paysans, placés aléatoirement dans l'espace, seraient concentrés dans un espace restreint.
 Seul un énorme agrégat émergerait donc, qu'aucun pôle ne serait dès lors susceptible de diviser.
@@ -225,7 +231,7 @@ De plus, cet exemple concerne uniquement une configuration initiale qui présent
 Plus généralement, il existe un grand nombre de situations initiales potentielles éloignées de l'empirique et même du vraisemblable.
 En outre, des situations aberrantes peuvent apparaître à toute étape de la simulation, et déformer les tendances observées dans les indicateurs de sortie du modèle.
 Au delà de l'initialisation, elles peuvent être issues de tirages aléatoires particulièrement défavorables, ou encore apparaître suite à une succession d'événements improbables qui s'auto-renforceraient.
-Pour distinguer ces réalisations aberrantes de ce que l'on pourrait caractériser d'une tendance normale, il est nécessaire de multiplier les réplications, afin de constituer un contexte suffisant pour isoler ces événements anormaux.
+Pour distinguer ces réalisations aberrantes de ce que l'on pourrait caractériser d'une tendance normale, il est nécessaire de multiplier les réplications, afin de constituer un contexte suffisant pour isoler ces événements anormaux mais pas impossibles.
 
 \paragraph{Enregistrement des réplications.}
 
@@ -266,15 +272,15 @@ En matière de stockage, il ne s'agit jamais que de quelques gigaoctets de donn�
 }.
 
 Enfin, on n'a présenté ici que les expérimentations issues des étapes de paramétrage.
-Les phases suivantes, visant à l'exploration du comportement du modèle (analyse de sensibilité, calibration\ldots), demandent d'exécuter, et donc d'enregistrer, un nombre encore plus important de simulations.
+Les phases suivantes, visant à l'exploration du comportement du modèle (analyse de sensibilité, calibration, etc.), demandent d'exécuter, et donc d'enregistrer, un nombre encore plus important de simulations.
 
 \subsection{Des données aux indicateurs}\label{subsec:donnees-indicateurs}
 
-Dans l'ensemble, l'enregistrement et la sauvegarde des données issues de simulations constituent pour les modèles de simulations basés sur de nombreux agents et mécanismes, et en particulier pour \simfeodal{}, une contrainte importante vis-à-vis de l'exploration du comportement de ces modèles.
+Dans l'ensemble, l'enregistrement et la sauvegarde des données issues de simulations constituent pour les modèles de simulation basés sur de nombreux agents et mécanismes, et en particulier pour \simfeodal{}, une contrainte importante vis-à-vis de l'exploration du comportement de ces modèles.
 
 \paragraph{Analyser une masse de données.}
 La masse de données en sortie est impressionnante et requiert dès lors, d'un point de vue technique, d'utiliser des outils adaptés à la manipulation de grands jeux de données.
-Cela exclut de fait l'outillage habituel et accessible de la géographie quantitative, ne laissant par exemple pas la possibilité d'utiliser les outils à interface graphique classiques.
+Cela exclut de fait l'outillage habituel et accessible de la géographie quantitative, ne laissant par exemple pas la possibilité d'utiliser les outils classiques à interface graphique .
 Au contraire, face à des données de cet ordre, seules des solutions statistiques, basées sur des analyses en ligne de commande, peuvent être mobilisées.
 Ces solutions doivent en plus être appuyées par des capacités de calculs importantes, sans toutefois justifier encore l'usage de technologies de calcul intensif\footnote{
 	Le \og \textit{High-Performance Computing}\fg{} (HPC) par exemple, mobilisé pour l'étude de données plus massives, c'est-à-dire trop importantes pour être analysées sur un unique ordinateur ou serveur.
@@ -301,12 +307,11 @@ Le choix ayant été fait de mener une comparaison visuelle (\cref{subsec:eval-v
 En sus de la contrainte de l'enregistrement et de la production des indicateurs, le verrou majeur à l'exploration du comportement de \simfeodal{} est donc la simple capacité à visualiser et à explorer l'ensemble des indicateurs de sortie.
 Cette visualisation doit pourtant être rendu accessible y compris pour un auditoire non habitué à la manipulation de nombreuses données et sorties quantitatives.
 
-\clearpage
 \section[Comment explorer les sorties de SimFeodal ?]{Comment explorer les sorties de SimFeodal ?%
 	\sectionmark{Explorer les sorties}}\label{sec:explorer-sorties-simfeodal}
 
 Pour évaluer de manière approfondie une expérience (voir \cref{tab:tab-accroissement}) d'un modèle tel que \simfeodal{}, il est nécessaire de passer en revue de nombreux indicateurs de sortie de simulation.
-Cette évaluation ne vise pas à produire une \og note\fg{} unique et synthétique pour chaque sortie, mais plutôt à tester la capacité de l'expérience à reproduire les dynamiques que le modèle chercher à reproduire.
+Cette évaluation ne vise pas à produire une \og note\fg{} unique et synthétique pour chaque sortie, mais plutôt à tester la capacité de l'expérience à reproduire les dynamiques que le modèle cherche à reproduire.
 Il ne s'agit pas, à proprement parler, d'une validation du modèle, au sens quantitatif où on pourrait l'entendre.
 On vise en effet plutôt à explorer le comportement du modèle en fonction des mécanismes et des valeurs de paramètres choisis, de manière à construire un jugement qualitatif sur la capacité du modèle à reproduire les dynamiques souhaitées.
 Pour mener cette exploration, il convient d'utiliser des outils adaptés, c'est-à-dire de disposer de solutions techniques permettant le calcul et l'affichage des indicateurs à partir des données produites par le modèle.
@@ -340,6 +345,7 @@ Dans l'exploration de \simfeodal{}, la création en direct, au sein de la platef
 Après une modification du code-source du modèle, et avant de lancer de nombreuses simulations, on exécute quelques simulations \og manuellement\fg{}.
 On s'assure alors, en direct, que les indicateurs affichés ne présentent pas de caractères aberrants.
 Cela permet de vérifier, avant de lancer des calculs plus conséquents, que le déroulement de la simulation semble cohérent, c'est-à-dire, le plus souvent pour des modifications mineurs du modèle, qu'un \textit{bug} n'a pas été introduit involontairement.
+Chaque type de visualisation a ainsi sa fonction propre.
 
 Le recours à ce type de visualisation en direct des simulations ne peut toutefois être utilisé pour des analyses plus poussées que ce rôle de ce pré-filtrage, en raison de plusieurs contraintes.
 
@@ -363,7 +369,7 @@ Sur celle-ci, l'espace au centre est occupé dans les deux cas par trois indicat
 De plus, et c'est sans doute le verrou majeur, la temporalité de l'exécution d'une simulation -- ou même des réplications nécessaires -- est bien plus courte que celle requise pour la compréhension des résultats produits.
 Une simulation requiert ainsi au maximum quelques minutes.
 Pour pouvoir examiner tous les indicateurs pendant cette durée, il serait nécessaire de mettre la simulation en pause régulièrement, presque à chaque pas de temps.
-On disposerait alors d'un temps suffisant pour observer l'ensemble des indicateurs disponibles.
+On disposerait alors d'un temps cognitif suffisant pour observer l'ensemble des indicateurs disponibles.
 L'analyse des indicateurs de sortie de simulation demandent en effet un examen approfondi, et non simplement superficiel, pour pouvoir juger de l'adéquation de ce que ces indicateurs représentent vis-à-vis des attentes thématiques.
 
 \paragraph{Visualisation différée.}
@@ -383,8 +389,7 @@ Cela serait naturellement possible, mais nécessiterai d'y consacrer de trop nom
 
 L'évaluation d'un modèle interdisciplinaire et exploratoire ne peut donc que difficilement être réalisé en direct, qui plus est quand elle demande de faire appel, dans un cadre de co-construction, à plusieurs points de vue hétérogènes.
 Les modalités mêmes de l'exploration des sorties d'un tel modèle à évaluation visuelle requièrent donc que les indicateurs soient accessibles et explorables à des temporalités différentes, par des chercheurs différents, depuis des lieux différents.
-
-Il est donc indispensable que les indicateurs soient enregistrés et consultables simplement à tout moment, \textit{a posteriori} des simulations, ce qui élimine de fait la visualisation des indicateurs en direct pendant l'exécution des simulations comme unique méthode d'exploration du comportement des modèles exploratoires et descriptifs.
+Il est donc indispensable que les indicateurs soient enregistrés et consultables simplement à tout moment, \textit{a posteriori} des simulations, ce qui élimine de fait la visualisation \og en direct\fg{} comme méthode principale d'exploration.
 
 
 \begin{figure}[H]
@@ -399,7 +404,7 @@ Il est donc indispensable que les indicateurs soient enregistrés et consultable
 \paragraph{Visualiser en direct pour pré-filtrer.}
 
 Dans le cadre de la construction et du paramétrage de \simfeodal{}, nous avons cependant mobilisé ce type de visualisation en direct, comme on peut le constater dans l'interface graphique du modèle (\cref{fig:simfeodal_gui_indicateurs,fig:simfeodal_gui_carte}).
-La visualisation en direct n'est donc pas mobilisable en tant que méthode d'évaluation principale, mais elle peut tout de même, comme dans un usage très classique, être utilisée comme un outil de validation interne pour tester chaque modification dans les valeurs de paramètres, remplissant alors le rôle de \og préfiltre\fg{} décrit auparavant.
+La visualisation en direct n'est donc pas mobilisable en tant que méthode d'évaluation principale, mais elle peut être utilisée comme un outil de validation interne pour tester chaque modification dans les valeurs de paramètres, remplissant alors le rôle de \og préfiltre\fg{} décrit auparavant.
 Visualiser une seule simulation, avant d'en exécuter les réplications nécessaires, permet ainsi déjà de vérifier que les modifications apportées dans les valeurs de paramètre ou dans les mécanismes n'ont pas entraîné l'apparition de \textit{bugs} ou d'incohérences immédiatement visibles.
 
 Pour cette étape de pré-filtrage, nous avons donc choisi de développer une interface graphique très sommaire, au sein de la plateforme de simulation Gama, qui permet des allers-retours rapides entre l'implémentation et l'exécution au sein de l'implémentation de \simfeodal{}.
@@ -408,7 +413,8 @@ Cette interface n'affiche qu'un nombre réduit d'indicateurs (\cref{fig:simfeoda
 \begin{figure}[H]
 	\captionsetup{width=\linewidth}
 	\includegraphics[width=\linewidth]{img/SimFeodal_GUI_carte.png}
-	\caption[Visualisation intégrée à l'interface graphique interne de \simfeodal{}.]{Visualisation intégrée à l'interface graphique interne de \simfeodal{} : cartographie synthétique de l'espace modélisé.}
+	\caption[Visualisation intégrée à l'interface graphique interne de \simfeodal{}.]{Visualisation intégrée à l'interface graphique interne de \simfeodal{} : cartographie synthétique de l'espace modélisé.\\
+	\textit{N.B. : les cercles visibles correspondent aux zones de prélèvement, dont les couleurs indiquent les types (foncier en bleu, haute-justice en rouge et autres droits en jaune).}}
 	\label{fig:simfeodal_gui_carte}
 \end{figure}
 
@@ -422,7 +428,7 @@ L'ajout de cette interface graphique vient donc renforcer l'outillage d'évaluat
 
 \subsection{Générer les indicateurs}
 
-La production des indicateurs doit nécessairement être réalisée en aval de l'exécution des simulations -- \og \textit{offline}\fg{} dans \textcite{grignard_agent-based_2017}.
+La production des indicateurs doit être réalisée en aval de l'exécution des simulations -- \og \textit{offline}\fg{} dans \textcite{grignard_agent-based_2017}.
 Il faut pour cela disposer d'outils adaptés au traitement des données produites, c'est-à-dire répondant aux contraintes identifiées auparavant (\autoref{subsec:donnees-indicateurs}).
 La contrainte principale est d'être en mesure de gérer la masse de données produites.
 On l'a vu, cela élimine d'office les outils de type tableurs, ou encore les outils de manipulation graphique de données les plus courants.
@@ -438,17 +444,17 @@ Ainsi, partant du principe que les données générées par les réplications et
 
 \paragraph{Des outils CLI pour l'analyse de données.}
 De plus, de manière plus technique, on peut remarquer que les différents indicateurs de sortie de simulation choisis (voir \cref{subsec:indicateurs-simfeodal}) présentent souvent des caractéristiques communes, aussi bien dans le traitement nécessaire que dans les formats (graphiques) produits.
-Par exemple, la grande majorité des indicateurs reposent sur une première agrégation des données par réplication et pas de temps simulé, puis par une seconde agrégation montrant la variabilité des situations générées, au niveau de l'expérimentation\footnote{
+Par exemple, la grande majorité des indicateurs repose sur une première agrégation des données par réplication et pas de temps simulé, puis par une seconde agrégation montrant la variabilité des situations générées, au niveau de l'expérimentation\footnote{
 	On peut considérer ces agrégations comme une succession d'opération imbriquées : pour montrer l'évolution d'un indicateur tel que le taux de foyers paysans dispersés au cours du temps simulé, il faut (1) calculer le ratio entre nombre de foyers paysans dispersés et nombre total de foyers paysans, (2) pour chacun des pas de temps simulé, (3) pour chaque simulation, (4) pour l'ensemble des réplications d'une expérience, (5) éventuellement pour chacune des expériences d'une phase plus large d'expérimentation qui ferait varier des valeurs de paramètres.
 }.
 En terme de manipulation de données, seuls le calcul de la variable à mobiliser, et éventuellement l'agent caractérisé sont ainsi à adapter dans ces nombreux indicateurs de sortie.
 La variabilité du nombre de foyers paysans et la variabilité du nombre d'agrégats ne diffèrent que par le type d'agent sur lequel le calcul est effectué par exemple.
-Les variations, en terme de code-sources, sont donc le plus souvent des adaptations minimes (nom de l'agent, type d'agrégation\ldots).
+Les variations, en terme de code-sources, sont donc le plus souvent des adaptations minimes (nom de l'agent, type d'agrégation, etc.).
 Le recours à des traitements en \textit{CLI} permet ainsi un simple copier/coller du code, voire la création de fonctions dédiées, pour effectuer ces traitements très récurrents.
 
 \paragraph{Des outils CLI pour la visualisation.}
 De même, au niveau des sorties graphiques, la structure des graphiques en elle-même est assez largement identique entre les différents indicateurs : on représente les pas des temps (les années simulées) en abscisse, un indicateur statistique en ordonnée, et la variabilité sous la forme de \textit{box-plot} minimalistes (\og \textit{minimal boxplot}\fg{}, promus par Edward Tufte pour minimiser le ratio données-encre \autocite[123-125]{tufte_visual_2001}).
-En disposant d'un environnement de type \textit{CLI}, et qui plus est en faisant usage de solutions graphiques construites sur une syntaxe régulière et générique (voir \nameref{par:visualisation-pipeline}, \cpageref{par:visualisation-pipeline}), il devient très confortable de générer les différents indicateurs de sortie souhaités, puisqu'il suffit d'adapter les graphiques déjà conçus.
+En disposant d'un environnement de type \textit{CLI}, et qui plus est en faisant usage de solutions graphiques construites sur une syntaxe régulière et générique (voir le \og pipeline de visualisation\fg{}, \cref{par:visualisation-pipeline}), il devient très confortable de générer les différents indicateurs de sortie souhaités, puisqu'il suffit d'adapter les graphiques déjà conçus.
 
 Avec ces solutions logicielles d'analyse de données et de visualisation, il est facile de de concevoir, d'implémenter et de répliquer les codes informatiques nécessaires à la génération des indicateurs de sortie de simulation.
 De plus, l'exécution de ces programmes est extrêmement rapide : les différents fichiers de sortie de simulation sont lus et parcourus une unique fois pour en tirer toutes les variables nécessaires à l'établissement des indicateurs.
@@ -475,7 +481,8 @@ Un premier apport, majeur, concerne l'archivage des sorties de simulation.
 Avec des rapports comprenant l'ensemble des indicateurs de sortie de chaque expérience d'un modèle, il est simple de conserver des traces de l'ensemble des versions et sous-version d'un modèle.
 Cette documentation permet ainsi de garantir une certaine pérennité au modèle et simplifie le travail rétrospectif de caractérisation de son évolution.	
 Deuxièmement, l'intérêt majeur de la structuration en rapports est surtout de faciliter la comparaison des expériences.
-On peut ainsi, par exemple, placer côte à côte, visuellement, deux rapports rendant compte de deux expériences différentes, et, en les faisant défiler simultanément, comparer point par point, c'est-à-dire indicateur par indicateur, leurs résultats respectifs, de manière visuelle et intuitive.
+On peut ainsi, par exemple, placer côte à côte, visuellement, deux rapports rendant compte de deux expériences différentes.
+En les faisant défiler simultanément, on pourra alors évaluer leur similitude et comparer, indicateur par indicateur, leurs résultats respectifs, de manière visuelle et intuitive.
 
 Les formes que peuvent prendre les rapports sont extrêmement diverses, et c'est aussi le cas des modalités de leur production.
 Le mode de production le plus simple et courant consiste à produire manuellement le rapport en insérant les indicateurs adaptés au fur et à mesure, par exemple dans un traitement de texte.
@@ -508,7 +515,7 @@ Ces indicateurs sont organisés par partie, en l'occurrence en fonction du type 
 On a donc fait le choix de se baser sur des rapports automatisés et minimalistes, ne contenant que les indicateurs dans une forme structurée.
 Ce choix s'appuie sur des raisons multiples qui ont toutes en commun une recherche de reproductibilité des résultats et des analyses menées.
 La reproductibilité est d'abord théorique (\cref{subsec:demarche-reproductible}), puisque les résultats de simulation doivent pouvoir être analysés et reproduits par des chercheurs potentiellement intéressés.
-Mais cette recherche de reproductibilité est aussi pratique, du fait des méthodes de modélisation suivies.
+Mais cette recherche de reproductibilité remplit aussi un besoin effectif et pratique, du fait des méthodes de modélisation suivies.
 Comme nous l'avons exposé auparavant (\cref{subsec:capter-replications,subsec:capter-experiences}), ces méthodes s'appuient sur de nombreux allers-retours, ce qui requiert une capacité constante à reproduire et à affiner des résultats déjà observés.
 
 La quantité d'expériences requises pour arriver à un état satisfaisant du modèle est tributaire de ces allers-retours, et le nombre de rapports qu'il faut pouvoir produire est important.
@@ -533,12 +540,12 @@ Un autre intérêt majeur des rapports, déjà pointé en avantage des outils de
 Les indicateurs à examiner sont nombreux et surtout, évolutifs, et l'utilisation de rapports automatiques permet de minimiser le nombre de modifications à effectuer en cas de changements d'indicateurs.
 Le programme informatique qui génère les rapports s'appuie sur un code-source unique, générique aux simulations.
 Lors d'un changement d'indicateurs, il suffit alors de modifier ce code-source en une seule place, et tous les appels à ce programme seront alors modifiés en conséquence.
-À partir de là, pour mettre à jour l'ensemble des rapports déjà produits, c'est-à-dire regroupant les indicateurs de chacune des expériences passées, il suffit de ré-exécuter la routine de production des rapports.
+À partir de là, pour mettre à jour l'ensemble des rapports déjà produits, c'est-à-dire regroupant les indicateurs de chacune des expériences passées, il suffit de ré-exécuter la routine de production des rapports, sans avoir à ré-exécuter toutes les simulations.
 
 Dans le cas de \simfeodal{}, caractérisé par de fréquents changements dans la forme et le calcul des indicateurs, cela a représenté un gain de temps et d'efficacité très conséquent.
 Par exemple, lors de certaines phases de paramétrage, nous pouvions être amenés à faire évoluer le modèle quotidiennement et à tester, à cette même fréquence, plusieurs jeux de paramètres.
 Il fallait donc analyser les résultats de plusieurs expériences chaque jour, et régulièrement ajouter des indicateurs graphiques afin d'affiner l'évaluation.
-Ces indicateurs devaient aussi être ajoutés aux expériences des jours précédents, et au final, on re-générait parfois jusqu'à une plus d'une dizaine de rapports sur des cycles temporels courts de quelques jours.
+Ces indicateurs devaient aussi être ajoutés aux expériences des jours précédents, et au final, nous avions à re-générer parfois jusqu'à une plus d'une dizaine de rapports sur des cycles temporels courts de quelques jours.
 
 Par extension, cette même démarche d'automatisation, basée sur l'utilisation d'outils de type \textit{CLI}, devrait pouvoir s'appliquer à l'identique, avec les mêmes avantages, dans le cadre plus large de l'évaluation visuelle de modèles (\cref{subsec:eval-visuelle}).
 
@@ -554,7 +561,7 @@ La reproductibilité, de manière générale, est plus une démarche qu'un état
 Dans le cas des rapports automatiques, la reproductibilité recherchée doit permettre de reproduire les analyses menées -- le calcul et la représentation des indicateurs de sortie -- sur les jeux de données issus des différentes versions du modèle.
 
 Comme explicité dans l'\cref{enc:incrementalite-indicateurs} sur l'incrémentalité des indicateurs, une limite forte empêche d'atteindre une reproductibilité absolue des analyses du comportement des différentes versions de \simfeodal{}.
-Les données générées par les différentes versions du modèle ne sont en effet pas systématiquement \og compatibles \fg{}.
+Les données générées par les différentes versions du modèle ne sont en effet pas systématiquement compatibles.
 On entend par là qu'elles ne présentent pas toute exactement la même structure, à commencer par les variables enregistrées.
 Quand bien même il aurait été choisi dès le départ d'enregistrer le plus de sorties possibles, la reproductibilité de l'analyse échoue sur les données produites par le modèle et ses nombreuses versions : le modèle évolue, et avec lui, certaines variables apparaissent et d'autres deviennent caduques.
 La structure contraignante et précise des données nécessaires à la génération des rapports ne peut être entièrement satisfaite.
@@ -563,13 +570,14 @@ La prise en compte de l'évolution du modèle demande une adaptation régulière
 On ne peut donc satisfaire globalement à un objectif de reproductibilité, mais il est toutefois possible d'approcher de cette ambition.
 Pour cela, on peut assembler les différentes versions du modèles au sein de \og générations\fg{} de modèle, c'est-à-dire d'ensembles de versions présentant des attributs comparables et générant des données de même structure.
 Plutôt que d'adapter le code-source des rapports à chaque nouvelle version du modèle, ou encore de ne jamais l'adapter et donc d'être tributaire de la structure des toutes premières versions du modèle, le travail par générations constitue un choix intermédiaire qui permet de limiter le nombre de variantes de rapports.
-Cette approche suit les grandes lignes du développement logiciel général. Les itérations successives d'un logiciel sont constituées de versions \og majeures\fg{} -- les générations de modèles dans notre cas --, qui n'assurent pas nécessairement de compatibilité avec les versions majeures précédentes, et de versions \og mineures\fg{}, dans lesquelles la compatibilité est assurée\footnote{
+Cette approche suit les grandes lignes du développement logiciel général (voir \cref{par:historique-versions-simfeodal}).
+Les itérations successives d'un logiciel sont constituées de versions majeures -- les générations de modèles dans notre cas --, qui n'assurent pas nécessairement de compatibilité avec les versions majeures précédentes, et de versions mineures, dans lesquelles la compatibilité est assurée\footnote{
 	Par exemple, un fichier de dessin vectoriel créé avec le logiciel Adobe Illustrator 15.0 ne sera pas lu correctement avec une version 14.0.
 	Ce fichier présentera toutefois un compatibilité parfaite avec les versions 15.1 à 15.\textit{n} du logiciel.
 }.
 
-Pour revenir aux rapports voués à l'évaluation d'un modèle, en inscrivant les différentes versions du modèle -- et des programmes générant les rapport correspondant -- dans des sous-ensemble de versions, les \og générations\fg{}, les différents rapports peuvent être considérés comme reproductibles et automatiques au sein de ces générations.
-Pour \simfeodal{}, cela implique d'organiser les différentes versions du modèle -- résultant des étapes de paramétrage -- au sein de grandes générations, à chaque changements structurels des mécanismes ou données produites par le modèle (voir \cref{tab:historique-versions-simfeodal}).
+Pour revenir aux rapports voués à l'évaluation d'un modèle, en inscrivant les différentes versions du modèle -- et des programmes générant les rapport correspondant -- dans des générations, les différents rapports peuvent être considérés comme reproductibles et automatiques au sein de ces générations.
+Pour \simfeodal{}, cela implique d'organiser les différentes versions du modèle -- résultant des étapes de paramétrage -- au sein de grandes générations, à chaque changement structurel des mécanismes ou données produites par le modèle (voir \cref{tab:historique-versions-simfeodal}).
 
 
 \paragraph{Les rapports, des instruments suffisants ?}
@@ -596,7 +604,7 @@ Comme le résume le \og mantra\fg{} de l'analyse visuelle (\og \textit{Visual in
 
 \subsubsection{Les \textit{dashboards}}
 
-Cette logique, assez universelle désormais, est celle qui préside à la création des nombreux \og tableaux de bord \fg{}, ou \og \textit{dashboards} \fg{} que l'ont voit émerger depuis la fin des années 1990.
+Cette logique, assez universelle désormais, est celle qui préside à la création des nombreux \og tableaux de bord \fg{}, ou \og \textit{dashboards} \fg{} que l'on voit émerger depuis la fin des années 1990.
 Rob Kitchin et ses co-auteurs définissent ainsi les \textit{dashboards}, notamment en s'appuyant sur les travaux de \textsc{Few} :
 
 \begin{quotation}
@@ -619,10 +627,10 @@ Le parallèle avec le monde de l'informatique décisionnelle est en effet prése
 Il s'agit de mettre à disposition d'experts thématiques (les décideurs publiques) des indicateurs clés, issus de calculs parfois complexes, afin de leur permettre d'évaluer une situation donnée et de prendre les décisions politiques adéquates.
 
 Le constat ayant mené à l'apparition des premiers \textit{dashboards}, tant en informatique décisionnelle qu'en géographie urbaine, est identique.
-Les informations nécessaires à l'évaluation d'une situation (financière, relative aux politiques publiques\ldots) sont de plus en plus nombreuses et hétérogènes.
-Les indicateurs permettant de mener ces évaluations, pensés pour les décideurs qui en feront usage (\textit{managers}, acteurs publiques\ldots), se démultiplient et se diversifient aussi en conséquence.
+Les informations nécessaires à l'évaluation d'une situation (financière, relative aux politiques publiques, etc.) sont de plus en plus nombreuses et hétérogènes.
+Les indicateurs permettant de mener ces évaluations, pensés pour les décideurs qui en feront usage (\textit{managers}, acteurs publiques, etc.), se démultiplient et se diversifient aussi en conséquence.
 
-Inspirés autant par l'usage \textit{BI} que par l'usage géographique, nous considérons que ces outils peuvent se révéler utiles dans l'évaluation de modèles de simulations complexes, et en particulier dans une démarche de co-construction interdisciplinaire.
+Inspirés autant par l'usage en informatique décisionnelle que par l'usage géographique, nous considérons que ces outils peuvent se révéler utiles dans l'évaluation de modèles de simulations complexes, et en particulier dans une démarche de co-construction interdisciplinaire.
 Les enjeux sont en effet les mêmes : permettre à des thématiciens de comprendre des données complexes.
 Dès lors, la logique qui anime les dashboards répond à nos besoins.
 Il s'agit de permettre une évaluation et une analyse du modèle, par des thématiciens, par le biais d'indicateurs clefs et d'indicateurs secondaires (\cref{subsec:hierarchiser-indicateurs}), présentés sous la forme d'un panel varié de visualisations.
@@ -631,7 +639,7 @@ Nous avons donc choisi de ré-organiser les rapports initialement produits pour 
 \subsubsection{SimVADB}\label{subsubsec:simvadb}
 
 Les \textit{dashboards} font souvent usage de représentations graphiques très métaphoriques des tableaux de bords automobiles.
-On y retrouve fréquemment une forte mise en valeur d'indicateurs numériques simples au travers de représentations \og skeuomorphes\fg{}, c'est-à-dire qui reprennent l'apparence physique des objets symbolisés\footnote{
+On y retrouve fréquemment une forte mise en valeur d'indicateurs numériques simples au travers de représentations skeuomorphes, c'est-à-dire qui reprennent l'apparence physique des objets symbolisés\footnote{
 	Voir par exemple la page Wikipédia consacrée : \href{https://fr.wikipedia.org/wiki/Skeuomorphisme}{https://fr.wikipedia.org/wiki/Skeuomorphisme}
 }.
 On retrouve communément, par exemple, des indicateurs représentés sous forme de jauges (\textit{gauge charts}), de thermomètres (\textit{thermometer charts}), ou encore de voyants d'alerte et autres témoins lumineux (\cref{fig:skeuomorphism}).
@@ -656,7 +664,7 @@ On a pour cela développé un premier \textit{dashboard} adapté à \simfeodal{}
 Dans un premier temps, on souhaitait simplement ré-organiser le code-source produisant les rapports automatiques, afin de convertir ces rapports en \textit{dashboards}.
 Cela a été effectué au moyen d'outils permettant de générer des applications en ligne, sans changer de langage de programmation (R).
 Dans ce cas, on s'est appuyé sur la librairie logicielle \textsf{Flexdashboard} \autocite{iannone_flexdashboard_2018}.
-Le passage du rapport automatique au \textit{dashboard} illustre l'un des grands intérêts des outils de type \textit{CLI} : dans le cas de SimVADB, il a suffit de ré-organiser le code, sans modifier à aucun moment les fonctions de calcul et de création des indicateurs de sortie de simulation.
+Le passage du rapport automatique au \textit{dashboard} illustre l'un des grands intérêts des outils de type \textit{CLI} : dans le cas de SimVADB, il a suffi de ré-organiser le code, sans modifier à aucun moment les fonctions de calcul et de création des indicateurs de sortie de simulation.
 Les codes de la \cref{fig:code-rapport-dashboard} illustrent la facilité de cette modification : il s'agit uniquement de placer les différentes fonctions dans des blocs graphiques.
 Ces modifications minimes augmentent toutefois considérablement la convivialité et la facilité de l'analyse de résultats de sortie d'un modèle en passant d'un rapport statique à un rapport interactive.
 
@@ -742,7 +750,7 @@ La succession d'analyse visuelle demeure peu adaptée pour appréhender l'étend
 
 Face à la démultiplication des expérimentations, consécutive aux nombreuses étapes de paramétrage de \simfeodal{} (\cref{subsubsec:parametrage-simfeodal}), il a donc fallu repenser la plateforme d'évaluation des résultats.
 Pour cela, considérant que les simulations ne pouvaient être aisément appréhendées et sélectionnées par leur nom, numéro d'étape ou de version, nous avons décidé d'adopter une posture plus proche de l'exploration du modèle en elle-même.
-Cette seconde approche a consisté à caractériser les simulations par leurs spécificités intrinsèques, c'est-à-dire la combinaison de valeurs de paramètres qui les rendent uniques.
+Cette seconde approche a consisté à caractériser les simulations par leurs spécificités intrinsèques, c'est-à-dire la combinaison de valeurs de paramètres qui les rendent uniques et constitue ainsi une signature de chaque expérience et réplication.
 Ce faisant, au sein de la plateforme d'exploration SimVADB, l'enjeu devenait plutôt la compréhension des effets des valeurs de paramètres sur les indicateurs que l'évaluation d'une simulation en particulier.
 En d'autres termes, il fallait passer du descriptif, quelle qu'en soit la méthode, à du comparatif.
 
@@ -846,7 +854,7 @@ Les variations entre simulations sont trop fines pour être distinguables les un
 	On peut de plus noter que les répercussions d'un changement de valeur de paramètre peuvent être très différentes de l'ordre de grandeur de ce changement de valeur, du fait de la non-linéarité de l'influence des paramètres.
 	Dans l'exemple pris, pour ces $5\%$ de variation dans le nombre de foyers paysans, la majorité des indicateurs variera ainsi de moins de $1\%$.
 }.
-Cela s'entend quelque soit la manière dont ce référentiel est constitué, qu'il résulte d'une agrégation de simulations ou encore d'une version \og de base\fg{} du modèle (par exemple, dans le cas de \simfeodal{}, les versions principales identifiées dans le \cref{chap:chap3}).
+Cela s'entend quelle que soit la manière dont ce référentiel est constitué, qu'il résulte d'une agrégation de simulations ou encore d'une version \og de base\fg{} du modèle (par exemple, dans le cas de \simfeodal{}, les versions principales identifiées dans le \cref{chap:chap3}).
 
 
 Pour pouvoir correctement évaluer les apports d'un nouveau jeu de valeurs de paramètres, et donc, dans une démarche itérative, pouvoir différencier deux expériences successives, il est nécessaire d'être en mesure de comparer directement les expériences les unes avec les autres, ou encore avec un référentiel facilement ajustable.
@@ -875,6 +883,11 @@ En superposant les graphiques et tableaux des indicateurs, la comparaison visuel
 On peut alors comparer deux variations fines d'un mécanisme du modèle, en sélectionnant par exemple une unique différence dans les valeurs de paramètres du modèle (par exemple un paramètre relatif à la promotion des paroisses dans la \cref{fig:simedb_villages}).
 De manière générale, ce choix d'outil d'interrogation des données permet de répondre à l'ensemble des cas de figures identifiés dans les paragraphes précédents.
 
+\paragraph[Conclusion intermédiaire]{}
+Nous reviendrons plus précisément et longuement sur la description de \simedb{} dans les parties suivantes (\cref{sec:SimEDB}, p. \pageref{sec:SimEDB}), mais après en avoir décrit les étapes de construction et les besoins auxquelles ces évolutions répondaient, nous proposons maintenant de revenir sur les données manipulées par cette plateforme d'exploration.
+Le type, la structure et la masse de ces données (\cref{sec:sorties-simfeodal}) sont en effet indissociables des choix méthodologiques effectués pour \simedb{}.
+Il est donc nécessaire de présenter les choix et contraintes de ces données avant d'entrer dans une description approfondie de la plateforme.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/SimEDB_base_rotate.png}
@@ -882,18 +895,12 @@ De manière générale, ce choix d'outil d'interrogation des données permet de 
 	\label{fig:simedb_villages}
 \end{figure}
 
-\paragraph[Conclusion intermédiaire]{}
-Nous reviendrons plus précisément et longuement sur la description de \simedb{} dans les parties suivantes (\cref{sec:SimEDB}, p. \pageref{sec:SimEDB}), mais après en avoir décrit les étapes de construction et les besoins auxquelles ces évolutions répondaient, nous proposons maintenant de revenir sur les données manipulées par cette plateforme d'exploration.
-Le type, la structure et la masse de ces données (\cref{sec:sorties-simfeodal}) sont en effet indissociables des choix méthodologiques effectués pour \simedb{}.
-Il est donc nécessaire de présenter les choix et contraintes de ces données avant d'entrer dans une description approfondie de la plateforme.
-
-\clearpage
 \section{Organiser les données}\label{sec:organiser-donnees}
 
 On a vu dans la première partie de ce chapitre (\cref{sec:sorties-simfeodal}) que les données produites par \simfeodal{} étaient nombreuses, diverses et massives.
 La seconde partie (\cref{sec:explorer-sorties-simfeodal}) a montré les types de problèmes que de telles données, une fois exploitées pour en tirer les indicateurs de sortie, peuvent poser en matière d'exploration.
 
-Nous souhaitons ici revenir sur une corollaire indispensable à l'utilisation efficace de ces données.
+Nous souhaitons ici revenir sur un corollaire indispensable à l'utilisation efficace de ces données.
 De la même manière que la multiplicité des indicateurs, des expériences et des expérimentations requiert des outils d'exploration adaptés, la multiplicité des données requiert des outils de stockage et d'interrogation eux aussi adaptés.
 Là encore, on peut noter une succession de contraintes liées à ces données et à leur massification, contraintes qui limitent et guident les modes d'organisation de ces données.
 Sans structuration adéquate, l'acquisition, l'archivage, l'interrogation ou encore la sauvegarde des données générées par le modèle ne peuvent être garantis, et encore moins de manière efficace.
@@ -978,7 +985,7 @@ Même une fois arrêté sur le choix de ne faire appel qu'à des outils standard
 Afin de réduire ce nombre, on peut déjà choisir les grands types de SGBD auxquels faire appel.
 Les SGBD sont souvent classés selon les grands traits de la méthode dont ils organisent les données.
 Les deux principaux \og grands-types\fg{}\footnote{
-	Il en existe d'autres, comme les SGBD orientés objets (quasiment disparus aujourd'hui), orientés graphes (Neo4j\ldots), les SGBD pensés pour le stockage et l'interrogation d'ontologies (\textit{Triplestores RDF}, interrogeables en langage SPARQL) ou encore les nouveaux SGBD de type \og NewSQL \fg{} (Apache Ignite, CockRoachDB\ldots) pensés pour une parallélisation massive des données. Ces types de SGBD ne correspondent toutefois pas du tout aux besoins identifiés pour \simedb{}/\simfeodal{}, et sont en général dédiés à des problèmes et marchés de niches. Nous ne les décrirons donc pas plus en détail ici.
+	Il en existe d'autres, comme les SGBD orientés objets (quasiment disparus aujourd'hui), orientés graphes (Neo4j, etc.), les SGBD pensés pour le stockage et l'interrogation d'ontologies (\textit{Triplestores RDF}, interrogeables en langage SPARQL) ou encore les nouveaux SGBD de type \og NewSQL \fg{} (Apache Ignite, CockRoachDB, etc.) pensés pour une parallélisation massive des données. Ces types de SGBD ne correspondent toutefois pas du tout aux besoins identifiés pour \simedb{}/\simfeodal{}, et sont en général dédiés à des problèmes et marchés de niches. Nous ne les décrirons donc pas plus en détail ici.
 } sont les SGBD \og relationnels\fg{} et les SGBD \og NoSQL\fg{}.
 Si la distinction est sujette à de très nombreux débats, souvent virulents
 \footnote{
@@ -999,7 +1006,7 @@ Dans le cas de \simedb{}/\simfeodal{}, où l'on est confronté à des données m
 Toutefois, leur flexibilité est associée à une contrainte majeure en termes de généricité : alors que les SGBD relationnels partagent un langage d'interrogation commun, le SQL (\textit{Structured Query Language})\footnote{
 	Ce langage d'interrogation est omniprésent dans l'interaction avec les SGBD, mais aussi, avec de légères variantes, au sein de nombreux logiciels reposant des sélections de données, par exemple les logiciels SIG qui se basent sur la syntaxe du SQL (le fameux triptyque \texttt{\textbf{SELECT} \ldots~\textbf{FROM} \ldots{} \textbf{WHERE} \ldots})
 }, les SGBD NoSQL font plus souvent appels à des langages spécifiques à chaque SGBD.
-Pour \simedb{}, cela impliquerait une fort dépendance au SGBD choisi : en cas de changement de SGBD, toutes les requêtes seraient à reformuler dans le nouveau langage, parfois même selon des logiques extrêmement différentes les unes des autres (dérivés du SQL, interrogations via des objets JSON, via des langages de parcours de graphes\ldots{}) etc.
+Pour \simedb{}, cela impliquerait une fort dépendance au SGBD choisi : en cas de changement de SGBD, toutes les requêtes seraient à reformuler dans le nouveau langage, parfois même selon des logiques extrêmement différentes les unes des autres (dérivés du SQL, interrogations via des objets JSON, via des langages de parcours de graphes, etc.).
 Au contraire, avec les SGBD relationnels, le langage de requête étant commun, une fois le code d'interrogation généré, il est très aisé de changer de SGBD.
 Cela garantie une forte capacité d'évolutivité aux outils d'interrogation de données tels que \simedb{}.
 Puisque les fournisseurs de données sont interchangeables, on peut en changer au fur et à mesure de l'apparition de nouveaux besoins.
@@ -1139,12 +1146,14 @@ Si tous les SGBD présentent des vitesses acceptables et proches sur des bases d
 Le choix d'un SGBD selon ses performances a donc un impact majeur sur la fluidité d'une application d'exploration de données massives.
 Pour départager les SGBD, nous avons comparé leurs performances selon les différents types d'opérations demandées, qu'elles concernent l'écriture dans la base (insertion) ou des types de lecture (agrégation et jointure).
 
+
 \subparagraph{Performances en écriture et en lecture.}
 
 Les résultats de la comparaison de la vitesse d'exécution des SGBD candidats sont présentés sur la \cref{fig:db-benchmarks}\footnote{
 	Dans cette figure, on compare la rapidité de différentes requêtes sur un jeu de données identique selon les SGBD.
 	Ce type de test de performance permettant la comparaison de solutions techniques diverses est appelé \textit{benchmark}.
 	Ce jeu de données, composé de 100 Millions de lignes et de deux colonnes numériques, présente une volumétrie comparable (largement inférieure en nombre de colonnes toutefois) à celle des données issues de \simfeodal{} qui sont interrogées dans \simedb{}.
+	Les premiers \textit{benchmarks} ont été réalisés par \textcite{pafka_benchm-databases_2017}, et complétés, en exécutant les mêmes requêtes que l'auteur sur d'autres SGBD, sur un matériel moins performant que celui utilisé initialement.
 }.
 La première colonne du graphique montre ainsi le temps nécessaire à l'insertion du jeu de données exemple dans le SGBD depuis un fichier CSV.
 Les deux colonnes suivantes exposent le temps nécessaire au traitement d'une requête, donc à une interrogation des données.
@@ -1167,7 +1176,7 @@ Pour observer une dizaine indicateurs, l'utilisateur devra donc attendre une diz
 Pour noircir le trait, notons de plus que les résultats communiqués dans la \cref{fig:db-benchmarks} correspondent à des requêtes simples qui ont valeur d'exemples basiques.
 Dans le cas de \simedb{}, le calcul des indicateurs requiert des requêtes plus complexes, faisant appel à des agrégations et à des jointures en même temps, et les délais affichés dans ce \textit{benchmark} sont donc en fait bien inférieures aux durées éprouvées en conditions réelles au sein de \simedb{}.
 
-
+\clearpage
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.95\linewidth]{img/benchmark_results.pdf}
@@ -1246,11 +1255,13 @@ Même exécuté sur une infrastructure informatique qui n'est pas optimisée pou
 
 On notera toutefois que le SGBD MonetDB \autocite{vermeij_monetdb_2008}, dans son implémentation intégrée MonetDBLite \autocite{raasveldt_monetdblite_2018}, affiche aussi des performances très compétitives.
 Un des ouvrages de référence en \textit{visual analytics} s'interrogeait d'ailleurs sur les nouvelles possibilités et l'adéquation offertes par ce SGBD (\cite[105]{fekete_infrastructure_2010} in \cite{keim_mastering_2010}).
-Toutefois, les données issues de SimFeodal sont amenées à augmenter, renforçant donc petit à petit l'écart de performance entre MapD et MonetDB.
+Toutefois, les données issues de \simfeodal{} sont amenées à augmenter, renforçant donc petit à petit l'écart de performance entre MapD et MonetDB.
 De plus, dans les faits, nous avons utilisé MonetDBLite pendant une large partie de la conception de \simedb{}, mais ce SGBD s'est montré à plusieurs reprises instable dans notre cas, faisant preuves à plusieurs reprises de corruptions de données ayant entraîné l'obligation de recréer entièrement les bases de données depuis les fichiers bruts produits par \simfeodal{}.
 Au terme de notre réflexion sur nos besoins et de notre étude comparative des différents SGBD envisageables, nous avons donc choisi d'utiliser le SGBD relationnel MapD\footnote{
 	MapD a été placé sous licence libre peu avant que nous n'ayons à nous pencher réellement sur les problèmes de performances et de robustesse qui apparaissaient suite à l'augmentation du nombre de simulations effectuées.
-} pour stocker les données issues de SimFeodal. 
+} -- depuis renommé OmniSci\footnote{
+	\href{https://www.omnisci.com/}{www.omnisci.com}
+} -- pour stocker les données issues de \simfeodal{}. 
 
 \subsection{Structuration des données de SimFeodal}
 
@@ -1269,9 +1280,9 @@ Un MCD est propre à un ensemble de données d'une part\footnote{
 Ce MCD décrit donc les tables, leur composition (attributs) et les liens entre tables qui permettent de mener des interrogations croisées.
 Par exemple, on peut avoir une table élèves, contenant les informations relatives aux élèves d'un établissement, une table enseignants, et une table classe qui permet de faire le lien entre les élèves d'un enseignant, ou au contraire entre un élève et tous ses enseignants.
 
-Les choix de conception d'un MCD sont fortement lié aux types de SGBD dans lesquelles ils doivent être implémentés.
-On ne peut que difficilement implémenter un MCD très relationnel dans un SGBD pensé collection (NoSQL par exemple).
-À l'inverse, le stockage d'informations très hétérogènes sur un ensemble d'individus sera complexe à implémenter au sein d'un SGBD relationnel.
+Les choix de conception d'un MCD sont fortement liés aux types de SGBD dans lesquelles ils doivent être implémentés.
+L'implémentation d'un MCD très relationnel dans un SGBD pensé collection (NoSQL par exemple) demande par exemple une certaine gymnastique intellectuelle et une bonne habitude de la modélisation de bases de données pour mettre en correspondance ces schémas intrinsèquement différents.
+À l'inverse, le stockage d'informations très hétérogènes sur un ensemble d'individus sera complexe à implémenter au sein d'un SGBD relationnel ou objet.
 Pour décider de la manière la plus efficace d'implémenter les données issues de \simfeodal{} dans un SGBD, et donc du MCD à suivre, il convient donc de revenir aux spécificités des données produites par le modèle d'une part, et d'autre part de réfléchir aux modes d'interrogations privilégiés, lesquels orienteront la conception du MCD.
 
 
@@ -1286,7 +1297,7 @@ Les données généralement produites par un modèle de simulation sont des donn
 	Cela pose un problème de comparabilité dû à des tailles d'échantillonnage différentes.
 	On fait donc face à un problème de données \textbf{superflues} : il faudra supprimer une partie de ces simulations des données avant de pouvoir les traiter.
 	\item On peut enfin voir subvenir des erreurs d'exécution du modèle au niveau des agents, par exemple quand, en raison d'un \textit{bug}, un agent en interroge un autre qui a disparu depuis.
-	Il arrive ainsi fréquemment que des foyers paysans déclarent une appartenance à un agrégat qui a disparu entre temps, faute à une mise à jour qui a échoué dans le modèle.
+	Il arrive ainsi fréquemment que des foyers paysans déclarent une appartenance à un agrégat qui a disparu entre temps, en raison d'une mise à jour qui a échoué dans le modèle.
 	Dans ces cas, les données seront aussi inscrites dans les sorties de \simfeodal{}, quand bien même elles sont \textbf{erronées}.
 \end{itemize}
 
@@ -1294,7 +1305,7 @@ Les données brutes doivent donc nécessairement être vérifiées, filtrées, n
 
 \paragraph{Organisation des données.}
 Même pré-traitées, les données brutes conservent une structure tabulaire assez peu adaptée à un traitement.
-Les attributs de chacun des types d'agent sont enregistré dans des fichier spécifiques.
+Les attributs de chacun des types d'agent sont enregistrés dans des fichiers spécifiques.
 Ces fichiers demeurent fondamentalement isolés les uns des autres, qu'ils aient aient été nettoyés ou non.
 Or, une partie des indicateurs repose sur des analyses croisant différents types d'agents (dans quels pôles les agrégats s'inscrivent-ils par exemple ?), et il est nécessaire de permettre -- et de fluidifier -- ces requêtes croisées.
 Le choix d'un SGBD relationnel nous permet de concevoir et d'implémenter de manière explicite et formalisée ces relations entre les différentes tables individuelles qui proviennent des sorties brutes d'un modèle.
@@ -1323,19 +1334,26 @@ Pour choisir un schéma, et donc une manière d'organiser la base de données, i
 Dans le cas des données de \simfeodal{}, les indicateurs avaient été définis avant que le besoin d'une interrogation performante et structurée n'apparaisse.
 Nous savions ainsi qu'une majorité d'indicateurs demanderait des requêtes correspondant à des tâches d'agrégations simples (nombre d'agrégats au cours du temps, taux de foyers paysans dispersés au cours du temps etc.), pour lesquelles il fallait minimiser la complexité des requêtes et calculs.
 
-Il a été choisi de partir d'un schéma en étoile (\cref{fig:MCD_SimEDB}), puisque celui-ci se montre extrêmement efficace pour réduire les besoins en jointures, qui sont par nature chronophages, et pour des tâches d'agrégations lourdes.
+Il a été choisi de partir d'un schéma en étoile (\cref{fig:MCD_SimEDB}), puisque celui-ci se montre extrêmement efficace pour réduire les besoins en jointures, qui sont par nature chronophages, et pour des tâches d'agrégation lourdes.
 
 \clearpage
 \begin{figure}[H]
 	\centering
 	\captionsetup{width=\linewidth}
-	\includegraphics[width=\linewidth]{img/MCD_SimEDB_repris.png}
-	\caption{Modèle Conceptuel de Données (MCD) des données en sortie de simulation de \simfeodal{} telles qu'implémentées dans \simedb{}.}
+	\includegraphics[width=.95\linewidth]{img/MCD_SimEDB_repris.png}
+	\caption[Modèle Conceptuel de Données (MCD) des données en sortie de simulation de \simfeodal{} telles qu'implémentées dans \simedb{}.]{Modèle Conceptuel de Données (MCD) des données en sortie de simulation de \simfeodal{} telles qu'implémentées dans \simedb{}.\\
+\textit{Dans cette représentation, nous employons une simplification du formalisme UML, pensé ici autour des tables plutôt que de leur représentations sous forme de classes/objets.
+Les cardinalités sont figurées de manière uniquement graphique, et nous ne représentons que les relations codées directement dans la base de données, et non les jointures possibles.\\
+Exemple de lecture : chaque agrégat est caractérisé par une graîne aléatoire (seed) et un nom de simulation (sim\_name), qui permettent de retrouver l'expérience et la réplication dont il fait partie (table seeds), et donc de retrouver les paramètres propres de celle-ci (table parameters).
+Chaque agrégat est membre (ou non, relation 0..1) d'un pôle, et est constitué de foyers paysans qui peuvent appartenir à un seul agrégat (ou à aucun, relation 0..1).
+}
+}
 	\label{fig:MCD_SimEDB}
 \end{figure}
+\clearpage
 
 Au centre de cette étoile, nous avons disposé une table simple, contenant les informations sur lesquelles une majorité des agrégations sont effectuées : les simulations, identifiées par leur nom (\texttt{sim\_name}, qui permet de savoir de quelle expérience ces simulations dépendent) et leur identifiant unique, la graine aléatoire utilisée (\texttt{seed})\footnote{
-	La graine aléatoire ne constitue en tant que tel pas un identifiant unique : comme son nom l'indique, elle est aléatoire et présente donc un risque de répétition.
+	La graine aléatoire (\textit{seed}) ne constitue en tant que tel pas un identifiant unique : comme son nom l'indique, elle est aléatoire et présente donc un risque de répétition.
 	Dans Gama, cette graine aléatoire est une valeur qui varie de 0 à 1 et est composé de 19 décimales.
 	Il y a donc potentiellement $10^{19}$ graines aléatoires uniques, ce qui est en soi une quasi garantie d'unicité.
 	Notons de plus que dans le MCD de \simedb{}, la graine aléatoire est systématiquement associée au nom de l'expérience.
@@ -1347,7 +1365,7 @@ Au centre de cette étoile, nous avons disposé une table simple, contenant les 
 
 Toutes les tables contenant les enregistrements individuels des agents (\texttt{fp} pour les foyers paysans, \texttt{paroisses} pour les églises paroissiales, etc.) sont donc liées directement à cette table centrale (intitulée \texttt{seeds} ici).
 
-En plus de ces tables liées aux agents, deux autres tables \og globales\fg{} sont présentes : une table \og \texttt{results}\fg{}, qui contient des informations agrégées sur l'état de chaque simulation à chaque pas de temps.
+En plus de ces tables liées aux agents, deux autres tables \og globales\fg{} sont présentes : une table \og \texttt{results}\fg{}, qui contient des informations agrégées sur l'état de chaque simulation à chaque pas de temps (année).
 Ces informations, par exemple le taux de foyers paysans isolés (champ \og \texttt{prop\_fp\_isoles}\fg{}), sont redondantes : elles pourraient être calculées directement depuis la table renseignant les foyers paysans, en faisant un ratio entre le nombre de foyers paysans sans agrégat et leur nombre total.
 Pourtant, pour des raisons d'efficacité autant que de clarté, il a été choisi de dupliquer, en les pré-calculant, ces informations qui sont interrogées extrêmement souvent pour calculer les indicateurs de \simfeodal{}.
 
@@ -1358,9 +1376,9 @@ Cette table est la seule à être reliée de manière bi-directionnelle à la ta
 Notons tout de même que l'on s'éloigne légèrement du classique schéma en étoile en raison des relations que nous avons choisies d'insérer entre les tables des différents agents (relations figurées en pointillées dans la \cref{fig:MCD_SimEDB}).
 Intégrer ces relations dans la table centrale aurait considérablement complexifié cette dernière, mais pour autant, elles étaient nécessaires : \simfeodal{} est un modèle complexe, dans lequel des interactions sont présentes à plusieurs niveaux entre différents types d'agents.
 La base de données résultant de ce modèle complexe l'est donc nécessairement aussi : on doit implémenter, dans la base de données, des relations entre les tables pour chacune des interactions entre les agents du modèle.
-Ces relations permettent par exemple d'examiner la composition des pôles autour de chaque agrégat, et ainsi d'étudier le lien entre poids du pôle (en nombre d'attracteurs) et poids de l'agrégat (en nombre de foyers paysans).
+Ces relations permettent par exemple d'examiner la composition des pôles qui contiennent des agrégats (un agrégat est membre ou non d'un pôle, et un pôle ne peut contenir qu'un agrégat), et ainsi d'étudier le lien entre poids du pôle (en nombre d'attracteurs) et poids de l'agrégat (en nombre de foyers paysans).
 
-Ces indicateurs, situés à l'intersection de différents types d'agents, sont toutefois moins utilisé que les indicateurs plus directs (\cref{subsec:indicateurs-simfeodal}).
+Ces indicateurs, situés à l'intersection de différents types d'agents, sont toutefois moins utilisés que les indicateurs plus directs (\cref{subsec:indicateurs-simfeodal}).
 Les requêtes correspondantes, moins fréquentes, ne perturbent pas les logiques et performances d'ensemble de \simedb{} : elles auraient plus facilement exprimées dans un schéma \og en flocons\fg{}, mais leur relative rareté ne remet aucunement en cause l'organisation générale du MCD.
 
 
@@ -1373,7 +1391,7 @@ Du côté du MCD, la table correspondante est la table \texttt{parameters}.
 Quand l'utilisateur sélectionne un sous-ensemble de valeurs de paramètres, la table est filtrée, et ne renvoie donc que les simulations correspondantes.
 C'est ici que l'intérêt de la table \texttt{seeds} et de son lien bidirectionnel avec la table \texttt{parameters} apparaît : une fois \texttt{parameters} filtrée, cette sélection est renvoyée à la table \texttt{seeds}, et se répercute donc directement à toutes les autres tables.
 Avec une unique requête, qui plus est sur une table de faible dimension (\texttt{seeds} ne comporte que deux champs), le filtrage est donc extrêmement véloce, accélérant d'autant le filtrage des autres tables et donc la génération des indicateurs de sortie.
-Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour les données de \simfeodal{}, sont présenté dans l'\cref{enc:usage-MCD-SimEDB}.
+Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour les données de \simfeodal{}, sont présentées dans l'\cref{enc:usage-MCD-SimEDB}.
 
 \clearpage
 
@@ -1402,13 +1420,12 @@ Cette structure de données est enfin pensée, en amont, pour minimiser le nombr
 
 Il est important de noter qu'en l'absence de ces choix de conception de base de données, de la modélisation conceptuelle jusqu'à l'implémentation technique, la plateforme d'exploration des données \simedb{}, que nous allons maintenant présenter plus en détail, n'aurait pu être conçue, élaborée et bâtie de manière convaincante.
 
-\clearpage
 \section[Une plateforme d'exploration de données de simulations : SimEDB]{Une plateforme d'exploration de données de simulations : SimEDB%
 	\sectionmark{SimEDB}}\label{sec:SimEDB}
 
 La \cref{sec:explorer-sorties-simfeodal} (\cnameref{sec:explorer-sorties-simfeodal}) a décrit les étapes successives d'avancement dans l'exploration des données en sortie de \simfeodal{}, depuis l'observation en direct des simulations (\og pré-filtrage\fg{}) jusqu'au besoin d'une plateforme permettant l'exploration et la comparaison interactive des sorties de simulation.
 La plateforme proposée en réponse à ce besoin, \simedb{}\footnote{
-	\textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard.
+	\textbf{Sim}Feodal \textbf{E}xploration \textbf{D}ash\textbf{B}oard, disponible à l'adresse \href{https://simedb.cura.info}{https://simedb.cura.info}.
 }, dans un objectif de généricité et d'adéquation, se devait aussi de répondre à de nombreuses contraintes, aussi bien liées aux possibilités offertes qu'à l'usage qui en serait fait.
 Dans cette partie, nous nous attacherons donc à présenter les contraintes qui ont guidé la conception de \simedb{}, ainsi que les choix, méthodologiques et techniques, qui en ont résulté.\vspace{-0.5cm}
 
@@ -1471,9 +1488,9 @@ La plateforme \simedb{} est conçue pour être utilisée par des experts thémat
 \simedb{} est pourtant pensé à un niveau intermédiaire, entre l'analyse et la synthèse, dans le cube de la \cref{fig:cartography3}.
 Il ne s'agit ainsi pas d'explorer des données (\textit{explore}), au sens de MacEachren, qui sous-entend la recherche d'informations dans un jeu de données inconnu de l'utilisateur.
 Le besoin identifié consiste dans notre cas à permettre aux utilisateurs d'explorer des sorties de simulation à travers des indicateurs déjà pensés et constitués.
-Il ne s'agit donc pas de proposer un outil d'exploration de données brutes, permettant de créer à la volée des nouveaux indicateurs, via une approche d'exploration \og naïve\fg{}.
+Il ne s'agit donc pas de proposer un outil d'exploration de données brutes, permettant de créer à la volée des nouveaux indicateurs, via une approche d'exploration naïve.
 Au contraire, l'exploration est guidée par les indicateurs, et la tâche s'apparente plus à de l'analyse de résultats de simulations, voire à de la synthèse des spécificités des résultats issus d'expériences différentes.
-L'objectif de \simedb{} s'écarte donc du \og modèle\fg{} de \textsc{MacEachren}, puisqu'il ne se situe pas sur la \og droite\fg{} des usages (voir la \cref{fig:cartography3-simedb}).
+L'objectif de \simedb{} s'écarte donc du modèle de \textsc{MacEachren}, puisqu'il ne se situe pas sur dans la ligne-droite des usages (voir la \cref{fig:cartography3-simedb}).
 
 \begin{figure}[H]
 	\hspace*{\fill}%
@@ -1497,8 +1514,8 @@ L'objectif de \simedb{} s'écarte donc du \og modèle\fg{} de \textsc{MacEachren
 \end{figure}
 
 Cet écart au modèle conceptuel de MacEachren s'explique notamment par la diversité des utilisateurs de \simedb{}.
-Il serait absurde de qualifier un niveau d'expertise général des utilisateurs tant les spécificités de cette expertise sont nombreuses.
-Entre des profils de spécialiste thématiciens, de modélisateurs ou encore de géomaticiens, l'expertise est présente, mais concerne des champs différents, toutefois tous intéressés par l'exploration des sorties de \simfeodal{}.
+Il serait inapproprié de qualifier un niveau d'expertise général des utilisateurs tant les spécificités de cette expertise sont nombreuses.
+Entre des profils de spécialistes thématiciens, de modélisateurs ou encore de géomaticiens, l'expertise est présente, mais concerne des champs différents, toutefois tous intéressés par l'exploration des sorties de \simfeodal{}.
 
 Il est dès lors peu évident de se fixer sur un degré de complexité à atteindre dans la plateforme d'exploration : un niveau faible serait frustrant pour les utilisateurs avancés, et un niveau avancé serait source de confusion et donc de perte de motivation pour les utilisateurs moins expérimentés (\cref{fig:interface-complexity}).
 
@@ -1709,7 +1726,6 @@ Ces contraintes sont des éléments génériques à prendre en compte dans la co
 Nous n'avons pour autant pas tenté de brosser un paysage complet des contraintes potentielles, liées aux différents usages possibles, qui peuvent guider les choix techniques et méthodologiques de la conception d'un outil.
 La relative spécificité de \simedb{} tient à la combinaison des contraintes identifiées et à la combinaison des choix effectués pour les dépasser, que nous allons maintenant expliciter.
 
-\clearpage
 \subsection{Construire une plateforme interactive pour l'exploration de sorties de simulation}
 
 Dans cette dernière sous-partie, nous allons donc présenter les choix -- techniques, esthétiques et interactifs -- qui ont été adoptés dans la conception et l'implémentation de \simedb{}.
@@ -1739,7 +1755,7 @@ Au cours de la dernière décennie, les interfaces physiques de consultation de 
 Cela a provoqué une hétérogénéisation importante aussi bien des modes d'interaction (dispositifs tactiles) que des modes d'affichages (les tailles et résolutions des écrans n'ont jamais été aussi diverses et imprévisibles).
 En conséquence, les normes de présentations graphiques ont évolué vers plus d'\og~adaptativité\fg{}, en particulier avec l'avènement du \og responsive web design\fg{} (\og conception de sites web adaptatifs\fg{}) qui permet de prévoir efficacement l'agencement d'une page web quelque soit le support de consultation.
 Les technologies qui prédominaient dans la réalisation d'applications web interactives il y a quelques années\footnote{
-	Applications en \textsf{Flash}, \textit{applets} Java\ldots
+	Applications en \textsf{Flash}, \textit{applets} Java, etc.
 } ont largement disparu suite à un manque d'adaptation à ces nouveaux support.
 
 Pendant ce temps, de nouveaux standards du développement web (\textsc{HTML5} entre autre) ont émergé et atteint un niveau de maturité suffisant pour remplacer l'ensemble des possibilités (et les étendre) proposées par ces anciens environnements trop monolithiques.
@@ -1759,8 +1775,8 @@ Par exemple, il est tout à fait possible de s'appuyer sur des briques logiciell
 
 Cette approche, majoritaire dans la construction d'applications actuelles (avec des \textit{frameworks} basés sur le langage JavaScript tels que \texttt{ReactJS} ou \texttt{AngularJS}, ou encore sur le langage Python tels que \texttt{Django} ou \texttt{Flask}), est extrêmement flexible et performante, au prix d'un développement important.
 Un \textit{framework} fournit en effet des \og briques\fg{} logicielles de base -- les composants -- très génériques.
-Ces composants de bases demandent donc une forte personnalisation et un agencement complexe afin d'arriver au résultat souhaité.
-La communication entre ces composants doit être entièrement prévue et implémentée, et on abouti donc nécessairement à des projets assez importants, qui demandent une réelle expertise en développement et portent le risque d'être trop complexes pour être facilement adaptés et donc rendus génériques.
+Ces composants de base demandent donc une forte personnalisation et un agencement complexe afin d'arriver au résultat souhaité.
+La communication entre ces composants doit être entièrement prévue et implémentée, et on aboutit donc nécessairement à des projets assez importants, qui demandent une réelle expertise en développement et portent le risque d'être trop complexes pour être facilement adaptés et donc rendus génériques.
 
 À l'autre bout du gradient de développement, on peut aussi choisir de bâtir une application à partir d'un ensemble logiciel intégré, comme \texttt{Tableau}, qui permet d'agencer visuellement et graphiquement des composants graphiques et leurs liens.
 Ces outils, très usités en informatique décisionnelle, sont extrêmement simples à prendre en main, y compris pour des \og utilisateurs finaux\fg{} -- analystes par exemple --.
@@ -1783,7 +1799,7 @@ Généralement, chaque \textit{framework} est associé à un langage de programm
 \textbf{Langage} & \textsf{R} & \textsf{Python} & \textsf{Python} & \textsf{Julia} & \textsf{JavaScript} / \textsf{D3.js} \\ \hline
 \textbf{Maturité} & \makecell{{\color{ForestGreen}\faPlusCircle} {\color{ForestGreen}\faPlusCircle} \\ (2012)} & \makecell{{\color{BrickRed}\faMinusCircle} \\ (2017)} & \makecell{{\color{ForestGreen}\faPlusCircle} \\ (2014)} & \makecell{{\color{Dandelion}\faExchange} \\ (2016)} & \makecell{{\color{ForestGreen}\faPlusCircle} \\ (2017) \\ (D3 : 2011)} \\ \hline
 \textbf{Communauté} & {\color{ForestGreen}\faPlusCircle} {\color{ForestGreen}\faPlusCircle} & {\color{Dandelion}\faExchange} & {\color{ForestGreen}\faPlusCircle} & {\color{BrickRed}\faMinusCircle} & {\color{ForestGreen}\faPlusCircle} \\ \hline
-\makecell{\textbf{Connaissance} \\ \textbf{personnelle}} & {\color{ForestGreen}\faPlusCircle} {\color{ForestGreen}\faPlusCircle} & {\color{BrickRed}\faMinusCircle} & {\color{Dandelion}\faExchange} & {\color{BrickRed}\faMinusCircle} & {\color{BrickRed}\faMinusCircle}\\ \hline
+\makecell{\textbf{Connaissance} \\ \textbf{personnelle}} & {\color{ForestGreen}\faPlusCircle} {\color{ForestGreen}\faPlusCircle} & {\color{BrickRed}\faMinusCircle} & {\color{Dandelion}\faExchange} & {\color{BrickRed}\faMinusCircle} & {\color{BrickRed}\faMinusCircle} {\color{BrickRed}\faMinusCircle}\\ \hline
 
 	\end{tabular}}}
 	\caption{Une sélection de différents \textit{frameworks} dédiés à la création d'interfaces d'exploration de données.}
@@ -1801,14 +1817,14 @@ Le langage constitue un cœur, autour duquel des bibliothèques logicielles (des
 Parmi ces bibliothèques logicielles, en Python comme en R, certaines sont entièrement dédiées à la manipulation de données tabulaires -- on parle alors de \og Data Manipulation Language\fg{} (DML) -- et permettent d'effectuer des traitements avec des approches fonctionnelles, plutôt qu'avec les structures impératives plus fréquemment utilisées en programmation.
 En \textsf{R}, ces \textit{packages} constituent de véritables écosystèmes, dotés de leur propre DSL (voir p.~\pageref{par:DSL}) et donc d'une grammaire de manipulation de données propre.
 
-L'un de ces \textit{packages}, \textsf{dplyr} \autocite{wickham_dplyr_2015}, s'inscrit dans un écosystème dénommé \textsf{tidyverse} \autocite{wickham_tidyverse_2017}, et permet de chaîner des opérations de manipulation de données en une chaîne de traitement complète, plutôt que de faire appel aux habituelles boucles de parcours de matrices propres aux langages de programmation classiques.
+L'un de ces \textit{packages}, \textsf{dplyr} \autocite{wickham_dplyr_2015}, s'inscrit dans un écosystème logiciel dénommé \textsf{tidyverse} \autocite{wickham_tidyverse_2017}, et permet de chaîner des opérations de manipulation de données en une chaîne de traitement complète, plutôt que de faire appel aux habituelles boucles de parcours de matrices propres aux langages de programmation classiques.
 Ce faisant, avec des opérations chaînées, qui reposent sur des \og verbes\fg{} permettant d'effectuer des traitements de restructurations, de modification, de filtrage ou d'enrichissement d'une donnée tabulaire\footnote{
 	Les fonctions de base sont des \og verbes\fg{}, au sens où elles définissent les opérations qui seront effectuées sur les données.
 	On peut ainsi isoler des colonnes avec le \og verbe\fg{} \texttt{select}, filtrer les lignes avec \texttt{filter}, modifier une colonne avec \texttt{mutate} etc.
 	La \cref{subfig:exemple-dplyr-R} en donne un exemple commenté et concret.
 }, on obtient un ensemble d'instructions qui forment une \og phrase\fg{} de manipulation de données, construite selon une \og grammaire de traitement de données\fg{} fournie par \textsf{dplyr}.
 
-Cette \og grammaire\fg{} s'inspire notamment du SQL, bien que beaucoup plus complète, et peut en particulier être \og convertie\fg{} en SQL (\cref{fig:dml-simedb}), c'est-à-dire qu'une suite d'instructions exprimées via \textsf{dplyr} en \textsf{R} (\cref{subfig:exemple-dplyr-R}) peut être traduite en SQL (\cref{subfig:exemple-dplyr-SQL}), et donc envoyée et exécutée sur un SGBD.
+Cette grammaire s'inspire notamment du SQL, bien que beaucoup plus complète, et peut en particulier être convertie en SQL (\cref{fig:dml-simedb}), c'est-à-dire qu'une suite d'instructions exprimées via \textsf{dplyr} en \textsf{R} (\cref{subfig:exemple-dplyr-R}) peut être traduite en SQL (\cref{subfig:exemple-dplyr-SQL}), et donc envoyée et exécutée sur un SGBD.
 
 En matière de performance, l'approche de \textsf{dplyr} est intéressante : toutes les opérations sont effectuées par le SGBD directement, et seul le résultat final est renvoyé à \textsf{R} (instruction \texttt{collect()}).
 Le traitement de données bénéficie donc de la rapidité d'exécution du SGBD MapD, tout en profitant de la syntaxe expressive de \textsf{dplyr}.
@@ -1830,7 +1846,7 @@ On optimise ainsi l'utilisation de bande-passante internet.
 \paragraph{Création de graphiques avec \textsf{ggplot2} et la \og \textit{grammar of graphics}\fg{}.}
 
 En interrogeant le SGBD avec des outils adaptés, on obtient un jeu de données qui servira de base à la représentation graphique des indicateurs (\cref{fig:socviz-ggplot2}, étape 1).
-On peut passer alors passer à l'étape de construction graphique des indicateurs.
+On peut alors passer à l'étape de construction graphique des indicateurs.
 Il existe pour cela, dans le cadre de l'environnement (et du langage) \textsf{R}, de nombreux \textit{packages} dédiés.
 
 \begin{figure}[H]
@@ -1844,14 +1860,14 @@ Il existe pour cela, dans le cadre de l'environnement (et du langage) \textsf{R}
 
 L'un des \textit{packages} les plus utilisés, \textsf{ggplot2} \autocite{wickham_ggplot2_2016}, met en œuvre une syntaxe assez adaptée à nos contraintes : ce \textit{package} est conceptuellement fondé sur la \og \textit{grammar of graphics}\fg{}, c'est-à-dire une vision modulaire et très structurée de la conception graphique, pensée par Leland Wilkison \autocite{wilkinson_grammar_2006}.
 La logique, assez familière pour un utilisateur de Systèmes d'Information Géographique (SIG), consiste à penser une représentation graphique comme un ensemble de couches (\textit{layers}), qui se superposent, se complètent, et sont toutes basées sur une source de données.
-Les différentes composantes des données (variables par exemple) sont associées à des composantes graphiques de base (abscisse, ordonnée, taille, couleur \ldots), formant ainsi une mise en correspondance (\textit{mapping}) des données avec les composants graphiques (voir \cref{fig:socviz-ggplot2}, étape 2).
+Les différentes composantes des données (variables par exemple) sont associées à des composantes graphiques de base (abscisse, ordonnée, taille, couleur, etc.), formant ainsi une mise en correspondance (\textit{mapping}) des données avec les composants graphiques (voir \cref{fig:socviz-ggplot2}, étape 2).
 
 Dans notre cas, cette grammaire est porteuse d'un avantage majeur.
 Elle est extrêmement structurée et modulaire.
 Cela permet de ré-utiliser largement les codes-sources écrits pour un indicateur et de les adapter aisément à d'autres indicateurs.
 Si la grammaire du graphique est bien définie, elle sera ainsi très indépendante du contenu des données que l'on y insère.
 Par exemple, pour les nombreux indicateurs de sortie de \simfeodal{} qui décrivent l'évolution du nombre d'agents au cours des années de simulation (les agrégats dans la \cref{fig:exemple-ggplot2-simedb}), ce type de graphique est, d'une part, rapide à produire avec \textsf{ggplot2} parce qu'il ne requiert que quelques lignes de codes.
-D'autre part, en changeant le tableau de données en entrée (créé dans \cref{subfig:exemple-dplyr-R}), on reproduit exactement le même type de graphique pour tous les types d'agents voulus (le nombre de foyers paysans, d'églises\ldots).
+D'autre part, en changeant le tableau de données en entrée (créé dans \cref{subfig:exemple-dplyr-R}), on reproduit exactement le même type de graphique pour tous les types d'agents voulus (le nombre de foyers paysans, d'églises, etc.).
 Le \textit{package} \textsf{ggplot2} répond ainsi tout à fait aux contraintes de modularité exposées plus haut, et permet de factoriser le code-source, ce qui garantit une maintenance plus rapide et une meilleure robustesse de l'application dans son ensemble.
 
 
@@ -1880,11 +1896,11 @@ Ils y décrivent les différents états des données en entrée et en sortie (li
 Ce \textit{pipeline} débute par des données brutes (\textit{raw data}) auxquelles ont fait subir un traitement (\textit{data analysis}, par exemple une agrégation) pour obtenir des données prêtes à l'utilisation (\textit{prepared data}).
 Il s'agit ensuite de filtrer ces données (choix des expériences à conserver par exemple), dont l'on conserve donc uniquement les éléments nécessaires (\textit{focus data}).
 Par une étape de mise en correspondance des variables et des primitives graphiques (\textit{mapping}, voir ci-dessus), on obtient un jeu de données \og géométriques \fg{} (\textit{geometric data}).
-Cette \og géométrie\fg{} est à entendre au sens de l'espace de la représentation graphique, qui comprend par exemple les coordonnées des points, lignes, la couleur des cercles et autres éléments mobilisés dans la construction d'un graphique.
+Cette géométrie est à entendre au sens de l'espace de la représentation graphique, qui comprend par exemple les coordonnées des points, lignes, la couleur des cercles et autres éléments mobilisés dans la construction d'un graphique.
 Il n'est donc aucunement question ici de données géographiques ou spatiales.
-La dernière étape est plus technique : il s'agit du \og rendu graphique\fg{} (\textit{rendering}), qui convertit un ensemble de spécifications géométriques (textuelles) en une image affichable, faite de pixels (\textit{image data}).
+La dernière étape est plus technique : il s'agit du rendu graphique (\textit{rendering}), qui convertit un ensemble de spécifications géométriques (textuelles) en une image affichable, faite de pixels (\textit{image data}).
 
-Dans la chaîne de traitement la plus classique, ces étapes s'effectuent au sein de différents logiciels, chacun dédiés à une tâche. Dans le domaine des utilisateurs de SIG, on retrouve par exemple fréquemment une préparation des données dans un tableur, un import dans un logiciel SIG qui va être chargé de la cartographie, puis un export vers un logiciel de dessin vectoriel afin de réaliser la mise en page.
+Dans la chaîne de traitement la plus classique, ces étapes s'effectuent au sein de différents logiciels, chacun dédié à une tâche. Dans le domaine des utilisateurs de SIG, on retrouve par exemple fréquemment une préparation des données dans un tableur, un import dans un logiciel SIG qui va être chargé de la cartographie, puis un export vers un logiciel de dessin vectoriel afin de réaliser la mise en page.
 À chaque changement de logiciel, il est nécessaire d'exporter les données produites, puis de les ré-importer dans le logiciel suivant.
 \textit{A contrario}, le propre de l'utilisation d'un langage de programmation plutôt que d'un outil graphique est de pouvoir automatiser et intégrer l'ensemble de ces étapes.
 L'utilisation de \textsf{R} comme langage de développement de \simedb{} nous permet ainsi de développer une unique chaîne de traitement, qui ne requiert aucun import/export de données, et peut donc être consolidée, vérifiée et surtout ré-employée \textit{ad libitum}.
@@ -1903,7 +1919,7 @@ Les packages utilisés pour construire les chaînes de traitements de données d
 
 \paragraph{Modulariser les fonctions.}
 
-\textsf{Shiny}, en tant qu'outil de création d'interface graphique, bénéficie aussi d'un avantage important en matière de conception d'application web : comme ce \textit{package} est basé sur un langage de programmation modulaire, on peut logiquement créer et ré-utiliser des \og briques d'interfaces\fg{} modulaires.
+Le \textit{package} \textsf{Shiny}, en tant qu'outil de création d'interface graphique, bénéficie aussi d'un avantage important en matière de conception d'application web : comme ce \textit{package} est basé sur un langage de programmation modulaire, on peut logiquement créer et ré-utiliser des \og briques d'interfaces\fg{} modulaires.
 Par l'utilisation de tels modules\footnote{
 	\href{https://shiny.rstudio.com/articles/modules.html}{https://shiny.rstudio.com/articles/modules.html}
 }, il est possible de définir un ensemble d'éléments graphiques adaptatifs et de ré-utiliser tel quel cet ensemble.
@@ -1970,7 +1986,7 @@ L'occupation de l'espace visuel est donc mieux employée en superposant les indi
 
 La seconde raison est méthodologique.
 \simedb{} est un outil qui sert à comparer visuellement des données de sortie de simulation.
-Dans les indicateur présentés, le plus souvent, les intervalles affichés en abcisse sont constants : qu'ils s'agissent du temps, de modalités d'un indicateur (petits seigneurs, grands seigneurs\ldots) ou encore de seuils (composition d'un agrégat en nombre de foyers paysans, discrétisée selon des seuils choisis en amont), l'axe des abscisse est identique quelles que soient les expériences comparées.
+Dans les indicateur présentés, le plus souvent, les intervalles affichés en abcisse sont constants : qu'ils s'agissent du temps, de modalités d'un indicateur (petits seigneurs, grands seigneurs, etc.) ou encore de seuils (composition d'un agrégat en nombre de foyers paysans, discrétisée selon des seuils choisis en amont), l'axe des abscisse est identique quelles que soient les expériences comparées.
 L'axe des ordonnées, au contraire, est plus variable : qu'il représente une valeur absolue, un décompte ou une fréquence, les ordres de grandeur de ces valeurs sont très hétérogènes selon les expériences comparées.
 Le choix a donc été fait de présenter visuellement les ordres de grandeur comparables, et donc de superposer les sélections différentes (l'axe des abscisses est alors commun) plutôt que de les afficher côte-à-côte, ce qui aurait complexifié la comparaison des ordonnées en les présentant comme directement comparables alors que les ordres de grandeur varient.
 
@@ -2066,7 +2082,7 @@ Dans une ré-utilisation hors application des indicateurs, il était difficile d
 Nous avons donc ajouté, sur les graphiques eux-mêmes, un résumé des expériences et valeurs de paramètres sélectionnées pour chacun des indicateurs.
 Cela permet d'en conserver une trace plus durable et augmente leur potentiel réutilisation.
 
-\paragraph{Noter les simulations.}\label{par:noter-simul}
+\paragraph{Noter et annoter les simulations.}\label{par:noter-simul}
 
 Un dernier point d'interaction avec l'application a été prévu, sans pouvoir toutefois être mobilisé jusque là : il s'agissait d'aller vers une semi-automatisation de l'évaluation des simulations par l'intermédiaire d'un outil graphique permettant de \og noter\fg{} les simulations sélectionnées.
 Pour ce faire, et parce que, on l'a vu, l'évaluation d'un ensemble de simulations ne peut se faire de manière unique, on a choisi de donner la possibilité aux utilisateurs experts de noter chacun des indicateurs de sortie, pour chacun des ensembles de simulations qu'ils exploreraient.
@@ -2079,19 +2095,17 @@ Cette fonctionnalité, bien qu'implémentée, n'est pas encore utilisée, mais d
 
 \simedb{} est une application interactive.
 Il nous semblait dommage d'en présenter l'utilisation d'ensemble par une succession de captures d'écran commentées.
-Nous avons donc réalisé une vidéo qui en montre l'usage et est disponible à cette adresse : \hl{À faire...}
+Nous avons donc réalisé une vidéo qui en montre l'usage et est disponible à cette adresse : \href{https://simedb.cura.info/presentation-video}{https://simedb.cura.info/presentation-video}
 
-\clearpage
+
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
 
-\hl{À reprendre après redécoupage du chapitre!}\\
-% TODO : Reprendre conclusion
 Au terme de la construction de la plateforme d'exploration, nous disposons donc d'une application, \simedb{}, conçue et développée spécifiquement pour les problématiques propres à l'exploration des données de \simfeodal{}.
 
-Elle s'inscrit dans les méthodes des Interactions Homme-Machine, ou même dans ce que certains nomment désormais les \og Interactions Homme-Données\fg{} (\og \textit{Human-Data Interaction}\fg{}, \cite{elmqvist_embodied_2011,mortier_human-data_2014}) et s'efforce de suivre les préceptes identifiés dans ce champs (\cite[167-170]{amirpour_amraii_human-data_2018} par exemple).
+Elle s'inscrit dans les méthodes des Interactions Homme-Machine, ou même dans ce que certains nomment désormais les \og Interactions Homme-Données\fg{} (\og \textit{Human-Data Interaction}\fg{}, \cite{elmqvist_embodied_2011,mortier_human-data_2014}) et s'efforce de suivre les préceptes identifiés dans ce champ (\cite[167-170]{amirpour_amraii_human-data_2018} par exemple).
 
-Le développement a été fortement guidé par les contraintes et besoins identifiées, aussi bien en terme d'approches méthodologiques que de choix technologiques.
+Dans ce chapitre, nous avons montré que le développement de cette plateforme -- ainsi que des outils qui l'ont précédées (les rapports automatiques, le \textit{dashboard}, le \textit{dashboard} interactif SimVADB, etc.) -- ont été fortement guidé par les contraintes et besoins identifiées, aussi bien en terme d'approches méthodologiques que de choix technologiques.
 \simedb{} est donc un outil \textit{ad-hoc}, toutefois pensé de manière modulaire.
 Tous les composants logiciels de \simedb{} sont indépendants et communiquent de manière standardisée, ouvrant la voie à leur remplacement ou \og interchangeabilité\fg{} : l'architecture logicielle et les choix techologiques le permettent.
 La plateforme \simedb{} est donc intrinsèquement pensée comme une réponse à des besoins spécifiques, mais nous avons conçu cette réponse comme générique et en mesure d'être adaptée aisément à d'autres types de données et/ou sorties de modèles de simulation.
@@ -2100,3 +2114,14 @@ Plus généralement, l'ensemble de ce chapitre montre comment nous avons travail
 Que ce soit pour passer d'une succession de rapports à une plateforme d'exploration, pour choisir un système de gestion de base de donnée ou un type de modèle conceptuel de données, notre démarche s'ancre profondément dans une logique de recherche reproductible, et ce tant du point de vue technique que conceptuel et méthodologique
 %Plus généralement, l'ensemble de ce chapitre montre une démarche similaire, pensée pour répondre à des besoins spécifiques avec des solutions génériques et généralisables.
 %Le passage, depuis une succession de rapports jusqu'à une application d'exploration de ces rapports, ou encore les différents éléments relatifs au choix d'un système de gestion de base de données ou au dessin d'un modèle conceptuel de données s'inscrivent en effet dans cette même démarche qui s'ancre profondément dans une logique de recherche reproductible, aussi bien d'un point de vue technique que de celui du concept et de la méthodologie.
+
+\vfill
+\addcontentsline{toc}{subsection}{\textit{\textmd{Après-propos}}}
+\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
+	\textbf{\textit{Après-propos.}}
+Dans ce chapitre, nous avons plusieurs fois insisté sur la nécessité d'enregistrer toutes les données individuelles pouvant être produites par le modèle.
+Pourtant, dans les dernières versions de \simfeodal{}, suite au calibrage du modèle et à la réalisation de scénarios (voir le chapitre suivant), les données concernant les foyers paysans ont été considérablement massifiées, passant de 4 000 foyers paysans par simulation à 50 000.
+Chaque simulation produit dès lors, maintenant, un million (50 000 foyers × 20 pas de temps) de lignes pour les seuls foyers paysans, ce qui, une fois multiplié par les vingt réplications de chaque expérience et la cinquantaine d'expériences qui ont été exécutées, approche du milliard de lignes de données.
+L'enregistrement de ces données individuelles, dans ces conditions, aurait demandé une augmentation nette de l'infrastructure de stockage des données (une machine virtuelle peu puissante hébergée par la TGIR Huma-Num).
+Nous avons donc choisi, pour les seuls foyers paysans (les autres types d'agents continuent à être enregistrées individuellement) de procéder à des agrégations de données au sein-même de la plateforme de simulation (Gama) afin que les données produites restent manipulables plus aisément.
+\end{mdframed}
