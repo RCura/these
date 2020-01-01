@@ -28,16 +28,17 @@ Au regard de la quantité d'indicateurs de sortie de simulation mobilisés pour 
 
 Dans ce chapitre, nous présentons la plateforme développée en réponse à ces besoins, \simedb{}.
 Cette plateforme dédiée à l'exploration interactive de données spatio-temporelles issues de simulation, a été conçue spécifiquement pour le cas des données issues de \simfeodal{}.
-Les raisonnements et choix effectués pour la concevoir et la construire, que ce soit en matière de structuration des données ou d'interface graphique finale, sont toutefois génériques et pourraient ainsi être reproduits dans d'autres contextes d'exploration de données spatio-temporelles.
-Nous avons dès lors choisi de présenter, dans ce chapitre, un raisonnement didactique, présentant à chaque fois les contraintes spécifiques imposées par les données issues de \simfeodal{}, les replaçant dans un contexte plus général, et exposant une large partie des solutions possibles pour dépasser ces contraintes.
+Les raisonnements et les choix effectués pour la concevoir et la construire, que ce soit en matière de structuration des données ou d'interface graphique finale, sont toutefois génériques et pourraient ainsi être reproduits dans d'autres contextes d'exploration de données spatio-temporelles.
+Nous avons dès lors choisi d'adopter, dans ce chapitre, un raisonnement didactique, en présentant à chaque fois les contraintes spécifiques imposées par les données issues de \simfeodal{}, en les replaçant dans un contexte plus général, et en exposant une large partie des solutions possibles pour dépasser ces contraintes.
 Ce n'est qu'à l'issu de cet exposé des possibles que nous présentons et justifions les choix, méthodologiques et techniques, qui ont été fait pour aboutir à la plateforme \simedb.	
 
-Ce chapitre, plus technique que les précédents, est organisé en quatre parties qui suivent chacune cette forme de présentation et alternent entre une perspective consacrée aux données et une perspective dédiée à leur exploration.
+Ce chapitre, plus technique que les précédents, est organisé en quatre parties qui suivent chacune cette forme de présentation.
+Le chapitre alterne entre une perspective consacrée aux données et une perspective dédiée à leur exploration.
 La première partie (\cref{sec:sorties-simfeodal}) présente ainsi les contraintes, notamment en termes de masses, liées à l'enregistrement des données produites par un modèle de simulation stochastique, descriptif et exploratoire.
-Dans un second temps (\cref{sec:explorer-sorties-simfeodal}), nous nous interrogeons sur la manière la plus appropriée de mobiliser ces données, c'est-à-dire d'organiser les indicateurs de sortie qui en sont issus dans le but d'explorer le comportement de \simfeodal{} et de le comparer au travers des différentes expériences et versions de ce modèle.
+Dans un second temps (\cref{sec:explorer-sorties-simfeodal}), nous nous interrogeons sur la manière la plus appropriée de mobiliser ces données, c'est-à-dire d'organiser les indicateurs de sortie qui en sont issus, dans le but d'explorer le comportement de \simfeodal{} et de le comparer au travers des différentes expériences et versions du modèle.
 C'est aussi l'occasion de retracer l'historique des différentes pistes qui ont été suivies dans le cadre de cette thèse pour aboutir à la plateforme d'exploration \simedb{}.
-Les deux dernières parties sont consacrées à une présentation des besoins et contraintes techniques rencontrées pour la construction en tant que telle d'une telle plateforme d'exploration et pour que celle-ci soit aussi adaptée que possible aux besoins de ses utilisateurs, le groupe de travail qui a conçu et construit \simfeodal{}.
-Ces besoins et contraintes sont présentés selon qu'ils portent sur la nécessaire organisation des données (\cref{sec:organiser-donnees}), ou sur la plateforme interactive qui interroge ces données et permet d'en générer les indicateurs de sortie qui seront évalués (\cref{sec:SimEDB}).
+Les deux dernières parties sont consacrées à une présentation des besoins et contraintes techniques rencontrés pour la construction en tant que telle d'une telle plateforme d'exploration et pour que celle-ci soit aussi adaptée que possible aux besoins de ses utilisateurs, le groupe de travail qui a conçu et construit \simfeodal{}.
+Ces besoins et contraintes sont présentés en deux temps, selon qu'ils portent sur la nécessaire organisation des données (\cref{sec:organiser-donnees}), ou sur la plateforme interactive qui interroge ces données et génère les indicateurs de sortie qui seront évalués (\cref{sec:SimEDB}).
 
 \section[Capter les sorties de SimFeodal]{{Capter les sorties de SimFeodal}%
 	\sectionmark{Capter les sorties}}\label{sec:sorties-simfeodal}
@@ -1530,7 +1531,7 @@ En dépit de ce premier constat, les utilisateurs de \simedb{} demeurent majorit
 Afin que le temps d'exploration des données issues de \simfeodal{} soit dévoué à la compréhension et à la synthèse de ces données plutôt qu'à un apprentissage ou amélioration en exploration de données, il a été choisi de créer une application aussi simple que possible au regard des fonctionnalités principales qu'elle devait permettre : observer les indicateurs de sortie de simulation pour des expériences données, et les comparer entre elles aussi efficacement que possible.
 
 Il n'était donc pas question de construire un nouveau \og logiciel expert \fg{}, doté de dizaines de fonctionnalités avancées, mais au contraire, de simplifier au maximum l'interface pour ne pas encombrer et complexifier l'utilisation de ces fonctionnalités principales.
-Partant de ces constats, on souhaitait une plateforme aussi épurée et \textit{ad-hoc} que possible, plutôt que de partir sur la personnalisation et l'adaptation d'une solution existante qui aurait nécessairement été générique et donc difficile à spécialiser.
+Partant de ces constats, on souhaitait une plateforme aussi épurée et \textit{ad hoc} que possible, plutôt que de partir sur la personnalisation et l'adaptation d'une solution existante qui aurait nécessairement été générique et donc difficile à spécialiser.
 
 
 \subsubsection{Efficacité}
@@ -2101,17 +2102,17 @@ Nous avons donc réalisé une vidéo qui en montre l'usage et est disponible à 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
 
-Au terme de la construction de la plateforme d'exploration, nous disposons donc d'une application, \simedb{}, conçue et développée spécifiquement pour les problématiques propres à l'exploration des données de \simfeodal{}.
+Au terme de la construction de la plateforme d'exploration, nous disposons donc d'une application, \simedb{}, conçue et développée spécifiquement pour les problématiques propres à l'exploration des données de \simfeodal{} : des données massives, répliquées et explorées sous la forme d'indices qui eux-même ont largement évolué au cours du temps.
 
 Elle s'inscrit dans les méthodes des Interactions Homme-Machine, ou même dans ce que certains nomment désormais les \og Interactions Homme-Données\fg{} (\og \textit{Human-Data Interaction}\fg{}, \cite{elmqvist_embodied_2011,mortier_human-data_2014}) et s'efforce de suivre les préceptes identifiés dans ce champ (\cite[167-170]{amirpour_amraii_human-data_2018} par exemple).
 
-Dans ce chapitre, nous avons montré que le développement de cette plateforme -- ainsi que des outils qui l'ont précédées (les rapports automatiques, le \textit{dashboard}, le \textit{dashboard} interactif SimVADB, etc.) -- ont été fortement guidé par les contraintes et besoins identifiées, aussi bien en terme d'approches méthodologiques que de choix technologiques.
-\simedb{} est donc un outil \textit{ad-hoc}, toutefois pensé de manière modulaire.
+Dans ce chapitre, nous avons montré que le développement de cette plateforme -- ainsi que des outils qui l'ont précédées (les rapports automatiques, le \textit{dashboard}, le \textit{dashboard} interactif SimVADB, etc.) -- ont été fortement guidés par les contraintes et besoins identifiés, aussi bien en terme d'approches méthodologiques que de choix technologiques.
+\simedb{} est donc un outil \textit{ad hoc}, toutefois pensé de manière modulaire.
 Tous les composants logiciels de \simedb{} sont indépendants et communiquent de manière standardisée, ouvrant la voie à leur remplacement ou \og interchangeabilité\fg{} : l'architecture logicielle et les choix techologiques le permettent.
 La plateforme \simedb{} est donc intrinsèquement pensée comme une réponse à des besoins spécifiques, mais nous avons conçu cette réponse comme générique et en mesure d'être adaptée aisément à d'autres types de données et/ou sorties de modèles de simulation.
 
 Plus généralement, l'ensemble de ce chapitre montre comment nous avons travaillé de manière à ce que les solutions choisies répondent à des besoins spécifiques tout en étant génériques et généralisables.
-Que ce soit pour passer d'une succession de rapports à une plateforme d'exploration, pour choisir un système de gestion de base de donnée ou un type de modèle conceptuel de données, notre démarche s'ancre profondément dans une logique de recherche reproductible, et ce tant du point de vue technique que conceptuel et méthodologique
+Que ce soit pour passer d'une succession de rapports à une plateforme d'exploration, pour choisir un système de gestion de base de donnée ou pour sélectionner un type de modèle conceptuel de données, notre démarche s'ancre profondément dans une logique de recherche reproductible, et ce tant du point de vue technique que conceptuel et méthodologique.
 %Plus généralement, l'ensemble de ce chapitre montre une démarche similaire, pensée pour répondre à des besoins spécifiques avec des solutions génériques et généralisables.
 %Le passage, depuis une succession de rapports jusqu'à une application d'exploration de ces rapports, ou encore les différents éléments relatifs au choix d'un système de gestion de base de données ou au dessin d'un modèle conceptuel de données s'inscrivent en effet dans cette même démarche qui s'ancre profondément dans une logique de recherche reproductible, aussi bien d'un point de vue technique que de celui du concept et de la méthodologie.
 
@@ -2120,7 +2121,7 @@ Que ce soit pour passer d'une succession de rapports à une plateforme d'explora
 \begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
 	\textbf{\textit{Après-propos.}}
 Dans ce chapitre, nous avons plusieurs fois insisté sur la nécessité d'enregistrer toutes les données individuelles pouvant être produites par le modèle.
-Pourtant, dans les dernières versions de \simfeodal{}, suite au calibrage du modèle et à la réalisation de scénarios (voir le chapitre suivant), les données concernant les foyers paysans ont été considérablement massifiées, passant de 4 000 foyers paysans par simulation à 50 000.
+Néanmoins, dans les dernières versions de \simfeodal{}, suite au calibrage du modèle et à la réalisation de scénarios (voir le chapitre suivant), les données concernant les foyers paysans ont été considérablement massifiées, passant de 4 000 foyers paysans par simulation à 50 000.
 Chaque simulation produit dès lors, maintenant, un million (50 000 foyers × 20 pas de temps) de lignes pour les seuls foyers paysans, ce qui, une fois multiplié par les vingt réplications de chaque expérience et la cinquantaine d'expériences qui ont été exécutées, approche du milliard de lignes de données.
 L'enregistrement de ces données individuelles, dans ces conditions, aurait demandé une augmentation nette de l'infrastructure de stockage des données (une machine virtuelle peu puissante hébergée par la TGIR Huma-Num).
 Nous avons donc choisi, pour les seuls foyers paysans (les autres types d'agents continuent à être enregistrées individuellement) de procéder à des agrégations de données au sein-même de la plateforme de simulation (Gama) afin que les données produites restent manipulables plus aisément.
