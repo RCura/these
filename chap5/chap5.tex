@@ -6,7 +6,7 @@
 \chapter{Exploration du comportement de SimFeodal}
 \label{chap:chap5}
 \begin{center}
-	{\large Version \hl{2019-10-07}}
+	{\large Version \hl{2020-01-02}}
 \end{center}
 
 \begin{itemize}
@@ -15,6 +15,8 @@
 	\item 03/10/2019 : fin reprise 6.1
 	\item 06/10/2019 : fin reprise 6.2
 	\item 07/10/2019 : Finalisation et envoi aux Paul²
+	\item 01/01/2020 : début reprise Paul G.
+	\item 02/01/2020 : fin reprise Paul G.
 \end{itemize} 
 \setcounter{minitocdepth}{2}
 \minitoc
@@ -24,24 +26,23 @@
 \section*{Introduction}
 \addcontentsline{toc}{section}{\protect\numberline{}Introduction}
 
-Dans les chapitres précédents ont été présentés le modèle \simfeodal{} (\cref{chap:chap2}), la manière de l'évaluer et la méthode suivie pour son paramétrage (\cref{chap:chap3}) et les outils développés pour mener à bien ces étapes de construction et d'évaluation (\cref{chap:chap4}).
-Avec cet outillage, théorique, méthodologique et technique, nous sommes désormais en mesure d'explorer le modèle \simfeodal{}.
+Les chapitres précédents ont présenté le modèle \simfeodal{} (\cref{chap:chap2}), la manière de l'évaluer et la méthode suivie pour son paramétrage (\cref{chap:chap3}) et les outils développés pour mener à bien ces étapes de construction et d'évaluation (\cref{chap:chap4}).
+Avec cet outillage théorique, méthodologique et technique, nous sommes désormais en mesure d'explorer le modèle \simfeodal{}.
 Par \og explorer le modèle\fg{}, on entend ici l'exploration des sorties produites par le modèle, sous toutes leurs formes, afin de gagner en connaissance sur ce qui est modélisé, mais aussi sur la manière dont le modèle est construit et implémenté.
 Il s'agit autant d'analyser les \og résultats\fg{} de \simfeodal{} que d'en explorer le fonctionnement et la robustesse.
 Ce chapitre est construit en deux parties assez indépendantes mais qui se concentrent sur différents aspects de l'évaluation d'un modèle.
 
 La première partie concerne l'analyse des \og résultats\fg{} de \simfeodal{}, c'est-à-dire les réponses produites par le modèle aux questionnements énumérés dans le \cref{chap:chap3} :
 le modèle permet-il bien de générer une polarisation des foyers paysans ? Dans quelles conditions ?
-Le système de peuplement généré par le modèle est-il hiérarchisé tel qu'on l'attendait, et sa distribution est-elle proche des connaissances empiriques ?
-Observe-t-on une fixation du peuplement, dans un espace plus disséminé que dans les configurations initiales ?
+Le système de peuplement généré par le modèle est-il hiérarchisé tel qu'attendu, et sa distribution est-elle proche des connaissances empiriques ?
+Observe-t-on une fixation du peuplement plus dispersée que dans les configurations initiales ?
 Pour répondre à ces questions, on présente d'abord les étapes de calibrage qui ont permis d'aboutir à une version \og définitive\fg{} du modèle.
-On pourra alors introduire les résultats de cette version, en en présentant les conclusions les plus saillantes, c'est-à-dire sans s'attacher à une présentation exhaustive de l'ensemble des indicateurs de sortie issus de cette version.
+On pourra alors introduire les résultats de cette version, en présentant les conclusions les plus saillantes de ceux-ci, c'est-à-dire sans s'attacher à une présentation exhaustive de l'ensemble des indicateurs de sortie issus de cette version.
 
 La deuxième partie de ce chapitre s'attachera à une exploration du comportement du modèle, c'est-à-dire à sa sensibilité.
 Cette sensibilité peut être entendue au sens de robustesse du modèle face aux différentes valeurs de paramètres (analyse de sensibilité classique).
 Comment les différents paramètres -- et leurs valeurs associées -- jouent-ils sur la variabilité des indicateurs de sortie ?
-Un premier questionnement concerne
-Les valeurs de paramètres testées ont-elles un effet sur les valeurs des indicateurs de sortie ?
+Un premier questionnement concerne les valeurs de paramètres testées :  ont-elles un effet sur les valeurs des indicateurs de sortie ?
 Une seconde question concerne la robustesse du modèle à l'aléa.
 Observe-t-on des différences de variabilité réplicative du modèle selon les différents paramètres et valeurs de paramètres testés ?
 Dans le cas de \simfeodal{}, une analyse de ce type pose des questions méthodologiques complexes, en raison notamment du grand nombre de paramètres impliqués et de \og l'explosion combinatoire\fg{} qui en découle.
@@ -55,7 +56,7 @@ Dans le cas de \simfeodal{}, une analyse de ce type pose des questions méthodol
 \clearpage
 \section{Calibrage du modèle et premiers résultats}
 
-Dans le chapitre 3 (\cref{sec:evaluer-modele}), on indiquait que \simfeodal{} s'inscrivait dans la lignée des  modèles dont le but est d'\og assister la construction de théories\fg{}, ou encore \og à utilité de développement\fg{}, c'est-à-dire permettant à des chercheurs d'expliciter et de vérifier la cohérence de leurs hypothèses plutôt qu'à les infirmer ou confirmer.
+Dans le chapitre 3 (\cref{sec:evaluer-modele}), on indiquait que \simfeodal{} s'inscrivait dans la lignée des  modèles dont le but est d'\og assister la construction de théories\fg{}, ou encore \og à utilité de développement\fg{}, c'est-à-dire permettant à des chercheurs d'expliciter et de vérifier la cohérence de leurs hypothèses plutôt que de les infirmer ou confirmer.
 
 En tant que tels, les \og résultats\fg{} de \simfeodal{} ne nous semblent pas revêtir d'enjeu confirmatoire majeur : ils sont là pour participer à l'évaluation du modèle, tant sur un plan interne qu'externe (cf. \cref{enc:lexique-eval-amblard}), mais ne constituent pas pour autant des éléments objectifs et quantifiables de validation.
 
@@ -73,8 +74,8 @@ Dans cette partie, nous rappelons les objectifs du modèle, nous décrivons les 
 %Dans les chapitres précédents, on a présenté de manière extensive les objectifs -- dans tous les sens du terme -- poursuivis par le modèle.
 %Dans le chapitre \hl{2}, on décrivait l'objectif théorique du modèle, à savoir d'aider à la compréhension des phénomènes de restructuration spatiale du système de peuplement rural entre les IX$^e$ et XIII$^e$ siècles.
 %Dans le chapitre \hl{3}, nous présentions un ensemble d'indicateurs de sortie de simulation permettant de caractériser la situation finale à laquelle aboutit une simulation.
-%Ces indicateurs peuvent être qualitatifs (courbes d'évolution\ldots) ou quantitatifs (taux atteints en fin de simulation).
-%En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres de grandeur\ldots) sinon quantifiés (les indicateurs numériques), on esquissait une grille d'évaluation du modèle.
+%Ces indicateurs peuvent être qualitatifs (courbes d'évolution, etc.) ou quantitatifs (taux atteints en fin de simulation).
+%En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres de grandeur, etc.) sinon quantifiés (les indicateurs numériques), on esquissait une grille d'évaluation du modèle.
 %
 %Pourtant, au sein de ces indicateurs de sortie de simulation, il est une distinction que l'on n’a pas encore réalisée, et qui nous semble indispensable pour l'analyse des résultats de simulation et de la sensibilité du modèle : le distinguo entre des indicateurs que l'on pourrait caractériser comme \og émergents\fg{}, et d'autres qui pourraient être qualifiés de \og contextuels\fg{}.
 %
@@ -107,8 +108,8 @@ Dans cette partie, nous rappelons les objectifs du modèle, nous décrivons les 
 
 \subsection{Calibrage du modèle \label{subsec:calibrage}}
 
-La phase de calibrage diffère des nombreuses étapes de paramétrage décrites dans le \cref{chap:chap3} (\cref{tab:historique-versions-simfeodal}).
-Il  ne s'agit ainsi plus d'ajuster les mécanismes et paramètres pour obtenir une cohérence d'ensemble dans la manière dont le modèle réagit, mais de se concentrer sur quelques paramètres, contextuels, dont on va régler finement les valeurs afin que le contexte de déroulement des autres mécanismes du modèle soit aussi contrôlé et fidèle aux connaissances expertes que possible.
+La phase de calibrage est particulière parmi les nombreuses étapes de paramétrage décrites dans le \cref{chap:chap3} (\cref{tab:historique-versions-simfeodal}).
+Il  ne s'agit ainsi plus d'ajuster les mécanismes et paramètres pour obtenir une cohérence d'ensemble dans la manière dont le modèle réagit, mais de se concentrer sur quelques paramètres, contextuels, dont on va régler finement les valeurs afin que le contexte de déroulement des autres mécanismes du modèle soit contrôlé et aussi fidèle aux connaissances expertes que possible.
 
 Ces paramètres contextuels sont étroitement liés à certains indicateurs de sortie.
 Conceptuellement, paramètres et indicateurs sont très largement différents, situés de part et d'autre de la simulation dans une typologie comme celle de Balci (ref chap 4).
@@ -121,14 +122,14 @@ Le calibrage d'un paramètre peut résulter d'un ajustement obtenu de manière e
 Dans ce cas, on cherche les valeurs de paramètres qui assureront un écart minimal entre l'indicateur de sortie de simulation simulé et sa correspondance empirique.
 Le calibrage peut aussi être thématique, par exemple en menant une recherche plus approfondie sur les valeurs que peuvent prendre, thématiquement, certains paramètres du modèle au regard des connaissances expertes sur lesquels ils s'appuient.
 Ce second type de calibrage pourrait sembler évident, préalable à une démarche rigoureuse et scientifique, et indispensable à réaliser sur chacun des paramètres d'un modèle qui peuvent être estimés ou ajustés de manière empirique et thématique.
-Dans un modèle descriptif, exploratoire et surtout basé sur des dynamiques passées, pourtant, la tâche de recherche précise de valeurs pour des dizaines de paramètres semble irréalisable en dehors de projets de modélisation de très large ampleur, ce qui n'est pas le cas de \simfeodal{}.
+Pourtant, dans un modèle descriptif, exploratoire et surtout basé sur des dynamiques passées, la recherche précise de valeurs pour des dizaines de paramètres semble irréalisable en dehors de projets de modélisation de très large ampleur, ce qui n'est pas le cas de \simfeodal{}.
 
-Dans les paragraphes suivants, nous donnons des exemples de paramètres qui ont été calibrées dans les dernières phases de paramétrage du modèle.
+Dans les paragraphes suivants, nous donnons des exemples de paramètres qui ont été calibrés dans les dernières phases de paramétrage du modèle.
 Ces exemples reprennent la distinction établie ci-dessus entre les types de calibrages.
 \begin{itemize}
 	\item Le calibrage des paramètres d'\textit{inputs}, c'est-à-dire des paramètres agissant sur l'initialisation du monde simulé, est entièrement thématique ;
 	\item le calibrage des paramètres liés à l'émergence des paroisses, rurales et urbaines, est mixte : il fait appel à des éléments de calibrage thématiques et expérimentaux ;
-	\item Le calibrage des paramètres liés à la création de châteaux par les seigneurs est pour sa part purement expérimental : les paramètres calibrés ne reposent pas sur des données empiriques, au contraire des objectifs quantitatifs en fin de simulation poursuivis.
+	\item Le calibrage des paramètres liés à la création de châteaux par les seigneurs est pour sa part purement expérimental : les paramètres calibrés ne reposent pas sur des données empiriques, au contraire des objectifs quantitatifs poursuivis en fin de simulation.
 \end{itemize}
 
 
@@ -140,16 +141,16 @@ Ces dimensions donnaient au monde du modèle l'étendue des grands départements
 Les différentes quantités empiriques relatives à cette dimension y étaient nécessairement fortement liées : population, quantité d'églises, de petites villes etc.
 On s'appuyait sur une vision assez large et englobante de la Touraine historique, en y incluant par exemple quelques éléments du duché d'Anjou voisin.
 La Touraine est en effet un espace qui a défini plusieurs ensembles régionaux au cours du temps, du diocèse de Tours dès le III$^e$ siècle au département d'Indre-et-Loire de la Révolution Française, en passant par la province historique de Touraine, successivement comtat (VI$^e$) et duché (XIV$^e$).
-Lors de chacune de ces étapes -- et au cours d'entre elles -- les frontières ont assez largement fluctué, notamment vis-à-vis de la province d'Anjou.
+Au cours de cette longue période, les frontières ont assez largement fluctué, notamment vis-à-vis de la province d'Anjou.
 
 En avançant dans le calibrage de \simfeodal{}, on a choisi de préciser l'aire d'étude, en la calant sur une étendue plus restreinte correspondant au diocèse médiéval de Tours, plus stable en matière de délimitation\footnote{
 	Il n'est ainsi pas mentionné de changement relatif au diocèse de Tours dans \textcite[309--326]{mirot1947manuel} jusqu'en 1790, où Tours perd son statut d'archidiocèse (avant de le retrouver quelques années plus tard, en 1801).
 }.
-Cette redéfinition de l'espace d'étude permettait en effet de pouvoir déterminer plus strictement quels éléments empiriques y inclure(châteaux, églises paroissiales\ldots) afin d'avoir des chiffres empiriques mieux spécifiés.
+Cette redéfinition de l'espace d'étude permettait en effet de pouvoir déterminer plus strictement quels éléments empiriques y inclure (châteaux, églises paroissiales, etc.) afin d'avoir des chiffres empiriques mieux spécifiés.
 
 En faisant ce choix, il a fallu en premier lieu revoir à la baisse la taille du monde simulé.
 Celui-ci, pour rappel, est une surface de forme carrée dont les côtés faisaient initialement 100 km de longueur.
-Le diocèse de Tours a une superficie proche de de 6 200 km², qui est ainsi inférieure de plus d'un tiers à la superficie originellement choisie (100 $\times$ 100 km, soit 10 000 km²).
+Le diocèse de Tours a une superficie proche de de 6 200 km², qui est ainsi inférieure de plus d'un tiers à la superficie originellement choisie (100 × 100 km, soit 10 000 km²).
 On a choisi, pour conserver un aspect théorique, de conserver la forme carrée tout en en réduisant la superficie : la taille des côtés du monde simulé a été réduite à 80 km, dont seuls 79 sont utilisables dans le cadre du modèle (voir le monde restreint, \cref{subsec:reso-spatiale}), soit une surface de 6 240 km², équivalente à celle de la Touraine\footnote{
 	Dans la suite de ce chapitre, nous référons au diocèse de Tours lors des mentions de la Touraine.
 }.
@@ -164,7 +165,7 @@ Le nombre de foyers paysans aurait aussi pu être affecté par la taille du mond
 C'est un \textit{input} un peu particulier en ce qu'il est extrêmement difficile, sinon vain, de parvenir à une estimation de la population d'une région française durant la période étudiée.
 On peut tout de même obtenir des indices sur des ordres de grandeur de population à des moments clés de l'histoire.
 %., incertains et que ces moments clés sont souvent différents des seuils temporels sur lesquels nous nous basons.
-Sur la Touraine, l'expertise des archéologues et historiens (ref à EZR + Monique Bourrin) permet par exemple d'avoir une idée de la population au début du XVII$^e$ siècle, mais les différentes sources préalables présentent des écarts majeurs.
+Sur la Touraine, l'expertise des archéologues et historiens (\hl{ref à EZR + Monique Bourrin}) permet par exemple d'avoir une idée de la population au début du XVII$^e$ siècle, mais les différentes sources concernant les périodes antérieures présentent des écarts majeurs.
 
 Pour \simfeodal{}, on a repris une hypothèse d'historien, qui semble réunir un certain consensus dans la communauté.
 Cette hypothèse consiste à penser qu'un optimum démographique a été atteint au début du XIII$^e$ siècle, et que la population a ensuite diminué considérablement.
@@ -187,14 +188,17 @@ Cette \og hypothèse nulle\fg{} n'a pas d'implication thématique forte ici, et 
 \subsubsection{Calibrage des paroisses}
 
 Le calibrage du nombre et de la distribution spatiale paroisses a posé des questions tant thématiques que méthodologiques.
-Dans \simfeodal{}, il existe deux mécanismes distincts de création ou promotion de paroisses (voir \cref{chap:chap2}, \cref{meca-paroisses}) : un mécanisme dédié aux églises paroissiales situées dans des agrégats (les paroisses \og urbaines\fg{}) et un mécanisme pour la promotion de nouvelles paroisses en zone peu dense (les paroisses \og rurales\fg{}).
-Ces mécanismes servent à faire émerger, de manière guidée, un maillage paroissial similaire, structurellement, à celui que l'on peut reconstituer à partir des connaissances empiriques.
+Dans \simfeodal{}, il existe deux mécanismes distincts de création ou promotion de paroisses (voir \cref{chap:chap2}, \cref{meca-paroisses}) :
+	un mécanisme dédié aux églises paroissiales situées dans des agrégats (les paroisses \og urbaines\fg{}) et un mécanisme pour la promotion de nouvelles paroisses en zone peu dense (les paroisses \og rurales\fg{}).
+Ces mécanismes servent à faire émerger, de manière guidée, un maillage paroissial structurellement similaire à celui que l'on peut reconstituer à partir des connaissances empiriques.
 L'apparition et la densification de ce maillage, est une conséquence recherchée, dans le modèle, des migrations individuelles des foyers paysans.
 De plus, ce maillage influe à son tour sur les futures migrations de ces mêmes foyers paysans : la création de nouvelles paroisses et leur localisation agissent sur les choix de migration des foyers paysans, en constituant l'un des éléments polarisant.
 
 Les paroisses sont ainsi autant des marqueurs spatiaux, témoins de la distribution spatiale des foyers paysans de l'époque, que des catalyseurs à la polarisation et à la fixation de cette même population.
 Au sein du modèle, la transformation du maillage paroissial joue un rôle contextuel, conditionnant les migrations des foyers paysans, et un rôle émergent, que l'on observe à une échelle plus agrégée (densification ou étalement, rythmes de changements etc.)
-C'est le rôle contextuel que l'on a calibré, par l'intermédiaire des paramètres de contexte agissant sur la création et la localisation des paroisses, et non des paramètres régissant l'influence des paroisses sur les foyers paysans.
+C'est le rôle émergent que l'on a calibré, par l'intermédiaire des paramètres de mécanisme agissant sur la création et la localisation des paroisses.
+Le calibrage de ce rôle émergent, pour les paroisses, agit ainsi comme un calibrage du contexte pour les foyers paysans.
+%, et non des paramètres régissant l'influence des paroisses sur les foyers paysans.
 
 \paragraph{Calibrer le nombre et l'espacement des paroisses \og rurales\fg{}.}
 
@@ -215,15 +219,15 @@ Pour le calibrage, on a fait varier le paramètre  : diminuer la valeur de ce se
 Dans l'état actuel du modèle, le nombre de paroisses rurales est encore trop important au regard des connaissances empiriques (380 au lieu de 300, voir le \vref{tab:results-basique}), mais on n'a pas augmenté le seuil afin qu'il garde du sens sur le plan thématique.
 Le seuil est fixé à 20 foyers paysans, et thématiquement, on estime que cette quantité pouvait suffire à la création d'une nouvelle paroisse.
 
-\paragraph{Calibrer le nombre et la nombre et la hiérarchie des paroisses \og urbaines\fg{}.}
+\paragraph{Calibrer le nombre et la hiérarchie des paroisses \og urbaines\fg{}.}
 
 On dispose de moins de données empiriques pour les paroisses urbaines que pour les paroisses rurales.
-On sait que le nombre de paroisses d'une ville est à peu près corrélé à sa population (mais aussi à l'ancienneté de la ville par exemple).
-On estime aussi que dans les plus grosses villes de la région (Tours, Loches\ldots), le nombre de paroisses ne dépasse pas la dizaine.
-On ne peut pas reconstituer la hiérarchie du nombre de paroisses par villes en fonction des tailles de celles-ci, mais ces éléments empiriques nous fournissent toutefois des cadres pour le calibrage du modèle.
+On sait que le nombre de paroisses d'une ville est globalement lié à sa population (mais aussi à l'ancienneté de la ville par exemple).
+On estime aussi que dans les plus grosses villes de la région (Tours, Loches, etc.), le nombre de paroisses ne dépasse pas la dizaine.
+Ces éléments empiriques sont néanmoins insuffisants pour reconstituer précisément la hiérarchie du nombre de paroisses par villes en fonction des tailles de celles-ci, mais ils nous fournissent toutefois des cadres pour le calibrage du modèle.
 
 Dans \simfeodal{}, un paramètre (\textsf{ponderation\_creation\_paroisse\_agregat}) contrôle seul la création de paroisses au sein des agrégats.
-C'est un \og paramètre de mécanisme\fg{}, quand bien même sa valeur est assez éloignée de l'empirie : elle définit le seuil de foyers paysans (par paroisse urbaine, c'est-à-dire pondéré par le nombre de paroisses présentes dans l'agrégat) à partir duquel la probabilité de créer une nouvelle paroisse dans l'agrégat atteint 1.
+C'est un \og paramètre de mécanisme\fg{}, quand bien même sa valeur est assez éloignée de l'empirie : elle définit le seuil de foyers paysans par paroisse urbaine (c'est-à-dire pondéré par le nombre de paroisses présentes dans l'agrégat) à partir duquel la probabilité de créer une nouvelle paroisse dans l'agrégat atteint 1.
 On a procédé par calibrage expérimental, manuel, en testant différentes valeurs pour ce seuil, tout en restant dans des ordres de grandeur acceptables d'un point de vue empirique.
 Il n'aurait par exemple pas été souhaitable de placer ce seuil à 10 foyers paysans, ce qui aurait impliqué que des paroisses secondaires soient générées dans chaque petit agrégat, résultant thématiquement en une paroisse par hameau par exemple).
 
@@ -233,7 +237,7 @@ Le calibrage du paramètre de pondération de création de paroisse au sein d'ag
 
 \subsubsection{Calibrage des châteaux \label{subsubsec:calibrage-chateaux}}
 
-Le calibrage des châteaux a été plus simple du point de vue de son préalable, c'est-à-dire de la recherche de données empiriques en vue de l'estimation de la situation initiale et finale.
+Le calibrage des châteaux a été plus simple du point de vue de la recherche de données empiriques en vue de l'estimation de la situation initiale et finale.
 La documentation est précise quant au nombre et aux périodes d'apparition de ces monuments dans l'espace d'étude, et leur nature massive leur a le plus souvent assuré une forte pérennité, atout rare dans l'étude de monuments anciens.
 Dans l'ensemble, on sait que le nombre de châteaux\footnote{
 	Comme pour la définition des villes, il y a un débat important en archéologie et en histoire sur la définition de ce qu'est un château.
@@ -291,13 +295,13 @@ Leur prise en compte permet d'affiner le contexte spatial dans lequel les foyers
 
 
 À la fin de la période, en Touraine, on estime à une dizaine le nombre de \og forteresses\fg{}\footnote{
-	Trouver ref. avec Samuel pour distinguer les \og forteresses importantes\fg{} et les \og points fortifiés secondaires\fg{}
+	\hl{Trouver ref. avec Samuel pour distinguer les \og forteresses importantes\fg{} et les \og points fortifiés secondaires\fg{}}
 }.
 Dans \simfeodal{}, on a donc pu calibrer les paramètres liés à la promotion de châteaux de manière à obtenir 10 gros châteaux (correspondants aux forteresses empiriques) et 40 (50 - 10) petits châteaux en fin de simulation.
 
 On connaît de plus, empiriquement, les seigneurs à l'initiative de la construction des châteaux.
 Dans la plupart des cas (de 40 à 45 châteaux sur les 50), ce sont les seigneurs les plus importants : ducs et comtes d'Anjou et de Touraine, représentés dans \simfeodal{} par les grands seigneurs.
-Les 5 à 10 châteaux restant sont issus de seigneurs de moindre importance qui ont toutefois acquis une puissance symbolique et militaire bien supérieure à celles des autres petits seigneurs.
+Les 5 à 10 châteaux restants sont issus de seigneurs de moindre importance qui ont toutefois acquis une puissance symbolique et militaire bien supérieure à celles des autres petits seigneurs.
 Dans \simfeodal{}, on a donc calibré les paramètres régissant les mécanismes de création de châteaux, différenciés pour les grands et petits seigneurs, afin que les valeurs obtenues par simulation soient similaires aux valeurs empiriquement connues.
 
 Les graphiques de la \cref{fig:calibrage-chateaux-composition} présentent les résultats obtenus dans la dernière version de \simfeodal{}.
@@ -357,11 +361,11 @@ On y constate en premier lieu que les ordres de grandeur sont plutôt respectés
 	Il est difficile, dans le modèle, de différencier les églises paroissiales rurales et urbaines, et on ne peut donc obtenir un indicateur de sortie directement comparable aux données empiriques.
 }.
 
-Concernant les autres indicateurs, on peut noter qu'ils sont un peu trop importants, ce qui est rendu plus significatif par des variabilités faibles (les médianes et quartiles sont assez proches de la moyenne, et l'écart-type est faible relativement aux grandeurs considérées).
-Le nombre d'agrégats et d'églises paroissiales simulés dépasse ainsi dans les deux cas d'une cinquantaine les valeurs empiriques correspondantes.
+Concernant les autres indicateurs, on peut noter qu'ils sont en général supérieurs aux valeurs attendues, ce qui est d'autant plus significatif que la variabilité de ces indicateurs est faible (les médianes et quartiles sont assez proches de la moyenne, et l'écart-type est faible relativement aux grandeurs considérées).
+Le nombre d'agrégats et d'églises paroissiales simulés dépasse d'une cinquantaine les valeurs empiriques correspondantes.
 La part de foyers paysans isolés en fin de simulation est trop importante de 10\%, quand bien même l'intervalle de confiance empirique est assez flou.
 
-Le nombre de gros châteaux dépasse significativement l'objectif, comme on a pu le constater dans la \cref{fig:calibrage-chateaux-composition} (gauche), mais on expliquait alors que nous ne parvenions à ajuster davantage cette valeur aux quantités empiriques sans déstabiliser d'autres éléments du modèle.
+Le nombre de gros châteaux dépasse significativement l'objectif, comme on a pu le constater dans la \cref{fig:calibrage-chateaux-composition} (gauche), mais ajuster davantage cette valeur aux quantités empiriques déstabilise d'autres éléments du modèle.
 
 Le dernier indicateur, l'augmentation de la charge fiscale des foyers paysans, est quant à lui assez satisfaisant : il est certes plus faible que l'objectif empirique fixé (augmentation de 2.4 au lieu de 3 de la charge fiscale moyenne entre le début et la fin de la simulation), mais dans le cas de cet objectif empirique difficile à estimer, cette valeur nous paraît suffisante.
 
@@ -473,6 +477,9 @@ Le \og coude\fg{} dans la courbe, qui correspond à la longue traîne de petits 
 
 En parallèle de cette nette hiérarchisation des agrégats, les graphiques de la  \cref{fig:results-rt-poles} permettent de constater une toute aussi nette hiérarchisation des pôles.
 Cela n'est pas surprenant dans la mesure où on a vu qu'agrégats et pôles se confondaient, ce qui constitue en soi un résultat satisfaisant.
+La hiérarchie des pôles peut aussi être lue dans la composition des pôles en attracteurs.
+Dans l'ensemble, plus un pôle contient d'agents-attracteurs, plus il est susceptible d'être attractif.
+Les pôles sont ainsi constitués d'agents-attracteurs, chacun dotés d'une valeur d'attractivité, et c'est donc leur combinaison qui défini l'attractivité des pôles.
 
 
 \begin{figure}[H]
@@ -489,8 +496,8 @@ Ce graphique communique donc plus lisiblement, visuellement, la forte hiérarchi
 Comme le nombre maximum d'attracteur augmente régulièrement (environ 3 en début de simulation contre plus de 10 à la fin), on peut dire que dans le modèle, cette hiérarchisation est dûe à une croissance des pôles les plus importants et non à une croissance équitablement répartie.
 Par exemple, en fin de simulation, sur les 250 pôles, moins de la moitié est composée de plus de trois attracteurs.
 
-En cela, le modèle reproduit bien l'apparition d'une tête de hiérarchie urbaine, qui trouve une correspondance empirique dans les villes (Amboise, Loches, Chinon\ldots) de la région d'étude, organisées autour de châteaux et composées de multiples églises paroissiales.
-La \cref{fig:results-rt-poles}-b montre aussi cette hiérarchisation : elle met en évidence un glissement des modalités d'attraction depuis une valeur de 0.2 (deux églises paroissiales) à un double mode à 0.4 (deux églises et une communauté) et 0.7 (plusieurs églises, un château, une communauté\ldots).
+En cela, le modèle reproduit bien l'apparition d'une tête de hiérarchie urbaine, qui trouve une correspondance empirique dans les villes (Amboise, Loches, Chinon, etc.) de la région d'étude, organisées autour de châteaux et composées de multiples églises paroissiales.
+La \cref{fig:results-rt-poles}-b montre aussi cette hiérarchisation : elle met en évidence un glissement des modalités d'attraction depuis une valeur de 0.2 (deux églises paroissiales) à un double mode à 0.4 (deux églises et une communauté) et 0.7 (plusieurs églises, un château, une communauté, etc.).
 
 
 Un dernier élément du modèle en lien avec la hiérarchisation du peuplement est composé par la hiérarchie des paroisses.
@@ -533,7 +540,7 @@ En milieu rural, le nombre de paroisses augmente jusqu'à assurer une desserte �
 Dans l'ensemble, \simfeodal{} montre une bonne capacité à reproduire la hiérarchisation du système de peuplement.
 Avec les informations dont l'on dispose pour évaluer le modèle, on ne peut qu'être satisfait des tendances présentes dans cette version calibrée de \simfeodal{}.
 Le modèle reproduit en effet bien les faits stylisés estimés, même si ces derniers sont formalisés de manière plus floues que par exemple le phénomène de polarisation.
-Cette incertitude, ou au moins de manque de détail, est dû à la faiblesse de la documentation empirique sur ces questions thématiques : il est déjà difficile d'avoir une estimation des populations à cette période féodale, alors le détail de la forme de distribution de ces populations est une connaissance encore plus dure à estimer.
+Cette incertitude est due à la faiblesse de la documentation empirique sur ces questions thématiques : il s'avère difficile d'avoir une estimation des populations à cette période féodale, ainsi la forme précise de distribution de ces populations est encore plus difficile à estimer.
 À ce stade de maturité du modèle, il faudrait sans doute collecter de nouvelles sources historiques pour pouvoir raffiner le comportement du modèle, ou au moins, départager des simulations présentant de légères variations au niveau des indicateurs analysés dans cette sous-partie.
 
 \subsubsection{Capacité du modèle à simuler la fixation et la dissémination du peuplement \label{sssec:fixation-dissemination}}
@@ -541,7 +548,7 @@ Cette incertitude, ou au moins de manque de détail, est dû à la faiblesse de 
 Dans ce dernier objectif thématique, on cherche à vérifier si le modèle parvient bien à reproduire le double processus de fixation des foyers paysans et de dissémination des peuplements dans l'espace.
 
 Dans le modèle, ces processus devraient s'exprimer sous la forme d'un accroissement des migrations (restructuration) suivi d'une diminution nette (fixation).
-Àu niveau d'observation des agrégats, on devrait observer une couverture croissante, de plus en plus dense, du monde simulé.
+Au niveau d'observation des agrégats, on devrait observer une couverture croissante, de plus en plus dense, du monde simulé.
 
 \paragraph{Fixation des foyers paysans.}
 
@@ -560,7 +567,7 @@ On y constate que le modèle produit un motif spécifique, composé de trois pha
 	Ces derniers, initialement isolés, rejoignent des pôles locaux (églises rurales par exemple) et y constituent ainsi de petits agrégats ruraux locaux.
 	Ils se fixent dans ces agrégats car il n'y pas encore véritablement de motif d'insatisfaction (religieuse ou de protection du moins).
 	\item En 960, deux éléments exogènes viennent perturber le système : l'augmentation de la pression religieuse (diminution des seuils de distance aux églises) et de la pression de protection (nécessité de s'approcher des châteaux).
-	En conséquence,le nombre de migrations bondit et retrouve son niveau de début de simulation (environ 10\%).
+	En conséquence, le nombre de migrations bondit et retrouve son niveau de début de simulation (environ 10\%).
 	Le besoin de protection augmente régulièrement à cette période, et les foyers paysans sont donc sans cesse amenés à migrer, ce qui explique que ce niveau de migration semble stable jusqu'à la fin de cette deuxième phase\footnote{
 		Si de nouveaux éléments exogènes ne venaient pas à nouveau perturber le système après 1060, le niveau de migration diminuerait à son tour, comme avant 960.
 	}.
@@ -600,8 +607,8 @@ Cela indique aussi qu'à partir de cette période, les agrégats sont pour la pl
 
 \paragraph{Dissémination du peuplement.}
 
-La répartition des paroisses, dans le modèle, constitue un observable intéressant pour évaluer la dissémination du peuplement.
-Comme les paroisses ont comme vocation de desservir la population des foyers paysans, elles constituent un proxy de sa répartition tout au long du temps.
+Dans le modèle, la répartition des paroisses constitue un observable intéressant pour évaluer la dissémination du peuplement.
+Comme les paroisses ont vocation à desservir la population des foyers paysans, elles constituent un proxy de sa répartition tout au long du temps.
 Les indicateurs liés (\cref{fig:results-paroisses-nb,fig:results-paroisses}) donnent une lecture satisfaisante du processus de dissémination.
 
 En premier lieu, on note que le nombre d'églises paroissiales augmente de manière régulière au cours du temps, avec un saut entre 1060 et 1080 (comme pour de nombreux indicateurs vu auparavant (\cref{fig:results-paroisses-nb}).
@@ -666,7 +673,8 @@ Certes, le champ de l'analyse spatiale s'est en partie constitué pour répondre
 Pourtant, et on y reviendra plus extensivement dans le chapitre suivant, on constate ici une limite de notre méthode d'évaluation des simulations, au vu des données et connaissances empiriques dont on dispose.
 Un espace théorique, simulé et très variable localement comme celui de \simfeodal{} se prête en effet mal à une agrégation de données.
 Les différentes réplications d'un modèle ne partagent ainsi pas véritablement de référentiel spatial commun en dehors des limites du monde simulé : les positions des agrégats, des églises, des paroisses, sont en effet incomparables d'une réplication à l'autre.
-Sans données empiriques susceptibles de préciser les taux d'occupation attendus, les mesures de dispersion des semis d'églises, de villages etc., on ne peut pousser l'évaluation visuelle plus avant.
+Sans données empiriques susceptibles de préciser les taux d'occupation attendus, les mesures de dispersion des semis d'églises, de villages, etc., on ne peut pousser l'évaluation visuelle plus avant.
+L'usage de mesures synthétiques, tirées de l'analyse spatiale, pour décrire ces configurations spatiales serait de plus peu adapté puisque ne reposant pas sur des sources empiriques suffisamment précises.
 
 %Pour pousser l'évaluation et être en mesure de comparer de nouvelles simulations par le biais des indicateurs présentés ici, au moins pour ceux relatifs à la fixation et dissémination, il faudrait sans doute mener des études de cas plus approfondies sur les sorties du modèle.
 %On pourrait par exemple suivre des ensembles de foyers paysans ou d'agrégats tout au long des simulations pour analyser plus finement leur comportement.
@@ -679,12 +687,12 @@ Le modèle aboutit bien sur une polarisation de l'habitat, autour de pôles d'at
 Cette polarisation débouche sur une structure spatiale pérenne, due à la fixation des foyers paysans au sein d'agrégats qui composent le système de peuplement.
 
 Le modèle \simfeodal{} est donc satisfaisant vis-à-vis de ce pour quoi il a été conçu, développé et calibré.
-En comparant les dizaines de versions successives du modèle, ce constat est d'autant renforcé : chaque version a permis des améliorations notables, depuis une version 0 qui parvenait tout juste à une concentration du peuplement jusqu'aux versions plus récentes, préalables à la version 6.6 ici présentée, qui ont renforcé l'ajustement aux connaissances expertes chacune sur des points plus spécifiques.
-Certains indicateurs, toutefois, et en particulier les indicateurs quantitatifs qui donnent un aperçu global et synthétique des résultats du modèle (\cref{ssec:results-global}), demeurent toutefois relativement éloignés des objectifs fixés.
-On pourrait donc chercher désormais à prolonger et affiner le calibrage du modèle afin que sa capacité à reproduire les faits stylisés soit améliorée.
+En comparant les dizaines de versions successives du modèle, ce constat s'affirme avec plus de force : chaque version a permis des améliorations notables, depuis une version 0 qui parvenait tout juste à une concentration du peuplement jusqu'aux versions plus récentes, préalables à la version 6.6 ici présentée, chacune ayant renforcé, sur des points spécifiques, l'ajustement aux connaissances expertes.
+Certains indicateurs, toutefois, et en particulier les indicateurs quantitatifs qui donnent un aperçu global et synthétique des résultats du modèle (\cref{ssec:results-global}), demeurent assez éloignés des objectifs fixés.
+Il serait donc envisageable de chercher à prolonger et affiner le calibrage du modèle afin que sa capacité à reproduire les faits stylisés soit améliorée.
 
-Il nous semble toutefois que cette démarche ne vaudrait pas le temps et l'effort qu'il serait nécessaire de lui consacrer.
-Nous appuyons ce sentiment sur deux raisons principales, la première liée au domaine de l'empirie et la seconde au domaine du modèle.
+Il nous semble toutefois que cette démarche ne vaudrait pas le temps et l'effort qu'elle appelle.
+Ce sentiment s'appuie sur deux raisons distinctes : la première liée au domaine empirique et la seconde au domaine du modèle.
 
 \paragraph{Calibrer sans sur-ajuster.}
 Dès le calibrage des paramètres d'\textit{input} (\cref{sssec:calibrage-inputs}), on mentionnait les difficultés du recueil de sources empiriques -- matérielles ou littéraires -- pour des éléments qui paraîtraient pourtant triviaux et indispensables à tout géographe contemporain.
@@ -712,17 +720,17 @@ Les paramètres y sont très nombreux, de même que les mécanismes qu'ils ajust
 Les agents du modèle interagissent, et, avec eux, les mécanismes qui les caractérisent sont aussi entrecroisés et imbriqués.
 Si l'on a une connaissance parfaite de chaque mécanisme (puisqu'on les a conçus et implémentés), il est difficile d'avoir une connaissance de même ordre sur l'aboutissement de leurs interactions, c'est la raison d'être de la simulation.
 
-Dans des modèles moins descriptifs, mêmes complexes, on peut avoir des idées relativement précises de la combinaison des mécanismes, et donc une bonne intuition des sorties de simulation qui en aboutiront.
+Dans des modèles moins descriptifs, mêmes complexes, on peut avoir des idées relativement précises de la combinaison des mécanismes, et donc une bonne intuition des sorties de simulation qui en résulteront.
 Dans un modèle comme \simfeodal{}, les paramètres sont trop nombreux pour que ce soit réellement possible, et les résultats contre-intuitifs ont été fréquents dans les différentes étapes de paramétrage et de calibrage du modèle.
 Ces éléments contre-intuitifs, surprenants, sont extrêmement stimulants du point de vue de la connaissance des effets du modèles.
-Ils placent les modélisateurs et évaluateurs dans une démarche abductive où l'identification de l'explication de ces contre-intuitions permet de mieux comprendre le fonctionnement effectif du modèle et à partir de là du système modélisé.
+Ils placent les modélisateurs et évaluateurs dans une démarche abductive où l'identification de l'explication des diverses surprises permet de mieux comprendre le fonctionnement effectif du modèle et, à partir de là, du système modélisé.
 
 Dans la recherche d'un calibrage mieux adapté, cette approche abductive ne permet toutefois pas véritablement de progresser.
 À mesure que le calibrage se précise, la complexité du modèle apparaît renforcée.
 Comme dans le principe des vases communicants, une modification de valeur d'un paramètre est presque systématiquement assortie d'une réaction imprévu (et imprévisible) sur un indicateur différent de celui sur lequel le paramètre devait agir.
 Chaque modification de paramètre devrait donc donner lieu à de nouveaux ajustements d'autres paramètres, jusqu'à obtenir un ensemble de valeurs de paramètres stable.
 
-Pour améliorer le calibrage, et éviter ces allers-retours imprévisibles entre paramètres, il manque alors une vision plus globale des réactions engendrées par les modifications de chaque paramètre
+Pour améliorer le calibrage, et éviter ces allers-retours imprévisibles entre paramètres, il manque alors une vision plus globale des réactions engendrées par les modifications de chaque paramètre.
 Une telle vision permettrait de ré-organiser les paramètres, pour chaque indicateur de sortie, en ensembles thématiques dont l'on ferait systématiquement co-varier les valeurs testées afin d'approcher de l'objectif de manière harmonisée.
 Pour mieux comprendre les aboutissements du modèle, il est dès lors nécessaire de l'explorer de manière plus systématique, en essayant de comprendre l'influence réelle de chacun des paramètres plutôt que de tâtonner, de manière experte certes, en agissant sur les paramètres qui nous semblent intuitivement les plus importants.
 %Une telle exploration, plus systématique, de grande ampleur et cherchant à dépasser l'intuition, ne peut se mener que sur une quantité réduite d'éléments du modèle (indicateurs de sortie, mais aussi intervalle de validité des paramètres), et cela requiert dès lors de réussir à synthétiser de manière manifeste, quantifiée, les attentes que l'on a vis-à-vis des résultats du modèle.
@@ -734,35 +742,35 @@ Ce sont ces objectifs de compréhension plus fine du comportement du modèle que
 
 Parmi les nombreuses méthodes dédiées à l'évaluation de modèles, il en est une que l'on retrouve dans tous les manuels et dans la plupart des articles dédiés à la présentation de modèles.
 Il s'agit de l'analyse de sensibilité, catégorie en fait plurielle qui regroupe l'ensemble des méthodes vouées à tester ou à explorer la stabilité d'un modèle face aux éléments qui le composent :
-poids des \textit{inputs} dans les résultats obtenus ; variabilité des résultats selon les valeurs de paramètres choisies ; variabilité des résultats due à l'aléa etc.
-Ces méthodes sont extrêmement nombreuses et constituent presque un champ scientifique entier, lié à l'évaluation de modèles, soient-ils à base d'agents ou statistiques.
+poids des \textit{inputs} dans les résultats obtenus ; variabilité des résultats selon les valeurs de paramètre choisies ; variabilité des résultats due à l'aléa etc.
+Ces méthodes sont extrêmement nombreuses et constituent presque un champ scientifique à part entière, lié à l'évaluation de modèles à base d'agents ou statistiques.
 
 Parmi celles-ci, les méthodes les plus classiques \autocite[257]{crooks_agent-based_2019} visent à \og déterminer l'influence des paramètres sur les sorties du modèle.\fg{} \autocite[75]{ginot2005explorer}.
-Il s'agit de faire varier les valeurs des paramètres et de mesurer les écarts résultant dans les sorties.
+Il s'agit de faire varier les valeurs des paramètres et de mesurer les écarts produits dans les sorties.
 Le plus souvent, cette mesure est quantitative, par exemple sous la forme d'un \og indice de sensibilité\fg{} qui dépend des variations des sorties mais aussi de l'amplitude de la variation des paramètres\footnote{
 	Cette prise en compte de la variation des valeurs de paramètre, par exemple dans l'indice proposé par \textcite[258]{crooks_agent-based_2019} et dérivé de celui de \textcite{hamby_review_1994} (in \cite[201]{osullivan_spatial_2013}), permet de s'assurer, lors de la comparaison de la sensibilité des paramètres, que les valeurs comparées sont bien comparables.
 	Pour prendre l'exemple du modèle de Schelling, il s'agit de s'assurer qu'on ne compare pas une variation de 0,1\% du seuil de tolérance avec une variation de 20\% dans la part d'espace vide.
 	Dans ces indices, les amplitudes des valeurs testées sont en fait normalisées.
 }.
 
-Les analyses peuvent être menées paramètre par paramètre, en conservant par exemple des valeurs fixes pour un jeu de paramètre (issus de calibrage) de base et en faisant varier un unique paramètre à la fois (analyse de type \textit{OFAT}, \og \textit{one factor at a time}\fg{}).
+Les analyses peuvent être menées paramètre par paramètre, en conservant par exemple des valeurs fixes pour un jeu de paramètres (issus de calibrage) de base et en faisant varier un unique paramètre à la fois (analyse de type \textit{OFAT}, \og \textit{one factor at a time}\fg{}).
 On peut aussi procéder en croisant des valeurs pour tous les paramètres, c'est-à-dire en analysant la sensibilité du modèle aux interactions entre paramètres.
 
-Les analyses de sensibilités sont largement recommandées comme une pratique indispensable à la validation de modèle : on les retrouve dans l'ensemble des schémas relatifs à la démarche d'évaluation du \cref{chap:chap3} (\cref{fig:schema_kluegl,fig:schema_ngo}).
+Les analyses de sensibilités sont souvent présentées comme une pratique indispensable à la validation de modèle : on les retrouve dans l'ensemble des schémas relatifs à la démarche d'évaluation du \cref{chap:chap3} (\cref{fig:schema_kluegl,fig:schema_ngo}).
 Au-delà de la validation des modèles, ce type d'analyses constitue un outil extrêmement utile pour aider à la compréhension d'un modèle, sans nécessairement chercher à en quantifier la validité.
-Cette méthode repose sur l'exploration d'un modèle par le prisme de ses réactions face aux paramètres choisis, et permet ainsi de mener une étude approfondie de l'influence des paramètres.
+En effet, cette méthode repose sur l'exploration d'un modèle par le prisme de ses réactions face aux paramètres choisis, et permet ainsi de mener une étude approfondie de l'influence des paramètres.
 Dans certains modèles, une analyse de ce type a par exemple permis de rendre plus parcimonieux un modèle KISS, en mettant en lumière le peu d'influence d'un paramètre sur l'ensemble des sorties d'un modèle.
 C'est le cas dans le travail de thèse de \citeauteur{schmitt_modelisation_2014}, où une analyse de sensibilité a révélé la relative inutilité de l'un des 6 paramètres mobilisés dans le modèle SimpopLocal \autocite[224-225]{schmitt_modelisation_2014}.
 
 Dans le cadre d'un modèle exploratoire, où les très nombreux paramètres comportent vraisemblablement une part de redondance, l'ambition n'est pas de rechercher à réduire la masse de paramètres à tout prix, mais plutôt d'aider à comprendre lesquels ont la plus grande influence sur le modèle.
-
-Dans le cadre de \simfeodal{}, une analyse de sensibilité doit permettre de gagner en compréhension du modèle, et en conséquence, des dynamiques modélisées.
+Ainsi, pour \simfeodal{}, l'analyse de sensibilité doit permettre de gagner en compréhension du modèle, et en conséquence, des dynamiques modélisées.
 
 
 %De manière plus générale, une analyse de sensibilité quantitative requiert à minima des objectifs quantitatifs synthétiques, hiérarchisés et parcimonieux, ce qui n'est pas la démarche empruntée dans \simfeodal{}.
-La nature exploratoire et descriptive de \simfeodal{} rend l'application des méthodes classiques de l'analyse de sensibilité assez difficile : les paramètres ne sont pas tous quantitatifs, certains fonctionnent par paires, par grappes etc.
-Dans cette partie, nous nous en tiendrons à une analyse de sensibilité grossière, orientée vers une évaluation visuelle, à l'instar des autres démarches d'évaluation du modèle mises en places.
-Nous nous inscrivons pleinement dans le raisonnement de \citeauteur{hirtzel2015exploration}, d'autant plus que le dit raisonnement est tenu dans une thèse dont l'analyse de sensibilité de modèles descriptifs est l'un des enjeux principaux :
+Dans cette partie, nous nous en tiendrons à une analyse de sensibilité sommaire, orientée vers une évaluation visuelle, à l'instar des autres démarches d'évaluation du modèle mises en places.
+La nature exploratoire et descriptive de \simfeodal{} rend en effet l'application des méthodes classiques de l'analyse de sensibilité assez difficile : les paramètres ne sont pas tous quantitatifs, certains fonctionnent par paires, par grappes etc.
+%Dans cette partie, nous nous en tiendrons à une analyse de sensibilité grossière, orientée vers une évaluation visuelle, à l'instar des autres démarches d'évaluation du modèle mises en places.
+L'évaluation visuelle nous semble alors tout à fait adaptée à cette hétérogénéité de paramètres, et à ce titre, nous nous inscrivons pleinement dans le raisonnement de \citeauteur{hirtzel2015exploration}, d'autant plus que ce raisonnement est tenu dans une thèse dont l'analyse de sensibilité de modèles descriptifs est un enjeu principal :
 \begin{quotation}
 	\og Ces différents constats nous ont conduit à procéder à des analyses de sensibilité locales, avec la méthode OAT\footnote{
 		[C'est un autre acronyme de \og \textit{one factor at a time}\fg{}, identique à \textit{OFAT} que nous utilisons dans cette partie.]
@@ -795,11 +803,11 @@ Une approche plus simple, de type OFAT, nous paraît dès lors la seule  à êtr
 Dans une analyse de sensibilité, le premier choix à faire concerne les paramètres à analyser.
 Dans les modèles statistiques ou KISS, l'analyse de chacun des paramètres est une évidence.
 Dans des modèles plus descriptifs tels que \simfeodal{} (ou les modèles analysés par \textcite{hirtzel2015exploration}), on procède souvent à une sélection des paramètres afin de réduire l'ampleur de la tâche.
-Par exemple, quand certains paramètres ont un ancrage empirique fort, on peut considérer qu'ils se comportent plus comme des constantes que comme des paramètres, n'auront jamais à varier, et ne requièrent ainsi pas d'être analysés.
+Par exemple, quand certains paramètres ont un ancrage empirique fort, on peut considérer qu'ils se comportent davantage comme des constantes que comme des paramètres, qu'ils n'auront jamais à varier, et ne requièrent ainsi pas d'être analysés.
 
-Dans \simfeodal{}, on aurait pu par exemple se passer d'analyser les paramètres de contexte les plus inscrits dans les connaissances empiriques.
-Pourtant, comme nous envisageons d'éprouver le modèle sur des scénarios susceptibles de faire varier tous les types de paramètres, par exemple portant sur des régions et des périodes différentes, il nous a semblé important de tester aussi ces paramètres.
-On a opté pour une analyse de sensibilité de l'ensemble des paramètres du modèle.
+Dans \simfeodal{}, on aurait pu par exemple écarter l'analyse des paramètres de contexte les plus inscrits dans les connaissances empiriques.
+Pourtant, comme nous envisageons d'éprouver le modèle sur des scénarios susceptibles de faire varier tous les types de paramètres -- par exemple portant sur des régions et des périodes différentes -- il nous a semblé important de tester aussi ces paramètres.
+On a donc opté pour une analyse de sensibilité de l'ensemble des paramètres du modèle.
 \simfeodal{} comporte dans les faits 70 paramètres, mais en pratique, certains n'ont aucun sens quand ils sont mobilisés seuls.
 Par exemple, deux paramètres définissent le rayon minimum et maximum des zones de prélèvement.
 Il n'y a pas grand sens à faire varier l'un sans l'autre.
@@ -820,12 +828,12 @@ Par exemple, pour un modèle dont le premier paramètre vaut 10 et le second 100
 le premier paramètre sera testé aux valeurs [0, 5, 10, 15 et 20], et le second pour [0, 50, 100, 150 et 200].
 
 Dans un cas réel, cette règle est difficile à suivre : on a ici pris l'exemple de paramètres quantitatifs \og de stock\fg{}, qui ne sont comparables qu'entre eux.
-Dans \simfeodal{}, certains paramètres ont des structures bien plus difficilement comparables, à l'instar des étendues plus haut.
+Dans \simfeodal{}, certains paramètres ont des structures bien plus difficilement comparables, à l'instar des étendues.
 Comment rendre comparable cinq variations autour d'un stock de 10, et cinq variations autour d'une étendue de 1500 m à 5000 m ?
-L'étendue des possibles transformations pour ces étendues est bien plus important : diminution, augmentation, translation\ldots{}
+L'étendue des possibles transformations pour ces étendues est bien plus important : diminution, augmentation, translation, etc.
 Contrairement aux variables de stocks qui ne comportent qu'une dimension, les étendues sont en effet composées de deux dimensions, et la quantité de variation possibles suit donc une loi de puissance.
 
-Ce problème se pose de manière plus importante encore pour les paramètres qui évoluent en fonction du temps.
+Ce problème se pose avec plus de force pour les paramètres qui évoluent en fonction du temps.
 Par exemple, le paramètre qui agit sur la satisfaction protection des foyers paysans, a une valeur composite (de type \textit{map}, voir \cref{lst:maps-gama} dans le \cref{chap:chap2}) qui vaut \og $0$ entre 800 et 940; $0.2$ en 960 ; $0.4$ en 980 ; $0.6$ en 1000 ; $0.8$ en 1020 ; et $1$ à partir de 1040\fg{}.
 C'est donc un paramètre à trois dimensions : une valeur (dimension 1) qui évolue selon des intervalles de temps (dimensions 2 et 3).
 Pour l'analyser dans son entièreté, il faudrait supprimer la variation en testant plusieurs valeurs, mais aussi changer le rythme de cette variation, en décaler l'étendue temporelle, en changer l'intensité etc.
@@ -847,8 +855,10 @@ Les méthodes et outils d'exploration interactive mis en place jusque là (\cref
 %Pour une analyse qui n'est pas au cœur de notre démarche de co-construction, cela représentait un poids bien trop important.
 Nous avons donc choisi, par soucis de lisibilité, de réduire autant que possible la production d'indicateurs de sorties de simulations pour cette analyse de sensibilité.
 
-Dans un premier temps, nous n'enregistrons l'état du modèle qu'à son pas de temps final (en 1200) plutôt que tout au long de son déroulement.
-L'analyse de sensibilité doit se concentrer sur aussi peu d'objectifs que possible, et il n'est pas véritablement gênant de perdre l'aspect dynamique et la possibilité de comparer les rythmes du changement entre les simulations.
+%D'abord, nous n'enregistrons l'état du modèle qu'à son pas de temps final (en 1200) plutôt que tout au long de son déroulement.
+D'abord, nous n'enregistrons que l'état final du modèle et non pas l'ensemble des états intermédiaires.
+Il n'est ainsi pas véritablement gênant de perdre l'aspect dynamique et la possibilité de comparer les rythmes du changement entre les simulations.
+En effet, l'analyse de sensibilité doit se concentrer sur aussi peu d'objectifs que possible.
 Pour les mêmes raisons, on a décidé de n'extraire que des données très agrégées du modèle.
 L'analyse de sensibilité s'appuie sur des résultats à l'échelle globale du modèle, et il n'est pas utile, à ce stade de l'analyse, d'enregistrer les indicateurs individuels relatifs aux agents du modèle.
 
@@ -860,10 +870,10 @@ Dans les chapitres précédents, on a présenté de manière extensive les objec
 On mobilise des indicateurs de sortie de simulation pour rendre compte de l'état du modèle, et le but est que ces indicateurs soient proches des objectifs empiriques formulés.
 %Dans le chapitre \hl{2}, on décrivait l'objectif théorique du modèle, à savoir d'aider à la compréhension des phénomènes de restructuration spatiale du système de peuplement rural entre les IX$^e$ et XIII$^e$ siècles.
 %Dans le chapitre \hl{3}, nous présentions un ensemble d'indicateurs de sortie de simulation permettant de caractériser la situation finale à laquelle aboutit une simulation.
-Ces indicateurs peuvent être qualitatifs (courbes d'évolution\ldots) ou quantitatifs (taux atteints en fin de simulation).
-En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres de grandeur\ldots) sinon quantifiés (les indicateurs numériques), on esquissait une grille d'évaluation du modèle.
+Ces indicateurs peuvent être qualitatifs (courbes d'évolution, etc.) ou quantitatifs (taux atteints en fin de simulation).
+En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres de grandeur, etc.) sinon quantifiés (les indicateurs numériques), on esquissait une grille d'évaluation du modèle.
 
-Au sein de ces indicateurs de sortie de simulation, il est une distinction que l'on n’a pas encore réalisée, et qui nous semble indispensable pour l'analyse de la sensibilité du modèle, où il est nécessaire de réduire autant que possible la quantité d'indicateurs calculés : le distinguo entre des indicateurs que l'on pourrait caractériser comme \og émergents\fg{}, et d'autres qui pourraient être qualifiés de \og contextuels\fg{}.
+Au sein de ces indicateurs de sortie de simulation, il est une distinction que l'on n’a pas encore mobilisée, et qui nous semble indispensable pour l'analyse de la sensibilité du modèle pour laquelle il est nécessaire de réduire autant que possible la quantité d'indicateurs calculés : le distinguo entre les indicateurs \og émergents\fg{} et ceux qui pourraient être qualifiés de \og contextuels\fg{}.
 
 \begin{itemize}
 	\item Le premier type, les indicateurs émergents, sont les indicateurs les plus classiques en modélisation agent : on s'attache à leur évaluation parce qu'ils sont entièrement générés par la combinaison et l'intrication des mécanismes du modèle.
@@ -885,7 +895,7 @@ Dans le cadre d'une analyse de sensibilité où l'on essaye de n'enregistrer qu'
 \medskip
 \end{encadre}
 
-On a choisit de mener l'analyse de sensibilité sur les indicateurs numériques synthétiques, présentés dans le \cref{tab:objectifs-types}.
+On a choisi de mener l'analyse de sensibilité sur les indicateurs numériques synthétiques, présentés dans le \cref{tab:objectifs-types}.
 Parmi ceux-ci, on a conservé uniquement les 6 indicateurs \og émergents\fg{} (\cref{enc:indicateurs-contextuels-emergents}): 
 nombre d'agrégats; nombre de grands châteaux; nombre d'églises paroissiales; distance moyenne entre églises paroissiales; part de foyers paysans isolés; et augmentation de la charge fiscale.
 	
@@ -895,7 +905,7 @@ Dans la construction et l'évaluation du modèle, ce sont ces indicateurs que l'
 Dans une analyse de sensibilité portant sur autant de simulations, la masse de données n'est pas la seule difficulté technique.
 Le temps de calcul représente ainsi un obstacle qui peut devenir un véritable point de blocage, tant il peut s'allonger jusqu'à devenir irréalisable.
 Sur un ordinateur individuel, avec les valeurs de paramètre issues du calibrage, chaque simulation demande en moyenne (basse) 5 minutes de calcul.
-Multiplié par les 5700 simulations requises, l'exécution des simulations nécessaires à l'analyse de sensibilité réclame alors un temps de calcul de près de 20 jours sur un ordinateur individuel, sans véritable droit à l'erreur sous faute d'avoir à recommencer ce quasi-mois de calcul.
+Multiplié par les 5700 simulations requises, l'exécution des simulations nécessaires à l'analyse de sensibilité réclame alors un temps de calcul de près de 20 jours, sans véritable droit à l'erreur sous peine d'avoir à recommencer ce quasi-mois de calcul.
 
 Pour que cette analyse soit effectuée dans un délai plus raisonnable, nous avons utilisé les capacités de calcul d'un serveur du laboratoire ainsi que d'un serveur de calcul géré par la TGIR Huma-Num\footnote{
 \href{https://www.huma-num.fr}{www.huma-num.fr}
@@ -905,13 +915,13 @@ En distribuant les exécutions de simulation sur la quarantaine de processeurs q
 \subsubsection{Analyse Quantitative - Filtrage des paramètres}
 
 Devant la masse de paramètres à analyser, nous avons réalisé qu'il était difficile de mener une analyse visuelle directe de la sensibilité des paramètres.
-Il a été choisi de mener une première étape, quantitative, pour permettre de trier et de filtrer un sous-ensemble de paramètres dont une étude plus approfondie serait alors possible.
+Il a été décidé de mener un premier tri quantitatif afin de filtrer un sous-ensemble de paramètres, rendant possible une étude plus approfondie.
 
-Pour cette étape, on a raisonné à l'échelle agrégée du paramètre, en cherchant à mesurer la variabilité des indicateurs de sortie choisis provoquée par la variation des valeurs de paramètres.
+Pour cette étape, on a raisonné à l'échelle agrégée du paramètre, en cherchant à mesurer la variabilité des indicateurs de sortie provoquée par la variation des valeurs de paramètres.
 
 \paragraph{Normalisation des objectifs.}
 
-Un premier problème est que les indicateurs de sortie de simulation choisis pour caractériser les objectifs dont les référentiels sont très différents.
+Un premier problème est que les indicateurs de sortie de simulation choisis pour caractériser les objectifs ont des référentiels très différents.
 Une variation de 5 grands châteaux (objectif de 10) montre une sensibilité plus forte qu'une variation de 5 agrégats (objectif de 200).
 Il est alors nécessaire de procéder à un \og centrage \fg{} des données issues de la simulation.
 Ce centrage peut être effectué, classiquement, sur les valeurs obtenues, pour obtenir une moyenne valant 0, comme on le fait lors d'une normalisation classique de données.
@@ -920,7 +930,7 @@ Pour l'étude de \simfeodal{}, nous avons préféré centrer les données de cha
 Par exemple, une simulation produisant 250 agrégats, quand l'objectif numérique est de 200, aura la valeur de +50 pour l'indicateur \og nombre d'agrégats\fg{}.
 Cela permet de mesurer les comportements de manière plus thématique qu'un centrage statistique autour de 0.
 Pour chaque indicateur, on a soustrait à la valeur obtenue par simulation la \og valeur attendue\fg{}, déterminée thématiquement comme objectif (voir le \cref{tab:results-basique}).
-Après cela, pour chaque indicateur pris individuellement, les données générées par chaque simulation deviennent comparables.
+Après cela, les données générées par chaque simulation deviennent comparables.
 
 Pour atteindre une comparabilité plus importante entre des données hétérogènes, on procède aussi usuellement à une \og réduction\fg{} des données, c'est-à-dire à la normalisation de leur variabilité (écart-type).
 Classiquement, cette étape consiste à diviser chaque résultat par l'écart-type.
@@ -940,7 +950,7 @@ Au final, ce procédé de normalisation est très proche d'une normalisation sta
 } &
 \end{flalign*}
 
-Ainsi conçue, la valeur normalisée permet de comparer entre les valeurs des indicateurs puisque les ordres de grandeur sont désormais similaires.
+Ainsi conçue, la valeur normalisée permet de comparer les valeurs des indicateurs puisque les ordres de grandeur sont désormais similaires.
 
 \paragraph{Calcul de la sensibilité globale des paramètres.}
 
@@ -968,8 +978,11 @@ Pour isoler ce sous-ensemble, on cherchera à conserver une dizaine des paramèt
 Le nombre précis dépendra de la forme de la distribution de la sensibilité des paramètres : on cherchera avant tout à isoler des paramètres dont la sensibilité les différencie franchement des autres.
 On se basera pour cela sur une méthode subjective d'examen visuel des écarts entre les valeurs de sensibilité, tel qu'on peut le faire pour choisir un nombre de classes à étudier lors de l'exécution d'une classification ascendante hiérarchique.
 
-Un risque de cette sélection à partir de la sensibilité globale est que certains paramètres, très influents sur un indicateur particulier, auraient une sensibilité globale assez moyenne ou faible, effet de resserrement des moyennes oblige.
-Pour ne pas risquer de négliger de tels paramètres, on complètera la sélection précédente par une sélection des trois paramètres les plus sensibles sur chacun des 6 indicateurs.
+Un des risques de cette sélection à partir de la sensibilité globale est que certains paramètres, très influents sur un indicateur particulier, aient une sensibilité globale assez moyenne ou faible, par effet de \og resserrement\fg{} des moyennes.
+Pour ne pas risquer de négliger de tels paramètres, on complètera la sélection précédente par une sélection des trois paramètres les plus sensibles\footnote{
+	En tant que tel, c'est le modèle qui est plus ou moins sensible aux valeurs prises par les paramètres.
+	Par abus de langage et soucis de brièveté, dans la suite de cette partie, nous utiliserons tout de même la logique inverse de sensibilité des paramètres pour définir l'influence plus ou moins importante que les valeurs qu'ils prennent exerce sur les sorties du modèle.
+} sur chacun des 6 indicateurs.
 
 \vspace{-2em}\begin{flalign*}
 & \text{sensibilit\'e}_{\text{param\`etre}\_\upalpha_{\text{indicateur\_i}}} = &
@@ -994,7 +1007,7 @@ Ce même paramètre $\alpha$, produit un effet opposé sur l'indicateur 1 : la c
 
 Cette analyse visuelle de sensibilité s'inscrit dans une analyse à la fois technique et thématique de \simfeodal{}.
 Elle doit en effet permettre de gagner en compréhension sur les interactions entre paramètres et mécanismes.
-Cela devrait éclairer l'aspect technique, lié à la validation interne du modèle -- tel paramètre que l'on pense jouer sur tel mécanisme se comporte-t-il bien comme attendu ? -- et l'aspect thématique -- est-ce que la taille du monde simulé a un effet sur le rythme de la polarisation générée ? --.
+Cela devrait éclairer l'aspect technique, lié à la validation interne du modèle -- tel paramètre supposé jouer sur tel mécanisme se comporte-t-il bien comme attendu ? -- et l'aspect thématique -- est-ce que la taille du monde simulé a un effet sur le rythme de la polarisation générée ?
 
 
 \paragraph{Visualisation.}
@@ -1031,14 +1044,15 @@ La logique est encore une fois la même que dans les classifications ascendantes
 \end{figure}
 
 La \cref{fig:sensibilite-globale} présente les \og scores de sensibilité\fg{} de chacun des paramètres du modèle.
-Ces paramètres sont classés par ordre descendant selon leur sensibilité globale, et la couleur reprend la typologie des paramètres.
+Ces paramètres sont classés par ordre descendant selon leur sensibilité globale, et la couleur précise la typologie des paramètres.
 
-On constate tout d'abord que la sensibilité des paramètres est relativement peu dispersée : les valeurs abstraites de la sensibilité varient entre près de \og 7\fg{} et \og 11\fg{}, soit un écart maximal de 65\%, là où on aurait pu imaginer que certains paramètres aient des sensibilités doublées, triplées\ldots{} par rapport à d'autres.
+On constate tout d'abord que la sensibilité des paramètres est relativement peu dispersée : les valeurs abstraites de la sensibilité varient entre près de \og 7\fg{} et \og 11\fg{}, soit un écart maximal de 65\%.
+%, là où on aurait pu imaginer que certains paramètres aient des sensibilités doublées, triplées, etc. par rapport à d'autres.
 Cela indique que les paramètres ont tous une influence sur les sorties du modèle, influence qui est située dans le même ordre de grandeur.
 Par extension, on note qu'aucun des paramètres testés ne présente une sensibilité véritablement faible.
 Ce constat est renforcé en considérant que le paramètre le moins sensible globalement (\textsf{croissance\_demo}) a une influence réelle sur le modèle, pour avoir notamment été testé plus extensivement en parallèle de cette analyse de sensibilité (voir \cref{enc:scenario-croissance-demo}).
 Pour le modélisateur, cette relative homogénéité des sensibilités est un résultat véritablement rassurant.
-Cela nous prouve qu'aucun paramètre n'est inutile, et ne devrait par conséquent être supprimé du modèle si on recherchait une parcimonie plus importante à cette étape.
+Cela nous prouve qu'aucun paramètre n'est inutile (dans le sens où il n'agirait pas, ou très peu, sur le modèle), et ne devrait par conséquent être supprimé du modèle si on recherchait une parcimonie plus importante à cette étape (dans le cas d'un paramètre ayant une faible influence par exemple).
 
 Toujours à un niveau d'observation global, on peut remarquer que la sensibilité globale des paramètres ne semble pas liée aux types de paramètres.
 Visuellement, on constate en effet qu'il ne semble pas y avoir de motif particulier dans le positionnement des types représentés par les couleurs.
@@ -1066,7 +1080,7 @@ Ces paramètres, leur description complète ainsi que les valeurs testées sont 
 Avant de passer à l'analyse détaillée des paramètres isolés, il nous parait important de noter une limite substantielle de la méthode mise en place pour leur sélection.
 La mesure choisie, consistant en une sensibilité normalisée, ne tient pas compte de l'étendue des valeurs de paramètres testées.
 Ces étendues sont largement incommensurables, qui plus est quand il s'agit de comparer des paramètres numériques simples (la taille des côtés du monde simulé) à des paramètres plus qualitatifs (les seuils de distance évolutifs de la distance aux églises paroissiales).
-On peut par exemple noter que dans les 10 paramètres jugés les plus sensibles, 4 portent sur des valeurs testés \og qualitatives\fg{} (étendues, variables au cours du temps\ldots, voir p.~\pageref{par:etendue-parametres}), alors que ces paramètres ne représentent que 20\% de l'ensemble des paramètres testés.
+On peut par exemple noter que dans les 10 paramètres jugés les plus sensibles, 4 portent sur des valeurs testés \og qualitatives\fg{} (étendues, variables au cours du temps, etc., voir p.~\pageref{par:etendue-parametres}), alors que ces paramètres ne représentent que 20\% de l'ensemble des paramètres testés.
 
 Lors du choix des valeurs de paramètres à tester pour cette analyse de sensibilité (\hl{disponibles dans l'annexe N}), certains paramètres auront forcément été testés sur des valeurs plus ou moins éloignées des valeurs par défaut issues du calibrage.
 Cet éloignement se traduit forcément par des sensibilités mesurées très variables.
@@ -1125,7 +1139,7 @@ Plutôt que de mener l'évaluation de la sensibilité des paramètres sélection
 
 %Le paramètre régissant la taille du monde simulé est le seul des \textit{inputs} présent dans la sélection.
 
-Le paramètre régissant la taille du monde simulé est un paramètre majeur qui affecte la totalité des indicateurs étudiés, comme la  \cref{fig:sensib-monde} permet de le constater.
+Le paramètre régissant la taille du monde simulé (\textsf{taille\_cote\_monde}) est un paramètre majeur qui affecte la totalité des indicateurs étudiés, comme la  \cref{fig:sensib-monde} permet de le constater.
 Quand la taille du monde simulé augmente, le nombre d'agrégats, d'églises paroissiales, la distance moyenne entre églises paroissiales et le taux de foyers paysans augmente aussi.
 Au contraire, la pression fiscale varie de façon inverse : quand la taille du monde simulé augmente, elle diminue.
 On ne constate pas d'effet direct ou linéaire sur le nombre de grands châteaux, qui ne semblent pas être directement sensibles à la taille du monde.
@@ -1163,7 +1177,7 @@ En matière d'interprétation, le fait que ce paramètre ait une influence sur l
 La satisfaction religieuse que ce paramètre conditionne, est en effet, intentionnellement l'un des éléments majeurs du modèle.
 
 Pourtant, l'ampleur de cette influence est un peu plus forte qu'on aurait pu le penser au vu des mécanismes et résultats principaux du modèle.
-Dans la \cref{fig:results-fp-satisfaction} qui présentait l'évolution de la satisfaction des foyers paysans, on remarquait que la satisfaction protection était la composante principale de la satisfaction globale.
+Dans la \cref{fig:results-fp-satisfaction} qui présentait l'évolution de la satisfaction des foyers paysans, on remarquait que la composante \og protection\fg{} était la plus importante de la satisfaction globale.
 On aurait donc pu s'attendre, au regard des mécanismes implémentés, à ce que les paramètres liés à la satisfaction protection aient une sensibilité supérieure à celui-ci.
 
 Pour ce paramètre qui régit les seuils de distance acceptables à l'église paroissiale la plus proche, on peut émettre l'hypothèse que les valeurs testées biaisent la mesure de la sensibilité globale.
@@ -1180,7 +1194,7 @@ Pour ceux-là, la satisfaction religieuse joue à ce moment là le rôle limitan
 \end{figure}
 
 Cette migration, au moins pour l'aspect local, est largement influencée par le second paramètre de la sélection : le rayon maximal de migration locale des foyers paysans (\cref{fig:sensib-fp-2}). 
-Celui-ci n'est pas une étendue, mais un rayon maximum qui peut (valeurs \og dynamiques\fg{}) changer au cours du temps.
+Celui-ci n'est pas une étendue, mais un rayon maximum qui peut changer au cours du temps (valeurs \og dynamiques\fg{}).
 Dans le modèle calibré, ce rayon est fixe au cours du temps (2 500 m, modalité \og base\fg{}).
 Dans des versions précédentes du modèle, les valeurs de ce paramètre augmentaient au cours du temps\footnote{
 	Reproduisant ainsi \textit{in silico} la diminution des coûts de distance-temps qui témoignent de l'intégration d'un système de peuplement.
@@ -1214,7 +1228,7 @@ L'\cref{enc:scenario-croissance-demo} illustre une démarche d'exploration plus 
 	\renewcommand{\thempfootnote}{\alph{mpfootnote}}	
 L'envie de mener des \og scénarios thématiques\fg{} a émergé très tôt dans la conception du modèle \simfeodal{}.
 L'idée était de pouvoir tester des hypothèses différentes quant aux grands faits stylisés mobilisés dans le modèle.
-Ces versions alternatives permettraient d'éprouver la validité du modèle, et donc des logiques sur lequel il repose, en l'adaptant à d'autres régions où les processus étudiés se sont déroulés différemment voire pas du tout.
+Ces versions alternatives permettraient d'éprouver la validité du modèle, et donc des logiques sur lequel il repose, en l'adaptant à d'autres régions où les processus ont été différents voire inexistants.
 
 \vspace*{1em} À ce jour, une quinzaine de scénarios de tels types ont été conçus, implémentés et simulés.
 La temporalité plus large de ce projet de recherche par rapport à celle de ce travail de thèse fait que l'analyse des résultats de ces scénarios et des résultats thématiques qu'ils engendrent est encore en cours par l'ensemble de l'équipe de \simfeodal{}.
@@ -1234,7 +1248,7 @@ Cela correspond donc à un décuplement de la population entre 800 et 1200, jug�
 \input{chap5/img/tableau-objectifs-D2.tex}
 \smallskip
 
-\vspace*{1em} Les résultats agrégés de ce scénario (\cref{tab:results-D2}) sont globalement satisfaisants, et même plus que les résultats de la version calibrée : le nombre d'agrégats en fin de simulation et la part de foyers paysans isolés sont presque parfaitement ajustés aux valeurs attendues fixées empiriquement.
+\vspace*{1em} Les résultats agrégés de ce scénario (\cref{tab:results-D2}) sont globalement satisfaisants, et même davantage que ceux de la version calibrée : le nombre d'agrégats en fin de simulation et la part de foyers paysans isolés sont presque parfaitement ajustés aux valeurs attendues fixées empiriquement.
 Le nombre de grands châteaux et l'augmentation de la charge fiscale sont aussi plus proches des attentes, bien que d'une manière moins franche.
 Seul point négatif : les églises paroissiales sont beaucoup moins nombreuses dans ce scénario que dans la version de référence, et trop faibles désormais au regard des valeurs attendues.
 
@@ -1254,8 +1268,8 @@ En cela, l'organisation hiérarchique tend vers le modèle log-normal observé e
 	\label{fig:scenario-D2-agregats}
 \end{figure}
 
-Nous ne détaillerons pas les autres résultats de ce scénario D2, par ailleurs d'ores et déjà explorable dans la plateforme \simedb{} (\hl{mettre lien direct}), et nous contenterons d'affirmer que ce scénario répond mieux une majorité des attentes identifiées pour \simfeodal{}.
-C'est particulièrement étonnant dans la mesure où le modèle n'a jamais été conçu en ayant l'arrière pensé d'y remplacer la stabilité démographique par de la croissance, et n'a pas non plus été calibré à cet effet.
+Nous ne détaillerons pas les autres résultats de ce scénario D2, par ailleurs d'ores et déjà explorable dans la plateforme \simedb{} (\hl{mettre lien direct}), et nous contenterons d'affirmer que ce scénario répond mieux à une majorité des attentes identifiées pour \simfeodal{}.
+C'est particulièrement étonnant dans la mesure où le modèle n'a jamais été conçu dans l'optique de remplacer la stabilité démographique par de la croissance, et n'a pas non plus été calibré à cet effet.
 Sans perdre de vue les biais que l'implémentation informatique de mécanismes peut apporter vis-à-vis des processus modélisés, on notera tout de même qu'il est, thématiquement et méthodologiquement, très intéressant que les interactions entre mécanismes de \simfeodal{} s'ajustent mieux quand de la croissance démographique est mise en place.
 Cela nous semble constituer un résultat majeur de ce scénario, et de \simfeodal{} plus globalement : sans mettre en place de mécanisme de croissance démographique, les objectifs thématiques à atteindre semblent inaccessibles, alors qu'une version même naïve et non calibrée d'un tel mécanisme permet déjà de répondre bien davantage aux objectifs formalisés.
 
@@ -1384,7 +1398,7 @@ D'où de nombreux débats internes entre modélisateurs et thématiciens sur la 
 
 L'analyse du premier paramètre (\textsf{periode\_promotion\_chateaux}, \cref{fig:sensib-chateaux-1}) semble aller dans ce sens, puisque la complexité des mécanismes de promotion des châteaux ne semble influencer, sur ces indicateurs très synthétiques, que l'indicateur directement lié : le nombre de gros châteaux.
 
-Les résultats l'analyse de sensibilité des autres paramètres (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) donnent tort à l'intuition du modélisateur-\og calibreur\fg{}, et gain de cause aux thématiciens pour lesquels les châteaux, et la justesse de leur implémentation, avaient une dimension thématique considérable.
+Les résultats de l'analyse de sensibilité des autres paramètres (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) donnent tort à l'intuition du modélisateur-\og calibreur\fg{}, et gain de cause aux thématiciens pour lesquels les châteaux, et la justesse de leur implémentation, avaient une dimension thématique considérable.
 La portée réduite mais claire de ces paramètres sur le premier objectif thématique recherché (la concentration des foyers paysans) justifie de leur existence et de leur nécessité dans les processus modélisés au sein de \simfeodal{}.
 
 \subsubsection{Paramètres liés aux églises et paroisses}
@@ -1514,18 +1528,18 @@ Ce paramètre a donc la capacité de faire fortement varier les sorties (vu dans
 
 \subsection{Quels apports de l'analyse visuelle de sensibilité ?}
 
-Cette analyse de sensibilité, même limitée et grossière, a permis de mettre en évidence un certain nombre de propriétés des paramètres et d'apporter des connaissances extrêmement utiles sur le fonctionnement du modèle face à divers types d'aléas en particulier.
+En dépit de certaines limites que nous avons détaillées, cette analyse de sensibilité a permis de mettre en évidence un certain nombre de propriétés des paramètres et d'apporter des connaissances extrêmement utiles sur le fonctionnement du modèle face à divers types d'aléas en particulier.
 
-Dans un premier temps, notons que la hiérarchie de la sensibilité des paramètres n'est pas véritablement proche de celle que l'on attendait.
+Premièrement, notons que la hiérarchie de la sensibilité des paramètres n'est pas véritablement proche de celle que l'on attendait.
 Le paramétrage et le calibrage ont ainsi été menés, en partie, sur des paramètres moins déterminants que notre intuition du comportement du modèle ne pouvait le laisser croire.
 Cette étape d'évaluation qu'est l'analyse de sensibilité gagnerait à être menée avant le calibrage du modèle afin d'obtenir une meilleure adéquation aux objectifs.
 Ce raisonnement est toutefois circulaire : sur un modèle moins calibré, l'analyse de sensibilité n'aurait pas forcément mis en avant les mêmes paramètres.
 Comme ceux-si sont en interaction étroite, les résultats de cette analyse de sensibilité sont ainsi, eux-mêmes, extrêmement sensibles au paramétrage de base.
 
-Dans un second temps, l'analyse de sensibilité semble confirmer que le modèle est parcimonieux, relativement à son approche exploratoire du moins.
+Ensuite, l'analyse de sensibilité semble confirmer que le modèle est parcimonieux, relativement à son approche exploratoire du moins.
 On l'a dit lors de l'analyse quantitative, mais il nous semble important de le répéter tant ce résultat est rassurant au regard des craintes que l'on pouvait avoir : quand un modèle implique autant de mécanismes et paramètres, le risque est toujours important que certains soient entièrement redondants et donc superflus.
 Aucun des paramètres n'apparaît inutile, ce qui peut laisser entendre que les (très) nombreux mécanismes du modèle ne le sont pas non plus.
-Pour un modélisateur qui a des intuitions fortes sur les réactions d'un modèle aux différents changements de mécanismes et paramètres, c'est presque une surprise.
+Pour un modélisateur qui a des intuitions fortes sur les réactions d'un modèle aux différents changements de mécanismes et paramètres, cela constitue une surprise.
 Surprise d'autant plus positive que cet examen systématique des paramètres se révèle réellement une aide indéniable à la compréhension du modèle.
 Après plus de 5 ans à travailler régulièrement sur un modèle, il est très enrichissant d'y trouver encore des éléments inattendus voir nettement contre-intuitifs.
 De ce fait, l'analyse de sensibilité favorise elle aussi l'abduction (voir \cref{subsec:depasser-calibrage}).
@@ -1533,7 +1547,7 @@ De ce fait, l'analyse de sensibilité favorise elle aussi l'abduction (voir \cre
 Un autre point, classique, concerne les limites d'une telle analyse.
 Une approche entièrement quantitative, présentée dans l'introduction de cette partie, permet de s'affranchir des effets de faible comparabilité que l'on a pu constater dans l'analyse visuelle : certains paramètres ont une sensibilité globale importante, mais celle-ci se cantonne parfois à un unique indicateur, sans avoir de répercussions sur le reste du modèle.
 Un modèle comme \simfeodal{}, c'est-à-dire descriptif, exploratoire, est caractérisé par des paramètres nombreux, hétérogènes et parfois très qualitatifs.
-il ne serait pas pertinent de chercher à quantifier, juste pour mener une analyse de sensibilité, tout ce qui n'a pas été quantifié dans le modèle en lui-même : objectivation des attendus dans les indicateurs graphiques, quantification de la pondération entre les différents objectifs etc.
+Il ne serait pas pertinent de chercher à quantifier, uniquement pour mener une analyse de sensibilité, tout ce qui n'a pas été quantifié dans le modèle en lui-même : objectivation des attendus dans les indicateurs graphiques, quantification de la pondération entre les différents objectifs etc.
 
 La démarche mise en place pour cette analyse de sensibilité a été basée sur une volonté d'exploration graphique et s'inscrit, comme de nombreux aspects de ce travail de thèse, dans une approche d'analyse visuelle entièrement dédiée à l'exploration d'un modèle.
 Cette démarche paraît confirmer l'adéquation de ce type d'approches à la construction et à l'évaluation commune et interdisciplinaire de modèles.
@@ -1544,7 +1558,7 @@ Les éléments de compréhension des interactions effectives du modèle et les r
 
 Dans ce chapitre, nous avons présenté les dernières étapes de calibrage de \simfeodal{} et les résultats qui en émanent.
 À l'aune de ces résultats, on peut conclure que le modèle, une fois calibré, est globalement satisfaisant, sur chacune des dimensions d'objectifs poursuivis : concentration et polarisation, hiérarchisation et fixation-dissémination du peuplement.
-L'ajustement n'est certes jamais parfait, mais aussi bien en termes de valeurs finalement obtenues que d'évolutions de ces valeurs au cours du paramétrage et du calibrage du modèle, cet ajustement nous apparaît tout à fait satisfaisant.
+L'ajustement n'est certes jamais parfait, mais aussi bien en termes de valeurs btenues que d'évolutions de ces valeurs au cours du paramétrage et du calibrage du modèle, cet ajustement nous apparaît tout à fait satisfaisant.
 
 Dans la seconde partie de ce chapitre, nous partions du constat qu'il est difficile d'améliorer le calibrage du modèle à cause des effets d'interactions et des réponses inattendues de certains paramètres.
 Pour y remédier, nous avons mené une analyse de sensibilité de l'ensemble des paramètres de \simfeodal{} qui nous a permis de mieux comprendre l'influence de chaque paramètre et mécanisme lié sur les sorties du modèle.
@@ -1557,7 +1571,7 @@ Un élément limite pourtant fortement d'éventuelles améliorations et exploita
 Au vu de la précision faible et hétérogène des connaissances empiriques par le prisme desquelles \simfeodal{} est évalué, il paraît difficile de chercher à comparer de nouvelles versions du modèle dont les variations sur les indicateurs sont de plus en plus fines à mesure que le calibrage progresse.
 
 Cela n'empêche aucunement le modèle d'être utile, utilisable et utilisé.
-Par faute de temps, nous n'avons présenté qu'un des scénarios sur la quinzaine réalisée, mais celui-ci apporte déjà beaucoup de matière à réflexion, autant d'un point de vue restreint au modèle que, plus généralement, sur les processus thématiques que \simfeodal{} cherche à reproduire.
+Nous n'avons présenté qu'un des scénarios sur la quinzaine réalisée, mais celui-ci apporte déjà beaucoup de matière à réflexion, autant d'un point de vue restreint au modèle que, plus généralement, sur les processus thématiques que \simfeodal{} cherche à reproduire.
 
 Dans l'ensemble, la calibration, l'analyse de sensibilité et les scénarios servent certes un rôle de validation interne, mais surtout, ils permettent aux co-concepteurs du modèle de mieux en comprendre les biais et le fonctionnement effectif, c'est-à-dire issu des indénombrables interactions entre mécanismes.
 Afin de saisir les effets contre-intuitifs liés à ces interactions, c'est-à-dire en cherchant à acquérir une connaissance plus intime du modèle, on effectue un travail dont les apports thématiques sont certains.
