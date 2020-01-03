@@ -347,11 +347,13 @@ Pour rappel, ces objectifs peuvent être catégorisés en trois familles, selon 
 
 Dans cette partie, nous allons synthétiquement commenter les indicateurs de sortie de simulation issus de la version calibrée (6.6) de \simfeodal{}, en analysant l'écart entre les objectifs attendus, thématiques, et les résultats du modèle.
 
+%TODO : espace trop long
 \begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
 Par soucis de parcimonie et de synthèse, les résultats présentés par la suite ne sont qu'une sélection de l'ensemble des résultats du modèle.
 Nous invitons le lecteur à les consulter directement dans l'application \simedb{} d'où ces indicateurs sont extraits.
 Le lien suivant permet d'accéder aux résultats spécifiques à la version présentée ici : \href{https://simedb.cura.info/6.6}{https://simedb.cura.info/6.6}
 \end{mdframed}
+%TODO : espace trop long
 
 \subsubsection{Résumé global des résultats \label{ssec:results-global}}
 
@@ -411,6 +413,7 @@ Pour savoir si le modèle parvient bien à reproduire le fait stylisé qu'est la
 Dans cette version du modèle, on constate bien une croissance du nombre de pôles (\cref{fig:results-nb-poles-agregats}-a), assez semblable à celle des agrégats en termes de rythme et de valeur.
 Les valeurs atteintes (environ 250 pôles en fin de simulation) sont très satisfaisantes, particulièrement au regard des résultats des premières versions du modèle.
 
+%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\hspace{5pt}
@@ -419,6 +422,7 @@ Les valeurs atteintes (environ 250 pôles en fin de simulation) sont très satis
 	\caption[Nombre de pôles et part des agrégats comprenant un pôle.]{Nombre de pôles et part des agrégats comprenant un pôle.}
 	\label{fig:results-nb-poles-agregats}
 \end{figure}
+%TODO : espace trop long
 
 La \cref{fig:results-nb-poles-agregats}-b présente elle-aussi des résultats satisfaisants, qui viennent préciser l'analyse précédente.
 Cette figure présente l'évolution du taux d'agrégats qui sont situés dans un pôle d'attraction.
@@ -510,12 +514,16 @@ La \cref{fig:results-rt-poles}-b montre aussi cette hiérarchisation : elle met 
 
 Un dernier élément du modèle en lien avec la hiérarchisation du peuplement est la hiérarchie des paroisses.
 On peut extraire deux types de comportements attendus à partir des connaissances empiriques.
+
+%TODO : espace trop long
 \begin{itemize}
 	\item En premier lieu, une large majorité des paroisses, que l'on pourrait nommer \og rurales\fg{}, sont peu fréquentées et visent surtout à une desserte équitable de la population.
 	Un paroissien ne devait ainsi pas avoir à effectuer plus d'une heure de marche pour se rendre dans son église paroissiale.
 	\item En second lieu, les paroisses \og urbaines\fg{} desservent un nombre de paroissiens bien supérieur à celui des paroisses rurales.
 	D'après les connaissances expertes, ce nombre reste largement inférieur au millier de paroissiens, puisque de nouvelles paroisses urbaines étaient créées pour décharger les églises paroissiales trop fréquentées.
 \end{itemize}
+%TODO : espace trop long
+
 En agrégeant ces types de paroisses, le fait stylisé que l'on cherche à reproduire dans le modèle serait donc d'avoir une distribution composée de deux tendances : une tête de hiérarchie desservant un grand nombre de paroissiens, mais avec une faible hiérarchisation interne (paroisses urbaines), et une très longue traine, cette-fois ci plus hiérarchisée et desservant beaucoup moins de paroissiens (paroisses rurales).
 
 
@@ -583,12 +591,14 @@ On y constate que le modèle produit un motif spécifique, composé de trois pha
 	À nouveau, les migrations (uniquement locales cette fois-ci) augmentent de manière abrupte, et, comme dans la première phase, tendent ensuite à diminuer : le niveau maximal d'exigences (religieuse, de protection) est atteint, et les migrations des foyers paysans y pallient.
 \end{itemize}
 
+%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/FP_Satisfaction_Haut.pdf}
 	\caption{Satisfaction des foyers paysans.}
 	\label{fig:results-fp-satisfaction}
 \end{figure}
+%TODO : espace trop long
 
 La lecture de la \cref{fig:results-fp-satisfaction}, qui présente les types de satisfaction des foyers paysans au cours de la simulation, vient appuyer cette analyse.
 On y retrouve les trois phases observées dans les sorties de simulation.
@@ -629,6 +639,7 @@ Ces églises se voient attribuer les droits paroissiaux, et on peut dès lors af
 	\caption{Nombre de paroisses.}
 	\label{fig:results-paroisses-nb}
 \end{figure}
+%TODO : espace trop long
 
 On constate nettement dans la \cref{subfig:results-paroisses-carte} une densification généralisée du maillage paroissial.
 Cette densification est visible à deux niveaux.
@@ -670,7 +681,6 @@ Cela constitue un indice qui peut laisser penser que l'augmentation du nombre de
 
 
 \bigskip
-
 \paragraph[Conclusion intermédiaire]{}
 De manière générale, \simfeodal{} parvient ici entièrement à reproduire le double fait stylisé recherché : fixation et dissémination du peuplement.
 Pourtant, plus encore que pour les dimensions précédentes, il nous paraît extrêmement difficile d'aller plus loin dans le calibrage du modèle.
@@ -961,11 +971,10 @@ Au final, ce procédé de normalisation est très proche d'une normalisation sta
  \sigma(\text{valeurs\_calibr\'ees}_\text{{indicateur\_i}})
 } &
 \end{flalign*}
-
 Ainsi conçue, la valeur normalisée permet de comparer les valeurs des indicateurs puisque les ordres de grandeur sont désormais similaires.
 
+%TODO : espace trop long
 \paragraph{Calcul de la sensibilité globale des paramètres.}
-
 Comme les valeurs des indicateurs sont désormais normalisées, il est possible de mener des opérations conjointes sur les différents indicateurs.
 On définit un indice global caractéristique de chaque paramètre, intitulé \og sensibilité\fg{}, qui correspond à la moyenne des valeurs normalisées de chacun des indicateurs.
 Après le centrage, les valeurs deviennent négatives ou positives selon qu'elles sont inférieures ou supérieures aux objectifs.
@@ -1048,6 +1057,7 @@ Dans le schéma, on représente ainsi les \og différences de valeur\fg{} qui ex
 Dans un second temps, et on y reviendra après (\cref{subsec:sensibilite-alea}), le choix des représentations en \textit{violin-plots} permet aussi d'étudier la variabilité interne des valeurs de paramètres testées sur chaque indicateur (exemple en bas à droite).
 Les différences d'amplitude (sur l'axe des ordonnées) exprime ainsi les différentes variabilités dues à l'aléa : plus les \og violons\fg{} sont grands, plus l'indicateur varie selon les réplications pour la valeur de paramètre testée.
 
+%TODO : espace trop long
 \paragraph{Normalisation.}
 La normalisation des valeurs était indispensable lors du calcul de la sensibilité globale afin d'homogénéiser la variabilité des indicateurs.
 Pourtant, sur un sous-ensemble de paramètres cette normalisation devient un frein à l'interprétation et à la lisibilité des analyses : les valeurs des différents indicateurs n'étant plus exprimés dans l'unité d'origine, il est difficile d'en faire un commentaire thématique.
@@ -1123,14 +1133,16 @@ En changeant les valeurs testées, le classement des paramètres aurait sans dou
 Dans l'incapacité de produire des valeurs de paramètres plus comparables, nous nous tiendrons toutefois à la sélection des paramètres \og les plus sensibles\fg{} effectuée dans cette partie.
 Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plateforme \simedb{} (\cref{fig:screenshot-simedb-sensib}) : \href{https://simedb.cura.info/analyse-sensibilite}{https://simedb.cura.info/analyse-sensibilite}
 
+%TODO : ajouter capture d'écran
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{example-image-a}
-	\caption[Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.]{Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}. \hl{À faire}}
+	\caption[Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.]{Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.}
 	\label{fig:screenshot-simedb-sensib}
 \end{figure}
 
 \clearpage
+%TODO : vérifier taille
 \begin{table}[H]\vspace*{-1em}
 \centering
 \includegraphics[width=\textheight, angle=90, origin=c]{img/Parametres.pdf}
@@ -1326,7 +1338,7 @@ On constate ainsi que des variations relativement fines de ces paramètres\footn
 Les variations présentées dans la figure indique que les valeurs par défaut (100 m et 5 foyers paysans) sont au moins dans des intervalles assez sensés au regard des objectifs poursuivis.
 Cela nous indique qu'il serait possible de jouer plus finement sur les valeurs de ces paramètres pour améliorer le calibrage de \simfeodal{}.
 
-\subsubsection{Paramètres liés aux seigneurs et châteaux}
+\subsubsection{Paramètres liés aux seigneurs et châteaux \label{sssec:sensib-params-seigneurs}}
 
 Les paramètres liés aux seigneurs et aux châteaux (les premiers construisant les seconds) sont les plus nombreux du modèle et il est attendu qu'ils soient assez sensibles.
 Ce sont en effet les paramètres qui régissent les mécanismes qui façonnent le monde dans lequel les foyers paysans auront à évoluer.
@@ -1387,12 +1399,14 @@ C'est bien le cas du paramètre régissant l'intervalle de temps pendant lequel 
 Ce paramètre semble n'avoir aucun impact sur les autres indicateurs de sortie, mais influence fortement le nombre de gros châteaux.
 Sa valeur par défaut (de 940 à 1040, issue de connaissances expertes) est presque optimale au regard de cet indicateur, signe que le calibrage des autres paramètres (moins inscrits dans l'empirie) est adapté.
 
+%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
 	\caption{Sensibilité du paramètre \textsf{nb\_tirages\_chateaux\_ps}.}
 	\label{fig:sensib-chateaux-2}
 \end{figure}
+%TODO : espace trop long
 
 Les deux autres paramètres liés aux châteaux (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) ont une influence qui n'est pas circonscrite au nombre de grands châteaux : tous deux agissent sur d'autres indicateurs que celui-ci.
 
@@ -1423,7 +1437,7 @@ L'analyse du premier paramètre (\textsf{periode\_promotion\_chateaux}, \cref{fi
 Les résultats de l'analyse de sensibilité des autres paramètres (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) donnent tort à l'intuition du modélisateur-\og calibreur\fg{}, et gain de cause aux thématiciens pour lesquels les châteaux, et la justesse de leur implémentation, avaient une dimension thématique considérable.
 La portée réduite mais claire de ces paramètres sur le premier objectif thématique recherché (la concentration des foyers paysans) justifie de leur existence et de leur nécessité dans les processus modélisés au sein de \simfeodal{}.
 
-\subsubsection{Paramètres liés aux églises et paroisses}
+\subsubsection{Paramètres liés aux églises et paroisses\label{sssec:sensib-params-eglises}}
 
 Le dernier paramètre de cette analyse visuelle est aussi le seul qui porte sur les paroisses.
 Celles-ci constituent l'un des moteurs principaux de la fixation de la population dans les agrégats de taille réduite qui constituent la grande majorité des lieux de concentration des foyers paysans (la fameuse \og longue traîne\fg{} de cette hiérarchie).
@@ -1508,6 +1522,7 @@ On trouve une définition de ce type d'approche chez \textcite{ginot2005explorer
 Pour mesurer cette incertitude, nous avons repris l'ensemble des réplications correspondant à l'analyse de sensibilité de chaque paramètre et avons mesuré la variabilité (écart-type) sur chaque indicateur.
 Afin d'avoir des mesures comparables, on a ensuite procédé à une réduction (division par l'écart-type des valeurs de référence, présentées dans le \cref{tab:variabilite-indicateurs}) de l'amplitude de ces valeurs.
 
+%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/histo_sensibilite_alea.pdf}
@@ -1517,6 +1532,7 @@ Afin d'avoir des mesures comparables, on a ensuite procédé à une réduction (
 	Une valeur de 0.5, par exemple, signifie que la variabilité due à l'aléa est moitié moins importante	que celle des valeurs de paramètres issues du calibrage.}}}
 	\label{fig:histo-sensib-alea}
 \end{figure}
+%TODO : espace trop long
 
 La distribution de ces valeurs d'incertitude relatives est présenté dans la \cref{fig:histo-sensib-alea}.
 Dans ces histogrammes, la valeur de 1 correspond à une incertitude moyenne identique à celle des réplications de référence, c'est-à-dire des réplications de la version calibrée du modèle dont les résultats ont été commentés dans la première partie de ce chapitre (\cref{subsec:resultats}).
@@ -1548,7 +1564,7 @@ De plus, de manière surprenante, la valeur correspondant à un rayon évolutif 
 Ce paramètre a donc la capacité de faire fortement varier les sorties (vu dans l'analyse de sensibilité visuelle), mais en plus de faire varier tout aussi fortement la part de l'aléa dans le modèle, en la diminuant ou en l'augmentant.
 %Nous pensions exécuter un scénario thématique qui fasse varier ce paramètre afin d'étudier l'effet sur la hiérarchie des agrégats, et cette analyse confirme que ce serait tout à faire approprié.
 
-\subsection{Quels apports de l'analyse visuelle de sensibilité ?}
+\subsection{Quels apports de l'analyse visuelle de sensibilité ?\label{subsec:apports-analyse-visuelle-sensib}}
 
 En dépit de certaines limites que nous avons détaillées, cette analyse de sensibilité a permis de mettre en évidence un certain nombre de propriétés des paramètres et d'apporter des connaissances extrêmement utiles sur le fonctionnement du modèle face à divers types d'aléas en particulier.
 
