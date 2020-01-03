@@ -46,27 +46,31 @@
 \include*{chap5/chap5}
 %\include*{chap6/chap6}
 %\include*{chap7-Conclusion/conclusion}
-%
-%\begin{appendices}
-%\crefalias{chapter}{appchap}
-%\appendix
-%\chapter{Les paramètres de SimFeodal.\label{annexe:A}}
-%\section{Niveau de précision des \textit{inputs} \label{annexe:A1}}
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{annexes/A_parametres_SimFeodal/Connaissances_inputs_clean.png}
-%	\caption*{Tableau extrait de \textcite[317]{cura_transition_2017}.}
-%\end{figure}
-%\section{Définition et valeur des paramètres. \label{annexe:A2}}
-%\includepdf[pages={1-4},scale=1]{annexes/A_parametres_SimFeodal/2019-07VariablesParameters-SimFeodal_v9.pdf}
-%\section{Valeurs de paramètres employées dans l'analyse de sensibilité. \label{annexe:A3}}
-%\includepdf[pages={1-6},scale=1]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}
-%\chapter{Un exemple de rapport automatique des sorties de SimFeodal. \label{annexe:B}}
-%\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
-%N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à la version 2.3 de \simfeodal{}, en dépit de son titre (Base 5.1) qui suit une ancienne numérotation des versions du modèle.
-%\end{mdframed}
-%\includepdf[pages={1-9},scale=1]{annexes/B_rapport_automatique/Analyse_sorties_ModeleTR8_base2_clean2.pdf}
-%\end{appendices}
+
+\begin{appendices}
+\crefalias{chapter}{appchap}
+\appendix
+\chapter{Les paramètres de SimFeodal.\label{annexe:A}}
+\section{Niveau de précision des \textit{inputs} \label{annexe:A1}}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{annexes/A_parametres_SimFeodal/Connaissances_inputs_clean.png}
+	\caption*{Tableau extrait de \textcite[317]{cura_transition_2017}.}
+\end{figure}
+
+\section{Définition et valeur des paramètres. \label{annexe:A2}}
+\includepdf[pages={1-4},scale=1]{annexes/A_parametres_SimFeodal/2019-07VariablesParameters-SimFeodal_v9.pdf}
+\nopagebreak\section{Valeurs de paramètres employées dans l'analyse de sensibilité. \label{annexe:A3}}
+\makebox[\textwidth][c]{\includegraphics[page=1, scale=1,%
+trim=0 45 0 120,%
+clip]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}}
+\includepdf[pages={2-6},scale=1]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}
+\chapter{Un exemple de rapport automatique des sorties de SimFeodal. \label{annexe:B}}
+\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
+N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à la version 2.3 de \simfeodal{}, en dépit de son titre (Base 5.1) qui suit une ancienne numérotation des versions du modèle.
+\end{mdframed}
+\includepdf[pages={1-9},scale=1]{annexes/B_rapport_automatique/Analyse_sorties_ModeleTR8_base2_clean2.pdf}
+\end{appendices}
 
 \backmatter
 \printbibliography[title={Références}]
