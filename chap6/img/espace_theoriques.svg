@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="148.38225mm"
-   height="203.96449mm"
-   viewBox="0 0 148.38225 203.96449"
+   width="226.53603mm"
+   height="149.30966mm"
+   viewBox="0 0 226.53603 149.30966"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (unknown)"
@@ -72,8 +72,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.59882814"
-     inkscape:cx="54.689009"
-     inkscape:cy="283.82181"
+     inkscape:cx="-38.537362"
+     inkscape:cy="114.61623"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -84,7 +84,7 @@
      inkscape:window-width="1859"
      inkscape:window-height="1016"
      inkscape:window-x="61"
-     inkscape:window-y="27"
+     inkscape:window-y="1107"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -102,10 +102,10 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(4.0446318,121.97103)">
+     transform="translate(32.860864,111.83517)">
     <g
        id="g6395"
-       transform="translate(85.175567,-35.689064)">
+       transform="rotate(-90,4.4225139,-39.440377)">
       <rect
          y="-75.473755"
          x="-3.5714033"
@@ -162,7 +162,7 @@
     </g>
     <g
        id="g6407"
-       transform="translate(15.383346,28.811499)">
+       transform="rotate(-90,76.860573,-42.086214)">
       <rect
          y="-75.473755"
          x="66.220818"
@@ -229,7 +229,7 @@
     </g>
     <g
        id="g6423"
-       transform="translate(-54.408883,93.312063)">
+       transform="rotate(-90,149.29863,-44.732047)">
       <rect
          y="-75.473755"
          x="136.01305"
@@ -318,7 +318,7 @@
     </g>
     <g
        id="g6439"
-       transform="translate(-122.07983,22.466113)">
+       transform="rotate(-90,147.71113,24.526401)">
       <rect
          y="-4.6278043"
          x="136.01305"
@@ -417,7 +417,7 @@
     </g>
     <g
        id="g6451"
-       transform="translate(-52.287605,-42.034452)">
+       transform="rotate(-90,75.273073,27.172237)">
       <rect
          y="-4.6278043"
          x="66.220818"
@@ -491,7 +491,7 @@
     </g>
     <g
        id="g6461"
-       transform="translate(17.504616,-106.53501)">
+       transform="rotate(-90,2.8350164,29.818072)">
       <rect
          y="-4.6278043"
          x="-3.5714033"
@@ -551,44 +551,42 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
-       d="M 7.6209079,-111.16283 V 79.32175"
+       d="M -31.610876,-100.33823 H 180.04037"
        id="path6463"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="3.3608353"
-       y="3.1276009"
-       id="text6845"
-       transform="rotate(-90)"><tspan
+       x="60.229305"
+       y="-104.66293"
+       id="text6845"><tspan
          sodipodi:role="line"
          id="tspan6843"
-         x="3.3608353"
-         y="3.1276009"
+         x="60.229305"
+         y="-104.66293"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Temps</tspan></text>
     <text
+       transform="rotate(90)"
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="85.302582"
-       y="-114.53835"
+       x="-88.718864"
+       y="-186.24248"
        id="text6849"><tspan
-         sodipodi:role="line"
-         id="tspan914"
-         x="85.302582"
-         y="-114.53835">Simulation B</tspan></text>
+         y="-186.24248"
+         x="-88.718864"
+         id="tspan1011"
+         sodipodi:role="line">Simulation A</tspan></text>
     <text
+       transform="rotate(90)"
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="17.887951"
-       y="-114.53835"
+       x="-21.816858"
+       y="-186.24248"
        id="text6849-5"><tspan
-         sodipodi:role="line"
-         id="tspan916"
-         x="17.887951"
-         y="-114.53835">Simulation A</tspan></text>
-    <g
-       transform="translate(-143.64373,-386.2386)"
-       id="layer1-8"
-       inkscape:label="Calque 1" />
+         y="-186.24248"
+         x="-21.816858"
+         id="tspan1013"
+         sodipodi:role="line">Simulation B</tspan></text>
   </g>
 </svg>

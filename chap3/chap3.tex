@@ -114,9 +114,13 @@ Ils proposent ainsi un nouveau terme, l'\og \textit{evaludation} \fg{}, assorti 
 Dans ce schéma, il est intéressant de noter que le terme de \og validation\fg{} n'est nulle part employé (si ne n'est dans le mot-valise \textit{evaludation}), au contraire de celui d'\og \textit{evaluation}\fg{}, omniprésent.
 Les auteurs se détachent de l'usage de \og \textit{validation}\fg{} en raison de la connotation très positiviste et \og binaire\fg{} de ce mot : elle peut impliquer qu'un modèle est soit valide, soit invalide, loin du gradient qu'accepte l'évaluation.
 Notons que l'item central du schéma, l'évaluation des données (\textit{data evaluation}) qui intervient pour l'évaluation de chacun des types de modèle, a une signification plus ouverte qu'on ne pourrait l'entendre au sens premier.
-\textcite[121]{augusiak_merging_2014} y incluent ainsi des connaissances extraites des données en tant que telles : \og The term ``data'' also refers
-to patterns \autocite{grimm_pattern-oriented_2012} or, in economists' termi-
-nology, ``stylised facts'', which are general trends and signals in data,
+\textcite[121]{augusiak_merging_2014} y incluent ainsi des connaissances extraites des données en tant que telles
+%\footnote{
+%TODO: référence à POM
+%\hl{Faire référence à POM, dont ils parlent ici, et y renvoyer dans le chapitre 6.}
+%}
+: \og The term ``data'' also refers
+to patterns \autocite{grimm_pattern-oriented_2012} or, in economists' terminology, ``stylised facts'', which are general trends and signals in data,
 observations, and empirical knowledge.\fg{}
 
 Nous partageons absolument la reconnaissance du besoin formel, identifié par les auteurs de cette étude, de définir un nouveau terme dans leur proposition, et nous souscrivons à leur approche de définition.
@@ -125,7 +129,9 @@ Au moment de rédiger ces lignes, très peu d'auteurs en font un usage en franç
 
 Par soucis d'homogénéité et de compréhension par le plus grand nombre de ce travail, nous nous contenterons donc de nous inscrire dans les choix de \textcite[voir \cref{enc:lexique-eval-amblard}]{amblard_evaluation_2006}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique francophone de modélisation en sciences humaines et sociales, quand bien même ces concepts nous paraissent moins robustes que ceux présentés auparavant.
 
+
 \clearpage
+%TODO : Voir si ça tient sur la même page que le texte précédent
 \begin{encadre}{Évaluation, validation interne et externe}{lexique-eval-amblard}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
 
@@ -816,8 +822,8 @@ On a donc fait le choix d'évaluer \simfeodal{} en conservant des indicateurs de
 Ce choix a toutefois des implications majeures pour la méthodologie mise en place pour l'analyse des sorties de simulation.
 Il est en effet bien plus simple d'analyser quelques indicateurs composites plutôt qu'un grand nombre d'indicateurs hétérogènes.
 
+%TODO : espace trop important
 \subsection{Hiérarchiser et catégoriser les indicateurs \label{subsec:hierarchiser-indicateurs}}
-
 \simfeodal{} s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels.
 Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, la même capacité à rendre compte des phénomènes modélisés.
 À chaque changement dans le modèle, pour une évaluation complète de la capacité de cette version à reproduire les indices empiriques, il faudrait donc observer et analyser chacun de ces nombreux et divers indicateurs.
@@ -879,7 +885,7 @@ L'évaluation de la polarisation, par exemple (\cpageref{subsub:polarisation}), 
 L'étude de la dispersion des agrégats et pôles peut en effet se révéler plus importante que celle de l'évolution du nombre d'agrégats selon les paramètres que l'on souhaite ajuster, ou se montrer tout au moins plus différenciante selon l'état du paramétrage.
 
 \bigskip
-
+%TODO : essayer de faire tenir sur une page
 \begin{encadre}{Incrémentalité des indicateurs}{incrementalite-indicateurs}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
 De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnote{
@@ -1314,6 +1320,7 @@ Un premier point est à noter : nous n'avons trouvé que très peu de définitio
 C'est pourtant un terme employé dans la quasi-totalité de la littérature existante.
 Cela ne relèverait que d'un problème de jargon non explicité s'il y avait consensus sur le sens donné à ce mot, mais au contraire, les acceptations, qui doivent être comprises par le contexte en l'absence de définitions formelles, varient fortement selon les auteurs.
 Par exemple, la définition que l'on peut extraire de l'un des manuels de référence en modélisation agent \autocite{treuil_modelisation_2008} s'éloigne fortement de ce que l'on a pu décrire ci-dessus :
+%TODO : espace trop important
 \begin{quotation}
 	\noindent \og
 	Un modèle dynamique renferme en effet deux composants distincts : une représentation de la structure du système de référence (exprimée dans le langage du méta-modèle), et une représentation des lois régissant sa dynamique.
@@ -1325,7 +1332,7 @@ Par exemple, la définition que l'on peut extraire de l'un des manuels de réfé
 	Les \textit{sorties} d'un modèle dynamique sont également des paramètres qui expriment ce que l'on cherche à mesurer en réponse à ces perturbations.\fg{}\\
 	\mbox{}~ \hfill \autocite[8]{treuil_modelisation_2008}
 \end{quotation}
-
+%TODO : espace trop important
 Nous trouvons plusieurs problèmes à cette définition.
 En premier lieu, l'acceptation très globale de ce qu'est un paramètre rappelle celle d'une variable en informatique.
 Il semble s'agir d'une vision plus orientée techniquement que conceptuellement.
@@ -1378,7 +1385,7 @@ Le dernier type de paramètre ($P_5$), assez fréquent dans \simfeodal{}, corres
 Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs, correspondant aux pas de temps auxquels appliquer les différentes modalités prises par le paramètre (voir \cref{sec:inputs}).
 Dans la \cref{fig:parametres-these-entrees}, $P_{5_1}$, $P_{5_2}$ et $P_{5_3}$ correspondent par exemple à l'évolution du seuil de distance acceptable aux châteaux.
 
-
+%TODO : espace trop important
 \subparagraph{Les sorties du modèle.}
 À l'autre extrémité du modèle, dans la \cref{fig:parametres-these-sorties}, on retrouve les variables ($V_n$), dont certaines sont utilisées pour construire des \textbf{indicateurs de sortie} ($I_N$).
 
@@ -1806,6 +1813,7 @@ On pourra de cette manière figer, temporairement -- en attendant de nouveaux aj
 
 Rappelons aussi, comme indiqué lors de la définition (\cref{sssec:definition-parametrage}), qu'en dehors des valeurs des paramètres, le paramétrage est aussi l'occasion de modifier, d'une manière modérée, le détail de l'implémentation de certains mécanismes.
 
+% TODO : espace trop important
 \paragraph{Historique de SimFeodal.}\label{par:historique-versions-simfeodal}
 
 Tout au long de cette thèse, nous avons souvent mentionné les versions et sous-versions de \simfeodal{}.

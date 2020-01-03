@@ -466,7 +466,7 @@ De plus, l'exécution de ces programmes est extrêmement rapide : les différent
 \paragraph[Conclusion intermédiaire]{}
 Enfin, en ayant choisi de mener une évaluation \textit{a posteriori} -- plutôt qu'en direct -- basée sur l'observation d'indicateurs générés par des outils adaptés au traitement de données massives et de manière automatisée, on dispose donc, pour chaque expérience, d'un ensemble de fichiers numériques : chacun des indicateurs de sortie est contenu dans un fichier unique, dans un format facilement exploitable et ré-utilisable. 
 
-\subsection{Organiser les indicateurs en rapports paramétrables}
+\subsection{Organiser les indicateurs en rapports paramétrables\label{subsec:organiser-indicateurs-rapports}}
 
 Pour évaluer un modèle à l'aide de multiples indicateurs, du point de vue de la manipulation, la création de fichiers informatiques indépendants correspondant aux différents indicateurs de sortie de simulation est extrêmement pratique : un fichier pour chaque indicateur, pour chaque expérience par exemple.
 On peut facilement les identifier, les transférer et les adapter, par exemple pour en rendre le contenu plus compréhensible par un public différent.
@@ -560,7 +560,7 @@ Par extension, cette même démarche d'automatisation, basée sur l'utilisation 
 %	\end{encadre}
 
 
-\paragraph{Dépasser les limites de la compatibilité d'ensemble.}
+\paragraph{Dépasser les limites de la compatibilité d'ensemble.\label{par:compatibilites-generations}}
 La reproductibilité, de manière générale, est plus une démarche qu'un état final : on peut toujours trouver un nouvel élément à \og rendre reproductible\fg{} dans un travail (cf. \cref{subsec:demarche-reproductible}).
 Dans le cas des rapports automatiques, la reproductibilité recherchée doit permettre de reproduire les analyses menées -- le calcul et la représentation des indicateurs de sortie -- sur les jeux de données issus des différentes versions du modèle.
 
@@ -1209,8 +1209,9 @@ La consultation d'un site internet consiste à charger plusieurs pages, pour l'u
 Du point de vue du serveur, chacune des pages demandées par l'utilisateur requiert différentes requêtes à des bases de données.
 La navigation dans un site est donc assez comparable à l'utilisation d'une application d'exploration de données : des requêtes hétérogènes, plus ou moins lourdes, s'y succèdent et visent à filtrer et mettre en forme, de manière explicite, des extraits d'informations stockées dans des bases de données.
 Plusieurs études ont montré que la durée d'affichage d'une page web jouait de manière considérable sur l'usage d'un site, composé de plusieurs de ces pages.
-L'étude la plus parlante est décrite par \citeauteur{patel_speed_2011} qui relate une expérience vécue au sein du moteur de recherche Google :\vspace{-0.5cm}
+L'étude la plus parlante est décrite par \citeauteur{patel_speed_2011} qui relate une expérience vécue au sein du moteur de recherche Google :
 
+%TODO : espace trop long
 \begin{quotation}
 	\noindent \og
 	Google did an interesting experiment with regard to load times. Google Vice President Marissa Mayer asked web surfers – would you rather see 10 or 30 results for your Google search? The users agreed that 30 results per page sounded like a good idea. So Google implemented it on some results pages.
@@ -1218,7 +1219,8 @@ L'étude la plus parlante est décrite par \citeauteur{patel_speed_2011} qui rel
 	Pages that displayed 30 results each had traffic to them drop an astounding 20\%. Google tested the loading difference between the 10 and 30 results pages and found that it was just \textbf{half of a second}. If half of a second made that much of a difference in how long users were willing to wait, how much of a difference could it make to your site if you carved a second or two off of load time?
 	\fg{}\\
 	\mbox{}~ \hfill \autocite{patel_speed_2011}
-\end{quotation}\vspace{-0.5cm}
+\end{quotation}
+%TODO : espace trop long
 
 Si l'environnement et les conditions décrites ne sont pas directement comparables avec celles de \simedb{}, il demeure qu'une différence même faible dans un temps de chargement, ou, pour \simedb{}, dans un temps d'affichage d'un indicateur de sortie, pourrait avoir des conséquences négatives pour l'utilisation de la plateforme.
 
@@ -1841,7 +1843,6 @@ On optimise ainsi l'utilisation de bande-passante internet.
 	\subfloat[][Code source R avec le \textit{package} \textsf{dplyr}]{\label{subfig:exemple-dplyr-R}\includegraphics[width=\linewidth]{img/dplyr_cut.png}}
 	\vspace{-0.3cm}
 	\subfloat[][Traduction du code source \textsf{dplyr} en \textsf{SQL}]{\label{subfig:exemple-dplyr-SQL}\includegraphics[scale=.35]{img/SQL_Sublime.png}}
-	\vspace{-0.3cm}
 	\caption[Un exemple de manipulation de données stockées dans un SGBD depuis \textsf{R}.]{Un exemple de manipulation de données stockées dans un SGBD depuis \textsf{R}.\\
 	\textit{On y interroge la table des agrégats de population pour calculer le nombre moyen d'agrégats par année de simulation.}}
 	\label{fig:dml-simedb}
@@ -1874,7 +1875,7 @@ Par exemple, pour les nombreux indicateurs de sortie de \simfeodal{} qui décriv
 D'autre part, en changeant le tableau de données en entrée (créé dans \cref{subfig:exemple-dplyr-R}), on reproduit exactement le même type de graphique pour tous les types d'agents voulus (le nombre de foyers paysans, d'églises, etc.).
 Le \textit{package} \textsf{ggplot2} répond ainsi tout à fait aux contraintes de modularité exposées plus haut, et permet de factoriser le code-source, ce qui garantit une maintenance plus rapide et une meilleure robustesse de l'application dans son ensemble.
 
-
+%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\hspace{5pt}
@@ -1884,6 +1885,7 @@ Le \textit{package} \textsf{ggplot2} répond ainsi tout à fait aux contraintes 
 	\caption{Un exemple de production de graphique avec \textsf{ggplot2}.}
 	\label{fig:exemple-ggplot2-simedb}
 \end{figure}
+%TODO : espace trop long
 
 \paragraph{Fluidifier les étapes de rendu : le \og pipeline de visualisation\fg{}.}\label{par:visualisation-pipeline}
 
@@ -1896,6 +1898,7 @@ Ils y décrivent les différents états des données en entrée et en sortie (li
 	\caption[\og \textit{The Visualisation Pipeline}\fg{}.]{\og \textit{The Visualisation Pipeline}\fg{}, de \textcite[92]{keim_mastering_2010}, d'après \textcite[314]{dos_santos_gaining_2004}}
 	\label{fig:visualisation-pipeline}
 \end{figure}
+%TODO : espace trop long
 
 Ce \textit{pipeline} débute par des données brutes (\textit{raw data}) auxquelles ont fait subir un traitement (\textit{data analysis}, par exemple une agrégation) pour obtenir des données prêtes à l'utilisation (\textit{prepared data}).
 Il s'agit ensuite de filtrer ces données (choix des expériences à conserver par exemple), dont l'on conserve donc uniquement les éléments nécessaires (\textit{focus data}).
@@ -1942,10 +1945,10 @@ La modularité permet donc d'une part de minimiser la taille du code, mais surto
 		\textbf{N.B} : À partir de cette figure, on représente l'interface de \simedb{} à l'aide d'un \textit{mockup} plutôt que de captures d'écrans, pour en simplifier la compréhension.}}
 	\label{fig:simedb-modules}
 \end{figure}
-
+%TODO : espace trop long
 
 \subsubsection{Choix de l'organisation visuelle}
-
+%TODO : espace trop long
 Les différentes étapes de construction d'une plateforme d'exploration (\cref{sec:explorer-sorties-simfeodal} : \cnameref{sec:explorer-sorties-simfeodal}) ont conduit à une organisation sous forme de \textit{dashboard} interactif.
 La forme de ce \textit{dashboard} a évolué tout au long de l'apparition de nouveaux besoins, pour aboutir sur une organisation mono-page, pensée autour de la consultation d'indicateurs de sorties, qui devaient permettre de comparer des expériences différentes sélectionnées au moyen de graphiques en coordonnées parallèles.
 
@@ -2027,8 +2030,8 @@ L'accumulation d'expériences, reposant sur les variations de paramètres diffé
 Auparavant, seuls quelques paramètres étaient mobilisés et les graphiques en coordonnées parallèles reposaient sur peu d'axes.
 Avec l'augmentation de paramètres, et donc d'axes dans les graphiques, ces derniers sont rapidement devenus illisibles en raison de la surcharge graphique due au recouvrement des axes.
 
+%TODO : espace trop long
 \paragraph{Réduire la surcharge visuelle des graphiques en coordonnées parallèles.}
-
 La première mesure pour y remédier a été de filtrer les paramètres affichés : nul besoin d'afficher un axe correspondant à un paramètre qui n'est jamais manipulé dans les expériences.
 Plutôt que de définir les paramètres \og utiles\fg{}, et donc d'avoir à les redéfinir dans l'application à chaque ajout d'expérience qui reposerait sur la variation d'un paramètre différent, nous avons fait en sorte que cette discrimination soit opérée de manière automatique :
 quand \simedb{} est lancé, une requête est exécutée sur la table des paramètres pour identifier ceux qui présentent plusieurs modalités et ceux qui n'en ont qu'une.
@@ -2037,8 +2040,8 @@ Ce faisant, le nombre de paramètres est réduit est les axes des graphiques en 
 De plus, cette réduction du nombre de paramètre permet d'afficher leurs intitulés en entier, alors qu'il était nécessaire, dans SimVADB, de faire appel à une table de correspondance (\cref{subfig:mini-simdavb}, partie \textbf{(B)}), ce compliquait l'utilisation de la plateforme et ralentissait la lecture des graphiques.
 L'automatisation de ce traitement permet en définitive de ne pas avoir à changer quoi que ce soit à la plateforme lors d'ajouts ou de suppressions de simulations de la base de données, ce qui concoure à l'objectif d'indépendance aux données de la plateforme d'exploration.
 
+%TODO : espace trop long
 \paragraph{Pré-filtrer les simulations.}
-
 Au fur et à mesure du paramétrage puis de la calibration de \simfeodal{}, les expériences ont tout de même continué à mobiliser de plus en plus de paramètres différents.
 Pour réduire la quantité d'information représentée et améliorer en conséquence \og l'expérience utilisateur\fg{}, nous avons ajouté un filtre, moins visuel que les graphiques en coordonnées parallèle, qui permet toutefois de restreindre le nombre de simulations affichées à partir de leur dénomination.
 En complément du ciblage de valeurs spécifiques de paramètres, l'idée est donc de soustraire des choix possibles des expériences entières.
@@ -2104,7 +2107,7 @@ Nous avons donc réalisé une vidéo qui en montre l'usage et est disponible à 
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
-
+%TODO : faire tenir le tout en une page
 Au terme de la construction de la plateforme d'exploration, nous disposons donc d'une application, \simedb{}, conçue et développée spécifiquement pour les problématiques propres à l'exploration des données de \simfeodal{} : des données massives, répliquées et explorées sous la forme d'indices qui eux-même ont largement évolué au cours du temps.
 
 Elle s'inscrit dans les méthodes des Interactions Homme-Machine, ou même dans ce que certains nomment désormais les \og Interactions Homme-Données\fg{} (\og \textit{Human-Data Interaction}\fg{}, \cite{elmqvist_embodied_2011,mortier_human-data_2014}) et s'efforce de suivre les préceptes identifiés dans ce champ (\cite[167-170]{amirpour_amraii_human-data_2018} par exemple).
