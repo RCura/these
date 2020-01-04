@@ -330,7 +330,7 @@ Cela dresse par là-même un portrait des solutions méthodologiques d'explorati
 
 Classiquement, le premier réflexe d'un modélisateur, du moins pour les modèles à base d'agents, est de définir des sorties graphiques pour accompagner son modèle.
 Les différentes plateformes de modélisation agent mettent d'ailleurs régulièrement en avant les possibilités de représentations qu'offrent leurs environnements\footnote{
-	Voir par exemple les collections de visualisations sur les pages d'accueil de Gama (\href{https://gama-platform.github.io/}{https://gama-platform.github.io/}), de NetLogo (\href{https://ccl.northwestern.edu/netlogo/}{https://ccl.northwestern.edu/netlogo/}), de GeoMASON (\href{https://cs.gmu.edu/~eclab/projects/mason/extensions/geomason/}{https://cs.gmu.edu/$\sim$eclab/projects/mason/extensions/geomason/}) ou encore de Repast (\href{https://repast.github.io/screenshots.html}{https://repast.github.io/screenshots.html}).
+	Voir par exemple les collections de visualisations sur les pages d'accueil de GAMA (\href{https://gama-platform.github.io/}{https://gama-platform.github.io/}), de NetLogo (\href{https://ccl.northwestern.edu/netlogo/}{https://ccl.northwestern.edu/netlogo/}), de GeoMASON (\href{https://cs.gmu.edu/~eclab/projects/mason/extensions/geomason/}{https://cs.gmu.edu/$\sim$eclab/projects/mason/extensions/geomason/}) ou encore de Repast (\href{https://repast.github.io/screenshots.html}{https://repast.github.io/screenshots.html}).
 }.
 Visualiser le déroulement d'un modèle \og en direct\fg{} (\og \textit{online}\fg{} dans \cite{grignard_agent-based_2017}), c'est-à-dire au sein de la plateforme de simulation et au cours l'exécution du modèle, offre ainsi de nombreux avantages : évaluation visuelle du niveau de ségrégation (et de son évolution) dans une implémentation du modèle de Schelling ; visualisation de cohérence du déplacement des nuées d'oiseaux dans un modèle de type \og Flocks\fg{} \autocite{reynolds_flocks_1987} ; ou encore suivi d'un indicateur dans le temps -- la quantité de ressources collectées -- dans un modèle de type \og Sugarscape\fg{} \autocite{epstein_growing_1996}.
 
@@ -338,14 +338,14 @@ Visualiser le déroulement d'un modèle \og en direct\fg{} (\og \textit{online}\
 
 Il est à noter que dans le cadre du développement d'un modèle de simulation, l'implémentation du modèle et de son interface graphique sont étroitement liées.
 D'une part, la plateforme de modélisation choisie contraint fortement le type et la diversité des représentations.
-Gama et GeoMASON, par exemple, proposent des modes de visualisation de données géographiques bien plus avancés que NetLogo ou Repast.
+GAMA et GeoMASON, par exemple, proposent des modes de visualisation de données géographiques bien plus avancés que NetLogo ou Repast.
 L'interface graphique développée pour chaque modèle est donc largement influencée par la plateforme de simulation dans laquelle il est exprimé.
 D'autre part, dans la plupart de ces plateformes de simulation, l'interface graphique est implémentée au même niveau que le code-source du modèle en lui-même.
-Dans Netlogo et Gama par exemple, l'interface graphique est programmée directement dans le modèle en lui-même, en se basant sur les variables qui y sont déclarées.
+Dans Netlogo et GAMA par exemple, l'interface graphique est programmée directement dans le modèle en lui-même, en se basant sur les variables qui y sont déclarées.
 Il n'est donc pas possible de créer une interface graphique générique au sein des plateformes de simulation, laquelle pourrait s'appliquer à plusieurs modèles différents.
 Il est nécessaire, pour chaque modèle, de reconstruire l'interface depuis les briques de bases proposées par les plateformes, c'est-à-dire un ensemble de primitives graphiques permettant de composer une interface intégrée au modèle.
 
-Dans l'exploration de \simfeodal{}, la création en direct, au sein de la plateforme Gama, de quelques graphiques correspondant à des indicateurs étudiés permet d'assurer un rôle de filtrage, grossier, à l'exécution d'une expérience.
+Dans l'exploration de \simfeodal{}, la création en direct, au sein de la plateforme GAMA, de quelques graphiques correspondant à des indicateurs étudiés permet d'assurer un rôle de filtrage, grossier, à l'exécution d'une expérience.
 Après une modification du code-source du modèle, et avant de lancer de nombreuses simulations, on exécute quelques simulations \og manuellement\fg{}.
 On s'assure alors, en direct, que les indicateurs affichés ne présentent pas de caractères aberrants.
 Cela permet de vérifier, avant de lancer des calculs plus conséquents, que le déroulement de la simulation semble cohérent, c'est-à-dire, le plus souvent pour des modifications mineurs du modèle, qu'un \textit{bug} n'a pas été introduit involontairement.
@@ -359,7 +359,7 @@ La première contrainte, déjà évoquée plus haut, est que le modèle \simfeod
 Dès lors, la visualisation des indicateurs d'une simulation particulière n'est pas suffisante pour estimer le comportement du modèle.
 En conséquence, les indicateurs choisis pour l'évaluation de \simfeodal{} prennent presque tous en compte la variabilité des résultats induite par l'exécution de réplications.
 Certaines plateforme de simulation multi-agents\footnote{
-	Gama dans sa dernière version (1.8) par exemple, voir\\ \href{https://gama-platform.github.io/wiki/RunSeveralSimulations.html}{https://gama-platform.github.io/wiki/RunSeveralSimulations.html}.
+	GAMA dans sa dernière version (1.8) par exemple, voir\\ \href{https://gama-platform.github.io/wiki/RunSeveralSimulations.html}{https://gama-platform.github.io/wiki/RunSeveralSimulations.html}.
 } permettent toutefois de mener concomitamment plusieurs réplications d'un même modèle et de visualiser directement pendant l'exécution les résultats agrégés des réplications.
 Cette première contrainte, liée au besoin d'analyser des réplications plutôt que des exécutions isolées, peut donc être dépassée en adaptant l'implémentation du modèle pour faire usage de ces capacités de multi-simulation.
 
@@ -411,7 +411,7 @@ Dans le cadre de la construction et du paramétrage de \simfeodal{}, nous avons 
 La visualisation en direct n'est donc pas mobilisable en tant que méthode d'évaluation principale, mais elle peut être utilisée comme un outil de validation interne pour tester chaque modification dans les valeurs de paramètres, remplissant alors le rôle de \og préfiltre\fg{} décrit auparavant.
 Visualiser une seule simulation, avant d'en exécuter les réplications nécessaires, permet ainsi déjà de vérifier que les modifications apportées dans les valeurs de paramètre ou dans les mécanismes n'ont pas entraîné l'apparition de \textit{bugs} ou d'incohérences immédiatement visibles.
 
-Pour cette étape de pré-filtrage, nous avons donc choisi de développer une interface graphique très sommaire, au sein de la plateforme de simulation Gama, qui permet des allers-retours rapides entre l'implémentation et l'exécution au sein de l'implémentation de \simfeodal{}.
+Pour cette étape de pré-filtrage, nous avons donc choisi de développer une interface graphique très sommaire, au sein de la plateforme de simulation GAMA, qui permet des allers-retours rapides entre l'implémentation et l'exécution au sein de l'implémentation de \simfeodal{}.
 Cette interface n'affiche qu'un nombre réduit d'indicateurs (\cref{fig:simfeodal_gui_indicateurs}), ainsi qu'une représentation cartographique (\cref{fig:simfeodal_gui_carte}) utile à une analyse rapide du comportement d'ensemble du modèle.
 
 \begin{figure}[H]
@@ -791,8 +791,12 @@ Cette utilisation est courante dans les champs de la visualisation d'information
 On la retrouve par exemple chez l'un des représentants de l'analyse spatiale des années 1990, Stewart Fotheringham.
 Cet auteur indique même l'usage du graphique en coordonnées parallèles en tant que filtre pour identifier des informations dans une autre dimension, ici spatiale : \og the data being displayed in parallel coordinates can be linked to a map and then brushed to highlight the locations of interesting lines displayed in \textit{m}-space on the parallel coordinates.\fg{} \autocite{fotheringham_trends_1999}.
 
+Appliqué aux données de \simfeodal{}, ce mode de visualisation et d'interaction (\cref{fig:simvadb_dashboard}) se révèle particulièrement efficace pour sélectionner les configurations de paramètres à explorer.
+Ainsi, en \og brossant \fg{} quelques filtres manuellement (\cref{fig:simvadb_dashboard} - \textbf{A}), on arrive rapidement à isoler une expérience spécifique.
+
 \clearpage
 \begin{encadre}{Construction et utilisation interactive d'un graphique en coordonnées parallèles}{parcoords}
+	\setstretch{1}
 	\renewcommand{\thempfootnote}{\alph{mpfootnote}}	
 	La \cref{fig:schema_parcoords} illustre les étapes successives de construction d'un graphique en coordonnées parallèles, depuis le tableau statistique (\textbf{A}) jusqu'au graphique final (\textbf{D}).
 	
@@ -812,14 +816,13 @@ Cet auteur indique même l'usage du graphique en coordonnées parallèles en tan
 		\vspace*{.5em}
 	\end{figure}
 \end{encadre}
-
-Appliqué aux données de \simfeodal{}, ce mode de visualisation et d'interaction (\cref{fig:simvadb_dashboard}) se révèle particulièrement efficace pour sélectionner les configurations de paramètres à explorer.
-Ainsi, en \og brossant \fg{} quelques filtres manuellement (\cref{fig:simvadb_dashboard} - \textbf{A}), on arrive rapidement à isoler une expérience spécifique.
+\clearpage
+\setstretch{1.1}
 
 \begin{figure}[H]
 	\centering
 	\captionsetup{width=\linewidth}
-	\includegraphics[height=.78\linewidth,angle=90]{img/SimVADB_Dashboard2_annote_retouche.png}
+	\includegraphics[height=.88\linewidth,angle=90]{img/SimVADB_Dashboard2_annote_retouche.png}
 	\caption[Utilisation des graphiques en coordonnées parallèles dans SimVADB pour explorer visuellement les indicateurs de sortie de simulation de \simfeodal{}.]{Utilisation des graphiques en coordonnées parallèles dans SimVADB pour explorer visuellement les indicateurs de sortie de simulation de \simfeodal{}.}
 	\label{fig:simvadb_dashboard}
 \end{figure}
@@ -891,13 +894,15 @@ De manière générale, ce choix d'outil d'interrogation des données permet de 
 Nous reviendrons plus précisément et longuement sur la description de \simedb{} dans les parties suivantes (\cref{sec:SimEDB}, p. \pageref{sec:SimEDB}), mais après en avoir décrit les étapes de construction et les besoins auxquelles ces évolutions répondaient, nous proposons maintenant de revenir sur les données manipulées par cette plateforme d'exploration.
 Le type, la structure et la masse de ces données (\cref{sec:sorties-simfeodal}) sont en effet indissociables des choix méthodologiques effectués pour \simedb{}.
 Il est donc nécessaire de présenter les choix et contraintes de ces données avant d'entrer dans une description approfondie de la plateforme.
+\clearpage
 
-\begin{figure}[H]
+\begin{figure}[p]
 	\centering
 	\includegraphics[width=\linewidth]{img/SimEDB_base_rotate.png}
 	\caption{La comparaison d'expériences dans \simedb{} }
 	\label{fig:simedb_villages}
 \end{figure}
+\clearpage
 
 \section{Organiser les données}\label{sec:organiser-donnees}
 
@@ -1211,7 +1216,6 @@ La navigation dans un site est donc assez comparable à l'utilisation d'une appl
 Plusieurs études ont montré que la durée d'affichage d'une page web jouait de manière considérable sur l'usage d'un site, composé de plusieurs de ces pages.
 L'étude la plus parlante est décrite par \citeauteur{patel_speed_2011} qui relate une expérience vécue au sein du moteur de recherche Google :
 
-%TODO : espace trop long
 \begin{quotation}
 	\noindent \og
 	Google did an interesting experiment with regard to load times. Google Vice President Marissa Mayer asked web surfers – would you rather see 10 or 30 results for your Google search? The users agreed that 30 results per page sounded like a good idea. So Google implemented it on some results pages.
@@ -1220,13 +1224,13 @@ L'étude la plus parlante est décrite par \citeauteur{patel_speed_2011} qui rel
 	\fg{}\\
 	\mbox{}~ \hfill \autocite{patel_speed_2011}
 \end{quotation}
-%TODO : espace trop long
 
 Si l'environnement et les conditions décrites ne sont pas directement comparables avec celles de \simedb{}, il demeure qu'une différence même faible dans un temps de chargement, ou, pour \simedb{}, dans un temps d'affichage d'un indicateur de sortie, pourrait avoir des conséquences négatives pour l'utilisation de la plateforme.
 
 Un autre exemple appuie ce raisonnement et répond à la dernière interrogation de \citeauthor{patel_speed_2011}, dans un cadre un peu plus proche de \simedb{}.
 \citeauteur{elliott_how_2017}, employée d'une société qui propose des solutions d'accélération de sites web, a réalisé un rapport sur les perte d'audience des sites webs en fonction du temps de chargement des pages \autocite{elliott_how_2017}.
 Les résultats de son étude sont présentés dans la \cref{fig:page-abandon}, et permettent de quantifier un effet bien connu, qui veut que l'utilisateur quitte plus rapidement un site (et en visite donc moins de pages) quand les pages sont plus longues à charger.
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -1360,7 +1364,7 @@ Chaque agrégat est membre (ou non, relation 0..1) d'un pôle, et est constitué
 
 Au centre de cette étoile, nous avons disposé une table simple, contenant les informations sur lesquelles une majorité des agrégations sont effectuées : les simulations, identifiées par leur nom (\texttt{sim\_name}, qui permet de savoir de quelle expérience ces simulations dépendent) et leur identifiant unique, la graine aléatoire utilisée (\texttt{seed})\footnote{
 	La graine aléatoire (\textit{seed}) ne constitue en tant que tel pas un identifiant unique : comme son nom l'indique, elle est aléatoire et présente donc un risque de répétition.
-	Dans Gama, cette graine aléatoire est une valeur qui varie de 0 à 1 et est composé de 19 décimales.
+	Dans GAMA, cette graine aléatoire est une valeur qui varie de 0 à 1 et est composé de 19 décimales.
 	Il y a donc potentiellement $10^{19}$ graines aléatoires uniques, ce qui est en soi une quasi garantie d'unicité.
 	Notons de plus que dans le MCD de \simedb{}, la graine aléatoire est systématiquement associée au nom de l'expérience.
 	Même en menant un million de réplications, la probabilité que deux simulations partagent la même graine aléatoire serait largement inférieure à 1\%.
@@ -1400,7 +1404,6 @@ Avec une unique requête, qui plus est sur une table de faible dimension (\textt
 Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour les données de \simfeodal{}, sont présentées dans l'\cref{enc:usage-MCD-SimEDB}.
 
 \clearpage
-
 \begin{encadre}{Un exemple d'interrogation de la base de données de SimEDB.}{usage-MCD-SimEDB}
 	\renewcommand{\thempfootnote}{\alph{mpfootnote}}
 	La \cref{fig:MCD_SimEDB_etapes} présente l'ensemble des étapes qui permettent de générer un indicateur de sortie.
@@ -1411,7 +1414,7 @@ Ces étapes de filtrage successifs, optimisées par l'architecture choisie pour 
 	\begin{figure}[H]
 		\centering
 		\captionsetup{width=\linewidth}
-		\includegraphics[width=.9\linewidth]{img/MCD_exemple_requetes_v2.pdf}
+		\includegraphics[width=.93\linewidth]{img/MCD_exemple_requetes_v2.pdf}
 		\caption{De la sélection interactive à l'indicateur de sortie.}\vspace*{1em}
 		\label{fig:MCD_SimEDB_etapes}
 	\end{figure}
@@ -1866,6 +1869,7 @@ Il existe pour cela, dans le cadre de l'environnement (et du langage) \textsf{R}
 L'un des \textit{packages} les plus utilisés, \textsf{ggplot2} \autocite{wickham_ggplot2_2016}, met en œuvre une syntaxe assez adaptée à nos contraintes : ce \textit{package} est conceptuellement fondé sur la \og \textit{grammar of graphics}\fg{}, c'est-à-dire une vision modulaire et très structurée de la conception graphique, pensée par Leland Wilkison \autocite{wilkinson_grammar_2006}.
 La logique, assez familière pour un utilisateur de Systèmes d'Information Géographique (SIG), consiste à penser une représentation graphique comme un ensemble de couches (\textit{layers}), qui se superposent, se complètent, et sont toutes basées sur une source de données.
 Les différentes composantes des données (variables par exemple) sont associées à des composantes graphiques de base (abscisse, ordonnée, taille, couleur, etc.), formant ainsi une mise en correspondance (\textit{mapping}) des données avec les composants graphiques (voir \cref{fig:socviz-ggplot2}, étape 2).
+\clearpage
 
 Dans notre cas, cette grammaire est porteuse d'un avantage majeur.
 Elle est extrêmement structurée et modulaire.
@@ -1875,7 +1879,6 @@ Par exemple, pour les nombreux indicateurs de sortie de \simfeodal{} qui décriv
 D'autre part, en changeant le tableau de données en entrée (créé dans \cref{subfig:exemple-dplyr-R}), on reproduit exactement le même type de graphique pour tous les types d'agents voulus (le nombre de foyers paysans, d'églises, etc.).
 Le \textit{package} \textsf{ggplot2} répond ainsi tout à fait aux contraintes de modularité exposées plus haut, et permet de factoriser le code-source, ce qui garantit une maintenance plus rapide et une meilleure robustesse de l'application dans son ensemble.
 
-%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\hspace{5pt}
@@ -1885,8 +1888,8 @@ Le \textit{package} \textsf{ggplot2} répond ainsi tout à fait aux contraintes 
 	\caption{Un exemple de production de graphique avec \textsf{ggplot2}.}
 	\label{fig:exemple-ggplot2-simedb}
 \end{figure}
-%TODO : espace trop long
 
+\clearpage
 \paragraph{Fluidifier les étapes de rendu : le \og pipeline de visualisation\fg{}.}\label{par:visualisation-pipeline}
 
 \textcite{dos_santos_gaining_2004} ont conceptualisé et schématisé l'ensemble des étapes nécessaires à la construction d'une visualisation, depuis les données brutes jusqu'à l'image finale, au sein d'un \og \textit{pipeline}\fg{} de la visualisation (\cref{fig:visualisation-pipeline}).
@@ -1898,7 +1901,6 @@ Ils y décrivent les différents états des données en entrée et en sortie (li
 	\caption[\og \textit{The Visualisation Pipeline}\fg{}.]{\og \textit{The Visualisation Pipeline}\fg{}, de \textcite[92]{keim_mastering_2010}, d'après \textcite[314]{dos_santos_gaining_2004}}
 	\label{fig:visualisation-pipeline}
 \end{figure}
-%TODO : espace trop long
 
 Ce \textit{pipeline} débute par des données brutes (\textit{raw data}) auxquelles ont fait subir un traitement (\textit{data analysis}, par exemple une agrégation) pour obtenir des données prêtes à l'utilisation (\textit{prepared data}).
 Il s'agit ensuite de filtrer ces données (choix des expériences à conserver par exemple), dont l'on conserve donc uniquement les éléments nécessaires (\textit{focus data}).
@@ -1913,6 +1915,7 @@ Dans la chaîne de traitement la plus classique, ces étapes s'effectuent au sei
 L'utilisation de \textsf{R} comme langage de développement de \simedb{} nous permet ainsi de développer une unique chaîne de traitement, qui ne requiert aucun import/export de données, et peut donc être consolidée, vérifiée et surtout ré-employée \textit{ad libitum}.
 
 Les packages utilisés pour construire les chaînes de traitements de données dans \simedb{} sont présentés dans la \cref{subfig:visualisation-pipeline-simedb}, et le code-source, correspondant à l'exemple développé dans cette sous-partie, dans la \cref{fig:visualisation-pipeline-exemple}.
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -1935,6 +1938,7 @@ Dans l'interface de \simedb{} (\cref{fig:simedb-modules}), ainsi, les indicateur
 En termes de code-source, la manière de produire les deux indicateurs comparés dans la \cref{fig:simedb-modules} est strictement identique : c'est une fonction générique qui prend en entrée des données et un type de graphique à produire.
 Dans la figure, seul un paramètre varie : le filtre appliqué aux données, qui renvoie ici à différentes expériences.
 La modularité permet donc d'une part de minimiser la taille du code, mais surtout, avec la généricité qu'elle apporte, de faciliter de manière considérable l'ajout ou la modification d'indicateurs.
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -1945,16 +1949,15 @@ La modularité permet donc d'une part de minimiser la taille du code, mais surto
 		\textbf{N.B} : À partir de cette figure, on représente l'interface de \simedb{} à l'aide d'un \textit{mockup} plutôt que de captures d'écrans, pour en simplifier la compréhension.}}
 	\label{fig:simedb-modules}
 \end{figure}
-%TODO : espace trop long
 
 \subsubsection{Choix de l'organisation visuelle}
-%TODO : espace trop long
 Les différentes étapes de construction d'une plateforme d'exploration (\cref{sec:explorer-sorties-simfeodal} : \cnameref{sec:explorer-sorties-simfeodal}) ont conduit à une organisation sous forme de \textit{dashboard} interactif.
 La forme de ce \textit{dashboard} a évolué tout au long de l'apparition de nouveaux besoins, pour aboutir sur une organisation mono-page, pensée autour de la consultation d'indicateurs de sorties, qui devaient permettre de comparer des expériences différentes sélectionnées au moyen de graphiques en coordonnées parallèles.
 
 Le choix d'un outil dédié à la comparaison, plus qu'à la visualisation des résultats d'un unique ensemble de simulations, entraîne nécessairement des répercussions en matière de présentation visuelle, c'est-à-dire d'interface graphique.
 Par conséquent, depuis la première plateforme aboutie -- SimVADB (\cref{fig:simvadb_dashboard}, reprise ici en \cref{subfig:mini-simdavb}) --, l'interface graphique a fortement évolué (\cref{subfig:mini-simedb}).
-\vspace{-0.25cm}
+\clearpage
+
 \begin{figure}[H]
 	\centering
 	\subfloat[][SimVADB]{\label{subfig:mini-simdavb}\includegraphics[width=.9\linewidth]{img/SimVADB_Dashboard2_annote_retouche.png}}\\[-1.5ex]
@@ -2030,7 +2033,6 @@ L'accumulation d'expériences, reposant sur les variations de paramètres diffé
 Auparavant, seuls quelques paramètres étaient mobilisés et les graphiques en coordonnées parallèles reposaient sur peu d'axes.
 Avec l'augmentation de paramètres, et donc d'axes dans les graphiques, ces derniers sont rapidement devenus illisibles en raison de la surcharge graphique due au recouvrement des axes.
 
-%TODO : espace trop long
 \paragraph{Réduire la surcharge visuelle des graphiques en coordonnées parallèles.}
 La première mesure pour y remédier a été de filtrer les paramètres affichés : nul besoin d'afficher un axe correspondant à un paramètre qui n'est jamais manipulé dans les expériences.
 Plutôt que de définir les paramètres \og utiles\fg{}, et donc d'avoir à les redéfinir dans l'application à chaque ajout d'expérience qui reposerait sur la variation d'un paramètre différent, nous avons fait en sorte que cette discrimination soit opérée de manière automatique :
@@ -2040,12 +2042,13 @@ Ce faisant, le nombre de paramètres est réduit est les axes des graphiques en 
 De plus, cette réduction du nombre de paramètre permet d'afficher leurs intitulés en entier, alors qu'il était nécessaire, dans SimVADB, de faire appel à une table de correspondance (\cref{subfig:mini-simdavb}, partie \textbf{(B)}), ce compliquait l'utilisation de la plateforme et ralentissait la lecture des graphiques.
 L'automatisation de ce traitement permet en définitive de ne pas avoir à changer quoi que ce soit à la plateforme lors d'ajouts ou de suppressions de simulations de la base de données, ce qui concoure à l'objectif d'indépendance aux données de la plateforme d'exploration.
 
-%TODO : espace trop long
 \paragraph{Pré-filtrer les simulations.}
 Au fur et à mesure du paramétrage puis de la calibration de \simfeodal{}, les expériences ont tout de même continué à mobiliser de plus en plus de paramètres différents.
 Pour réduire la quantité d'information représentée et améliorer en conséquence \og l'expérience utilisateur\fg{}, nous avons ajouté un filtre, moins visuel que les graphiques en coordonnées parallèle, qui permet toutefois de restreindre le nombre de simulations affichées à partir de leur dénomination.
 En complément du ciblage de valeurs spécifiques de paramètres, l'idée est donc de soustraire des choix possibles des expériences entières.
-Nous avons ajouté ce préfiltrage sous la forme d'une \og boite de sélection (\textit{select input}, \cref{fig:simedb-prefilter}) qui affiche les intitulés des simulations directement à partir de la base de données et qui permet à l'utilisateur de choisir quelles simulations prendre en compte
+Nous avons ajouté ce préfiltrage sous la forme d'une \og boite de sélection (\textit{select input}, \cref{fig:simedb-prefilter}) qui affiche les intitulés des simulations directement à partir de la base de données et qui permet à l'utilisateur de choisir quelles simulations prendre en compte.
+\clearpage
+
 
 \begin{figure}[H]
 	\centering
@@ -2107,9 +2110,7 @@ Nous avons donc réalisé une vidéo qui en montre l'usage et est disponible à 
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
-%TODO : faire tenir le tout en une page
 Au terme de la construction de la plateforme d'exploration, nous disposons donc d'une application, \simedb{}, conçue et développée spécifiquement pour les problématiques propres à l'exploration des données de \simfeodal{} : des données massives, répliquées et explorées sous la forme d'indices qui eux-même ont largement évolué au cours du temps.
-
 Elle s'inscrit dans les méthodes des Interactions Homme-Machine, ou même dans ce que certains nomment désormais les \og Interactions Homme-Données\fg{} (\og \textit{Human-Data Interaction}\fg{}, \cite{elmqvist_embodied_2011,mortier_human-data_2014}) et s'efforce de suivre les préceptes identifiés dans ce champ (\cite[167-170]{amirpour_amraii_human-data_2018} par exemple).
 
 Dans ce chapitre, nous avons montré que le développement de cette plateforme -- ainsi que des outils qui l'ont précédées (les rapports automatiques, le \textit{dashboard}, le \textit{dashboard} interactif SimVADB, etc.) -- ont été fortement guidés par les contraintes et besoins identifiés, aussi bien en terme d'approches méthodologiques que de choix technologiques.
@@ -2122,13 +2123,17 @@ Que ce soit pour passer d'une succession de rapports à une plateforme d'explora
 %Plus généralement, l'ensemble de ce chapitre montre une démarche similaire, pensée pour répondre à des besoins spécifiques avec des solutions génériques et généralisables.
 %Le passage, depuis une succession de rapports jusqu'à une application d'exploration de ces rapports, ou encore les différents éléments relatifs au choix d'un système de gestion de base de données ou au dessin d'un modèle conceptuel de données s'inscrivent en effet dans cette même démarche qui s'ancre profondément dans une logique de recherche reproductible, aussi bien d'un point de vue technique que de celui du concept et de la méthodologie.
 
+
 \vfill
 \addcontentsline{toc}{subsection}{\textit{\textmd{Après-propos}}}
 \begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
-	\textbf{\textit{Après-propos.}}
+	\textbf{\textit{Après-propos.}}\\
+{\small
 Dans ce chapitre, nous avons plusieurs fois insisté sur la nécessité d'enregistrer toutes les données individuelles pouvant être produites par le modèle.
 Néanmoins, dans les dernières versions de \simfeodal{}, suite au calibrage du modèle et à la réalisation de scénarios (voir le chapitre suivant), les données concernant les foyers paysans ont été considérablement massifiées, passant de 4 000 foyers paysans par simulation à 50 000.
-Chaque simulation produit dès lors, maintenant, un million (50 000 foyers × 20 pas de temps) de lignes pour les seuls foyers paysans, ce qui, une fois multiplié par les vingt réplications de chaque expérience et la cinquantaine d'expériences qui ont été exécutées, approche du milliard de lignes de données.
+Chaque simulation produit donc maintenant un million (50 000 foyers × 20 pas de temps) de lignes pour les seuls foyers paysans.
+Multiplié par les vingt réplications de chaque expérience et la cinquantaine d'expériences qui ont été exécutées, on approche du milliard de lignes de données.
 L'enregistrement de ces données individuelles, dans ces conditions, aurait demandé une augmentation nette de l'infrastructure de stockage des données (une machine virtuelle peu puissante hébergée par la TGIR Huma-Num).
-Nous avons donc choisi, pour les seuls foyers paysans (les autres types d'agents continuent à être enregistrées individuellement) de procéder à des agrégations de données au sein-même de la plateforme de simulation (Gama) afin que les données produites restent manipulables plus aisément.
+Nous avons donc choisi, pour les seuls foyers paysans (les autres types d'agents continuent à être enregistrées individuellement) de procéder à des agrégations de données au sein-même de la plateforme de simulation (GAMA) afin que les données produites restent manipulables plus aisément.
+}
 \end{mdframed}

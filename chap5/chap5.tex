@@ -347,14 +347,13 @@ Pour rappel, ces objectifs peuvent être catégorisés en trois familles, selon 
 
 Dans cette partie, nous allons synthétiquement commenter les indicateurs de sortie de simulation issus de la version calibrée (6.6) de \simfeodal{}, en analysant l'écart entre les objectifs attendus, thématiques, et les résultats du modèle.
 
-%TODO : espace trop long
 \begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
 Par soucis de parcimonie et de synthèse, les résultats présentés par la suite ne sont qu'une sélection de l'ensemble des résultats du modèle.
 Nous invitons le lecteur à les consulter directement dans l'application \simedb{} d'où ces indicateurs sont extraits.
 Le lien suivant permet d'accéder aux résultats spécifiques à la version présentée ici : \href{https://simedb.cura.info/6.6}{https://simedb.cura.info/6.6}
 \end{mdframed}
-%TODO : espace trop long
 
+\clearpage
 \subsubsection{Résumé global des résultats \label{ssec:results-global}}
 
 Avant de chercher à analyser les résultats du modèle à une échelle fine, le \cref{tab:results-basique} peut déjà synthétiser une bonne part des résultats agrégés, en fin de simulation.
@@ -413,7 +412,6 @@ Pour savoir si le modèle parvient bien à reproduire le fait stylisé qu'est la
 Dans cette version du modèle, on constate bien une croissance du nombre de pôles (\cref{fig:results-nb-poles-agregats}-a), assez semblable à celle des agrégats en termes de rythme et de valeur.
 Les valeurs atteintes (environ 250 pôles en fin de simulation) sont très satisfaisantes, particulièrement au regard des résultats des premières versions du modèle.
 
-%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\hspace{5pt}
@@ -422,7 +420,6 @@ Les valeurs atteintes (environ 250 pôles en fin de simulation) sont très satis
 	\caption[Nombre de pôles et part des agrégats comprenant un pôle.]{Nombre de pôles et part des agrégats comprenant un pôle.}
 	\label{fig:results-nb-poles-agregats}
 \end{figure}
-%TODO : espace trop long
 
 La \cref{fig:results-nb-poles-agregats}-b présente elle-aussi des résultats satisfaisants, qui viennent préciser l'analyse précédente.
 Cette figure présente l'évolution du taux d'agrégats qui sont situés dans un pôle d'attraction.
@@ -431,7 +428,7 @@ Cette figure constitue ainsi un des indices montrant que \simfeodal{} parvient b
 
 Les cartes de la \cref{fig:results-carte-agregats_poles} permettent de noter que le semis des pôles se confond spatialement avec celui des agrégats, ce qui amène un élément d'interprétation supplémentaire : les agrégats sont bien constitués dans des pôles (paragraphe précédent), mais en plus, tous les pôles semblent contenir un ou des agrégats.
 Le modèle fait donc émerger une quasi-équivalence entre pôles et agrégats, quasi-équivalence que l'on retrouve chez \textcite[27-28]{le1976eglise}, en assimilant les pôles à leurs seules églises : \og Le village appelle l'église. [...] L'église fait naître le village.\fg{}.
-%\hl{Retrouver dicton autour de \og pas d'église sans village, pas de village sans église\fg{}.}
+\clearpage
 
 %Ces agrégats et les pôles correspondant sont bien plus dispersés dans l'espace du modèle que dans la version 0, et on constate, au moins visuellement, que le semis des pôles se confond avec celui des agrégats (\cref{fig:results-carte-agregats_poles}).
 %Sur ces cartes, on constate une occupation importante de l'espace, largement due à une population bien supérieure en version 6.6 (40 000 foyers paysans, contre 4 000 en version 0), mais on remarque toutefois sur la troisième carte, lissée, qu'en dépit d'un semis visiblement homogène, des zones de plus forte densité sont présentes.
@@ -450,6 +447,7 @@ Le modèle fait donc émerger une quasi-équivalence entre pôles et agrégats, 
 Sur le plan de la polarisation d'ensemble des foyers paysans au sein d'agrégats de population, les résultats du modèle montrent que \simfeodal{} est entièrement capable de reproduire les attendus.
 La valeur finale issue des simulations est certes légèrement inférieure à l'objectif, mais tous les ordres de grandeurs et surtout les rythmes estimés correspondent largement aux estimations issues des connaissances expertes.
 
+\clearpage
 \subsubsection{Capacité du modèle à simuler la hiérarchisation du système de peuplement}
 
 Les dernières figures étudiées montraient une forte hétérogénéité dans la taille des agrégats (un agrégat est créé dès 5 foyers paysans, et la légende de la première série de cartes -- dispersion des agrégats -- s'étend entre 50 et 500 foyers), ce qui constitue déjà un indice sur le niveau de hiérarchisation de ces concentrations locales de foyers paysans.
@@ -492,7 +490,7 @@ Cela n'est pas surprenant dans la mesure où on a vu qu'agrégats et pôles se c
 La hiérarchie des pôles peut aussi être lue dans la composition des pôles en attracteurs.
 Dans l'ensemble, plus un pôle contient d'agents-attracteurs, plus il est susceptible d'être attractif.
 Les pôles sont ainsi constitués d'agents-attracteurs, chacun dotés d'une valeur d'attractivité, et c'est donc leur combinaison qui défini l'attractivité des pôles.
-
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -515,14 +513,13 @@ La \cref{fig:results-rt-poles}-b montre aussi cette hiérarchisation : elle met 
 Un dernier élément du modèle en lien avec la hiérarchisation du peuplement est la hiérarchie des paroisses.
 On peut extraire deux types de comportements attendus à partir des connaissances empiriques.
 
-%TODO : espace trop long
 \begin{itemize}
 	\item En premier lieu, une large majorité des paroisses, que l'on pourrait nommer \og rurales\fg{}, sont peu fréquentées et visent surtout à une desserte équitable de la population.
 	Un paroissien ne devait ainsi pas avoir à effectuer plus d'une heure de marche pour se rendre dans son église paroissiale.
 	\item En second lieu, les paroisses \og urbaines\fg{} desservent un nombre de paroissiens bien supérieur à celui des paroisses rurales.
 	D'après les connaissances expertes, ce nombre reste largement inférieur au millier de paroissiens, puisque de nouvelles paroisses urbaines étaient créées pour décharger les églises paroissiales trop fréquentées.
 \end{itemize}
-%TODO : espace trop long
+\clearpage
 
 En agrégeant ces types de paroisses, le fait stylisé que l'on cherche à reproduire dans le modèle serait donc d'avoir une distribution composée de deux tendances : une tête de hiérarchie desservant un grand nombre de paroissiens, mais avec une faible hiérarchisation interne (paroisses urbaines), et une très longue traine, cette-fois ci plus hiérarchisée et desservant beaucoup moins de paroissiens (paroisses rurales).
 
@@ -547,11 +544,12 @@ Cet intervalle correspond aux paroisses rurales qui contiennent quelques agréga
 	\caption{Détail de la distribution hiérarchique des paroisses.}
 	\label{fig:results-paroisses-hierarchie}
 \end{figure}
+\clearpage
 
 \simfeodal{} parvient donc bien à reproduire la double-densification du maillage paroissial.
 En milieu rural, le nombre de paroisses augmente jusqu'à assurer une desserte équitable des foyers paysans qui dans le même temps ont tendance à se concentrer, et en milieu urbain, le nombre de paroisses augmente aussi jusqu'à uniformiser le nombre de foyers paysans par paroisse entre 200 et 300.
 
-\bigskip
+\medskip
 \paragraph[Conclusion intermédiaire]{}
 Dans l'ensemble, \simfeodal{} montre une bonne capacité à reproduire la hiérarchisation du système de peuplement.
 Avec les informations dont l'on dispose pour évaluer le modèle, on ne peut qu'être satisfait des tendances présentes dans cette version calibrée de \simfeodal{}.
@@ -591,20 +589,19 @@ On y constate que le modèle produit un motif spécifique, composé de trois pha
 	À nouveau, les migrations (uniquement locales cette fois-ci) augmentent de manière abrupte, et, comme dans la première phase, tendent ensuite à diminuer : le niveau maximal d'exigences (religieuse, de protection) est atteint, et les migrations des foyers paysans y pallient.
 \end{itemize}
 
-%TODO : espace trop long
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/results_6_6/FP_Satisfaction_Haut.pdf}
 	\caption{Satisfaction des foyers paysans.}
 	\label{fig:results-fp-satisfaction}
 \end{figure}
-%TODO : espace trop long
 
 La lecture de la \cref{fig:results-fp-satisfaction}, qui présente les types de satisfaction des foyers paysans au cours de la simulation, vient appuyer cette analyse.
 On y retrouve les trois phases observées dans les sorties de simulation.
 Avant 960, la satisfaction augmente, et les migrations diminuent avec elle.
 En 960, c'est bien la satisfaction de protection qui diminue fortement, poussant les foyers paysans à migrer et déclenchant la seconde phase migratoire.
 En 1060, on retrouve le même effet, de moindre ampleur cependant, dans la satisfaction religieuse. À nouveau, les satisfactions diminuent et une nouvelle phase migratoire est initiée.
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -627,11 +624,12 @@ Cela indique aussi qu'à partir de cette période, les agrégats sont pour la pl
 
 Dans le modèle, la répartition des paroisses constitue un observable intéressant pour évaluer la dissémination du peuplement.
 Comme les paroisses ont vocation à desservir la population des foyers paysans, elles constituent un proxy de sa répartition tout au long du temps.
-Les indicateurs liés (\cref{fig:results-paroisses-nb,fig:results-paroisses}) donnent une lecture satisfaisante du processus de dissémination.
+Les indicateurs liés (\cref{fig:results-paroisses-nb,subfig:results-paroisses-carte,subfig:results-paroisses-superficie}) donnent une lecture satisfaisante du processus de dissémination.
 
 En premier lieu, on note que le nombre d'églises paroissiales augmente de manière régulière au cours du temps, avec un saut entre 1060 et 1080, comme pour de nombreux indicateurs vu auparavant (\cref{fig:results-paroisses-nb}).
 Par rapport aux logiques de création et de promotion, on remarque que le nombre d'églises non paroissiales chute fortement à la même période.
 Ces églises se voient attribuer les droits paroissiaux, et on peut dès lors affirmer que l'augmentation du nombre de paroisses de 1080 correspond surtout à des églises rurales puisque ce sont elles qui sont susceptibles d'être promues par le mécanisme (voir \cref{sssec:paroisses}).
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -639,7 +637,6 @@ Ces églises se voient attribuer les droits paroissiaux, et on peut dès lors af
 	\caption{Nombre de paroisses.}
 	\label{fig:results-paroisses-nb}
 \end{figure}
-%TODO : espace trop long
 
 On constate nettement dans la \cref{subfig:results-paroisses-carte} une densification généralisée du maillage paroissial.
 Cette densification est visible à deux niveaux.
@@ -648,12 +645,17 @@ Les très grandes paroisses initiales (plus de 50 km² dans la \cref{subfig:resu
 
 \begin{figure}[H]
 	\centering
-	\hspace{5pt}
-	\subfloat[][Densité des paroisses et des paroissiens.\label{subfig:results-paroisses-carte}]{	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Carte_Haut.pdf}}
-	\hspace{1em}
-	\subfloat[][Superficie des paroisses.\label{subfig:results-paroisses-superficie}]{\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Superficie_Haut.pdf}}
-	\caption{Indicateurs du maillage paroissial.}
-	\label{fig:results-paroisses}
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Carte_Haut.pdf}
+	\caption{Densité des paroisses et des paroissiens.}
+	\label{subfig:results-paroisses-carte}
+\end{figure}
+\clearpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/results_6_6/Paroisses_Superficie_Haut.pdf}
+	\caption{Superficie des paroisses.}
+	\label{subfig:results-paroisses-superficie}
 \end{figure}
 
 En second lieu, à l'échelle infra-régionale, on note une intensification très locale de paroisses (le maillage se densifie fortement), dans lesquelles les densités de foyers paysans sont importantes.
@@ -694,10 +696,11 @@ Les différentes réplications d'un modèle ne partagent ainsi pas véritablemen
 De manière générale, les configurations spatiales générées par le modèle -- les semis de ces agents -- sont donc non agrégables et donc difficilement comparables entre les expériences autrement que d'une manière visuelle.
 Sans données empiriques susceptibles de préciser les taux d'occupation attendus, les mesures de dispersion des semis d'églises, de villages, etc., on ne peut pousser l'évaluation visuelle plus avant.
 L'usage de mesures synthétiques, tirées de l'analyse spatiale, pour décrire ces configurations spatiales serait de plus peu adapté puisque ne reposant pas sur des sources empiriques suffisamment précises.
-
+\clearpage
 %Pour pousser l'évaluation et être en mesure de comparer de nouvelles simulations par le biais des indicateurs présentés ici, au moins pour ceux relatifs à la fixation et dissémination, il faudrait sans doute mener des études de cas plus approfondies sur les sorties du modèle.
 %On pourrait par exemple suivre des ensembles de foyers paysans ou d'agrégats tout au long des simulations pour analyser plus finement leur comportement.
 %Mais même alors, le manque de sources empiriques se ferait forcément et fortement ressentir : on pourrait peut-être isoler la différence entre des simulations, mais serait-il vraiment possible de les départager ?
+
 
 \subsection{Après le calibrage, comment affiner le modèle ? \label{subsec:depasser-calibrage}}
 
@@ -885,10 +888,9 @@ En effet, l'analyse de sensibilité doit se concentrer sur aussi peu d'objectifs
 Pour les mêmes raisons, on a décidé de n'extraire que des données très agrégées du modèle.
 L'analyse de sensibilité s'appuie sur des résultats à l'échelle globale du modèle, et il n'est pas utile, à ce stade de l'analyse, d'enregistrer les indicateurs individuels relatifs aux agents du modèle.
 
-\bigskip 
+\medskip 
 \begin{encadre}{Différencier indicateurs contextuels et émergents.}{indicateurs-contextuels-emergents}
 		\renewcommand{\thempfootnote}{\alph{mpfootnote}}
-	
 Dans les chapitres précédents, nous avons présenté de manière extensive les objectifs -- dans tous les sens du terme -- poursuivis par le modèle.
 Nous mobilisons des indicateurs de sortie de simulation pour rendre compte de l'état du modèle, et le but est que ces indicateurs soient proches des objectifs thématiques formulés.
 %Dans le chapitre \hl{2}, on décrivait l'objectif théorique du modèle, à savoir d'aider à la compréhension des phénomènes de restructuration spatiale du système de peuplement rural entre les IX$^e$ et XIII$^e$ siècles.
@@ -898,7 +900,7 @@ En définissant un ensemble d'objectifs, qualifiés (allures de courbes, ordres 
 
 Au sein de ces indicateurs de sortie de simulation, il est une distinction que nous n'avons pas encore mobilisée, et qui nous semble indispensable pour l'analyse de la sensibilité du modèle pour laquelle il est nécessaire de réduire autant que possible la quantité d'indicateurs calculés : le distinguo entre les indicateurs \og émergents\fg{} et ceux qui pourraient être qualifiés de \og contextuels\fg{}.
 
-\begin{itemize}
+\begin{itemize}[noitemsep]
 	\item Le premier type, les indicateurs émergents, sont les indicateurs les plus classiques en modélisation agent : on s'attache à leur évaluation parce qu'ils sont entièrement induits par la combinaison et l'intrication des mécanismes du modèle.
 	Parvenir à obtenir des valeurs proches de ce que l'on peut observer sur le plan empirique est un critère de validation d'un modèle, et donc potentiellement un signe d'acquisition de connaissance thématique ou théorique.
 	Par exemple, dans \simfeodal{}, le taux de foyers paysans dispersés en fin de simulation est un pur indicateur émergent : le modèle n'a nullement été paramétré ou calibré pour faire atteindre une certaine valeur à ce taux, et la valeur simulée donne des éléments d'interprétation thématique sur le modèle.
@@ -973,7 +975,6 @@ Au final, ce procédé de normalisation est très proche d'une normalisation sta
 \end{flalign*}
 Ainsi conçue, la valeur normalisée permet de comparer les valeurs des indicateurs puisque les ordres de grandeur sont désormais similaires.
 
-%TODO : espace trop long
 \paragraph{Calcul de la sensibilité globale des paramètres.}
 Comme les valeurs des indicateurs sont désormais normalisées, il est possible de mener des opérations conjointes sur les différents indicateurs.
 On définit un indice global caractéristique de chaque paramètre, intitulé \og sensibilité\fg{}, qui correspond à la moyenne des valeurs normalisées de chacun des indicateurs.
@@ -1050,6 +1051,8 @@ La \cref{fig:exemple-visu-sensib} présente un exemple de mise en page de telles
 	\caption[Construction et mise en page de planches graphiques dédiées à l'analyse visuelle de la sensibilité.]{Construction et mise en page de planches graphiques dédiées à l'analyse visuelle de la sensibilité de 5 modalités de $\upomega$ paramètres sur \textit{n} indicateurs.}
 	\label{fig:exemple-visu-sensib}
 \end{figure}
+\clearpage
+
 
 Ces planches permettent de lire une double information.
 En premier lieu, la position relative des valeurs correspondant à chaque modalité permet de remarquer d'éventuelles influences des valeurs de paramètres sur les valeurs d'indicateur.
@@ -1057,18 +1060,17 @@ Dans le schéma, on représente ainsi les \og différences de valeur\fg{} qui ex
 Dans un second temps, et on y reviendra après (\cref{subsec:sensibilite-alea}), le choix des représentations en \textit{violin-plots} permet aussi d'étudier la variabilité interne des valeurs de paramètres testées sur chaque indicateur (exemple en bas à droite).
 Les différences d'amplitude (sur l'axe des ordonnées) exprime ainsi les différentes variabilités dues à l'aléa : plus les \og violons\fg{} sont grands, plus l'indicateur varie selon les réplications pour la valeur de paramètre testée.
 
-%TODO : espace trop long
 \paragraph{Normalisation.}
 La normalisation des valeurs était indispensable lors du calcul de la sensibilité globale afin d'homogénéiser la variabilité des indicateurs.
 Pourtant, sur un sous-ensemble de paramètres cette normalisation devient un frein à l'interprétation et à la lisibilité des analyses : les valeurs des différents indicateurs n'étant plus exprimés dans l'unité d'origine, il est difficile d'en faire un commentaire thématique.
 L'analyse visuelle, sur les paramètres sélectionnés, sera ainsi présentée sur les valeurs brutes issues des simulations, et chaque graphique aura en conséquence un axe des ordonnées propre.
 La logique est encore une fois la même que dans les classifications ascendantes hiérarchiques couramment pratiquées en géographie quantitative : on effectue la classification sur des valeurs normalisées, mais on représente souvent les profils des classes en revenant aux valeurs brutes.
+\clearpage
 
 \subsection{Sélection des paramètres à analyser.}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.93\linewidth]{img/sensibilite_globale.pdf}
+	\includegraphics[width=.92\linewidth]{img/sensibilite_globale.pdf}
 	\caption{Analyse de la sensibilité globale de tous les paramètres de \simfeodal{}.}
 	\label{fig:sensibilite-globale}
 \end{figure}
@@ -1142,13 +1144,13 @@ Tous les paramètres peuvent toutefois être analysés individuellement, de mani
 \end{figure}
 
 \clearpage
-%TODO : vérifier taille
-\begin{table}[H]\vspace*{-1em}
+\begin{table}[p]
 \centering
-\includegraphics[width=\textheight, angle=90, origin=c]{img/Parametres.pdf}
+\includegraphics[width=.91\textheight, angle=90, origin=c]{img/Parametres.pdf}
 \caption{Paramètres sélectionnés pour l'analyse visuelle.}
 \label{tab:selection-parametres-anavis}
 \end{table}
+\clearpage
 
 \subsection{Évaluation visuelle de la sensibilité}
 
@@ -1257,6 +1259,7 @@ Sur les deux paramètres précédents (\cref{fig:sensib-fp-1,fig:sensib-fp-2}), 
 L'influence de ce paramètre est extrêmement intéressante pour le modèle tant ce paramètre permet d'approcher des objectifs de ces indicateurs qui sont tous deux dépassés alors qu'opposés.
 On notera par exemple que parmi les valeurs de croissance démographique testées, la plus forte (12.80\%) permet un excellent ajustement du nombre d'agrégats et du taux de foyers paysans isolés, deux objectifs majeurs dans l'évaluation de \simfeodal{}.
 L'\cref{enc:scenario-croissance-demo} illustre une démarche d'exploration plus poussée de ce paramètre.
+\clearpage
 
 \begin{encadre}{Un scénario thématique pour tester l'hypothèse de croissance démographique}{scenario-croissance-demo}
 	\renewcommand{\thempfootnote}{\alph{mpfootnote}}	
@@ -1386,10 +1389,11 @@ Ce paramètre constitue dès lors un très bon candidat à un ajustement de l'au
 
 \paragraph{Châteaux.}
 Les paramètres liés aux châteaux sont sensiblement surreprésentés parmi ceux qui ont la sensibilité la plus forte : il n'y en a que 6 sur les 57 paramètres (environ 11\%), mais les trois paramètres sélectionnés (\textsf{debut\_construction\_chateaux}, \textsf{nb\_tirages\_chateaux\_ps} et \textsf{periode\_promotion\_chateaux}) représentent 20\% des paramètres les plus sensibles.
+\clearpage
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_periode_promotion_chateaux.pdf}
+	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_periode_promotion_chateaux.pdf}
 	\caption{Sensibilité du paramètre \textsf{periode\_promotion\_chateaux}.}
 	\label{fig:sensib-chateaux-1}
 \end{figure}
@@ -1399,14 +1403,12 @@ C'est bien le cas du paramètre régissant l'intervalle de temps pendant lequel 
 Ce paramètre semble n'avoir aucun impact sur les autres indicateurs de sortie, mais influence fortement le nombre de gros châteaux.
 Sa valeur par défaut (de 940 à 1040, issue de connaissances expertes) est presque optimale au regard de cet indicateur, signe que le calibrage des autres paramètres (moins inscrits dans l'empirie) est adapté.
 
-%TODO : espace trop long
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
+	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
 	\caption{Sensibilité du paramètre \textsf{nb\_tirages\_chateaux\_ps}.}
 	\label{fig:sensib-chateaux-2}
 \end{figure}
-%TODO : espace trop long
 
 Les deux autres paramètres liés aux châteaux (\cref{fig:sensib-chateaux-2,fig:sensib-chateaux-3}) ont une influence qui n'est pas circonscrite au nombre de grands châteaux : tous deux agissent sur d'autres indicateurs que celui-ci.
 
@@ -1418,10 +1420,11 @@ Cette influence reste assez modeste toutefois au regard des variations engendré
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_debut_construction_chateaux.pdf}
+	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_debut_construction_chateaux.pdf}
 	\caption{Sensibilité du paramètre \textsf{debut\_construction\_chateaux}.}
 	\label{fig:sensib-chateaux-3}
 \end{figure}
+\clearpage
 
 Celui-ci (\cref{fig:sensib-chateaux-3}) agit de manière assez similaire en termes de tendance, avec une influence plus importante toutefois.
 Les figures peuvent laisser penser à une relation inverse à celle du paramètre précédent, mais c'est uniquement dû aux valeurs de ce paramètre qui fixe l'année à partir de laquelle des châteaux peuvent être construits : plus cette année est tardive, moins le nombre de châteaux final sera important\footnote{
@@ -1443,17 +1446,18 @@ Le dernier paramètre de cette analyse visuelle est aussi le seul qui porte sur 
 Celles-ci constituent l'un des moteurs principaux de la fixation de la population dans les agrégats de taille réduite qui constituent la grande majorité des lieux de concentration des foyers paysans (la fameuse \og longue traîne\fg{} de cette hiérarchie).
 En première analyse, cette sous-représentation des paramètres liés aux paroisses dans l'ensemble des paramètres sélectionnés nous apparaît donc contre-intuitif.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{img/sensib/sensibilite_ponderation_creation_paroisse_agregat.pdf}
-	\caption{Sensibilité du paramètre de pondération de création de nouvelles paroisses dans les agrégats.}
-	\label{fig:sensib-paroisses}
-\end{figure}
-
 La \cref{fig:sensib-paroisses} présente les réponses des indicateurs à différentes valeurs du paramètre \textsf{ponderation\_creation\_paroisse\_agregat}, qui agit sur le nombre de foyers paysans nécessaires à la création d'une nouvelle église paroissiale au sein des agrégats.
 De manière prévisible et évidente, ce paramètre influence nettement les deux indicateurs liés aux paroisses et églises :
-	plus grand est le nombre de paroissiens nécessaire à la création d'une nouvelle paroisse dans un agrégat, plus faible est le nombre d'églises paroissiales conséquemment créées.
+plus grand est le nombre de paroissiens nécessaire à la création d'une nouvelle paroisse dans un agrégat, plus faible est le nombre d'églises paroissiales conséquemment créées.
 Et moins il y a d'églises dans un monde à la superficie constante, plus large est la distance entre elles.
+\clearpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_ponderation_creation_paroisse_agregat.pdf}
+	\caption{Sensibilité du paramètre de pondération de création de nouvelles paroisses dans les agrégats.}
+	\label{fig:sensib-paroisses}\vspace{-.5em}
+\end{figure}
 
 Passé ces éléments intuitifs, on notera avec intérêt la variation amenée par ce paramètre sur le nombre d'agrégats : plus le seuil est élevé, plus les agrégats sont nombreux, et cette corrélation apparaît visuellement significative et inverse à celle du nombre d'églises paroissiales.
 Cette tendance est inverse à celles observées dans les paramètres liés aux foyers paysans et agrégats (\cref{subsubsec:sensib-fp}, \cref{fig:sensib-fp-1,fig:sensib-fp-2,fig:sensib-fp-3,fig:sensib-agregats}).
@@ -1465,18 +1469,17 @@ Une piste d'explication réside dans l'influence de ce paramètre de pondératio
 En créant moins de paroisses en zone dense, la distribution de l'attractivité des pôles d'attraction -- qui dépend en large partie du nombre d'églises paroissiales qui les composent -- tend vers plus d'uniformité.
 Quand les pôles ont une attractivité plus homogène, les migrations locales sont favorisées, et la concentration s'effectue alors vers des pôles moins attractifs constitués d'agrégats faiblement peuplés.
 
-\subsection{Analyser la sensibilité à l'aléa \label{subsec:sensibilite-alea}}
-
-En menant l'analyse de sensibilité visuelle, on a pu remarquer que certains indicateurs présentaient une plus forte variation que d'autres.
+\vspace{-1em}\subsection{Analyser la sensibilité à l'aléa \label{subsec:sensibilite-alea}}
+\vspace{-.5em}En menant l'analyse de sensibilité visuelle, on a pu remarquer que certains indicateurs présentaient une plus forte variation que d'autres.
 Une partie de l'explication tient à l'inégale amplitude des valeurs de paramètres testées, mais d'autres facteurs peuvent être en jeu.
 
 De manière globale, on constate dans les résultats de la version calibrée de \simfeodal{} (\cref{tab:results-basique}) que la variabilité des indicateurs émergents, mesurée à partir de leur écart-type, est forte.
 L'écart-type se lisant dans l'unité de l'indicateur, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}} / \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
 
-
 \begin{table}[H]
-{\renewcommand{\arraystretch}{1.1}%
-	\begin{tabular}{|p{5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+{\small	
+{\renewcommand{\arraystretch}{.9}%
+	\begin{tabular}{|p{8.25cm}|p{1.75cm}|p{1.9cm}|p{2.25cm}|}
 \hline
 \textbf{Indicateur} & \textbf{Moyenne} & \textbf{Écart-type} & \textbf{Coefficient de variation} \\
 \hline
@@ -1494,11 +1497,12 @@ L'écart-type se lisant dans l'unité de l'indicateur, il peut être intéressan
 \hline
 \multicolumn{3}{r|}{\textbf{\textit{Moyenne}}} & 0.063\\
 \cline{4-4}
-	\end{tabular}
+	\end{tabular}}
 }
-\caption[Mesures de dispersion des indicateurs de sortie de \simfeodal{}.]{Mesures de dispersion des indicateurs de sortie de la version calibrée (6.6) de \simfeodal{}.}
+\caption[Dispersion des indicateurs de sortie de \simfeodal{}.]{Dispersion des indicateurs de sortie de la version calibrée (6.6) de \simfeodal{}.}
 \label{tab:variabilite-indicateurs}
 \end{table}
+\clearpage
 
 La comparaison des coefficients de variation \cref{tab:variabilite-indicateurs} montre que la variabilité des indicateurs due à l'aléa est assez faible, et d'ordre de grandeurs comparables d'un indicateur à l'autre\footnote{
 	Le nombre de grands châteaux fait exception : son coefficient de variation (0.191) est nettement supérieur aux autres.
@@ -1522,7 +1526,11 @@ On trouve une définition de ce type d'approche chez \textcite{ginot2005explorer
 Pour mesurer cette incertitude, nous avons repris l'ensemble des réplications correspondant à l'analyse de sensibilité de chaque paramètre et avons mesuré la variabilité (écart-type) sur chaque indicateur.
 Afin d'avoir des mesures comparables, on a ensuite procédé à une réduction (division par l'écart-type des valeurs de référence, présentées dans le \cref{tab:variabilite-indicateurs}) de l'amplitude de ces valeurs.
 
-%TODO : espace trop long
+La distribution de ces valeurs d'incertitude relatives est présenté dans la \cref{fig:histo-sensib-alea}.
+Dans ces histogrammes, la valeur de 1 correspond à une incertitude moyenne identique à celle des réplications de référence, c'est-à-dire des réplications de la version calibrée du modèle dont les résultats ont été commentés dans la première partie de ce chapitre (\cref{subsec:resultats}).
+Une valeur de 2 peut être comprise ainsi : pour l'indicateur considéré, les différentes simulations exécutées lors de l'analyse de chaque valeur de chaque paramètre ont une variabilité deux fois supérieure à la variabilité de référence.
+Autrement dit, certaines valeurs de certains paramètres amènent une bien plus forte variabilité : ils laissent une part plus importante à la stochasticité du modèle.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/histo_sensibilite_alea.pdf}
@@ -1532,12 +1540,6 @@ Afin d'avoir des mesures comparables, on a ensuite procédé à une réduction (
 	Une valeur de 0.5, par exemple, signifie que la variabilité due à l'aléa est moitié moins importante	que celle des valeurs de paramètres issues du calibrage.}}}
 	\label{fig:histo-sensib-alea}
 \end{figure}
-%TODO : espace trop long
-
-La distribution de ces valeurs d'incertitude relatives est présenté dans la \cref{fig:histo-sensib-alea}.
-Dans ces histogrammes, la valeur de 1 correspond à une incertitude moyenne identique à celle des réplications de référence, c'est-à-dire des réplications de la version calibrée du modèle dont les résultats ont été commentés dans la première partie de ce chapitre (\cref{subsec:resultats}).
-Une valeur de 2 peut être comprise ainsi : pour l'indicateur considéré, les différentes simulations exécutées lors de l'analyse de chaque valeur de chaque paramètre ont une variabilité deux fois supérieure à la variabilité de référence.
-Autrement dit, certaines valeurs de certains paramètres amènent une bien plus forte variabilité : ils laissent une part plus importante à la stochasticité du modèle.
 
 On peut remarquer que la plupart des indicateurs présentent des \textit{outliers}, c'est-à-dire des valeurs de paramètres pour lesquelles la variabilité due à l'aléa est nettement supérieure (ou inférieure) à la normale.
 Dans le cas du nombre de grands châteaux, il y a même des valeurs de paramètres qui montre une absence presque totale de variabilité à l'aléa.
