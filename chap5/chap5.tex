@@ -45,9 +45,9 @@ On pourra alors introduire les résultats de cette version, en présentant les c
 La deuxième partie de ce chapitre s'attachera à une exploration du comportement du modèle, c'est-à-dire à sa sensibilité.
 Cette sensibilité peut être entendue au sens de robustesse du modèle face aux différentes valeurs de paramètres (analyse de sensibilité classique).
 Comment les différents paramètres -- et leurs valeurs associées -- jouent-ils sur la variabilité des indicateurs de sortie ?
-Un premier questionnement concerne les valeurs de paramètres testées :  ont-elles un effet sur les valeurs des indicateurs de sortie ?
+Un premier questionnement concerne les valeurs de paramètres testées : ont-elles un effet sur les valeurs des indicateurs de sortie ?
 Une seconde question concerne la robustesse du modèle à l'aléa.
-Observe-t-on des différences de variabilité lors des réplications du modèle  (variabilité à la stochasticité) selon les différents paramètres et valeurs de paramètres testés ?
+Observe-t-on des différences de variabilité lors des réplications du modèle (variabilité à la stochasticité) selon les différents paramètres et valeurs de paramètres testés ?
 Dans le cas de \simfeodal{}, une analyse de ce type pose des questions méthodologiques complexes, en raison notamment du grand nombre de paramètres impliqués et de \og l'explosion combinatoire\fg{} qui en découle.
 
 %La dernière partie doit permettre de gagner en compréhension du modèle en lui-même, et par cela de ce qui est modélisé.
@@ -59,7 +59,7 @@ Dans le cas de \simfeodal{}, une analyse de ce type pose des questions méthodol
 \clearpage
 \section{Calibrage du modèle et premiers résultats}
 
-Dans le chapitre 3 (\cref{sec:evaluer-modele}), on indiquait que \simfeodal{} s'inscrivait dans la lignée des  modèles dont le but est d'\og assister la construction de théories\fg{}, ou encore \og à utilité de développement\fg{}, c'est-à-dire permettant à des chercheurs d'expliciter et de vérifier la cohérence de leurs hypothèses plutôt que de les infirmer ou confirmer.
+Dans le chapitre 3 (\cref{sec:evaluer-modele}), on indiquait que \simfeodal{} s'inscrivait dans la lignée des modèles dont le but est d'\og assister la construction de théories\fg{}, ou encore \og à utilité de développement\fg{}, c'est-à-dire permettant à des chercheurs d'expliciter et de vérifier la cohérence de leurs hypothèses plutôt que de les infirmer ou confirmer.
 
 En tant que tels, les résultats de \simfeodal{} ne nous semblent pas revêtir d'enjeu confirmatoire majeur : ils sont là pour participer à l'évaluation du modèle, tant sur un plan interne qu'externe (cf. \cref{enc:lexique-eval-amblard}), mais ne constituent pas pour autant des éléments objectifs et quantifiables de validation.
 
@@ -112,7 +112,7 @@ Dans cette partie, nous rappelons les objectifs du modèle, nous décrivons les 
 \subsection{Calibrage du modèle \label{subsec:calibrage}}
 
 La phase de calibrage est particulière parmi les nombreuses étapes de paramétrage décrites dans le \cref{chap:chap3} (\cref{tab:historique-versions-simfeodal}).
-Il  ne s'agit ainsi plus d'ajuster les mécanismes et paramètres pour obtenir une cohérence d'ensemble dans la manière dont le modèle réagit, mais de se concentrer sur quelques paramètres, contextuels, dont on va régler finement les valeurs afin que le contexte de déroulement des autres mécanismes du modèle soit contrôlé et aussi fidèle aux connaissances expertes que possible.
+Il ne s'agit ainsi plus d'ajuster les mécanismes et paramètres pour obtenir une cohérence d'ensemble dans la manière dont le modèle réagit, mais de se concentrer sur quelques paramètres, contextuels, dont on va régler finement les valeurs afin que le contexte de déroulement des autres mécanismes du modèle soit contrôlé et aussi fidèle aux connaissances expertes que possible.
 
 Ces paramètres contextuels sont étroitement liés à certains indicateurs de sortie.
 Conceptuellement, paramètres et indicateurs sont très largement différents, situés de part et d'autre de la simulation dans une typologie comme celle de Balci (ref chap 4).
@@ -218,7 +218,7 @@ Ces espacements empiriques permettent de calibrer le modèle via le calcul d'un 
 Le calibrage porte sur le paramètre associé aux mécanismes de création/promotion de paroisses rurales.
 Ces mécanismes sont complexes (voir \cref{chap:chap2}, \cref{sssec:paroisses}) et le paramètre qui les régit (\textsf{seuil\_nb\_paroissiens\_insatisfaits}) a donc une influence importante et difficilement prévisible sans expérimentation.
 Dans l'ensemble, ce paramètre agit comme un seuil de foyers paysans au delà duquel une nouvelle église paroissiale est créée ou promue en zone rurale.
-Pour le calibrage, on a fait varier le paramètre  : diminuer la valeur de ce seuil poussait à la création de plus de paroisses rurales, et l'augmenter limitait le nombre final.
+Pour le calibrage, on a fait varier le paramètre : diminuer la valeur de ce seuil poussait à la création de plus de paroisses rurales, et l'augmenter limitait le nombre final.
 Dans l'état actuel du modèle, le nombre de paroisses rurales est encore trop important au regard des connaissances empiriques (380 au lieu de 300, voir le \vref{tab:results-basique}), mais on n'a pas augmenté le seuil afin qu'il garde du sens sur le plan thématique.
 Le seuil est fixé à 20 foyers paysans, et thématiquement, on estime que cette quantité pouvait suffire à la création d'une nouvelle paroisse.
 
@@ -466,7 +466,7 @@ Ces sources s'accordent en revanche sur une nette hiérarchisation, avec une dis
 %		\begin{tabular}{p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 %			\cline{2-7}
 %			& \multicolumn{6}{c|}{\textbf{Nombre de foyers paysans}} \\
-%			  & \textbf{<100} & \textbf{101-200} & \textbf{201-300} &  \textbf{301-400} &\textbf{ 401-600} & \textbf{>600} \\ \hline
+%			 & \textbf{<100} & \textbf{101-200} & \textbf{201-300} & \textbf{301-400} &\textbf{ 401-600} & \textbf{>600} \\ \hline
 %			 \multicolumn{1}{|c|}{Nombre moyen} & 142 & 78 & 18 & 7 & 4 & 2 \\ \hline
 %			 \multicolumn{1}{|c|}{Taux moyen} & 56.8\% & 31.4\% & 7\% & 2.9\% & 1.6\% &<0.1\% \\ \hline
 %			 \rowcolor{yellow} \multicolumn{1}{|c|}{\textit{Objectif (taux)}} & \textit{?} & \textit{?} & \textit{?} & \textit{?} & \textit{?} & \textit{?}\\ \hline	
@@ -487,7 +487,7 @@ Les valeurs absolues augmentent aussi : les plus gros agrégats voient leur popu
 Le \og coude\fg{} dans la courbe, qui correspond à la longue traîne de petits agrégats, se réduit.
 %Contrairement à la version 0 du modèle, la croissance de tous les agrégats semble constante, et on ne remarque pas, visuellement, les tendances à l'éclatement des gros agrégats qui caractérisaient la hiérarchie de cette version.
 
-En parallèle de cette nette hiérarchisation des agrégats, les graphiques de la  \cref{fig:results-rt-poles} permettent de constater une toute aussi nette hiérarchisation des pôles.
+En parallèle de cette nette hiérarchisation des agrégats, les graphiques de la \cref{fig:results-rt-poles} permettent de constater une toute aussi nette hiérarchisation des pôles.
 Cela n'est pas surprenant dans la mesure où on a vu qu'agrégats et pôles se confondaient, ce qui constitue en soi un résultat satisfaisant.
 La hiérarchie des pôles peut aussi être lue dans la composition des pôles en attracteurs.
 Dans l'ensemble, plus un pôle contient d'agents-attracteurs, plus il est susceptible d'être attractif.
@@ -817,7 +817,7 @@ Nous avons choisi de mener l'analyse de sensibilité de \simfeodal{} en emprunta
 Il convient en effet de rappeler que ce modèle est caractérisé par un nombre important de paramètres : près de 70.
 En ne choisissant que 5 valeurs pour chaque paramètre et pour croiser tous les paramètres, une analyse de type plan factoriel demanderait l'exécution de $5^{70} \times 20_{\text{[replications]}}$, soit environ $10^{50}$ simulations\ldots{}
 %Dans un modèle complexe où les agents sont en interactions les uns avec les autres, cette approche est forcément biaisée et lacunaire au regard d'approches plus avancées comme les méthodes d'exploration de l'espace des paramètres.
-Une approche plus simple, de type OFAT, nous paraît dès lors la seule  à être applicable dans le cas de \simfeodal{}.
+Une approche plus simple, de type OFAT, nous paraît dès lors la seule à être applicable dans le cas de \simfeodal{}.
 
 
 \paragraph{Paramètres.}
@@ -1171,7 +1171,7 @@ Plutôt que de mener l'évaluation de la sensibilité des paramètres sélection
 
 %Le paramètre régissant la taille du monde simulé est le seul des \textit{inputs} présent dans la sélection.
 
-Le paramètre régissant la taille du monde simulé (\textsf{taille\_cote\_monde}) est un paramètre majeur qui affecte la totalité des indicateurs étudiés, comme la  \cref{fig:sensib-monde} permet de le constater.
+Le paramètre régissant la taille du monde simulé (\textsf{taille\_cote\_monde}) est un paramètre majeur qui affecte la totalité des indicateurs étudiés, comme la \cref{fig:sensib-monde} permet de le constater.
 Quand la taille du monde simulé augmente, le nombre d'agrégats, d'églises paroissiales, la distance moyenne entre églises paroissiales et le taux de foyers paysans augmente aussi.
 Au contraire, la pression fiscale varie de façon inverse : quand la taille du monde simulé augmente, elle diminue.
 On ne constate pas d'effet direct ou linéaire sur le nombre de grands châteaux, qui ne semblent pas être directement sensibles à la taille du monde.
@@ -1471,7 +1471,7 @@ En menant l'analyse de sensibilité visuelle, on a pu remarquer que certains ind
 Une partie de l'explication tient à l'inégale amplitude des valeurs de paramètres testées, mais d'autres facteurs peuvent être en jeu.
 
 De manière globale, on constate dans les résultats de la version calibrée de \simfeodal{} (\cref{tab:results-basique}) que la variabilité des indicateurs émergents, mesurée à partir de leur écart-type, est forte.
-L'écart-type se lisant dans l'unité de l'indicateur, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}}  /  \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
+L'écart-type se lisant dans l'unité de l'indicateur, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}} / \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
 
 
 \begin{table}[H]
