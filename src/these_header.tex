@@ -8,7 +8,7 @@
 %bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
 %top = 2.25cm, headsep = .5cm, headheight=30pt
 %]{geometry}
-%%%% SYMMETRIQUE %%%%
+%%%% SYMETRIQUE %%%%
 \usepackage[left=2.5cm, right=2.5cm,
 bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
 top = 2.25cm, headsep = .5cm, headheight=30pt
@@ -53,6 +53,7 @@ top = 2.25cm, headsep = .5cm, headheight=30pt
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 
+%%% VERSION PDF %%%
 %\fancyhead[L]{Chapitre \thechapter}
 \fancyhead[C]{}
 \fancyhead[R]{}
@@ -63,7 +64,7 @@ top = 2.25cm, headsep = .5cm, headheight=30pt
 %\fancyfoot[LO]{\thepage}
 %\fancyfoot[RE]{\thepage}
 %\fancyhead[R]{\nouppercase{\rightmark}}
-
+%%% VERSION IMPRIMEE %%%
 
 
 \newcommand{\FancyNotChapter}[1]{%
@@ -101,9 +102,9 @@ top = 2.25cm, headsep = .5cm, headheight=30pt
 \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{
 	pdfauthor={Robin CURA},
-	pdftitle={These\_Robin\_CURA},
-	pdfsubject={Modéliser des systèmes de peuplement en interdisciplinarité. Co-construction et exploration visuelle d’un modèle de simulation},
-	pdfkeywords={blob, blob2, blob3}
+	pdftitle={These CURA 2020},
+	pdfsubject={Modéliser des systèmes de peuplement en interdisciplinarité. Co-construction et exploration visuelle d’un modèle de simulation.},
+	pdfkeywords={modélisation à base d'agents, visualisation, systèmes de peuplement, temps long, interdisciplinarité, SimFeodal, SimEDB}
 }
 \usepackage[noabbrev, nameinlink]{cleveref}
 
@@ -284,24 +285,24 @@ sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 
 
 % PAGES BLANCHES
-\usepackage{afterpage}
-\newcommand\blankpage{%
-	\null
-	\thispagestyle{empty}%
-	\addtocounter{page}{-1}%
-	\newpage}
+%\usepackage{afterpage}
+%\newcommand\blankpage{%
+%	\null
+%	\thispagestyle{empty}%
+%	\addtocounter{page}{-1}%
+%	\newpage}
 % Usage : \afterpage{\null\newpage}
 
 % ######### TITRE #########
 \usepackage{titling}
-\title{Accompagner la modélisation des systèmes de peuplement par l’exploration interactive de données spatio-temporelles}
+\title{Modéliser des systèmes de peuplement en interdisciplinarité. Co-construction et exploration visuelle d’un modèle de simulation}
 \author{Robin Cura}
 \date{\vspace{-5ex}}
 \makeatletter
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
 
-\usepackage{blindtext}
+%\usepackage{blindtext}
 
 \newcommand{\simfeodal}{\textsc{SimFeodal}}
 \newcommand{\simedb}{\textsc{SimEDB}}

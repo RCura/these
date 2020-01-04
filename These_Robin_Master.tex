@@ -2,19 +2,19 @@
 % !TeX encoding = UTF-8
 % !TEX TS-program = xelatex
 
-\documentclass[12pt, a4paper, oneside, notitlepage,french]{book}
+\documentclass[12pt, a4paper, twoside, notitlepage,french]{book}
 \usepackage{newclude} % Ce package ne fonctionne que quand placé juste après le documentclass
 
 \input{src/these_header.tex}
 
-%\addbibresource{chap0-2-Intro/biblio-intro.bib}
-%\addbibresource{chap1/biblio-chap1.bib}
-%\addbibresource{chap2/biblio-chap2.bib}
-%\addbibresource{chap3/biblio-chap3.bib}
-%\addbibresource{chap4/biblio-chap4.bib}
+\addbibresource{chap0-2-Intro/biblio-intro.bib}
+\addbibresource{chap1/biblio-chap1.bib}
+\addbibresource{chap2/biblio-chap2.bib}
+\addbibresource{chap3/biblio-chap3.bib}
+\addbibresource{chap4/biblio-chap4.bib}
 \addbibresource{chap5/biblio-chap5.bib}
-%\addbibresource{chap6/biblio-chap6.bib}
-%\addbibresource{chap7-Conclusion/biblio-conclu.bib}
+\addbibresource{chap6/biblio-chap6.bib}
+\addbibresource{chap7-Conclusion/biblio-conclu.bib}
 
 \input{chap0-0-1_PageGarde/page_garde_src.tex}
 \input{chap0-0-1_PageGarde/page_garde_content.tex}
@@ -30,22 +30,22 @@
 % #######################
 
 \frontmatter
-%\pagedegarde
-%\include*{chap0-1-Préambule/preambule}
-%\include*{chap0-0-Remerciements/remerciements}
-%\cleardoublepage
-%\shorttoc{Sommaire}{0}
+\pagedegarde
+\include*{chap0-1-Préambule/preambule}
+\include*{chap0-0-Remerciements/remerciements}
+\cleardoublepage
+\shorttoc{Sommaire}{0}
 
 \mainmatter
-%\include*{chap0-2-Intro/intro}
+\include*{chap0-2-Intro/intro}
 \FancyChapter
-%\include*{chap1/chap1}
-%\include*{chap2/chap2}
-%\include*{chap3/chap3}
-%\include*{chap4/chap4}
+\include*{chap1/chap1}
+\include*{chap2/chap2}
+\include*{chap3/chap3}
+\include*{chap4/chap4}
 \include*{chap5/chap5}
-%\include*{chap6/chap6}
-%\include*{chap7-Conclusion/conclusion}
+\include*{chap6/chap6}
+\include*{chap7-Conclusion/conclusion}
 
 \begin{appendices}
 \crefalias{chapter}{appchap}
@@ -57,10 +57,9 @@
 	\includegraphics[width=\linewidth]{annexes/A_parametres_SimFeodal/Connaissances_inputs_clean.png}
 	\caption*{Tableau extrait de \textcite[317]{cura_transition_2017}.}
 \end{figure}
-
 \section{Définition et valeur des paramètres. \label{annexe:A2}}
 \includepdf[pages={1-4},scale=1]{annexes/A_parametres_SimFeodal/2019-07VariablesParameters-SimFeodal_v9.pdf}
-\nopagebreak\section{Valeurs de paramètres employées dans l'analyse de sensibilité. \label{annexe:A3}}
+\section{Valeurs de paramètres employées dans l'analyse de sensibilité. \label{annexe:A3}}
 \makebox[\textwidth][c]{\includegraphics[page=1, scale=1,%
 trim=0 45 0 120,%
 clip]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}}
@@ -76,12 +75,13 @@ N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à 
 \printbibliography[title={Références}]
 \setcounter{tocdepth}{2}
 \tableofcontents
-%\cleardoublepage
-%\listoffigures
-%\listoftables
-%\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
-%\cleardoublepage
-%\newgeometry{top=1.5cm, bottom=1.5cm, left=2cm, right=2cm}
+\cleardoublepage
+\listoffigures
+\listoftables
+\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
+\cleardoublepage
+\newgeometry{top=1.5cm, bottom=1.5cm, left=2cm, right=2cm}
+\include*{chap8-Resumes/resume}
+%\clearpage
 %\include*{chap8-Resumes/resume}
-
 \end{document}
