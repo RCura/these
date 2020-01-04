@@ -31,9 +31,12 @@
 
 \frontmatter
 \pagedegarde
+\pagestyle{empty}
 \include*{chap0-1-Préambule/preambule}
+%\clearpage
 \include*{chap0-0-Remerciements/remerciements}
 \cleardoublepage
+\pagestyle{fancy}
 \shorttoc{Sommaire}{0}
 
 \mainmatter
@@ -50,6 +53,7 @@
 \begin{appendices}
 \crefalias{chapter}{appchap}
 \appendix
+\FancyNotChapter{Annexes}
 \chapter{Les paramètres de SimFeodal.\label{annexe:A}}
 \section{Niveau de précision des \textit{inputs} \label{annexe:A1}}
 \begin{figure}[H]
@@ -72,13 +76,18 @@ N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à 
 \end{appendices}
 
 \backmatter
+\FancyNotChapter{Références}
 \printbibliography[title={Références}]
 \setcounter{tocdepth}{2}
+\cleardoublepage
+\FancyNotChapter{Table des matières}
 \tableofcontents
 \cleardoublepage
+\FancyNotChapter{Tables}
 \listoffigures
 \listoftables
 \tcblistof[\chapter*]{listencadres}{Liste des encadrés}
+\pagestyle{empty}
 \cleardoublepage
 \newgeometry{top=1.5cm, bottom=1.5cm, left=2cm, right=2cm}
 \include*{chap8-Resumes/resume}
