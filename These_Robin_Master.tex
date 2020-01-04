@@ -50,6 +50,9 @@
 \include*{chap6/chap6}
 \include*{chap7-Conclusion/conclusion}
 
+\let\cleardoublepagebackup\cleardoublepage
+\let\clearpagebackup\clearpage
+\let\cleardoublepage\clearpage
 \begin{appendices}
 \crefalias{chapter}{appchap}
 \appendix
@@ -62,12 +65,14 @@
 	\caption*{Tableau extrait de \textcite[317]{cura_transition_2017}.}
 \end{figure}
 \section{Définition et valeur des paramètres. \label{annexe:A2}}
-\includepdf[pages={1-4},scale=1]{annexes/A_parametres_SimFeodal/2019-07VariablesParameters-SimFeodal_v9.pdf}
+\includepdf[pages={1-4},scale=.95]{annexes/A_parametres_SimFeodal/2019-07VariablesParameters-SimFeodal_v9.pdf}
 \section{Valeurs de paramètres employées dans l'analyse de sensibilité. \label{annexe:A3}}
 \makebox[\textwidth][c]{\includegraphics[page=1, scale=1,%
 trim=0 45 0 120,%
 clip]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}}
+\clearpage
 \includepdf[pages={2-6},scale=1]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}
+\renewcommand{\clearpage}{\clearpagebackup}
 \chapter{Un exemple de rapport automatique des sorties de SimFeodal. \label{annexe:B}}
 \begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
 N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à la version 2.3 de \simfeodal{}, en dépit de son titre (Base 5.1) qui suit une ancienne numérotation des versions du modèle.
@@ -76,21 +81,23 @@ N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à 
 \end{appendices}
 
 \backmatter
+\let\cleardoublepage\cleardoublepagebackup
 \FancyNotChapter{Références}
 \printbibliography[title={Références}]
 \setcounter{tocdepth}{2}
-\cleardoublepage
 \FancyNotChapter{Table des matières}
 \tableofcontents
-\cleardoublepage
 \FancyNotChapter{Tables}
 \listoffigures
+\let\cleardoublepage\clearpage
 \listoftables
 \tcblistof[\chapter*]{listencadres}{Liste des encadrés}
-\pagestyle{empty}
+\let\cleardoublepage\cleardoublepagebackup
 \cleardoublepage
-\newgeometry{top=1.5cm, bottom=1.5cm, left=2cm, right=2cm}
+\pagestyle{empty}
+\newgeometry{top=1.3cm, bottom=.9cm, left=2cm, right=2cm}
 \include*{chap8-Resumes/resume}
+%Pour version papier
 %\clearpage
 %\include*{chap8-Resumes/resume}
 \end{document}

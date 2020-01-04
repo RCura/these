@@ -129,13 +129,11 @@ Au moment de rédiger ces lignes, très peu d'auteurs en font un usage en franç
 
 Par soucis d'homogénéité et de compréhension par le plus grand nombre de ce travail, nous nous contenterons donc de nous inscrire dans les choix de \textcite[voir \cref{enc:lexique-eval-amblard}]{amblard_evaluation_2006}, en particulier parce qu'ils nous semblent assez largement adoptés dans la communauté scientifique francophone de modélisation en sciences humaines et sociales, quand bien même ces concepts nous paraissent moins robustes que ceux présentés auparavant.
 
-
-\clearpage
-%TODO : Voir si ça tient sur la même page que le texte précédent
 \begin{encadre}{Évaluation, validation interne et externe}{lexique-eval-amblard}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
 
-Pour \textcite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble, et on distingue alors \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textcite{balci_validation_1994}, c'est-à-dire s'assurer de la bonne conception du modèle, et \og \textbf{validation externe}\fg{} -- ce que \citeauthor{balci_validation_1994} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
+Pour \textcite{amblard_evaluation_2006}, on emploie le concept d'\textbf{évaluation} pour définir l'approche d'ensemble.
+On distingue alors la \og \textbf{validation interne}\fg{} -- correspondant à la \textit{verification} définie par \textcite{balci_validation_1994}, c'est-à-dire s'assurer de la bonne conception du modèle, et la \og \textbf{validation externe}\fg{} -- ce que \citeauthor{balci_validation_1994} nomme \textit{validation}, soit l'assurance que le modèle est adapté à ce qu'il cherche à représenter.
 
 \begin{quotation}
 \noindent \og Il est classique de différencier deux étapes dans la validation : interne et externe.
@@ -822,7 +820,6 @@ On a donc fait le choix d'évaluer \simfeodal{} en conservant des indicateurs de
 Ce choix a toutefois des implications majeures pour la méthodologie mise en place pour l'analyse des sorties de simulation.
 Il est en effet bien plus simple d'analyser quelques indicateurs composites plutôt qu'un grand nombre d'indicateurs hétérogènes.
 
-%TODO : espace trop important
 \subsection{Hiérarchiser et catégoriser les indicateurs \label{subsec:hierarchiser-indicateurs}}
 \simfeodal{} s'appuie sur une dizaine d'indicateurs numériques, ainsi que sur plus d'une trentaine d'indicateurs multidimensionnels.
 Tous ces indicateurs ne présentent pas le même degré de certitude, la même échelle d'observation, et surtout, la même capacité à rendre compte des phénomènes modélisés.
@@ -884,18 +881,14 @@ Parmi les indicateurs secondaires, il n'est pas toujours possible, d'après les 
 L'évaluation de la polarisation, par exemple (\cpageref{subsub:polarisation}), se définit principalement par rapport à un indicateur principal -- le taux de foyers paysans dispersés --, mais selon les résultats des autres indicateurs de sortie, chacun aura une importance variable.
 L'étude de la dispersion des agrégats et pôles peut en effet se révéler plus importante que celle de l'évolution du nombre d'agrégats selon les paramètres que l'on souhaite ajuster, ou se montrer tout au moins plus différenciante selon l'état du paramétrage.
 
-\bigskip
-%TODO : essayer de faire tenir sur une page
+\clearpage
 \begin{encadre}{Incrémentalité des indicateurs}{incrementalite-indicateurs}
 \renewcommand{\thempfootnote}{\alph{mpfootnote}}
-De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer\footnote{
-	De manière incrémentale et itérative, voir \textcite[\url{http://itsadeliverything.com/revisiting-the-iterative-incremental-mona-lisa}]{thomas_revisiting_2012}.
-} au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
+\noindent De la même manière que les paramètres et mécanismes d'un modèle de simulation tendent à évoluer -- de manière incrémentale et itérative, voir \textcite{thomas_revisiting_2012} -- au cours du temps de la construction, souvent afin d'affiner un comportement observé, les indicateurs de sortie sont amenés à évoluer aussi.
 
 Ainsi, en cas de modifications fines du modèle, il est fréquent que les indicateurs initialement choisis ne suffisent plus à départager des versions du modèle quant à un phénomène spécifique.
 Par exemple, quand on observe le phénomène de polarisation dans les sorties de \simfeodal{}, l'indicateur du nombre d'agrégats est extrêmement synthétique et informatif jusqu'à ce que l'objectif soit atteint ou que les modifications ne parviennent plus à le faire évoluer.
 À partir de ce moment, afin d'améliorer la vraisemblance de la situation simulée par le modèle, on peut se focaliser sur la distribution spatiale de ces agrégats, par exemple pour vérifier qu'ils sont bien répartis de manière homogène dans l'espace, et non trop concentrés.
-
 L'observation de la répartition spatiale requiert certes de nouvelles analyses, mais surtout, par exemple, d'enregistrer les positions des agrégats au cours du temps.
 Si cet indicateur de sortie n'était pas utile avant cela, il n'y avait aucun intérêt à l'enregistrer.
 Il faut donc adapter l'implémentation du modèle pour générer, faire évoluer et enregistrer une nouvelle variable informatique correspondant à cet indicateur.
@@ -910,7 +903,6 @@ Par exemple, des versions antérieures du modèle enregistraient les comportemen
 Une simplification du modèle a abouti à la modification des règles différenciant les possibilités de déplacement :
 on n'observe plus si le foyer paysan est dans un agrégat, mais plutôt s'il est dans un agrégat doté d'un pôle d'attraction.
 Dès lors, les analyses basées sur les choix de déplacement des foyers paysans selon leur origine ne sont plus comparables avec celles des versions antérieures au changement dans le modèle, quels que soient les détails d'implémentation de ce dernier.
-
 Ces éléments expliquent que dans les résultats de chaque étape du paramétrage du modèle, on ne présente pas systématiquement l'ensemble des indicateurs, y compris quand ceux-ci pourraient être plus pertinents que les indicateurs présentés.
 \end{encadre}
 
@@ -1312,15 +1304,15 @@ Lors de l'utilisation de cette fonction, l'utilisateur fournira des arguments, d
 Peut-être parce que ce champ est composé de bien plus de praticiens (les développeurs) que de chercheurs, on constate que les termes de variables, de paramètres, d'arguments ou encore d'entrées (\textit{inputs}) y sont assez régulièrement intervertis.
 Afin de préciser l'emploi que nous ferons de ces termes dans le cadre de la modélisation à base d'agents présentée dans le chapitre précédent, il convient donc de s'intéresser plus spécifiquement aux usages de ces termes dans le domaine de la simulation informatique en sciences humaines.
 
+\clearpage
 \subsubsection{Les paramètres dans les modèles agents}
 
 \paragraph{L'approche classique.}
-
 Un premier point est à noter : nous n'avons trouvé que très peu de définitions spécifiques de ce qu'est un paramètre dans le champ de la simulation à base d'agents.
 C'est pourtant un terme employé dans la quasi-totalité de la littérature existante.
 Cela ne relèverait que d'un problème de jargon non explicité s'il y avait consensus sur le sens donné à ce mot, mais au contraire, les acceptations, qui doivent être comprises par le contexte en l'absence de définitions formelles, varient fortement selon les auteurs.
 Par exemple, la définition que l'on peut extraire de l'un des manuels de référence en modélisation agent \autocite{treuil_modelisation_2008} s'éloigne fortement de ce que l'on a pu décrire ci-dessus :
-%TODO : espace trop important
+
 \begin{quotation}
 	\noindent \og
 	Un modèle dynamique renferme en effet deux composants distincts : une représentation de la structure du système de référence (exprimée dans le langage du méta-modèle), et une représentation des lois régissant sa dynamique.
@@ -1332,7 +1324,7 @@ Par exemple, la définition que l'on peut extraire de l'un des manuels de réfé
 	Les \textit{sorties} d'un modèle dynamique sont également des paramètres qui expriment ce que l'on cherche à mesurer en réponse à ces perturbations.\fg{}\\
 	\mbox{}~ \hfill \autocite[8]{treuil_modelisation_2008}
 \end{quotation}
-%TODO : espace trop important
+
 Nous trouvons plusieurs problèmes à cette définition.
 En premier lieu, l'acceptation très globale de ce qu'est un paramètre rappelle celle d'une variable en informatique.
 Il semble s'agir d'une vision plus orientée techniquement que conceptuellement.
@@ -1341,10 +1333,11 @@ De plus, le fait que les sorties d'un modèle soient considérées comme des par
 Nous ne pouvons donc souscrire à cette définition, ni à la vision qu'elle dépeint de ce qu'est un paramètre.
 
 Dans le présent ouvrage, nous donnerons donc à ces termes des sens différents, voire opposés, qui nous semblent représentatifs dans le champ de la modélisation en sciences humaines internationale et se retrouvent partiellement dans le schéma de \textsc{Balci} (\cref{fig:parametres-Balci}).
+\clearpage
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\linewidth]{img/schema_parametres_balci.pdf}
+	\includegraphics[width=\linewidth]{img/schema_parametres_balci.pdf}
 	\caption[Les variables d'un modèle de simulation selon \citeauthor{balci_validation_1994}]{Les variables d'un modèle de simulation, adapté depuis \textcite[122]{balci_validation_1994}.\\
 	\textit{N.B : ce schéma est tronqué, ne présentant que la partie \og modèle de simulation\fg{} alors que celle-ci est mise en miroir à une partie \og système\fg{} représentant les éléments du domaine empirique.}}
 	\label{fig:parametres-Balci} 
@@ -1365,6 +1358,7 @@ Dans ce travail de thèse, nous rendons compte de la construction d'un modèle c
 Nous avons donc préféré développer notre propre \og ontologie\fg{} de ces termes, qui nous semble plus adaptée à la description d'un modèle tel que \simfeodal{}.
 
 Comme chez \citeauthor{balci_validation_1994}, notre ontologie est organisée autour d'une opposition entre des \textbf{entrées} et des \textbf{sorties}.
+\clearpage
 
 \subparagraph{Les entrées du modèle.}
 La \cref{fig:parametres-these-entrees} représente notre proposition de définition des entrées.
@@ -1385,7 +1379,7 @@ Le dernier type de paramètre ($P_5$), assez fréquent dans \simfeodal{}, corres
 Par exemple, le besoin de protection des foyers paysans évolue au cours du temps simulé, et le paramètre correspondant aura donc plusieurs valeurs, correspondant aux pas de temps auxquels appliquer les différentes modalités prises par le paramètre (voir \cref{sec:inputs}).
 Dans la \cref{fig:parametres-these-entrees}, $P_{5_1}$, $P_{5_2}$ et $P_{5_3}$ correspondent par exemple à l'évolution du seuil de distance acceptable aux châteaux.
 
-%TODO : espace trop important
+\clearpage
 \subparagraph{Les sorties du modèle.}
 À l'autre extrémité du modèle, dans la \cref{fig:parametres-these-sorties}, on retrouve les variables ($V_n$), dont certaines sont utilisées pour construire des \textbf{indicateurs de sortie} ($I_N$).
 
@@ -1813,13 +1807,14 @@ On pourra de cette manière figer, temporairement -- en attendant de nouveaux aj
 
 Rappelons aussi, comme indiqué lors de la définition (\cref{sssec:definition-parametrage}), qu'en dehors des valeurs des paramètres, le paramétrage est aussi l'occasion de modifier, d'une manière modérée, le détail de l'implémentation de certains mécanismes.
 
-% TODO : espace trop important
+\clearpage
 \paragraph{Historique de SimFeodal.}\label{par:historique-versions-simfeodal}
 
 Tout au long de cette thèse, nous avons souvent mentionné les versions et sous-versions de \simfeodal{}.
 Il nous paraît important ici de les exposer (\cref{tab:historique-versions-simfeodal}) ainsi que de décrire la logique de leur distinction.
 
 \input{chap3/img/tableau_versions_simfeodal}
+\clearpage
 
 À partir de la version \og 2\fg{} de \simfeodal{} nous avons partiellement suivi les règles de \og versionnement sémantique\fg{} (ou \og SemVer\fg{}\footnote{
 	\og \textit{Semantic versioning}\fg{}, voir \href{https://semver.org/}{https://semver.org/}.
@@ -1881,7 +1876,7 @@ La \cref{fig:methodo-agreg-commits} présente un exemple de ces agrégations.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.75\linewidth]{img/tableau_exemple_commits.pdf}
+	\includegraphics[width=.7\linewidth]{img/tableau_exemple_commits.pdf}
 	\caption[Méthodologie d'agrégation des \textit{commits}.]{Méthodologie d'agrégation des \textit{commits}.}
 	\label{fig:methodo-agreg-commits}
 \end{figure}
@@ -1892,7 +1887,6 @@ La somme des modifications étant par nature d'un ordre de grandeur bien plus é
 La \cref{fig:explo-edits-code} est une représentation de cette analyse\footnote{
 	Dans cette figure, les modifications regroupées dans l'accolade \og B\&C\fg{} correspondent aux phases B et C identifiées dans la \cref{fig:comits-periodes}.
 }, qui permet de visualiser le \og rythme\fg{} des changements de \simfeodal{} et d'en tirer quelques remarques.
-
 
 \begin{figure}[H]
 	\includegraphics[width=1\linewidth]{img/explo_edits_code_clean.pdf}
