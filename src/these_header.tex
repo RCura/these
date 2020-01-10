@@ -9,15 +9,15 @@
 %top = 2.25cm, headsep = .5cm, headheight=30pt
 %]{geometry}
 %%%% FINAL : PDF %%%%
-\usepackage[left=2.5cm, right=2.5cm,
-bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
-top = 2.25cm, headsep = .5cm, headheight=30pt
-]{geometry}
-%%%% FINAL : PAPIER %%%%
-%\usepackage[left=3cm, right=2cm,
+%\usepackage[left=2.5cm, right=2.5cm,
 %bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
 %top = 2.25cm, headsep = .5cm, headheight=30pt
 %]{geometry}
+%%%% FINAL : PAPIER %%%%
+\usepackage[left=3.25cm, right=1.75cm,
+bottom = 1.5cm, foot = 1.25cm, footskip = .75cm,
+top = 2.25cm, headsep = .5cm, headheight=30pt
+]{geometry}
 
 \setlength{\marginparwidth}{4.5cm}
 
@@ -68,11 +68,12 @@ top = 2.25cm, headsep = .5cm, headheight=30pt
 
 
 \newcommand{\FancyNotChapter}[1]{%
-	\fancyhead[LO]{\textsc{#1}}
+	\fancyhead[LE]{}
+	\fancyhead[RO]{\textsc{#1}}
 }
 \newcommand{\FancyChapter}[0]{%
-	\fancyhead[LO]{\leftmark}
-	\fancyhead[RE]{\textsc{\rightmark}}
+	\fancyhead[LE]{\leftmark}
+	\fancyhead[RO]{\textsc{\rightmark}}
 }
 
 
@@ -320,3 +321,4 @@ sorting=nyvt, % Citations dans biblio : NameYearVolumeTitle
 \Crefname{appchap}{Annexe}{Annexes}
 
 \usepackage{pdfpages}
+\usepackage{etoolbox}
