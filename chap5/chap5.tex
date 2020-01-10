@@ -1069,11 +1069,13 @@ La logique est encore une fois la même que dans les classifications ascendantes
 
 \subsection{Sélection des paramètres à analyser.}
 \begin{figure}[H]
+	%\vspace{-2em}
 	\centering
 	\includegraphics[width=.92\linewidth]{img/sensibilite_globale.pdf}
 	\caption{Analyse de la sensibilité globale de tous les paramètres de \simfeodal{}.}
 	\label{fig:sensibilite-globale}
 \end{figure}
+\clearpage
 
 La \cref{fig:sensibilite-globale} présente les \og scores de sensibilité\fg{} de chacun des paramètres du modèle.
 Ces paramètres sont classés par ordre descendant selon leur sensibilité globale, et la couleur précise la typologie des paramètres.
@@ -1133,13 +1135,14 @@ Leur étendue acceptable est alors extrêmement difficile à évaluer, et on aur
 Ces biais dans la comparabilité des valeurs de paramètres testées ont forcément influencé la sélection des paramètres à analyser.
 En changeant les valeurs testées, le classement des paramètres aurait sans doute été largement altéré.
 Dans l'incapacité de produire des valeurs de paramètres plus comparables, nous nous tiendrons toutefois à la sélection des paramètres \og les plus sensibles\fg{} effectuée dans cette partie.
-Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plateforme \simedb{} (\cref{fig:screenshot-simedb-sensib}) : \href{https://simedb.cura.info/analyse-sensibilite}{https://simedb.cura.info/analyse-sensibilite}
+Tous les paramètres peuvent toutefois être analysés individuellement, de manière interactive, dans la partie dédiée de la plateforme \simedb{} (\cref{fig:screenshot-simedb-sensib}).
 
-%TODO : ajouter capture d'écran
+%TODO : ICI !
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{example-image-a}
-	\caption[Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.]{Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.}
+	\includegraphics[width=\linewidth]{img/SimEDB_sensib.png}
+	\caption[Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.]{Partie de l'interface de \simedb{} dédiée à l'exploration visuelle des résultats de l'analyse de sensibilité de \simfeodal{}.\\
+	Interface accessible sur \href{https://simedb.cura.info/analyse-sensibilite}{https://simedb.cura.info/analyse-sensibilite}.}
 	\label{fig:screenshot-simedb-sensib}
 \end{figure}
 
@@ -1393,7 +1396,7 @@ Les paramètres liés aux châteaux sont sensiblement surreprésentés parmi ceu
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_periode_promotion_chateaux.pdf}
+	\includegraphics[width=.93\linewidth]{img/sensib/sensibilite_periode_promotion_chateaux.pdf}
 	\caption{Sensibilité du paramètre \textsf{periode\_promotion\_chateaux}.}
 	\label{fig:sensib-chateaux-1}
 \end{figure}
@@ -1405,7 +1408,7 @@ Sa valeur par défaut (de 940 à 1040, issue de connaissances expertes) est pres
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
+	\includegraphics[width=.93\linewidth]{img/sensib/sensibilite_nb_tirages_chateaux_ps.pdf}
 	\caption{Sensibilité du paramètre \textsf{nb\_tirages\_chateaux\_ps}.}
 	\label{fig:sensib-chateaux-2}
 \end{figure}
@@ -1420,7 +1423,7 @@ Cette influence reste assez modeste toutefois au regard des variations engendré
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_debut_construction_chateaux.pdf}
+	\includegraphics[width=.93\linewidth]{img/sensib/sensibilite_debut_construction_chateaux.pdf}
 	\caption{Sensibilité du paramètre \textsf{debut\_construction\_chateaux}.}
 	\label{fig:sensib-chateaux-3}
 \end{figure}
@@ -1454,7 +1457,7 @@ Et moins il y a d'églises dans un monde à la superficie constante, plus large 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.95\linewidth]{img/sensib/sensibilite_ponderation_creation_paroisse_agregat.pdf}
+	\includegraphics[width=.92\linewidth]{img/sensib/sensibilite_ponderation_creation_paroisse_agregat.pdf}
 	\caption{Sensibilité du paramètre de pondération de création de nouvelles paroisses dans les agrégats.}
 	\label{fig:sensib-paroisses}\vspace{-.5em}
 \end{figure}
@@ -1477,6 +1480,7 @@ De manière globale, on constate dans les résultats de la version calibrée de 
 L'écart-type se lisant dans l'unité de l'indicateur, il peut être intéressant de le transformer en coefficient de variation ($CV_{\text{indicateur}} = \sigma_{\text{indicateur}} / \mu_{\text{indicateur}}$) pour obtenir des valeurs comparables entre les indicateurs. 
 
 \begin{table}[H]
+\vspace{-.5em}
 {\small	
 {\renewcommand{\arraystretch}{.9}%
 	\begin{tabular}{|p{8.25cm}|p{1.75cm}|p{1.9cm}|p{2.25cm}|}
@@ -1548,10 +1552,11 @@ Sans aller plus loin sur cet exemple, il s'agit en fait des valeurs de paramètr
 À partir de cet histogramme, nous avons isolés les \textit{outliers} et en proposons une représentation graphique dans la \cref{fig:sensib-alea}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{img/sensibilite_alea_outliers.pdf}
+	\includegraphics[width=.95\linewidth]{img/sensibilite_alea_outliers.pdf}
 	\caption{Paramètres présentant des sensibilités atypiques à l'aléa.}
 	\label{fig:sensib-alea}
 \end{figure}
+\clearpage
 
 De manière globale, on peut remarquer que les indicateurs relatifs aux foyers paysans (Nombre d'agrégats, taux de foyers paysans isolés et augmentation de la charge fiscale) sont surreprésentés parmi cette sélection d'\textit{outliers}.
 Cela montre bien que les foyers paysans sont les agents qui subissent le plus les changements de valeurs des paramètres du modèle.

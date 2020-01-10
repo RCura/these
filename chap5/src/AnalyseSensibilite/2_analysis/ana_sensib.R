@@ -61,6 +61,7 @@ library(ggalt)
   valeurs_normalisees %>%
     gather(Indicateur, Valeur_norm, -type, -sensibility_parameter, -sensibility_value) %>%
     group_by(sensibility_parameter, type) %>%
+    #summarise(sensibilite = abs(max(Valeur_norm) - min(Valeur_norm))) %>%
     summarise(sensibilite = mean(abs(Valeur_norm), na.rm = TRUE)) %>%
     arrange(desc(sensibilite)) %>%
     mutate(type = factor(type, levels = c("input", "contexte", "mecanismes", "technique"))) %>%
