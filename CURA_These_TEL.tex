@@ -1,0 +1,103 @@
+% !TeX document-id = {27c7a58e-352b-45a6-ab0e-1a4047940b92}
+% !TeX encoding = UTF-8
+% !TEX TS-program = xelatex
+
+\documentclass[12pt, a4paper, twoside, notitlepage,french]{book}
+\usepackage{newclude} % Ce package ne fonctionne que quand placé juste après le documentclass
+
+\input{src/these_header.tex}
+
+\addbibresource{chap0-2-Intro/biblio-intro.bib}
+\addbibresource{chap1/biblio-chap1.bib}
+\addbibresource{chap2/biblio-chap2.bib}
+\addbibresource{chap3/biblio-chap3.bib}
+\addbibresource{chap4/biblio-chap4.bib}
+\addbibresource{chap5/biblio-chap5.bib}
+\addbibresource{chap6/biblio-chap6.bib}
+\addbibresource{chap7-Conclusion/biblio-conclu.bib}
+
+\input{chap0-0-1_PageGarde/page_garde_src.tex}
+\input{chap0-0-1_PageGarde/page_garde_content.tex}
+\begin{document}
+\setcounter{tocdepth}{1}
+\setcounter{minitocdepth}{1}
+\setcounter{secnumdepth}{3}
+%\faketableofcontents
+\dominitoc% Initialization
+
+% #######################
+% # CONTENU DE LA THÈSE #
+% #######################
+
+\frontmatter
+\pagedegarde
+\pagestyle{empty}
+\include*{chap0-0-Remerciements/remerciements}
+\cleardoublepage
+\include*{chap0-1-Préambule/preambule}
+\cleardoublepage
+\pagestyle{fancy}
+\shorttoc{Sommaire}{0}
+
+\mainmatter
+\include*{chap0-2-Intro/intro}
+\FancyChapter
+\include*{chap1/chap1}
+\include*{chap2/chap2}
+\include*{chap3/chap3}
+\include*{chap4/chap4}
+\include*{chap5/chap5}
+\include*{chap6/chap6}
+\include*{chap7-Conclusion/conclusion}
+
+\let\cleardoublepagebackup\cleardoublepage
+\let\clearpagebackup\clearpage
+\let\cleardoublepage\clearpage
+\begin{appendices}
+\crefalias{chapter}{appchap}
+\appendix
+\FancyNotChapter{Annexes}
+\chapter{Les paramètres de SimFeodal.\label{annexe:A}}
+\section{Niveau de précision des \textit{inputs} \label{annexe:A1}}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{annexes/A_parametres_SimFeodal/Connaissances_inputs_clean.png}
+	\caption*{Tableau extrait de \textcite[317]{cura_transition_2017}.}
+\end{figure}
+\section{Définition et valeur des paramètres. \label{annexe:A2}}
+\includepdf[pages={1-4},scale=.95]{annexes/A_parametres_SimFeodal/2019-07VariablesParameters-SimFeodal_v9.pdf}
+\section{Valeurs de paramètres employées dans l'analyse de sensibilité. \label{annexe:A3}}
+\makebox[\textwidth][c]{\includegraphics[page=1, scale=1,%
+trim=0 45 0 120,%
+clip]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}}
+\clearpage
+\includepdf[pages={2-6},scale=1]{annexes/A_parametres_SimFeodal/valeurs_sensibilite.pdf}
+\renewcommand{\clearpage}{\clearpagebackup}
+\chapter{Un exemple de rapport automatique des sorties de SimFeodal. \label{annexe:B}}
+\begin{mdframed}[backgroundcolor=black!5,footnoteinside=false]
+N.B. Le rapport automatique d'analyse des sorties de cette annexe correspond à la version 2.3 de \simfeodal{}, en dépit de son titre (Base 5.1) qui suit une ancienne numérotation des versions du modèle.
+\end{mdframed}
+\includepdf[pages={1-9},scale=1]{annexes/B_rapport_automatique/Analyse_sorties_ModeleTR8_base2_clean2.pdf}
+\end{appendices}
+
+\backmatter
+\let\cleardoublepage\cleardoublepagebackup
+\FancyNotChapter{Références}
+\printbibliography[title={Références}]
+\setcounter{tocdepth}{2}
+\FancyNotChapter{Table des matières}
+\tableofcontents
+\FancyNotChapter{Tables}
+\listoffigures
+\let\cleardoublepage\clearpage
+\listoftables
+\tcblistof[\chapter*]{listencadres}{Liste des encadrés}
+\let\cleardoublepage\cleardoublepagebackup
+\cleardoublepage
+\pagestyle{empty}
+\newgeometry{top=1.3cm, bottom=.9cm, left=2cm, right=2cm}
+\include*{chap8-Resumes/resume}
+%Pour version papier
+\clearpage
+\include*{chap8-Resumes/resume}
+\end{document}
