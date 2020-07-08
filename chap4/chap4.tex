@@ -252,7 +252,7 @@ La vingtaine de mégaoctets issue d'une simulation devient donc approximativemen
 \subsection{Des réplications aux expériences}\label{subsec:capter-experiences}
 
 Comme décrit dans le \cref{chap:chap3} (\cref{tab:historique-versions-simfeodal}), le paramétrage de \simfeodal{} a demandé plusieurs étapes.
-Parmis ces étapes, les \og sous-versions\fg{} correspondent souvent à des \og expériences\fg{}, faites d'essais et d'erreurs, et qui font varier les valeurs de paramètres de \simfeodal{}.
+Parmi ces étapes, les \og sous-versions\fg{} correspondent souvent à des \og expériences\fg{}, faites d'essais et d'erreurs, et qui font varier les valeurs de paramètres de \simfeodal{}.
 Afin de construire le modèle, puis de l'explorer de manière plus systématique, il a été nécessaire de tester des dizaines de configurations de paramètres, autrement dit, de réaliser des dizaines d'expériences.
 Pour comparer, à chaque nouvelle version du modèle, les résultats produits par rapport aux résultats de la version précédente, il est indispensable de conserver, au minimum, l'ensemble des jeux de données de cette version précédente.
 
@@ -868,7 +868,7 @@ Cela s'entend quelle que soit la manière dont ce référentiel est constitué, 
 Pour pouvoir correctement évaluer les apports d'un nouveau jeu de valeurs de paramètres, et donc, dans une démarche itérative, pouvoir différencier deux expériences successives, il est nécessaire d'être en mesure de comparer directement les expériences les unes avec les autres, ou encore avec un référentiel facilement ajustable.
 On peut énumérer quelques exemples de cas de figures :
 \begin{itemize}
-	\item La comparaison entre une expérience spécifique et une autre expérience spécifique de même \og importance\fg{}, par exemple en comparant deux expériences qui font varier légèrement différement une valeur de paramètre.
+	\item La comparaison entre une expérience spécifique et une autre expérience spécifique de même \og importance\fg{}, par exemple en comparant deux expériences qui font varier légèrement différemment une valeur de paramètre.
 	\item La comparaison entre une expérience spécifique et une autre expérience spécifique d'\og importance\fg{} différente, par exemple une version \og de base\fg{} que l'on compare à l'une de ses variantes.
 	\item La comparaison entre deux expérimentations, par l'agrégation de leurs résultats.
 	Si l'on a mené des expérimentations faisant varier de manière systématique deux paramètres différents, il peut être intéressant de les comparer en bloc, c'est-à-dire par exemple en prenant les moyennes de chacune des expériences composant ces expérimentations.
@@ -959,8 +959,8 @@ Si l'on considère des données stockées dans un tableur, alors les \og formule
 
 \paragraph{Stockage distribué ou centralisé.}\label{par:stockage-centralise}
 Avant même de s'intéresser aux spécificités de ces langages, un premier choix réside dans le mode de stockage des données qui doivent être mises à disposition d'une plateforme.
-Doit-on laisser l'utilisateur intégrer lui-même les données, et ainsi en faire un stockage \og distribué \fg{}, dans le sens où chaque utilisateur de l'application possèderait physiquement une copie locale des données ?
-Ou, au contraire, les données doivent-elles être centralisées, c'est-à-dire enregistrées en une seule copie à laquelle les utilisateurs accèderaient à distance ?
+Doit-on laisser l'utilisateur intégrer lui-même les données, et ainsi en faire un stockage \og distribué \fg{}, dans le sens où chaque utilisateur de l'application posséderait physiquement une copie locale des données ?
+Ou, au contraire, les données doivent-elles être centralisées, c'est-à-dire enregistrées en une seule copie à laquelle les utilisateurs accéderaient à distance ?
 Pour reprendre l'exemple des tableurs, doit-on privilégier une solution locale -- chacun ayant une copie du fichier tableur et menant ses propres modifications dessus -- ou une approche de type centralisée, par exemple en privilégiant des tableurs collaboratifs en ligne (\textit{Google Docs/Sheets} par exemple) ?
 
 Habituellement, c'est-à-dire dans une grande majorité d'applications, les données sont stockées localement : cela permet, en particulier, de ne pas dépendre d'une connexion internet pour interroger des données qui seraient hébergées sur internet.
@@ -1060,7 +1060,7 @@ De plus, toujours dans l'optique de conserver une universalité de la plateforme
 
 On a mentionné le fait que les entrepôts de données étaient fortement utilisés, en particulier dans la communauté géomatique, car très appropriés aux données spatiales.
 De prime abord, ce point peut paraître critique : jusque là, on s'est contenté de mentionner les capacités organisationnelles de SGBD, et non leur aptitude à manipuler des données spatiales.
-Ce point, dans les SGBD relationnels, constitue en faitun filtre important : sur la centaine de solutions disponibles, seule une poignée est en mesure de stocker efficacement et d'interroger de l'information spatiale \footnote{
+Ce point, dans les SGBD relationnels, constitue en fait un filtre important : sur la centaine de solutions disponibles, seule une poignée est en mesure de stocker efficacement et d'interroger de l'information spatiale \footnote{
 	Les données spatiales peuvent être stockées dans tous les SGBD si l'on attribue une représentation textuelle, en chaînes de caractères, par exemple en utilisant le format \textit{Well-Known Text} (WKT).
 	Pour autant, ce format est lourd, inadapté à une indexation, et ne peut permettre à un SGBD de mener des requêtes spatiales directement depuis ces entités.
 	Il est ainsi, par exemple, impossible de calculer le centroïde d'un polygone directement depuis une représentation WKT, alors que ce calcul est aisé avec un stockage géométrique.
@@ -1355,7 +1355,7 @@ Il a été choisi de partir d'un schéma en étoile (\cref{fig:MCD_SimEDB}), pui
 	\caption[Modèle Conceptuel de Données (MCD) des données en sortie de simulation de \simfeodal{} telles qu'implémentées dans \simedb{}.]{Modèle Conceptuel de Données (MCD) des données en sortie de simulation de \simfeodal{} telles qu'implémentées dans \simedb{}.\\
 \textit{Dans cette représentation, nous employons une simplification du formalisme UML, pensé ici autour des tables plutôt que de leur représentations sous forme de classes/objets.
 Les cardinalités sont figurées de manière uniquement graphique, et nous ne représentons que les relations codées directement dans la base de données, et non les jointures possibles.\\
-Exemple de lecture : chaque agrégat est caractérisé par une graîne aléatoire (seed) et un nom de simulation (sim\_name), qui permettent de retrouver l'expérience et la réplication dont il fait partie (table seeds), et donc de retrouver les paramètres propres de celle-ci (table parameters).
+Exemple de lecture : chaque agrégat est caractérisé par une graine aléatoire (seed) et un nom de simulation (sim\_name), qui permettent de retrouver l'expérience et la réplication dont il fait partie (table seeds), et donc de retrouver les paramètres propres de celle-ci (table parameters).
 Chaque agrégat est membre (ou non, relation 0..1) d'un pôle, et est constitué de foyers paysans qui peuvent appartenir à un seul agrégat (ou à aucun, relation 0..1).
 }
 }
@@ -1534,7 +1534,7 @@ Contrairement à une utilisation grand public, qui ne présente aucun engagement
 On entend par là que les utilisateurs concernés par \simedb{} ne disposent pas d'autre solution que de passer par cette plateforme pour explorer les données issues de sortie de simulation, en particulier en raison des contraintes liées aux caractéristiques de ces données (leur masse par exemple, voir la \cref{subsec:donnees-indicateurs}).
 On peut dès lors se permettre de développer une interface plus complexe que si l'on visait un plus large public.
 
-\paragraph{Intuititivé de l'usage au regard des applications traditionnelles.}
+\paragraph{Intuitivité de l'usage au regard des applications traditionnelles.}
 
 En dépit de ce premier constat, les utilisateurs de \simedb{} demeurent majoritairement des experts thématiciens, potentiellement peu familiarisés à l'exploration de données interactives.
 Afin que le temps d'exploration des données issues de \simfeodal{} soit dévoué à la compréhension et à la synthèse de ces données plutôt qu'à un apprentissage ou amélioration en exploration de données, il a été choisi de créer une application aussi simple que possible au regard des fonctionnalités principales qu'elle devait permettre : observer les indicateurs de sortie de simulation pour des expériences données, et les comparer entre elles aussi efficacement que possible.
@@ -1664,7 +1664,7 @@ Cela disqualifie de fait des modifications \og en direct\fg{}, par exemple lors 
 
 Au contraire, avec une application distante, donc basée sur l'accès par un navigateur internet à une application centralisée, ces problèmes ne se posent pas : des navigateurs sont disponibles pour tous les OS existants, et interprètent de la même manière une page web, indépendamment de leur support de consultation.
 Une plateforme distante disponible à partir d'un navigateur internet à en outre l'avantage de pouvoir être utilisée sur des OS mobiles (tablettes, \textit{smartphones}, etc.), permettant notamment des usages tactiles -- des fonctionnalités qu'il aurait là aussi fallut développer spécifiquement dans le cadre d'une solution locale.
-De plus, comme pour les SGBD, l'usage d'une plateforme distante permet une répercussion instantanée des mises à jour et corrections : un utilisateur n'a qu'à rafraichir sa page pour que la dernière version de l'application s'affiche.
+De plus, comme pour les SGBD, l'usage d'une plateforme distante permet une répercussion instantanée des mises à jour et corrections : un utilisateur n'a qu'à rafraîchir sa page pour que la dernière version de l'application s'affiche.
 De la même manière, si un utilisateur souhaite étudier un nouvel indicateur, non prévu auparavant, le temps de déploiement qui nous serait nécessaire peut être suffisamment court (quelques dizaines de minutes) pour que cela soit possible au cours d'une seule session de travail de l'utilisateur distant.
 
 Il y a toutefois un désavantage vis-à-vis de solutions entièrement locales, puisque les données permettant l'affichage des indicateurs doivent transiter sur le réseau internet.
@@ -1745,7 +1745,7 @@ Un choix technique, par exemple, peut conditionner les types d'interactions poss
 Notons enfin que l'application \simedb{} présentée ici, aussi bien dans son usage que dans sa conception, représente un instantané de développement, qui correspond à la période de rédaction du présent chapitre :
 à l'instar d'un modèle, une plateforme peut et doit évoluer pour s'adapter aux besoins de ses utilisateurs tant qu'elle est utilisée.
 Les technologies et choix esthétiques introduits n'ont pas toujours été présents, et auront sans doute à évoluer dans la suite de la \og durée de vie\fg{} de \simedb{}.
-Comme nous l'avons expliqué, du fait de la facilité de la mise à jour d'une relation distante, cela ne posecela ne pose toutefois aucun problème vis-à-vis de l'utilisation de la plateforme, largement indépendante, en matière de temporalités, du présent ouvrage.
+Comme nous l'avons expliqué, du fait de la facilité de la mise à jour d'une relation distante, cela ne pose toutefois aucun problème vis-à-vis de l'utilisation de la plateforme, largement indépendante, en matière de temporalités, du présent ouvrage.
 
 \subsubsection{Choix des technologies}
 
@@ -1867,7 +1867,7 @@ Il existe pour cela, dans le cadre de l'environnement (et du langage) \textsf{R}
 	\label{fig:socviz-ggplot2}
 \end{figure}
 
-L'un des \textit{packages} les plus utilisés, \textsf{ggplot2} \autocite{wickham_ggplot2_2016}, met en œuvre une syntaxe assez adaptée à nos contraintes : ce \textit{package} est conceptuellement fondé sur la \og \textit{grammar of graphics}\fg{}, c'est-à-dire une vision modulaire et très structurée de la conception graphique, pensée par Leland Wilkison \autocite{wilkinson_grammar_2006}.
+L'un des \textit{packages} les plus utilisés, \textsf{ggplot2} \autocite{wickham_ggplot2_2016}, met en œuvre une syntaxe assez adaptée à nos contraintes : ce \textit{package} est conceptuellement fondé sur la \og \textit{grammar of graphics}\fg{}, c'est-à-dire une vision modulaire et très structurée de la conception graphique, pensée par Leland Wilkinson \autocite{wilkinson_grammar_2006}.
 La logique, assez familière pour un utilisateur de Systèmes d'Information Géographique (SIG), consiste à penser une représentation graphique comme un ensemble de couches (\textit{layers}), qui se superposent, se complètent, et sont toutes basées sur une source de données.
 Les différentes composantes des données (variables par exemple) sont associées à des composantes graphiques de base (abscisse, ordonnée, taille, couleur, etc.), formant ainsi une mise en correspondance (\textit{mapping}) des données avec les composants graphiques (voir \cref{fig:socviz-ggplot2}, étape 2).
 \clearpage
@@ -1947,7 +1947,7 @@ La modularité permet donc d'une part de minimiser la taille du code, mais surto
 	\caption[Une conception modulaire.]{Une conception modulaire.\\
 		\textit{Les deux éléments graphiques encadrés sont créés par un même \og module\fg{} dont les arguments varient.
 		Ici, l'argument est constitué par les expériences sélectionnées : on le visualise dans les graphiques en coordonnées parallèles et dans la partie inférieure des graphiques (texte \og Paramètres de la sélection\fg{}).\\
-		\textbf{N.B} : À partir de cette figure, on représente l'interface de \simedb{} à l'aide d'un \textit{mockup} plutôt que de captures d'écrans, pour en simplifier la compréhension.}}
+		\textbf{N.B} : À partir de cette figure, on représente l'interface de \simedb{} à l'aide d'un \textit{mock-up} plutôt que de captures d'écrans, pour en simplifier la compréhension.}}
 	\label{fig:simedb-modules}
 \end{figure}
 
@@ -1997,7 +1997,7 @@ L'occupation de l'espace visuel est donc mieux employée en superposant les indi
 
 La seconde raison est méthodologique.
 \simedb{} est un outil qui sert à comparer visuellement des données de sortie de simulation.
-Dans les indicateur présentés, le plus souvent, les intervalles affichés en abcisse sont constants : qu'ils s'agissent du temps, de modalités d'un indicateur (petits seigneurs, grands seigneurs, etc.) ou encore de seuils (composition d'un agrégat en nombre de foyers paysans, discrétisée selon des seuils choisis en amont), l'axe des abscisse est identique quelles que soient les expériences comparées.
+Dans les indicateur présentés, le plus souvent, les intervalles affichés en abscisse sont constants : qu'il s'agisse du temps, de modalités d'un indicateur (petits seigneurs, grands seigneurs, etc.) ou encore de seuils (composition d'un agrégat en nombre de foyers paysans, discrétisée selon des seuils choisis en amont), l'axe des abscisse est identique quelles que soient les expériences comparées.
 L'axe des ordonnées, au contraire, est plus variable : qu'il représente une valeur absolue, un décompte ou une fréquence, les ordres de grandeur de ces valeurs sont très hétérogènes selon les expériences comparées.
 Le choix a donc été fait de présenter visuellement les ordres de grandeur comparables, et donc de superposer les sélections différentes (l'axe des abscisses est alors commun) plutôt que de les afficher côte-à-côte, ce qui aurait complexifié la comparaison des ordonnées en les présentant comme directement comparables alors que les ordres de grandeur varient.
 
@@ -2116,7 +2116,7 @@ Elle s'inscrit dans les méthodes des Interactions Homme-Machine, ou même dans 
 
 Dans ce chapitre, nous avons montré que le développement de cette plateforme -- ainsi que des outils qui l'ont précédées (les rapports automatiques, le \textit{dashboard}, le \textit{dashboard} interactif SimVADB, etc.) -- ont été fortement guidés par les contraintes et besoins identifiés, aussi bien en terme d'approches méthodologiques que de choix technologiques.
 \simedb{} est donc un outil \textit{ad hoc}, toutefois pensé de manière modulaire.
-Tous les composants logiciels de \simedb{} sont indépendants et communiquent de manière standardisée, ouvrant la voie à leur remplacement ou \og interchangeabilité\fg{} : l'architecture logicielle et les choix techologiques le permettent.
+Tous les composants logiciels de \simedb{} sont indépendants et communiquent de manière standardisée, ouvrant la voie à leur remplacement ou \og interchangeabilité\fg{} : l'architecture logicielle et les choix technologiques le permettent.
 La plateforme \simedb{} est donc intrinsèquement pensée comme une réponse à des besoins spécifiques, mais nous avons conçu cette réponse comme générique et en mesure d'être adaptée aisément à d'autres types de données et/ou sorties de modèles de simulation.
 
 Plus généralement, l'ensemble de ce chapitre montre comment nous avons travaillé de manière à ce que les solutions choisies répondent à des besoins spécifiques tout en étant génériques et généralisables.

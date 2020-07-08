@@ -540,7 +540,7 @@ Cette figure fait apparaître très nettement une \og hiérarchie\fg{} d'applica
 
 \subsection{Vers une évaluation visuelle \label{subsec:eval-visuelle}}
 
-Au regard de ces éléments, il nous semble que l'utilité des approches de \textit{face validation} est assez largement démontrée pour en faire le coeur de notre démarche d'évaluation.
+Au regard de ces éléments, il nous semble que l'utilité des approches de \textit{face validation} est assez largement démontrée pour en faire le cœur de notre démarche d'évaluation.
 Cette utilité est effective quelle que soit l'usage de ces méthodes : que cette approche soit cantonnée à une phase préalable mineure ou au contraire à une bonne pratique plus générale, à mener lors de chacune des phases de construction et d'évaluation d'un modèle.
 
 \subsubsection{Une démarche comparative}
@@ -601,7 +601,7 @@ Si l'on cherche par exemple à estimer l'écart entre un semis de point cible et
 	Il existe naturellement des méthodes d'analyse spatiale ou de géo-statistiques bien plus adaptées ou performantes.
 	Cet exemple n'a qu'un but de simplification.
 }.
-Un décallage minime, par exemple obtenu par translation horizontales de quelques dizaines de mètres sur un semis régional, engendrera alors une démultiplication des erreurs, alors même qu'un œil humain aurait jugé ces deux semis quasi-identiques.
+Un décalage minime, par exemple obtenu par translation horizontales de quelques dizaines de mètres sur un semis régional, engendrera alors une démultiplication des erreurs, alors même qu'un œil humain aurait jugé ces deux semis quasi-identiques.
 En terme de configuration spatiale, la quantification peut ainsi amener à des contre-interprétations dans l'analyse.
 Dans le cadre d'un modèle comme \simfeodal{} où l'espace est important et, qui plus est, théorique et aléatoire, donc difficilement agrégeable (cf. \cref{chap:chap6}, \cref{subsec:genericite-donnees-simul}), le recours systématique à l'évaluation visuelle nous paraît alors indispensable.
 
@@ -798,7 +798,7 @@ Ces indicateurs composites et synthétiques résultent d'une quantification des 
 \paragraph{Quels types d'indicateurs pour SimFeodal ?}\label{par:indicateurs-simfeodal}
 
 \simfeodal{} n'est pas adapté à de tels indicateurs, parce qu'une large partie des faits stylisés et ordres de grandeur mobilisés proviennent directement de connaissances expertes, qu'il est difficile de les préciser outre-mesure, et que les thématiciens qui les ont consolidées sont peu enclins à créer de tels indicateurs composites.
-Ces derniers demandent en effet de pondérer précisement l'importance de chacun des indicateurs par rapport aux autres.
+Ces derniers demandent en effet de pondérer précisément l'importance de chacun des indicateurs par rapport aux autres.
 Pour pouvoir pondérer cette importance, il faudrait de plus que les différents indices empiriques mobilisés présentent le même niveau de certitude, et que les indicateurs de sortie aient des variabilités similaires.
 Cela n'est le cas ni des indices empiriques sur lesquels \simfeodal{} s'appuie, ni des indicateurs de sortie que le modèle produit.
 
@@ -1005,7 +1005,7 @@ Dans le cas de \simfeodal{}, le faible nombre d'agrégats ainsi que la variabili
 On utilise toutefois la représentation graphique décrite comme un indicateur majeur de la hiérarchie des agrégats.
 
 Du point de vue des connaissances empiriques, on s'attend à ce que la pente de la courbe augmente avec le temps, tout en devenant plus convexe.
-Cela représenterait la \og longue traine\fg{} des petits agrégats, empiriquement observée dans toutes les distributions de systèmes de peuplement.
+Cela représenterait la \og longue traîne\fg{} des petits agrégats, empiriquement observée dans toutes les distributions de systèmes de peuplement.
 
 \paragraph{Hiérarchie des pôles.}
 
@@ -1749,7 +1749,7 @@ Les \textit{commits} peuvent contenir plusieurs modifications : un même \textit
 Les \textit{commits} peuvent aussi contenir des modifications situées dans plusieurs fichiers différents.
 Comme le modèle \simfeodal{} est composé d'une dizaine de fichiers correspondant entre autre aux différents types d'agents, les \textit{commits} concernent souvent plusieurs fichiers : le changement de mécanisme d'un type d'agent sera souvent matérialisé dans le fichier de l'agent correspondant, dans le fichier gérant les \textit{outputs} du modèle, et par exemple dans le fichier régulant l'ordonnancement des mécanismes.
 
-Ici, on a catégorisé, manuellement, les \textit{commits} des premières versions de \simfeodal{} selon les modifications conceptuelles apportées : ajout de mécanisme, modification de valeurs de paramètres ou autre (nouvelles expériences, documentation, débuggage, nettoyage de code, etc.)
+Ici, on a catégorisé, manuellement, les \textit{commits} des premières versions de \simfeodal{} selon les modifications conceptuelles apportées : ajout de mécanisme, modification de valeurs de paramètres ou autre (nouvelles expériences, documentation, débugage, nettoyage de code, etc.)
 Un même \textit{commit} peut contenir plusieurs ajouts de mécanismes, et/ou plusieurs modifications de valeurs de paramètres, et/ou encore plusieurs autres changements dans le code-source du modèle.
 Dans la \cref{fig:comits-periodes}, on a représenté ces \textit{commits} selon la part de modifications relatives à chacune de ces catégories : une barre 100\% noire signifie que le \textit{commit} n'a porté que sur de l'ajout de mécanisme, une barre 50\% noire et 50\% grise correspond à un \textit{commit} qui a autant porté sur l'ajout de mécanisme que sur la modification de valeurs de paramètres, et une absence de barre indique un \textit{commit} dont tous les changements relèvent de la catégorie \og autre\fg{}.
 
@@ -1767,7 +1767,7 @@ L'étape \textbf{C} montre une succession d'ajouts et de changements dans les m�
 Le calibrage ne suffisant pas, on revient en effet à d'autres phases de paramétrages, en modifiant les mécanismes de manière itérative.
 Entre les étapes \textbf{C} et \textbf{D}, on note quelques modifications de paramètres, quelques ajouts de mécanismes, et de nombreux \textit{commits} catégorisés comme \og autre\fg{} (il n'y a pas de barre) : cela correspond à des modifications plus substantielles dans le modèle.
 
-L'enchainement des étapes \textbf{D} et \textbf{E} ressemblent à celui de \textbf{B} et \textbf{C} : on recommence ainsi un cycle de calibrage-paramétrage-changements d'implémentation de manière à améliorer le modèle de manière itérative, selon le principe classique de l'essai-erreur.
+L'enchaînement des étapes \textbf{D} et \textbf{E} ressemblent à celui de \textbf{B} et \textbf{C} : on recommence ainsi un cycle de calibrage-paramétrage-changements d'implémentation de manière à améliorer le modèle de manière itérative, selon le principe classique de l'essai-erreur.
 En catégorisant l'ensemble des \textit{commits} du modèle jusqu'à la dernière version en date, nous sommes convaincus que ce motif réapparaîtrait de manière fréquente et régulière.
 
 Cet exemple, construit sur l'évolution effective de \simfeodal{}, illustre le caractère nécessaire du paramétrage, et qui plus est, montre que ce processus doit être mené de manière continue et répétée.
@@ -1793,7 +1793,7 @@ Il en va de même pour les \textbf{paramètres de contexte} : ils peuvent être 
 Les \textbf{paramètres techniques} sont des candidats naturels au paramétrage, et plus spécifiquement à sa composante de calibrage.
 Puisqu'ils ne reposent sur aucune connaissance empirique, ils constituent ainsi des \og leviers\fg{} sur lesquels on pourra mener le paramétrage, y compris de manière automatisée pour ces paramètres dont on peut faire varier les valeurs de plusieurs ordres de grandeur sans conséquence conceptuelle ou empirique sur le modèle.
 Le paramétrage des paramètres techniques est aisé mais n'apporte rien, d'un point de vue heuristique, en termes de connaissances supplémentaires sur le modèle où sur ce qui est modélisé.
-Ces paramètres sont toutefois très \og pratiques\fg{} pour compenser le paramétrage des autres types de parmètres, comme dans l'exemple du modèle gravitaire (\cref{enc:param-gravitaire}).
+Ces paramètres sont toutefois très \og pratiques\fg{} pour compenser le paramétrage des autres types de paramètres, comme dans l'exemple du modèle gravitaire (\cref{enc:param-gravitaire}).
 Si de nouvelles connaissances viennent pousser à modifier un paramètre de contexte par exemple (comme le paramètre de frein de la distance $\alpha$), on peut espérer parvenir à compenser cette variation, sur les sorties, en modifiant un paramètre technique ($k$ dans le modèle gravitaire) en conséquence.
 
 Le cas des \textbf{paramètres de mécanisme} est plus emblématique du processus de paramétrage : ils reposent sur des ordres de grandeur plus incertains, et leur valeur peut donc assez librement être modifiée.

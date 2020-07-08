@@ -115,7 +115,7 @@ La phase de calibrage est particulière parmi les nombreuses étapes de paramét
 Il ne s'agit ainsi plus d'ajuster les mécanismes et paramètres pour obtenir une cohérence d'ensemble dans la manière dont le modèle réagit, mais de se concentrer sur quelques paramètres, contextuels, dont on va régler finement les valeurs afin que le contexte de déroulement des autres mécanismes du modèle soit contrôlé et aussi fidèle aux connaissances expertes que possible.
 
 Ces paramètres contextuels sont étroitement liés à certains indicateurs de sortie.
-Conceptuellement, paramètres et indicateurs sont très largement différents, situés de part et d'autre de la simulation dans une typologie comme celle de Balci (ref chap 4).
+Conceptuellement, paramètres et indicateurs sont très largement différents, situés de part et d'autre de la simulation dans une typologie comme celle de Balci (\cref{fig:parametres-Balci}, p.~\pageref{fig:parametres-Balci}).
 Pourtant, dans le cas de ces éléments de contexte, les paramètres sont étroitement liés, de manière quasi-déterministe, aux indicateurs de sortie qui en découleront.
 Pour \og ajuster\fg{} la valeur d'un indicateur de sortie, on pourra donc tester différents ensembles de valeurs pour le ou les paramètres qui agissent directement sur ces indicateurs.
 De plus, pour le calibrage des paramètres, on ne s'attachera pas à l'observation de l'ensemble des sorties possibles, mais seulement des indicateurs directement liés aux paramètres.
@@ -503,7 +503,7 @@ Les pôles sont ainsi constitués d'agents-attracteurs, chacun dotés d'une vale
 La mesure représentée dans la figure de gauche -- le nombre d'attracteurs de chaque pôle -- est beaucoup plus \og discrète\fg{} que le nombre de foyers paysans des agrégats.
 Il y a moins de modalités (de un à une dizaine d'attracteurs, contre de 5 à plus de 500 foyers paysans), donc moins d'effets possibles de coudes.
 Ce graphique communique donc plus lisiblement, visuellement, la forte hiérarchisation des pôles.
-Comme le nombre maximum d'attracteur augmente régulièrement (environ 3 en début de simulation contre plus de 10 à la fin), on peut dire que dans le modèle, cette hiérarchisation est dûe à une croissance plus que proportionnelle des pôles les plus importants et non à une croissance équitablement répartie.
+Comme le nombre maximum d'attracteur augmente régulièrement (environ 3 en début de simulation contre plus de 10 à la fin), on peut dire que dans le modèle, cette hiérarchisation est due à une croissance plus que proportionnelle des pôles les plus importants et non à une croissance équitablement répartie.
 Par exemple, en fin de simulation, sur les 250 pôles, moins de la moitié est composée de plus de trois attracteurs.
 
 En cela, le modèle reproduit bien l'apparition d'une tête de hiérarchie urbaine, qui trouve une correspondance empirique dans les villes (Amboise, Loches, Chinon, etc.) de la région d'étude, organisées autour de châteaux et composées de multiples églises paroissiales.
@@ -521,7 +521,7 @@ On peut extraire deux types de comportements attendus à partir des connaissance
 \end{itemize}
 \clearpage
 
-En agrégeant ces types de paroisses, le fait stylisé que l'on cherche à reproduire dans le modèle serait donc d'avoir une distribution composée de deux tendances : une tête de hiérarchie desservant un grand nombre de paroissiens, mais avec une faible hiérarchisation interne (paroisses urbaines), et une très longue traine, cette-fois ci plus hiérarchisée et desservant beaucoup moins de paroissiens (paroisses rurales).
+En agrégeant ces types de paroisses, le fait stylisé que l'on cherche à reproduire dans le modèle serait donc d'avoir une distribution composée de deux tendances : une tête de hiérarchie desservant un grand nombre de paroissiens, mais avec une faible hiérarchisation interne (paroisses urbaines), et une très longue traîne, cette-fois ci plus hiérarchisée et desservant beaucoup moins de paroissiens (paroisses rurales).
 
 
 Dans la \cref{fig:results-rt-paroisses}, on constate que le modèle semble reproduire ce type de distribution : on y remarque bien une courbe caractérisée par une double tendance.
@@ -834,7 +834,7 @@ Pourtant, comme nous envisageons d'éprouver le modèle sur des scénarios susce
 On a donc opté pour une analyse de sensibilité de l'ensemble des paramètres du modèle.
 \simfeodal{} comporte dans les faits 70 paramètres, mais en pratique, certains n'ont aucun sens quand ils sont mobilisés seuls.
 Par exemple, deux paramètres définissent le rayon minimum et maximum des zones de prélèvement.
-Il n'y a pas grand interêt à faire varier l'un sans l'autre.
+Il n'y a pas grand intérêt à faire varier l'un sans l'autre.
 Dans l'analyse de sensibilité, nous considérons ces deux paramètres comme un unique paramètre à analyser, qui ne prend pas la forme d'une valeur numérique simple, mais plutôt celle d'une étendue.
 
 Pour cette analyse de sensibilité, nous avons au final analysé 57 \og paramètres\fg{}, certains de forme numérique simple, d'autres sous formes d'étendues, et enfin quelques-uns ayant des structures plus complexes (étendues changeant au cours du temps par exemple).
@@ -1001,7 +1001,7 @@ Le nombre précis dépendra de la forme de la distribution de la sensibilité de
 On se basera pour cela sur une méthode subjective d'examen visuel des écarts entre les valeurs de sensibilité, tel qu'on peut le faire pour choisir un nombre de classes à étudier lors de l'exécution d'une classification ascendante hiérarchique.
 
 Un des risques de cette sélection à partir de la sensibilité globale est que certains paramètres, très influents sur un indicateur particulier, aient une sensibilité globale assez moyenne ou faible, par effet de \og resserrement\fg{} des moyennes.
-Pour ne pas risquer de négliger de tels paramètres, on complètera la sélection précédente par une sélection des trois paramètres les plus sensibles\footnote{
+Pour ne pas risquer de négliger de tels paramètres, on complétera la sélection précédente par une sélection des trois paramètres les plus sensibles\footnote{
 	En tant que tel, c'est le modèle qui est plus ou moins sensible aux valeurs prises par les paramètres.
 	Par abus de langage et soucis de brièveté, dans la suite de cette partie, nous utiliserons tout de même la logique inverse de sensibilité des paramètres pour définir l'influence plus ou moins importante que les valeurs qu'ils prennent exerce sur les sorties du modèle.
 } sur chacun des 6 indicateurs.
@@ -1099,7 +1099,7 @@ Il est intéressant de noter que les valeurs par défaut de ces paramètres ont 
 	Sur la forme, c'est l'un des paramètres les plus \og qualitatifs\fg{} : il désigne une étendue spatiale qui varie au cours du temps de la simulation.
 	Comme la satisfaction religieuse que ce paramètre conditionne a une importance majeure sur les migrations des foyers paysans (voir \cref{sssec:fixation-dissemination}), on pouvait s'attendre à ce qu'il se montre particulièrement sensible.
 	\item Les dimensions du monde simulé ont donné lieu à un calibrage, par ajustement empirique, dont l'on a discuté au début de ce chapitre (\cref{sssec:calibrage-inputs}).
-	On décrivait alors toutes les répercussions que ce changement avait provoqué, et il n'est pas surprenant que ce paramètre soit parmis les plus sensibles dans le modèle.
+	On décrivait alors toutes les répercussions que ce changement avait provoqué, et il n'est pas surprenant que ce paramètre soit parmi les plus sensibles dans le modèle.
 	\item La distance de détection des agrégats a été l'un des premiers paramètres implémenté dans le modèle, ajusté selon des valeurs empiriques.
 	La valeur fixée (100 m) n'a pas évoluée depuis les premières versions du modèle.
 	C'en est presque une constante et il est très enrichissant pour le modélisateur de découvrir que ce paramètre a une influence importante sur l'issue des simulations.
@@ -1294,7 +1294,7 @@ Seul point négatif : les églises paroissiales sont beaucoup moins nombreuses d
 
 \vspace*{1em} En regardant le détail de la structure, et notamment relative aux indicateurs de sortie relatifs aux agrégats (\cref{fig:scenario-D2-agregats}), on constate qu'en matière de hiérarchisation du système, les résultats de ce scénario sont aussi meilleurs que ceux de la version de base (\cref{fig:results-nb-agregrats,fig:results-rt-agregats}).
 La croissance du nombre d'agrégats y est assez régulière, contrairement à la version calibrée (\cref{fig:results-nb-agregrats}) où l'évolution était très faible jusqu'en 1060.
-Plutôt que d'insuffler un changement de tendance, les mécanismes exogènes (960 et 1060) ne font qu'accélerer un processus déjà actif.
+Plutôt que d'insuffler un changement de tendance, les mécanismes exogènes (960 et 1060) ne font qu'accélérer un processus déjà actif.
 
 On note aussi que l'organisation hiérarchique des agrégats, et son évolution, est bien plus proche des formes connues sur les sociétés contemporaines.
 Dans la version calibrée du modèle (\cref{fig:results-rt-agregats}), la courbe conservait un \og coude\fg{} important, tandis qu'ici, on note que l'évolution tend vers un redressement de la pente de la courbe rang-taille.
@@ -1603,7 +1603,7 @@ Les éléments de compréhension des interactions effectives du modèle et les r
 
 Dans ce chapitre, nous avons présenté les dernières étapes de calibrage de \simfeodal{} et les résultats qui en émanent.
 À l'aune de ces résultats, on peut conclure que le modèle, une fois calibré, est globalement satisfaisant, sur chacune des dimensions d'objectifs poursuivis : concentration et polarisation, hiérarchisation et fixation-dissémination du peuplement.
-L'ajustement n'est certes jamais parfait, mais aussi bien en termes de valeurs btenues que d'évolutions de ces valeurs au cours du paramétrage et du calibrage du modèle, cet ajustement nous apparaît tout à fait satisfaisant.
+L'ajustement n'est certes jamais parfait, mais aussi bien en termes de valeurs obtenues que d'évolutions de ces valeurs au cours du paramétrage et du calibrage du modèle, cet ajustement nous apparaît tout à fait satisfaisant.
 
 Dans la seconde partie de ce chapitre, nous partions du constat qu'il est difficile d'améliorer le calibrage du modèle à cause des effets d'interactions et des réponses inattendues de certains paramètres.
 Pour y remédier, nous avons mené une analyse de sensibilité de l'ensemble des paramètres de \simfeodal{} qui nous a permis de mieux comprendre l'influence de chaque paramètre et mécanisme lié sur les sorties du modèle.
